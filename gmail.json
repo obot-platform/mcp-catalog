@@ -1,0 +1,120 @@
+{
+    "name": "Gmail",
+    "description": "# Gmail MCP Server\n\n<div align=\"center\">\n\n![Gmail MCP Server](https://img.shields.io/badge/Gmail-MCP%20Server-blue?style=for-the-badge&logo=gmail)\n![Python](https://img.shields.io/badge/Python-3.13+-green?style=for-the-badge&logo=python)\n![FastMCP](https://img.shields.io/badge/FastMCP-2.8.1+-orange?style=for-the-badge)\n![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)\n\n_A powerful Model Context Protocol (MCP) server for Gmail integration, providing comprehensive email management capabilities through a modern API interface._\n\n</div>\n\n## 📧 Overview\n\nThe Gmail MCP Server is a high-performance, feature-rich server that enables seamless integration with Gmail through the Model Context Protocol. Built with FastMCP and Python 3.13+, it provides a comprehensive set of tools for email management, including reading, sending, organizing, and managing Gmail messages, drafts, and labels.\n\n### ✨ Key Features\n\n- 🔐 **OAuth2 Authentication** - Secure Google OAuth integration\n- 📨 **Complete Email Management** - Read, send, draft, and organize emails\n- 🏷️ **Label Management** - Create, update, and manage Gmail labels\n- 🔍 **Advanced Search** - Powerful query-based email filtering\n- 🚀 **Streamable HTTP** - High-performance streaming capabilities\n\n## 📚 Available Tools\n\n### 📨 Email Management\n\n#### `list_emails`\n\nList emails in the user's Gmail account with advanced filtering options.\n\n**Parameters:**\n\n- `max_results` (int): Maximum number of emails to return (1-1000, default: 100)\n- `query` (str): Gmail search query\n- `label_ids` (str): Comma-separated list of label IDs\n- `category` (str): Email category filter (`primary`, `social`, `promotions`, `updates`, `forums`)\n- `after` (str): Date to search for emails after\n- `before` (str): Date to search for emails before\n\n#### `read_email`\n\nRead a specific email by ID or subject.\n\n**Parameters:**\n\n- `email_id` (str): Email ID to read\n- `email_subject` (str): Email subject to search for\n- `user_timezone` (str): User's timezone (default: \"UTC\")\n\n#### `send_email`\n\nSend a new email immediately.\n\n**Parameters:**\n\n- `to_emails` (str): Comma-separated list of recipient email addresses\n- `subject` (str): Email subject\n- `message` (str): Email body content\n- `cc_emails` (str): Comma-separated list of CC recipients\n- `bcc_emails` (str): Comma-separated list of BCC recipients\n\n### 📝 Draft Management\n\n#### `list_drafts`\n\nList all draft emails in the user's account.\n\n**Parameters:**\n\n- `max_results` (int): Maximum number of drafts to return (1-1000, default: 100)\n\n#### `create_draft`\n\nCreate a new draft email.\n\n**Parameters:**\n\n- `to_emails` (str): Comma-separated list of recipient email addresses\n- `subject` (str): Email subject\n- `message` (str): Email body content\n- `cc_emails` (str): Comma-separated list of CC recipients\n- `bcc_emails` (str): Comma-separated list of BCC recipients\n- `reply_to_email_id` (str): ID of email to reply to\n- `reply_all` (bool): Whether to reply to all recipients\n\n#### `update_draft`\n\nUpdate an existing draft email.\n\n#### `send_draft`\n\nSend a draft email.\n\n**Parameters:**\n\n- `draft_id` (str): ID of the draft to send\n\n#### `delete_draft`\n\nDelete a draft email.\n\n**Parameters:**\n\n- `draft_id` (str): ID of the draft to delete\n\n### 🏷️ Label Management\n\n#### `list_labels`\n\nList all custom labels in the user's account.\n\n**Parameters:**\n\n- `label_id` (str): Specific label ID to fetch (optional)\n\n#### `create_label`\n\nCreate a new custom label.\n\n**Parameters:**\n\n- `label_name` (str): Name of the label to create\n- `label_list_visibility` (str): Label list visibility (`labelShow`, `labelHide`, `labelShowIfUnread`)\n- `message_list_visibility` (str): Message list visibility (`show`, `hide`)\n\n#### `update_label`\n\nUpdate an existing label.\n\n**Parameters:**\n\n- `label_id` (str): ID of the label to update\n- `label_name` (str): New name for the label\n- `label_list_visibility` (str): New label list visibility\n- `message_list_visibility` (str): New message list visibility\n\n#### `delete_label`\n\nDelete a custom label.\n\n**Parameters:**\n\n- `label_id` (str): ID of the label to delete\n\n### 🔧 Email Actions\n\n#### `modify_message_labels`\n\nModify labels and properties of an email message.\n\n**Parameters:**\n\n- `email_id` (str): ID of the email message\n- `add_label_ids` (list): List of label IDs to add\n- `remove_label_ids` (list): List of label IDs to remove\n- `archive` (bool): Whether to archive the message\n- `mark_as_read` (bool): Whether to mark as read\n- `mark_as_starred` (bool): Whether to mark as starred\n- `mark_as_important` (bool): Whether to mark as important\n- `apply_action_to_thread` (bool): Apply action to entire thread\n\n#### `delete_email`\n\nDelete an email message.\n\n**Parameters:**\n\n- `email_id` (str): ID of the email to delete\n\n### 📎 Attachment Management\n\n#### `list_attachments`\n\nList all attachments in an email.\n\n**Parameters:**\n\n- `email_id` (str): ID of the email to check for attachments\n\n### 👤 Account Information\n\n#### `get_current_email_address`\n\nGet the current user's email address.\n\n## 🔒 Security\n\n- **OAuth2 Flow**: Secure authentication via Google OAuth2\n- **Token Management**: Automatic token refresh and secure storage\n- **Header-based Auth**: Access tokens passed via secure headers\n- **No Local Storage**: Sensitive data not stored locally\n- **HTTPS Support**: Full HTTPS support for production deployments\n\n## 📄 License\n\nThis project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.\n\n---\n\n<div align=\"center\">\n\n**Built with ❤️ using FastMCP and Python**\n\n[![GitHub stars](https://img.shields.io/github/stars/your-repo/gmail-mcp-server?style=social)](https://github.com/your-repo/gmail-mcp-server)\n[![GitHub forks](https://img.shields.io/github/forks/your-repo/gmail-mcp-server?style=social)](https://github.com/your-repo/gmail-mcp-server)\n\n</div>\n\n",
+    "metadata": {
+      "categories": "Business,Gmail,Verified",
+      "allow-multiple": "true"
+    },
+    "icon": "https://img.icons8.com/?size=100&id=P7UIlhbpWzZm&format=png&color=000000",
+    "repoURL": "https://mcp-oauth-proxy.onrender.com/mcp",
+    "fixedURL": "mcp-oauth-proxy.onrender.com",
+    "toolPreview": [
+      {
+        "name": "list_emails",
+        "description": "List emails in the user's Gmail account with advanced filtering options.",
+        "params": {
+          "max_results": "Maximum number of emails to return (1-1000, default: 100)",
+          "query": "Gmail search query for filtering emails",
+          "label_ids": "Comma-separated list of label IDs to filter by",
+          "category": "Email category filter (primary, social, promotions, updates, forums)",
+          "after": "Date to search for emails after",
+          "before": "Date to search for emails before"
+        }
+      },
+      {
+        "name": "read_email",
+        "description": "Read a specific email by ID or subject.",
+        "params": {
+          "email_id": "Email ID to read",
+          "email_subject": "Email subject to search for",
+          "user_timezone": "User's timezone (default: UTC)"
+        }
+      },
+      {
+        "name": "send_email",
+        "description": "Send a new email immediately.",
+        "params": {
+          "to_emails": "Comma-separated list of recipient email addresses",
+          "subject": "Email subject",
+          "message": "Email body content",
+          "cc_emails": "Comma-separated list of CC recipients",
+          "bcc_emails": "Comma-separated list of BCC recipients"
+        }
+      },
+      {
+        "name": "list_drafts",
+        "description": "List all draft emails in the user's account.",
+        "params": {
+          "max_results": "Maximum number of drafts to return (1-1000, default: 100)"
+        }
+      },
+      {
+        "name": "create_draft",
+        "description": "Create a new draft email.",
+        "params": {
+          "to_emails": "Comma-separated list of recipient email addresses",
+          "subject": "Email subject",
+          "message": "Email body content",
+          "cc_emails": "Comma-separated list of CC recipients",
+          "bcc_emails": "Comma-separated list of BCC recipients",
+          "reply_to_email_id": "ID of email to reply to",
+          "reply_all": "Whether to reply to all recipients"
+        }
+      },
+      {
+        "name": "send_draft",
+        "description": "Send a draft email.",
+        "params": {
+          "draft_id": "ID of the draft to send"
+        }
+      },
+      {
+        "name": "list_labels",
+        "description": "List all custom labels in the user's account.",
+        "params": {
+          "label_id": "Specific label ID to fetch (optional)"
+        }
+      },
+      {
+        "name": "create_label",
+        "description": "Create a new custom label.",
+        "params": {
+          "label_name": "Name of the label to create",
+          "label_list_visibility": "Label list visibility (labelShow, labelHide, labelShowIfUnread)",
+          "message_list_visibility": "Message list visibility (show, hide)"
+        }
+      },
+      {
+        "name": "modify_message_labels",
+        "description": "Modify labels and properties of an email message.",
+        "params": {
+          "email_id": "ID of the email message",
+          "add_label_ids": "List of label IDs to add",
+          "remove_label_ids": "List of label IDs to remove",
+          "archive": "Whether to archive the message",
+          "mark_as_read": "Whether to mark as read",
+          "mark_as_starred": "Whether to mark as starred",
+          "mark_as_important": "Whether to mark as important",
+          "apply_action_to_thread": "Apply action to entire thread"
+        }
+      },
+      {
+        "name": "delete_email",
+        "description": "Delete an email message.",
+        "params": {
+          "email_id": "ID of the email to delete"
+        }
+      },
+      {
+        "name": "list_attachments",
+        "description": "List all attachments in an email.",
+        "params": {
+          "email_id": "ID of the email to check for attachments"
+        }
+      },
+      {
+        "name": "get_current_email_address",
+        "description": "Get the current user's email address."
+      }
+    ]
+  }

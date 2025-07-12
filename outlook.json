@@ -1,0 +1,115 @@
+{
+    "name": "Outlook",
+    "description": "# Outlook MCP Server\n\n<div align=\"center\">\n\n![Outlook MCP Server](https://img.shields.io/badge/Outlook-MCP%20Server-blue?style=for-the-badge&logo=microsoft-outlook)\n![Python](https://img.shields.io/badge/Python-3.13+-green?style=for-the-badge&logo=python)\n![FastMCP](https://img.shields.io/badge/FastMCP-2.10.4+-orange?style=for-the-badge)\n![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)\n\n_A powerful Model Context Protocol (MCP) server for Microsoft Outlook integration, providing comprehensive email management capabilities through Microsoft Graph API._\n\n</div>\n\n## 📧 Overview\n\nThe Outlook MCP Server is a high-performance, feature-rich server that enables seamless integration with Microsoft Outlook through the Model Context Protocol. Built with FastMCP and Python 3.13+, it provides a comprehensive set of tools for email management, including reading, sending, organizing, and managing Outlook messages, drafts, and folders.\n\n### ✨ Key Features\n\n- 🔐 **OAuth2 Authentication** - Secure Microsoft OAuth integration via Azure AD\n- 📨 **Complete Email Management** - Read, send, draft, and organize emails\n- 📁 **Folder Management** - List and navigate Outlook mail folders\n- 🔍 **Advanced Search** - Powerful query-based email filtering\n- 📎 **Attachment Support** - List, download, and read email attachments\n- 🚀 **Streamable HTTP** - High-performance streaming capabilities\n- 🐳 **Docker Ready** - Containerized deployment with Docker Compose\n- 🧪 **Comprehensive Testing** - Full test coverage with pytest\n- 📊 **Microsoft Graph API** - Native integration with Microsoft 365 services\n- 🔄 **Async Operations** - Non-blocking asynchronous email operations\n\n## 📚 Available Tools\n\n### 📁 Folder Management\n\n#### `list_mail_folders`\n\nLists all available Outlook mail folders.\n\n**Returns:**\n\n- `folders` (list): List of folder objects with id, display_name, parent_folder_id, child_folder_count, unread_item_count, total_item_count\n\n### 📨 Email Management\n\n#### `list_emails`\n\nLists emails in an Outlook folder with filtering options.\n\n**Parameters:**\n\n- `folder_id` (str): The ID of the folder to list emails in (optional)\n- `start` (str): RFC3339 formatted start date and time (optional)\n- `end` (str): RFC3339 formatted end date and time (optional)\n- `limit` (str): Maximum number of emails to return (default: 100)\n- `read_status` (str): Filter by read status ('read', 'unread', or empty for all)\n\n#### `get_email_details`\n\nGet the details of an Outlook email.\n\n**Parameters:**\n\n- `email_id` (str): The ID of the email to get details for\n- `group_id` (str): Group mailbox ID (optional, for group emails)\n- `thread_id` (str): Thread ID (optional, for group emails)\n\n#### `search_emails`\n\nSearch for emails in Outlook with multiple criteria.\n\n**Parameters:**\n\n- `subject` (str): Search query for email subject (optional)\n- `from_address` (str): Search query for sender email address (optional)\n- `from_name` (str): Search query for sender name (optional)\n- `folder_id` (str): Folder ID to search in (optional)\n- `start` (str): Start date and time in RFC 3339 format (optional)\n- `end` (str): End date and time in RFC 3339 format (optional)\n- `limit` (str): Maximum number of emails to return (default: 10)\n\n### 📝 Draft Management\n\n#### `create_draft`\n\nCreate (but do not send) a draft individual Outlook email.\n\n**Parameters:**\n\n- `subject` (str): The subject of the email\n- `body` (str): The body of the email in markdown format\n- `recipients` (str): Comma-separated list of email addresses (no spaces)\n- `cc` (str): Comma-separated list of CC email addresses (optional)\n- `bcc` (str): Comma-separated list of BCC email addresses (optional)\n- `attachments` (str): Comma-separated list of workspace file paths (optional)\n- `reply_email_id` (str): ID of email to reply to (optional)\n- `reply_all` (bool): Whether to reply to all (default: false)\n\n#### `send_draft`\n\nSend an existing draft email in Outlook.\n\n**Parameters:**\n\n- `draft_id` (str): The ID of the draft to send\n\n### 🔧 Email Actions\n\n#### `delete_email`\n\nDelete an Outlook email.\n\n**Parameters:**\n\n- `email_id` (str): The ID of the email to delete\n\n#### `move_email`\n\nMoves an email to a different Outlook folder.\n\n**Parameters:**\n\n- `email_id` (str): The ID of the email to move\n- `destination_folder_id` (str): The ID of the destination folder\n\n### 👤 Account Information\n\n#### `get_my_email_address`\n\nGet the email address of the currently authenticated Outlook user.\n\n**Returns:**\n\n- `email` (str): The user's email address\n\n### 📎 Attachment Management\n\n#### `list_attachments`\n\nList the attachments of an Outlook email.\n\n**Parameters:**\n\n- `email_id` (str): The ID of the email to list attachments for\n\n**Returns:**\n\n- `attachments` (list): List of attachment objects with id, name, content_type, size, is_inline\n\n#### `download_attachment`\n\nDownload an attachment from an Outlook email into workspace.\n\n**Parameters:**\n\n- `email_id` (str): The ID of the email containing the attachment\n- `attachment_id` (str): The ID of the attachment to download\n\n#### `read_attachment`\n\nGet the markdown converted contents of an attachment from an Outlook email.\n\n**Parameters:**\n\n- `email_id` (str): The ID of the email containing the attachment\n- `attachment_id` (str): The ID of the attachment to read\n\n**Returns:**\n\n- `content` (str): The text content of the attachment (for text-based files)\n- `error` (str): Error message for binary attachments\n\n---\n\n<div align=\"center\">\n\n**Built with ❤️ using FastMCP and Microsoft Graph API**\n\n[![GitHub stars](https://img.shields.io/github/stars/your-repo/outlook-mcp-server?style=social)](https://github.com/your-repo/outlook-mcp-server)\n[![GitHub forks](https://img.shields.io/github/forks/your-repo/outlook-mcp-server?style=social)](https://github.com/your-repo/outlook-mcp-server)\n\n</div>\n",
+    "metadata": {
+      "categories": "Business,Outlook,Verified",
+      "allow-multiple": "true"
+    },
+    "icon": "https://img.icons8.com/?size=100&id=ut6gQeo5pNqf&format=png&color=000000",
+    "repoURL": "https://mcp-oauth-proxy-1.onrender.com/mcp",
+    "fixedURL": "mcp-oauth-proxy-1.onrender.com",
+    "toolPreview": [
+      {
+        "name": "list_mail_folders",
+        "description": "Lists all available Outlook mail folders.",
+        "params": {}
+      },
+      {
+        "name": "list_emails",
+        "description": "Lists emails in an Outlook folder with filtering options.",
+        "params": {
+          "folder_id": "The ID of the folder to list emails in (optional)",
+          "start": "RFC3339 formatted start date and time (optional)",
+          "end": "RFC3339 formatted end date and time (optional)",
+          "limit": "Maximum number of emails to return (default: 100)",
+          "read_status": "Filter by read status (read, unread, or empty for all)"
+        }
+      },
+      {
+        "name": "get_email_details",
+        "description": "Get the details of an Outlook email.",
+        "params": {
+          "email_id": "The ID of the email to get details for",
+          "group_id": "Group mailbox ID (optional, for group emails)",
+          "thread_id": "Thread ID (optional, for group emails)"
+        }
+      },
+      {
+        "name": "search_emails",
+        "description": "Search for emails in Outlook with multiple criteria.",
+        "params": {
+          "subject": "Search query for email subject (optional)",
+          "from_address": "Search query for sender email address (optional)",
+          "from_name": "Search query for sender name (optional)",
+          "folder_id": "Folder ID to search in (optional)",
+          "start": "Start date and time in RFC 3339 format (optional)",
+          "end": "End date and time in RFC 3339 format (optional)",
+          "limit": "Maximum number of emails to return (default: 10)"
+        }
+      },
+      {
+        "name": "create_draft",
+        "description": "Create (but do not send) a draft individual Outlook email.",
+        "params": {
+          "subject": "The subject of the email",
+          "body": "The body of the email in markdown format",
+          "recipients": "Comma-separated list of email addresses (no spaces)",
+          "cc": "Comma-separated list of CC email addresses (optional)",
+          "bcc": "Comma-separated list of BCC email addresses (optional)",
+          "attachments": "Comma-separated list of workspace file paths (optional)",
+          "reply_email_id": "ID of email to reply to (optional)",
+          "reply_all": "Whether to reply to all (default: false)"
+        }
+      },
+      {
+        "name": "send_draft",
+        "description": "Send an existing draft email in Outlook.",
+        "params": {
+          "draft_id": "The ID of the draft to send"
+        }
+      },
+      {
+        "name": "delete_email",
+        "description": "Delete an Outlook email.",
+        "params": {
+          "email_id": "The ID of the email to delete"
+        }
+      },
+      {
+        "name": "move_email",
+        "description": "Moves an email to a different Outlook folder.",
+        "params": {
+          "email_id": "The ID of the email to move",
+          "destination_folder_id": "The ID of the destination folder"
+        }
+      },
+      {
+        "name": "get_my_email_address",
+        "description": "Get the email address of the currently authenticated Outlook user.",
+        "params": {}
+      },
+      {
+        "name": "list_attachments",
+        "description": "List the attachments of an Outlook email.",
+        "params": {
+          "email_id": "The ID of the email to list attachments for"
+        }
+      },
+      {
+        "name": "download_attachment",
+        "description": "Download an attachment from an Outlook email into workspace.",
+        "params": {
+          "email_id": "The ID of the email containing the attachment",
+          "attachment_id": "The ID of the attachment to download"
+        }
+      },
+      {
+        "name": "read_attachment",
+        "description": "Get the markdown converted contents of an attachment from an Outlook email.",
+        "params": {
+          "email_id": "The ID of the email containing the attachment",
+          "attachment_id": "The ID of the attachment to read"
+        }
+      }
+    ]
+  }
