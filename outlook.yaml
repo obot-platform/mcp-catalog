@@ -1,0 +1,259 @@
+name: Outlook
+description: |
+	# Outlook MCP Server
+
+	<div align="center">
+
+	![Outlook MCP Server](https://img.shields.io/badge/Outlook-MCP%20Server-blue?style=for-the-badge&logo=microsoft-outlook)
+	![Python](https://img.shields.io/badge/Python-3.13+-green?style=for-the-badge&logo=python)
+	![FastMCP](https://img.shields.io/badge/FastMCP-2.10.4+-orange?style=for-the-badge)
+	![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+
+	_A powerful Model Context Protocol (MCP) server for Microsoft Outlook integration, providing comprehensive email management capabilities through Microsoft Graph API._
+
+	</div>
+
+	## 📧 Overview
+
+	The Outlook MCP Server is a high-performance, feature-rich server that enables seamless integration with Microsoft Outlook through the Model Context Protocol. Built with FastMCP and Python 3.13+, it provides a comprehensive set of tools for email management, including reading, sending, organizing, and managing Outlook messages, drafts, and folders.
+
+	### ✨ Key Features
+
+	- 🔐 **OAuth2 Authentication** - Secure Microsoft OAuth integration via Azure AD
+	- 📨 **Complete Email Management** - Read, send, draft, and organize emails
+	- 📁 **Folder Management** - List and navigate Outlook mail folders
+	- 🔍 **Advanced Search** - Powerful query-based email filtering
+	- 📎 **Attachment Support** - List, download, and read email attachments
+	- 🚀 **Streamable HTTP** - High-performance streaming capabilities
+	- 🐳 **Docker Ready** - Containerized deployment with Docker Compose
+	- 🧪 **Comprehensive Testing** - Full test coverage with pytest
+	- 📊 **Microsoft Graph API** - Native integration with Microsoft 365 services
+	- 🔄 **Async Operations** - Non-blocking asynchronous email operations
+
+	## 📚 Available Tools
+
+	### 📁 Folder Management
+
+	#### `list_mail_folders`
+
+	Lists all available Outlook mail folders.
+
+	**Returns:**
+
+	- `folders` (list): List of folder objects with id, display_name, parent_folder_id, child_folder_count, unread_item_count, total_item_count
+
+	### 📨 Email Management
+
+	#### `list_emails`
+
+	Lists emails in an Outlook folder with filtering options.
+
+	**Parameters:**
+
+	- `folder_id` (str): The ID of the folder to list emails in (optional)
+	- `start` (str): RFC3339 formatted start date and time (optional)
+	- `end` (str): RFC3339 formatted end date and time (optional)
+	- `limit` (str): Maximum number of emails to return (default: 100)
+	- `read_status` (str): Filter by read status ('read', 'unread', or empty for all)
+
+	#### `get_email_details`
+
+	Get the details of an Outlook email.
+
+	**Parameters:**
+
+	- `email_id` (str): The ID of the email to get details for
+	- `group_id` (str): Group mailbox ID (optional, for group emails)
+	- `thread_id` (str): Thread ID (optional, for group emails)
+
+	#### `search_emails`
+
+	Search for emails in Outlook with multiple criteria.
+
+	**Parameters:**
+
+	- `subject` (str): Search query for email subject (optional)
+	- `from_address` (str): Search query for sender email address (optional)
+	- `from_name` (str): Search query for sender name (optional)
+	- `folder_id` (str): Folder ID to search in (optional)
+	- `start` (str): Start date and time in RFC 3339 format (optional)
+	- `end` (str): End date and time in RFC 3339 format (optional)
+	- `limit` (str): Maximum number of emails to return (default: 10)
+
+	### 📝 Draft Management
+
+	#### `create_draft`
+
+	Create (but do not send) a draft individual Outlook email.
+
+	**Parameters:**
+
+	- `subject` (str): The subject of the email
+	- `body` (str): The body of the email in markdown format
+	- `recipients` (str): Comma-separated list of email addresses (no spaces)
+	- `cc` (str): Comma-separated list of CC email addresses (optional)
+	- `bcc` (str): Comma-separated list of BCC email addresses (optional)
+	- `attachments` (str): Comma-separated list of workspace file paths (optional)
+	- `reply_email_id` (str): ID of email to reply to (optional)
+	- `reply_all` (bool): Whether to reply to all (default: false)
+
+	#### `send_draft`
+
+	Send an existing draft email in Outlook.
+
+	**Parameters:**
+
+	- `draft_id` (str): The ID of the draft to send
+
+	### 🔧 Email Actions
+
+	#### `delete_email`
+
+	Delete an Outlook email.
+
+	**Parameters:**
+
+	- `email_id` (str): The ID of the email to delete
+
+	#### `move_email`
+
+	Moves an email to a different Outlook folder.
+
+	**Parameters:**
+
+	- `email_id` (str): The ID of the email to move
+	- `destination_folder_id` (str): The ID of the destination folder
+
+	### 👤 Account Information
+
+	#### `get_my_email_address`
+
+	Get the email address of the currently authenticated Outlook user.
+
+	**Returns:**
+
+	- `email` (str): The user's email address
+
+	### 📎 Attachment Management
+
+	#### `list_attachments`
+
+	List the attachments of an Outlook email.
+
+	**Parameters:**
+
+	- `email_id` (str): The ID of the email to list attachments for
+
+	**Returns:**
+
+	- `attachments` (list): List of attachment objects with id, name, content_type, size, is_inline
+
+	#### `download_attachment`
+
+	Download an attachment from an Outlook email into workspace.
+
+	**Parameters:**
+
+	- `email_id` (str): The ID of the email containing the attachment
+	- `attachment_id` (str): The ID of the attachment to download
+
+	#### `read_attachment`
+
+	Get the markdown converted contents of an attachment from an Outlook email.
+
+	**Parameters:**
+
+	- `email_id` (str): The ID of the email containing the attachment
+	- `attachment_id` (str): The ID of the attachment to read
+
+	**Returns:**
+
+	- `content` (str): The text content of the attachment (for text-based files)
+	- `error` (str): Error message for binary attachments
+
+	---
+
+	<div align="center">
+
+	**Built with ❤️ using FastMCP and Microsoft Graph API**
+
+	[![GitHub stars](https://img.shields.io/github/stars/your-repo/outlook-mcp-server?style=social)](https://github.com/your-repo/outlook-mcp-server)
+	[![GitHub forks](https://img.shields.io/github/forks/your-repo/outlook-mcp-server?style=social)](https://github.com/your-repo/outlook-mcp-server)
+
+	</div>
+
+metadata:
+  categories: Business,Outlook,Verified
+  allow-multiple: "true"
+icon: https://img.icons8.com/?size=100&id=ut6gQeo5pNqf&format=png&color=000000
+repoURL: https://mcp-oauth-proxy-1.onrender.com/mcp
+fixedURL: http://mcp-oauth-proxy-1.onrender.com/mcp
+toolPreview:
+  - name: list_mail_folders
+    description: Lists all available Outlook mail folders.
+    params: {}
+  - name: list_emails
+    description: Lists emails in an Outlook folder with filtering options.
+    params:
+      folder_id: The ID of the folder to list emails in (optional)
+      start: RFC3339 formatted start date and time (optional)
+      end: RFC3339 formatted end date and time (optional)
+      limit: 'Maximum number of emails to return (default: 100)'
+      read_status: Filter by read status (read, unread, or empty for all)
+  - name: get_email_details
+    description: Get the details of an Outlook email.
+    params:
+      email_id: The ID of the email to get details for
+      group_id: Group mailbox ID (optional, for group emails)
+      thread_id: Thread ID (optional, for group emails)
+  - name: search_emails
+    description: Search for emails in Outlook with multiple criteria.
+    params:
+      subject: Search query for email subject (optional)
+      from_address: Search query for sender email address (optional)
+      from_name: Search query for sender name (optional)
+      folder_id: Folder ID to search in (optional)
+      start: Start date and time in RFC 3339 format (optional)
+      end: End date and time in RFC 3339 format (optional)
+      limit: 'Maximum number of emails to return (default: 10)'
+  - name: create_draft
+    description: Create (but do not send) a draft individual Outlook email.
+    params:
+      subject: The subject of the email
+      body: The body of the email in markdown format
+      recipients: Comma-separated list of email addresses (no spaces)
+      cc: Comma-separated list of CC email addresses (optional)
+      bcc: Comma-separated list of BCC email addresses (optional)
+      attachments: Comma-separated list of workspace file paths (optional)
+      reply_email_id: ID of email to reply to (optional)
+      reply_all: 'Whether to reply to all (default: false)'
+  - name: send_draft
+    description: Send an existing draft email in Outlook.
+    params:
+      draft_id: The ID of the draft to send
+  - name: delete_email
+    description: Delete an Outlook email.
+    params:
+      email_id: The ID of the email to delete
+  - name: move_email
+    description: Moves an email to a different Outlook folder.
+    params:
+      email_id: The ID of the email to move
+      destination_folder_id: The ID of the destination folder
+  - name: get_my_email_address
+    description: Get the email address of the currently authenticated Outlook user.
+    params: {}
+  - name: list_attachments
+    description: List the attachments of an Outlook email.
+    params:
+      email_id: The ID of the email to list attachments for
+  - name: download_attachment
+    description: Download an attachment from an Outlook email into workspace.
+    params:
+      email_id: The ID of the email containing the attachment
+      attachment_id: The ID of the attachment to download
+  - name: read_attachment
+    description: Get the markdown converted contents of an attachment from an Outlook email.
+    params:
+      email_id: The ID of the email containing the attachment
+      attachment_id: The ID of the attachment to read
