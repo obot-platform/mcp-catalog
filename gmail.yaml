@@ -1,215 +1,215 @@
 name: Gmail
 description: |
-	# Gmail MCP Server
+  # Gmail MCP Server
 
-	<div align="center">
+  <div align="center">
 
-	![Gmail MCP Server](https://img.shields.io/badge/Gmail-MCP%20Server-blue?style=for-the-badge&logo=gmail)
-	![Python](https://img.shields.io/badge/Python-3.13+-green?style=for-the-badge&logo=python)
-	![FastMCP](https://img.shields.io/badge/FastMCP-2.8.1+-orange?style=for-the-badge)
-	![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+  ![Gmail MCP Server](https://img.shields.io/badge/Gmail-MCP%20Server-blue?style=for-the-badge&logo=gmail)
+  ![Python](https://img.shields.io/badge/Python-3.13+-green?style=for-the-badge&logo=python)
+  ![FastMCP](https://img.shields.io/badge/FastMCP-2.8.1+-orange?style=for-the-badge)
+  ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
-	_A powerful Model Context Protocol (MCP) server for Gmail integration, providing comprehensive email management capabilities through a modern API interface._
+  _A powerful Model Context Protocol (MCP) server for Gmail integration, providing comprehensive email management capabilities through a modern API interface._
 
-	</div>
+  </div>
 
-	## 📧 Overview
+  ## 📧 Overview
 
-	The Gmail MCP Server is a high-performance, feature-rich server that enables seamless integration with Gmail through the Model Context Protocol. Built with FastMCP and Python 3.13+, it provides a comprehensive set of tools for email management, including reading, sending, organizing, and managing Gmail messages, drafts, and labels.
+  The Gmail MCP Server is a high-performance, feature-rich server that enables seamless integration with Gmail through the Model Context Protocol. Built with FastMCP and Python 3.13+, it provides a comprehensive set of tools for email management, including reading, sending, organizing, and managing Gmail messages, drafts, and labels.
 
-	### ✨ Key Features
+  ### ✨ Key Features
 
-	- 🔐 **OAuth2 Authentication** - Secure Google OAuth integration
-	- 📨 **Complete Email Management** - Read, send, draft, and organize emails
-	- 🏷️ **Label Management** - Create, update, and manage Gmail labels
-	- 🔍 **Advanced Search** - Powerful query-based email filtering
-	- 🚀 **Streamable HTTP** - High-performance streaming capabilities
+  - 🔐 **OAuth2 Authentication** - Secure Google OAuth integration
+  - 📨 **Complete Email Management** - Read, send, draft, and organize emails
+  - 🏷️ **Label Management** - Create, update, and manage Gmail labels
+  - 🔍 **Advanced Search** - Powerful query-based email filtering
+  - 🚀 **Streamable HTTP** - High-performance streaming capabilities
 
-	## 📚 Available Tools
+  ## 📚 Available Tools
 
-	### 📨 Email Management
+  ### 📨 Email Management
 
-	#### `list_emails`
+  #### `list_emails`
 
-	List emails in the user's Gmail account with advanced filtering options.
+  List emails in the user's Gmail account with advanced filtering options.
 
-	**Parameters:**
+  **Parameters:**
 
-	- `max_results` (int): Maximum number of emails to return (1-1000, default: 100)
-	- `query` (str): Gmail search query
-	- `label_ids` (str): Comma-separated list of label IDs
-	- `category` (str): Email category filter (`primary`, `social`, `promotions`, `updates`, `forums`)
-	- `after` (str): Date to search for emails after
-	- `before` (str): Date to search for emails before
+  - `max_results` (int): Maximum number of emails to return (1-1000, default: 100)
+  - `query` (str): Gmail search query
+  - `label_ids` (str): Comma-separated list of label IDs
+  - `category` (str): Email category filter (`primary`, `social`, `promotions`, `updates`, `forums`)
+  - `after` (str): Date to search for emails after
+  - `before` (str): Date to search for emails before
 
-	#### `read_email`
+  #### `read_email`
 
-	Read a specific email by ID or subject.
+  Read a specific email by ID or subject.
 
-	**Parameters:**
+  **Parameters:**
 
-	- `email_id` (str): Email ID to read
-	- `email_subject` (str): Email subject to search for
-	- `user_timezone` (str): User's timezone (default: "UTC")
+  - `email_id` (str): Email ID to read
+  - `email_subject` (str): Email subject to search for
+  - `user_timezone` (str): User's timezone (default: "UTC")
 
-	#### `send_email`
+  #### `send_email`
 
-	Send a new email immediately.
+  Send a new email immediately.
 
-	**Parameters:**
+  **Parameters:**
 
-	- `to_emails` (str): Comma-separated list of recipient email addresses
-	- `subject` (str): Email subject
-	- `message` (str): Email body content
-	- `cc_emails` (str): Comma-separated list of CC recipients
-	- `bcc_emails` (str): Comma-separated list of BCC recipients
+  - `to_emails` (str): Comma-separated list of recipient email addresses
+  - `subject` (str): Email subject
+  - `message` (str): Email body content
+  - `cc_emails` (str): Comma-separated list of CC recipients
+  - `bcc_emails` (str): Comma-separated list of BCC recipients
 
-	### 📝 Draft Management
+  ### 📝 Draft Management
 
-	#### `list_drafts`
+  #### `list_drafts`
 
-	List all draft emails in the user's account.
+  List all draft emails in the user's account.
 
-	**Parameters:**
+  **Parameters:**
 
-	- `max_results` (int): Maximum number of drafts to return (1-1000, default: 100)
+  - `max_results` (int): Maximum number of drafts to return (1-1000, default: 100)
 
-	#### `create_draft`
+  #### `create_draft`
 
-	Create a new draft email.
+  Create a new draft email.
 
-	**Parameters:**
+  **Parameters:**
 
-	- `to_emails` (str): Comma-separated list of recipient email addresses
-	- `subject` (str): Email subject
-	- `message` (str): Email body content
-	- `cc_emails` (str): Comma-separated list of CC recipients
-	- `bcc_emails` (str): Comma-separated list of BCC recipients
-	- `reply_to_email_id` (str): ID of email to reply to
-	- `reply_all` (bool): Whether to reply to all recipients
+  - `to_emails` (str): Comma-separated list of recipient email addresses
+  - `subject` (str): Email subject
+  - `message` (str): Email body content
+  - `cc_emails` (str): Comma-separated list of CC recipients
+  - `bcc_emails` (str): Comma-separated list of BCC recipients
+  - `reply_to_email_id` (str): ID of email to reply to
+  - `reply_all` (bool): Whether to reply to all recipients
 
-	#### `update_draft`
+  #### `update_draft`
 
-	Update an existing draft email.
+  Update an existing draft email.
 
-	#### `send_draft`
+  #### `send_draft`
 
-	Send a draft email.
+  Send a draft email.
 
-	**Parameters:**
+  **Parameters:**
 
-	- `draft_id` (str): ID of the draft to send
+  - `draft_id` (str): ID of the draft to send
 
-	#### `delete_draft`
+  #### `delete_draft`
 
-	Delete a draft email.
+  Delete a draft email.
 
-	**Parameters:**
+  **Parameters:**
 
-	- `draft_id` (str): ID of the draft to delete
+  - `draft_id` (str): ID of the draft to delete
 
-	### 🏷️ Label Management
+  ### 🏷️ Label Management
 
-	#### `list_labels`
+  #### `list_labels`
 
-	List all custom labels in the user's account.
+  List all custom labels in the user's account.
 
-	**Parameters:**
+  **Parameters:**
 
-	- `label_id` (str): Specific label ID to fetch (optional)
+  - `label_id` (str): Specific label ID to fetch (optional)
 
-	#### `create_label`
+  #### `create_label`
 
-	Create a new custom label.
+  Create a new custom label.
 
-	**Parameters:**
+  **Parameters:**
 
-	- `label_name` (str): Name of the label to create
-	- `label_list_visibility` (str): Label list visibility (`labelShow`, `labelHide`, `labelShowIfUnread`)
-	- `message_list_visibility` (str): Message list visibility (`show`, `hide`)
+  - `label_name` (str): Name of the label to create
+  - `label_list_visibility` (str): Label list visibility (`labelShow`, `labelHide`, `labelShowIfUnread`)
+  - `message_list_visibility` (str): Message list visibility (`show`, `hide`)
 
-	#### `update_label`
+  #### `update_label`
 
-	Update an existing label.
+  Update an existing label.
 
-	**Parameters:**
+  **Parameters:**
 
-	- `label_id` (str): ID of the label to update
-	- `label_name` (str): New name for the label
-	- `label_list_visibility` (str): New label list visibility
-	- `message_list_visibility` (str): New message list visibility
+  - `label_id` (str): ID of the label to update
+  - `label_name` (str): New name for the label
+  - `label_list_visibility` (str): New label list visibility
+  - `message_list_visibility` (str): New message list visibility
 
-	#### `delete_label`
+  #### `delete_label`
 
-	Delete a custom label.
+  Delete a custom label.
 
-	**Parameters:**
+  **Parameters:**
 
-	- `label_id` (str): ID of the label to delete
+  - `label_id` (str): ID of the label to delete
 
-	### 🔧 Email Actions
+  ### 🔧 Email Actions
 
-	#### `modify_message_labels`
+  #### `modify_message_labels`
 
-	Modify labels and properties of an email message.
+  Modify labels and properties of an email message.
 
-	**Parameters:**
+  **Parameters:**
 
-	- `email_id` (str): ID of the email message
-	- `add_label_ids` (list): List of label IDs to add
-	- `remove_label_ids` (list): List of label IDs to remove
-	- `archive` (bool): Whether to archive the message
-	- `mark_as_read` (bool): Whether to mark as read
-	- `mark_as_starred` (bool): Whether to mark as starred
-	- `mark_as_important` (bool): Whether to mark as important
-	- `apply_action_to_thread` (bool): Apply action to entire thread
+  - `email_id` (str): ID of the email message
+  - `add_label_ids` (list): List of label IDs to add
+  - `remove_label_ids` (list): List of label IDs to remove
+  - `archive` (bool): Whether to archive the message
+  - `mark_as_read` (bool): Whether to mark as read
+  - `mark_as_starred` (bool): Whether to mark as starred
+  - `mark_as_important` (bool): Whether to mark as important
+  - `apply_action_to_thread` (bool): Apply action to entire thread
 
-	#### `delete_email`
+  #### `delete_email`
 
-	Delete an email message.
+  Delete an email message.
 
-	**Parameters:**
+  **Parameters:**
 
-	- `email_id` (str): ID of the email to delete
+  - `email_id` (str): ID of the email to delete
 
-	### 📎 Attachment Management
+  ### 📎 Attachment Management
 
-	#### `list_attachments`
+  #### `list_attachments`
 
-	List all attachments in an email.
+  List all attachments in an email.
 
-	**Parameters:**
+  **Parameters:**
 
-	- `email_id` (str): ID of the email to check for attachments
+  - `email_id` (str): ID of the email to check for attachments
 
-	### 👤 Account Information
+  ### 👤 Account Information
 
-	#### `get_current_email_address`
+  #### `get_current_email_address`
 
-	Get the current user's email address.
+  Get the current user's email address.
 
-	## 🔒 Security
+  ## 🔒 Security
 
-	- **OAuth2 Flow**: Secure authentication via Google OAuth2
-	- **Token Management**: Automatic token refresh and secure storage
-	- **Header-based Auth**: Access tokens passed via secure headers
-	- **No Local Storage**: Sensitive data not stored locally
-	- **HTTPS Support**: Full HTTPS support for production deployments
+  - **OAuth2 Flow**: Secure authentication via Google OAuth2
+  - **Token Management**: Automatic token refresh and secure storage
+  - **Header-based Auth**: Access tokens passed via secure headers
+  - **No Local Storage**: Sensitive data not stored locally
+  - **HTTPS Support**: Full HTTPS support for production deployments
 
-	## 📄 License
+  ## 📄 License
 
-	This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+  This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-	---
+  ---
 
-	<div align="center">
+  <div align="center">
 
-	**Built with ❤️ using FastMCP and Python**
+  **Built with ❤️ using FastMCP and Python**
 
-	[![GitHub stars](https://img.shields.io/github/stars/your-repo/gmail-mcp-server?style=social)](https://github.com/your-repo/gmail-mcp-server)
-	[![GitHub forks](https://img.shields.io/github/forks/your-repo/gmail-mcp-server?style=social)](https://github.com/your-repo/gmail-mcp-server)
+  [![GitHub stars](https://img.shields.io/github/stars/your-repo/gmail-mcp-server?style=social)](https://github.com/your-repo/gmail-mcp-server)
+  [![GitHub forks](https://img.shields.io/github/forks/your-repo/gmail-mcp-server?style=social)](https://github.com/your-repo/gmail-mcp-server)
 
-	</div>
+  </div>
 
 metadata:
   categories: Business,Gmail,Verified
