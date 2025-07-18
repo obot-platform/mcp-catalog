@@ -2,7 +2,7 @@ name: Datadog
 description: Monitor metrics, logs, incidents, and more in Datadog
 metadata:
   categories: Developer Tools,Verified
-icon: https://avatars.githubusercontent.com/u/77590974?v=4
+icon: https://cdn.brandfetch.io/idg33VVWFZ/idOh7NN5ex.svg?c=1bxid64Mup7aczewSAYMX&t=1652085165465
 repoURL: https://github.com/GeLi2001/datadog-mcp-server
 env:
   - key: DD_API_KEY

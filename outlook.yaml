@@ -187,7 +187,7 @@ metadata:
   allow-multiple: "true"
 icon: https://img.icons8.com/?size=100&id=ut6gQeo5pNqf&format=png&color=000000
 repoURL: https://mcp-oauth-proxy-1.onrender.com/mcp
-fixedURL: http://mcp-oauth-proxy-1.onrender.com/mcp
+fixedURL: https://mcp-oauth-proxy-1.onrender.com/mcp
 toolPreview:
   - name: list_mail_folders
     description: Lists all available Outlook mail folders.
@@ -198,7 +198,7 @@ toolPreview:
       folder_id: The ID of the folder to list emails in (optional)
       start: RFC3339 formatted start date and time (optional)
       end: RFC3339 formatted end date and time (optional)
-      limit: 'Maximum number of emails to return (default: 100)'
+      limit: "Maximum number of emails to return (default: 100)"
       read_status: Filter by read status (read, unread, or empty for all)
   - name: get_email_details
     description: Get the details of an Outlook email.
@@ -215,7 +215,7 @@ toolPreview:
       folder_id: Folder ID to search in (optional)
       start: Start date and time in RFC 3339 format (optional)
       end: End date and time in RFC 3339 format (optional)
-      limit: 'Maximum number of emails to return (default: 10)'
+      limit: "Maximum number of emails to return (default: 10)"
   - name: create_draft
     description: Create (but do not send) a draft individual Outlook email.
     params:
@@ -226,7 +226,7 @@ toolPreview:
       bcc: Comma-separated list of BCC email addresses (optional)
       attachments: Comma-separated list of workspace file paths (optional)
       reply_email_id: ID of email to reply to (optional)
-      reply_all: 'Whether to reply to all (default: false)'
+      reply_all: "Whether to reply to all (default: false)"
   - name: send_draft
     description: Send an existing draft email in Outlook.
     params:

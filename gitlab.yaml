@@ -3,7 +3,7 @@ description: Manage repositories, merge requests, issues, and wikis on GitLab
 metadata:
   categories: Developer Tools,TypeScript,Cloud Platforms,Productivity,Verified
   unsupportedTools: create_or_update_file,push_files
-icon: https://avatars.githubusercontent.com/u/42544600?v=4
+icon: https://img.icons8.com/?size=100&id=34886&format=png&color=000000
 repoURL: https://github.com/zereight/gitlab-mcp
 env:
   - key: GITLAB_PERSONAL_ACCESS_TOKEN
@@ -28,5 +28,5 @@ env:
     description: Restricts the server to only expose read-only operations when set to 'true'. Useful for security or when write access is not needed.
 args:
   - -y
-  - '@zereight/mcp-gitlab'
+  - "@zereight/mcp-gitlab"
 command: npx
