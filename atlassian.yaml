@@ -2,14 +2,14 @@ name: Atlassian
 description: Manage Confluence pages and Jira issues in Atlassian products
 metadata:
   categories: Developer Tools,Verified
-icon: https://avatars.githubusercontent.com/u/32061883?v=4
+icon: https://cdn.brandfetch.io/idlQIwGMOK/theme/dark/logo.svg?c=1bxid64Mup7aczewSAYMX&t=1667563471928
 repoURL: https://github.com/sooperset/mcp-atlassian
 env:
   - key: CONFLUENCE_URL
     name: Confluence Instance URL
     required: false
     sensitive: false
-    description: 'Base URL for your Confluence instance (Cloud or Server/DC). Example: https://your-company.atlassian.net/wiki or https://confluence.your-company.com'
+    description: "Base URL for your Confluence instance (Cloud or Server/DC). Example: https://your-company.atlassian.net/wiki or https://confluence.your-company.com"
   - key: CONFLUENCE_USERNAME
     name: Confluence Username (Cloud)
     required: false
@@ -24,7 +24,7 @@ env:
     name: Jira Instance URL
     required: false
     sensitive: false
-    description: 'Base URL for your Jira instance (Cloud or Server/DC). Example: https://your-company.atlassian.net or https://jira.your-company.com'
+    description: "Base URL for your Jira instance (Cloud or Server/DC). Example: https://your-company.atlassian.net or https://jira.your-company.com"
   - key: JIRA_USERNAME
     name: Jira Username (Cloud)
     required: false

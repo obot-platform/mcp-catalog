@@ -216,12 +216,12 @@ metadata:
   allow-multiple: "true"
 icon: https://img.icons8.com/?size=100&id=P7UIlhbpWzZm&format=png&color=000000
 repoURL: https://mcp-oauth-proxy.onrender.com/mcp
-fixedURL: http://mcp-oauth-proxy.onrender.com/mcp
+fixedURL: https://mcp-oauth-proxy.onrender.com/mcp
 toolPreview:
   - name: list_emails
     description: List emails in the user's Gmail account with advanced filtering options.
     params:
-      max_results: 'Maximum number of emails to return (1-1000, default: 100)'
+      max_results: "Maximum number of emails to return (1-1000, default: 100)"
       query: Gmail search query for filtering emails
       label_ids: Comma-separated list of label IDs to filter by
       category: Email category filter (primary, social, promotions, updates, forums)
@@ -232,7 +232,7 @@ toolPreview:
     params:
       email_id: Email ID to read
       email_subject: Email subject to search for
-      user_timezone: 'User''s timezone (default: UTC)'
+      user_timezone: "User's timezone (default: UTC)"
   - name: send_email
     description: Send a new email immediately.
     params:
@@ -244,7 +244,7 @@ toolPreview:
   - name: list_drafts
     description: List all draft emails in the user's account.
     params:
-      max_results: 'Maximum number of drafts to return (1-1000, default: 100)'
+      max_results: "Maximum number of drafts to return (1-1000, default: 100)"
   - name: create_draft
     description: Create a new draft email.
     params:
