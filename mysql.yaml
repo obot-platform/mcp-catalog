@@ -25,8 +25,7 @@ env:
     required: true
     sensitive: true
     description: The password for your MySQL database.
-args:
-  - --from
-  - mysql-mcp-server
-  - mysql_mcp_server
-command: uvx
+runtime: uvx
+uvxConfig:
+  package: mysql-mcp-server
+  command: mysql_mcp_server
