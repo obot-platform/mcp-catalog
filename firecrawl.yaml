@@ -565,7 +565,6 @@ env:
     required: true
     sensitive: true
     description: Your Firecrawl API key.
-args:
-  - -y
-  - firecrawl-mcp
-command: npx
+runtime: npx
+npxConfig:
+  package: firecrawl-mcp

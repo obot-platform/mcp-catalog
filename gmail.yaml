@@ -214,7 +214,9 @@ metadata:
   allow-multiple: "true"
 icon: https://img.icons8.com/?size=100&id=P7UIlhbpWzZm&format=png&color=000000
 repoURL: https://mcp-oauth-proxy.onrender.com/mcp
-fixedURL: https://mcp-oauth-proxy.onrender.com/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp-oauth-proxy.onrender.com/mcp
 toolPreview:
   - name: list_emails
     description: List emails in the user's Gmail account with advanced filtering options.

@@ -85,10 +85,6 @@ env:
     required: false
     sensitive: false
     description: 'Set the minimum token count for documentation retrieval (default: 10000).'
-args:
-  - -y
-  - '@upstash/context7-mcp@latest'
-command: npx
 toolPreview:
   - name: resolve-library-id
     description: Resolves a package/product name to a Context7-compatible library ID and returns a list of matching libraries. You MUST call this function before 'get-library-docs' to obtain a valid Context7-compatible library ID UNLESS the user explicitly provides a library ID in the format '/org/project' or '/org/project/version' in their query. Selection Process - 1. Analyze the query to understand what library/package the user is looking for 2. Return the most relevant match based on name similarity to the query (exact matches prioritized), description relevance to the query's intent, documentation coverage (prioritize libraries with higher Code Snippet counts), trust score (consider libraries with scores of 7-10 more authoritative). Response Format - Return the selected library ID in a clearly marked section, provide a brief explanation for why this library was chosen, if multiple good matches exist acknowledge this but proceed with the most relevant one, if no good matches exist clearly state this and suggest query refinements. For ambiguous queries, request clarification before proceeding with a best-guess match.
@@ -100,3 +96,7 @@ toolPreview:
       context7CompatibleLibraryID: Exact Context7-compatible library ID (e.g., /mongodb/docs, /vercel/next.js)
       tokens: Optional maximum number of tokens to return (default 10000, minimum 10000)
       topic: Optional topic to focus the docs on (e.g., "routing", "hooks")
+
+runtime: npx
+npxConfig:
+  package: '@upstash/context7-mcp@latest'

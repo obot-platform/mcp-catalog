@@ -10,7 +10,6 @@ env:
     required: true
     sensitive: true
     description: The access token for your HubSpot Private App
-args:
-  - -y
-  - '@hubspot/mcp-server'
-command: npx
+runtime: npx
+npxConfig:
+  package: '@hubspot/mcp-server'

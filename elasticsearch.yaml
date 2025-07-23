@@ -82,7 +82,6 @@ env:
     required: false
     sensitive: true
     description: Elasticsearch password for basic authentication
-args:
-  - -y
-  - '@elastic/mcp-server-elasticsearch'
-command: npx
+runtime: npx
+npxConfig:
+  package: '@elastic/mcp-server-elasticsearch'

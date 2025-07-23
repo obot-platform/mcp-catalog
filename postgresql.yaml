@@ -416,10 +416,6 @@ env:
     required: true
     sensitive: false
     description: The connection string for your Postgres database; e.g. "postgresql://username:password@localhost:5432/dbname"
-args:
-  - postgres-mcp
-  - --access-mode=unrestricted
-command: uvx
 
 toolPreview:
   - name: list_schemas
@@ -448,3 +444,9 @@ toolPreview:
 
   - name: analyze_db_health
     description: Performs comprehensive health checks including cache hit rates, connections, indexes, and vacuum status
+
+runtime: uvx
+uvxConfig:
+  package: 'postgres-mcp'
+  args:
+    - --access-mode=unrestricted

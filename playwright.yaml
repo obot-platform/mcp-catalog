@@ -327,9 +327,6 @@ metadata:
 icon: https://avatars.githubusercontent.com/u/6154722?v=4
 repoURL: https://github.com/microsoft/playwright-mcp
 env: []
-args:
-  - '@playwright/mcp@latest'
-command: npx
 toolPreview:
   - name: browser_navigate
     description: Navigate to a URL (Read-only - false)
@@ -408,3 +405,6 @@ toolPreview:
     description: Returns all network requests since loading the page (Read-only -  true)
   - name: browser_console_messages
     description: Returns all console messages (Read-only -  true)
+runtime: npx
+npxConfig:
+  package: '@playwright/mcp@latest'
