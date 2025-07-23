@@ -10,9 +10,9 @@ env:
     required: true
     sensitive: true
     description: The Neon API key
-args:
-  - -y
-  - '@neondatabase/mcp-server-neon'
-  - start
-  - ${NEON_API_KEY}
-command: npx
+runtime: npx
+npxConfig:
+  package: '@neondatabase/mcp-server-neon'
+  args:
+    - start
+    - ${NEON_API_KEY}

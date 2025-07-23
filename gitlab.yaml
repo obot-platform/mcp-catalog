@@ -26,7 +26,6 @@ env:
     required: false
     sensitive: false
     description: Restricts the server to only expose read-only operations when set to 'true'. Useful for security or when write access is not needed.
-args:
-  - -y
-  - "@zereight/mcp-gitlab"
-command: npx
+runtime: npx
+npxConfig:
+  package: "@zereight/mcp-gitlab"

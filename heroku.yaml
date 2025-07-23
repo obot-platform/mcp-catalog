@@ -10,7 +10,6 @@ env:
     required: true
     sensitive: true
     description: Your Heroku API key.
-args:
-  - -y
-  - '@heroku/mcp-server'
-command: npx
+runtime: npx
+npxConfig:
+  package: '@heroku/mcp-server'

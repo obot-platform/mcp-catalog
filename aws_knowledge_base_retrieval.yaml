@@ -25,6 +25,6 @@ env:
     required: true
     sensitive: false
     description: AWS Region
-args:
-  - '@modelcontextprotocol/server-aws-kb-retrieval'
-command: npx
+runtime: npx
+npxConfig:
+  package: '@modelcontextprotocol/server-aws-kb-retrieval'

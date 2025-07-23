@@ -57,10 +57,9 @@ metadata:
 icon: https://avatars.githubusercontent.com/u/202564951?v=4
 repoURL: https://github.com/openbnb-org/mcp-server-airbnb
 env: []
-args:
-  - -y
-  - '@openbnb/mcp-server-airbnb'
-command: npx
+runtime: npx
+npxConfig:
+  package: "@openbnb/mcp-server-airbnb"
 toolPreview:
   - name: airbnb_search
     description: Search for Airbnb listings with various filters and pagination. Provide direct links to the user

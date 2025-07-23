@@ -20,7 +20,6 @@ env:
     required: false
     sensitive: false
     description: Comma-separated list of channel IDs to limit channel access. If not set, all public channels will be listed.
-args:
-  - -y
-  - '@modelcontextprotocol/server-slack'
-command: npx
+runtime: npx
+npxConfig:
+  package: '@modelcontextprotocol/server-slack'

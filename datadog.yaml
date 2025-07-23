@@ -30,12 +30,6 @@ env:
     required: false
     sensitive: false
     description: Optional. If using different endpoint for metrics API; defaults to DD_SITE.
-args:
-  - datadog-mcp-server
-  - --apiKey
-  - <YOUR_API_KEY>
-  - --appKey
-  - <YOUR_APP_KEY>
-  - --site
-  - <YOUR_DD_SITE>
-command: npx
+runtime: npx
+npxConfig:
+  package: datadog-mcp-server

@@ -10,7 +10,6 @@ env:
     required: false
     sensitive: false
     description: 'Set the minimum token count for documentation retrieval (default: 10000).'
-args:
-  - -y
-  - '@upstash/context7-mcp@latest'
-command: npx
+runtime: npx
+npxConfig:
+  package: '@upstash/context7-mcp@latest'

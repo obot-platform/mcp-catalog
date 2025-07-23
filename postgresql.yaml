@@ -10,8 +10,8 @@ env:
     required: true
     sensitive: false
     description: The DSN used to connect to the Postgres database; e.g. postgres://<user>:<password>@<server>:<port>/<db>
-args:
-  - -y
-  - '@modelcontextprotocol/server-postgres'
-  - ${POSTGRES_DSN}
-command: npx
+runtime: npx
+npxConfig:
+  package: '@modelcontextprotocol/server-postgres'
+  args:
+    - ${POSTGRES_DSN}

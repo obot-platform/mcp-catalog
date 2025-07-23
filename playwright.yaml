@@ -6,6 +6,6 @@ metadata:
 icon: https://avatars.githubusercontent.com/u/6154722?v=4
 repoURL: https://github.com/microsoft/playwright-mcp
 env: []
-args:
-  - '@playwright/mcp@latest'
-command: npx
+runtime: npx
+npxConfig:
+  package: '@playwright/mcp@latest'
