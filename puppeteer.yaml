@@ -16,7 +16,6 @@ env:
     required: false
     sensitive: false
     description: If set to 'true', allows dangerous launch options (e.g., --no-sandbox) that reduce security.
-args:
-  - -y
-  - '@modelcontextprotocol/server-puppeteer'
-command: npx
+runtime: npx
+npxConfig:
+  package: '@modelcontextprotocol/server-puppeteer'

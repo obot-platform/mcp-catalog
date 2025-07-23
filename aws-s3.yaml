@@ -35,8 +35,8 @@ env:
     required: false
     sensitive: true
     description: AWS session token
-args:
-  - -y
-  - aws-s3-mcp
-  - --stdio
-command: npx
+runtime: npx
+npxConfig:
+  package: aws-s3-mcp
+  args:
+    - --stdio

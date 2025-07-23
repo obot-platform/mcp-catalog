@@ -10,7 +10,6 @@ env:
     required: false
     sensitive: false
     description: Override the default chart image rendering endpoint with your own private/deployed chart generation service URL, e.g., from GPT-Vis-SSR.
-args:
-  - -y
-  - '@antv/mcp-server-chart'
-command: npx
+runtime: npx
+npxConfig:
+  package: '@antv/mcp-server-chart'

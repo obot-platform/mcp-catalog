@@ -15,6 +15,6 @@ env:
     required: true
     sensitive: false
     description: Your Browserbase project ID.
-args:
-  - '@browserbasehq/mcp'
-command: npx
+runtime: npx
+npxConfig:
+  package: '@browserbasehq/mcp'

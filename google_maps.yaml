@@ -10,7 +10,6 @@ env:
     required: true
     sensitive: true
     description: Your Google Maps Platform API key. Obtain it from the Google Cloud Console as described in the documentation.
-args:
-  - -y
-  - '@modelcontextprotocol/server-google-maps'
-command: npx
+runtime: npx
+npxConfig:
+  package: '@modelcontextprotocol/server-google-maps'

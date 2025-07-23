@@ -30,7 +30,8 @@ env:
     required: false
     sensitive: false
     description: Specify the Square API version to use (e.g., 2025-04-16).
-args:
-  - square-mcp-server
-  - start
-command: npx
+runtime: npx
+npxConfig:
+  package: square-mcp-server
+  args:
+    - start

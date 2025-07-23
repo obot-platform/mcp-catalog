@@ -15,7 +15,8 @@ env:
     required: true
     sensitive: true
     description: API token with access permissions for the Argo CD instance.
-args:
-  - argocd-mcp@latest
-  - stdio
-command: npx
+runtime: npx
+npxConfig:
+  package: argocd-mcp@latest
+  args:
+    - stdio

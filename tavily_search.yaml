@@ -10,7 +10,6 @@ env:
     required: true
     sensitive: true
     description: Your Tavily API key. Get one at https://app.tavily.com/home
-args:
-  - -y
-  - tavily-mcp@0.2.1
-command: npx
+runtime: npx
+npxConfig:
+  package: tavily-mcp@0.2.1
