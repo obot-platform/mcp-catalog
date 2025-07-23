@@ -8,4 +8,6 @@ metadata:
   allow-multiple: "true"
 icon: https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/zapier.svg
 repoURL: https://mcp.zapier.com
-hostname: mcp.zapier.com
+runtime: remote
+remoteConfig:
+  hostname: mcp.zapier.com
