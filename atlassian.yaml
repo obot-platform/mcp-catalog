@@ -1,65 +1,97 @@
 name: Atlassian
-description: Manage Confluence pages and Jira issues in Atlassian products
+description: |
+  # **Atlassian Remote MCP Server**
+  Warning: This feature is currently in Beta, which means:
+  - Core functionality is available, but some advanced features are still under development.
+  - The experience may vary across different clients—Claude, for instance, works best on the Team or Enterprise plan.
+  - We’re actively gathering feedback to improve the product before its general availability (GA) release.
+  - For more information, read our blog post - [Introducing Atlassian’s Remote Model Context Protocol (MCP) Server](https://www.atlassian.com/blog/announcements/remote-mcp-server)
+  The Atlassian Remote Model Context Protocol (MCP) Server is a cloud-hosted gateway that allows tools like AI assistants and developer environments to securely access Jira and Confluence Cloud data. It enables supported clients to perform both read and write operations, such as searching for issues, summarizing pages, or bulk-creating new content, all via natural language commands.
+
+  ## What is the Remote MCP Server?
+  The Remote MCP Server is a cloud-based bridge between your Atlassian Cloud site and compatible external tools. Once configured, it enables those tools to interact with Jira and Confluence data in real-time. This functionality is powered by secure OAuth 2.1 authorization, which ensures all actions respect the user’s existing access controls.
+
+  ## Why use the Remote MCP Server?
+  The Remote MCP Server helps bring Atlassian data into your existing workflows:
+  - *Summarize and search* Jira and Confluence content without switching tools.
+  - *Create and update* issues or pages based on natural language commands.
+  - *Bulk process* tasks like generating tickets from meeting notes or specs.
+  It’s designed to support developers, content creators, and project managers working within IDEs or AI platforms.
+
+  ## Who is it for?
+  This tool is aimed at a range of users looking to integrate Atlassian functionality into their daily workflows without switching context:
+  - Developers and designers working primarily in IDEs.
+  - Teams using AI copilots (for example, Claude, Cursor) for increased productivity.
+  - Users aiming to automate Jira or Confluence tasks using natural language.
+
+  ## Before you begin
+  ### Prerequisites
+  - An *Atlassian Cloud site* with Jira and/or Confluence.
+  - A modern browser to complete the OAuth flow.
+
+  ### Beta access and limits
+  The beta is open to all Atlassian Cloud customers. No special sign-up is required. However, usage is subject to rate limits:
+  - Standard plan: Moderate usage thresholds.
+  - Premium/Enterprise plans: Higher usage quotas (1,000 requests/hour plus per-user limits).
+
+  ### Data and security
+  Security is a core focus of the Remote MCP Server:
+  - All traffic is encrypted via HTTPS using TLS 1.2 or later.
+  - OAuth 2.0 ensures secure authentication and access control.
+  Data access respects Jira and Confluence user permissions.
+
+  ## How It Works
+  ### Architecture and Communication
+  - A supported client connects to the server endpoint: `https://mcp.atlassian.com/v1/sse`
+  - A secure browser-based OAuth 2.0 flow is triggered.
+  - Once authorized, the client streams contextual data and receives real-time responses from Jira or Confluence.
+  ### Permission Management
+  Access is granted only to data that the user already has permission to view in Atlassian Cloud. All actions respect existing project or space-level roles. OAuth tokens are scoped and session-based.
+  ## Example Workflows
+  Once connected, you can perform a variety of useful tasks from within your supported client.
+  ### Jira workflows
+  Use these examples to understand how to interact with Jira:
+  - Search: “Find all open bugs in Project Alpha.”
+  - Create/update: “Create a story titled ‘Redesign onboarding’.”
+  - Bulk create: “Make five Jira issues from these notes.”
+  ### Confluence workflows
+  Access and manage documentation content directly:
+  - Summarize: “Summarize the Q2 planning page.”
+  - Create: “Create a page titled ‘Team Goals Q3’.”
+  - Navigate: “What spaces do I have access to?”
+  ### Combined Tasks
+  Integrate actions across Jira and Confluence:
+  - Link content: “Link these three Jira tickets to the ‘Release Plan’ page.”
+  Note: Actual capabilities vary depending on your permission level and client platform.
+
+  ## Known limitations (Beta)
+  While the Remote MCP Server provides powerful integration capabilities, please be aware of the following limitations during the beta period:
+  - Bulk operations may be constrained by rate limits or may not support all input formats.
+  - Custom Jira fields may not be recognized or returned without explicit setup.
+  - Some clients like GitHub Copilot and Cursor may require custom configuration or are not fully supported.
+  - Workspace or site switching is not currently available within a single session.
+  Refer to the Atlassian Community for an up-to-date list of known issues and active development items.
+  
+  ## Admin notes: Managing access
+  If you're an admin preparing your team to use the Remote MCP Server, keep the following considerations in mind:
+  - Ensure users have product access to Jira and/or Confluence via Atlassian Admin.
+  - Authorization tokens are tied to the user’s current product permissions—check these if data isn’t accessible.
+  - App authorizations can be revoked by end users through their profile settings or by admins in the Connect apps section of Atlassian Admin for site-level control.
+  - Consider establishing usage guidelines or policies for teams leveraging AI-driven content generation.
+  - Reach out to your Atlassian account representative for advice on OAuth scope control and long-term support planning.
+  ## Support and feedback
+  Your feedback plays a crucial role in shaping the Remote MCP Server. If you encounter bugs, limitations, or have suggestions:
+  - Visit the Atlassian Support Portal to report issues.
+  - Share your experiences and feature requests on the Atlassian Community.
+  - Enterprise customers can contact their Atlassian Customer Success Manager for advanced support and roadmap discussions.
+  We’re excited to collaborate with you to improve this capability before its general availability.
+
 metadata:
   categories: Developer Tools,Verified
 icon: https://cdn.brandfetch.io/idlQIwGMOK/theme/dark/logo.svg?c=1bxid64Mup7aczewSAYMX&t=1667563471928
-repoURL: https://github.com/sooperset/mcp-atlassian
-env:
-  - key: CONFLUENCE_URL
-    name: Confluence Instance URL
-    required: false
-    sensitive: false
-    description: "Base URL for your Confluence instance (Cloud or Server/DC). Example: https://your-company.atlassian.net/wiki or https://confluence.your-company.com"
-  - key: CONFLUENCE_USERNAME
-    name: Confluence Username (Cloud)
-    required: false
-    sensitive: false
-    description: Email/username for Confluence Cloud login. Ignored for Server/DC.
-  - key: CONFLUENCE_API_TOKEN
-    name: Confluence API Token (Cloud)
-    required: false
-    sensitive: true
-    description: API token for Confluence Cloud authentication. Generate at Atlassian security settings.
-  - key: JIRA_URL
-    name: Jira Instance URL
-    required: false
-    sensitive: false
-    description: "Base URL for your Jira instance (Cloud or Server/DC). Example: https://your-company.atlassian.net or https://jira.your-company.com"
-  - key: JIRA_USERNAME
-    name: Jira Username (Cloud)
-    required: false
-    sensitive: false
-    description: Email/username for Jira Cloud login. Ignored for Server/DC.
-  - key: JIRA_API_TOKEN
-    name: Jira API Token (Cloud)
-    required: false
-    sensitive: true
-    description: API token for Jira Cloud authentication. Generate at Atlassian security settings.
-  - key: READ_ONLY_MODE
-    name: Read-Only Mode
-    required: false
-    sensitive: false
-    description: Set to 'true' to disable all write operations.
-  - key: ENABLED_TOOLS
-    name: Enabled Tools
-    required: false
-    sensitive: false
-    description: Comma-separated list of enabled tool names (e.g., confluence_search,jira_get_issue).
+repoURL: https://support.atlassian.com/rovo/docs/atlassian-remote-mcp-server/
 args:
-  - run
-  - -i
-  - --rm
-  - -e
-  - CONFLUENCE_URL
-  - -e
-  - CONFLUENCE_USERNAME
-  - -e
-  - CONFLUENCE_API_TOKEN
-  - -e
-  - JIRA_URL
-  - -e
-  - JIRA_USERNAME
-  - -e
-  - JIRA_API_TOKEN
-  - ghcr.io/obot-platform/mcp-images-atlassian:main
-command: docker
+  - -y
+  - mcp-remote
+  - https://mcp.atlassian.com/v1/sse
+command: npx

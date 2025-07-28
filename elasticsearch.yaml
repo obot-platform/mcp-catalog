@@ -1,5 +1,59 @@
 name: Elasticsearch
-description: Query and manage Elasticsearch data and metadata
+description: |
+  # Elasticsearch MCP Server
+
+  > [!CAUTION]
+  >
+  > **WARNING: this MCP server is EXPERIMENTAL.**
+
+  Elasticsearch is a distributed search and analytics engine, scalable data store and vector database optimized for speed and relevance on production-scale workloads. Elasticsearch is the foundation of Elastic's open Stack platform. Search in near real-time over massive datasets, perform vector searches, integrate with generative AI applications, and much more.
+
+  Use cases enabled by Elasticsearch include:
+
+  * https://www.elastic.co/search-labs/blog/articles/retrieval-augmented-generation-rag[Retrieval Augmented Generation (RAG)]
+  * https://www.elastic.co/search-labs/blog/categories/vector-search[Vector search]
+  * Full-text search
+  * Logs
+  * Metrics
+  * Application performance monitoring (APM)
+  * Security logs
+
+  \... and more!
+
+  Connect to your Elasticsearch data directly from any MCP Client using the Model Context Protocol (MCP).
+
+  This server connects agents to your Elasticsearch data using the Model Context Protocol. It allows you to interact with your Elasticsearch indices through natural language conversations.
+
+  ## Available Tools
+
+  * `list_indices`: List all available Elasticsearch indices
+  * `get_mappings`: Get field mappings for a specific Elasticsearch index
+  * `search`: Perform an Elasticsearch search with the provided query DSL
+  * `esql`: Perform an ES|QL query
+  * `get_shards`: Get shard information for all or specific indices
+
+  ## Prerequisites
+
+  * An Elasticsearch instance
+  * Elasticsearch authentication credentials (API key or username/password)
+
+  **Supported Elasticsearch versions**
+
+  Versions `8.x` and `9.x` are officially supported. Earlier versions may partially work, at your own risk and with no guarantees made.
+
+  ## Required Environment Variables
+
+  - `ES_URL`: Your Elasticsearch instance URL
+  - `ES_API_KEY`: Your Elasticsearch API key
+  - `ES_USERNAME`: Your Elasticsearch username
+  - `ES_PASSWORD`: Your Elasticsearch password
+
+  Either `ES_API_KEY` or `ES_USERNAME` and `ES_PASSWORD` must be provided.
+
+  If `ES_API_KEY` is provided, `ES_USERNAME` and `ES_PASSWORD` are ignored.
+
+  If `ES_API_KEY` is not provided, `ES_USERNAME` and `ES_PASSWORD` must be provided.
+
 metadata:
   categories: Databases,Verified
 icon: https://avatars.githubusercontent.com/u/6764390?v=4

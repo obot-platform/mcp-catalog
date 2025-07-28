@@ -1,15 +1,85 @@
 name: Notion
-description: Create, read, and manage pages and databases in Notion workspaces
+description: |
+  # Notion MCP Server
+
+  > [!NOTE] 
+  > 
+  > We’ve introduced **Notion MCP**, a remote MCP server with the following improvements:
+  > - Easy installation via standard OAuth. No need to fiddle with JSON or API token anymore.
+  > - Powerful tools tailored to AI agents. These tools are designed with optimized token consumption in mind.
+  > 
+  > Learn more and try it out [here](https://developers.notion.com/docs/mcp)
+
+
+  ![notion-mcp-sm](https://github.com/user-attachments/assets/6c07003c-8455-4636-b298-d60ffdf46cd8)
+
+  This project implements an [MCP server](https://spec.modelcontextprotocol.io/) for the [Notion API](https://developers.notion.com/reference/intro). 
+
+  ![mcp-demo](https://github.com/user-attachments/assets/e3ff90a7-7801-48a9-b807-f7dd47f0d3d6)
+
+  ### Installation
+
+  #### 1. Setting up Integration in Notion:
+  Go to [https://www.notion.so/profile/integrations](https://www.notion.so/profile/integrations) and create a new **internal** integration or select an existing one.
+
+  ![Creating a Notion Integration token](docs/images/integrations-creation.png)
+
+  While we limit the scope of Notion API's exposed (for example, you will not be able to delete databases via MCP), there is a non-zero risk to workspace data by exposing it to LLMs. Security-conscious users may want to further configure the Integration's _Capabilities_. 
+
+  For example, you can create a read-only integration token by giving only "Read content" access from the "Configuration" tab:
+
+  ![Notion Integration Token Capabilities showing Read content checked](docs/images/integrations-capabilities.png)
+
+  #### 2. Connecting content to integration:
+  Ensure relevant pages and databases are connected to your integration.
+
+  To do this, visit the **Access** tab in your internal integration settings. Edit access and select the pages you'd like to use.
+  ![Integration Access tab](docs/images/integration-access.png)
+
+  ![Edit integration access](docs/images/page-access-edit.png)
+
+  Alternatively, you can grant page access individually. You'll need to visit the target page, and click on the 3 dots, and select "Connect to integration". 
+
+  ![Adding Integration Token to Notion Connections](docs/images/connections.png)
+
+  #### 3. Click `Connect To Server` and Connect:
+
+  **Note:** Make sure to set either the `NOTION_TOKEN` environment variable (recommended) or the `OPENAPI_MCP_HEADERS` environment variable (for advanced use cases) with your Notion integration token.
+
+  ### Examples
+
+  1. Using the following instruction
+  ```
+  Comment "Hello MCP" on page "Getting started"
+  ```
+
+  AI will correctly plan two API calls, `v1/search` and `v1/comments`, to achieve the task
+
+  2. Similarly, the following instruction will result in a new page named "Notion MCP" added to parent page "Development"
+  ```
+  Add a page titled "Notion MCP" to page "Development"
+  ```
+
+  3. You may also reference content ID directly
+  ```
+  Get the content of page 1a6b35e6e67f802fa7e1d27686f017f2
+  ```
+
 metadata:
   categories: SaaS & API Integrations,Databases,Verified
 icon: https://avatars.githubusercontent.com/u/4792552?v=4
 repoURL: https://github.com/makenotion/notion-mcp-server
 env:
+  - key: NOTION_TOKEN
+    name: Notion Token
+    required: false
+    sensitive: true
+    description: (Recommended) The Notion Integration token (ntn_****).
   - key: OPENAPI_MCP_HEADERS
     name: OpenAPI MCP Headers
-    required: true
+    required: false
     sensitive: true
-    description: 'JSON-encoded HTTP headers for MCP requests, e.g., {"Authorization": "Bearer ntn_****", "Notion-Version": "2022-06-28"}. The Notion Integration token (ntn_****) is required.'
+    description: (For advanced use cases) JSON-encoded HTTP headers for MCP requests, e.g., {"Authorization": "Bearer ntn_****", "Notion-Version": "2022-06-28"}. The Notion Integration token (ntn_****) is required too.'
 args:
   - -y
   - '@notionhq/notion-mcp-server'

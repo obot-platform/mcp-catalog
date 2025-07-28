@@ -1,0 +1,273 @@
+name: MongoDB
+description: |
+  # MongoDB MCP Server
+
+  A Model Context Protocol server for interacting with MongoDB Databases and MongoDB Atlas.
+
+  ## 📚 Table of Contents
+
+  - [🚀 Prerequisites](#prerequisites)
+  - [🛠️ Supported Tools](#supported-tools)
+    - [MongoDB Atlas Tools](#mongodb-atlas-tools)
+    - [MongoDB Database Tools](#mongodb-database-tools)
+  - [⚙️ Configuration](#configuration)
+    - [Configuration Options](#configuration-options)
+    - [Atlas API Access](#atlas-api-access)
+  - [🤝 Contributing](#contributing)
+
+  <a name="getting-started"></a>
+
+  ## 🚀 Prerequisites
+
+  - A MongoDB connection string or Atlas API credentials, **_the Server will not start unless configured_**.
+    - **_Service Accounts Atlas API credentials_** are required to use the Atlas tools. You can create a service account in MongoDB Atlas and use its credentials for authentication. See [Atlas API Access](#atlas-api-access) for more details.
+    - If you have a MongoDB connection string, you can use it directly to connect to your MongoDB instance.
+
+  ## 🛠️ Supported Tools
+
+  ### Tool List
+
+  #### MongoDB Atlas Tools
+
+  - `atlas-list-orgs` - Lists MongoDB Atlas organizations
+  - `atlas-list-projects` - Lists MongoDB Atlas projects
+  - `atlas-create-project` - Creates a new MongoDB Atlas project
+  - `atlas-list-clusters` - Lists MongoDB Atlas clusters
+  - `atlas-inspect-cluster` - Inspect a specific MongoDB Atlas cluster
+  - `atlas-create-free-cluster` - Create a free MongoDB Atlas cluster
+  - `atlas-connect-cluster` - Connects to MongoDB Atlas cluster
+  - `atlas-inspect-access-list` - Inspect IP/CIDR ranges with access to MongoDB Atlas clusters
+  - `atlas-create-access-list` - Configure IP/CIDR access list for MongoDB Atlas clusters
+  - `atlas-list-db-users` - List MongoDB Atlas database users
+  - `atlas-create-db-user` - Creates a MongoDB Atlas database user
+  - `atlas-list-alerts` - List MongoDB Atlas Alerts for a Project
+
+  NOTE: atlas tools are only available when you set credentials on [configuration](#configuration) section.
+
+  #### MongoDB Database Tools
+
+  - `connect` - Connect to a MongoDB instance
+  - `find` - Run a find query against a MongoDB collection
+  - `aggregate` - Run an aggregation against a MongoDB collection
+  - `count` - Get the number of documents in a MongoDB collection
+  - `insert-one` - Insert a single document into a MongoDB collection
+  - `insert-many` - Insert multiple documents into a MongoDB collection
+  - `create-index` - Create an index for a MongoDB collection
+  - `update-one` - Update a single document in a MongoDB collection
+  - `update-many` - Update multiple documents in a MongoDB collection
+  - `rename-collection` - Rename a MongoDB collection
+  - `delete-one` - Delete a single document from a MongoDB collection
+  - `delete-many` - Delete multiple documents from a MongoDB collection
+  - `drop-collection` - Remove a collection from a MongoDB database
+  - `drop-database` - Remove a MongoDB database
+  - `list-databases` - List all databases for a MongoDB connection
+  - `list-collections` - List all collections for a given database
+  - `collection-indexes` - Describe the indexes for a collection
+  - `collection-schema` - Describe the schema for a collection
+  - `collection-storage-size` - Get the size of a collection in MB
+  - `db-stats` - Return statistics about a MongoDB database
+
+  ## Configuration
+
+  ### Configuration Options
+
+  | CLI Option              | Environment Variable              | Default    | Description                                                                                                                                                   |
+  | ----------------------- | --------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | `apiClientId`           | `MDB_MCP_API_CLIENT_ID`           | <not set>  | Atlas API client ID for authentication. Required for running Atlas tools.                                                                                     |
+  | `apiClientSecret`       | `MDB_MCP_API_CLIENT_SECRET`       | <not set>  | Atlas API client secret for authentication. Required for running Atlas tools.                                                                                 |
+  | `connectionString`      | `MDB_MCP_CONNECTION_STRING`       | <not set>  | MongoDB connection string for direct database connections. Optional, if not set, you'll need to call the `connect` tool before interacting with MongoDB data. |
+  | `loggers`               | `MDB_MCP_LOGGERS`                 | disk,mcp   | Comma separated values, possible values are `mcp`, `disk` and `stderr`. See [Logger Options](#logger-options) for details.                                    |
+  | `logPath`               | `MDB_MCP_LOG_PATH`                | see note\* | Folder to store logs.                                                                                                                                         |
+  | `disabledTools`         | `MDB_MCP_DISABLED_TOOLS`          | <not set>  | An array of tool names, operation types, and/or categories of tools that will be disabled.                                                                    |
+  | `readOnly`              | `MDB_MCP_READ_ONLY`               | false      | When set to true, only allows read, connect, and metadata operation types, disabling create/update/delete operations.                                         |
+  | `indexCheck`            | `MDB_MCP_INDEX_CHECK`             | false      | When set to true, enforces that query operations must use an index, rejecting queries that perform a collection scan.                                         |
+  | `telemetry`             | `MDB_MCP_TELEMETRY`               | enabled    | When set to disabled, disables telemetry collection.                                                                                                          |
+  | `transport`             | `MDB_MCP_TRANSPORT`               | stdio      | Either 'stdio' or 'http'.                                                                                                                                     |
+  | `httpPort`              | `MDB_MCP_HTTP_PORT`               | 3000       | Port number.                                                                                                                                                  |
+  | `httpHost`              | `MDB_MCP_HTTP_HOST`               | 127.0.0.1  | Host to bind the http server.                                                                                                                                 |
+  | `idleTimeoutMs`         | `MDB_MCP_IDLE_TIMEOUT_MS`         | 600000     | Idle timeout for a client to disconnect (only applies to http transport).                                                                                     |
+  | `notificationTimeoutMs` | `MDB_MCP_NOTIFICATION_TIMEOUT_MS` | 540000     | Notification timeout for a client to be aware of diconnect (only applies to http transport).                                                                  |
+
+  #### Logger Options
+
+  The `loggers` configuration option controls where logs are sent. You can specify one or more logger types as a comma-separated list. The available options are:
+
+  - `mcp`: Sends logs to the MCP client (if supported by the client/transport).
+  - `disk`: Writes logs to disk files. Log files are stored in the log path (see `logPath` above).
+  - `stderr`: Outputs logs to standard error (stderr), useful for debugging or when running in containers.
+
+  **Default:** `disk,mcp` (logs are written to disk and sent to the MCP client).
+
+  You can combine multiple loggers, e.g. `--loggers disk stderr` or `export MDB_MCP_LOGGERS="mcp,stderr"`.
+
+  ##### Example: Set logger via environment variable
+
+  ```shell
+  export MDB_MCP_LOGGERS="disk,stderr"
+  ```
+
+  ##### Example: Set logger via command-line argument
+
+  ```shell
+  npx -y mongodb-mcp-server@latest --loggers mcp stderr
+  ```
+
+  ##### Log File Location
+
+  When using the `disk` logger, log files are stored in:
+
+  - **Windows:** `%LOCALAPPDATA%\mongodb\mongodb-mcp\.app-logs`
+  - **macOS/Linux:** `~/.mongodb/mongodb-mcp/.app-logs`
+
+  You can override the log directory with the `logPath` option.
+
+  #### Disabled Tools
+
+  You can disable specific tools or categories of tools by using the `disabledTools` option. This option accepts an array of strings,
+  where each string can be a tool name, operation type, or category.
+
+  The way the array is constructed depends on the type of configuration method you use:
+
+  - For **environment variable** configuration, use a comma-separated string: `export MDB_MCP_DISABLED_TOOLS="create,update,delete,atlas,collectionSchema"`.
+  - For **command-line argument** configuration, use a space-separated string: `--disabledTools create update delete atlas collectionSchema`.
+
+  Categories of tools:
+
+  - `atlas` - MongoDB Atlas tools, such as list clusters, create cluster, etc.
+  - `mongodb` - MongoDB database tools, such as find, aggregate, etc.
+
+  Operation types:
+
+  - `create` - Tools that create resources, such as create cluster, insert document, etc.
+  - `update` - Tools that update resources, such as update document, rename collection, etc.
+  - `delete` - Tools that delete resources, such as delete document, drop collection, etc.
+  - `read` - Tools that read resources, such as find, aggregate, list clusters, etc.
+  - `metadata` - Tools that read metadata, such as list databases, list collections, collection schema, etc.
+  - `connect` - Tools that allow you to connect or switch the connection to a MongoDB instance. If this is disabled, you will need to provide a connection string through the config when starting the server.
+
+  #### Read-Only Mode
+
+  The `readOnly` configuration option allows you to restrict the MCP server to only use tools with "read", "connect", and "metadata" operation types. When enabled, all tools that have "create", "update" or "delete" operation types will not be registered with the server.
+
+  This is useful for scenarios where you want to provide access to MongoDB data for analysis without allowing any modifications to the data or infrastructure.
+
+  You can enable read-only mode using:
+
+  - **Environment variable**: `export MDB_MCP_READ_ONLY=true`
+  - **Command-line argument**: `--readOnly`
+
+  When read-only mode is active, you'll see a message in the server logs indicating which tools were prevented from registering due to this restriction.
+
+  #### Index Check Mode
+
+  The `indexCheck` configuration option allows you to enforce that query operations must use an index. When enabled, queries that perform a collection scan will be rejected to ensure better performance.
+
+  This is useful for scenarios where you want to ensure that database queries are optimized.
+
+  You can enable index check mode using:
+
+  - **Environment variable**: `export MDB_MCP_INDEX_CHECK=true`
+  - **Command-line argument**: `--indexCheck`
+
+  When index check mode is active, you'll see an error message if a query is rejected due to not using an index.
+
+  #### Telemetry
+
+  The `telemetry` configuration option allows you to disable telemetry collection. When enabled, the MCP server will collect usage data and send it to MongoDB.
+
+  You can disable telemetry using:
+
+  - **Environment variable**: `export MDB_MCP_TELEMETRY=disabled`
+  - **Command-line argument**: `--telemetry disabled`
+  - **DO_NOT_TRACK environment variable**: `export DO_NOT_TRACK=1`
+
+  ### Atlas API Access
+
+  To use the Atlas API tools, you'll need to create a service account in MongoDB Atlas:
+
+  > **ℹ️ Note:** For a detailed breakdown of the minimum required permissions for each Atlas operation, see the [Atlas API Permissions](#atlas-api-permissions) section below.
+
+  1. **Create a Service Account:**
+    - Log in to MongoDB Atlas at [cloud.mongodb.com](https://cloud.mongodb.com)
+    - Navigate to Access Manager > Organization Access
+    - Click Add New > Applications > Service Accounts
+    - Enter name, description and expiration for your service account (e.g., "MCP, MCP Server Access, 7 days")
+    - **Assign only the minimum permissions needed for your use case.**
+      - See [Atlas API Permissions](#atlas-api-permissions) for details.
+    - Click "Create"
+
+  To learn more about Service Accounts, check the [MongoDB Atlas documentation](https://www.mongodb.com/docs/atlas/api/service-accounts-overview/).
+
+  2. **Save Client Credentials:**
+    - After creation, you'll be shown the Client ID and Client Secret
+    - **Important:** Copy and save the Client Secret immediately as it won't be displayed again
+
+  3. **Add Access List Entry:**
+    - Add your IP address to the API access list
+
+  4. **Configure the MCP Server:**
+    - Use one of the configuration methods below to set your `apiClientId` and `apiClientSecret`
+
+  ### Atlas API Permissions
+
+  > **Security Warning:** Granting the Organization Owner role is rarely necessary and can be a security risk. Assign only the minimum permissions needed for your use case.
+
+  #### Quick Reference: Required roles per operation
+
+  | What you want to do                  | Safest Role to Assign (where)           |
+  | ------------------------------------ | --------------------------------------- |
+  | List orgs/projects                   | Org Member or Org Read Only (Org)       |
+  | Create new projects                  | Org Project Creator (Org)               |
+  | View clusters/databases in a project | Project Read Only (Project)             |
+  | Create/manage clusters in a project  | Project Cluster Manager (Project)       |
+  | Manage project access lists          | Project IP Access List Admin (Project)  |
+  | Manage database users                | Project Database Access Admin (Project) |
+
+  - **Prefer project-level roles** for most operations. Assign only to the specific projects you need to manage or view.
+  - **Avoid Organization Owner** unless you require full administrative control over all projects and settings in the organization.
+
+  For a full list of roles and their privileges, see the [Atlas User Roles documentation](https://www.mongodb.com/docs/atlas/reference/user-roles/#service-user-roles).
+
+  ## 🤝Contributing
+
+  Interested in contributing? Great! Please check our [Contributing Guide](CONTRIBUTING.md) for guidelines on code contributions, standards, adding new tools, and troubleshooting information.
+
+metadata:
+  categories: Databases,Data & Analytics,Verified
+icon: https://avatars.githubusercontent.com/u/45120?s=48&v=4
+repoURL: https://github.com/mongodb-js/mongodb-mcp-server
+env:
+  - key: MDB_MCP_CONNECTION_STRING
+    name: MongoDB Connection String
+    required: false
+    sensitive: false
+    description: The connection string for your MongoDB database.
+  - key: MDB_MCP_API_CLIENT_ID
+    name: MongoDB API Client ID
+    required: false
+    sensitive: false
+    description: The client ID for your MongoDB Service Accounts Atlas API credentials.
+  - key: MDB_MCP_API_CLIENT_SECRET
+    name: MongoDB API Client Secret
+    required: false
+    sensitive: true
+    description: The client secret for your MongoDB Service Accounts Atlas API credentials.
+  - key: MDB_MCP_READ_ONLY
+    name: MongoDB Read Only
+    required: false
+    sensitive: false
+    description: Whether to run the MongoDB MCP server in read-only mode, default is false.
+args:
+  - run
+  - --rm
+  - -i
+  - -e
+  - MDB_MCP_CONNECTION_STRING
+  - -e
+  - MDB_MCP_READ_ONLY
+  - -e
+  - MDB_MCP_API_CLIENT_ID
+  - -e
+  - MDB_MCP_API_CLIENT_SECRET
+  - mongodb/mongodb-mcp-server:latest
+command: docker
