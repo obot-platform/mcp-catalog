@@ -160,23 +160,23 @@ description: |
 metadata:
   categories: Databases,Verified
 icon: https://avatars.githubusercontent.com/u/87650496?s=48&v=4
-repoURL: https://github.com/tavily-ai/tavily-mcp
+repoURL: https://github.com/supabase-community/supabase-mcp
 env:
-  - key: SUPABASE_PROJECT_REF
-    name: Supabase Project Ref
-    required: true
-    sensitive: false
-    description: The project reference for your Supabase project.
   - key: SUPABASE_ACCESS_TOKEN
     name: Supabase Personal Access Token
     required: true
     sensitive: true
     description: Your Supabase Personal Access Token.
+  # - key: SUPABASE_PROJECT_REF
+  #   name: Supabase Project ID
+  #   required: false
+  #   sensitive: false
+  #   description: The project ID for your Supabase project. You can find it in `General` > `Project Settings` > `Project ID`.
 args:
   - -y
-  - "@supabase/mcp-server-supabase@latest"
+  - "@supabase/mcp-server-supabase@0.4.5"
   - "--read-only"
-  - "--project-ref=${SUPABASE_PROJECT_REF}"
+  # - "--project-ref=${SUPABASE_PROJECT_REF}" # TODO: add this back once we support dynamic args, see issue https://github.com/obot-platform/obot/issues/3619 feature request 1
 command: npx
 
 toolPreview:
