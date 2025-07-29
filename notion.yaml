@@ -79,7 +79,7 @@ env:
     name: OpenAPI MCP Headers
     required: false
     sensitive: true
-    description: (For advanced use cases) JSON-encoded HTTP headers for MCP requests, e.g., {"Authorization": "Bearer ntn_****", "Notion-Version": "2022-06-28"}. The Notion Integration token (ntn_****) is required too.'
+    description: '(For advanced use cases) JSON-encoded HTTP headers for MCP requests, e.g., {"Authorization": "Bearer ntn_****", "Notion-Version": "2022-06-28"}. The Notion Integration token (ntn_****) is required too.'
 args:
   - -y
   - '@notionhq/notion-mcp-server'

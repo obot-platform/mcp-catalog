@@ -1,5 +1,52 @@
 name: Tavily Search
-description: Search the web and extract content using Tavily's AI-powered search
+description: |
+  # ![Tavily Crawl Beta](./assets/Banner_NEW.png)
+
+
+  ![GitHub Repo stars](https://img.shields.io/github/stars/tavily-ai/tavily-mcp?style=social)
+  ![npm](https://img.shields.io/npm/dt/tavily-mcp)
+  ![smithery badge](https://smithery.ai/badge/@tavily-ai/tavily-mcp)
+
+  ![MCP demo](./assets/demo_new.gif)
+
+  The Tavily MCP server provides:
+  - search, extract, map, crawl tools
+  - Real-time web search capabilities through the tavily-search tool
+  - Intelligent data extraction from web pages via the tavily-extract tool
+  - Powerful web mapping tool that creates a structured map of website 
+  - Web crawler that systematically explores websites 
+
+  ## What is Tavily?
+
+  Tavily provides fast, reliable APIs that let developers easily:
+
+  ### 🔍 Search the web
+
+  Optimized for relevancy and low latency. Get real-time, contextual information from across the web with intelligent content extraction and ranking that prioritizes the most relevant results for your AI applications.
+
+  ### 📄 Extract structured data from URLs
+
+  Supporting summaries, Markdown, or cleaned text. Transform any webpage into LLM-ready data with automatic content cleaning, format conversion, and text extraction that preserves structure and meaning.
+
+  ### 🕸️ Crawl entire domains at scale
+
+  Optimized for intelligent URL decisions and results. Navigate complex websites with smart crawling strategies that respect robots.txt, handle dynamic content, and efficiently discover all accessible pages.
+
+  ## Remote MCP Server
+  Connect directly to Tavily's remote MCP server instead of running it locally. This provides a seamless experience without requiring local installation or configuration.
+
+  ### Prerequisites 🔧
+
+  Before you begin, ensure you have:
+
+  - [Tavily API key](https://app.tavily.com/home)
+    - If you don't have a Tavily API key, you can sign up for a free account [here](https://app.tavily.com/home)
+
+  ## Acknowledgments ✨
+
+  - [Model Context Protocol](https://modelcontextprotocol.io) for the MCP specification
+  - [Anthropic](https://anthropic.com) for Claude Desktop
+
 metadata:
   categories: Retrieval & Search, SaaS & API Integrations, Developer Tools,Verified
 icon: https://avatars.githubusercontent.com/u/170207473?v=4
@@ -12,5 +59,6 @@ env:
     description: Your Tavily API key. Get one at https://app.tavily.com/home
 args:
   - -y
-  - tavily-mcp@0.2.1
+  - mcp-remote
+  - https://mcp.tavily.com/mcp/?tavilyApiKey=${TAVILY_API_KEY}
 command: npx
