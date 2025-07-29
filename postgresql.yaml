@@ -2,7 +2,7 @@ name: PostgreSQL
 description: |
   <div align="center">
 
-  <img src="assets/postgres-mcp-pro.png" alt="Postgres MCP Pro Logo" width="600"/>
+  <h1>Postgres MCP Pro Server</h1>
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
   [![PyPI - Version](https://img.shields.io/pypi/v/postgres-mcp)](https://pypi.org/project/postgres-mcp/)
@@ -418,14 +418,9 @@ env:
     sensitive: false
     description: The connection string for your Postgres database; e.g. "postgresql://username:password@localhost:5432/dbname"
 args:
-  - run
-  - -i
-  - --rm
-  - -e
-  - DATABASE_URI
-  - crystaldba/postgres-mcp
+  - postgres-mcp
   - --access-mode=unrestricted
-command: docker
+command: uvx
 
 toolPreview:
   - name: list_schemas
