@@ -179,3 +179,113 @@ args:
   - ${MDB_MCP_CONNECTION_STRING}
   - --readOnly
 command: npx
+toolPreview:
+  - name: connect
+    description: Connect to a MongoDB instance
+    params:
+      connectionString: MongoDB connection string
+  - name: list-collections
+    description: List all collections for a given database
+    params:
+      database: Database name
+  - name: list-databases
+    description: List all databases for a MongoDB connection
+  - name: collection-indexes
+    description: Describe the indexes for a collection
+    params:
+      collection: Collection name
+      database: Database name
+  - name: create-index
+    description: Create an index for a collection
+    params:
+      collection: Collection name
+      database: Database name
+      keys: Index keys specification object
+      name: Optional index name
+  - name: collection-schema
+    description: Describe the schema for a collection
+    params:
+      collection: Collection name
+      database: Database name
+  - name: find
+    description: Run a find query against a MongoDB collection
+    params:
+      collection: Collection name
+      database: Database name
+      filter: Optional query filter object
+      limit: Optional maximum number of documents to return
+      projection: Optional projection object
+      sort: Optional sort specification object
+  - name: insert-many
+    description: Insert an array of documents into a MongoDB collection
+    params:
+      collection: Collection name
+      database: Database name
+      documents: Array of documents to insert
+  - name: delete-many
+    description: Removes all documents that match the filter from a MongoDB collection
+    params:
+      collection: Collection name
+      database: Database name
+      filter: Optional filter object
+  - name: collection-storage-size
+    description: Gets the size of the collection
+    params:
+      collection: Collection name
+      database: Database name
+  - name: count
+    description: Gets the number of documents in a MongoDB collection using db.collection.count() and query as an optional filter parameter
+    params:
+      collection: Collection name
+      database: Database name
+      query: Optional filter/query object
+  - name: db-stats
+    description: Returns statistics that reflect the use state of a single database
+    params:
+      database: Database name
+  - name: aggregate
+    description: Run an aggregation against a MongoDB collection
+    params:
+      collection: Collection name
+      database: Database name
+      pipeline: Array of aggregation pipeline stages
+  - name: update-many
+    description: Updates all documents that match the specified filter for a collection
+    params:
+      collection: Collection name
+      database: Database name
+      update: Update specification object
+      filter: Optional filter object
+      upsert: Optional boolean to insert if no match found
+  - name: rename-collection
+    description: Renames a collection in a MongoDB database
+    params:
+      collection: Collection name
+      database: Database name
+      newName: New collection name
+      dropTarget: Optional boolean to drop target collection if it exists
+  - name: drop-database
+    description: Removes the specified database, deleting the associated data files
+    params:
+      database: Database name
+  - name: drop-collection
+    description: Removes a collection or view from the database. The method also removes any indexes associated with the dropped collection.
+    params:
+      collection: Collection name
+      database: Database name
+  - name: explain
+    description: Returns statistics describing the execution of the winning plan chosen by the query optimizer for the evaluated method
+    params:
+      collection: Collection name
+      database: Database name
+      method: Array specifying the method and arguments to explain
+  - name: create-collection
+    description: Creates a new collection in a database. If the database doesn't exist, it will be created automatically.
+    params:
+      collection: Collection name
+      database: Database name
+  - name: mongodb-logs
+    description: Returns the most recent logged mongod events
+    params:
+      limit: Optional maximum number of log entries to return
+      type: Optional log type filter

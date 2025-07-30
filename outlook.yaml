@@ -183,7 +183,7 @@ description: |
   </div>
 
 metadata:
-  categories: Business,Outlook,Verified
+  categories: Business
   allow-multiple: "true"
 icon: https://img.icons8.com/?size=100&id=ut6gQeo5pNqf&format=png&color=000000
 repoURL: https://mcp-oauth-proxy-1.onrender.com/mcp

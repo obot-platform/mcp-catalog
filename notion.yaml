@@ -84,3 +84,117 @@ args:
   - -y
   - '@notionhq/notion-mcp-server'
 command: npx
+toolPreview:
+  - name: API-get-user
+    description: Retrieve a user
+    params:
+      user_id: User ID to retrieve
+  - name: API-get-users
+    description: List all users
+    params:
+      page_size: Optional maximum number of users to return
+      start_cursor: Optional cursor for pagination
+  - name: API-get-self
+    description: Retrieve your token's bot user
+  - name: API-post-database-query
+    description: Query a database
+    params:
+      database_id: Database ID to query
+      archived: Optional boolean to include archived pages
+      filter: Optional filter object for query conditions
+      filter_properties: Optional array of property names to filter by
+      in_trash: Optional boolean to include pages in trash
+      page_size: Optional maximum number of results to return
+      sorts: Optional array of sort objects with direction and property
+      start_cursor: Optional cursor for pagination
+  - name: API-post-search
+    description: Search by title
+    params:
+      filter: Optional filter object with property and value
+      page_size: Optional maximum number of results to return
+      query: Optional search query string
+      sort: Optional sort object with direction and timestamp
+      start_cursor: Optional cursor for pagination
+  - name: API-get-block-children
+    description: Retrieve block children
+    params:
+      block_id: Block ID to get children from
+      page_size: Optional maximum number of children to return
+      start_cursor: Optional cursor for pagination
+  - name: API-patch-block-children
+    description: Append block children
+    params:
+      block_id: Block ID to append children to
+      children: Array of block objects to append
+      after: Optional block ID to insert after
+  - name: API-retrieve-a-block
+    description: Retrieve a block
+    params:
+      block_id: Block ID to retrieve
+  - name: API-update-a-block
+    description: Update a block
+    params:
+      block_id: Block ID to update
+      archived: Optional boolean to archive the block
+      type: Optional block type object with updated properties
+  - name: API-delete-a-block
+    description: Delete a block
+    params:
+      block_id: Block ID to delete
+  - name: API-retrieve-a-page
+    description: Retrieve a page
+    params:
+      page_id: Page ID to retrieve
+      filter_properties: Optional property names to filter response
+  - name: API-patch-page
+    description: Update page properties
+    params:
+      page_id: Page ID to update
+      archived: Optional boolean to archive the page
+      cover: Optional cover object with external URL and type
+      icon: Optional icon object with emoji
+      in_trash: Optional boolean to move page to trash
+      properties: Optional properties object to update
+  - name: API-post-page
+    description: Create a page
+    params:
+      parent: Parent object with page_id
+      properties: Properties object with title and type
+      children: Optional array of child block IDs
+      cover: Optional cover for the page
+      icon: Optional icon for the page
+  - name: API-create-a-database
+    description: Create a database
+    params:
+      parent: Parent object with page_id and type
+      properties: Properties object defining database schema
+      title: Optional title array with text content and link
+  - name: API-update-a-database
+    description: Update a database
+    params:
+      database_id: Database ID to update
+      description: Optional description array with text content and link
+      properties: Optional properties object with name
+      title: Optional title array with text content and link
+  - name: API-retrieve-a-database
+    description: Retrieve a database
+    params:
+      database_id: Database ID to retrieve
+  - name: API-retrieve-a-page-property
+    description: Retrieve a page property item
+    params:
+      page_id: Page ID containing the property
+      property_id: Property ID to retrieve
+      page_size: Optional maximum number of items to return
+      start_cursor: Optional cursor for pagination
+  - name: API-retrieve-a-comment
+    description: Retrieve comments
+    params:
+      block_id: Block ID to get comments from
+      page_size: Optional maximum number of comments to return
+      start_cursor: Optional cursor for pagination
+  - name: API-create-a-comment
+    description: Create comment
+    params:
+      parent: Parent object with page_id
+      rich_text: Rich text array with content

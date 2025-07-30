@@ -212,7 +212,7 @@ description: |
   </div>
 
 metadata:
-  categories: Business,Gmail,Verified
+  categories: Business
   allow-multiple: "true"
 icon: https://img.icons8.com/?size=100&id=P7UIlhbpWzZm&format=png&color=000000
 repoURL: https://mcp-oauth-proxy.onrender.com/mcp

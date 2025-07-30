@@ -41,7 +41,7 @@ description: |
 
   Versions `8.x` and `9.x` are officially supported. Earlier versions may partially work, at your own risk and with no guarantees made.
 
-  ## Required Environment Variables
+  ## Configuration Options
 
   - `ES_URL`: Your Elasticsearch instance URL
   - `ES_API_KEY`: Your Elasticsearch API key
@@ -60,22 +60,22 @@ icon: https://avatars.githubusercontent.com/u/6764390?v=4
 repoURL: https://github.com/elastic/mcp-server-elasticsearch
 env:
   - key: ES_URL
-    name: Elasticsearch URL
+    name: ES_URL
     required: true
     sensitive: false
     description: Your Elasticsearch instance URL
   - key: ES_API_KEY
-    name: Elasticsearch API Key
+    name: ES_API_KEY
     required: false
     sensitive: true
     description: Elasticsearch API key for authentication
   - key: ES_USERNAME
-    name: Elasticsearch Username
+    name: ES_USERNAME
     required: false
     sensitive: true
     description: Elasticsearch username for basic authentication
   - key: ES_PASSWORD
-    name: Elasticsearch Password
+    name: ES_PASSWORD
     required: false
     sensitive: true
     description: Elasticsearch password for basic authentication
