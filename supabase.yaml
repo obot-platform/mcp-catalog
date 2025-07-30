@@ -16,20 +16,6 @@ description: |
 
   This will be used to authenticate the MCP server with your Supabase account. Make sure to copy the token, as you won't be able to see it again.
 
-  ### Read-only mode
-
-  To restrict the Supabase MCP server to read-only queries, set the `read-only` to true.
-
-  We recommend you enable this by default. This prevents write operations on any of your databases by executing SQL as a read-only Postgres user. Note that this flag only applies to database tools (`execute_sql` and `apply_migration`) and not to other tools like `create_project` or `create_branch`.
-
-  ### Feature groups
-
-  You can enable or disable specific tool groups by passing the `--features` flag to the MCP server. This allows you to customize which tools are available to the LLM. For example, to enable only the [database](#database) and [docs](#knowledge-base) tools, you would run set: `--features=database,docs`
-
-  Available groups are: [`account`](#account), [`docs`](#knowledge-base), [`database`](#database), [`debug`](#debug), [`development`](#development), [`functions`](#edge-functions), [`storage`](#storage), and [`branching`](#branching-experimental-requires-a-paid-plan).
-
-  If this flag is not passed, the default feature groups are: `account`, `database`, `debug`, `development`, `docs`, `functions`, and `branching`.
-
   ## Tools
 
   _**Note:** This server is pre-1.0, so expect some breaking changes between versions. Since LLMs will automatically adapt to the tools available, this shouldn't affect most users._
@@ -37,8 +23,6 @@ description: |
   The following Supabase tools are available to the LLM, [grouped by feature](#feature-groups).
 
   #### Account
-
-  Enabled by default when no `--project-ref` is passed. Use `account` to target this group of tools with the [`--features`](#feature-groups) option.
 
   _**Note:** these tools will be unavailable if the server is [scoped to a project](#project-scoped-mode)._
 
@@ -54,13 +38,9 @@ description: |
 
   #### Knowledge Base
 
-  Enabled by default. Use `docs` to target this group of tools with the [`--features`](#feature-groups) option.
-
   - `search_docs`: Searches the Supabase documentation for up-to-date information. LLMs can use this to find answers to questions or learn how to use specific features.
 
   #### Database
-
-  Enabled by default. Use `database` to target this group of tools with the [`--features`](#feature-groups) option.
 
   - `list_tables`: Lists all tables within the specified schemas.
   - `list_extensions`: Lists all extensions in the database.
@@ -70,14 +50,12 @@ description: |
 
   #### Debug
 
-  Enabled by default. Use `debug` to target this group of tools with the [`--features`](#feature-groups) option.
-
   - `get_logs`: Gets logs for a Supabase project by service type (api, postgres, edge functions, auth, storage, realtime). LLMs can use this to help with debugging and monitoring service performance.
   - `get_advisors`: Gets a list of advisory notices for a Supabase project. LLMs can use this to check for security vulnerabilities or performance issues.
 
   #### Development
 
-  Enabled by default. Use `development` to target this group of tools with the [`--features`](#feature-groups) option.
+  Enabled by default.
 
   - `get_project_url`: Gets the API URL for a project.
   - `get_anon_key`: Gets the anonymous API key for a project.
@@ -85,14 +63,10 @@ description: |
 
   #### Edge Functions
 
-  Enabled by default. Use `functions` to target this group of tools with the [`--features`](#feature-groups) option.
-
   - `list_edge_functions`: Lists all Edge Functions in a Supabase project.
   - `deploy_edge_function`: Deploys a new Edge Function to a Supabase project. LLMs can use this to deploy new functions or update existing ones.
 
   #### Branching (Experimental, requires a paid plan)
-
-  Enabled by default. Use `branching` to target this group of tools with the [`--features`](#feature-groups) option.
 
   - `create_branch`: Creates a development branch with migrations from production branch.
   - `list_branches`: Lists all development branches.
@@ -102,8 +76,6 @@ description: |
   - `rebase_branch`: Rebases development branch on production to handle migration drift.
 
   #### Storage
-
-  Disabled by default to reduce tool count. Use `storage` to target this group of tools with the [`--features`](#feature-groups) option.
 
   - `list_storage_buckets`: Lists all storage buckets in a Supabase project.
   - `get_storage_config`: Gets the storage config for a Supabase project.
@@ -141,12 +113,6 @@ description: |
   - **Branching**: Use Supabase's [branching feature](https://supabase.com/docs/guides/deployment/branching) to create a development branch for your database. This allows you to test changes in a safe environment before merging them to production.
 
   - **Feature groups**: The server allows you to enable or disable specific [tool groups](#feature-groups), so you can control which tools are available to the LLM. This helps reduce the attack surface and limits the actions that LLMs can perform to only those that you need.
-
-  ## Other MCP servers
-
-  ### `@supabase/mcp-server-postgrest`
-
-  The PostgREST MCP server allows you to connect your own users to your app via REST API. See more details on its [project README](./packages/mcp-server-postgrest).
 
   ## Resources
 

@@ -61,50 +61,9 @@ description: |
 
   Magic AI Agent can handle components of varying complexity, from simple buttons to complex interactive forms. However, for best results, we recommend breaking down very complex UIs into smaller, manageable components.
 
-  ## 🛠️ Development
-
-  ### Project Structure
-
-  ```
-  mcp/
-  ├── app/
-  │   └── components/     # Core UI components
-  ├── types/             # TypeScript type definitions
-  ├── lib/              # Utility functions
-  └── public/           # Static assets
-  ```
-
-  ### Key Components
-
-  - `IdeInstructions`: Setup instructions for different IDEs
-  - `ApiKeySection`: API key management interface
-  - `WelcomeOnboarding`: Onboarding flow for new users
-
-
-
-  ## 👥 Community & Support
-
-  - [Discord Community](https://discord.gg/Qx4rFunHfm) - Join our active community
-  - [Twitter](https://x.com/serafimcloud) - Follow us for updates
-
   ## ⚠️ Beta Notice
 
   Magic Agent is currently in beta. All features are free during this period. We appreciate your feedback and patience as we continue to improve the platform.
-
-  ## 📝 License
-
-  MIT License
-
-  ## 🙏 Acknowledgments
-
-  - Thanks to our beta testers and community members
-  - Special thanks to the Cursor, Windsurf, and Cline teams for their collaboration
-  - Integration with [21st.dev](https://21st.dev) for component inspiration
-  - [SVGL](https://svgl.app) for logo and brand asset integration
-
-  ---
-
-  For more information, join our [Discord community](https://discord.gg/Qx4rFunHfm) or visit [21st.dev/magic](https://21st.dev/magic).
 
 metadata:
   categories: Developer Tools, UI & Design
