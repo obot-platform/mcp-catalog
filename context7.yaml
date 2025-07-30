@@ -71,131 +71,7 @@ description: |
   > ```
   > The slash syntax tells the MCP tool exactly which library to load docs for.
 
-  ## 💻 Development
 
-  Clone the project and install dependencies:
-
-  ```bash
-  bun i
-  ```
-
-  Build:
-
-  ```bash
-  bun run build
-  ```
-
-  Run the server:
-
-  ```bash
-  bun run dist/index.js
-  ```
-
-  ### CLI Arguments
-
-  `context7-mcp` accepts the following CLI flags:
-
-  - `--transport <stdio|http|sse>` – Transport to use (`stdio` by default).
-  - `--port <number>` – Port to listen on when using `http` or `sse` transport (default `3000`).
-
-  Example with http transport and port 8080:
-
-  ```bash
-  bun run dist/index.js --transport http --port 8080
-  ```
-
-  <details>
-  <summary><b>Local Configuration Example</b></summary>
-
-  ```json
-  {
-    "mcpServers": {
-      "context7": {
-        "command": "npx",
-        "args": ["tsx", "/path/to/folder/context7-mcp/src/index.ts"]
-      }
-    }
-  }
-  ```
-
-  </details>
-
-  <details>
-  <summary><b>Testing with MCP Inspector</b></summary>
-
-  ```bash
-  npx -y @modelcontextprotocol/inspector npx @upstash/context7-mcp
-  ```
-
-  </details>
-
-  ## 🚨 Troubleshooting
-
-  <details>
-  <summary><b>Module Not Found Errors</b></summary>
-
-  If you encounter `ERR_MODULE_NOT_FOUND`, try using `bunx` instead of `npx`:
-
-  ```json
-  {
-    "mcpServers": {
-      "context7": {
-        "command": "bunx",
-        "args": ["-y", "@upstash/context7-mcp"]
-      }
-    }
-  }
-  ```
-
-  This often resolves module resolution issues in environments where `npx` doesn't properly install or resolve packages.
-
-  </details>
-
-  <details>
-  <summary><b>ESM Resolution Issues</b></summary>
-
-  For errors like `Error: Cannot find module 'uriTemplate.js'`, try the `--experimental-vm-modules` flag:
-
-  ```json
-  {
-    "mcpServers": {
-      "context7": {
-        "command": "npx",
-        "args": ["-y", "--node-options=--experimental-vm-modules", "@upstash/context7-mcp@1.0.6"]
-      }
-    }
-  }
-  ```
-
-  </details>
-
-  <details>
-  <summary><b>TLS/Certificate Issues</b></summary>
-
-  Use the `--experimental-fetch` flag to bypass TLS-related problems:
-
-  ```json
-  {
-    "mcpServers": {
-      "context7": {
-        "command": "npx",
-        "args": ["-y", "--node-options=--experimental-fetch", "@upstash/context7-mcp"]
-      }
-    }
-  }
-  ```
-
-  </details>
-
-  <details>
-  <summary><b>General MCP Client Errors</b></summary>
-
-  1. Try adding `@latest` to the package name
-  2. Use `bunx` as an alternative to `npx`
-  3. Consider using `deno` as another alternative
-  4. Ensure you're using Node.js v18 or higher for native fetch support
-
-  </details>
 
   ## ⚠️ Disclaimer
 
@@ -229,7 +105,7 @@ description: |
   MIT
 
 metadata:
-  categories: Developer Tools,Verified
+  categories: Developer Tools
 icon: https://avatars.githubusercontent.com/u/74989412?v=4
 repoURL: https://github.com/upstash/context7
 env:

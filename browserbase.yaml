@@ -68,7 +68,7 @@ description: |
   Copyright 2025 Browserbase, Inc.
 
 metadata:
-  categories: Automation & Browsers,Verified
+  categories: Automation & Browsers
 icon: https://avatars.githubusercontent.com/u/158221360?v=4
 repoURL: https://github.com/browserbase/mcp-server-browserbase/tree/main/browserbase
 env:

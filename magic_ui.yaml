@@ -109,7 +109,7 @@ description: |
   For more information, join our [Discord community](https://discord.gg/Qx4rFunHfm) or visit [21st.dev/magic](https://21st.dev/magic).
 
 metadata:
-  categories: Developer Tools, UI & Design, Verified
+  categories: Developer Tools, UI & Design
 icon: https://avatars.githubusercontent.com/u/199367026?s=200&v=4
 repoURL: https://github.com/21st-dev/magic-mcp
 env:

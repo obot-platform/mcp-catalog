@@ -158,7 +158,7 @@ description: |
   This project is licensed under Apache 2.0. See the [LICENSE](./LICENSE) file for details.
 
 metadata:
-  categories: Databases,Verified
+  categories: Databases
 icon: https://avatars.githubusercontent.com/u/87650496?s=48&v=4
 repoURL: https://github.com/supabase-community/supabase-mcp
 env:

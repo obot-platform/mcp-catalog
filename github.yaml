@@ -668,7 +668,7 @@ description: |
   This project is licensed under the terms of the MIT open source license. Please refer to [MIT](./LICENSE) for the full terms.
 
 metadata:
-  categories: Developer Tools,Verified
+  categories: Developer Tools
   unsupportedTools: create_or_update_file,push_files
 icon: https://avatars.githubusercontent.com/u/9919?v=4
 repoURL: https://github.com/github/github-mcp-server

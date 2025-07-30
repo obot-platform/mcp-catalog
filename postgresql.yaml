@@ -408,7 +408,7 @@ description: |
   We may add measures in the future to make sure that restricted mode is safe to use with production databases.
 
 metadata:
-  categories: Databases,Verified
+  categories: Databases
 icon: https://avatars.githubusercontent.com/u/177543?s=48&v=4
 repoURL: https://github.com/crystaldba/postgres-mcp
 env:

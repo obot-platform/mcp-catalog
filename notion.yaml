@@ -66,7 +66,7 @@ description: |
   ```
 
 metadata:
-  categories: SaaS & API Integrations,Databases,Verified
+  categories: SaaS & API Integrations,Databases
 icon: https://avatars.githubusercontent.com/u/4792552?v=4
 repoURL: https://github.com/makenotion/notion-mcp-server
 env:

@@ -48,7 +48,7 @@ description: |
   - [Anthropic](https://anthropic.com) for Claude Desktop
 
 metadata:
-  categories: Retrieval & Search, SaaS & API Integrations, Developer Tools,Verified
+  categories: Retrieval & Search, SaaS & API Integrations, Developer Tools
 icon: https://avatars.githubusercontent.com/u/170207473?v=4
 repoURL: https://github.com/tavily-ai/tavily-mcp
 env:

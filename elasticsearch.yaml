@@ -55,7 +55,7 @@ description: |
   If `ES_API_KEY` is not provided, `ES_USERNAME` and `ES_PASSWORD` must be provided.
 
 metadata:
-  categories: Databases,Verified
+  categories: Databases
 icon: https://avatars.githubusercontent.com/u/6764390?v=4
 repoURL: https://github.com/elastic/mcp-server-elasticsearch
 env:

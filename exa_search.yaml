@@ -101,7 +101,7 @@ description: |
   Built with ❤️ by team Exa
   
 metadata:
-  categories: Retrieval & Search,Science & Research,Developer Tools,Verified
+  categories: Retrieval & Search,Science & Research,Developer Tools
 icon: https://avatars.githubusercontent.com/u/77906174?v=4
 repoURL: https://github.com/exa-labs/exa-mcp-server
 env:

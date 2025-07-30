@@ -87,7 +87,7 @@ description: |
   We’re excited to collaborate with you to improve this capability before its general availability.
 
 metadata:
-  categories: Developer Tools,Verified
+  categories: Developer Tools
 icon: https://cdn.brandfetch.io/idlQIwGMOK/theme/dark/logo.svg?c=1bxid64Mup7aczewSAYMX&t=1667563471928
 repoURL: https://support.atlassian.com/rovo/docs/atlassian-remote-mcp-server/
 args:

@@ -1,7 +1,7 @@
 name: AntV Charts
 description: Generate various types of charts and visualizations using AntV
 metadata:
-  categories: Data & Analytics,Verified
+  categories: Data & Analytics
 icon: https://avatars.githubusercontent.com/u/19199542?v=4
 repoURL: https://github.com/antvis/mcp-server-chart
 env:

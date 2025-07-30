@@ -353,7 +353,7 @@ description: |
   - **Database Access**: Connection permissions to databases you want to access
 
 metadata:
-  categories: Databases,Data & Analytics,Verified
+  categories: Databases,Data & Analytics
 icon: https://avatars.githubusercontent.com/u/3299148?s=48&v=4
 repoURL: https://github.com/awslabs/mcp/tree/main/src/redshift-mcp-server
 env:

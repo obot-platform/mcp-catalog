@@ -1,7 +1,7 @@
 name: Time
 description: Get current time and convert between timezones using IANA timezone names
 metadata:
-  categories: Time & Scheduling,Verified
+  categories: Time & Scheduling
 icon: https://avatars.githubusercontent.com/u/182288589?v=4
 repoURL: https://github.com/modelcontextprotocol/servers/tree/main/src/time
 env: []
