@@ -1,20 +1,85 @@
-name: MongoDB Local
+name: MongoDB Atlas
 description: |
-  # MongoDB Local MCP Server
+  # MongoDB Atlas MCP Server
 
-  A Model Context Protocol server for interacting with MongoDB Databases.
+  A Model Context Protocol server for interacting with MongoDB Atlas Cloud Service.
+  If you want to connect to your own MongoDB database, use the *MongoDB Local MCP Server* instead.
 
   <a name="getting-started"></a>
 
   ## 🚀 Prerequisites
 
-  - A MongoDB connection string, **_the Server will not start unless configured_**.
+  - A MongoDB connection string or Atlas API credentials, **_the Server will not start unless configured_**.
+    - **_Service Accounts Atlas API credentials_** are required to use the Atlas tools. You can create a service account in MongoDB Atlas and use its credentials for authentication. See [Atlas API Access](#atlas-api-access) for more details.
     - If you have a MongoDB connection string, you can use it directly to connect to your MongoDB instance.
-    - If you want to use MongoDB Atlas Cloud Service, use the *MongoDB Atlas MCP Server* instead.
+
+  ### Atlas API Access
+
+  To use the Atlas API tools, you'll need to create a service account in MongoDB Atlas:
+
+  > **ℹ️ Note:** For a detailed breakdown of the minimum required permissions for each Atlas operation, see the [Atlas API Permissions](#atlas-api-permissions) section below.
+
+  1. **Create a Service Account:**
+    - Log in to MongoDB Atlas at [cloud.mongodb.com](https://cloud.mongodb.com)
+    - Navigate to Access Manager > Organization Access
+    - Click Add New > Applications > Service Accounts
+    - Enter name, description and expiration for your service account (e.g., "MCP, MCP Server Access, 7 days")
+    - **Assign only the minimum permissions needed for your use case.**
+      - See [Atlas API Permissions](#atlas-api-permissions) for details.
+    - Click "Create"
+
+  To learn more about Service Accounts, check the [MongoDB Atlas documentation](https://www.mongodb.com/docs/atlas/api/service-accounts-overview/).
+
+  2. **Save Client Credentials:**
+    - After creation, you'll be shown the Client ID and Client Secret
+    - **Important:** Copy and save the Client Secret immediately as it won't be displayed again
+
+  3. **Add Access List Entry:**
+    - Add your IP address to the API access list
+
+  4. **Configure the MCP Server:**
+    - Use one of the configuration methods below to set your `apiClientId` and `apiClientSecret`
+
+  ### Atlas API Permissions
+
+  > **Security Warning:** Granting the Organization Owner role is rarely necessary and can be a security risk. Assign only the minimum permissions needed for your use case.
+
+  #### Quick Reference: Required roles per operation
+
+  | What you want to do                  | Safest Role to Assign (where)           |
+  | ------------------------------------ | --------------------------------------- |
+  | List orgs/projects                   | Org Member or Org Read Only (Org)       |
+  | Create new projects                  | Org Project Creator (Org)               |
+  | View clusters/databases in a project | Project Read Only (Project)             |
+  | Create/manage clusters in a project  | Project Cluster Manager (Project)       |
+  | Manage project access lists          | Project IP Access List Admin (Project)  |
+  | Manage database users                | Project Database Access Admin (Project) |
+
+  - **Prefer project-level roles** for most operations. Assign only to the specific projects you need to manage or view.
+  - **Avoid Organization Owner** unless you require full administrative control over all projects and settings in the organization.
+
+  For a full list of roles and their privileges, see the [Atlas User Roles documentation](https://www.mongodb.com/docs/atlas/reference/user-roles/#service-user-roles).
 
   ## 🛠️ Supported Tools
 
   ### Tool List
+
+  #### MongoDB Atlas Tools
+
+  - `atlas-list-orgs` - Lists MongoDB Atlas organizations
+  - `atlas-list-projects` - Lists MongoDB Atlas projects
+  - `atlas-create-project` - Creates a new MongoDB Atlas project
+  - `atlas-list-clusters` - Lists MongoDB Atlas clusters
+  - `atlas-inspect-cluster` - Inspect a specific MongoDB Atlas cluster
+  - `atlas-create-free-cluster` - Create a free MongoDB Atlas cluster
+  - `atlas-connect-cluster` - Connects to MongoDB Atlas cluster
+  - `atlas-inspect-access-list` - Inspect IP/CIDR ranges with access to MongoDB Atlas clusters
+  - `atlas-create-access-list` - Configure IP/CIDR access list for MongoDB Atlas clusters
+  - `atlas-list-db-users` - List MongoDB Atlas database users
+  - `atlas-create-db-user` - Creates a MongoDB Atlas database user
+  - `atlas-list-alerts` - List MongoDB Atlas Alerts for a Project
+
+  NOTE: atlas tools are only available when you set credentials on [configuration](#configuration) section.
 
   #### MongoDB Database Tools
 
@@ -162,11 +227,16 @@ metadata:
 icon: https://avatars.githubusercontent.com/u/45120?s=48&v=4
 repoURL: https://github.com/mongodb-js/mongodb-mcp-server
 env:
-  - key: MDB_MCP_CONNECTION_STRING
-    name: MongoDB Connection String
+  - key: MDB_MCP_API_CLIENT_ID
+    name: MongoDB API Client ID
     required: true
     sensitive: false
-    description: The connection string for your MongoDB database.
+    description: The client ID for your MongoDB Service Accounts Atlas API credentials.
+  - key: MDB_MCP_API_CLIENT_SECRET
+    name: MongoDB API Client Secret
+    required: true
+    sensitive: true
+    description: The client secret for your MongoDB Service Accounts Atlas API credentials.
   # - key: MDB_MCP_READ_ONLY ## TODO: need dynamic args support, see issue https://github.com/obot-platform/obot/issues/3619 feature request 1
   #   name: MongoDB Read Only
   #   required: false
@@ -175,7 +245,9 @@ env:
 args:
   - -y
   - mongodb-mcp-server
-  - --connectionString
-  - ${MDB_MCP_CONNECTION_STRING}
+  - --apiClientId
+  - ${MDB_MCP_API_CLIENT_ID}
+  - --apiClientSecret
+  - ${MDB_MCP_API_CLIENT_SECRET}
   - --readOnly
 command: npx
