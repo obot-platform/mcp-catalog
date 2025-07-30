@@ -44,7 +44,7 @@ description: |
 
   #### 3. Click `Connect To Server` and Connect:
 
-  **Note:** Make sure to set either the `NOTION_TOKEN` environment variable (recommended) or the `OPENAPI_MCP_HEADERS` environment variable (for advanced use cases) with your Notion integration token.
+  **Note:** In the configuration, make sure to set either the `NOTION_TOKEN` (recommended) or the `OPENAPI_MCP_HEADERS` (for advanced use cases) with your Notion integration token.
 
   ### Examples
 

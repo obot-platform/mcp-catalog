@@ -20,7 +20,7 @@ description: |
   1. **Credentials**: AWS credentials
   2. **Permissions**: Ensure your AWS credentials have the required permissions (see [Permissions](#permissions) section)
 
-  ### Environment Variables
+  ### Configuration Options
 
   - `AWS_REGION`: AWS region to use (default: `us-east-1`)
   - `AWS_ACCESS_KEY_ID`: Your aws credential access key
@@ -358,22 +358,22 @@ icon: https://avatars.githubusercontent.com/u/3299148?s=48&v=4
 repoURL: https://github.com/awslabs/mcp/tree/main/src/redshift-mcp-server
 env:
   - key: AWS_ACCESS_KEY_ID
-    name: AWS Access Key ID
+    name: AWS_ACCESS_KEY_ID
     required: true
     sensitive: true
     description: Your AWS Access Key ID
   - key: AWS_SECRET_ACCESS_KEY
-    name: AWS Secret Access Key
+    name: AWS_SECRET_ACCESS_KEY
     required: true
     sensitive: true
     description: AWS Secret Access Key
   - key: AWS_SESSION_TOKEN
-    name: AWS Session Token
+    name: AWS_SESSION_TOKEN
     required: false
     sensitive: true
     description: AWS Session Token, only required if using temporary credentials such as temporary AWS credentials, such as those obtained through aws sso login or other temporary access methods (for example, STS AssumeRole)
   - key: AWS_REGION
-    name: AWS Region
+    name: AWS_REGION
     required: true
     sensitive: false
     description: AWS Region

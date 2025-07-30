@@ -14,14 +14,10 @@ description: |
 
   ## Configuration
 
-  ### Environment Variables
+  - `FIRECRAWL_API_KEY`: Your Firecrawl API key
+    - Required when using cloud API (default)
 
-  #### Required for Cloud API
-
-    - `FIRECRAWL_API_KEY`: Your Firecrawl API key
-      - Required when using cloud API (default)
-
-  ### Rate Limiting and Batch Processing
+  ## Rate Limiting and Batch Processing
 
   The server utilizes Firecrawl's built-in rate limiting and batch processing capabilities:
 
