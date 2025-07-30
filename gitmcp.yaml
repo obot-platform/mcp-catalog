@@ -162,9 +162,7 @@ description: |
 
   GitMCP only accesses content that is already publicly available and only when queried by a user. GitMCP does not automatically scrape repositories. Before accessing any GitHub Pages site, the code checks for `robots.txt` rules and follows the directives set by site owners, allowing them to opt out. Please note that GitMCP doesn't permanently store data regarding the GitHub projects or their content.
 
-  ## 📄 License
 
-  This project is licensed under the [Apache License 2.0](https://raw.githubusercontent.com/idosal/git-mcp/refs/heads/main/LICENSE).
 
   ## Disclaimer
 

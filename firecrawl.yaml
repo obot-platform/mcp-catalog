@@ -487,10 +487,6 @@ description: |
 
   Thanks to MCP.so and Klavis AI for hosting and [@gstarwd](https://github.com/gstarwd), [@xiangkaiz](https://github.com/xiangkaiz) and [@zihaolin96](https://github.com/zihaolin96) for integrating our server.
 
-  ### License
-
-  MIT License - see [LICENSE](https://raw.githubusercontent.com/mendableai/firecrawl-mcp-server/refs/heads/main/LICENSE) file for details
-
 metadata:
   categories: Retrieval & Search,Automation & Browsers,Science & Research
   source: vendor
