@@ -1,16 +1,355 @@
 name: AntV Charts
-description: Generate various types of charts and visualizations using AntV
+description: |
+  # MCP Server Chart  ![](https://badge.mcpx.dev?type=server 'MCP Server')  [![build](https://github.com/antvis/mcp-server-chart/actions/workflows/build.yml/badge.svg)](https://github.com/antvis/mcp-server-chart/actions/workflows/build.yml) [![npm Version](https://img.shields.io/npm/v/@antv/mcp-server-chart.svg)](https://www.npmjs.com/package/@antv/mcp-server-chart) [![npm License](https://img.shields.io/npm/l/@antv/mcp-server-chart.svg)](https://www.npmjs.com/package/@antv/mcp-server-chart)
+
+  A Model Context Protocol server for generating charts using [AntV](https://github.com/antvis/). We can use this mcp server for _chart generation_ and _data analysis_.
+
+  <a href="https://www.star-history.com/#antvis/mcp-server-chart&Date">
+    <img width="512" src="https://api.star-history.com/svg?repos=antvis/mcp-server-chart&type=Date" />
+  </a>
+
+  This is a TypeScript-based MCP server that provides chart generation capabilities. It allows you to create various types of charts through MCP tools. You can also use it in [Dify](https://marketplace.dify.ai/plugins/antv/visualization).
+
+  ## ✨ Features
+
+  Now 25+ charts supported.
+
+  <img width="768" alt="mcp-server-chart preview" src="https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*IyIRQIQHyKYAAAAAgCAAAAgAemJ7AQ/fmt.avif" />
+
+  1. `generate_area_chart`: Generate an `area` chart, used to display the trend of data under a continuous independent variable, allowing observation of overall data trends.
+  2. `generate_bar_chart`: Generate a `bar` chart, used to compare values across different categories, suitable for horizontal comparisons.
+  3. `generate_boxplot_chart`: Generate a `boxplot`, used to display the distribution of data, including the median, quartiles, and outliers.
+  4. `generate_column_chart`: Generate a `column` chart, used to compare values across different categories, suitable for vertical comparisons.
+  5. `generate_district_map`: Generate a `district-map`, used to show administrative divisions and data distribution.
+  6. `generate_dual_axes_chart`: Generate a `dual-axes` chart, used to display the relationship between two variables with different units or ranges.
+  7. `generate_fishbone_diagram`: Generate a `fishbone` diagram, also known as an Ishikawa diagram, used to identify and display the root causes of a problem.
+  8. `generate_flow_diagram`: Generate a `flowchart`, used to display the steps and sequence of a process.
+  9. `generate_funnel_chart`: Generate a `funnel` chart, used to display data loss at different stages.
+  10. `generate_histogram_chart`: Generate a `histogram`, used to display the distribution of data by dividing it into intervals and counting the number of data points in each interval.
+  11. `generate_line_chart`: Generate a `line` chart, used to display the trend of data over time or another continuous variable.
+  12. `generate_liquid_chart`: Generate a `liquid` chart, used to display the proportion of data, visually representing percentages in the form of water-filled spheres.
+  13. `generate_mind_map`: Generate a `mind-map`, used to display thought processes and hierarchical information.
+  14. `generate_network_graph`: Generate a `network` graph, used to display relationships and connections between nodes.
+  15. `generate_organization_chart`: Generate an `organizational` chart, used to display the structure of an organization and personnel relationships.
+  16. `generate_path_map`: Generate a `path-map`, used to display route planning results for POIs.
+  17. `generate_pie_chart`: Generate a `pie` chart, used to display the proportion of data, dividing it into parts represented by sectors showing the percentage of each part.
+  18. `generate_pin_map`: Generate a `pin-map`, used to show the distribution of POIs.
+  19. `generate_radar_chart`: Generate a `radar` chart, used to display multi-dimensional data comprehensively, showing multiple dimensions in a radar-like format.
+  20. `generate_sankey_chart`: Generate a `sankey` chart, used to display data flow and volume, representing the movement of data between different nodes in a Sankey-style format.
+  21. `generate_scatter_chart`: Generate a `scatter` plot, used to display the relationship between two variables, showing data points as scattered dots on a coordinate system.
+  22. `generate_treemap_chart`: Generate a `treemap`, used to display hierarchical data, showing data in rectangular forms where the size of rectangles represents the value of the data.
+  23. `generate_venn_chart`: Generate a `venn` diagram, used to display relationships between sets, including intersections, unions, and differences.
+  24. `generate_violin_chart`: Generate a `violin` plot, used to display the distribution of data, combining features of boxplots and density plots to provide a more detailed view of the data distribution.
+  25. `generate_word_cloud_chart`: Generate a `word-cloud`, used to display the frequency of words in textual data, with font sizes indicating the frequency of each word.
+
+  > [!NOTE]
+  > The above geographic visualization chart generation tool uses [AMap service](https://lbs.amap.com/) and currently only supports map generation within China.
+  ## ⚙️ Configuration Options
+
+  | Variable | Description | Default | Example |
+  |----------|:------------|---------|---------|
+  | `VIS_REQUEST_SERVER` | Custom chart generation service URL for private deployment | `https://antv-studio.alipay.com/api/gpt-vis` | `https://your-server.com/api/chart` |
+  | `SERVICE_ID` | Service identifier for chart generation records | - | `your-service-id-123` |
+  | `DISABLED_TOOLS` | Comma-separated list of tool names to disable | - | `generate_fishbone_diagram,generate_mind_map` |
+
+  ### 📠 Private Deployment
+
+  `MCP Server Chart` provides a free chart generation service by default. For users with a need for private deployment, they can try using `VIS_REQUEST_SERVER` to customize their own chart generation service.
+
+  You can use AntV's project [GPT-Vis-SSR](https://github.com/antvis/GPT-Vis/tree/main/bindings/gpt-vis-ssr) to deploy an HTTP service in a private environment, and then pass the URL address through configuration option `VIS_REQUEST_SERVER`.
+
+  - **Method**: `POST`
+  - **Parameter**: Which will be passed to `GPT-Vis-SSR` for rendering. Such as, `{ "type": "line", "data": [{ "time": "2025-05", "value": 512 }, { "time": "2025-06", "value": 1024 }] }`.
+  - **Return**: The return object of HTTP service.
+    - **success**: `boolean` Whether generate chart image successfully.
+    - **resultObj**: `string` The chart image url.
+    - **errorMessage**: `string` When `success = false`, return the error message.
+
+  > [!NOTE]
+  > The private deployment solution currently does not support geographic visualization chart generation include 3 tools: `generate_district_map`, `generate_path_map`, `generate_pin_map`.
+
+  ### 🗺️ Generate Records
+
+  By default, users are required to save the results themselves, but we also provide a service for viewing the chart generation records, which requires users to generate a service identifier for themselves and configure it.
+
+  Use Alipay to scan and open the mini program to generate a personal service identifier (click the "My" menu below, enter the "My Services" page, click the "Generate" button, and click the "Copy" button after success):
+
+  <img alt="my service identifier website" width="240" src="https://mdn.alipayobjects.com/huamei_dxq8v0/afts/img/dASoTLt6EywAAAAARqAAAAgADu43AQFr/fmt.webp" />
+
+  You need to set proper value of `SERVICE_ID` to the MCP server configuration. 
+
+  ### 🎛️ Tool Filtering
+
+  You can disable specific chart generation tools using the `DISABLED_TOOLS` option. This is useful when certain tools have compatibility issues with your MCP client or when you want to limit the available functionality.
+
+  **Available tool names for filtering** See the [✨ Features](#-features).
+
 metadata:
   categories: Data & Analytics
 icon: https://avatars.githubusercontent.com/u/19199542?v=4
 repoURL: https://github.com/antvis/mcp-server-chart
 env:
   - key: VIS_REQUEST_SERVER
-    name: Vis Request Server
+    name: VIS_REQUEST_SERVER
     required: false
     sensitive: false
-    description: Override the default chart image rendering endpoint with your own private/deployed chart generation service URL, e.g., from GPT-Vis-SSR.
+    description: Custom chart generation service URL for private deployment, e.g., from GPT-Vis-SSR.
+  - key: DISABLED_TOOLS
+    name: DISABLED_TOOLS
+    required: false
+    sensitive: false
+    description: Comma-separated list of tool names to disable
+  - key: SERVICE_ID
+    name: Service ID
+    required: false
+    sensitive: false
+    description: Service identifier for chart generation records
 args:
   - -y
   - '@antv/mcp-server-chart'
 command: npx
+toolPreview:
+  - name: generate_area_chart
+    description: Generate an area chart to show data trends under continuous independent variables and observe overall data trends, such as velocity over time.
+    params:
+      data: Array of data points with group, time, and value fields
+      title: Chart title (optional)
+      axisXTitle: X-axis title (optional)
+      axisYTitle: Y-axis title (optional)
+      width: Chart width (optional)
+      height: Chart height (optional)
+      stack: Whether to stack areas (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including backgroundColor, palette, texture (optional)
+  - name: generate_bar_chart
+    description: Generate a horizontal bar chart for numerical comparisons among different categories and horizontal comparisons.
+    params:
+      data: Array of data points with category, group, and value fields
+      title: Chart title (optional)
+      axisXTitle: X-axis title (optional)
+      axisYTitle: Y-axis title (optional)
+      width: Chart width (optional)
+      height: Chart height (optional)
+      group: Whether to group bars (optional)
+      stack: Whether to stack bars (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including backgroundColor, palette, texture (optional)
+  - name: generate_column_chart
+    description: Generate a column chart, best for comparing categorical data when values are close, as eyes are better at judging height than other visual elements.
+    params:
+      data: Array of data points with category, group, and value fields
+      title: Chart title (optional)
+      axisXTitle: X-axis title (optional)
+      axisYTitle: Y-axis title (optional)
+      width: Chart width (optional)
+      height: Chart height (optional)
+      group: Whether to group columns (optional)
+      stack: Whether to stack columns (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including backgroundColor, palette, texture (optional)
+  - name: generate_line_chart
+    description: Generate a line chart to show trends over time, such as tracking changes in sales or performance metrics over a period.
+    params:
+      data: Array of data points with time and value fields
+      title: Chart title (optional)
+      axisXTitle: X-axis title (optional)
+      axisYTitle: Y-axis title (optional)
+      width: Chart width (optional)
+      height: Chart height (optional)
+      stack: Whether to stack lines (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including backgroundColor, palette, texture, lineWidth (optional)
+  - name: generate_pie_chart
+    description: Generate a pie chart to show the proportion of parts, such as market share and budget allocation.
+    params:
+      data: Array of data points with category and value fields
+      title: Chart title (optional)
+      width: Chart width (optional)
+      height: Chart height (optional)
+      innerRadius: Inner radius for donut charts (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including backgroundColor, palette, texture (optional)
+  - name: generate_scatter_chart
+    description: Generate a scatter chart to show the relationship between two variables, helps discover correlations and data distribution patterns.
+    params:
+      data: Array of data points with x and y coordinate fields
+      title: Chart title (optional)
+      axisXTitle: X-axis title (optional)
+      axisYTitle: Y-axis title (optional)
+      width: Chart width (optional)
+      height: Chart height (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including backgroundColor, palette, texture (optional)
+  - name: generate_histogram_chart
+    description: Generate a histogram chart to show the frequency of data points within ranges, observe data distribution and identify concentration areas.
+    params:
+      data: Array of numerical values
+      title: Chart title (optional)
+      axisXTitle: X-axis title (optional)
+      axisYTitle: Y-axis title (optional)
+      width: Chart width (optional)
+      height: Chart height (optional)
+      binNumber: Number of bins for grouping data (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including backgroundColor, palette, texture (optional)
+  - name: generate_boxplot_chart
+    description: Generate a boxplot chart for statistical summaries among different categories, comparing the distribution of data points across categories.
+    params:
+      data: Array of data points with category, group, and value fields
+      title: Chart title (optional)
+      axisXTitle: X-axis title (optional)
+      axisYTitle: Y-axis title (optional)
+      width: Chart width (optional)
+      height: Chart height (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including backgroundColor, palette, texture (optional)
+  - name: generate_violin_chart
+    description: Generate a violin chart for statistical summaries among different categories, showing distribution shape and data density.
+    params:
+      data: Array of data points with category, group, and value fields
+      title: Chart title (optional)
+      axisXTitle: X-axis title (optional)
+      axisYTitle: Y-axis title (optional)
+      width: Chart width (optional)
+      height: Chart height (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including backgroundColor, palette, texture (optional)
+  - name: generate_radar_chart
+    description: Generate a radar chart to display multidimensional data (four dimensions or more), such as comparing products across multiple criteria.
+    params:
+      data: Array of data points with group, name, and value fields
+      title: Chart title (optional)
+      width: Chart width (optional)
+      height: Chart height (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including backgroundColor, palette, texture (optional)
+  - name: generate_funnel_chart
+    description: Generate a funnel chart to visualize progressive reduction of data through stages, such as conversion rates in sales processes.
+    params:
+      data: Array of data points with category and value fields
+      title: Chart title (optional)
+      width: Chart width (optional)
+      height: Chart height (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including backgroundColor, palette, texture (optional)
+  - name: generate_sankey_chart
+    description: Generate a sankey chart to visualize data flow between different stages or categories, such as user journey analysis.
+    params:
+      data: Array of flow data with source, target, and value fields
+      title: Chart title (optional)
+      width: Chart width (optional)
+      height: Chart height (optional)
+      nodeAlign: Alignment of nodes (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including backgroundColor, palette, texture (optional)
+  - name: generate_treemap_chart
+    description: Generate a treemap chart to display hierarchical data and show comparisons between items at the same level, such as disk space usage.
+    params:
+      data: Array of hierarchical data with children, name, and value fields
+      title: Chart title (optional)
+      width: Chart width (optional)
+      height: Chart height (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including backgroundColor, palette, texture (optional)
+  - name: generate_dual_axes_chart
+    description: Generate a dual axes chart combining two different chart types, typically bar and line charts to display trends and comparisons.
+    params:
+      categories: Array of category labels
+      series: Array of data series with axisYTitle, data, and type fields
+      title: Chart title (optional)
+      axisXTitle: X-axis title (optional)
+      width: Chart width (optional)
+      height: Chart height (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including backgroundColor, palette, texture (optional)
+  - name: generate_liquid_chart
+    description: Generate a liquid chart to visualize a single value as a percentage, such as reservoir occupancy or project completion rate.
+    params:
+      percent: Percentage value to display
+      title: Chart title (optional)
+      width: Chart width (optional)
+      height: Chart height (optional)
+      shape: Shape of the liquid container (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including backgroundColor, color, texture (optional)
+  - name: generate_word_cloud_chart
+    description: Generate a word cloud chart to show word frequency or weight through text size variation, useful for analyzing common words in content.
+    params:
+      data: Array of words with text and value fields
+      title: Chart title (optional)
+      width: Chart width (optional)
+      height: Chart height (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including backgroundColor, palette, texture (optional)
+  - name: generate_venn_chart
+    description: Generate a Venn diagram to visualize relationships between different sets, showing intersections and overlaps between groups.
+    params:
+      data: Array of set data with label, sets, and value fields
+      title: Chart title (optional)
+      width: Chart width (optional)
+      height: Chart height (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including backgroundColor, palette, texture (optional)
+  - name: generate_network_graph
+    description: Generate a network graph chart to show relationships (edges) between entities (nodes), such as social network connections.
+    params:
+      data: Object with nodes and edges arrays
+      width: Chart width (optional)
+      height: Chart height (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including texture (optional)
+  - name: generate_organization_chart
+    description: Generate an organization chart to visualize hierarchical structure, such as company reporting relationships.
+    params:
+      data: Hierarchical data with children, description, and name fields
+      width: Chart width (optional)
+      height: Chart height (optional)
+      orient: Chart orientation (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including texture (optional)
+  - name: generate_mind_map
+    description: Generate a mind map chart to organize information in hierarchical structure with branches from a central topic.
+    params:
+      data: Hierarchical data with children and name fields
+      width: Chart width (optional)
+      height: Chart height (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including texture (optional)
+  - name: generate_fishbone_diagram
+    description: Generate a fishbone diagram using fish skeleton structure to display causes or effects of a core problem.
+    params:
+      data: Hierarchical data with children and name fields
+      width: Chart width (optional)
+      height: Chart height (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including texture (optional)
+  - name: generate_flow_diagram
+    description: Generate a flow diagram chart to show steps and decision points of a process or system for linear process presentation.
+    params:
+      data: Object with nodes and edges arrays
+      width: Chart width (optional)
+      height: Chart height (optional)
+      theme: Chart theme (optional)
+      style: Style configuration including texture (optional)
+  - name: generate_district_map
+    description: Generate regional distribution maps for administrative divisions and coverage datasets, limited to generating data maps within China.
+    params:
+      data: Map data with colors, labels, values, and subdistrictc configuration
+      title: Map title
+      width: Map width (optional)
+      height: Map height (optional)
+  - name: generate_pin_map
+    description: Generate a point map to display location and distribution of point data, such as attractions, hospitals, or supermarkets.
+    params:
+      data: Array of location data
+      title: Map title
+      width: Map width (optional)
+      height: Map height (optional)
+      markerPopup: Popup configuration for markers (optional)
+  - name: generate_path_map
+    description: Generate a route map to display planned routes, such as travel guide routes and navigation paths.
+    params:
+      data: Array of route data
+      title: Map title
+      width: Map width (optional)
+      height: Map height (optional)

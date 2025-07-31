@@ -1,0 +1,242 @@
+name: Neon Database
+description: |
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://neon.com/brand/neon-logo-dark-color.svg">
+    <source media="(prefers-color-scheme: light)" srcset="https://neon.com/brand/neon-logo-light-color.svg">
+    <img width="250px" alt="Neon Logo fallback" src="https://neon.com/brand/neon-logo-dark-color.svg">
+  </picture>
+
+  # Neon MCP Server
+
+  **Neon MCP Server** is an open-source tool that lets you interact with your Neon Postgres databases in **natural language**.
+
+  [![npm version](https://img.shields.io/npm/v/@neondatabase/mcp-server-neon)](https://www.npmjs.com/package/@neondatabase/mcp-server-neon)
+  [![npm downloads](https://img.shields.io/npm/dt/@neondatabase/mcp-server-neon)](https://www.npmjs.com/package/@neondatabase/mcp-server-neon)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+  The Model Context Protocol (MCP) is a [new, standardized protocol](https://modelcontextprotocol.io/introduction) designed to manage context between large language models (LLMs) and external systems. This repository offers an installer and an MCP Server for [Neon](https://neon.tech).
+
+  Neon's MCP server acts as a bridge between natural language requests and the [Neon API](https://api-docs.neon.tech/reference/getting-started-with-neon-api). Built upon MCP, it translates your requests into the necessary API calls, enabling you to manage tasks such as creating projects and branches, running queries, and performing database migrations seamlessly.
+
+  Some of the key features of the Neon MCP server include:
+
+  - **Natural language interaction:** Manage Neon databases using intuitive, conversational commands.
+  - **Simplified database management:** Perform complex actions without writing SQL or directly using the Neon API.
+  - **Accessibility for non-developers:** Empower users with varying technical backgrounds to interact with Neon databases.
+  - **Database migration support:** Leverage Neon's branching capabilities for database schema changes initiated via natural language.
+
+  For example, in Claude Desktop, or any MCP Client, you can use natural language to accomplish things with Neon, such as:
+
+  - `Let's create a new Postgres database, and call it "my-database". Let's then create a table called users with the following columns: id, name, email, and password.`
+  - `I want to run a migration on my project called "my-project" that alters the users table to add a new column called "created_at".`
+  - `Can you give me a summary of all of my Neon projects and what data is in each one?`
+
+  > [!WARNING]  
+  > **Neon MCP Server Security Considerations**  
+  > The Neon MCP Server grants powerful database management capabilities through natural language requests. **Always review and authorize actions requested by the LLM before execution.** Ensure that only authorized users and applications have access to the Neon MCP Server.
+  >
+  > The Neon MCP Server is intended for local development and IDE integrations only. **We do not recommend using the Neon MCP Server in production environments.** It can execute powerful operations that may lead to accidental or unauthorized changes.
+  >
+  > For more information, see [MCP security guidance →](https://neon.tech/docs/ai/neon-mcp-server#mcp-security-guidance).
+
+  ## Prerequisites
+
+  - A [Neon account](https://console.neon.tech/signup).
+
+  # Features
+
+  ## Supported Tools
+
+  The Neon MCP Server provides the following actions, which are exposed as "tools" to MCP Clients. You can use these tools to interact with your Neon projects and databases using natural language commands.
+
+  **Project Management:**
+
+  - **`list_projects`**: Lists the first 10 Neon projects in your account, providing a summary of each project. If you can't find a specific project, increase the limit by passing a higher value to the `limit` parameter.
+  - **`describe_project`**: Fetches detailed information about a specific Neon project, including its ID, name, and associated branches and databases.
+  - **`create_project`**: Creates a new Neon project in your Neon account. A project acts as a container for branches, databases, roles, and computes.
+  - **`delete_project`**: Deletes an existing Neon project and all its associated resources.
+
+  **Branch Management:**
+
+  - **`create_branch`**: Creates a new branch within a specified Neon project. Leverages Neon's branching feature for development, testing, or migrations.
+  - **`delete_branch`**: Deletes an existing branch from a Neon project.
+  - **`describe_branch`**: Retrieves details about a specific branch, such as its name, ID, and parent branch.
+  - **`list_branch_computes`**: Lists compute endpoints for a project or specific branch, including compute ID, type, size, and autoscaling information.
+  - **`list_organizations`**: Lists all organizations that the current user has access to. Optionally filter by organization name or ID using the search parameter.
+
+  **SQL Query Execution:**
+
+  - **`get_connection_string`**: Returns your database connection string.
+  - **`run_sql`**: Executes a single SQL query against a specified Neon database. Supports both read and write operations.
+  - **`run_sql_transaction`**: Executes a series of SQL queries within a single transaction against a Neon database.
+  - **`get_database_tables`**: Lists all tables within a specified Neon database.
+  - **`describe_table_schema`**: Retrieves the schema definition of a specific table, detailing columns, data types, and constraints.
+  - **`list_slow_queries`**: Identifies performance bottlenecks by finding the slowest queries in a database. Requires the pg_stat_statements extension.
+
+  **Database Migrations (Schema Changes):**
+
+  - **`prepare_database_migration`**: Initiates a database migration process. Critically, it creates a temporary branch to apply and test the migration safely before affecting the main branch.
+  - **`complete_database_migration`**: Finalizes and applies a prepared database migration to the main branch. This action merges changes from the temporary migration branch and cleans up temporary resources.
+
+  **Query Performance Optimization:**
+
+  - **`explain_sql_statement`**: Provides detailed execution plans for SQL queries to help identify performance bottlenecks.
+  - **`prepare_query_tuning`**: Analyzes query performance and suggests optimizations like index creation. Creates a temporary branch for safely testing these optimizations.
+  - **`complete_query_tuning`**: Applies or discards query optimizations after testing. Can merge changes from the temporary branch to the main branch.
+
+  **Compute Management:**
+
+  - **`list_branch_computes`**: Lists compute endpoints for a project or specific branch, showing details like compute ID, type, size, and last active time.
+
+  **Neon Auth:**
+
+  - **`provision_neon_auth`**: Provisions Neon Auth for a Neon project. It allows developers to easily set up authentication infrastructure by creating an integration with Stack Auth (`@stackframe/stack`).
+
+  ## Migrations
+
+  Migrations are a way to manage changes to your database schema over time. With the Neon MCP server, LLMs are empowered to do migrations safely with separate "Start" (`prepare_database_migration`) and "Commit" (`complete_database_migration`) commands.
+
+  The "Start" command accepts a migration and runs it in a new temporary branch. Upon returning, this command hints to the LLM that it should test the migration on this branch. The LLM can then run the "Commit" command to apply the migration to the original branch.
+
+metadata:
+  categories: Databases
+icon: https://avatars.githubusercontent.com/u/183852044?v=4
+repoURL: https://github.com/neondatabase-labs/mcp-server-neon
+args:
+  - -y
+  - 'mcp-remote'
+  - https://mcp.neon.tech/mcp
+command: npx
+
+toolPreview:
+  - name: list_projects
+    description: Lists the first 10 Neon projects in your account. If you can't find the project, increase the limit by passing a higher value to the limit parameter.
+    params:
+      cursor: Optional cursor for pagination
+      limit: Maximum number of projects to return (default 10)
+      org_id: Optional organization ID to filter projects
+      search: Optional search string to filter projects
+  - name: create_project
+    description: Create a new Neon project. If someone is trying to create a database, use this tool.
+    params:
+      name: Name for the new project
+      org_id: Optional organization ID
+  - name: delete_project
+    description: Delete a Neon project
+    params:
+      projectId: ID of the project to delete
+  - name: describe_project
+    description: Describes a Neon project
+    params:
+      projectId: ID of the project to describe
+  - name: run_sql
+    description: Execute a single SQL statement against a Neon database. If you have a temporary branch from a prior step, you MUST pass the branch ID to this tool unless explicitly told otherwise.
+    params:
+      branchId: Branch ID to execute SQL on
+      databaseName: Name of the database
+      projectId: Project ID
+      sql: SQL statement to execute
+  - name: run_sql_transaction
+    description: Execute a SQL transaction against a Neon database, should be used for multiple SQL statements. If you have a temporary branch from a prior step, you MUST pass the branch ID to this tool.
+    params:
+      branchId: Branch ID to execute transaction on
+      databaseName: Name of the database
+      projectId: Project ID
+      sqlStatements: Array of SQL statements to execute in transaction
+  - name: describe_table_schema
+    description: Describe the schema of a table in a Neon database
+    params:
+      branchId: Branch ID
+      databaseName: Name of the database
+      projectId: Project ID
+      tableName: Name of the table to describe
+  - name: get_database_tables
+    description: Get all tables in a Neon database
+    params:
+      branchId: Branch ID
+      databaseName: Name of the database
+      projectId: Project ID
+  - name: create_branch
+    description: Create a branch in a Neon project
+    params:
+      branchName: Name for the new branch
+      projectId: Project ID
+  - name: prepare_database_migration
+    description: Performs database schema migrations by automatically generating and executing DDL statements. Creates a temporary branch, applies migration SQL, and returns migration details for verification.
+    params:
+      databaseName: Name of the database
+      migrationSql: Migration SQL to execute
+      projectId: Project ID
+  - name: complete_database_migration
+    description: Complete a database migration when the user confirms the migration is ready to be applied to the main branch. Also deletes the temporary branch created by prepare_database_migration.
+    params:
+      migrationId: Migration ID from prepare_database_migration
+  - name: describe_branch
+    description: Get a tree view of all objects in a branch, including databases, schemas, tables, views, and functions
+    params:
+      branchId: Branch ID to describe
+      databaseName: Name of the database
+      projectId: Project ID
+  - name: delete_branch
+    description: Delete a branch from a Neon project
+    params:
+      branchId: Branch ID to delete
+      projectId: Project ID
+  - name: get_connection_string
+    description: Get a PostgreSQL connection string for a Neon database with all parameters being optional
+    params:
+      branchId: Optional branch ID
+      computeId: Optional compute ID
+      databaseName: Optional database name
+      projectId: Optional project ID
+      roleName: Optional role name
+  - name: provision_neon_auth
+    description: Provisions authentication for a Neon project by creating an integration with Stack Auth. Sets up authentication infrastructure including user tables and credentials.
+    params:
+      database: Optional database name (default neondb or first available)
+      projectId: Project ID to provision authentication for
+  - name: explain_sql_statement
+    description: Describe the PostgreSQL query execution plan for a SQL statement by running EXPLAIN (ANALYZE...) in the database
+    params:
+      analyze: Whether to include ANALYZE in the explain
+      branchId: Branch ID
+      databaseName: Name of the database
+      projectId: Project ID
+      sql: SQL statement to explain
+  - name: prepare_query_tuning
+    description: Helps improve PostgreSQL query performance by analyzing execution plans and suggesting optimizations. Creates a temporary branch for testing and provides tuning recommendations.
+    params:
+      databaseName: Name of the database
+      projectId: Project ID
+      roleName: Role name for connection
+      sql: SQL query to optimize
+  - name: complete_query_tuning
+    description: Complete a query tuning session by either applying the changes to the main branch or discarding them. Must be called after prepare_query_tuning for proper cleanup.
+    params:
+      applyChanges: Whether to apply the suggested changes
+      branchId: Main branch ID to apply changes to
+      databaseName: Name of the database
+      projectId: Project ID
+      roleName: Role name for connection
+      shouldDeleteTemporaryBranch: Whether to delete the temporary branch
+      suggestedSqlStatements: Array of suggested SQL statements
+      temporaryBranchId: Temporary branch ID from prepare_query_tuning
+      tuningId: Tuning ID from prepare_query_tuning
+  - name: list_slow_queries
+    description: List slow queries from your Neon database using the pg_stat_statements extension. Returns queries sorted by execution time with slowest queries first.
+    params:
+      branchId: Branch ID
+      computeId: Compute ID
+      databaseName: Name of the database
+      limit: Maximum number of queries to return
+      minExecutionTime: Minimum execution time threshold
+      projectId: Project ID
+  - name: list_branch_computes
+    description: Lists compute endpoints for a project or specific branch
+    params:
+      branchId: Branch ID
+      projectId: Project ID
+  - name: list_organizations
+    description: Lists all organizations that the current user has access to. Optionally filter by organization name or ID using the search parameter.
+    params:
+      search: Optional search string to filter organizations
