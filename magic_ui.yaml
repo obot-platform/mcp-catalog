@@ -75,10 +75,6 @@ env:
     required: true
     sensitive: true
     description: Your Magic API key.
-args:
-  - -y
-  - '@21st-dev/magic@latest'
-command: npx
 toolPreview:
   - name: 21st_magic_component_builder
     description: Use this tool when the user requests a new UI component—e.g., mentions /ui, /21 /21st, or asks for a button, input, dialog, table, form, banner, card, or other React component.
@@ -104,3 +100,7 @@ toolPreview:
       absolutePathToRefiningFile: Absolute path to the file that needs to be refined
       context: Extract the specific UI elements and aspects that need improvement based on user messages, code, and conversation history. Identify exactly which components (buttons, forms, modals, etc.) the user is referring to and what aspects (styling, layout, responsiveness, etc.) they want to enhance.
       userMessage: Full user's message about UI refinement
+
+runtime: npx
+npxConfig:
+  package: '@21st-dev/magic@latest'

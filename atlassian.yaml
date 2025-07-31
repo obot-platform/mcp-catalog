@@ -91,8 +91,9 @@ metadata:
   categories: Developer Tools
 icon: https://cdn.brandfetch.io/idlQIwGMOK/theme/dark/logo.svg?c=1bxid64Mup7aczewSAYMX&t=1667563471928
 repoURL: https://support.atlassian.com/rovo/docs/atlassian-remote-mcp-server/
-args:
-  - -y
-  - mcp-remote
-  - https://mcp.atlassian.com/v1/sse
-command: npx
+
+runtime: npx
+npxConfig:
+  package: mcp-remote
+  args:
+    - https://mcp.atlassian.com/v1/sse

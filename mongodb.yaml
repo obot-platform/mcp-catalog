@@ -63,13 +63,6 @@ env:
   #   required: false
   #   sensitive: false
   #   description: Whether to run the MongoDB MCP server in read-only mode, default is false.
-args:
-  - -y
-  - mongodb-mcp-server
-  - --connectionString
-  - ${MDB_MCP_CONNECTION_STRING}
-  - --readOnly
-command: npx
 toolPreview:
   - name: connect
     description: Connect to a MongoDB instance
@@ -180,3 +173,11 @@ toolPreview:
     params:
       limit: Optional maximum number of log entries to return
       type: Optional log type filter
+
+runtime: npx
+npxConfig:
+  package: mongodb-mcp-server
+  args:
+    - --connectionString
+    - ${MDB_MCP_CONNECTION_STRING}
+    - --readOnly
