@@ -690,5 +690,5 @@ env:
 runtime: containerized
 containerizedConfig:
   image: ghcr.io/obot-platform/mcp-images-github:main
-  path: "/sse"
+  path: "/"
   port: 8099
