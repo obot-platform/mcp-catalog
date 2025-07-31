@@ -19,7 +19,7 @@ description: |
 
   ## Tool Configuration
 
-  The GitHub MCP Server supports enabling or disabling specific groups of functionalities via the `GITHUB_TOOLSETS` environment variable. This allows you to control which GitHub API capabilities are available to your AI tools. Enabling only the toolsets that you need can help the LLM with tool choice and reduce the context size.
+  The GitHub MCP Server supports enabling or disabling specific groups of functionalities via the `GITHUB_TOOLSETS` . This allows you to control which GitHub API capabilities are available to your AI tools. Enabling only the toolsets that you need can help the LLM with tool choice and reduce the context size.
 
   _Toolsets are not limited to Tools. Relevant MCP Resources and Prompts are also included where applicable._
 
@@ -631,7 +631,7 @@ description: |
 
   #### Specifying Toolsets
 
-  To specify toolsets you want set the environment variable: `GITHUB_TOOLSETS="repos,issues,pull_requests,actions,code_security`
+  To specify toolsets you want set the configuration option `GITHUB_TOOLSETS` to the comma-separated list of toolsets you want to enable.
 
   ### The "all" Toolset
 
@@ -645,15 +645,12 @@ description: |
 
   ### Using Dynamic Tool Discovery
 
-  When using Docker, you can set the environment variable: `GITHUB_DYNAMIC_TOOLSETS=1`
+  When using Docker, you can set the configuration option `GITHUB_DYNAMIC_TOOLSETS` to `1` to enable dynamic tool discovery.
 
-  ## Read-Only Mode
-
-  To run the server in read-only mode, you can set the environment variable: `GITHUB_READ_ONLY=1`
 
   ## GitHub Enterprise Server and Enterprise Cloud with data residency (ghe.com)
 
-  The the environment variable `GITHUB_HOST` can be used to set
+  The configuration option `GITHUB_HOST` can be used to set
   the hostname for GitHub Enterprise Server or GitHub Enterprise Cloud with data residency.
 
   - For GitHub Enterprise Server, prefix the hostname with the `https://` URI scheme, as it otherwise defaults to `http://`, which GitHub Enterprise Server does not support.
@@ -675,12 +672,12 @@ env:
     sensitive: true
     description: GitHub Personal Access Token used to authenticate with the GitHub API. Required for all GitHub operations.
   - key: GITHUB_TOOLSETS
-    name: Toolsets
+    name: GITHUB_TOOLSETS
     required: false
     sensitive: false
     description: Comma-separated list of enabled GitHub toolsets (e.g. repos,issues,pull_requests,code_security,experiments,all). Optional, defaults to all.
   - key: GITHUB_DYNAMIC_TOOLSETS
-    name: Dynamic Toolsets
+    name: GITHUB_DYNAMIC_TOOLSETS
     required: false
     sensitive: false
     description: Set to 1 to enable dynamic tool discovery. Optional.

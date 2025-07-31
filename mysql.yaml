@@ -15,15 +15,16 @@ description: |
   - Secure database access through environment variables
   - Comprehensive logging
 
-  ## Configuration
-  Have the following information of your MySql database ready:
-  ```
-  MYSQL_HOST=<localhost>    # Database host
-  MYSQL_PORT=<3306>         # Optional: Database port (defaults to 3306 if not specified)
-  MYSQL_USER=<your_username>
-  MYSQL_PASSWORD=<your_password>
-  MYSQL_DATABASE=<your_database>
-  ```
+  ## Configuration Options
+
+  ### Required
+  - `MYSQL_HOST`: Database host (e.g., `localhost`)
+  - `MYSQL_USER`: Database username
+  - `MYSQL_PASSWORD`: Database password  
+  - `MYSQL_DATABASE`: Database name
+
+  ### Optional
+  - `MYSQL_PORT`: Database port (default: `3306`)
 
   ## Security Considerations
   - Never commit environment variables or credentials
@@ -53,27 +54,27 @@ icon: https://avatars.githubusercontent.com/u/25017723?v=4
 repoURL: https://github.com/designcomputer/mysql_mcp_server
 env:
   - key: MYSQL_HOST
-    name: MySQL Host
+    name: MYSQL_HOST
     required: true
     sensitive: false
     description: The hostname or IP address of your MySQL database.
   - key: MYSQL_PORT
-    name: MySQL Port
+    name: MYSQL_PORT
     required: false
     sensitive: false
     description: The port number of your MySQL database. Defaults to 3306.
   - key: MYSQL_USER
-    name: MySQL User
+    name: MYSQL_USER
     required: true
     sensitive: false
     description: The username for your MySQL database.
   - key: MYSQL_PASSWORD
-    name: MySQL Password
+    name: MYSQL_PASSWORD
     required: true
     sensitive: true
     description: The password for your MySQL database.
   - key: MYSQL_DATABASE
-    name: MySQL Database
+    name: MYSQL_DATABASE
     required: true
     sensitive: false
     description: The name of your MySQL database.

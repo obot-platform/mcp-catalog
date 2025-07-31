@@ -8,9 +8,9 @@ description: |
 
   ## 🚀 Prerequisites
 
-  - A MongoDB connection string, **_the Server will not start unless configured_**.
-    - If you have a MongoDB connection string, you can use it directly to connect to your MongoDB instance.
-    - If you want to use MongoDB Atlas Cloud Service, use the *MongoDB Atlas MCP Server* instead.
+  - **MongoDB Connection String Required**: The server requires a valid connection string to start.
+    - Works with any MongoDB instance (local, cloud, or self-hosted).
+    - MongoDB Atlas users can use this server or the specialized *MongoDB Atlas MCP Server*.
 
   ## 🛠️ Supported Tools
 

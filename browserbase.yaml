@@ -27,8 +27,6 @@ description: |
   - `BROWSERBASE_PROJECT_ID`: Your Browserbase project ID
   - `GEMINI_API_KEY`: Your Gemini API key
 
-  _Note: The model must be supported in Stagehand. Check out the docs [here](https://docs.stagehand.dev/examples/custom_llms#supported-llms). When using any custom model, you must provide your own API key for that provider._
-
   ### Resources
 
   The server provides access to screenshot resources:

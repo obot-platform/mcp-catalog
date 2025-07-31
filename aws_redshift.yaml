@@ -22,10 +22,13 @@ description: |
 
   ### Configuration Options
 
+  #### Required
+  - `AWS_ACCESS_KEY_ID`: Your AWS credential access key
+  - `AWS_SECRET_ACCESS_KEY`: Your AWS credential access secret
+
+  #### Optional
   - `AWS_REGION`: AWS region to use (default: `us-east-1`)
-  - `AWS_ACCESS_KEY_ID`: Your aws credential access key
-  - `AWS_SECRET_ACCESS_KEY`: your aws credential access secret
-  - `AWS_SESSION_TOKEN`: AWS Session Token, only required if using temporary credentials such as temporary AWS credentials, such as those obtained through aws sso login or other temporary access methods (for example, STS AssumeRole)
+  - `AWS_SESSION_TOKEN`: AWS Session Token (only required for temporary credentials like SSO or STS AssumeRole)
 
   ## Basic Usage
 

@@ -1,13 +1,13 @@
 name: Tavily Search
 description: |
-  # ![Tavily Crawl Beta](./assets/Banner_NEW.png)
+  # ![Tavily Crawl Beta](https://raw.githubusercontent.com/tavily-ai/tavily-mcp/main/assets/Banner_NEW.png)
 
 
   ![GitHub Repo stars](https://img.shields.io/github/stars/tavily-ai/tavily-mcp?style=social)
   ![npm](https://img.shields.io/npm/dt/tavily-mcp)
 
 
-  ![MCP demo](./assets/demo_new.gif)
+  ![MCP demo](https://raw.githubusercontent.com/tavily-ai/tavily-mcp/main/assets/demo_new.gif)
 
   The Tavily MCP server provides:
   - search, extract, map, crawl tools

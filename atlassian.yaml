@@ -79,6 +79,7 @@ description: |
   - App authorizations can be revoked by end users through their profile settings or by admins in the Connect apps section of Atlassian Admin for site-level control.
   - Consider establishing usage guidelines or policies for teams leveraging AI-driven content generation.
   - Reach out to your Atlassian account representative for advice on OAuth scope control and long-term support planning.
+
   ## Support and feedback
   Your feedback plays a crucial role in shaping the Remote MCP Server. If you encounter bugs, limitations, or have suggestions:
   - Visit the Atlassian Support Portal to report issues.

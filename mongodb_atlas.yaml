@@ -26,7 +26,7 @@ description: |
     - Enter name, description and expiration for your service account (e.g., "MCP, MCP Server Access, 7 days")
     - **Assign only the minimum permissions needed for your use case.**
       - See [Atlas API Permissions](#atlas-api-permissions) for details.
-    - Click "Create"
+    - Click `Create`
 
   To learn more about Service Accounts, check the [MongoDB Atlas documentation](https://www.mongodb.com/docs/atlas/api/service-accounts-overview/).
 

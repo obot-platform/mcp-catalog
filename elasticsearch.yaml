@@ -43,16 +43,19 @@ description: |
 
   ## Configuration Options
 
+  ### Required
   - `ES_URL`: Your Elasticsearch instance URL
+
+  ### Authentication (choose one method)
+
+  **Option 1: API Key Authentication (Recommended)**
   - `ES_API_KEY`: Your Elasticsearch API key
-  - `ES_USERNAME`: Your Elasticsearch username
+
+  **Option 2: Username/Password Authentication**
+  - `ES_USERNAME`: Your Elasticsearch username  
   - `ES_PASSWORD`: Your Elasticsearch password
 
-  Either `ES_API_KEY` or `ES_USERNAME` and `ES_PASSWORD` must be provided.
-
-  If `ES_API_KEY` is provided, `ES_USERNAME` and `ES_PASSWORD` are ignored.
-
-  If `ES_API_KEY` is not provided, `ES_USERNAME` and `ES_PASSWORD` must be provided.
+  **Note**: If both authentication methods are provided, API key takes precedence and username/password will be ignored.
 
 metadata:
   categories: Databases
