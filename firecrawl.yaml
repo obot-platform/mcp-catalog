@@ -481,12 +481,6 @@ description: |
   }
   ```
 
-  ### Thanks to contributors
-
-  Thanks to [@vrknetha](https://github.com/vrknetha), [@cawstudios](https://caw.tech) for the initial implementation!
-
-  Thanks to MCP.so and Klavis AI for hosting and [@gstarwd](https://github.com/gstarwd), [@xiangkaiz](https://github.com/xiangkaiz) and [@zihaolin96](https://github.com/zihaolin96) for integrating our server.
-
 metadata:
   categories: Retrieval & Search,Automation & Browsers,Science & Research
   source: vendor
