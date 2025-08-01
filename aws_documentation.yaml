@@ -1,0 +1,118 @@
+name: AWS Documentation
+description: |
+  # AWS Documentation MCP Server
+
+  Model Context Protocol (MCP) server for AWS Documentation
+
+  This MCP server provides tools to access AWS documentation, search for content, and get recommendations.
+
+  ## Features
+
+  - **Read Documentation**: Fetch and convert AWS documentation pages to markdown format
+  - **Search Documentation**: Search AWS documentation using the official search API (global only)
+  - **Recommendations**: Get content recommendations for AWS documentation pages (global only)
+  - **Get Available Services List**: Get a list of available AWS services in China regions (China only)
+
+  ## Prerequisites
+
+  * have your AWS credential ready.
+
+  ## Configuration Options
+
+  #### Required
+  - `AWS_ACCESS_KEY_ID`: Your AWS credential access key
+  - `AWS_SECRET_ACCESS_KEY`: Your AWS credential access secret
+
+  #### Optional
+  - `AWS_REGION`: AWS region to use (default: `us-east-1`)
+  - `AWS_SESSION_TOKEN`: AWS Session Token (only required for temporary credentials like SSO or STS AssumeRole)
+
+
+  ## Basic Usage
+
+  Example:
+
+  - "look up documentation on S3 bucket naming rule. cite your sources"
+  - "recommend content for page https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html"
+
+  ![AWS Documentation MCP Demo](https://github.com/awslabs/mcp/blob/main/src/aws-documentation-mcp-server/basic-usage.gif?raw=true)
+
+  ## Tools
+
+  ### read_documentation
+
+  Fetches an AWS documentation page and converts it to markdown format.
+
+  ```python
+  read_documentation(url: str) -> str
+  ```
+
+  ### search_documentation (global only)
+
+  Searches AWS documentation using the official AWS Documentation Search API.
+
+  ```python
+  search_documentation(search_phrase: str, limit: int) -> list[dict]
+  ```
+
+  ### recommend (global only)
+
+  Gets content recommendations for an AWS documentation page.
+
+  ```python
+  recommend(url: str) -> list[dict]
+  ```
+
+  ### get_available_services (China only)
+
+  Gets a list of available AWS services in China regions.
+
+  ```python
+  get_available_services() -> str
+  ```
+
+metadata:
+  categories: Documentation & Learning, SaaS & API Integrations
+icon: https://avatars.githubusercontent.com/u/3299148?s=48&v=4
+repoURL: https://github.com/awslabs/mcp/tree/main/src/aws-documentation-mcp-server
+env:
+  - key: AWS_ACCESS_KEY_ID
+    name: AWS Access Key ID
+    required: true
+    sensitive: true
+    description: Your AWS Access Key ID
+  - key: AWS_SECRET_ACCESS_KEY
+    name: AWS Secret Access Key
+    required: true
+    sensitive: true
+    description: AWS Secret Access Key
+  - key: AWS_SESSION_TOKEN
+    name: AWS Session Token
+    required: false
+    sensitive: true
+    description: AWS Session Token, only required if using temporary credentials such as temporary AWS credentials, such as those obtained through aws sso login or other temporary access methods (for example, STS AssumeRole)
+  - key: AWS_REGION
+    name: AWS Region
+    required: true
+    sensitive: false
+    description: AWS Region, default is us-east-1
+
+args:
+  - 'awslabs.aws-documentation-mcp-server@latest'
+command: uvx
+toolPreview:
+  - name: read_documentation
+    description: Fetch and convert an AWS documentation page to markdown format. Retrieves content from AWS documentation pages and converts it to markdown format. For long documents, you can make multiple calls with different start_index values to retrieve the entire content in chunks.
+    params:
+      url: URL of the AWS documentation page to read (must be from docs.aws.amazon.com domain and end with .html)
+      max_length: Maximum number of characters to return (optional)
+      start_index: Starting character index for pagination of long documents (optional)
+  - name: search_documentation
+    description: Search AWS documentation using the official AWS Documentation Search API. Searches across all AWS documentation for pages matching your search phrase. Use specific technical terms and include service names to narrow results. Available for global AWS partition only.
+    params:
+      search_phrase: Search phrase to use (use specific technical terms and include service names for better results)
+      limit: Maximum number of results to return (optional)
+  - name: recommend
+    description: Get content recommendations for an AWS documentation page. Provides recommendations for related AWS documentation pages including highly rated, new, similar, and journey categories. Available for global AWS partition only.
+    params:
+      url: URL of the AWS documentation page to get recommendations for (must be a valid AWS documentation URL) 

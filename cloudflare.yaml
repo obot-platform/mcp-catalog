@@ -1,0 +1,45 @@
+name: Cloudflare
+description: |
+  # Cloudflare MCP Server
+
+  Model Context Protocol (MCP) is a [new, standardized protocol](https://modelcontextprotocol.io/introduction) for managing context between large language models (LLMs) and external systems. In this repository, you can find several MCP servers allowing you to connect to Cloudflare's service from an MCP client (e.g. Cursor, Claude) and use natural language to accomplish tasks through your Cloudflare account.
+
+  These MCP servers allow your MCP Client to read configurations from your account, process information, make suggestions based on data, and even make those suggested changes for you. All of these actions can happen across Cloudflare's many services including application development, security and performance.
+
+  ## Configuration
+
+  To use Cloudflare MCP servers, set the URL to a comma-separated list of remote server URLs you'd like to include from the available servers below:
+
+  ### Available MCP Servers
+
+  | Server Name                                                    | Description                                                                                     | Server URL                                     |
+  | -------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+  | **Documentation server**                                        | Get up to date reference information on Cloudflare                                              | `https://docs.mcp.cloudflare.com/sse`          |
+  | **Workers Bindings server**                                      | Build Workers applications with storage, AI, and compute primitives                             | `https://bindings.mcp.cloudflare.com/sse`      |
+  | **Workers Builds server**                                       | Get insights and manage your Cloudflare Workers Builds                                          | `https://builds.mcp.cloudflare.com/sse`        |
+  | **Observability server**                                       | Debug and get insight into your application's logs and analytics                                | `https://observability.mcp.cloudflare.com/sse` |
+  | **Radar server**                                               | Get global Internet traffic insights, trends, URL scans, and other utilities                    | `https://radar.mcp.cloudflare.com/sse`         |
+  | **Container server**                                          | Spin up a sandbox development environment                                                       | `https://containers.mcp.cloudflare.com/sse`    |
+  | **Browser rendering server**                                  | Fetch web pages, convert them to markdown and take screenshots                                  | `https://browser.mcp.cloudflare.com/sse`       |
+  | **Logpush server**                                            | Get quick summaries for Logpush job health                                                      | `https://logs.mcp.cloudflare.com/sse`          |
+  | **AI Gateway server**                      | Search your logs, get details about the prompts and responses                                   | `https://ai-gateway.mcp.cloudflare.com/sse`    |
+  | **AutoRAG server**                            | List and search documents on your AutoRAGs                                                      | `https://autorag.mcp.cloudflare.com/sse`       |
+  | **Audit Logs server**                       | Query audit logs and generate reports for review                                                | `https://auditlogs.mcp.cloudflare.com/sse`     |
+  | **DNS Analytics server**                | Optimize DNS performance and debug issues based on current set up                               | `https://dns-analytics.mcp.cloudflare.com/sse` |
+  | **Digital Experience Monitoring server** | Get quick insight on critical applications for your organization                                | `https://dex.mcp.cloudflare.com/sse`           |
+  | **Cloudflare One CASB server**           | Quickly identify any security misconfigurations for SaaS applications to safeguard users & data | `https://casb.mcp.cloudflare.com/sse`          |
+  | **GraphQL server**                       | Get analytics data using Cloudflare’s GraphQL API                                               | `https://graphql.mcp.cloudflare.com/sse`       |
+
+  ## Need access to more Cloudflare tools?
+
+  We're continuing to add more functionality to this remote MCP server repo. If you'd like to leave feedback, file a bug or provide a feature request, [please open an issue](https://github.com/cloudflare/mcp-server-cloudflare/issues/new/choose) on this repository
+
+  ## Paid Features
+
+  Some features may require a paid Cloudflare Workers plan. Ensure your Cloudflare account has the necessary subscription level for the features you intend to use.
+
+metadata:
+  categories: Cloud & Infrastructure
+icon: https://avatars.githubusercontent.com/u/314135?s=48&v=4
+repoURL: https://github.com/cloudflare/mcp-server-cloudflare
+hostname: mcp.cloudflare.com

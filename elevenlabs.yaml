@@ -1,0 +1,187 @@
+name: ElevenLabs
+description: |
+  ![export](https://github.com/user-attachments/assets/ee379feb-348d-48e7-899c-134f7f7cd74f)
+
+  <div class="title-block" style="text-align: center;" align="center">
+
+    [![PyPI](https://img.shields.io/badge/PyPI-elevenlabs--mcp-000000.svg?style=for-the-badge&logo=pypi&labelColor=000)](https://pypi.org/project/elevenlabs-mcp)
+    [![Tests](https://img.shields.io/badge/tests-passing-000000.svg?style=for-the-badge&logo=github&labelColor=000)](https://github.com/elevenlabs/elevenlabs-mcp-server/actions/workflows/test.yml)
+
+  </div>
+
+
+  <p align="center">
+    Official ElevenLabs <a href="https://github.com/modelcontextprotocol">Model Context Protocol (MCP)</a> server that enables interaction with powerful Text to Speech and audio processing APIs. This server allows MCP clients to generate speech, clone voices, transcribe audio, and more.
+  </p>
+
+  ## Prerequisites
+  Get your API key from [ElevenLabs](https://elevenlabs.io/app/settings/api-keys). There is a free tier with 10k credits per month.
+
+  ## Example usage
+
+  ⚠️ Warning: ElevenLabs credits are needed to use these tools.
+
+  Try asking:
+
+  - "Create an AI agent that speaks like a film noir detective and can answer questions about classic movies"
+  - "Generate three voice variations for a wise, ancient dragon character, then I will choose my favorite voice to add to my voice library"
+  - "Convert this recording of my voice to sound like a medieval knight"
+  - "Create a soundscape of a thunderstorm in a dense jungle with animals reacting to the weather"
+  - "Turn this speech into text, identify different speakers, then convert it back using unique voices for each person"
+metadata:
+  categories: AI & Machine Learning, SaaS & API Integrations
+icon: https://avatars.githubusercontent.com/u/76154316?s=48&v=4
+repoURL: https://github.com/elevenlabs/elevenlabs-mcp
+env:
+  - key: ELEVENLABS_API_KEY
+    name: ElevenLabs API Key
+    required: true
+    sensitive: true
+    description: Your ElevenLabs API key from the settings page
+args:
+  - 'elevenlabs-mcp'
+command: uvx
+toolPreview:
+  - name: text_to_speech
+    description: Convert text to speech with a given voice and save the output audio file to a given directory. Directory is optional, if not provided, the output file will be saved to $HOME/Desktop.
+    params:
+      text: The text to convert to speech
+      language: ISO 639-1 language code for the voice (optional)
+      model_id: The model ID to use for speech synthesis (optional)
+      output_directory: Directory where files should be saved (optional)
+      output_format: Output format of the generated audio (optional)
+      similarity_boost: Similarity boost of the generated audio (optional)
+      speed: Speed of the generated audio (optional)
+      stability: Stability of the generated audio (optional)
+      style: Style of the generated audio (optional)
+      use_speaker_boost: Use speaker boost of the generated audio (optional)
+      voice_id: Voice ID to use (optional)
+      voice_name: The name of the voice to use (optional)
+  - name: speech_to_text
+    description: Transcribe speech from an audio file and either save the output text file to a given directory or return the text to the client directly.
+    params:
+      input_file_path: Path to the audio file to transcribe
+      diarize: Whether to diarize the audio file (optional)
+      language_code: ISO 639-3 language code for transcription (optional)
+      output_directory: Directory where files should be saved (optional)
+      return_transcript_to_client_directly: Whether to return the transcript to the client directly (optional)
+      save_transcript_to_file: Whether to save the transcript to a file (optional)
+  - name: text_to_sound_effects
+    description: Convert text description of a sound effect to sound effect with a given duration and save the output audio file to a given directory. Duration must be between 0.5 and 5 seconds.
+    params:
+      text: Text description of the sound effect
+      duration_seconds: Duration of the sound effect in seconds (optional)
+      output_directory: Directory where files should be saved (optional)
+      output_format: Output format of the generated audio (optional)
+  - name: search_voices
+    description: Search for existing voices, a voice that has already been added to the user's ElevenLabs voice library. Searches in name, description, labels and category.
+    params:
+      search: Search term to filter voices by (optional)
+      sort: Which field to sort by (optional)
+      sort_direction: Sort order, either ascending or descending (optional)
+  - name: list_models
+    description: List all available models
+    params: {}
+  - name: get_voice
+    description: Get details of a specific voice
+    params:
+      voice_id: Voice ID to get details for
+  - name: voice_clone
+    description: Create an instant voice clone of a voice using provided audio files.
+    params:
+      files: Array of audio file paths
+      name: Name for the cloned voice
+      description: Description for the cloned voice (optional)
+  - name: isolate_audio
+    description: Isolate audio from a file and save the output audio file to a given directory. Directory is optional, if not provided, the output file will be saved to $HOME/Desktop.
+    params:
+      input_file_path: Path to the input audio file
+      output_directory: Directory where files should be saved (optional)
+  - name: check_subscription
+    description: Check the current subscription status. Could be used to measure the usage of the API.
+    params: {}
+  - name: create_agent
+    description: Create a conversational AI agent with custom configuration.
+    params:
+      first_message: First message the agent will say
+      name: Name of the agent
+      system_prompt: System prompt for the agent
+      asr_quality: Quality of the ASR (optional)
+      language: ISO 639-1 language code for the agent (optional)
+      llm: LLM to use for the agent (optional)
+      max_duration_seconds: Maximum duration of a conversation in seconds (optional)
+      max_tokens: Maximum number of tokens to generate (optional)
+      model_id: ID of the ElevenLabs model to use for the agent (optional)
+      optimize_streaming_latency: Optimize streaming latency (optional)
+      record_voice: Whether to record the agent's voice (optional)
+      retention_days: Number of days to retain the agent's data (optional)
+      similarity_boost: Similarity boost for the agent (optional)
+      stability: Stability for the agent (optional)
+      temperature: Temperature for the agent (optional)
+      turn_timeout: Timeout for the agent to respond in seconds (optional)
+      voice_id: ID of the voice to use for the agent (optional)
+  - name: add_knowledge_base_to_agent
+    description: Add a knowledge base to ElevenLabs workspace. Allowed types are epub, pdf, docx, txt, html.
+    params:
+      agent_id: ID of the agent to add the knowledge base to
+      knowledge_base_name: Name of the knowledge base
+      input_file_path: Path to the file to add to the knowledge base (optional)
+      text: Text to add to the knowledge base (optional)
+      url: URL of the knowledge base (optional)
+  - name: list_agents
+    description: List all available conversational AI agents
+    params: {}
+  - name: get_agent
+    description: Get details about a specific conversational AI agent
+    params:
+      agent_id: Agent ID to get details for
+  - name: get_conversation
+    description: Gets conversation with transcript. Returns conversation details and full transcript. Use when analyzing completed agent conversations.
+    params:
+      conversation_id: The unique identifier of the conversation to retrieve
+  - name: list_conversations
+    description: Lists agent conversations. Returns conversation list with metadata. Use when asked about conversation history.
+    params:
+      agent_id: Filter conversations by specific agent ID (optional)
+      call_start_after_unix: Filter conversations that started after this Unix timestamp (optional)
+      call_start_before_unix: Filter conversations that started before this Unix timestamp (optional)
+      cursor: Pagination cursor for retrieving next page of results (optional)
+      max_length: Maximum character length of the response text (optional)
+      page_size: Number of conversations to return per page (optional)
+  - name: speech_to_speech
+    description: Transform audio from one voice to another using provided audio files.
+    params:
+      input_file_path: Path to the input audio file
+      output_directory: Directory where files should be saved (optional)
+      voice_name: Name of the voice to transform to (optional)
+  - name: text_to_voice
+    description: Create voice previews from a text prompt. Creates three previews with slight variations. Saves the previews to a given directory.
+    params:
+      voice_description: Description of the voice to create
+      output_directory: Directory where files should be saved (optional)
+      text: Text to use for preview generation (optional)
+  - name: create_voice_from_preview
+    description: Add a generated voice to the voice library. Uses the voice ID from the text_to_voice tool.
+    params:
+      generated_voice_id: Voice ID from the text_to_voice tool
+      voice_description: Description for the voice
+      voice_name: Name for the voice
+  - name: make_outbound_call
+    description: Make an outbound call using an ElevenLabs agent. Automatically detects provider type (Twilio or SIP trunk) and uses the appropriate API.
+    params:
+      agent_id: The ID of the agent that will handle the call
+      agent_phone_number_id: The ID of the phone number to use for the call
+      to_number: The phone number to call (E.164 format)
+  - name: search_voice_library
+    description: Search for a voice across the entire ElevenLabs voice library.
+    params:
+      page: Page number to return (optional)
+      page_size: Number of voices to return per page (optional)
+      search: Search term to filter voices by (optional)
+  - name: list_phone_numbers
+    description: List all phone numbers associated with the ElevenLabs account
+    params: {}
+  - name: play_audio
+    description: Play an audio file. Supports WAV and MP3 formats.
+    params:
+      input_file_path: Path to the audio file to play 
