@@ -102,11 +102,9 @@ metadata:
   categories: Databases
 icon: https://avatars.githubusercontent.com/u/183852044?v=4
 repoURL: https://github.com/neondatabase-labs/mcp-server-neon
-runtime: npx
-npxConfig:
-  package: mcp-remote
-  args:
-    - https://mcp.neon.tech/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.neon.tech/mcp
 
 toolPreview:
   - name: list_projects
