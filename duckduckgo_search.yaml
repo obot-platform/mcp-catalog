@@ -73,9 +73,6 @@ metadata:
 icon: https://img.icons8.com/?size=100&id=63778&format=png&color=000000
 repoURL: https://github.com/nickclyde/duckduckgo-mcp-server
 env: []
-args:
-  - duckduckgo-mcp-server
-command: uvx
 toolPreview:
   - name: search
     description: Search DuckDuckGo and return formatted results.
@@ -86,3 +83,7 @@ toolPreview:
     description: Fetch and parse content from a webpage URL.
     params:
       url: The webpage URL to fetch content from
+
+runtime: uvx
+uvxConfig:
+  package: duckduckgo-mcp-server

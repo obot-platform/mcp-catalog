@@ -66,11 +66,6 @@ env:
     required: true
     sensitive: true
     description: Your Exa API key.
-args:
-  - -y
-  - exa-mcp-server
-  - --tools=web_search_exa,research_paper_search,company_research,crawling,competitor_finder,linkedin_search,wikipedia_search_exa,github_search
-command: npx
 toolPreview:
   - name: web_search_exa
     description: Search the web using Exa AI - performs real-time web searches and can scrape content from specific URLs. Supports configurable result counts and returns the content from the most relevant websites.
@@ -102,3 +97,9 @@ toolPreview:
     description: Check the status and retrieve results of a deep research task. This tool monitors the progress of an AI agent that performs comprehensive web searches, analyzes multiple sources, and synthesizes findings into detailed research reports. The tool includes a built-in 5-second delay before checking to allow processing time. IMPORTANT - You must call this tool repeatedly (poll) until the status becomes 'completed' to get the final research results. When status is 'running', wait a few seconds and call this tool again with the same task ID.
     params:
       taskId: The task ID returned from deep_researcher_start
+
+runtime: npx
+npxConfig:
+  package: exa-mcp-server
+  args:
+    - --tools=web_search_exa,research_paper_search,company_research,crawling,competitor_finder,linkedin_search,wikipedia_search_exa,github_search

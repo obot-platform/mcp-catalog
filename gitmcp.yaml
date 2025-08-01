@@ -177,7 +177,9 @@ metadata:
   categories: Developer Tools
 icon: https://avatars.githubusercontent.com/u/182288589?v=4
 repoURL: https://gitmcp.io
-hostname: gitmcp.io
+runtime: remote
+remoteConfig:
+  hostname: gitmcp.io
 toolPreview:
   - name: fetch_<repo>_documentation
     description: 'Fetch entire documentation file from GitHub repository: <org>/<repo>. Useful for general questions. Always call this tool first if asked about <org>/<repo>.'

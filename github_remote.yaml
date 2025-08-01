@@ -664,10 +664,13 @@ metadata:
   unsupportedTools: create_or_update_file,push_files
 icon: https://avatars.githubusercontent.com/u/9919?v=4
 repoURL: https://github.com/github/github-mcp-server
-hostname: api.githubcopilot.com
-headers:
-- name: Personal Access Token
-  description: GitHub PAT
-  key: Authorization
-  required: true
-  sensitive: true
+
+runtime: remote
+remoteConfig:
+  hostname: api.githubcopilot.com
+  headers:
+  - name: Personal Access Token
+    description: GitHub PAT
+    key: Authorization
+    required: true
+    sensitive: true

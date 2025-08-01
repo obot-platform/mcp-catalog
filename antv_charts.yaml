@@ -100,10 +100,9 @@ env:
     required: false
     sensitive: false
     description: Service identifier for chart generation records
-args:
-  - -y
-  - '@antv/mcp-server-chart'
-command: npx
+runtime: npx
+npxConfig:
+  package: '@antv/mcp-server-chart'
 toolPreview:
   - name: generate_area_chart
     description: Generate an area chart to show data trends under continuous independent variables and observe overall data trends, such as velocity over time.

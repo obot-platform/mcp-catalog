@@ -65,10 +65,11 @@ env:
     required: true
     sensitive: false
     description: URL for connecting to the Redis instance (e.g. redis://user:pass@localhost:6379/0).
-args:
-  - --from
-  - git+https://github.com/redis/mcp-redis.git@0.2.0
-  - redis-mcp-server
-  - --url
-  - ${REDIS_URI}
-command: uvx
+
+runtime: uvx
+uvxConfig:
+  package: 'git+https://github.com/redis/mcp-redis.git@0.2.0'
+  command: redis-mcp-server
+  args:
+    - --url
+    - ${REDIS_URI}

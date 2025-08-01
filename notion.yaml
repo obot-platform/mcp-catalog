@@ -80,10 +80,6 @@ env:
     required: false
     sensitive: true
     description: '(For advanced use cases) JSON-encoded HTTP headers for MCP requests, e.g., {"Authorization": "Bearer ntn_****", "Notion-Version": "2022-06-28"}. The Notion Integration token (ntn_****) is required too.'
-args:
-  - -y
-  - '@notionhq/notion-mcp-server'
-command: npx
 toolPreview:
   - name: API-get-user
     description: Retrieve a user
@@ -198,3 +194,7 @@ toolPreview:
     params:
       parent: Parent object with page_id
       rich_text: Rich text array with content
+
+runtime: npx
+npxConfig:
+  package: '@notionhq/notion-mcp-server'

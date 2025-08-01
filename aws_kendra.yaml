@@ -101,9 +101,11 @@ env:
     required: true
     sensitive: false
     description: AWS Region
-args:
-  - 'awslabs.amazon-kendra-index-mcp-server'
-command: uvx
+
+runtime: uvx
+uvxConfig:
+  package: awslabs.amazon-kendra-index-mcp-server
+
 toolPreview:
   - name: KendraQueryTool
     description: Query Amazon Kendra and retrieve content from the response.

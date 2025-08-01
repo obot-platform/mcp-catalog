@@ -686,11 +686,9 @@ env:
     required: false
     sensitive: false
     description: GitHub Enterprise Server hostname (e.g. https://ghes.example.com). Optional, for GitHub Enterprise integration.
-args:
-  - run
-  - -i
-  - --rm
-  - -e
-  - GITHUB_PERSONAL_ACCESS_TOKEN
-  - ghcr.io/obot-platform/mcp-images-github:main
-command: docker
+
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images-github:main
+  path: "/"
+  port: 8099

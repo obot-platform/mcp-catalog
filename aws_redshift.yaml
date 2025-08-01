@@ -380,9 +380,11 @@ env:
     required: true
     sensitive: false
     description: AWS Region
-args:
-  - 'awslabs.redshift-mcp-server@latest'
-command: uvx
+
+runtime: uvx
+uvxConfig:
+  package: awslabs.redshift-mcp-server@latest
+
 toolPreview:
   - name: list_clusters
     description: Discovers all available Amazon Redshift clusters and serverless workgroups

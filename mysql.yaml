@@ -78,8 +78,7 @@ env:
     required: true
     sensitive: false
     description: The name of your MySQL database.
-args:
-  - --from
-  - mysql-mcp-server
-  - mysql_mcp_server
-command: uvx
+runtime: uvx
+uvxConfig:
+  package: mysql-mcp-server
+  command: mysql_mcp_server
