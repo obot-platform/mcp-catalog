@@ -44,4 +44,4 @@ icon: https://avatars.githubusercontent.com/u/314135?s=48&v=4
 repoURL: https://github.com/cloudflare/mcp-server-cloudflare
 runtime: remote
 remoteConfig:
-  hostname: mcp.cloudflare.com
+  hostname: * # TODO: To be supported
