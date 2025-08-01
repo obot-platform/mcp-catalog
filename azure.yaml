@@ -272,12 +272,12 @@ env:
     required: false
     sensitive: false
     description: Telemetry collection is on by default, to opt out, set this to false.
-args:
-  - -y
-  - '@azure/mcp@latest'
-  - server
-  - start
-command: npx
+runtime: npx
+npxConfig:
+  package: '@azure/mcp@latest'
+  args:
+    - server
+    - start
 toolPreview:
   - name: documentation
     description: Search official Microsoft/Azure documentation to find the most relevant and trustworthy content for a user's query, returning up to 10 high-quality content chunks from Microsoft Learn and other official sources.

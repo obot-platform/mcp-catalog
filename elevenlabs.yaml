@@ -38,9 +38,9 @@ env:
     required: true
     sensitive: true
     description: Your ElevenLabs API key from the settings page
-args:
-  - 'elevenlabs-mcp'
-command: uvx
+runtime: uvx
+uvxConfig:
+  package: 'elevenlabs-mcp'
 toolPreview:
   - name: text_to_speech
     description: Convert text to speech with a given voice and save the output audio file to a given directory. Directory is optional, if not provided, the output file will be saved to $HOME/Desktop.

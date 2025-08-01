@@ -73,9 +73,9 @@ env:
     required: true
     sensitive: false
     description: AWS Region where Nova Canvas is available
-args:
-  - 'awslabs.nova-canvas-mcp-server@latest'
-command: uvx
+runtime: uvx
+uvxConfig:
+  package: 'awslabs.nova-canvas-mcp-server@latest'
 toolPreview:
   - name: generate_image
     description: Generate an image using Amazon Nova Canvas with text prompt. This tool uses Amazon Nova Canvas to generate images based on a text prompt. The generated image will be saved to a file and the path will be returned. IMPORTANT FOR ASSISTANT - Always send the current workspace directory when calling this tool! The workspace_dir parameter should be set to the directory where the user is currently working so that images are saved to a location accessible to the user.

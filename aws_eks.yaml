@@ -506,11 +506,13 @@ env:
     required: true
     sensitive: false
     description: AWS Region
-args:
-  - 'awslabs.eks-mcp-server@latest'
-  - --allow-write
-  - --allow-sensitive-data-access
-command: uvx
+
+runtime: uvx
+uvxConfig:
+  package: 'awslabs.eks-mcp-server@latest'
+  args:
+    - --allow-write
+    - --allow-sensitive-data-access
 toolPreview:
   - name: manage_eks_stacks
     description: Manage EKS CloudFormation stacks with operations for generating templates, deploying, describing, and deleting EKS clusters and their underlying infrastructure.

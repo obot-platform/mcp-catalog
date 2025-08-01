@@ -117,9 +117,10 @@ env:
     required: true
     sensitive: false
     description: AWS Region, default is us-east-1
-args:
-  - 'awslabs.cdk-mcp-server@latest'
-command: uvx
+
+runtime: uvx
+uvxConfig:
+  package: awslabs.cdk-mcp-server@latest
 toolPreview:
   - name: CDKGeneralGuidance
     description: Use this tool to get prescriptive CDK advice for building applications on AWS.
