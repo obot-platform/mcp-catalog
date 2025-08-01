@@ -1,0 +1,70 @@
+name: Figma
+description: |
+  <a href="https://www.framelink.ai/?utm_source=github&utm_medium=referral&utm_campaign=readme" target="_blank" rel="noopener">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://www.framelink.ai/github/HeaderDark.png" />
+      <img alt="Framelink" src="https://www.framelink.ai/github/HeaderLight.png" />
+    </picture>
+  </a>
+
+  <div align="center">
+    <h1>Framelink Figma MCP Server</h1>
+    <h3>Give your coding agent access to your Figma data.<br/>Implement designs in any framework in one-shot.</h3>
+    <a href="https://npmcharts.com/compare/figma-developer-mcp?interval=30">
+      <img alt="weekly downloads" src="https://img.shields.io/npm/dm/figma-developer-mcp.svg">
+    </a>
+    <a href="https://github.com/GLips/Figma-Context-MCP/blob/main/LICENSE">
+      <img alt="MIT License" src="https://img.shields.io/github/license/GLips/Figma-Context-MCP" />
+    </a>
+    <br />
+  </div>
+
+  <br/>
+
+  Give your client access to your Figma files with this [Model Context Protocol](https://modelcontextprotocol.io/introduction) server.
+
+  ## Getting Started
+
+  Create a Figma Personal Access Token with proper access to the data you would like to share with your agent.
+
+  ## How it works
+
+  1. Open your chat.
+  2. Paste a link to a Figma file, frame, or group.
+  3. Ask the agent to do something with the Figma file—e.g. implement the design.
+  4. The agent will fetch the relevant metadata from Figma and use it to write your code.
+
+  This MCP server is specifically designed for use with agents. Before responding with context from the [Figma API](https://www.figma.com/developers/api), it simplifies and translates the response so only the most relevant layout and styling information is provided to the model.
+
+  Reducing the amount of context provided to the model helps make the AI more accurate and the responses more relevant.
+
+metadata:
+  categories: SaaS & API Integrations, Design & Development
+icon: https://avatars.githubusercontent.com/u/5155369?s=200&v=4
+repoURL: https://github.com/GLips/Figma-Context-MCP
+env:
+  - key: FIGMA_API_KEY
+    name: Figma API Key
+    required: true
+    sensitive: true
+    description: Your Figma Personal Access Token
+runtime: npx
+npxConfig:
+  package: figma-developer-mcp
+  args:
+    - --figma-api-key=${FIGMA_API_KEY}
+    - --stdio
+toolPreview:
+  - name: get_figma_data
+    description: Get comprehensive Figma file data including layout, content, visuals, and component information
+    params:
+      fileKey: The key of the Figma file to fetch
+      depth: Controls how many levels deep to traverse the node tree (optional)
+      nodeId: The ID of the node to fetch (optional)
+  - name: download_figma_images
+    description: Download SVG and PNG images used in a Figma file based on the IDs of image or icon nodes
+    params:
+      fileKey: The key of the Figma file containing the images
+      localPath: The absolute path to the directory where images are stored in the project
+      nodes: The nodes to fetch as images
+      pngScale: Export scale for PNG images (optional)

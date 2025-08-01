@@ -1,4 +1,4 @@
-name: AWS Knowledge Base Retrieval
+name: AWS Kendra
 description: |
   # AWS Labs Amazon Kendra Index MCP Server
 
@@ -13,6 +13,16 @@ description: |
 
   1. [Sign-Up for an AWS account](https://aws.amazon.com/free/?trk=78b916d7-7c94-4cab-98d9-0ce5e648dd5f&sc_channel=ps&ef_id=Cj0KCQjwxJvBBhDuARIsAGUgNfjOZq8r2bH2OfcYfYTht5v5I1Bn0lBKiI2Ii71A8Gk39ZU5cwMLPkcaAo_CEALw_wcB:G:s&s_kwcid=AL!4422!3!432339156162!e!!g!!aws%20sign%20up!9572385111!102212379327&gad_campaignid=9572385111&gbraid=0AAAAADjHtp99c5A9DUyUaUQVhVEoi8of3&gclid=Cj0KCQjwxJvBBhDuARIsAGUgNfjOZq8r2bH2OfcYfYTht5v5I1Bn0lBKiI2Ii71A8Gk39ZU5cwMLPkcaAo_CEALw_wcB)
   2. [Create an Amazon Kendra Index](https://docs.aws.amazon.com/kendra/latest/dg/create-index.html) with your RAG documentation
+
+  ### Configuration Options
+
+  #### Required
+  - `AWS_ACCESS_KEY_ID`: Your AWS credential access key
+  - `AWS_SECRET_ACCESS_KEY`: Your AWS credential access secret
+
+  #### Optional
+  - `AWS_REGION`: AWS region to use (default: `us-east-1`)
+  - `AWS_SESSION_TOKEN`: AWS Session Token (only required for temporary credentials like SSO or STS AssumeRole)
 
   ### Tools:
 

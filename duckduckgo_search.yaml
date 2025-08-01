@@ -69,7 +69,7 @@ description: |
   - Graceful degradation on rate limits or timeouts
 
 metadata:
-  categories: Retrieval & Search, SaaS & API Integrations
+  categories: Search
 icon: https://img.icons8.com/?size=100&id=63778&format=png&color=000000
 repoURL: https://github.com/nickclyde/duckduckgo-mcp-server
 env: []
