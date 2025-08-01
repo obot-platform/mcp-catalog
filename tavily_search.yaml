@@ -58,8 +58,63 @@ env:
     sensitive: true
     description: Your Tavily API key. Get one at https://app.tavily.com/home
 
-runtime: npx
-npxConfig:
-  package: mcp-remote
-  args:
-    - https://mcp.tavily.com/mcp/?tavilyApiKey=${TAVILY_API_KEY}
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.tavily.com/mcp/?tavilyApiKey=${TAVILY_API_KEY}
+toolPreview:
+  - name: tavily_search
+    description: Search the web for real-time information about any topic. Use this tool when you need up-to-date information that might not be available in your training data, or when you need to verify current facts. The search results will include relevant snippets and URLs from web pages. This is particularly useful for questions about current events, technology updates, or any topic that requires recent information.
+    params:
+      query: The search query string
+      country: Country code for localized search results (optional)
+      days: Number of days to search back (optional)
+      exclude_domains: List of domains to exclude from results (optional)
+      include_domains: List of domains to include in results (optional)
+      include_favicon: Whether to include favicon URLs (optional)
+      include_image_descriptions: Whether to include image descriptions (optional)
+      include_images: Whether to include images in results (optional)
+      include_raw_content: Whether to include raw HTML content (optional)
+      max_results: Maximum number of results to return (optional)
+      search_depth: Depth of search (basic or advanced) (optional)
+      time_range: Time range for search results (optional)
+      topic: Topic category for search (optional)
+  - name: tavily_extract
+    description: Extract and process content from specific web pages. Use this tool when you have URLs and need to get the full text content from those pages. Returns clean, structured content in markdown or text format. Useful for reading articles, documentation, or any web page content that you need to analyze or reference.
+    params:
+      urls: Array of URLs to extract content from
+      extract_depth: Depth of content extraction (optional)
+      format: Output format (markdown or text) (optional)
+      include_favicon: Whether to include favicon URLs (optional)
+      include_images: Whether to include images (optional)
+  - name: tavily_crawl
+    description: Crawl multiple pages from a website starting from a base URL. Use this tool when you need to gather information from multiple related pages across a website or explore a site's structure. It follows internal links and extracts content from multiple pages, but truncates content to 500 characters per page. For full content extraction, use tavily_map to discover URLs first, then tavily_extract to get complete content from specific pages. Useful for comprehensive research on documentation sites, blogs, or when you need to understand the full scope of information available on a website.
+    params:
+      url: Base URL to start crawling from
+      allow_external: Whether to allow crawling external domains (optional)
+      categories: Categories to filter by (optional)
+      exclude_domains: Domains to exclude from crawling (optional)
+      exclude_paths: URL paths to exclude (optional)
+      extract_depth: Depth of content extraction (optional)
+      format: Output format for extracted content (optional)
+      include_favicon: Whether to include favicon URLs (optional)
+      include_images: Whether to include images (optional)
+      instructions: Custom instructions for crawling (optional)
+      limit: Maximum number of pages to crawl (optional)
+      max_breadth: Maximum breadth for crawling (optional)
+      max_depth: Maximum depth for crawling (optional)
+      select_domains: Specific domains to crawl (optional)
+      select_paths: Specific URL paths to crawl (optional)
+  - name: tavily_map
+    description: Map and discover the structure of a website by finding all its URLs and pages. Use this tool when you need to understand a website's organization, find specific pages, or get an overview of all available content without extracting the actual text. Returns a structured list of URLs and their relationships. Useful for site exploration, finding documentation pages, or understanding how a website is organized.
+    params:
+      url: Base URL to map
+      allow_external: Whether to allow mapping external domains (optional)
+      categories: Categories to filter by (optional)
+      exclude_domains: Domains to exclude from mapping (optional)
+      exclude_paths: URL paths to exclude (optional)
+      instructions: Custom instructions for mapping (optional)
+      limit: Maximum number of URLs to map (optional)
+      max_breadth: Maximum breadth for mapping (optional)
+      max_depth: Maximum depth for mapping (optional)
+      select_domains: Specific domains to map (optional)
+      select_paths: Specific URL paths to map (optional)
