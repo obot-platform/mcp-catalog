@@ -42,4 +42,6 @@ metadata:
   categories: Cloud & Infrastructure
 icon: https://avatars.githubusercontent.com/u/314135?s=48&v=4
 repoURL: https://github.com/cloudflare/mcp-server-cloudflare
-hostname: mcp.cloudflare.com
+runtime: remote
+remoteConfig:
+  hostname: mcp.cloudflare.com
