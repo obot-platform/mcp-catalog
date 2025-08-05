@@ -18,8 +18,8 @@ description: |
 
 metadata:
   categories: Project Management, Developer Tools
-  icon: https://avatars.githubusercontent.com/u/46686594?s=200&v=4
-  repoURL: https://linear.app/changelog/2025-05-01-mcp
+icon: https://avatars.githubusercontent.com/u/46686594?s=200&v=4
+repoURL: https://linear.app/changelog/2025-05-01-mcp
 runtime: remote
 remoteConfig:
   fixedURL: https://mcp.linear.app/mcp
