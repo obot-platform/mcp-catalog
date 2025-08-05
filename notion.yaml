@@ -48,14 +48,9 @@ repoURL: https://github.com/makenotion/notion-mcp-server
 env:
   - key: NOTION_TOKEN
     name: Notion Token
-    required: false
+    required: true
     sensitive: true
-    description: (Recommended) The Notion Integration token (ntn_****).
-  - key: OPENAPI_MCP_HEADERS
-    name: OpenAPI MCP Headers
-    required: false
-    sensitive: true
-    description: '(For advanced use cases) JSON-encoded HTTP headers for MCP requests, e.g., {"Authorization": "Bearer ntn_****", "Notion-Version": "2022-06-28"}. The Notion Integration token (ntn_****) is required too.'
+    description: Notion integration token (ntn_****).
 toolPreview:
   - name: API-get-user
     description: Retrieve a user
