@@ -1,0 +1,199 @@
+name: Linear
+description: |
+  ## Overview
+  A Model Context Protocol (MCP) server for Linear that enables AI agents to access and manage issues, projects, comments, and team workflows.
+
+  ## Features
+  - **Issue Management**: Find, create, and update Linear issues with comprehensive filtering and search
+  - **Project Management**: Manage projects, timelines, and project-related workflows
+  - **Comment System**: Create and manage comments on issues with reply threading
+  - **Team & User Management**: Access team structures and user information
+  - **Label & Status Management**: Organize work with labels and track status changes
+  - **Cycle Management**: Work with Linear cycles for sprint planning and tracking
+  - **Document Integration**: Access and manage Linear documents and knowledge base
+
+  ## What you'll need to connect
+
+  **No Setup Required**: Authentication is handled automatically through OAuth2 workflow.
+
+metadata:
+  categories: Project Management
+  icon: https://avatars.githubusercontent.com/u/46686594?s=200&v=4
+  repoURL: https://linear.app/changelog/2025-05-01-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.linear.app/mcp
+toolPreview:
+  - name: list_comments
+    description: List comments for a specific Linear issue
+    params:
+      issueId: ID of the issue to list comments for
+  - name: create_comment
+    description: Create a comment on a specific Linear issue
+    params:
+      body: Content of the comment
+      issueId: ID of the issue to comment on
+      parentId: ID of parent comment for replies (optional)
+  - name: list_cycles
+    description: Retrieve cycles for a specific Linear team
+    params:
+      teamId: ID of the team to list cycles for
+      type: Type of cycles to filter by (optional)
+  - name: get_document
+    description: Retrieve a Linear document by ID or slug
+    params:
+      id: Document ID or slug
+  - name: list_documents
+    description: List documents in the user's Linear workspace
+    params:
+      after: Cursor for pagination (optional)
+      before: Cursor for pagination (optional)
+      createdAt: Filter by creation date (optional)
+      creatorId: Filter by creator ID (optional)
+      includeArchived: Include archived documents (optional)
+      initiativeId: Filter by initiative ID (optional)
+      limit: Maximum number of results (optional)
+      orderBy: Sort order (optional)
+      projectId: Filter by project ID (optional)
+      query: Search query (optional)
+      updatedAt: Filter by update date (optional)
+  - name: get_issue
+    description: Retrieve a Linear issue details by ID, including attachments and git branch name
+    params:
+      id: Issue ID
+  - name: list_issues
+    description: List issues in the user's Linear workspace
+    params:
+      after: Cursor for pagination (optional)
+      assigneeId: Filter by assignee ID (optional)
+      before: Cursor for pagination (optional)
+      createdAt: Filter by creation date (optional)
+      cycleId: Filter by cycle ID (optional)
+      delegateId: Filter by delegate ID (optional)
+      includeArchived: Include archived issues (optional)
+      limit: Maximum number of results (optional)
+      orderBy: Sort order (optional)
+      parentId: Filter by parent issue ID (optional)
+      projectId: Filter by project ID (optional)
+      query: Search query (optional)
+      stateId: Filter by state ID (optional)
+      teamId: Filter by team ID (optional)
+      updatedAt: Filter by update date (optional)
+  - name: create_issue
+    description: Create a new Linear issue
+    params:
+      teamId: ID of the team to create issue in
+      title: Issue title
+      assigneeId: ID of the assignee (optional)
+      cycleId: ID of the cycle (optional)
+      delegateId: ID of the delegate (optional)
+      description: Issue description (optional)
+      dueDate: Due date (optional)
+      labelIds: Array of label IDs (optional)
+      links: Array of links with title and url (optional)
+      parentId: ID of parent issue (optional)
+      priority: Priority level (optional)
+      projectId: ID of the project (optional)
+      stateId: ID of the state (optional)
+  - name: update_issue
+    description: Update an existing Linear issue
+    params:
+      id: Issue ID
+      assigneeId: ID of the assignee (optional)
+      cycleId: ID of the cycle (optional)
+      delegateId: ID of the delegate (optional)
+      description: Issue description (optional)
+      dueDate: Due date (optional)
+      estimate: Effort estimate (optional)
+      labelIds: Array of label IDs (optional)
+      links: Array of links with title and url (optional)
+      parentId: ID of parent issue (optional)
+      priority: Priority level (optional)
+      projectId: ID of the project (optional)
+      stateId: ID of the state (optional)
+      title: Issue title (optional)
+  - name: list_issue_statuses
+    description: List available issues statuses in a Linear team
+    params:
+      teamId: ID of the team
+  - name: get_issue_status
+    description: Retrieve details of a specific issue status in Linear by name or ID
+    params:
+      query: Status name or ID
+      teamId: ID of the team
+  - name: list_my_issues
+    description: List issues assigned to the current user
+    params:
+      after: Cursor for pagination (optional)
+      before: Cursor for pagination (optional)
+      limit: Maximum number of results (optional)
+      orderBy: Sort order (optional)
+  - name: list_issue_labels
+    description: List available issue labels in a Linear workspace or team
+    params:
+      teamId: ID of the team to filter by (optional)
+  - name: list_projects
+    description: List projects in the user's Linear workspace
+    params:
+      after: Cursor for pagination (optional)
+      before: Cursor for pagination (optional)
+      createdAt: Filter by creation date (optional)
+      includeArchived: Include archived projects (optional)
+      limit: Maximum number of results (optional)
+      orderBy: Sort order (optional)
+      teamId: Filter by team ID (optional)
+      updatedAt: Filter by update date (optional)
+  - name: get_project
+    description: Retrieve details of a specific project in Linear
+    params:
+      query: Project name or ID
+  - name: create_project
+    description: Create a new project in Linear
+    params:
+      name: Project name
+      teamId: ID of the team
+      description: Project description (optional)
+      labelIds: Array of label IDs (optional)
+      leadId: ID of the project lead (optional)
+      startDate: Start date (optional)
+      summary: Project summary (optional)
+      targetDate: Target completion date (optional)
+  - name: update_project
+    description: Update an existing Linear project
+    params:
+      id: Project ID
+      description: Project description (optional)
+      labelIds: Array of label IDs (optional)
+      leadId: ID of the project lead (optional)
+      name: Project name (optional)
+      startDate: Start date (optional)
+      summary: Project summary (optional)
+      targetDate: Target completion date (optional)
+  - name: list_project_labels
+    description: List available project labels in the Linear workspace
+  - name: list_teams
+    description: List teams in the user's Linear workspace
+    params:
+      after: Cursor for pagination (optional)
+      before: Cursor for pagination (optional)
+      createdAt: Filter by creation date (optional)
+      includeArchived: Include archived teams (optional)
+      limit: Maximum number of results (optional)
+      orderBy: Sort order (optional)
+      query: Search query (optional)
+      updatedAt: Filter by update date (optional)
+  - name: get_team
+    description: Retrieve details of a specific Linear team
+    params:
+      query: Team name or ID
+  - name: list_users
+    description: Retrieve users in the Linear workspace
+  - name: get_user
+    description: Retrieve details of a specific Linear user
+    params:
+      query: User name, email, or ID
+  - name: search_documentation
+    description: Search Linear's documentation to learn about features and usage
+    params:
+      query: Search query
+      page: Page number for pagination (optional)

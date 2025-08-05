@@ -5,7 +5,7 @@ description: |
   [![Contributors](https://img.shields.io/github/contributors/crystaldba/postgres-mcp)](https://github.com/crystaldba/postgres-mcp/graphs/contributors)
 
   ## Overview
-A Model Context Protocol (MCP) server designed for deep SQL performance analysis and optimization. It delivers advanced index tuning, workload-aware query insights, safe execution controls, and schema-aware SQL generation—backed by comprehensive database health diagnostics and EXPLAIN plan simulation.
+  A Model Context Protocol (MCP) server designed for deep SQL performance analysis and optimization. It delivers advanced index tuning, workload-aware query insights, safe execution controls, and schema-aware SQL generation—backed by comprehensive database health diagnostics and EXPLAIN plan simulation.
 
   ## Features
   - **Database Health Analysis**: Comprehensive health checks including index health, connection utilization, buffer cache analysis, vacuum health, and replication lag monitoring

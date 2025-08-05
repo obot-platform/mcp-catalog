@@ -35,7 +35,7 @@ env:
   - key: AWS_ACCESS_KEY_ID
     name: AWS Access Key ID
     required: true
-    sensitive: true
+    sensitive: false
     description: Your AWS Access Key ID
   - key: AWS_SECRET_ACCESS_KEY
     name: AWS Secret Access Key
@@ -49,9 +49,9 @@ env:
     description: AWS Session Token, only required if using temporary credentials such as temporary AWS credentials, such as those obtained through aws sso login or other temporary access methods (for example, STS AssumeRole)
   - key: AWS_REGION
     name: AWS Region
-    required: true
+    required: false
     sensitive: false
-    description: AWS Region
+    description: AWS Region, default to us-east-1
 
 runtime: uvx
 uvxConfig:

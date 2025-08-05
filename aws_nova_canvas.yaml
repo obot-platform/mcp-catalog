@@ -45,9 +45,9 @@ env:
     description: AWS Session Token, only required if using temporary credentials such as temporary AWS credentials, such as those obtained through aws sso login or other temporary access methods (for example, STS AssumeRole)
   - key: AWS_REGION
     name: AWS Region
-    required: true
+    required: false
     sensitive: false
-    description: AWS Region where Nova Canvas is available
+    description: AWS Region where Nova Canvas is available, default to us-east-1
 runtime: uvx
 uvxConfig:
   package: 'awslabs.nova-canvas-mcp-server@latest'

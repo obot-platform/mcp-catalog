@@ -1,0 +1,137 @@
+name: PayPal
+description: |
+  ## Overview
+  A Model Context Protocol (MCP) server for PayPal that enables AI agents to create invoices and manage business transactions through natural language interactions.
+
+  ## Features
+  - **Invoice Management**: Create, send, and manage PayPal invoices with QR code generation
+  - **Payment Processing**: Create orders, process refunds, and capture payments
+  - **Product Catalog**: Manage PayPal product catalog with detailed product information
+  - **Subscription Management**: Create and manage subscription plans and recurring billing
+  - **Dispute Resolution**: Handle and resolve PayPal disputes efficiently
+  - **Transaction Reporting**: View and filter transaction history with advanced insights
+  - **Shipment Tracking**: Add and manage tracking information for orders
+  - **Commerce Tools**: Search and purchase gift cards through integrated shopping cart
+
+  ## What you'll need to connect
+
+  **No Setup Required**: Authentication is handled automatically through OAuth2 workflow.
+
+  ## Examples
+
+  - "Create an invoice for john@company.com for 5 hours of consulting at $150/hour, then send it immediately"
+  - "Create a monthly subscription plan for my SaaS product at $29.99/month with a 7-day free trial, then set up a subscription for customer@email.com"
+  - "Process a partial refund of $50 for capture payment ID ABC123 due to damaged goods"
+  - "List all open disputes from the last month and accept the claim for dispute ID DISP456"
+  - "Add FedEx tracking number 1234567890 to PayPal transaction TXN789 and update the shipment status to delivered"
+  - "Find gift cards under $100, add a $50 Amazon gift card to my cart, and complete checkout using PayPal"
+
+
+  
+
+metadata:
+  categories: Business
+icon: https://www.paypal.com/favicon.ico
+repoURL: https://www.paypal.ai/docs/tools/mcp-quickstart
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.paypal.com/mcp
+toolPreview:
+  - name: create_invoice
+    description: Create a new invoice in the PayPal system
+    params:
+      recipient_email: Email address of the invoice recipient
+      items: List of items or services to include in the invoice
+  - name: list_invoices
+    description: List invoices with pagination and filtering options
+    params:
+      page: Page number for pagination (optional)
+      page_size: Number of invoices per page (optional)
+      status: Filter invoices by status (optional)
+  - name: send_invoice
+    description: Send an existing invoice to the specified recipient
+    params:
+      invoice_id: The unique identifier of the invoice to be sent
+  - name: cancel_sent_invoice
+    description: Cancel a sent invoice
+    params:
+      invoice_id: The unique identifier of the invoice to cancel
+  - name: generate_invoice_qr_code
+    description: Generate a QR code for an invoice
+    params:
+      invoice_id: The unique identifier of the invoice
+  - name: create_order
+    description: Create an order in the PayPal system based on provided details
+    params:
+      items: List of items to include in the order
+      currency: Currency code such as USD or EUR
+  - name: pay_order
+    description: Capture payment for an authorized order
+    params:
+      order_id: The unique identifier of the order to capture
+  - name: create_refund
+    description: Process a refund for a captured payment
+    params:
+      capture_id: The unique identifier of the captured payment to refund
+      amount: The refund amount (optional)
+      currency: Currency code for the refund (optional)
+  - name: create_product
+    description: Create a new product in the PayPal catalog
+    params:
+      name: The name of the product
+      type: The type of the product (PHYSICAL, DIGITAL, SERVICE)
+  - name: list_product
+    description: List products from the PayPal catalog
+    params:
+      page: The specific page number to retrieve (optional)
+      page_size: Maximum number of products to return per page (optional)
+  - name: create_subscription_plan
+    description: Create a new subscription plan
+    params:
+      product_id: The ID of the product
+      name: The plan name
+      billing_cycles: Array of billing cycles for trial and regular billing
+      payment_preferences: Payment preferences for the subscription
+  - name: create_subscription
+    description: Create a new subscription
+    params:
+      plan_id: The ID of the subscription plan
+      subscriber: The subscriber information (optional)
+  - name: cancel_subscription
+    description: Cancel an active subscription
+    params:
+      subscription_id: The ID of the subscription to cancel
+      reason: Cancellation reason (optional)
+  - name: list_disputes
+    description: Retrieve a summary of all disputes with optional filtering
+    params:
+      status: Filter disputes by status such as OPEN or RESOLVED (optional)
+  - name: accept_dispute_claim
+    description: Accept a dispute claim, resolving it in favor of the buyer
+    params:
+      dispute_id: The unique identifier of the dispute
+  - name: list_transaction
+    description: List all transactions with pagination and filtering options
+    params:
+      start_date: The start date for filtering transactions (optional)
+      end_date: The end date for filtering transactions (optional)
+  - name: create_shipment_tracking
+    description: Create shipment tracking information for a PayPal transaction
+    params:
+      tracking_number: The tracking number for the shipment
+      transaction_id: The transaction ID associated with the shipment
+      carrier: The carrier handling the shipment
+      order_id: The order ID for the shipment (optional)
+      status: The current status of the shipment (optional)
+  - name: search_product
+    description: Find gift card products in the PayPal catalog
+    params:
+      criteria: Search criteria for gift cards
+  - name: create_cart
+    description: Open a new shopping cart with specified items and shipping preferences
+    params:
+      items: Selected gift cards for the cart
+  - name: checkout_cart
+    description: Finalize a shopping cart to complete the purchase process
+    params:
+      cart_id: The cart identifier for checkout 
