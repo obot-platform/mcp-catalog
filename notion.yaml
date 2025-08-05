@@ -23,10 +23,6 @@ description: |
   - **Notion Integration**: Create an internal integration at [notion.so/profile/integrations](https://www.notion.so/profile/integrations)
   - **Integration Token**: Your Notion integration token (ntn_****)
 
-  **Configuration Options:**
-  - **NOTION_TOKEN** (recommended): Simply provide your Notion integration token
-  - **OPENAPI_MCP_HEADERS** (advanced): JSON-encoded HTTP headers for custom configurations, e.g., {"Authorization": "Bearer ntn_****", "Notion-Version": "2022-06-28"}. The Notion Integration token (ntn_****) is required too.
-
   **Setup Steps:**
   1. **Create Integration**: Set up a new internal integration in your Notion workspace
   2. **Configure Permissions**: Choose read-only or full access based on your security requirements
