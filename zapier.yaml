@@ -1,0 +1,24 @@
+name: Zapier
+description: |
+  ## Overview
+  A Model Context Protocol (MCP) server for Zapier, providing access to apps and actions.
+
+  ## Features
+
+  - **Actions**: Call 30,000+ actions in Zapier
+  - **Apps**: Get access to 8,000+ apps in Zapier
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Zapier Account**: Active Zapier account (sign up at [zapier.com](https://zapier.com/))
+  - **Zapier MCP Server URL**: The URL of your Zapier MCP server (create one at [mcp.zapier.com](https://mcp.zapier.com))
+    - Be sure to use the "Connect with OAuth" URL
+
+metadata:
+  categories: SaaS & API Integrations, Automation & Browsers
+icon: https://img.icons8.com/?size=100&id=by7K6EO4PeHT&format=png&color=000000
+repoURL: https://zapier.com/mcp
+runtime: remote
+remoteConfig:
+  hostname: mcp.zapier.com
