@@ -1,0 +1,153 @@
+name: Wix
+description: |
+  ## Overview
+  A Model Context Protocol (MCP) server for Wix, providing access to Wix's API and documentation.
+
+  ## Features
+  - **API**: Access Wix's APIs to manage sites, bookings, pricing plans, CMS, and more.
+  - **Documentation**: Access Wix's documentation.
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Wix Account**: Active Wix account (sign up at [wix.com](https://wix.com/))
+
+metadata:
+  categories: Business, SaaS & API Integrations
+icon: https://img.icons8.com/?size=100&id=SfMKoUjPsT1Z&format=png&color=000000
+repoURL: https://www.wix.com/studio/developers/mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.wix.com/mcp
+
+toolPreview:
+  - name: WixREADME
+    description: |-
+      **Directive:** `WixREADME` is the **MANDATORY FIRST STEP** for all Wix-related tasks. Its output (including relevant linked documents) provides foundational context for all other Wix tools. Adherence to this protocol is **NON-NEGOTIABLE**.
+
+      **Operational Protocol (Strictly Sequential):**
+
+      1.  **Execute `WixREADME`:**
+          * **Action:** Invoke `WixREADME`.
+          * **Constraint:** MUST complete successfully. NO other Wix tool before this.
+
+      2.  **Process `WixREADME` Output (Link Identification & Relevance Assessment):**
+          * **A. Identify Candidate Links:** Scan `WixREADME` output. Extract *only* URLs found within `<urls>{urls}</urls>` tags. Ignore all other URLs.
+          * **B. Assess Relevance:** For EACH candidate URL from (A), assess its relevance to the **current user's specific prompt/task**.
+          * **Outcome:** A list of *relevant* document URLs. If no links are found in `<urls>` tags or none are deemed relevant, note this and proceed to Step 4.
+
+      3.  **Fetch Relevant Documents (via `ReadFullDocsArticle`):**
+          * **Condition:** ONLY if Step 2B identified one or more *relevant* URLs.
+          * **Action:** For EACH *relevant* URL, invoke `ReadFullDocsArticle` to fetch its full content.
+          * **Constraint:** All *relevant* documents MUST be fetched before Step 4.
+
+      4.  **Proceed with Other Wix Tools:**
+          * **Condition:** ONLY after completing Steps 1, 2, and 3 (if Step 3 was applicable).
+          * **Action:** Use other Wix tools as needed, utilizing the full context from `WixREADME` and fetched relevant documents.
+
+      **Summary of Critical Rules:**
+      * `WixREADME` is **ALWAYS FIRST**.
+      * Analyze `WixREADME` output: Extract links *only* from `<urls>{urls}</urls>` tags.
+      * Assess relevance of *each* extracted link against the user's current task.
+      * Fetch **ONLY RELEVANT** linked documents using `ReadFullDocsArticle` before any other Wix tool.
+      * **FAILURE TO FOLLOW THIS EXACT SEQUENCE WILL LEAD TO ERRORS.** Strict adherence is mandatory.
+  - name: SearchWixWDSDocumentation
+    description: |-
+      Searches the Wix Design System Documentation for components and patterns.
+      Use this tool when you need to understand or implement UI components and design patterns in a Wix project.
+      Search for specific component names, patterns, or UI requirements.
+      If you can't find what you need, try to rephrase your search term or use bigger maxResults value.
+      **Dependency:** Must be used after 'WixREADME' has successfully run.
+    params:
+      maxResults: The maximum number of results to return, default is 5, max is 15
+      searchTerm: The search term to search for in the Wix Design System Documentation
+  - name: SearchWixRESTDocumentation
+    description: |-
+      Searches the official Wix REST API documentation.
+      Use this tool whenever you need to to interact with the Wix platform via HTTP requests.
+      Specify the API endpoint, resource, or action you need information about (e.g., 'get site details endpoint', 'create data collection', 'update product API', 'REST authentication').
+      If you can't find what you need, try to rephrase your search term or use bigger maxResults value.
+      **Dependency:** Must be used after 'WixREADME' has successfully run.
+    params:
+      maxResults: The maximum number of results to return, default is 5, max is 15
+      searchTerm: The search term to search for in the Wix REST API Documentation
+  - name: SearchWixSDKDocumentation
+    description: |-
+      Searches the official Wix javascript SDK documentation.
+      Use this tool whenever you need to write or modify Wix related SDK code.
+      Specify the SDK module, function, or feature you need information about (e.g., 'how to query all items from a data collection?', 'how to use wix-stores-backend', 'authentication methods in the SDK').
+      If you can't find what you need, try to rephrase your search term or use bigger maxResults value.
+      **Dependency:** Must be used after 'WixREADME' has successfully run.
+    params:
+      maxResults: The maximum number of results to return, default is 5, max is 15
+      searchTerm: The search term to search for in the Wix SDK Documentation
+  - name: SearchBuildAppsDocumentation
+    description: |-
+      Searches the official Build Apps documentation.
+      Use this tool when you need to understand or implement Wix CLI applications related code.
+      The search term should be a specific Wix CLI command or specific topic related to Wix CLI applications or its ecosystem (e.g. deployment, creating new extensions etc).
+      If you can't find what you need, try to rephrase your search term or use bigger maxResults value.
+      **Dependency:** Must be used after 'WixREADME' has successfully run.
+    params:
+      maxResults: The maximum number of results to return, default is 5, max is 15
+      searchTerm: The search term to search for in the Build Apps Documentation
+  - name: SearchWixHeadlessDocumentation
+    description: |-
+      Searches the official Wix Headless Documentation.
+      Use this tool when you need to understand or implement Headless related code.
+      The search term should be a specific Wix Headless topic or feature you need information about.
+      If you can't find what you need, try to rephrase your search term or use bigger maxResults value.
+      **Dependency:** Must be used after 'WixREADME' has successfully run.
+    params:
+      maxResults: The maximum number of results to return, default is 5, max is 15
+      searchTerm: The search term to search for in the Headless Documentation
+  - name: ReadFullDocsArticle
+    description: |-
+      Fetches the full Wix docs article or method article.
+      Use this tool when you read a summary of a docs article or method article, you have the docs url and want to read the full article.
+      **Dependency:** Must be used after 'WixREADME' has successfully run.
+    params:
+      articleUrl: The URL of the docs article or method article to fetch. Should be something like https://dev.wix.com/docs/.../.../...
+  - name: ReadFullDocsMethodSchema
+    description: |-
+      Fetches the full method schema for a given method. Always use it before calling the method.
+      This will give you the entire request/response schema with all the fields and their descriptions.
+    params:
+      articleUrl: The URL of the documentation to fetch. Should be something like https://dev.wix.com/docs/.../.../...
+  - name: CallWixSiteAPI
+    description: |-
+      Call Wix apis on a business or site. Use this to create, read, update, and delete data and other Wix entities in your Wix site,
+      You should ALWAYS check the rest docs - "SearchWixRESTDocumentation" for the specific API you want to call, don't just call it without knowing what it does, CHECK THE DOCS
+      Error Handling:
+      If the error is related to missing installed app or "WDE0110: Wix Code not enabled", you should install the missing app by using ReadFullDocsArticle tool to fetch the article - https://dev.wix.com/docs/kb-only/MCP_REST_RECIPES_KB_ID/TRAIN_wix.devcenter.apps.installer.v1.AppsInstallerService.InstallApp
+      **Note:** there is no need to check if an app is installed/ Wix Code enabled in advance, just call the API and handle the error if it occurs, the API error message will state it clearly.
+      For any other error, use your default error handling mechanism
+    params:
+      body: A string representing of a valid JSON object to describe the body of the request
+      method: The HTTP method to use for the API call (e.g. GET, POST, PUT, DELETE)
+      siteId: The id of the site selected using site selection tool
+      url: The url of the api to call - ALWAYS get the information from the Wix REST docs or from the conversation context, the URL MUST BE ABSOLUTE URL
+  - name: ListWixSites
+    description: List Wix sites for the current user, by default it will return all sites, but you can filter by name
+    params:
+      alwaysTrue: Always pass true to this parameter
+      nameSearch: optional filer by name, if not provided all sites will be returned
+  - name: ManageWixSite
+    description: |-
+      Use account level API in order to create a site, update a site and publish site.
+          ALWAYS use "SearchWixRESTDocumentation" to search for the API you should invoke, NEVER GUESS THE SITE API URL
+          You should ALWAYS check the rest docs - "SearchWixRESTDocumentation" for the specific API you want to call, don't just call it without knowing what it does, CHECK THE DOCS
+    params:
+      body: A string representing of a valid JSON object to describe the body of the request
+      method: The HTTP method to use for the API call (e.g. GET, POST, PUT, DELETE)
+      url: The url of the api to call - ALWAYS get the information from the Wix REST docs DONT GUESS IT, the URL MUST BE ABSOLUTE URL
+  - name: SupportAndFeedback
+    description: |-
+      If the user would like to provide Wix with some feedback (good or bad), about the tools in Wix MCP,
+      for example they used the tools provided, and they reflected satisfaction or dissatisfaction with the tools.
+      Also, if you encounter too many errors tyring to call the Wix API, you can also suggest the user to provide feedback to Wix using this tool.
+      **IMPORTANT NOTE**
+      This tool is not sending the message, but formats it in order to another tool to actually send it
+    params:
+      message: The message to send to Wix
+      requestId: request id if returned from the server in a failed API call to Wix
