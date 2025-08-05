@@ -1,0 +1,160 @@
+name: Canva
+description: |
+  ## Overview
+  A Model Context Protocol (MCP) server for Canva. Provides comprehensive, real-time Canva development context and tools to LLMs to help you build on Canva faster.
+
+  ## Features
+  - **Designs**: Search your Canva designs (docs, presentations, whiteboards, videos, sheets, etc.) by title or content.
+  - **Extract**: View and extract content from Canva docs, presentations, and more.
+  - **File Management**: List, create, and organize folders in your Canva account.
+  - **Export**: Export designs to formats like PDF, PNG, JPG, PPTX, GIF, and MP4 (if supported).
+  - **Generate**: Generate new designs with AI (e.g., presentations, infographics, resumes, social posts).
+  - **Collaboration**: Add and manage comments on designs for collaboration.
+  - **Import**: Import files from URLs as new Canva designs.
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Canva Account**: Active Canva account (sign up at [canva.com](https://canva.com/))
+
+metadata:
+  categories: SaaS & API Integrations, Creative Tools
+icon: https://img.icons8.com/?size=100&id=iWw83PVcBpLw&format=png&color=000000
+repoURL: https://www.canva.dev/docs/connect/canva-mcp-server-setup/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.canva.com/mcp
+
+toolPreview:
+  - name: search-designs
+    description: Search docs, presentations, videos, whiteboards, sheets, and other designs in Canva. Use "query" param to search by title or content. If "query" is used, "sortBy" must be set to "relevance". Filter by "any" ownership unless specified. Sort by relevance unless specified. Use the continuation token to get the next page of results, if needed.
+    params:
+      continuation: Token for getting the next page of results. Use the continuation token from the previous response.
+      ownership: 'Filter designs by ownership: "any" for all designs owned by and shared with you (default), "owned" for designs you created, "shared" for designs shared with you'
+      query: Optional search term to filter designs by title or content. If it is used, 'sortBy' must be set to 'relevance'.
+      sort_by: 'Sort results by: "relevance" (default), "modified_descending" (newest first), "modified_ascending" (oldest first), "title_descending" (Z-A), "title_ascending" (A-Z). Optional sort order for results. If "query" is used, "sortBy" must be set to "relevance".'
+  - name: get-design
+    description: Get detailed information about a Canva design, such as a doc, presentation, whiteboard, video, or sheet. This includes design owner information, title, URLs for editing and viewing, thumbnail, created/updated time, and page count. This tool doesn't work on folders or images. You must provide the design ID, which you can find by using the `search-designs` or `list-folder-items` tools.
+    params:
+      design_id: ID of the design to get information for
+  - name: get-design-pages
+    description: Get a list of pages in a Canva design, such as a presentation. Each page includes its index and thumbnail. This tool doesn't work on designs that don't have pages (e.g. Canva docs). You must provide the design ID, which you can find using tools like `search-designs` or `list-folder-items`. You can use 'offset' and 'limit' to paginate through the pages. Use `get-design` to find out the total number of pages, if needed.
+    params:
+      design_id: The design ID to get pages from
+      limit: Maximum number of pages to return (for pagination)
+      offset: Number of pages to skip (for pagination)
+  - name: get-design-content
+    description: 'Get the content of a doc, presentation, whiteboard, social media post, sheet, and other designs in Canva. You must provide the design ID, which you can find with the "search-designs" tool. When given a URL to a Canva design, you can extract the design ID from the URL. Do not use web search to get the content of a design as the content is not accessible to the public. Example URL: https://www.canva.com/design/{design_id}.'
+    params:
+      content_types: Types of content to retrieve. Currently, only 'richtexts' is supported.
+      design_id: ID of the design to get content of
+      pages: Optional array of page numbers to get content from. If not specified, content from all pages will be returned. Pages are indexed using one-based numbering, so the first page in a design has the index value `1`.
+  - name: search
+    description: This is for connectors in ChatGPT. Use 'search-designs' if you are not using ChatGPT. Search docs, presentations, videos, whiteboards, sheets, and other designs in Canva. Use the continuation token to get the next page of results, if needed. The design URLs are secure and will not be accessible to the public. Do not use web search to get the content of a design.
+    params:
+      continuation: Token for getting the next page of results. Use the continuation token from the previous response.
+      query: Search query.
+  - name: fetch
+    description: 'Get the content of a doc, presentation, whiteboard, social media post, sheet, and other designs in Canva. You must provide the design ID, which you can find with the "search-designs" tool. When given a URL to a Canva design, you can extract the design ID from the URL. Do not use web search to get the content of a design as the content is not accessible to the public. Example URL: https://www.canva.com/design/{design_id}. This is for connectors in ChatGPT only. Use "get-design-content" if you are not ChatGPT.'
+    params:
+      id: ID of the design to get content of
+  - name: import-design-from-url
+    description: Import a file from a URL as a new Canva design
+    params:
+      name: Name for the new design
+      url: URL of the file to import into Canva
+  - name: get-design-import-from-url-status
+    description: Get the status of a Canva design import from URL job. Provide the import job ID to retrieve the current status and result of the import job.
+    params:
+      job_id: ID of the import job to check status for
+  - name: export-design
+    description: 'Export a Canva design, doc, presentation, whiteboard, videos and other Canva content types to various formats (PDF, JPG, PNG, PPTX, GIF, MP4). You should use the `get-export-formats` tool first to check which export formats are supported for the design. This tool provides a download URL for the exported file that you can share with users. Always display this download URL to users so they can access their exported content.'
+    params:
+      design_id: ID of the design to export
+      format: Format options for the export
+  - name: get-export-formats
+    description: Get the available export formats for a Canva design. This tool lists the formats (PDF, JPG, PNG, PPTX, GIF, MP4) that are supported for exporting the design. Use this tool before calling `export-design` to ensure the format you want is supported.
+    params:
+      design_id: ID of the design to get export formats for
+  - name: get-design-export-status
+    description: Get the status of a Canva design export job. Provide the export job ID to retrieve the current status and result of the export job.
+    params:
+      job_id: ID of the export job to check status for
+  - name: create-folder
+    description: Create a new folder in Canva. You can create it at the root level or inside another folder.
+    params:
+      name: Name of the folder to create
+      parent_folder_id: ID of the parent folder. Use 'root' to create at the top level
+  - name: move-item-to-folder
+    description: Move items (designs, folders, images) to a specified Canva folder
+    params:
+      item_id: ID of the item to move (design, folder, or image)
+      to_folder_id: ID of the destination folder. Use 'root' to move to the top level
+  - name: list-folder-items
+    description: List items in a Canva folder. An item can be a design, folder, or image. You can filter by item type and sort the results. Use the continuation token to get the next page of results if needed.
+    params:
+      continuation: Token for getting the next page of results. Use the continuation token from the previous response.
+      folder_id: ID of the folder to list items from. Use 'root' to list items at the top level
+      item_types: Filter items by type. Can be 'design', 'folder', or 'image'
+      sort_by: Sort the items by creation date, modification date, or title
+  - name: comment-on-design
+    description: Add a comment on a Canva design. You need to provide the design ID and the message text. The comment will be added to the design and visible to all users with access to the design.
+    params:
+      design_id: ID of the design to comment on. You can find the design ID by using the `search-designs` tool.
+      message_plaintext: The text content of the comment to add
+  - name: list-comments
+    description: "Get a list of comments for a particular Canva design. Comments are discussions attached to designs that help teams collaborate. Each comment can contain replies, mentions, and can be marked as resolved or unresolved. You need to provide the design ID, which you can find using the `search-designs` tool. Use the continuation token to get the next page of results, if needed. You can filter comments by their resolution status (resolved or unresolved) using the comment_resolution parameter."
+    params:
+      comment_resolution: 'Filter comments by resolution status: "resolved" or "unresolved". Defaults to "unresolved" if not specified.'
+      continuation: Token for getting the next page of results. Use the continuation token from the previous response.
+      design_id: ID of the design to get comments for. You can find the design ID using the `search-designs` tool.
+      limit: Maximum number of comments to return (1-100). Defaults to 50 if not specified.
+  - name: list-replies
+    description: "Get a list of replies for a specific comment on a Canva design. Comments can contain multiple replies from different users. These replies help teams collaborate by allowing discussion on a specific comment. You need to provide the design ID and comment ID. You can find the design ID using the `search-designs` tool and the comment ID using the `list-comments` tool. Use the continuation token to get the next page of results, if needed."
+    params:
+      comment_id: ID of the comment to list replies from. You can find comment IDs using the `list-comments` tool.
+      continuation: Token for getting the next page of results. Use the continuation token from the previous response.
+      design_id: ID of the design containing the comment. You can find the design ID using the `search-designs` tool.
+      limit: Maximum number of replies to return (1-100). Defaults to 50 if not specified.
+  - name: reply-to-comment
+    description: Reply to an existing comment on a Canva design. You need to provide the design ID, comment ID, and your reply message. The reply will be added to the specified comment and visible to all users with access to the design.
+    params:
+      comment_id: The ID of the comment to reply to. You can find comment IDs using the `list-comments` tool.
+      design_id: ID of the design containing the comment. You can find the design ID by using the `search-designs` tool.
+      message_plaintext: The text content of the reply to add
+  - name: generate-design
+    description: Create designs with AI. Use the `query` parameter to tell AI what you want to create. Always preview the AI-created designs with `generated_designs[].thumbnail.url` and provide `generated_designs[].url` as a link to create the design under your Canva account.
+    params:
+      design_type: |
+        The design type to generate.
+
+        Options and their descriptions:
+        - 'business_card': A [business card](https://www.canva.com/create/business-cards/); professional contact information card.
+        - 'card': A [card](https://www.canva.com/create/cards/); for various occasions like birthdays, holidays, or thank you notes.
+        - 'desktop_wallpaper': A desktop wallpaper; background image for computer screens.
+        - 'document': A [document](https://www.canva.com/create/documents/); for creating professional documents.
+        - 'facebook_cover': A [Facebook cover](https://www.canva.com/create/facebook-covers/); banner image for your Facebook profile or page.
+        - 'facebook_post': A Facebook post; ideal for sharing content on Facebook.
+        - 'flyer': A [flyer](https://www.canva.com/create/flyers/); single-page promotional material.
+        - 'infographic': An [infographic](https://www.canva.com/create/infographics/); for visualizing data and information.
+        - 'instagram_post': An [Instagram post](https://www.canva.com/create/instagram-posts/); perfect for sharing content on Instagram.
+        - 'invitation': An invitation; for events, parties, or special occasions.
+        - 'logo': A [logo](https://www.canva.com/create/logos/); for creating brand identity.
+        - 'phone_wallpaper': A phone wallpaper; background image for mobile devices.
+        - 'photo_collage': A [photo collage](https://www.canva.com/create/photo-collages/); for combining multiple photos into one design.
+        - 'pinterest_pin': A Pinterest pin; vertical image optimized for Pinterest.
+        - 'postcard': A [postcard](https://www.canva.com/create/postcards/); for sending greeting cards through the mail.
+        - 'poster': A [poster](https://www.canva.com/create/posters/); large format print for events or decoration.
+        - 'presentation': A [presentation](https://www.canva.com/presentations/); lets you create and collaborate for presenting to an audience.
+        - 'proposal': A [proposal](https://www.canva.com/create/proposals/); for presenting business ideas or plans.
+        - 'report': A [report](https://www.canva.com/create/reports/); for presenting data and information professionally.
+        - 'resume': A [resume](https://www.canva.com/create/resumes/); professional document for job applications.
+        - 'twitter_post': A Twitter post; optimized for sharing on Twitter/X.
+        - 'your_story': A Story; vertical format for Instagram and Facebook Stories.
+        - 'youtube_banner': A [YouTube banner](https://www.canva.com/create/youtube-banners/); channel header image for YouTube
+        - 'youtube_thumbnail': A [YouTube thumbnail](https://www.canva.com/create/youtube-thumbnails/); eye-catching image for video previews.
+      query: Query describing the design to generate.
+  - name: get-design-generation-job
+    description: Get the status and result of a design generation job by job ID.
+    params:
+      job_id: ID of the design generation job to check.
