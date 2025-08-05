@@ -17,7 +17,7 @@ description: |
   **No Setup Required**: Authentication is handled automatically through OAuth2 workflow.
 
 metadata:
-  categories: Project Management
+  categories: Project Management, Developer Tools
   icon: https://avatars.githubusercontent.com/u/46686594?s=200&v=4
   repoURL: https://linear.app/changelog/2025-05-01-mcp
 runtime: remote
