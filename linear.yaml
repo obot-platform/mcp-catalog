@@ -1,0 +1,189 @@
+name: Linear
+description: |
+  Connects to the officially hosted Linear MCP server. This MCP server allows you to find, create,
+   and update your Linear issues, projects, and comments. 
+
+  Requires an account on Linear.app in order to use the server.
+
+metadata:
+  categories: Developer Tools
+
+icon: https://avatars.githubusercontent.com/u/46686594?s=200&v=4
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.linear.app/sse
+
+toolPreview:
+  - name: list_comments
+    description: List comments for a specific Linear issue
+    params:
+      issueId: The issue ID
+  - name: create_comment
+    description: Create a comment on a specific Linear issue
+    params:
+      body: The content of the comment as Markdown
+      issueId: The issue ID
+      parentId: A parent comment ID to reply to
+  - name: list_cycles
+    description: Retrieve cycles for a specific Linear team
+    params:
+      teamId: The team ID
+      type: Retrieve the current, previous, next, or all cycles. If no type is provided all cycles in the team will be returned
+  - name: get_document
+    description: Retrieve a Linear document by ID or slug
+    params:
+      id: The document ID or slug
+  - name: list_documents
+    description: List documents in the user's Linear workspace
+    params:
+      after: A UUID to start from
+      before: A UUID to end at
+      createdAt: Return only documents created on or after this ISO-8601 date-time or duration. e.g. -P1D to get documents created in the last day
+      creatorId: Filter by creator ID
+      includeArchived: Whether to include archived documents
+      initiativeId: Filter by initiative ID
+      limit: The number of items to return (Max is 250)
+      orderBy: ""
+      projectId: Filter by project ID
+      query: An optional search query
+      updatedAt: Return only documents updated on or after this ISO-8601 date-time or duration. e.g. -P1D to get documents updated in the last day
+  - name: get_issue
+    description: Retrieve a Linear issue details by ID, including attachments and git branch name
+    params:
+      id: The issue ID
+  - name: list_issues
+    description: List issues in the user's Linear workspace
+    params:
+      after: A UUID to start from
+      assigneeId: The assignee UUID
+      before: A UUID to end at
+      createdAt: Return only issues created on or after this ISO-8601 date-time or duration. e.g. -P1D to get issues created in the last day
+      cycleId: The cycle UUID
+      delegateId: The delegated agent user UUID
+      includeArchived: Whether to include archived issues
+      limit: The number of items to return (Max is 250)
+      orderBy: ""
+      parentId: The parent issue UUID
+      projectId: The project UUID
+      query: An optional search query
+      stateId: The state UUID
+      teamId: The team UUID
+      updatedAt: Return only issues updated on or after this ISO-8601 date-time or duration. e.g. -P1D to get issues updated in the last day
+  - name: create_issue
+    description: Create a new Linear issue
+    params:
+      assigneeId: The assignee UUID
+      cycleId: The cycle UUID to add the issue to
+      delegateId: The UUID of the agent user to delegate the issue to
+      description: The issue description as Markdown
+      dueDate: The due date for the issue in ISO format
+      labelIds: Array of label UUIDs to set on the issue
+      links: Array of link objects to attach to the issue. Each object must contain a valid `url` and a non-empty `title`.
+      parentId: The parent issue UUID, if this is a sub-issue
+      priority: The issue priority. 0 = No priority, 1 = Urgent, 2 = High, 3 = Normal, 4 = Low.
+      projectId: The project UUID to add the issue to
+      stateId: The issue state UUID
+      teamId: The team UUID
+      title: The issue title
+  - name: update_issue
+    description: Update an existing Linear issue
+    params:
+      assigneeId: The assignee UUID
+      cycleId: The cycle UUID
+      delegateId: The delegated agent user UUID
+      description: The issue description as Markdown
+      dueDate: The due date for the issue in ISO format
+      estimate: The numerical issue estimate value
+      id: The issue ID
+      labelIds: Array of label UUIDs to set on the issue
+      links: Array of link objects to attach to the issue. Each object must contain a valid `url` and a non-empty `title`.
+      parentId: The parent issue UUID, if this is a sub-issue
+      priority: The issue priority. 0 = No priority, 1 = Urgent, 2 = High, 3 = Normal, 4 = Low.
+      projectId: The project UUID to add the issue to
+      stateId: The issue state UUID
+      title: The issue title
+  - name: list_issue_statuses
+    description: List available issues statuses in a Linear team
+    params:
+      teamId: The team UUID
+  - name: get_issue_status
+    description: Retrieve details of a specific issue status in Linear by name or ID
+    params:
+      query: The UUID or name of the issue status to retrieve
+      teamId: The team UUID
+  - name: list_my_issues
+    description: List issues assigned to the current user
+    params:
+      after: A UUID to start from
+      before: A UUID to end at
+      limit: The number of items to return (Max is 250)
+      orderBy: ""
+  - name: list_issue_labels
+    description: List available issue labels in a Linear workspace or team
+    params:
+      teamId: The team UUID
+  - name: list_projects
+    description: List projects in the user's Linear workspace
+    params:
+      after: A UUID to start from
+      before: A UUID to end at
+      createdAt: Return only projects created on or after this ISO-8601 date-time or duration. e.g. -P1D to get projects created in the last day
+      includeArchived: Whether to include archived projects
+      limit: The number of items to return (Max is 250)
+      orderBy: ""
+      teamId: A team UUID to filter by
+      updatedAt: Return only projects updated on or after this ISO-8601 date-time or duration. e.g. -P1D to get projects updated in the last day
+  - name: get_project
+    description: Retrieve details of a specific project in Linear
+    params:
+      query: The ID or name of the project to retrieve
+  - name: create_project
+    description: Create a new project in Linear
+    params:
+      description: The full project description in Markdown format
+      labelIds: Array of label UUIDs to set on the project
+      leadId: The UUID of the user to set as project lead
+      name: A descriptive name of the project
+      startDate: The start date of the project in ISO format
+      summary: A concise plaintext summary of the project (max 255 chars)
+      targetDate: The target date of the project in ISO format
+      teamId: The UUID of the team to associate the project with
+  - name: update_project
+    description: Update an existing Linear project
+    params:
+      description: The full project description in Markdown format
+      id: The ID of the project to update
+      labelIds: Array of label UUIDs to set on the project
+      leadId: The UUID of the user to set as project lead
+      name: The new name of the project
+      startDate: The start date of the project in ISO format
+      summary: A concise plaintext summary of the project (max 255 chars)
+      targetDate: The target date of the project in ISO format
+  - name: list_project_labels
+    description: List available project labels in the Linear workspace
+  - name: list_teams
+    description: List teams in the user's Linear workspace
+    params:
+      after: A UUID to start from
+      before: A UUID to end at
+      createdAt: Return only teams created on or after this ISO-8601 date-time or duration. e.g. -P1D to get teams created in the last day
+      includeArchived: Whether to include archived teams
+      limit: The number of items to return (Max is 250)
+      orderBy: ""
+      query: An optional search query
+      updatedAt: Return only teams updated on or after this ISO-8601 date-time or duration. e.g. -P1D to get teams updated in the last day
+  - name: get_team
+    description: Retrieve details of a specific Linear team
+    params:
+      query: The UUID, key, or name of the team to retrieve
+  - name: list_users
+    description: Retrieve users in the Linear workspace
+  - name: get_user
+    description: Retrieve details of a specific Linear user
+    params:
+      query: The UUID or name of the user to retrieve
+  - name: search_documentation
+    description: Search Linear's documentation to learn about features and usage
+    params:
+      page: The page number
+      query: The search query
