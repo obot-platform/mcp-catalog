@@ -1,6 +1,5 @@
 name: HubSpot
 description: |
-  ## Overview
   A Model Context Protocol (MCP) server that enables AI clients to seamlessly take HubSpot actions and interact with your HubSpot data. This opens up powerful new integration possibilities for CRM automation, data insights, and workflow management.
 
   ## Features

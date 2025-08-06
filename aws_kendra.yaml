@@ -1,6 +1,5 @@
 name: AWS Kendra
 description: |
-  ## Overview
   A Model Context Protocol (MCP) server for Amazon Kendra developed by AWS Labs. Use Kendra Indices as additional context for RAG to enhance your existing MCP-enabled ChatBot and coding assistants.
 
   ## Features

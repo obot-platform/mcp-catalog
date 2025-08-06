@@ -10,7 +10,6 @@ description: |
   [![npm downloads](https://img.shields.io/npm/dt/@neondatabase/mcp-server-neon)](https://www.npmjs.com/package/@neondatabase/mcp-server-neon)
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-  ## Overview
   A Model Context Protocol (MCP) server that lets you interact with your Neon Postgres databases using natural language. Built on the Model Context Protocol, it acts as a bridge between natural language requests and the Neon API, enabling seamless database management without complex SQL or direct API calls.
 
   ## Features

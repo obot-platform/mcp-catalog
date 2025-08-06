@@ -3,7 +3,6 @@ description: |
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   [![Python Version](https://img.shields.io/badge/python-3.13%2B-blue)](https://www.python.org/downloads/)
 
-  ## Overview
   A Model Context Protocol (MCP) server that provides a natural language interface designed for agentic applications to efficiently manage and search data in Redis. It integrates seamlessly with MCP clients, enabling AI-driven workflows to interact with structured and unstructured data using conversational commands.
 
   ## Features

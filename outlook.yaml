@@ -5,7 +5,6 @@ description: |
   ![FastMCP](https://img.shields.io/badge/FastMCP-2.10.4+-orange?style=for-the-badge)
   ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
-  ## Overview
   A Model Context Protocol (MCP) server for Microsoft Outlook integration, providing comprehensive email management capabilities through Microsoft Graph API.
 
   ## Features

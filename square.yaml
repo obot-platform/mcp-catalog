@@ -1,6 +1,5 @@
 name: Square
 description: |
-  ## Overview
   A Model Context Protocol (MCP) server for Square that connects AI assistants directly to the full Square API platform, providing programmatic access to customers, orders, items, payments, and commerce operations.
 
   ## Features

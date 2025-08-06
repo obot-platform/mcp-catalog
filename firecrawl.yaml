@@ -1,6 +1,5 @@
 name: Firecrawl
 description: |
-  ## Overview
   A Model Context Protocol (MCP) server that integrates with Firecrawl for web scraping capabilities. Perform web scraping, crawling, search, and content extraction with automatic retries and rate limiting.
 
   ## Features

@@ -1,6 +1,5 @@
 name: Time
 description: |
-  ## Overview
   A Model Context Protocol (MCP) server to get current time and convert between timezones using IANA timezone names.
 
 metadata:

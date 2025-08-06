@@ -1,6 +1,5 @@
 name: Linear
 description: |
-  ## Overview
   A Model Context Protocol (MCP) server for Linear that enables AI agents to access and manage issues, projects, comments, and team workflows.
 
   ## Features

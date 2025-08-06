@@ -5,7 +5,6 @@ description: |
   [![PyPI](https://img.shields.io/badge/PyPI-elevenlabs--mcp-000000.svg?style=for-the-badge&logo=pypi&labelColor=000)](https://pypi.org/project/elevenlabs-mcp)
   [![Tests](https://img.shields.io/badge/tests-passing-000000.svg?style=for-the-badge&logo=github&labelColor=000)](https://github.com/elevenlabs/elevenlabs-mcp-server/actions/workflows/test.yml)
 
-  ## Overview
   A Model Context Protocol (MCP) server that enables interaction with powerful Text to Speech and audio processing APIs. Generate speech, clone voices, transcribe audio, create AI agents, and process sound effects with industry-leading voice AI technology.
 
   ## Features

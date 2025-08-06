@@ -1,6 +1,5 @@
 name: Cloudflare
 description: |
-  ## Overview
   A Model Context Protocol (MCP) server for Cloudflare's services. Connect to your Cloudflare account using natural language to manage configurations, process information, and make changes across application development, security, and performance services.
 
   ## Features

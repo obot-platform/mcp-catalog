@@ -1,6 +1,5 @@
 name: Canva
 description: |
-  ## Overview
   A Model Context Protocol (MCP) server for Canva. Provides comprehensive, real-time Canva development context and tools to LLMs to help you build on Canva faster.
 
   ## Features

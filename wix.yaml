@@ -1,6 +1,5 @@
 name: Wix
 description: |
-  ## Overview
   A Model Context Protocol (MCP) server for Wix, providing access to Wix's API and documentation.
 
   ## Features

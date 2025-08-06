@@ -1,6 +1,5 @@
 name: Stripe
 description: |
-  ## Overview
   A Model Context Protocol (MCP) server for Stripe. Manage customers, products, prices, subscriptions, and more.
 
   ## Features

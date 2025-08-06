@@ -1,6 +1,5 @@
 name: GitHub Remote
 description: |
-  ## Overview
   A Model Context Protocol (MCP) server that provides easy connection to GitHub using the hosted version – no local setup or runtime required. Access comprehensive GitHub functionality through a remote server with additional tools not available in the local version.
 
   ## Features

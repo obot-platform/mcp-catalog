@@ -1,9 +1,7 @@
 name: Notion
 description: |
-
   ![notion-mcp-sm](https://github.com/user-attachments/assets/6c07003c-8455-4636-b298-d60ffdf46cd8)
 
-  ## Overview
   A Model Context Protocol (MCP) server for the Notion API that enables AI agents to interact with Notion workspaces. This server provides comprehensive tools for managing pages, databases, blocks, comments, and users with optimized token consumption for AI applications.
 
   ![mcp-demo](https://github.com/user-attachments/assets/e3ff90a7-7801-48a9-b807-f7dd47f0d3d6)

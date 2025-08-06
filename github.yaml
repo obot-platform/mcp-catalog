@@ -1,6 +1,5 @@
 name: GitHub
 description: |
-  ## Overview
   A Model Context Protocol (MCP) server that connects AI tools directly to GitHub's platform. This gives AI agents, assistants, and chatbots the ability to read repositories and code files, manage issues and PRs, analyze code, and automate workflows through natural language interactions. Supports GitHub Enterprise Server and Enterprise Cloud with data residency.
 
   ## Features

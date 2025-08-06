@@ -1,6 +1,5 @@
 name: Zapier
 description: |
-  ## Overview
   A Model Context Protocol (MCP) server for Zapier, providing access to apps and actions.
 
   ## Features

@@ -2,7 +2,6 @@ name: Supabase
 description: |
   ![supabase-mcp-demo](https://github.com/user-attachments/assets/3fce101a-b7d4-482f-9182-0be70ed1ad56)
 
-  ## Overview
   A Model Context Protocol (MCP) server that connects your Supabase projects to AI assistants. This server enables AI assistants to perform comprehensive Supabase operations including managing tables, fetching configurations, querying data, and deploying Edge Functions across your development workflow.
 
   ## Features

@@ -5,7 +5,6 @@ description: |
   ![FastMCP](https://img.shields.io/badge/FastMCP-2.8.1+-orange?style=for-the-badge)
   ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
-  ## Overview
   A Model Context Protocol (MCP) server for Gmail integration, providing comprehensive email management capabilities through a modern API interface.
 
   ## Features

@@ -1,6 +1,5 @@
 name: DuckDuckGo Search
 description: |
-  ## Overview
   A Model Context Protocol (MCP) server that provides web search capabilities through DuckDuckGo, with additional features for content fetching and parsing. Search the web and retrieve webpage content with LLM-friendly formatting.
 
   ## Features

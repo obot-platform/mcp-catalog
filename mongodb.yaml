@@ -1,6 +1,5 @@
 name: MongoDB Local
 description: |
-  ## Overview
   A Model Context Protocol (MCP) server for interacting with MongoDB databases. Provides comprehensive tools for database operations, collection management, and data manipulation with any MongoDB instance (local, cloud, or self-hosted).
 
   ## Features

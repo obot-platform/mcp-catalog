@@ -1,6 +1,5 @@
 name: PayPal
 description: |
-  ## Overview
   A Model Context Protocol (MCP) server for PayPal that enables AI agents to create invoices and manage business transactions through natural language interactions.
 
   ## Features

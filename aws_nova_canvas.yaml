@@ -1,6 +1,5 @@
 name: AWS Nova Canvas
 description: |
-  ## Overview
   A Model Context Protocol (MCP) server for generating images using Amazon Nova Canvas. Create images from text prompts with customizable dimensions, quality options, and color guidance for enhanced creative workflows.
 
   ## Features

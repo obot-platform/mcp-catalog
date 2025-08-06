@@ -2,7 +2,6 @@ name: AWS Documentation
 description: |
   ![AWS Documentation MCP Demo](https://github.com/awslabs/mcp/blob/main/src/aws-documentation-mcp-server/basic-usage.gif?raw=true)
 
-  ## Overview
   A Model Context Protocol (MCP) server for AWS Documentation. Access, search, and get recommendations from AWS documentation with tools to fetch content, search globally, and discover related resources.
 
   ## Features

@@ -1,6 +1,5 @@
 name: Azure
 description: |
-  ## Overview
   A Model Context Protocol (MCP) server that implements the MCP specification to create a seamless connection between AI agents and Azure services. Supercharge your agents with Azure context across compute, storage, databases, AI services, and more.
 
   ## Features

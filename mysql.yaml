@@ -3,7 +3,6 @@ description: |
   ![Tests](https://github.com/designcomputer/mysql_mcp_server/actions/workflows/test.yml/badge.svg)
   ![PyPI - Downloads](https://img.shields.io/pypi/dm/mysql-mcp-server)
 
-  ## Overview
   A Model Context Protocol (MCP) server that enables secure interaction with MySQL databases. This server facilitates communication between AI applications and MySQL databases, making database exploration and analysis safer and more structured through a controlled interface.
 
   ## Features

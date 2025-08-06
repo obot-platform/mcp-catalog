@@ -3,7 +3,6 @@ description: |
   > [!CAUTION]
   > **WARNING: this MCP server is EXPERIMENTAL.**
 
-  ## Overview
   A Model Context Protocol (MCP) server that connects to your Elasticsearch data directly from any MCP Client. Elasticsearch is a distributed search and analytics engine, scalable data store and vector database optimized for speed and relevance on production-scale workloads.
 
   ## Features
