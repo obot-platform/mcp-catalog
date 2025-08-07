@@ -19,6 +19,11 @@ description: |
 
   **No Setup Required**: Authentication is handled automatically through OAuth workflow.
 
+  ## Known Issues
+
+  GPT-4.1 is generally not able to format its API requests correctly when calling the `make_api_request` tool.
+  Claude Sonnet 4 works better.
+
 metadata:
   categories: Business
 icon: https://avatars.githubusercontent.com/u/82592?s=200&v=4
