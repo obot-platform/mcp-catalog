@@ -28,6 +28,11 @@ description: |
 
   **Note**: If both authentication methods are provided, API key takes precedence.
 
+  ## Known Issues
+
+  GPT-4.1 is generally not able to format its API requests correctly when calling the `search` tool.
+  Claude Sonnet 4 works better.
+
 metadata:
   categories: Databases
 icon: https://avatars.githubusercontent.com/u/6764390?v=4
