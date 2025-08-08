@@ -58,12 +58,12 @@ icon: https://avatars.githubusercontent.com/u/19199542?v=4
 repoURL: https://github.com/antvis/mcp-server-chart
 env:
   - key: VIS_REQUEST_SERVER
-    name: VIS_REQUEST_SERVER
+    name: Vis Request Server
     required: false
     sensitive: false
     description: Custom chart generation service URL for private deployment, e.g., from GPT-Vis-SSR.
   - key: DISABLED_TOOLS
-    name: DISABLED_TOOLS
+    name: Disabled Tools
     required: false
     sensitive: false
     description: Comma-separated list of tool names to disable

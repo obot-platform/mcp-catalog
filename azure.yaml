@@ -13,7 +13,20 @@ description: |
 
   ## What you'll need to connect
 
-  **Authentication**: OAuth with web browser authentication - no manual configuration required.
+  **Authentication:**
+  You will need to set the following environment variables:
+  - AZURE_TENANT_ID
+  - AZURE_CLIENT_ID
+  - AZURE_CLIENT_SECRET
+  These must correspond to a service principal. You can create one using the (Azure web console)[https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal], or with the Azure CLI:
+
+  ```bash
+  az ad sp create-for-rbac --name "<my-service-principal>" --role contributor \
+  --scopes /subscriptions/<your-subscription-id> \
+  --query "{AZURE_CLIENT_ID: appId, AZURE_CLIENT_SECRET: password, AZURE_TENANT_ID: tenant}" --output json
+  ```
+
+  Replace `<my-service-principal>` with the name of the service principal you want to create, and `<your-subscription-id>` with your actual subscription ID. The role you assign to the service principal will determine the permissions it has.
 
   **Optional Configuration:**
   - **AZURE_MCP_COLLECT_TELEMETRY** (Optional): Set to `false` to opt out of telemetry collection (default: `true`)
@@ -32,8 +45,23 @@ metadata:
 icon: https://avatars.githubusercontent.com/u/19199542?v=4
 repoURL: https://github.com/Azure/azure-mcp
 env:
+  - key: AZURE_TENANT_ID
+    name: Azure Tenant ID
+    required: true
+    sensitive: false
+    description: The tenant ID of the Azure subscription you are authenticating to.
+  - key: AZURE_CLIENT_ID
+    name: Azure Client ID
+    required: true
+    sensitive: true
+    description: The Azure client ID of a service principal.
+  - key: AZURE_CLIENT_SECRET
+    name: Azure Client Secret
+    required: true
+    sensitive: true
+    description: The Azure client secret of a service principal.
   - key: AZURE_MCP_COLLECT_TELEMETRY
-    name: AZURE_MCP_COLLECT_TELEMETRY
+    name: Azure MCP Collect Telemetry
     required: false
     sensitive: false
     description: Telemetry collection is on by default, to opt out, set this to false.
@@ -255,4 +283,4 @@ toolPreview:
       retry-max-retries: Maximum number of retry attempts (optional)
       retry-mode: Retry strategy to use (optional)
       retry-network-timeout: Network operation timeout in seconds (optional)
-      tenant: The Microsoft Entra ID tenant ID or name (optional) 
+      tenant: The Microsoft Entra ID tenant ID or name (optional)

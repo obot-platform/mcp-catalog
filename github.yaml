@@ -208,12 +208,12 @@ env:
     sensitive: true
     description: GitHub Personal Access Token used to authenticate with the GitHub API. Required for all GitHub operations.
   - key: GITHUB_TOOLSETS
-    name: GITHUB_TOOLSETS
+    name: GitHub Toolsets
     required: false
     sensitive: false
     description: Comma-separated list of enabled GitHub toolsets (e.g. repos,issues,pull_requests,code_security,experiments,all). Optional, defaults to all.
   - key: GITHUB_DYNAMIC_TOOLSETS
-    name: GITHUB_DYNAMIC_TOOLSETS
+    name: GitHub Dynamic Toolsets
     required: false
     sensitive: false
     description: Set to 1 to enable dynamic tool discovery. Optional.

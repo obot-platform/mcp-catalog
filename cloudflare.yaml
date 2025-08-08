@@ -37,7 +37,7 @@ description: |
   | **DNS Analytics server**                | Optimize DNS performance and debug issues based on current set up                               | `https://dns-analytics.mcp.cloudflare.com/sse` |
   | **Digital Experience Monitoring server** | Get quick insight on critical applications for your organization                                | `https://dex.mcp.cloudflare.com/sse`           |
   | **Cloudflare One CASB server**           | Quickly identify any security misconfigurations for SaaS applications to safeguard users & data | `https://casb.mcp.cloudflare.com/sse`          |
-  | **GraphQL server**                       | Get analytics data using Cloudflare’s GraphQL API
+  | **GraphQL server**                       | Get analytics data using Cloudflare’s GraphQL API | `https://graphql.mcp.cloudflare.com/sse` |
 
 metadata:
   categories: Cloud & Infrastructure
@@ -45,7 +45,7 @@ icon: https://avatars.githubusercontent.com/u/314135?s=48&v=4
 repoURL: https://github.com/cloudflare/mcp-server-cloudflare
 runtime: remote
 remoteConfig:
-  hostname: mcp.cloudflare.com # TODO: change to * once supported
+  hostname: "*.mcp.cloudflare.com"
 toolPreview:
   - name: accounts_list
     description: List all accounts in your Cloudflare account
