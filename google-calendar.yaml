@@ -26,7 +26,7 @@ description: |
 metadata:
   categories: Business
   allow-multiple: "true"
-icon: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Calendar_icon_%282020%29.svg/250px-Google_Calendar_icon_%282020%29.svg.png
+icon: https://img.icons8.com/?size=100&id=WKF3bm1munsk&format=png&color=000000
 repoURL: https://google-calendar-mcp.obot.ai/mcp/
 runtime: remote
 remoteConfig:

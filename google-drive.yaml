@@ -24,7 +24,7 @@ description: |
 metadata:
   categories: Business
   allow-multiple: "true"
-icon: https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Google_Drive_icon_%282020%29.svg/330px-Google_Drive_icon_%282020%29.svg.png
+icon: https://img.icons8.com/?size=100&id=VLr4hUR8iMGF&format=png&color=000000
 repoURL: https://google-drive-mcp.obot.ai/mcp/
 runtime: remote
 remoteConfig:
