@@ -120,7 +120,7 @@ env:
 
 runtime: uvx
 uvxConfig:
-  package: 'git+https://github.com/redis/mcp-redis.git@0.2.0'
+  package: 'git+https://github.com/redis/mcp-redis.git@c74e16f9e99a2e93e91fab7e6c3dd22b93d08722'
   command: redis-mcp-server
   args:
     - --url
