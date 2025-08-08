@@ -111,4 +111,4 @@ toolPreview:
 
 runtime: remote
 remoteConfig:
-  url: https://mcp.notion.com/mcp
+  fixedURL: https://mcp.notion.com/mcp
