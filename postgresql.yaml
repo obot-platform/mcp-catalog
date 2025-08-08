@@ -26,6 +26,12 @@ description: |
   - "Analyze my database workload and suggest indexes to improve performance"
   - "Help me optimize this query: SELECT * FROM orders JOIN customers ON orders.customer_id = customers.id WHERE orders.created_at > '2023-01-01'"
 
+  ## Known Issues
+
+  Some tools require extensions to be installed in the target postgres instance:
+  - `get_top_queries` requires the `pg_stat_statements` extension
+  - `analyze_workload_indexes` and `analyze_query_indexes` require the `hypopg` extension
+
 metadata:
   categories: Databases
 icon: https://avatars.githubusercontent.com/u/177543?s=48&v=4
