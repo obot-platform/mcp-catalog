@@ -2,7 +2,7 @@ name: Outlook
 description: |
   ![Outlook MCP Server](https://img.shields.io/badge/Outlook-MCP%20Server-blue?style=for-the-badge&logo=microsoft-outlook)
   ![Python](https://img.shields.io/badge/Python-3.13+-green?style=for-the-badge&logo=python)
-  ![FastMCP](https://img.shields.io/badge/FastMCP-2.10.4+-orange?style=for-the-badge)
+  ![FastMCP](https://img.shields.io/badge/FastMCP-2.11.1+-orange?style=for-the-badge)
   ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
   A Model Context Protocol (MCP) server for Microsoft Outlook integration, providing comprehensive email management capabilities through Microsoft Graph API.

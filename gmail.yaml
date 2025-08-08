@@ -2,7 +2,7 @@ name: Gmail
 description: |
   ![Gmail MCP Server](https://img.shields.io/badge/Gmail-MCP%20Server-blue?style=for-the-badge&logo=gmail)
   ![Python](https://img.shields.io/badge/Python-3.13+-green?style=for-the-badge&logo=python)
-  ![FastMCP](https://img.shields.io/badge/FastMCP-2.8.1+-orange?style=for-the-badge)
+  ![FastMCP](https://img.shields.io/badge/FastMCP-2.11.1+-orange?style=for-the-badge)
   ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
   A Model Context Protocol (MCP) server for Gmail integration, providing comprehensive email management capabilities through a modern API interface.

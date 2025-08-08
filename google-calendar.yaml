@@ -1,0 +1,133 @@
+name: Google Calendar
+description: |
+  ![Google Calendar MCP Server](https://img.shields.io/badge/Google%20Calendar-MCP%20Server-blue?style=for-the-badge&logo=google-calendar)
+  ![Python](https://img.shields.io/badge/Python-3.13+-green?style=for-the-badge&logo=python)
+  ![FastMCP](https://img.shields.io/badge/FastMCP-2.11.1+-orange?style=for-the-badge)
+  ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+
+  A Model Context Protocol (MCP) server for Google Calendar integration, providing comprehensive calendar and event management capabilities through a modern API interface.
+
+  ## Features
+  - **OAuth2 Authentication**: Secure Google OAuth integration with automatic token refresh
+  - **Calendar Management**: List, create, update, and delete calendars with timezone and location support
+  - **Event Management**: Full CRUD operations for events with support for all-day and timed events
+  - **Recurring Events**: Create and manage recurring events using RFC5545 RRULE patterns
+  - **Attendee Management**: Add, replace, and manage event attendees with RSVP tracking
+  - **Event Response**: Accept, decline, or tentatively respond to calendar invitations
+  - **Advanced Search**: Filter events by type, time range, and free-text search queries
+  - **Quick Add**: Create events from natural language text descriptions
+  - **Event Movement**: Move events between different calendars
+  - **Recurring Event Instances**: List and manage individual instances of recurring events
+
+  ## What you'll need to connect
+
+  **No Setup Required**: Authentication is handled automatically through OAuth2 workflow
+
+metadata:
+  categories: Business
+  allow-multiple: "true"
+icon: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Calendar_icon_%282020%29.svg/250px-Google_Calendar_icon_%282020%29.svg.png
+repoURL: https://google-calendar-mcp.obot.ai/mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://google-calendar-mcp.obot.ai/mcp/
+toolPreview:
+  - name: list_calendars
+    description: Lists all calendars for the authenticated user.
+  - name: get_calendar
+    description: Get details of a specific google calendar
+    params:
+      calendar_id: calendar id to get
+  - name: create_calendar
+    description: Creates a new google calendar.
+    params:
+      summary: calendar title to create
+      time_zone: calendar timezone to create
+  - name: update_calendar
+    description: Updates an existing google calendar
+    params:
+      calendar_id: calendar id to update
+      summary: calendar title to update
+      time_zone: calendar timezone to update
+      description: calendar description to update
+      location: Geographic location of the calendar as free-form text to update
+  - name: delete_calendar
+    description: Deletes a google calendar
+    params:
+      calendar_id: calendar id to delete
+  - name: list_events
+    description: Lists events for a specific google calendar.
+    params:
+      calendar_id: calendar id
+      event_type: "The type of event to list (birthday, default, focusTime, fromGmail, outOfOffice, workingLocation). Defaults to 'default'"
+      single_event: Whether to list only single event.
+      time_min: "Upper bound (exclusive) for an event's start time to filter by. Must be an RFC3339 timestamp with mandatory time zone offset."
+      time_max: "Lower bound (exclusive) for an event's end time to filter by. Must be an RFC3339 timestamp with mandatory time zone offset."
+      order_by: "Order by which to sort events. Valid options are: updated. If set, results will be returned in ascending order."
+      q: Free text search terms to find events by
+      max_results: "Maximum number of events to return (1-500, default: 250)"
+  - name: get_event
+    description: Gets details of a specific google event.
+    params:
+      calendar_id: calendar id to get event from
+      event_id: event id to get
+  - name: move_event
+    description: Moves an event to a different google calendar.
+    params:
+      calendar_id: calendar id to move event from
+      event_id: event id to move
+      new_calendar_id: calendar id to move the event to
+  - name: quick_add_event
+    description: Quickly adds an event to the calendar based on a simple text string.
+    params:
+      text: The text of the event to add
+      calendar_id: "The ID of the calendar to add event for (default: primary)"
+  - name: create_event
+    description: Creates an event in a given google calendar.
+    params:
+      calendar_id: "Calendar id to create event in. Set to `primary` to create event in the primary calendar"
+      summary: "Event title (default: My Event)"
+      location: Geographic location of the event as free-form text.
+      description: Event description
+      time_zone: "Event time zone to create. Defaults to the user's timezone. Must be a valid IANA timezone string"
+      start_date: "Event start date in the format 'yyyy-mm-dd', only used if this is an all-day event"
+      start_datetime: "Event start date and time to create. Must be a valid RFC 3339 formatted date/time string"
+      end_date: "Event end date in the format 'yyyy-mm-dd', only used if this is an all-day event"
+      end_datetime: "Event end date and time to create. Must be a valid RFC 3339 formatted date/time string"
+      recurrence: "List of strings for recurring events (RRULE, EXRULE, RDATE, or EXDATE lines as defined by RFC5545)"
+      attendees: A list of email addresses of the attendees
+  - name: update_event
+    description: Updates an existing google calendar event.
+    params:
+      calendar_id: Calendar id to update event in.
+      event_id: Event id to update
+      summary: Event title
+      location: Geographic location of the event as free-form text.
+      description: Event description
+      time_zone: "Event time zone to update. Must be a valid IANA timezone string"
+      start_date: "Event date in the format 'yyyy-mm-dd', only used if this is an all-day event"
+      start_datetime: "Event start date and time to update. Must be a valid RFC 3339 formatted date/time string"
+      end_date: "Event end date in the format 'yyyy-mm-dd', only used if this is an all-day event"
+      end_datetime: "Event end date and time to update. Must be a valid RFC 3339 formatted date/time string"
+      recurrence: "List of strings for recurring events (RRULE, EXRULE, RDATE, or EXDATE lines as defined by RFC5545)"
+      add_attendees: A list of email addresses of the attendees to add
+      replace_attendees: A list of email addresses of the attendees to replace
+  - name: respond_to_event
+    description: Responds to a calendar event by updating the current user's attendee status.
+    params:
+      calendar_id: Calendar id to respond to event in.
+      event_id: Event id to respond to
+      response: "The response to the event invitation (accepted, declined, tentative)"
+  - name: delete_event
+    description: Deletes an event from the calendar.
+    params:
+      calendar_id: Calendar id to delete event from.
+      event_id: Event id to delete
+  - name: list_recurring_event_instances
+    description: Gets all instances of a recurring event.
+    params:
+      calendar_id: Calendar id to list recurring event instances from.
+      event_id: Event id to list recurring event instances for
+      time_min: "Upper bound (exclusive) for an event's start time to filter by. Must be an RFC3339 timestamp with mandatory time zone offset."
+      time_max: "Lower bound (exclusive) for an event's end time to filter by. Must be an RFC3339 timestamp with mandatory time zone offset."
+      max_results: "Maximum number of events to return (1-500, default: 250)"  
