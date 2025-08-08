@@ -28,7 +28,7 @@ env:
   - key: MDB_MCP_CONNECTION_STRING
     name: MongoDB Connection String
     required: true
-    sensitive: false
+    sensitive: true
     description: The connection string for your MongoDB database.
   # - key: MDB_MCP_READ_ONLY ## TODO: need dynamic args support, see issue https://github.com/obot-platform/obot/issues/3619 feature request 1
   #   name: MongoDB Read Only
