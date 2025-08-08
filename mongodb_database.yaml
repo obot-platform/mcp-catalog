@@ -1,4 +1,4 @@
-name: MongoDB Local
+name: MongoDB Database
 description: |
   A Model Context Protocol (MCP) server for interacting with MongoDB databases. Provides comprehensive tools for database operations, collection management, and data manipulation with any MongoDB instance (local, cloud, or self-hosted).
 
@@ -18,7 +18,6 @@ description: |
 
   **Compatibility:**
   - Works with any MongoDB instance (local, cloud, or self-hosted)
-  - MongoDB Atlas users can use this server or the specialized MongoDB Atlas MCP Server
 # - Optional read-only mode available for safer operations
 
 metadata:
@@ -153,4 +152,4 @@ npxConfig:
   args:
     - --connectionString
     - ${MDB_MCP_CONNECTION_STRING}
-    - --readOnly
+
