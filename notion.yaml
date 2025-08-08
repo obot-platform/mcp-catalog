@@ -25,12 +25,6 @@ metadata:
   categories: SaaS & API Integrations,Databases
 icon: https://avatars.githubusercontent.com/u/4792552?v=4
 repoURL: https://github.com/makenotion/notion-mcp-server
-env:
-  - key: NOTION_TOKEN
-    name: Notion Token
-    required: true
-    sensitive: true
-    description: Notion integration token (ntn_****).
 toolPreview:
   - name: search
     description: Search within the Notion workspace.
