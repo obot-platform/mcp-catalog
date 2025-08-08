@@ -4,8 +4,6 @@ description: |
 
   A Model Context Protocol (MCP) server for the Notion API that enables AI agents to interact with Notion workspaces. This server provides comprehensive tools for managing pages, databases, blocks, comments, and users with optimized token consumption for AI applications.
 
-  ![mcp-demo](https://github.com/user-attachments/assets/e3ff90a7-7801-48a9-b807-f7dd47f0d3d6)
-
   ## Features
   - **Page Management**: Create, retrieve, update, and archive pages with full content support
   - **Database Operations**: Query, create, and update databases with advanced filtering and sorting
@@ -13,27 +11,15 @@ description: |
   - **Search & Discovery**: Powerful search capabilities across all workspace content
   - **Comment System**: Create and retrieve comments on pages and blocks
   - **User Management**: Access user information and workspace members
-  - **Security Controls**: Configurable read-only access and granular permission management
 
   ## What you'll need to connect
 
-  **Required:**
-  - **Notion Integration**: Create an internal integration at [notion.so/profile/integrations](https://www.notion.so/profile/integrations)
-  - **Integration Token**: Your Notion integration token (ntn_****)
-
-  **Setup Steps:**
-  1. **Create Integration**: Set up a new internal integration in your Notion workspace
-  2. **Configure Permissions**: Choose read-only or full access based on your security requirements
-  3. **Connect Content**: Grant the integration access to specific pages and databases
-  4. **Get Token**: Copy the integration token for configuration
-
-  **Security Note**: Consider using read-only permissions to limit workspace data exposure to AI agents.
+  **No Setup Required**: Authentication is handled automatically through OAuth2 workflow
 
   ## Example Usage
 
   - "Comment 'Hello MCP' on page 'Getting started'"
   - "Add a page titled 'Notion MCP' to page 'Development'"
-  - "Get the content of page 1a6b35e6e67f802fa7e1d27686f017f2"
 
 metadata:
   categories: SaaS & API Integrations,Databases
@@ -46,120 +32,83 @@ env:
     sensitive: true
     description: Notion integration token (ntn_****).
 toolPreview:
-  - name: API-get-user
-    description: Retrieve a user
+  - name: search
+    description: Search within the Notion workspace.
     params:
-      user_id: User ID to retrieve
-  - name: API-get-users
+      data_source_url: |-
+        Optionally, provide the URL of a Data source to search. This will perform a semantic search over
+        the pages in the Data Source.
+      page_url: |-
+        Optionally, provide the URL or ID of a page to search within. This will perform a semantic search
+        over the content within and under the specified page.
+      query: |-
+        Semantic search query over your entire Notion workspace and connected sources
+        (Slack, Google Drive, Github, Jira, Microsoft Teams, Sharepoint, OneDrive,
+        or Linear).
+      query_type: |-
+        Specify type of the query as either "internal" or "user". Always include this input if performing
+        "user" search.
+      teamspace_id: |-
+        Optionally, provide the ID of a teamspace to restrict search results to. This will perform a search
+        over content within the specified teamspace only.
+  - name: fetch
+    description: Retrieves details about a Notion entity by its URL or ID.
+    params:
+      id: The ID or URL of the Notion page to fetch
+  - name: notion-create-pages
+    description: Creates one or more Notion pages with specified properties and content.
+    params:
+      pages: The pages to create.
+      parent: The parent under which the new pages will be created. This can be a page or a database. If omitted, the new pages will be created as private pages at the workspace level.
+  - name: notion-update-page
+    description: Update a Notion page's properties or content.
+    params:
+      data: The data required for updating a page
+  - name: notion-move-pages
+    description: Move one or more Notion pages or databases to a new parent.
+    params:
+      new_parent: The new parent under which the pages will be moved. This can be a page or a database.
+      page_or_database_ids: An array of up to 100 page or database IDs to move.
+  - name: notion-duplicate-page
+    description: Duplicate a Notion page. The page must be within the current workspace, and you must have permission to access it.
+    params:
+      page_id: The ID of the page to duplicate.
+  - name: notion-create-database
+    description: Creates a new Notion database with the specified properties.
+    params:
+      description: The description of the new database, as a rich text object.
+      parent: The parent under which to create the new database. If omitted, the database will be created as a private page at the workspace level.
+      properties: The property schema of the new database. Must at least have a title property.
+      title: The title of the new database, as a rich text object.
+  - name: notion-update-database
+    description: Update a Notion database's properties, name, description, or other attributes.
+    params:
+      database_id: The ID of the database to update.
+      description: The new description of the database, as a rich text object, if you want to update it.
+      in_trash: Whether to move the database to the trash.
+      is_inline: Whether the database should be displayed inline in the parent page, if you want to change this setting.
+      properties: Updates to make to the database's schema. Use null to remove a property, or provide the `name` only to rename a property.
+      title: The new title of the database, as a rich text object, if you want to update it.
+  - name: notion-create-comment
+    description: Add a comment to a page
+    params:
+      parent: The parent of the comment. This must be a page.
+      rich_text: An array of rich text objects that represent the content of the comment.
+  - name: notion-get-comments
+    description: Get all comments of a page
+    params:
+      page_id: Identifier for a Notion page.
+  - name: notion-get-users
     description: List all users
     params:
-      page_size: Optional maximum number of users to return
-      start_cursor: Optional cursor for pagination
-  - name: API-get-self
+      query: ""
+  - name: notion-get-self
     description: Retrieve your token's bot user
-  - name: API-post-database-query
-    description: Query a database
+  - name: notion-get-user
+    description: Retrieve a user
     params:
-      database_id: Database ID to query
-      archived: Optional boolean to include archived pages
-      filter: Optional filter object for query conditions
-      filter_properties: Optional array of property names to filter by
-      in_trash: Optional boolean to include pages in trash
-      page_size: Optional maximum number of results to return
-      sorts: Optional array of sort objects with direction and property
-      start_cursor: Optional cursor for pagination
-  - name: API-post-search
-    description: Search by title
-    params:
-      filter: Optional filter object with property and value
-      page_size: Optional maximum number of results to return
-      query: Optional search query string
-      sort: Optional sort object with direction and timestamp
-      start_cursor: Optional cursor for pagination
-  - name: API-get-block-children
-    description: Retrieve block children
-    params:
-      block_id: Block ID to get children from
-      page_size: Optional maximum number of children to return
-      start_cursor: Optional cursor for pagination
-  - name: API-patch-block-children
-    description: Append block children
-    params:
-      block_id: Block ID to append children to
-      children: Array of block objects to append
-      after: Optional block ID to insert after
-  - name: API-retrieve-a-block
-    description: Retrieve a block
-    params:
-      block_id: Block ID to retrieve
-  - name: API-update-a-block
-    description: Update a block
-    params:
-      block_id: Block ID to update
-      archived: Optional boolean to archive the block
-      type: Optional block type object with updated properties
-  - name: API-delete-a-block
-    description: Delete a block
-    params:
-      block_id: Block ID to delete
-  - name: API-retrieve-a-page
-    description: Retrieve a page
-    params:
-      page_id: Page ID to retrieve
-      filter_properties: Optional property names to filter response
-  - name: API-patch-page
-    description: Update page properties
-    params:
-      page_id: Page ID to update
-      archived: Optional boolean to archive the page
-      cover: Optional cover object with external URL and type
-      icon: Optional icon object with emoji
-      in_trash: Optional boolean to move page to trash
-      properties: Optional properties object to update
-  - name: API-post-page
-    description: Create a page
-    params:
-      parent: Parent object with page_id
-      properties: Properties object with title and type
-      children: Optional array of child block IDs
-      cover: Optional cover for the page
-      icon: Optional icon for the page
-  - name: API-create-a-database
-    description: Create a database
-    params:
-      parent: Parent object with page_id and type
-      properties: Properties object defining database schema
-      title: Optional title array with text content and link
-  - name: API-update-a-database
-    description: Update a database
-    params:
-      database_id: Database ID to update
-      description: Optional description array with text content and link
-      properties: Optional properties object with name
-      title: Optional title array with text content and link
-  - name: API-retrieve-a-database
-    description: Retrieve a database
-    params:
-      database_id: Database ID to retrieve
-  - name: API-retrieve-a-page-property
-    description: Retrieve a page property item
-    params:
-      page_id: Page ID containing the property
-      property_id: Property ID to retrieve
-      page_size: Optional maximum number of items to return
-      start_cursor: Optional cursor for pagination
-  - name: API-retrieve-a-comment
-    description: Retrieve comments
-    params:
-      block_id: Block ID to get comments from
-      page_size: Optional maximum number of comments to return
-      start_cursor: Optional cursor for pagination
-  - name: API-create-a-comment
-    description: Create comment
-    params:
-      parent: Parent object with page_id
-      rich_text: Rich text array with content
+      path: ""
 
-runtime: npx
-npxConfig:
-  package: '@notionhq/notion-mcp-server'
+runtime: remote
+remoteConfig:
+  url: https://mcp.notion.com/mcp
