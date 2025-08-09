@@ -1,45 +1,44 @@
 name: GitHub
 description: |
-  A Model Context Protocol (MCP) server that connects AI tools directly to GitHub's platform. This gives AI agents, assistants, and chatbots the ability to read repositories and code files, manage issues and PRs, analyze code, and automate workflows through natural language interactions. Supports GitHub Enterprise Server and Enterprise Cloud with data residency.
+  A Model Context Protocol (MCP) server that provides easy connection to GitHub using the hosted version – no local setup or runtime required. Access comprehensive GitHub functionality through a remote server with additional tools not available in the local version.
 
   ## Features
   - **Repository Management**: Browse and query code, search files, analyze commits, and understand project structure
   - **Issue & PR Automation**: Create, update, and manage issues and pull requests with AI assistance
   - **CI/CD & Workflow Intelligence**: Monitor GitHub Actions workflow runs, analyze build failures, and manage releases
-  - **Code Analysis**: Examine security findings, review Dependabot alerts, and understand code patterns
+  - **Code Analysis**: Examine security findings, review Dependabot alerts, and get comprehensive codebase insights
   - **Team Collaboration**: Access discussions, manage notifications, and streamline team processes
-  - **Modular Toolsets**: Enable or disable specific groups of functionality via configuration
-  - **Dynamic Tool Discovery**: Turn on toolsets in response to user prompts (beta)
+  - **Copilot Integration**: Perform tasks with GitHub Copilot coding agent (exclusive to remote server)
+  - **Modular Toolsets**: Mix and match specific GitHub functionality toolsets for your use case
 
   ## What you'll need to connect
 
   **Required:**
-  - **GitHub Personal Access Token**: GitHub Personal Access Token with appropriate repository permissions
+  - **Personal Access Token**: GitHub Personal Access Token with appropriate repository permissions
 
   **Optional:**
-  - **GitHub Toolsets**: Comma-separated list of enabled GitHub toolsets (e.g., repos,issues,pull_requests). Defaults to all
-  - **Dynamic Toolsets**: Set to 1 to enable dynamic tool discovery (beta feature)
-  - **GitHub Enterprise Host**: For GitHub Enterprise Server or Enterprise Cloud with data residency
+  - **Read-only Mode**: Add `/readonly` to any toolset URL to restrict to read-only operations
 
   ## Available Toolsets
 
-  The following toolsets are available (all enabled by default):
+  **Base URL:** https://api.githubcopilot.com/mcp/
 
-  | Toolset | Description |
-  |---------|-------------|
-  | **context** | **Strongly recommended**: Tools that provide context about the current user and GitHub context |
-  | **actions** | GitHub Actions workflows and CI/CD operations |
-  | **code_security** | Code security related tools, such as GitHub Code Scanning |
-  | **dependabot** | Dependabot tools |
-  | **discussions** | GitHub Discussions related tools |
-  | **experiments** | Experimental features that are not considered stable yet |
-  | **issues** | GitHub Issues related tools |
-  | **notifications** | GitHub Notifications related tools |
-  | **orgs** | GitHub Organization related tools |
-  | **pull_requests** | GitHub Pull Request related tools |
-  | **repos** | GitHub Repository related tools |
-  | **secret_protection** | Secret protection related tools, such as GitHub Secret Scanning |
-  | **users** | GitHub User related tools |
+  | Toolset | Description | URL |
+  |---------|-------------|-----|
+  | **All** | All available GitHub MCP tools | `/` |
+  | **Actions** | GitHub Actions workflows and CI/CD operations | `/x/actions` |
+  | **Code Security** | Code security related tools, such as GitHub Code Scanning | `/x/code_security` |
+  | **Dependabot** | Dependabot tools | `/x/dependabot` |
+  | **Discussions** | GitHub Discussions related tools | `/x/discussions` |
+  | **Experiments** | Experimental features that are not considered stable yet | `/x/experiments` |
+  | **Issues** | GitHub Issues related tools | `/x/issues` |
+  | **Notifications** | GitHub Notifications related tools | `/x/notifications` |
+  | **Organizations** | GitHub Organization related tools | `/x/orgs` |
+  | **Pull Requests** | GitHub Pull Request related tools | `/x/pull_requests` |
+  | **Repositories** | GitHub Repository related tools | `/x/repos` |
+  | **Secret Protection** | Secret protection related tools, such as GitHub Secret Scanning | `/x/secret_protection` |
+  | **Users** | GitHub User related tools | `/x/users` |
+  | **Copilot** | Perform task with GitHub Copilot coding agent (remote only) | `/x/copilot` |
 
 toolPreview:
   - name: add_comment_to_pending_review
@@ -196,35 +195,19 @@ toolPreview:
       repo: Repository name
       organization: Organization to fork to (optional)
 
+
 metadata:
   categories: Developer Tools
   unsupportedTools: create_or_update_file,push_files
 icon: https://avatars.githubusercontent.com/u/9919?v=4
 repoURL: https://github.com/github/github-mcp-server
-env:
-  - key: GITHUB_PERSONAL_ACCESS_TOKEN
-    name: GitHub Personal Access Token
+
+runtime: remote
+remoteConfig:
+  hostname: api.githubcopilot.com
+  headers:
+  - name: Personal Access Token
+    description: GitHub PAT
+    key: Authorization
     required: true
     sensitive: true
-    description: GitHub Personal Access Token used to authenticate with the GitHub API. Required for all GitHub operations.
-  - key: GITHUB_TOOLSETS
-    name: GitHub Toolsets
-    required: false
-    sensitive: false
-    description: Comma-separated list of enabled GitHub toolsets (e.g. repos,issues,pull_requests,code_security,experiments,all). Optional, defaults to all.
-  - key: GITHUB_DYNAMIC_TOOLSETS
-    name: GitHub Dynamic Toolsets
-    required: false
-    sensitive: false
-    description: Set to 1 to enable dynamic tool discovery. Optional.
-  - key: GITHUB_HOST
-    name: GitHub Enterprise Host
-    required: false
-    sensitive: false
-    description: GitHub Enterprise Server hostname (e.g. https://ghes.example.com). Optional, for GitHub Enterprise integration.
-
-runtime: containerized
-containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images-github:main
-  path: "/"
-  port: 8099
