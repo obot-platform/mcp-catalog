@@ -42,7 +42,7 @@ description: |
   - **Resource Management**: "List my resource groups"
 metadata:
   categories: Cloud & Infrastructure
-icon: https://avatars.githubusercontent.com/u/19199542?v=4
+icon: https://avatars.githubusercontent.com/u/6844498?s=200&v=4
 repoURL: https://github.com/Azure/azure-mcp
 env:
   - key: AZURE_TENANT_ID
