@@ -48,7 +48,7 @@ toolPreview:
     description: Update an existing page
 
 metadata:
-  categories: Developer Tools,Verified
+  categories: Developer Tools
 icon: https://avatars.githubusercontent.com/u/168166?s=200&v=4
 repoURL: https://github.com/sooperset/mcp-atlassian
 env:
