@@ -1,0 +1,119 @@
+name: Atlassian
+description: |
+  A Model Context Protocol (MCP) server for Atlassian products (Confluence and Jira) that enables AI-powered content management and issue tracking. Supports both Cloud and Server/Data Center deployments with comprehensive authentication options including API tokens, Personal Access Tokens, and OAuth 2.0.
+
+  ## Features
+  - **Smart Jira Management**: Create, update, and search issues with AI assistance, transition tickets, add comments and worklogs
+  - **Intelligent Confluence Operations**: Search content using CQL, create and update pages, manage comments and labels
+  - **Advanced Filtering & Search**: Use JQL for Jira issues and CQL for Confluence content with intelligent AI-powered queries
+  - **Enterprise Ready**: Custom HTTP headers, proxy support, SSL verification control, and read-only mode
+
+
+  ## What you'll need to connect
+
+  - **Instance URLs**: Your Confluence and/or Jira Cloud URLs (e.g., https://your-company.atlassian.net)
+  - **API Tokens**: Generate from Atlassian security settings for each service
+  - **Username**: Your email address for Cloud instances
+
+
+  ## Example Usage
+
+  Ask your AI assistant to:
+
+  - **Automatic Jira Updates** - "Update Jira from our meeting notes"
+  - **AI-Powered Confluence Search** - "Find our OKR guide in Confluence and summarize it"
+  - **Smart Jira Issue Filtering** - "Show me urgent bugs in PROJ project from last week"
+  - **Content Creation & Management** - "Create a tech design doc for XYZ feature"
+
+toolPreview:
+  - name: jira_get_issue
+    description: Get details of a specific issue
+  - name: jira_search
+    description: Search issues using JQL
+  - name: jira_create_issue
+    description: Create a new issue
+  - name: jira_update_issue
+    description: Update an existing issue
+  - name: jira_transition_issue
+    description: Transition an issue to a new status
+  - name: jira_add_comment
+    description: Add a comment to an issue
+  - name: confluence_search
+    description: Search Confluence content using CQL
+  - name: confluence_get_page
+    description: Get content of a specific page
+  - name: confluence_create_page
+    description: Create a new page
+  - name: confluence_update_page
+    description: Update an existing page
+
+metadata:
+  categories: Developer Tools,Verified
+icon: https://avatars.githubusercontent.com/u/32061883?v=4
+repoURL: https://github.com/sooperset/mcp-atlassian
+env:
+  - key: CONFLUENCE_URL
+    name: Confluence Instance URL
+    required: false
+    sensitive: false
+    description: 'Base URL for your Confluence instance (Cloud or Server/DC). Example: https://your-company.atlassian.net/wiki or https://confluence.your-company.com'
+  - key: CONFLUENCE_USERNAME
+    name: Confluence Username (Cloud)
+    required: false
+    sensitive: false
+    description: Email/username for Confluence Cloud login. Ignored for Server/DC.
+  - key: CONFLUENCE_API_TOKEN
+    name: Confluence API Token (Cloud)
+    required: false
+    sensitive: true
+    description: API token for Confluence Cloud authentication. Generate at Atlassian security settings.
+  - key: JIRA_URL
+    name: Jira Instance URL
+    required: false
+    sensitive: false
+    description: 'Base URL for your Jira instance (Cloud or Server/DC). Example: https://your-company.atlassian.net or https://jira.your-company.com'
+  - key: JIRA_USERNAME
+    name: Jira Username (Cloud)
+    required: false
+    sensitive: false
+    description: Email/username for Jira Cloud login. Ignored for Server/DC.
+  - key: JIRA_API_TOKEN
+    name: Jira API Token (Cloud)
+    required: false
+    sensitive: true
+    description: API token for Jira Cloud authentication. Generate at Atlassian security settings.
+  - key: READ_ONLY_MODE
+    name: Read-Only Mode
+    required: false
+    sensitive: false
+    description: Set to 'true' to disable all write operations.
+  - key: ENABLED_TOOLS
+    name: Enabled Tools
+    required: false
+    sensitive: false
+    description: Comma-separated list of enabled tool names (e.g., confluence_search,jira_get_issue).
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images-atlassian:main
+  path: "/"
+  port: 8099
+  args:
+    - run
+    - -i
+    - --rm
+    - -e
+    - CONFLUENCE_URL
+    - -e
+    - CONFLUENCE_USERNAME
+    - -e
+    - CONFLUENCE_API_TOKEN
+    - -e
+    - JIRA_URL
+    - -e
+    - JIRA_USERNAME
+    - -e
+    - JIRA_API_TOKEN
+    - -e
+    - READ_ONLY_MODE
+    - -e
+    - ENABLED_TOOLS
