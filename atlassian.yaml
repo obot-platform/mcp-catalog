@@ -49,7 +49,7 @@ toolPreview:
 
 metadata:
   categories: Developer Tools,Verified
-icon: https://avatars.githubusercontent.com/u/32061883?v=4
+icon: https://avatars.githubusercontent.com/u/168166?s=200&v=4
 repoURL: https://github.com/sooperset/mcp-atlassian
 env:
   - key: CONFLUENCE_URL
@@ -94,26 +94,12 @@ env:
     description: Comma-separated list of enabled tool names (e.g., confluence_search,jira_get_issue).
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images-atlassian:main
-  path: "/"
-  port: 8099
+  image: ghcr.io/sooperset/mcp-atlassian:latest
+  path: /mcp
+  port: 8080
+  command: mcp-atlassian
   args:
-    - run
-    - -i
-    - --rm
-    - -e
-    - CONFLUENCE_URL
-    - -e
-    - CONFLUENCE_USERNAME
-    - -e
-    - CONFLUENCE_API_TOKEN
-    - -e
-    - JIRA_URL
-    - -e
-    - JIRA_USERNAME
-    - -e
-    - JIRA_API_TOKEN
-    - -e
-    - READ_ONLY_MODE
-    - -e
-    - ENABLED_TOOLS
+    - --transport
+    - streamable-http
+    - --port
+    - "8080"
