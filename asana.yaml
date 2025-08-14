@@ -1,0 +1,389 @@
+name: Asana
+description: |
+
+  A Model Context Protocol (MCP) server for Asana integration, providing comprehensive project management capabilities through Asana's API.
+
+  ## Features
+  - **Access Asana data from compatible AI applications**
+  - **Create and manage tasks and projects through natural language**
+  - **Generate reports and summaries based on Asana data**
+  - **Analyze project data and get AI-powered suggestions**
+
+  ## What you'll need to connect
+
+  **No Setup Required**: Authentication is handled automatically through Asana's OAuth2 workflow
+
+  ## Examples
+  - "Find all my incomplete tasks due this week"
+  - "Create a new task in the Marketing project assigned to me"
+  - "List all sections in the Product Launch project"
+  - "Show me the status of the Q2 Planning project"
+
+metadata:
+  categories: Business, Developer Tools
+  allow-multiple: "true"
+icon: https://avatars.githubusercontent.com/u/1472111?s=200&v=4
+repoURL: https://developers.asana.com/docs/using-asanas-mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.asana.com/sse
+toolPreview:
+  # Workspace & Team Management
+  - name: asana_list_workspaces
+    description: Get all accessible workspaces. Returns workspace IDs needed for most other operations.
+    params:
+      limit: "Number of workspaces to return (1-100)"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_get_teams_for_workspace
+    description: List all teams in workspace. Essential for workspace structure understanding.
+    params:
+      workspace_gid: "Globally unique identifier for the workspace"
+      limit: "Number of teams to return per page (1-100)"
+      offset: "Pagination offset token"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_get_teams_for_user
+    description: Get teams user belongs to. Use to check user team access.
+    params:
+      user_gid: "User identifier ('me', email, or user GID)"
+      organization: "Globally unique identifier of the workspace or organization"
+      limit: "Number of teams to return per page (1-100)"
+      offset: "Pagination offset token"
+      opt_fields: "Comma-separated list of optional fields to include"
+
+  # User Management
+  - name: asana_get_user
+    description: Get user details by ID, email, or 'me'. Essential before assigning tasks.
+    params:
+      user_id: "User identifier ('me', email, or user GID). Defaults to 'me'"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_get_team_users
+    description: List all team members. Returns user names and IDs.
+    params:
+      team_id: "Globally unique identifier for the team"
+      offset: "Pagination offset token"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_get_workspace_users
+    description: Get all users in workspace. Results are sorted alphabetically.
+    params:
+      workspace_gid: "Globally unique identifier for the workspace"
+      offset: "Pagination offset token"
+      opt_fields: "Comma-separated list of optional fields to include"
+
+  # Project Management
+  - name: asana_get_projects
+    description: List projects filtered by workspace. Supports team and archived filters.
+    params:
+      workspace: "Globally unique identifier for the workspace"
+      team: "Filter projects by team ID"
+      archived: "Include archived projects (default: false)"
+      limit: "Number of projects to return per page (1-100)"
+      offset: "Pagination offset token"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_get_project
+    description: Get detailed project data including name, description, owner, members, and settings.
+    params:
+      project_id: "Globally unique identifier for the project"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_create_project
+    description: Create new project in Asana. Essential for project setup.
+    params:
+      name: "Name of the project"
+      workspace: "Globally unique identifier for the workspace"
+      team: "Globally unique identifier for the team"
+      notes: "Project description"
+      html_notes: "HTML-formatted description for the project"
+      due_date: "Date on which this project is due (YYYY-MM-DD format)"
+      start_date: "Date on which this project is started (YYYY-MM-DD format)"
+      owner: "User identifier for project owner ('me', email, or user GID)"
+      privacy_setting: "Privacy level (public_to_workspace, private_to_team, private)"
+      default_view: "Default view of the project (list, board, calendar, timeline)"
+      color: "Color of the project"
+      archived: "Whether the project is archived (default: false)"
+  - name: asana_get_projects_for_team
+    description: List all projects for a team. Essential for team portfolio views.
+    params:
+      team_gid: "Globally unique identifier for the team"
+      archived: "Filter projects by archived status (default: false)"
+      limit: "Number of projects to return per page (1-100)"
+      offset: "Pagination offset token"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_get_projects_for_workspace
+    description: Get ALL projects in a workspace across all teams.
+    params:
+      workspace_gid: "Globally unique identifier for the workspace"
+      archived: "Filter projects by archived status (default: false)"
+      limit: "Number of projects to return per page (1-100)"
+      offset: "Pagination offset token"
+      opt_fields: "Comma-separated list of optional fields to include"
+
+  # Project Sections
+  - name: asana_get_project_sections
+    description: List all sections in a project. Essential for task placement and organization.
+    params:
+      project_id: "Globally unique identifier for the project"
+      limit: "Number of sections to return per page (1-100)"
+      offset: "Pagination offset token"
+      opt_fields: "Comma-separated list of optional fields to include"
+
+  # Project Status Updates
+  - name: asana_get_project_statuses
+    description: List all status updates for a project chronologically. Track project health over time.
+    params:
+      project_gid: "The project GID to get statuses for"
+      limit: "Results per page (1-100)"
+      offset: "Pagination offset token"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_get_project_status
+    description: Get single status update by ID. Returns color, text, author, and timestamp.
+    params:
+      project_status_gid: "The project status GID to retrieve"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_create_project_status
+    description: Create project status update with color and text. Use for regular project health updates.
+    params:
+      project_gid: "The project GID to create the status for"
+      text: "The text content of the status update"
+      color: "The color of the status (green, yellow, red, blue, complete)"
+      title: "The title of the status update"
+      html_text: "HTML formatted text for the status update"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_get_project_task_counts
+    description: Get task statistics for a project. Use for quick project progress overview.
+    params:
+      project_id: "The project ID to get task counts for"
+      opt_fields: "Comma-separated list of optional fields to include"
+
+  # Task Management
+  - name: asana_search_tasks
+    description: Advanced task search with multiple filters. Handles complex queries and bulk operations.
+    params:
+      workspace: "Globally unique identifier for the workspace"
+      text: "Text to search for in task name or description"
+      assignee_any: "Comma-separated list of user identifiers"
+      projects_any: "Comma-separated list of project IDs"
+      sections_any: "Comma-separated list of section or column IDs"
+      completed: "Filter for completed or incomplete tasks"
+      due_on: "ISO 8601 date string for due date"
+      due_on_after: "ISO 8601 date string for due date after filter"
+      due_on_before: "ISO 8601 date string for due date before filter"
+      created_on_after: "ISO 8601 date string for creation date after filter"
+      created_on_before: "ISO 8601 date string for creation date before filter"
+      modified_on_after: "ISO 8601 date string for modified date after filter"
+      modified_on_before: "ISO 8601 date string for modified date before filter"
+      limit: "Number of results to return (1-100)"
+      sort_by: "Field to sort by (due_date, created_at, completed_at, modified_at)"
+      sort_ascending: "Sort in ascending order (default: false)"
+  - name: asana_get_tasks
+    description: List tasks filtered by context. One context required (workspace/project/tag/section).
+    params:
+      workspace: "Globally unique identifier for the workspace"
+      project: "Globally unique identifier for the project"
+      section: "Globally unique identifier for the section"
+      tag: "The tag GID to retrieve tasks for"
+      assignee: "User identifier ('me', email, or user GID)"
+      completed_since: "Filter for tasks completed since this date"
+      modified_since: "Filter for tasks modified since this date"
+      limit: "Number of tasks to return per page (1-100)"
+      offset: "Pagination offset token"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_get_task
+    description: Get full task details by ID. Essential before updating tasks.
+    params:
+      task_id: "Globally unique identifier for the task"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_create_task
+    description: Create task in Asana with context. Returns task ID with confirmation.
+    params:
+      name: "Name of the task"
+      project_id: "Project GID for task creation"
+      workspace: "Workspace GID where task will be created"
+      assignee: "User identifier to assign the task to ('me', email, or user GID)"
+      notes: "Task description and details"
+      html_notes: "Task description in HTML format"
+      due_on: "Due date in ISO 8601 format (YYYY-MM-DD)"
+      due_at: "Due date and time in ISO 8601 format"
+      start_on: "Start date in ISO 8601 format (YYYY-MM-DD)"
+      start_at: "Start date and time in ISO 8601 format"
+      parent: "Parent task GID to create this as a subtask"
+      followers: "Comma-separated list of user identifiers"
+      completed: "True if the task is initially marked complete"
+      resource_subtype: "Task type (default_task, milestone, section, approval)"
+      custom_fields: "JSON string of custom fields"
+  - name: asana_update_task
+    description: Update existing task properties. Use asana_get_task first to understand current state.
+    params:
+      task_id: "Globally unique identifier for the task to update"
+      name: "New name for the task"
+      notes: "New task description and details"
+      assignee: "User identifier to assign the task to ('me', email, or user GID)"
+      completed: "Mark the task as completed"
+      due_on: "Due date in ISO 8601 format (YYYY-MM-DD)"
+      due_at: "Due date and time in ISO 8601 format"
+      custom_fields: "JSON string of custom fields"
+  - name: asana_delete_task
+    description: Delete task from Asana. Use with extreme caution as recovery is challenging.
+    params:
+      task_id: "Globally unique identifier for the task to delete"
+
+  # Task Dependencies & Hierarchy
+  - name: asana_set_task_dependencies
+    description: Set tasks this task depends on (prerequisites). Use for workflow sequencing.
+    params:
+      task_id: "The task ID to add dependencies to"
+      dependencies: "Array of task IDs that this task depends on"
+  - name: asana_set_task_dependents
+    description: Set tasks blocked by this task. Use for blocking relationships in project schedules.
+    params:
+      task_id: "The task ID to add dependents to"
+      dependents: "Array of task IDs that depend on this task"
+  - name: asana_set_parent_for_task
+    description: Change task parent (convert to/from subtask). Use for reorganizing task hierarchy.
+    params:
+      task_id: "The task ID to operate on"
+      parent: "The GID of the new parent of the task, or null for no parent"
+      insert_after: "A subtask of the parent to insert the task after"
+      insert_before: "A subtask of the parent to insert the task before"
+      opt_fields: "Comma-separated list of optional fields to include"
+
+  # Task Collaboration
+  - name: asana_get_stories_for_task
+    description: Get task activity history (comments, status changes, system events).
+    params:
+      task_id: "Globally unique identifier for the task"
+      limit: "Number of stories to return per page (1-100)"
+      offset: "Pagination offset token"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_create_task_story
+    description: Add explicit comment to task. Use for discussion, feedback, questions.
+    params:
+      task_id: "Globally unique identifier for the task"
+      text: "The text content of the comment"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_add_task_followers
+    description: Add followers to task (team members to notify of updates).
+    params:
+      task_id: "Globally unique identifier for the task"
+      followers: "Comma-separated list of user identifiers ('me', emails, or user GIDs)"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_remove_task_followers
+    description: Remove followers from task (stop notification subscriptions).
+    params:
+      task_id: "Globally unique identifier for the task"
+      followers: "Comma-separated list of user identifiers ('me', emails, or user GIDs)"
+      opt_fields: "Comma-separated list of optional fields to include"
+
+  # Goals & OKRs
+  - name: asana_get_goals
+    description: List goals filtered by context (portfolio, project, task, workspace, or team).
+    params:
+      workspace: "The workspace to filter goals on"
+      team: "The team to filter goals on"
+      project: "The project to filter goals on"
+      portfolio: "The portfolio to filter goals on"
+      task: "The task to filter goals on"
+      time_periods: "Array of time period IDs to filter goals on"
+      is_workspace_level: "Filter to workspace-level goals"
+      limit: "Number of goals to return per page (1-100)"
+      offset: "Pagination offset token"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_get_goal
+    description: Get detailed goal data including name, owner, current_status_update, and due_on.
+    params:
+      goal_gid: "Globally unique identifier for the goal"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_create_goal
+    description: Create a new goal. Use to establish objectives and key results.
+    params:
+      name: "The name of the goal"
+      time_period: "The ID of the time period"
+      workspace: "Globally unique identifier for the workspace"
+      team: "The team associated with the goal"
+      owner: "The owner of the goal (user or team GID)"
+      notes: "Free-form textual information associated with the goal"
+      html_notes: "HTML-formatted notes for the goal"
+      due_on: "The due date for the goal in YYYY-MM-DD format"
+      start_on: "The start date for the goal in YYYY-MM-DD format"
+      is_workspace_level: "Whether the goal is a workspace-level goal"
+      followers: "Comma-separated list of user IDs to follow the goal"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_update_goal
+    description: Update goal properties like name, owner, dates, metrics, or status.
+    params:
+      goal_gid: "Globally unique identifier for the goal"
+      name: "The name of the goal"
+      owner: "The owner of the goal (user or team GID)"
+      notes: "Free-form textual information associated with the goal"
+      html_notes: "HTML-formatted notes for the goal"
+      due_on: "The due date for the goal in YYYY-MM-DD format"
+      start_on: "The start date for the goal in YYYY-MM-DD format"
+      status: "Current status (green, yellow, red, missed, achieved, partial, dropped)"
+      time_period: "The ID of the time period"
+      team: "The team associated with the goal"
+      workspace: "Globally unique identifier for the workspace"
+      is_workspace_level: "Whether the goal is a workspace-level goal"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_get_parent_goals_for_goal
+    description: List all parent goals for a specific goal. Use to understand goal hierarchy.
+    params:
+      goal_gid: "Globally unique identifier for the goal"
+      opt_fields: "Comma-separated list of optional fields to include"
+
+  # Portfolios
+  - name: asana_get_portfolios
+    description: List portfolios filtered by workspace and owner. Use for portfolio discovery.
+    params:
+      workspace: "Globally unique identifier for the workspace"
+      limit: "Results per page (1-100)"
+      offset: "Pagination offset token"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_get_portfolio
+    description: Get detailed portfolio data by ID including name, owner, and projects.
+    params:
+      portfolio_gid: "Globally unique identifier for the portfolio"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_get_items_for_portfolio
+    description: List projects, goals, and other items in a portfolio.
+    params:
+      portfolio_gid: "Globally unique identifier for the portfolio"
+      limit: "Results per page (1-100)"
+      offset: "Pagination offset token"
+      opt_fields: "Comma-separated list of optional fields to include"
+
+  # Time Periods
+  - name: asana_get_time_periods
+    description: List available time periods in a workspace. Use for goal planning and OKR cycles.
+    params:
+      workspace: "Globally unique identifier for the workspace"
+      start_on: "ISO 8601 date string for filtering periods starting on or after this date"
+      end_on: "ISO 8601 date string for filtering periods ending on or before this date"
+      limit: "Number of time periods to return per page (1-100)"
+      offset: "Pagination offset token"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_get_time_period
+    description: Get detailed information about a time period by ID.
+    params:
+      time_period_gid: "Globally unique identifier for the time period"
+      opt_fields: "Comma-separated list of optional fields to include"
+
+  # Attachments
+  - name: asana_get_attachments_for_object
+    description: List all attachments for a project, project brief, or task.
+    params:
+      parent: "The GID of the parent project, project_brief, or task"
+      limit: "Results per page (1-100)"
+      offset: "Pagination offset token"
+      opt_fields: "Comma-separated list of optional fields to include"
+  - name: asana_get_attachment
+    description: Get detailed attachment data including name, resource type, and URLs.
+    params:
+      attachment_gid: "Globally unique identifier for the attachment"
+      opt_fields: "Comma-separated list of optional fields to include"
+
+  # Search & Discovery
+  - name: asana_typeahead_search
+    description: Quick search across Asana objects. Use this FIRST before specialized search.
+    params:
+      workspace_gid: "Globally unique identifier for the workspace"
+      resource_type: "Type of resource to search (user, project, task, team, tag, portfolio, goal)"
+      query: "The search query (can be empty for default results)"
+      count: "Number of results to return (1-100, default: 20)" 
