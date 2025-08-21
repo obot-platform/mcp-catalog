@@ -1,0 +1,168 @@
+name: Slack
+description: |
+  ![Slack MCP Server](https://img.shields.io/badge/Slack-MCP%20Server-blue?style=for-the-badge&logo=slack)
+  ![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-green?style=for-the-badge&logo=typescript)
+  ![Node.js](https://img.shields.io/badge/Node.js-18+-orange?style=for-the-badge&logo=node.js)
+  ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+
+  A Model Context Protocol (MCP) server for Slack integration, providing comprehensive workspace management capabilities through a modern API interface.
+
+  ## Features
+  - **Channel Management**: List, search, and interact with Slack channels
+  - **Message Operations**: Send messages, search history, and manage threads
+  - **User Management**: List, search, and send direct messages to users
+  - **Advanced Search**: Powerful query-based message and channel filtering
+  - **Thread Support**: Full thread management for both channels and DMs
+  - **Markdown Support**: Automatic conversion of markdown to Slack format
+  - **Typing Indicators**: Send typing events to channels and threads
+
+  ## What you'll need to connect
+
+  **Slack Bot Token**: You'll need to create a Slack app and get a bot token
+
+  ### How to create a Slack app and get your bot token:
+
+  1. **Go to Slack API Console**
+     - Visit [api.slack.com/apps](https://api.slack.com/apps)
+     - Click "Create New App"
+     - Choose "From scratch"
+     - Enter your app name and select your workspace
+
+  2. **Configure Bot Token Scopes**
+     - Go to "OAuth & Permissions" in the left sidebar
+     - Under "Scopes" > "Bot Token Scopes", add these permissions:
+       - `channels:history` - Read channel messages
+       - `channels:read` - View basic channel info
+       - `chat:write` - Send messages
+       - `groups:history` - Read private channel messages
+       - `groups:read` - View private channels
+       - `im:history` - Read direct messages
+       - `im:read` - View direct messages
+       - `im:write` - Send direct messages
+       - `mpim:history` - Read group DMs
+       - `mpim:read` - View group DMs
+       - `mpim:write` - Send group DMs
+       - `users:read` - View users in workspace
+       - `search:read` - Search messages and files
+       - `assistant:write` - Send typing indicators
+
+  3. **Install the App**
+     - Go to "Install App" in the left sidebar
+     - Click "Install to Workspace"
+     - Authorize the app
+
+  4. **Get Your Bot Token**
+     - After installation, go back to "OAuth & Permissions"
+     - Copy the "Bot User OAuth Token" (starts with `xoxb-`)
+     - This is your `SLACK_BOT_TOKEN`
+
+  5. **Environment Variable**
+     - Set `SLACK_BOT_TOKEN` to your bot token value
+
+metadata:
+  categories: Communication
+  allow-multiple: "true"
+icon: https://img.icons8.com/?size=100&id=4n94I13nDTyw&format=png&color=000000
+repoURL: https://github.com/obot-platform/tools
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/tools/slack
+  port: 3000
+  path: "/mcp"
+env:
+  - key: SLACK_BOT_TOKEN
+    name: Slack Bot Token
+    required: true
+    sensitive: true
+    description: Your Slack Bot Token for your slack APP that is installed in the workspace
+
+toolPreview:
+  - name: list_channels
+    description: List all channels in the Slack workspace. Returns the name and ID for each channel.
+    params: {}
+  - name: search_channels
+    description: Search for channels in the Slack workspace.
+    params:
+      query: The search query for channels
+  - name: get_channel_history
+    description: Get the chat history for a channel in the Slack workspace.
+    params:
+      channelId: The ID of the channel to get the history for
+      limit: "The number of messages to return (default: 10)"
+  - name: get_channel_history_by_time
+    description: Get the chat history for a channel in the Slack workspace within a specific time range.
+    params:
+      channelId: The ID of the channel to get the history for
+      limit: "The maximum number of messages to return (default: 10)"
+      start: The start time in RFC 3339 format
+      end: The end time in RFC 3339 format
+  - name: get_thread_history
+    description: Get the chat history for a particular thread.
+    params:
+      channelId: The ID of the channel containing the thread
+      threadId: The ID of the thread to get the history for
+      limit: "The number of messages to return (default: 10)"
+  - name: get_thread_history_from_link
+    description: Get the chat history for a particular thread from a Slack message link.
+    params:
+      messageLink: The link to the first Slack message in the thread
+      limit: "The number of messages to return (default: 10)"
+  - name: search_messages
+    description: Search for messages in the Slack workspace.
+    params:
+      query: The search query
+      sortByTime: "Sort by timestamp rather than score (default: false)"
+  - name: send_message
+    description: Send a message to a channel in the Slack workspace.
+    params:
+      channelId: The ID of the channel to send the message to
+      text: The text to send (supports markdown)
+  - name: send_message_in_thread
+    description: Send a message in a thread in the Slack workspace.
+    params:
+      channelId: The ID of the channel containing the thread
+      threadId: The ID of the thread to send the message to
+      text: The text to send (supports markdown)
+  - name: list_users
+    description: List all users in the Slack workspace.
+    params: {}
+  - name: search_users
+    description: Search for users in the Slack workspace.
+    params:
+      query: The search query for users
+  - name: send_dm
+    description: Send a direct message to a user.
+    params:
+      userIds: Comma-separated list of user IDs to send the message to
+      text: The text to send (supports markdown)
+  - name: send_dm_in_thread
+    description: Send a message in a thread in a direct message conversation.
+    params:
+      userIds: Comma-separated list of user IDs for the conversation
+      threadId: The ID of the thread to send the message to
+      text: The text to send (supports markdown)
+  - name: get_message_link
+    description: Get the permalink for a message.
+    params:
+      channelId: The ID of the channel containing the message
+      messageId: The ID of the message
+  - name: get_dm_history
+    description: Get the chat history for a direct message conversation.
+    params:
+      userIds: Comma-separated list of user IDs for the conversation
+      limit: "The number of messages to return (default: 10)"
+  - name: get_dm_thread_history
+    description: Get the chat history for a thread in a direct message conversation.
+    params:
+      userIds: Comma-separated list of user IDs for the conversation
+      threadId: The ID of the thread to get the history for
+      limit: "The number of messages to return (default: 10)"
+  - name: user_context
+    description: Get information about the logged in user.
+    params: {}
+  - name: send_typing_event
+    description: Send a typing event to a channel in the Slack workspace.
+    params:
+      channelId: The ID of the channel to send the typing event to
+      threadId: The ID of the thread to send the typing event to (optional)
+      status: The status to set the typing event that shows in the slack thread
