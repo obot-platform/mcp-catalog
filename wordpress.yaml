@@ -1,0 +1,243 @@
+name: WordPress
+description: |
+  A Model Context Protocol (MCP) server that integrates with a self-hosted WordPress site (wordpress.com not supported).
+  
+  ## Features
+  - **Posts**: Manage blog posts
+  - **Categories and Tags**: Create, read, update, delete categories and tags
+  - **Media**: Manage the uploaded media files
+  
+  ## What you'll need to connect
+  
+  **Required:**
+  - **WordPress Site URL**
+  - **WordPress username**
+  - **WordPress app password**: this is different from your user password, and can be generated in the settings
+
+metadata:
+  categories: Blogging, SaaS & API Integrations
+icon: https://img.icons8.com/?size=100&id=13664&format=png&color=000000
+repoURL: https://github.com/obot-platform/wordpress-mcp-server
+
+toolPreview:
+  - name: create_category
+    description: Create a new category in WordPress site.
+    params:
+      category_name: The name of the category
+      description: 'The description of the category (accepts HTML tags) - default: None'
+      parent_id: 'The ID of the parent category - default: None'
+      slug: 'The slug for the category - default: None'
+  - name: create_post
+    description: |-
+      Create a post in WordPress site.
+      
+      Use HTML tags to format the content, for example, <strong>Bold Text</strong> for bold text.
+      By default, the post will be created as a draft. Do NOT set status to publish unless it is confirmed by the user.
+      
+      Date must be ISO 8601 format. Future dates will schedule the post.
+    params:
+      author_id: 'ID of the author - default: None'
+      categories: 'Comma-separated list of category IDs - default: None'
+      comment_status: 'Comment status - default: open'
+      content: 'The content of the post (use HTML tags for formatting) - default: empty'
+      date: 'ISO 8601 date string for publishing - default: None'
+      excerpt: 'Post excerpt - default: None'
+      featured_media: 'ID of featured media file - default: None'
+      format: 'Post format - default: standard'
+      password: 'Password for the post - default: None'
+      ping_status: 'Ping status - default: open'
+      slug: 'URL slug for the post - default: None'
+      status: 'Status of the post - default: draft'
+      sticky: 'Whether the post is sticky - default: false'
+      tags: 'Comma-separated list of tag IDs - default: None'
+      title: 'The title of the post - default: empty'
+  - name: create_tag
+    description: Create a new tag in WordPress site.
+    params:
+      description: 'The description of the tag (accepts HTML tags) - default: None'
+      name: The name of the tag
+      slug: 'The slug for the tag - default: None'
+  - name: delete_category
+    description: |-
+      Delete a category in WordPress site.
+      
+      Posts previously assigned to this category will be moved to 'Uncategorized'.
+    params:
+      category_id: The ID of the category to delete
+  - name: delete_media
+    description: Delete a media file in WordPress site.
+    params:
+      media_id: The ID of the media file to delete
+  - name: delete_post
+    description: |-
+      Delete a post in WordPress site.
+      
+      If force=false, post is moved to trash. If force=true, post is permanently deleted.
+    params:
+      force: 'Whether to permanently delete (true) or move to trash (false) - default: false'
+      post_id: ID of the post to delete
+  - name: delete_tag
+    description: |-
+      Delete a tag in WordPress site.
+      
+      Posts previously assigned to this tag will no longer have it.
+    params:
+      tag_id: The ID of the tag to delete
+  - name: get_me
+    description: |-
+      Get all metadata of the current user in WordPress site, including roles and capabilities.
+      
+      Failed to get user info indicates authentication is not working correctly.
+    params:
+      context: 'The context of user info to retrieve - default: edit'
+  - name: get_site_settings
+    description: |-
+      Get the settings of the WordPress site. Only admin users have permission to do this.
+      
+      Returns basic site information and settings that are publicly available
+      or accessible to authenticated users with appropriate permissions.
+  - name: list_categories
+    description: List available categories in WordPress site.
+    params:
+      context: 'The context of categories to list - default: view'
+      order: 'Sort order - default: asc'
+      page: 'Page number to list - default: 1'
+      parent_id: 'Limit to categories assigned to a specific parent ID - default: None'
+      per_page: 'Number of categories per page - default: 10'
+      post_id: 'Limit to categories assigned to a specific post ID - default: None'
+      search_query: 'Limit results to those matching a string - default: None'
+      slug: 'Limit to category matching a specific slug - default: None'
+  - name: list_media
+    description: |-
+      List media files in WordPress site and get basic information of each media file.
+      
+      Date parameters must be valid ISO 8601 date strings (YYYY-MM-DDTHH:MM:SS).
+    params:
+      author_ids: 'Comma-separated list of author IDs - default: None'
+      context: 'The context of media files to list - default: view'
+      media_type: 'Limit to specific media type - default: None'
+      modified_after: 'ISO 8601 date to filter media files modified after - default: None'
+      modified_before: 'ISO 8601 date to filter media files modified before - default: None'
+      order: 'Sort order - default: desc'
+      page: 'Page number to list - default: 1'
+      per_page: 'Number of media files per page - default: 10'
+      publish_after: 'ISO 8601 date to filter media files uploaded after - default: None'
+      publish_before: 'ISO 8601 date to filter media files uploaded before - default: None'
+      search_query: 'Limit results to those matching a string - default: None'
+  - name: list_posts
+    description: |-
+      List posts in WordPress site and get basic information of each post.
+      
+      Date parameters must be valid ISO 8601 date strings (YYYY-MM-DDTHH:MM:SS).
+    params:
+      author_ids: 'Comma-separated list of author IDs - default: None'
+      categories: 'Comma-separated list of category IDs - default: None'
+      context: 'The context of posts to list - default: view'
+      modified_after: 'ISO 8601 date to filter posts modified after - default: None'
+      modified_before: 'ISO 8601 date to filter posts modified before - default: None'
+      order: 'Sort order - default: desc'
+      page: 'Page number to list - default: 1'
+      per_page: 'Number of posts per page - default: 10'
+      publish_after: 'ISO 8601 date to filter posts published after - default: None'
+      publish_before: 'ISO 8601 date to filter posts published before - default: None'
+      search_query: 'Limit results to those matching a string - default: None'
+      statuses: 'Comma-separated list of statuses (publish, future, draft, pending, private, trash, auto-draft, inherit, request-pending, request-confirmed, request-failed, request-completed) - default: publish'
+      tags: 'Comma-separated list of tag IDs - default: None'
+  - name: list_tags
+    description: List available tags in WordPress site.
+    params:
+      context: 'The context of tags to list - default: view'
+      order: 'Sort order - default: asc'
+      page: 'Page number to list - default: 1'
+      per_page: 'Number of tags per page - default: 10'
+      post_id: 'Limit to tags assigned to a specific post ID - default: None'
+      search_query: 'Limit results to those matching a string - default: None'
+      slug: 'Limit to tag matching a specific slug - default: None'
+  - name: list_users
+    description: List users in WordPress site. Only admin users have permission to do this.
+    params:
+      context: 'The context of users to list - default: view'
+      has_published_posts: 'Whether to show users who haven''t published posts - default: true'
+  - name: retrieve_post
+    description: Retrieve all metadata of a post in WordPress site.
+    params:
+      context: 'The context of the post - default: view'
+      password: 'Password for protected posts - default: None'
+      post_id: The ID of the post
+  - name: update_category
+    description: |-
+      Update an existing category in WordPress site. Only provided fields will be updated.
+      
+      At least one field must be provided to update.
+    params:
+      category_id: The ID of the category to update
+      description: 'New description of the category (accepts HTML tags) - default: None'
+      name: 'New name of the category - default: None'
+      parent_id: 'New parent ID of the category - default: None'
+      slug: 'New slug for the category - default: None'
+  - name: update_media
+    description: |-
+      Update the metadata of a media file in WordPress site.
+      
+      At least one field must be provided to update.
+    params:
+      author_id: 'New author ID for the media file - default: None'
+      media_id: The ID of the media file
+      slug: 'New slug for the media file - default: None'
+      title: 'New title for the media file - default: None'
+  - name: update_post
+    description: |-
+      Update a post in WordPress site. Only provided fields will be updated.
+      
+      Use HTML tags for content formatting. Date must be ISO 8601 format.
+    params:
+      author_id: 'New author ID - default: None'
+      categories: 'New comma-separated list of category IDs - default: None'
+      comment_status: 'New comment status - default: None'
+      content: 'New content for the post (use HTML tags for formatting) - default: None'
+      date: 'New publication date (ISO 8601 format) - default: None'
+      excerpt: 'New excerpt - default: None'
+      featured_media: 'New featured media ID - default: None'
+      format: 'New post format - default: None'
+      password: 'New password for the post - default: None'
+      ping_status: 'New ping status - default: None'
+      post_id: ID of the post to update
+      slug: 'New URL slug - default: None'
+      status: 'New status - default: None'
+      sticky: 'Whether the post should be sticky - default: None'
+      tags: 'New comma-separated list of tag IDs - default: None'
+      title: 'New title for the post - default: None'
+  - name: update_tag
+    description: |-
+      Update an existing tag in WordPress site. Only provided fields will be updated.
+      
+      At least one field must be provided to update.
+    params:
+      description: 'New description of the tag (accepts HTML tags) - default: None'
+      name: 'New name of the tag - default: None'
+      slug: 'New slug for the tag - default: None'
+      tag_id: The ID of the tag to update
+  - name: validate_credential
+    description: |-
+      Validate WordPress credentials by attempting to get current user profile.
+      This is useful for testing authentication before performing other operations.
+
+env:
+  - name: WordPress Site URL
+    description: 'The full URL to your WordPress site (wordpress.com not supported). Must start with http:// or https://.'
+    key: WORDPRESS_SITE
+    required: true
+  - name: WordPress Username
+    description: The username of your account on this WordPress site.
+    key: WORDPRESS_USERNAME
+    required: true
+  - name: WordPress App Password
+    description: The app password that you generated in your WordPress settings.
+    key: WORDPRESS_PASSWORD
+    required: true
+    sensitive: true
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/wordpress-mcp-server:main
+  port: 8099
+  path: "/"
