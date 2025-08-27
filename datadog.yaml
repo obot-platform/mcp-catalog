@@ -9,8 +9,8 @@ description: |
   ## What you'll need to connect
 
   **Required:**
-  - **Datadog API Key**: Your Datadog API key. API keys are unique to your organization.
-  - **Datadog App Key**: Your Datadog application key. Application keys are associated with the user account that created them and by default have the permissions of the user who created them.
+  - **Datadog API Key**: Your Datadog API key. API keys are unique to your organization. To create an API key, navigate to Organization settings, then click the `API keys`.
+  - **Datadog App Key**: Your Datadog application key. Application keys are associated with the user account that created them and by default have the permissions of the user who created them. To add a Datadog application key, navigate to Organization Settings > Application Keys. If you have the permission to create application keys, click New Key.
 
   **Optional:**
   - **Datadog Site**: The Datadog site of your organization, such as `datadoghq.eu` or `us3.datadoghq.com`. Default is `datadoghq.com`.
