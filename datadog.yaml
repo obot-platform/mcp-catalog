@@ -1,0 +1,163 @@
+name: Datadog
+description: |
+  A Model Context Protocol (MCP) server that provides access to Datadog's monitoring and observability platform. This server enables AI agents to interact with key Datadog features including incidents, monitors, logs, dashboards, metrics, APM traces, infrastructure monitoring, and RUM analytics through a comprehensive set of tools.
+
+  ## Features
+  - **Observability Tools**: Leverage key Datadog monitoring features including incidents, monitors, logs, dashboards, and metrics through the MCP server
+  - **Extensible Design**: Designed to easily integrate with additional Datadog APIs, allowing for seamless future feature expansion
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Datadog API Key**: Your Datadog API key. API keys are unique to your organization.
+  - **Datadog App Key**: Your Datadog application key. Application keys are associated with the user account that created them and by default have the permissions of the user who created them.
+
+  **Optional:**
+  - **Datadog Site**: The Datadog site of your organization, such as `datadoghq.eu` or `us3.datadoghq.com`. Default is `datadoghq.com`.
+
+metadata:
+  categories: Monitoring & Observability, SaaS & API Integrations
+icon: https://avatars.githubusercontent.com/u/365230?s=200&v=4
+repoURL: https://github.com/winor30/mcp-server-datadog
+env:
+  - key: DATADOG_API_KEY
+    name: Datadog API Key
+    required: true
+    sensitive: true
+    description: Your Datadog API key. API keys are unique to your organization.
+  - key: DATADOG_APP_KEY
+    name: Datadog App Key
+    required: true
+    sensitive: true
+    description: Your Datadog application key. Application keys are associated with the user account that created them and by default have the permissions of the user who created them.
+  - key: DATADOG_SITE
+    name: Datadog Site
+    required: false
+    sensitive: false
+    description: (Optional) The Datadog site of your organization, such as `datadoghq.eu` or `us3.datadoghq.com`. Default is `datadoghq.com`.
+
+runtime: npx
+npxConfig:
+  package: '@winor30/mcp-server-datadog'
+toolPreview:
+  - name: list_incidents
+    description: Retrieve a list of incidents from Datadog (Read-only - true)
+    params:
+      filter: Filter parameters for incidents (e.g., status, priority) (optional)
+      pagination: Pagination details like page size/offset (optional)
+  - name: get_incident
+    description: Retrieve detailed information about a specific Datadog incident (Read-only - true)
+    params:
+      incident_id: Incident ID to fetch details for
+  - name: get_monitors
+    description: Fetch the status of Datadog monitors (Read-only - true)
+    params:
+      groupStates: States to filter (e.g., alert, warn, no data, ok) (optional)
+      name: Filter by name (optional)
+      tags: Filter by tags (optional)
+  - name: get_logs
+    description: Search and retrieve logs from Datadog (Read-only - true)
+    params:
+      query: Datadog logs query string
+      from: Start time in epoch seconds
+      to: End time in epoch seconds
+      limit: Maximum number of logs to return (defaults to 100) (optional)
+  - name: list_dashboards
+    description: Get a list of dashboards from Datadog (Read-only - true)
+    params:
+      name: Filter dashboards by name (optional)
+      tags: Filter dashboards by tags (optional)
+  - name: get_dashboard
+    description: Retrieve a specific dashboard from Datadog (Read-only - true)
+    params:
+      dashboard_id: ID of the dashboard to fetch
+  - name: query_metrics
+    description: Retrieve metrics data from Datadog (Read-only - true)
+    params:
+      query: Metrics query string
+      from: Start time in epoch seconds
+      to: End time in epoch seconds
+  - name: list_traces
+    description: Retrieve a list of APM traces from Datadog (Read-only - true)
+    params:
+      query: Datadog APM trace query string
+      from: Start time in epoch seconds
+      to: End time in epoch seconds
+      limit: Maximum number of traces to return (defaults to 100) (optional)
+      sort: Sort order for traces (defaults to '-timestamp') (optional)
+      service: Filter by service name (optional)
+      operation: Filter by operation name (optional)
+  - name: list_hosts
+    description: Get list of hosts from Datadog (Read-only - true)
+    params:
+      filter: Filter string for search results (optional)
+      sort_field: Field to sort hosts by (optional)
+      sort_dir: Sort direction (asc/desc) (optional)
+      start: Starting offset for pagination (optional)
+      count: Max number of hosts to return (max 1000) (optional)
+      from: Search hosts from this UNIX timestamp (optional)
+      include_muted_hosts_data: Include muted hosts status and expiry (optional)
+      include_hosts_metadata: Include host metadata (version, platform, etc) (optional)
+  - name: get_active_hosts_count
+    description: Get the total number of active hosts in Datadog (Read-only - true)
+    params:
+      from: Number of seconds from which you want to get total number of active hosts (defaults to 2h) (optional)
+  - name: mute_host
+    description: Mute a host in Datadog (Read-only - false)
+    params:
+      hostname: The name of the host to mute
+      message: Message to associate with the muting of this host (optional)
+      end: POSIX timestamp for when the mute should end (optional)
+      override: If true and the host is already muted, replaces existing end time (optional)
+  - name: unmute_host
+    description: Unmute a host in Datadog (Read-only - false)
+    params:
+      hostname: The name of the host to unmute
+  - name: list_downtimes
+    description: List scheduled downtimes from Datadog (Read-only - true)
+    params:
+      currentOnly: Return only currently active downtimes when true (optional)
+      monitorId: Filter by monitor ID (optional)
+  - name: schedule_downtime
+    description: Schedule a downtime in Datadog (Read-only - false)
+    params:
+      scope: Scope to apply downtime to (e.g. 'host:my-host')
+      start: UNIX timestamp for the start of the downtime (optional)
+      end: UNIX timestamp for the end of the downtime (optional)
+      message: A message to include with the downtime (optional)
+      timezone: The timezone for the downtime (e.g. 'UTC', 'America/New_York') (optional)
+      monitorId: The ID of the monitor to mute (optional)
+      monitorTags: A list of monitor tags for filtering (optional)
+      recurrence: Recurrence settings for the downtime (optional)
+  - name: cancel_downtime
+    description: Cancel a scheduled downtime in Datadog (Read-only - false)
+    params:
+      downtimeId: The ID of the downtime to cancel
+  - name: get_rum_applications
+    description: Get all RUM applications in the organization (Read-only - true)
+  - name: get_rum_events
+    description: Search and retrieve RUM events from Datadog (Read-only - true)
+    params:
+      query: Datadog RUM query string
+      from: Start time in epoch seconds
+      to: End time in epoch seconds
+      limit: Maximum number of events to return (default 100) (optional)
+  - name: get_rum_grouped_event_count
+    description: Search, group and count RUM events by a specified dimension (Read-only - true)
+    params:
+      query: Additional query filter for RUM search (default "*") (optional)
+      from: Start time in epoch seconds
+      to: End time in epoch seconds
+      groupBy: Dimension to group results by (default "application.name") (optional)
+  - name: get_rum_page_performance
+    description: Get page (view) performance metrics from RUM data (Read-only - true)
+    params:
+      query: Additional query filter for RUM search (default "*") (optional)
+      from: Start time in epoch seconds
+      to: End time in epoch seconds
+      metricNames: Array of metric names to retrieve (e.g., 'view.load_time', 'view.first_contentful_paint')
+  - name: get_rum_page_waterfall
+    description: Retrieve RUM page (view) waterfall data filtered by application name and session ID (Read-only - true)
+    params:
+      applicationName: Application name to filter events
+      sessionId: Session ID to filter events
