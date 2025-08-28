@@ -52,7 +52,7 @@ env:
 
 runtime: uvx
 uvxConfig:
-  package: awslabs.amazon-kendra-index-mcp-server
+  package: awslabs.amazon-kendra-index-mcp-server@1.0.6
 
 toolPreview:
   - name: KendraQueryTool

@@ -72,7 +72,7 @@ env:
 
 runtime: uvx
 uvxConfig:
-  package: awslabs.redshift-mcp-server@latest
+  package: awslabs.redshift-mcp-server@0.0.7
 
 toolPreview:
   - name: list_clusters

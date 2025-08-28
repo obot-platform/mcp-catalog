@@ -102,4 +102,4 @@ toolPreview:
     description: Returns all console messages (Read-only -  true)
 runtime: npx
 npxConfig:
-  package: '@playwright/mcp@latest'
+  package: '@playwright/mcp@0.0.35'

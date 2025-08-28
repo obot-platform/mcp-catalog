@@ -41,7 +41,7 @@ env:
     description: Your Gemini API key.
 runtime: npx
 npxConfig:
-  package: '@browserbasehq/mcp-server-browserbase'
+  package: '@browserbasehq/mcp-server-browserbase@2.0.1'
 toolPreview:
   - name: browserbase_session_create
     description: Create or reuse a single cloud browser session using Browserbase with fully initialized Stagehand for single browser workflows.

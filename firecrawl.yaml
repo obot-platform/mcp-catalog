@@ -126,4 +126,4 @@ env:
     description: Your Firecrawl API key.
 runtime: npx
 npxConfig:
-  package: firecrawl-mcp
+  package: firecrawl-mcp@2.0.2

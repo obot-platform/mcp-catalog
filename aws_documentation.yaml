@@ -56,7 +56,7 @@ env:
 
 runtime: uvx
 uvxConfig:
-  package: 'awslabs.aws-documentation-mcp-server@latest'
+  package: 'awslabs.aws-documentation-mcp-server@1.1.6'
 toolPreview:
   - name: read_documentation
     description: Fetch and convert an AWS documentation page to markdown format. Retrieves content from AWS documentation pages and converts it to markdown format. For long documents, you can make multiple calls with different start_index values to retrieve the entire content in chunks.

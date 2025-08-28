@@ -148,7 +148,7 @@ toolPreview:
 
 runtime: npx
 npxConfig:
-  package: mongodb-mcp-server
+  package: mongodb-mcp-server@0.3.0
   args:
     - --connectionString
     - ${MDB_MCP_CONNECTION_STRING}

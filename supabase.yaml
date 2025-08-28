@@ -40,7 +40,7 @@ env:
 
 runtime: npx
 npxConfig:
-  package: '@supabase/mcp-server-supabase@0.4.5'
+  package: '@supabase/mcp-server-supabase@0.5.1'
   args:
     # - "--project-ref=${SUPABASE_PROJECT_REF}" # TODO: add this back once we support dynamic args, see issue https://github.com/obot-platform/obot/issues/3619 feature request 1
 

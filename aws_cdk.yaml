@@ -49,7 +49,7 @@ env:
 
 runtime: uvx
 uvxConfig:
-  package: awslabs.cdk-mcp-server@latest
+  package: awslabs.cdk-mcp-server@1.0.7
 toolPreview:
   - name: CDKGeneralGuidance
     description: Use this tool to get prescriptive CDK advice for building applications on AWS.

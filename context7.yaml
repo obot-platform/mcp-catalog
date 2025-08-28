@@ -57,4 +57,4 @@ toolPreview:
 
 runtime: npx
 npxConfig:
-  package: '@upstash/context7-mcp@latest'
+  package: '@upstash/context7-mcp@1.0.16'
