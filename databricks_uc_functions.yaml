@@ -1,0 +1,55 @@
+name: Databricks Unity Catalog Functions
+description: |
+  A Model Context Protocol (MCP) server that provides easy connection to Databricks Unity Catalog Functions using managed MCP servers. Execute and manage your registered serverless functions with built-in Unity Catalog security and governance.
+
+  ## Features
+  - **Function Execution**: Execute Unity Catalog functions with proper parameters
+  - **Function Discovery**: List and explore available functions in your catalogs
+  - **Serverless Compute**: Leverage serverless general compute for function execution
+  - **Function Management**: Get detailed information about function schemas and parameters
+
+  ## What you'll need to connect
+
+  ### Prerequisites
+  - **For admins**: Ensure the workspace has the **Managed MCP Servers** preview enabled. See [Databricks documentation](https://docs.databricks.com/en/admin/workspace-settings/manage-previews.html) for your cloud provider.
+  - **For users**: Ensure your account has access to the Unity Catalog resources (catalogs, schemas, functions) you want to use.
+  
+  ### Setup Steps
+  1. Navigate to your Databricks workspace
+  2. Go to **Catalog** → Select your catalog → Select your schema
+  3. Verify you have registered functions in the selected schema
+  4. Create a Personal Access Token in **Settings** → **Developer** → **Access tokens**
+  5. Configure the environment variables with your specific values
+
+metadata:
+  categories: Data Analytics, Business Intelligence
+icon: https://avatars.githubusercontent.com/u/4998052?s=200&v=4
+repoURL: https://docs.databricks.com/aws/en/generative-ai/mcp/
+
+env:
+  - name: Databricks workspace hostname
+    key: DATABRICKS_WORKSPACE_URL
+    description: Databricks workspace hostname, (e.g., https://your-workspace.cloud.databricks.com)
+    required: true
+    sensitive: false
+  - name: Functions catalog
+    key: DATABRICKS_FUNCTIONS_CATALOG
+    description: Functions catalog. You can find it in the Catalog tab.
+    required: true
+    sensitive: false
+  - name: Functions schema
+    key: DATABRICKS_FUNCTIONS_SCHEMA
+    description: Functions schema, you can find it under the catalog
+    required: true
+    sensitive: false
+
+runtime: remote
+remoteConfig:
+  fixedUrl: https://${DATABRICKS_WORKSPACE_URL}/api/2.0/mcp/functions/${DATABRICKS_FUNCTIONS_CATALOG}/${DATABRICKS_FUNCTIONS_SCHEMA}
+  headers:
+  - name: Personal Access Token
+    description: Databricks PAT
+    key: Authorization
+    prefix: Bearer
+    required: true
+    sensitive: true 

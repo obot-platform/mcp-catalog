@@ -1,0 +1,56 @@
+name: Databricks Vector Search
+description: |
+  A Model Context Protocol (MCP) server that provides easy connection to Databricks Vector Search using managed MCP servers. Access your vector search indexes for semantic search and similarity queries with built-in Unity Catalog security.
+
+  ## Features
+  - **Semantic Search**: Query and search through your indexed data using Databricks Vector Search
+  - **Vector Similarity**: Find similar items based on vector embeddings
+  - **Index Management**: List and access available vector search indexes
+  - **Serverless Compute**: Leverage Mosaic AI Vector Search pricing model
+
+  ## What you'll need to connect
+
+  ### Prerequisites
+  - **For admins**: Ensure the workspace has the **Managed MCP Servers** preview enabled. See [Databricks documentation](https://docs.databricks.com/en/admin/workspace-settings/manage-previews.html) for your cloud provider.
+  - **For users**: Ensure your account has access to the Unity Catalog resources (catalogs, schemas) and vector search indexes you want to use.
+  
+  ### Setup Steps
+  1. Navigate to your Databricks workspace
+  2. Go to **Catalog** → Select your catalog → Select your schema
+  3. Verify you have vector search indexes in the selected schema
+  4. Create a Personal Access Token in **Settings** → **Developer** → **Access tokens**
+  5. Configure the environment variables with your specific values
+
+metadata:
+  categories: Data Analytics, Vector Search, Business Intelligence
+icon: https://avatars.githubusercontent.com/u/4998052?s=200&v=4
+repoURL: https://docs.databricks.com/aws/en/generative-ai/mcp/
+
+env:
+  - name: Databricks workspace hostname
+    key: DATABRICKS_WORKSPACE_URL
+    description: Databricks workspace hostname, (e.g., https://your-workspace.cloud.databricks.com)
+    required: true
+    sensitive: false
+  - name: Vector search catalog
+    key: DATABRICKS_VECTOR_SEARCH_CATALOG
+    description: Vector search catalog, 
+    required: true
+    sensitive: false
+  - name: Vector search schema
+    key: DATABRICKS_VECTOR_SEARCH_SCHEMA
+    description: Vector search schema, you can find it under the catalog
+    required: true
+    sensitive: false
+
+
+runtime: remote
+remoteConfig:
+  fixedUrl: https://${DATABRICKS_WORKSPACE_URL}/api/2.0/mcp/vector-search/${DATABRICKS_VECTOR_SEARCH_CATALOG}/${DATABRICKS_VECTOR_SEARCH_SCHEMA}
+  headers:
+  - name: Personal Access Token
+    description: Databricks PAT
+    key: Authorization
+    prefix: Bearer
+    required: true
+    sensitive: true 
