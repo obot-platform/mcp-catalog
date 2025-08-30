@@ -1,0 +1,51 @@
+name: Databricks Genie Spaces
+description: |
+  A Model Context Protocol (MCP) server that provides easy connection to Databricks Genie Spaces using managed MCP servers. Ask natural language questions about your data and get insights through AI-powered analytics with built-in Unity Catalog security.
+
+  ## Features
+  - **Natural Language Analytics**: Ask questions about your data in plain English
+  - **Data Insights**: Get automated insights and trend analysis from your Genie spaces
+  - **Conversational BI**: Interactive business intelligence through natural language
+  - **Serverless SQL**: Leverage serverless SQL compute for query execution
+
+  ## What you'll need to connect
+
+  ### Prerequisites
+  - **For admins**: Ensure the workspace has the **Managed MCP Servers** preview enabled. See [Databricks documentation](https://docs.databricks.com/en/admin/workspace-settings/manage-previews.html) for your cloud provider.
+  - **For users**: Ensure your account has access to Genie spaces in your workspace.
+  
+  ### Setup Steps
+  1. Navigate to your Databricks workspace
+  2. Go to **Genie** → Create or select an existing Genie space
+  3. Note the Genie space ID from the URL or space settings
+  4. Create a Personal Access Token in **Settings** → **Developer** → **Access tokens**
+  5. Configure the environment variables with your specific values
+
+
+metadata:
+  categories: Data Analytics, Business Intelligence
+icon: https://avatars.githubusercontent.com/u/4998052?s=200&v=4
+repoURL: https://docs.databricks.com/aws/en/generative-ai/mcp/
+
+env:
+  - name: Databricks workspace hostname
+    key: DATABRICKS_WORKSPACE_URL
+    description: Databricks workspace hostname, (e.g., https://your-workspace.cloud.databricks.com)
+    required: true
+    sensitive: false
+  - name: Genie space ID
+    key: DATABRICKS_GENIE_SPACE_ID
+    description: Your Databricks Genie space ID
+    required: true
+    sensitive: false
+
+runtime: remote
+remoteConfig:
+  fixedUrl: https://${DATABRICKS_WORKSPACE_URL}/api/2.0/mcp/genie/${DATABRICKS_GENIE_SPACE_ID}
+  headers:
+  - name: Personal Access Token
+    description: Databricks PAT
+    key: Authorization
+    prefix: Bearer
+    required: true
+    sensitive: true 
