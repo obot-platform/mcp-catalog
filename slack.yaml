@@ -43,12 +43,15 @@ description: |
        - `mpim:read` - View group DMs
        - `mpim:write` - Send group DMs
        - `users:read` - View users in workspace
-       - `search:read` - Search messages and files
        - `assistant:write` - Send typing indicators
+
+  Note: You can configure the app to use the User Oauth token instead of the Bot token. The MCP server will use your user token to act as the user in your slack workspace. When doing this, you need to add User token Scopes to the app instead.
+
+  If you are using the User Oauth token, you can add `search:read` to the User token Scopes to add ability to search messages in your workspace.
 
   3. **Install the App**
      - Go to "Install App" in the left sidebar
-     - Click "Install to Workspace"
+     - Click "Install to Workspace" to install this app into the workspace where you created this app
      - Authorize the app
 
   4. **Get Your Bot Token**
@@ -58,6 +61,10 @@ description: |
 
   5. **Environment Variable**
      - Set `SLACK_BOT_TOKEN` to your bot token value
+
+  Note: You can also use the User Oauth token instead of the Bot token. The MCP server will use your user token to act as the user in your slack workspace.
+
+  Note: If you are using the bot token, make sure the Bot is added to the slack channel if you want to send or get messages from the channel.
 
 metadata:
   categories: Communication
