@@ -113,6 +113,8 @@ env:
     required: true
     sensitive: true
 
-runtime: npx
-npxConfig:
-  package: "@tybalex/tableau-mcp@1.7.0" 
+runtime: containerized
+containerizedConfig:
+  image: tybalex/tableau-mcp2
+  port: 8098
+  path: "/tableau-mcp"
