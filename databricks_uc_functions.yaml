@@ -45,7 +45,7 @@ env:
 
 runtime: remote
 remoteConfig:
-  fixedUrl: https://${DATABRICKS_WORKSPACE_URL}/api/2.0/mcp/functions/${DATABRICKS_FUNCTIONS_CATALOG}/${DATABRICKS_FUNCTIONS_SCHEMA}
+  URLTemplate: ${DATABRICKS_WORKSPACE_URL}/api/2.0/mcp/functions/${DATABRICKS_FUNCTIONS_CATALOG}/${DATABRICKS_FUNCTIONS_SCHEMA}
   headers:
   - name: Personal Access Token
     description: Databricks PAT
