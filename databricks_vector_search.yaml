@@ -51,6 +51,5 @@ remoteConfig:
   - name: Personal Access Token
     description: Databricks PAT
     key: Authorization
-    prefix: Bearer
     required: true
-    sensitive: true 
+    sensitive: true
