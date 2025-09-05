@@ -1,0 +1,176 @@
+name: BigQuery Toolbox
+description: |
+  A Model Context Protocol (MCP) server that enables secure interaction with Google BigQuery. This server facilitates communication between AI applications and BigQuery datasets, making data exploration and analysis structured through a controlled interface.
+
+  It uses [BigQuery Toolbox](https://github.com/googleapis/genai-toolbox) to provide tools for BigQuery.
+
+  ## Features
+  - **Data Exploration**: Execute SQL queries against BigQuery datasets
+  - **Secure Access**: Uses Google Cloud credentials for authenticated access
+  - **Query Execution**: Execute SQL queries with proper error handling
+  - **Custom Tools**: Support for custom tools configuration via YAML
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Google Cloud Project ID**: Your Google Cloud project ID ([How to find your project ID](https://support.google.com/googleapi/answer/7014113))
+  - **Google Application Credentials**: Service account JSON credentials file
+
+  **Optional:**
+  - **Tools YAML**: Custom tools configuration file
+  - **BigQuery Dataset Name**: BigQuery dataset name to use for the tools to replace ${BIGQUERY_DATASET_NAME} placeholder
+
+  ## Setting up Google Cloud credentials
+
+  1. **Find your Google Cloud Project ID:**
+     - Go to the [Google Cloud Console](https://console.cloud.google.com/)
+     - Select your project from the project dropdown at the top
+     - Your Project ID is displayed in the project info panel
+
+  2. **Create a service account and download credentials:**
+     - Go to the [Google Cloud Console](https://console.cloud.google.com/)
+     - Navigate to "IAM & Admin" > "Service Accounts"
+     - Click "Create Service Account"
+     - Fill in the service account details and click "Create"
+     - Grant the service account appropriate BigQuery permissions:
+       - `BigQuery Data Viewer` (to read data)
+       - `BigQuery Job User` (to run queries)
+       - `BigQuery User` (general BigQuery access)
+     - Click "Done" to create the service account
+     - Click on the created service account
+     - Go to the "Keys" tab and click "Add Key" > "Create new key"
+     - Choose "JSON" format and click "Create"
+     - The credentials file will be downloaded to your computer
+     - Upload this JSON file when configuring the MCP server
+    
+    You can also create using gcloud cli:
+    ```
+    gcloud auth application-default login
+    ```
+
+    Once you finished the oauth login in your browser, the credential file will be saved to your home directory as `~/.config/gcloud/application_default_credentials.json`.
+
+  3. You can provide custom tools configuration YAML file to extend available tools. Check [here](https://googleapis.github.io/genai-toolbox/samples/bigquery/mcp_quickstart/) for examples.
+
+  By default, you can use ${GOOGLE_CLOUD_PROJECT} and ${BIGQUERY_DATASET_NAME} as placeholder to dynamically set the project and dataset name in your tools configuration YAML file.
+
+  For example:
+
+  ```yaml
+
+  sources:
+    my-bigquery-source:
+      kind: bigquery
+      project: ${GOOGLE_CLOUD_PROJECT}
+      location: us
+  tools:
+    search-hotels-by-name:
+      kind: bigquery-sql
+      source: my-bigquery-source
+      description: Search for hotels based on name.
+      parameters:
+        - name: name
+          type: string
+          description: The name of the hotel.
+      statement: SELECT * FROM `${BIGQUERY_DATASET_NAME}.hotels` WHERE LOWER(name) LIKE LOWER(CONCAT('%', @name, '%'));
+    search-hotels-by-location:
+      kind: bigquery-sql
+      source: my-bigquery-source
+      description: Search for hotels based on location.
+      parameters:
+        - name: location
+          type: string
+          description: The location of the hotel.
+      statement: SELECT * FROM `${BIGQUERY_DATASET_NAME}.hotels` WHERE LOWER(location) LIKE LOWER(CONCAT('%', @location, '%'));
+    book-hotel:
+      kind: bigquery-sql
+      source: my-bigquery-source
+      description: >-
+        Book a hotel by its ID. If the hotel is successfully booked, returns a NULL, raises an error if not.
+      parameters:
+        - name: hotel_id
+          type: integer
+          description: The ID of the hotel to book.
+      statement: UPDATE `${BIGQUERY_DATASET_NAME}.hotels` SET booked = TRUE WHERE id = @hotel_id;
+    update-hotel:
+      kind: bigquery-sql
+      source: my-bigquery-source
+      description: >-
+        Update a hotel's check-in and check-out dates by its ID. Returns a message indicating whether the hotel was successfully updated or not.
+      parameters:
+        - name: checkin_date
+          type: string
+          description: The new check-in date of the hotel.
+        - name: checkout_date
+          type: string
+          description: The new check-out date of the hotel.
+        - name: hotel_id
+          type: integer
+          description: The ID of the hotel to update.
+      statement: >-
+        UPDATE `${BIGQUERY_DATASET_NAME}.hotels` SET checkin_date = PARSE_DATE('%Y-%m-%d', @checkin_date), checkout_date = PARSE_DATE('%Y-%m-%d', @checkout_date) WHERE id = @hotel_id;
+    cancel-hotel:
+      kind: bigquery-sql
+      source: my-bigquery-source
+      description: Cancel a hotel by its ID.
+      parameters:
+        - name: hotel_id
+          type: integer
+          description: The ID of the hotel to cancel.
+      statement: UPDATE `${BIGQUERY_DATASET_NAME}.hotels` SET booked = FALSE WHERE id = @hotel_id;
+  toolsets:
+    my-toolset:
+      - search-hotels-by-name
+      - search-hotels-by-location
+      - book-hotel
+      - update-hotel
+      - cancel-hotel
+  ```
+
+metadata:
+  categories: Databases,Data & Analytics
+repoURL: https://github.com/obot-platform/bigquery-mcp
+icon: https://www.svgrepo.com/show/375551/bigquery.svg
+env:
+  - key: GOOGLE_CLOUD_PROJECT
+    name: Google Cloud Project ID
+    required: true
+    sensitive: false
+    description: Your Google Cloud project ID
+  - key: GOOGLE_APPLICATION_CREDENTIALS
+    name: Google Application Credentials
+    required: true
+    sensitive: true
+    description: Your service account JSON credentials file
+    file: true
+  - key: BIGQUERY_DATASET_NAME
+    name: BigQuery Dataset Name
+    required: false
+    sensitive: false
+    description: BigQuery dataset name to use for the tools to replace ${BIGQUERY_DATASET_NAME} placeholder
+  - key: TOOLS_YAML
+    name: Tools YAML
+    required: false
+    sensitive: false
+    description: Optional custom tools configuration YAML file to extend available tools
+    file: true
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/bigquery-mcp:latest
+  port: 5000
+  path: /mcp
+toolPreview:
+  - name: query
+    description: |
+      Execute SQL queries against BigQuery datasets in the current project.
+      Use standard BigQuery SQL syntax. You can query any dataset in the project.
+
+      Example usage:
+      {
+          "query": "SELECT * FROM `dataset.table` LIMIT 10"
+      }
+
+      The query parameter should contain the full SQL statement using BigQuery syntax.
+      Make sure to use backticks around fully qualified table names like `project.dataset.table`.
+    params:
+      sql: The SQL query to execute
