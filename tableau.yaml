@@ -115,6 +115,6 @@ env:
 
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/tableau-mcp-server:main
+  image: ghcr.io/obot-platform/mcp-images-tableau:main
   port: 8098
   path: "/tableau-mcp"
