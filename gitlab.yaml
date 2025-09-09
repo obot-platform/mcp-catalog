@@ -20,9 +20,7 @@ description: |
 
   **Optional:**
   - **GitLab API URL**: Your GitLab instance URL (optional, for self-hosted GitLab instances)
-  - **GitLab Project ID**: GitLab project ID
-  - **GitLab Allowed Project IDs**: optional, should be a comma-separated list of allowed project IDs
-  - **GitLab Read-Only Mode**:
+  - **GitLab Read-Only Mode**: default is false
   - **Use GitLab Wiki**: whether to use the GitLab wiki api
   - **Use Milestone**: whether to use the GitLab milestone api
   - **Use Pipeline**: whether to use the GitLab pipeline api
