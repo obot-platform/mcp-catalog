@@ -1,0 +1,212 @@
+name: GitLab
+description: |
+  A Model Context Protocol (MCP) server that provides comprehensive GitLab integration capabilities. Enable LLMs to interact with GitLab projects, manage repositories, handle issues and merge requests, and perform automated GitLab operations with precision.
+
+  ## Features
+  - **Project Management**: List, search, create, and manage GitLab projects
+  - **Repository Operations**: Browse files, read content, create/update files, and manage branches
+  - **Issue Management**: Create, update, list, and manage GitLab issues with full metadata
+  - **Merge Request Workflow**: Create, review, merge, and manage merge requests
+  - **File Operations**: Read, create, update, and manage repository files and directories
+  - **Branch Management**: Create, list, and manage repository branches
+  - **Commit History**: Access commit information and repository history
+  - **User Management**: Get user details and project member information
+  - **Advanced Features**: Fork repositories, manage labels, handle discussions
+
+  ## What you'll need to connect
+
+  **Required Credentials:**
+  - **GitLab Personal Access Token**: Your GitLab personal access token with appropriate scopes
+
+  **Optional:**
+  - **GitLab API URL**: Your GitLab instance URL (optional, for self-hosted GitLab instances)
+  - **GitLab Project ID**: GitLab project ID
+  - **GitLab Allowed Project IDs**: optional, should be a comma-separated list of allowed project IDs
+  - **GitLab Read-Only Mode**:
+  - **Use GitLab Wiki**: whether to use the GitLab wiki api
+  - **Use Milestone**: whether to use the GitLab milestone api
+  - **Use Pipeline**: whether to use the GitLab pipeline api
+
+
+metadata:
+  categories: Version Control & DevOps
+icon: https://about.gitlab.com/images/press/logo/png/gitlab-icon-rgb.png
+repoURL: https://github.com/zereight/gitlab-mcp
+env:
+  - key: GITLAB_PERSONAL_ACCESS_TOKEN
+    name: GitLab Personal Access Token
+    required: true
+    sensitive: true
+    description: Your GitLab personal access token with api, read_repository, and write_repository scopes.
+  - key: GITLAB_API_URL
+    name: GitLab API URL
+    required: false
+    sensitive: false
+    description: Your GitLab instance URL (optional, for self-hosted GitLab instances)
+  - key: GITLAB_READ_ONLY_MODE
+    name: GitLab Read-Only Mode
+    required: false
+    sensitive: false
+    description: Set to "true" to enable read-only mode (default is "false").
+  - key: USE_GITLAB_WIKI
+    name: Enable Wiki Features
+    required: false
+    sensitive: false
+    description: Set to "true" to enable GitLab wiki features (default is "false").
+  - key: USE_MILESTONE
+    name: Enable Milestone Features
+    required: false
+    sensitive: false
+    description: Set to "true" to enable milestone management (default is "false").
+  - key: USE_PIPELINE
+    name: Enable Pipeline Features
+    required: false
+    sensitive: false
+    description: Set to "true" to enable CI/CD pipeline features (default is "false").
+runtime: npx
+npxConfig:
+  package: '@zereight/mcp-gitlab@2.0.4'
+toolPreview:
+  - name: search_repositories
+    description: Search for GitLab projects
+    params:
+      search: Search query string (required)
+      page: Page number for pagination (optional)
+      per_page: Number of results per page (optional)
+  - name: create_repository
+    description: Create a new GitLab project
+    params:
+      name: Repository name (required)
+      description: Project description (optional)
+      initialize_with_readme: Initialize with README file (optional)
+      visibility: Project visibility - private, internal, or public (optional)
+  - name: get_project
+    description: Get details of a specific project
+    params:
+      project_id: Project ID or URL-encoded path (optional)
+  - name: list_projects
+    description: List projects accessible by the current user
+    params:
+      page: Page number for pagination (optional)
+      per_page: Number of results per page (optional)
+      search: Search term for projects (optional)
+      visibility: Filter by project visibility (optional)
+      with_issues_enabled: Filter projects with issues feature enabled (optional)
+  - name: get_file_contents
+    description: Get the contents of a file or directory from a GitLab project
+    params:
+      file_path: Path to the file or directory (required)
+      project_id: Project ID or URL-encoded path (optional)
+      ref: Branch, tag, or commit to get contents from (optional)
+  - name: create_or_update_file
+    description: Create or update a single file in a GitLab project
+    params:
+      branch: Branch to create/update the file in (required)
+      commit_message: Commit message (required)
+      content: Content of the file (required)
+      file_path: Path where to create/update the file (required)
+      project_id: Project ID or URL-encoded path (optional)
+      previous_path: Path of the file to move/rename (optional)
+  - name: push_files
+    description: Push multiple files to a GitLab project in a single commit
+    params:
+      branch: Branch to push to (required)
+      commit_message: Commit message (required)
+      files: Array of files with file_path and content (required)
+      project_id: Project ID or URL-encoded path (optional)
+  - name: get_repository_tree
+    description: Get the repository tree for a GitLab project (list files and directories)
+    params:
+      project_id: Project ID or URL-encoded path (optional)
+      path: Path inside the repository (optional)
+      ref: Branch, tag, or commit reference (optional)
+      recursive: Get recursive tree structure (optional)
+  - name: create_branch
+    description: Create a new branch in a GitLab project
+    params:
+      branch: Name for the new branch (required)
+      project_id: Project ID or URL-encoded path (optional)
+      ref: Source branch or commit for new branch (optional)
+  - name: create_issue
+    description: Create a new issue in a GitLab project
+    params:
+      title: Issue title (required)
+      project_id: Project ID or URL-encoded path (optional)
+      description: Issue description (optional)
+      assignee_ids: Array of user IDs to assign (optional)
+      labels: Array of label names (optional)
+  - name: list_issues
+    description: List issues (default created by current user only; use scope='all' for all accessible issues)
+    params:
+      project_id: Project ID or URL-encoded path (optional)
+      state: Issue state - opened, closed, all (optional)
+      labels: Array of label names to filter by (optional)
+      assignee_username: Array of assignee usernames (optional)
+      scope: Return issues from specific scope (optional)
+  - name: update_issue
+    description: Update an issue in a GitLab project
+    params:
+      issue_type: The type of issue - issue, incident, test_case or task (required)
+      project_id: Project ID or URL-encoded path (optional)
+      issue_iid: Internal ID of the issue (optional)
+      title: Updated issue title (optional)
+      description: Updated issue description (optional)
+      state_event: Update issue state - close/reopen (optional)
+  - name: create_merge_request
+    description: Create a new merge request in a GitLab project
+    params:
+      source_branch: Branch containing changes (required)
+      target_branch: Branch to merge into (required)
+      title: Merge request title (required)
+      project_id: Project ID or URL-encoded path (optional)
+      description: Merge request description (optional)
+      draft: Create as draft merge request (optional)
+      assignee_ids: Array of user IDs to assign (optional)
+  - name: list_merge_requests
+    description: List merge requests in a GitLab project with filtering options
+    params:
+      project_id: Project ID or URL-encoded path (optional)
+      state: Merge request state - opened, closed, merged, all (optional)
+      source_branch: Filter by source branch (optional)
+      target_branch: Filter by target branch (optional)
+      page: Page number for pagination (optional)
+      per_page: Number of results per page (optional)
+  - name: get_merge_request
+    description: Get details of a merge request (Either mergeRequestIid or branchName must be provided)
+    params:
+      project_id: Project ID or URL-encoded path (optional)
+      merge_request_iid: Internal ID of the merge request (optional)
+      source_branch: Source branch name (optional)
+  - name: merge_merge_request
+    description: Merge a merge request in a GitLab project
+    params:
+      project_id: Project ID or URL-encoded path (optional)
+      merge_request_iid: Internal ID of the merge request (optional)
+      merge_commit_message: Custom merge commit message (optional)
+      should_remove_source_branch: Remove source branch after merge (optional)
+      squash: Squash commits into a single commit when merging (optional)
+  - name: update_merge_request
+    description: Update a merge request (Either mergeRequestIid or branchName must be provided)
+    params:
+      project_id: Project ID or URL-encoded path (optional)
+      merge_request_iid: Internal ID of the merge request (optional)
+      title: Updated merge request title (optional)
+      description: Updated merge request description (optional)
+      state_event: New state - close/reopen for the MR (optional)
+      assignee_ids: Array of user IDs to assign (optional)
+  - name: create_merge_request_thread
+    description: Create a new thread on a merge request
+    params:
+      body: The content of the thread (required)
+      merge_request_iid: Internal ID of the merge request (optional)
+      project_id: Project ID or URL-encoded path (optional)
+      position: Position when creating a diff note (optional)
+  - name: fork_repository
+    description: Fork a GitLab project to your account or specified namespace
+    params:
+      project_id: Project ID or URL-encoded path (optional)
+      namespace: Namespace to fork to (optional)
+  - name: get_users
+    description: Get GitLab user details by usernames
+    params:
+      usernames: Array of usernames to search for (required) 
