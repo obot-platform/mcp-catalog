@@ -1,0 +1,162 @@
+name: Snowflake
+description: |
+  A Model Context Protocol (MCP) server that provides comprehensive access to Snowflake data warehouse through multiple APIs. Manage Snowflake objects, execute SQL queries, and work with semantic views for advanced analytics and data management.
+
+  ## Features
+  - **Cortex Search**: Query unstructured data in Snowflake as commonly used in Retrieval Augmented Generation (RAG) applications
+  - **Cortex Analyst**: Query structured data in Snowflake via rich semantic modeling
+  - **Object Management**: Perform basic operations against Snowflake's most common objects such as creation, dropping, updating, and more
+  - **SQL Execution**: Run LLM-generated SQL managed by user-configured permissions
+  - **Semantic View Querying**: Discover and query Snowflake Semantic Views and their components
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Snowflake Account**: Your Snowflake account identifier
+  - **Username**: Your Snowflake username
+  - **Password**: Your Snowflake password
+  
+
+  **Optional:**
+  - **Role**: Your Snowflake role (e.g., ACCOUNTADMIN, SYSADMIN)
+  - **Snowflake Host**: Your Snowflake host URL
+  - **Service Config YAML**: YAML configuration for service managers and SQL statement permissions
+
+metadata:
+  categories: Data Warehouse, SQL, Analytics, Database Management
+icon: https://avatars.githubusercontent.com/u/6453780?s=48&v=4
+repoURL: https://github.com/Snowflake-Labs/mcp
+
+toolPreview:
+  - name: list-objects
+    description: List Snowflake objects including databases, schemas, tables, views, warehouses, compute pools, roles, stages, users, and image repositories with optional filtering.
+    params:
+      object_type: "Type of Snowflake object (database, schema, table, view, warehouse, compute_pool, role, stage, user, image_repository)"
+      database_name: "Filter by database name - default: None"
+      schema_name: "Filter by schema name - default: None"
+      like: "Filter objects by keyword in name (case-insensitive pattern matching) - default: None"
+      starts_with: "Filter objects by start of name (case sensitive) - default: None"
+  - name: create-object
+    description: Create a new Snowflake object with specified properties. Supports creating databases, schemas, tables, views, warehouses, and other Snowflake objects.
+    params:
+      object_type: "Type of Snowflake object to create"
+      target_object: "Object specification with properties like name, columns, query, etc."
+      mode: "Creation mode (error_if_exists, replace, if_not_exists) - default: error_if_exists"
+  - name: drop-object
+    description: Drop an existing Snowflake object. Supports dropping databases, schemas, tables, views, warehouses, and other Snowflake objects.
+    params:
+      object_type: "Type of Snowflake object to drop"
+      target_object: "Object specification with name and required properties"
+      if_exists: "Only drop if object exists - default: false"
+  - name: create-or-alter-object
+    description: Create a new Snowflake object or alter an existing one. Provides flexible object management with automatic create/alter logic.
+    params:
+      object_type: "Type of Snowflake object to create or alter"
+      target_object: "Object specification with properties to set"
+  - name: describe-object
+    description: Get detailed information about a Snowflake object including its properties, configuration, and metadata.
+    params:
+      object_type: "Type of Snowflake object to describe"
+      target_object: "Object specification with name and required properties"
+  - name: run-snowflake-query
+    description: Execute SQL queries in Snowflake with support for DML and DDL operations. Includes safety controls and permission management.
+    params:
+      statement: "SQL query to execute"
+  - name: list-semantic-views
+    description: List all semantic views in the account, database, or schema with optional filtering capabilities.
+    params:
+      database_name: "Database name to list semantic views in - default: None (account level)"
+      schema_name: "Schema name to list semantic views in - default: None"
+      like: "Filter semantic views by keyword in name (case insensitive) - default: None"
+      starts_with: "Filter semantic views by start of name (case sensitive) - default: None"
+  - name: describe-semantic-view
+    description: Get detailed information about a specific semantic view including its structure, dimensions, and metrics.
+    params:
+      database_name: "Database name containing the semantic view"
+      schema_name: "Schema name containing the semantic view"
+      view_name: "Name of the semantic view to describe"
+  - name: show-semantic-dimensions
+    description: Show all semantic dimensions available in a specific semantic view for analytics and querying.
+    params:
+      database_name: "Database name containing the semantic view"
+      schema_name: "Schema name containing the semantic view"
+      view_name: "Name of the semantic view"
+      like: "Filter dimensions by keyword in name (case insensitive) - default: None"
+      starts_with: "Filter dimensions by start of name (case sensitive) - default: None"
+  - name: show-semantic-metrics
+    description: Show all semantic metrics available in a specific semantic view for analytics and aggregations.
+    params:
+      database_name: "Database name containing the semantic view"
+      schema_name: "Schema name containing the semantic view"
+      view_name: "Name of the semantic view"
+      like: "Filter metrics by keyword in name (case insensitive) - default: None"
+      starts_with: "Filter metrics by start of name (case sensitive) - default: None"
+  - name: get-semantic-view-ddl
+    description: Retrieve the DDL (Data Definition Language) for a semantic view to understand its structure and definition.
+    params:
+      database_name: "Database name containing the semantic view"
+      schema_name: "Schema name containing the semantic view"
+      view_name: "Name of the semantic view to get DDL for"
+  - name: write-semantic-view-query-tool
+    description: Generate a query statement to query a semantic view using dimensions, metrics, and/or facts with optional filtering and sorting.
+    params:
+      database_name: "Database name containing the semantic view"
+      schema_name: "Schema name containing the semantic view"
+      view_name: "Name of the semantic view to query"
+      dimensions: "List of dimensions to include (each with table and name) - default: []"
+      metrics: "List of metrics to include (each with table and name, cannot be used with facts) - default: []"
+      facts: "List of facts to include (each with table and name, cannot be used with metrics) - default: []"
+      where_clause: "Optional WHERE clause conditions (without WHERE keyword) - default: None"
+      order_by: "Optional ORDER BY clause (without ORDER BY keywords) - default: None"
+      limit: "Optional LIMIT for number of rows to return - default: None"
+  - name: query-semantic-view
+    description: Execute a query against a semantic view using dimensions, metrics, and/or facts with optional filtering and sorting.
+    params:
+      database_name: "Database name containing the semantic view"
+      schema_name: "Schema name containing the semantic view"
+      view_name: "Name of the semantic view to query"
+      dimensions: "List of dimensions to include (each with table and name) - default: []"
+      metrics: "List of metrics to include (each with table and name, cannot be used with facts) - default: []"
+      facts: "List of facts to include (each with table and name, cannot be used with metrics) - default: []"
+      where_clause: "Optional WHERE clause conditions (without WHERE keyword) - default: None"
+      order_by: "Optional ORDER BY clause (without ORDER BY keywords) - default: None"
+      limit: "Optional LIMIT for number of rows to return - default: None"
+
+env:
+  - name: Snowflake Account
+    key: SNOWFLAKE_ACCOUNT
+    description: Your Snowflake account identifier (e.g., RTKAIWN-APB69594)
+    required: true
+    sensitive: false
+  - name: Snowflake User
+    key: SNOWFLAKE_USER
+    description: Your Snowflake username
+    required: true
+    sensitive: false
+  - name: Snowflake Password
+    key: SNOWFLAKE_PASSWORD
+    description: Your Snowflake password
+    required: true
+    sensitive: true
+  - name: Snowflake Host
+    key: SNOWFLAKE_HOST
+    description: Your Snowflake host URL (e.g., account.snowflakecomputing.com)
+    required: false
+    sensitive: false
+  - name: Snowflake Role
+    key: SNOWFLAKE_ROLE
+    description: Your Snowflake role (e.g., ACCOUNTADMIN, SYSADMIN)
+    required: false
+    sensitive: false
+  - name: Service Config YAML
+    key: SERVICE_CONFIG_YAML
+    description: YAML configuration for service managers and SQL statement permissions
+    required: false
+    sensitive: false
+    file: true
+
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images-snowflake:main
+  port: 9000
+  path: "/mcp"
