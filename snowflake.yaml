@@ -22,6 +22,88 @@ description: |
   - **Snowflake Host**: Your Snowflake host URL
   - **Service Config YAML**: YAML configuration for service managers and SQL statement permissions
 
+  ### Service Config YAML Template
+
+  Configure optional Cortex Search services, Cortex Analyst services, and SQL statement permissions as needed:
+  ```yaml
+  search_services: # List all Cortex Search services
+    - service_name: "<service_name>"
+      description: > # Should start with "Search service that ..."
+        "<Search services that ...>"
+      database_name: "<database_name>"
+      schema_name: "<schema_name>"
+      columns: [] # Optional: List of columns to return for each relevant result (default: [])
+      limit: 10 # Optional: Limit on the number of results to return (default: 10)
+    - service_name: "<service_name>"
+      description: > # Should start with "Search service that ..."
+        "<Search services that ...>"
+      database_name: "<database_name>"
+      schema_name: "<schema_name>"
+      columns: [] # Optional: List of columns to return for each relevant result (default: [])
+      limit: 10 # Optional: Limit on the number of results to return (default: 10)
+  analyst_services: # List all Cortex Analyst semantic models/views
+    - service_name: "<service_name>" # Create descriptive name for the service
+      semantic_model: "<semantic_yaml_or_view>" # Fully-qualify semantic YAML model or Semantic View
+      description: > # Should start with "Analyst service that ..."
+        "<Analyst service that ...>"
+    - service_name: "<service_name>" # Create descriptive name for the service
+      semantic_model: "<semantic_yaml_or_view>" # Fully-qualify semantic YAML model or Semantic View
+      description: > # Should start with "Analyst service that ..."
+        "<Analyst service that ...>"
+  other_services: # Set desired tool groups to True to enable tools for that group
+    object_manager: True # Perform basic operations against Snowflake's most common objects such as creation, dropping, updating, and more.
+    query_manager: True # Run LLM-generated SQL managed by user-configured permissions.
+    semantic_manager: True # Discover and query Snowflake Semantic Views and their components.
+  sql_statement_permissions: # List SQL statements to explicitly allow (True) or disallow (False).
+    # - All: True # To allow everything, uncomment and set All: True.
+    - Alter: True
+    - Command: True
+    - Comment: True
+    - Commit: True
+    - Create: True
+    - Delete: True
+    - Describe: True
+    - Drop: True
+    - Insert: True
+    - Merge: True
+    - Rollback: True
+    - Select: True
+    - Transaction: True
+    - TruncateTable: True
+    # - Unknown: True # To allow unknown or unmapped statement types, uncomment and set Unknown: True.
+    - Update: True
+    - Use: True
+  ```
+
+  Default Service Config YAML if not provided:
+  ```yaml
+  other_services: # Set desired tool groups to True to enable tools for that group
+    object_manager: True # Perform basic operations against Snowflake's most common objects such as creation, dropping, updating, and more.
+    query_manager: True # Run LLM-generated SQL managed by user-configured permissions.
+    semantic_manager: True # Discover and query Snowflake Semantic Views and their components.
+  sql_statement_permissions: # List SQL statements to explicitly allow (True) or disallow (False).
+    # - All: True # To allow everything, uncomment and set All: True.
+    - Alter: True
+    - Command: True
+    - Comment: True
+    - Commit: True
+    - Create: True
+    - Delete: True
+    - Describe: True
+    - Drop: True
+    - Insert: True
+    - Merge: True
+    - Rollback: True
+    - Select: True
+    - Transaction: True
+    - TruncateTable: True
+    # - Unknown: True # To allow unknown or unmapped statement types, uncomment and set Unknown: True.
+    - Update: True
+    - Use: True
+  ```
+
+
+
 metadata:
   categories: Data Warehouse, SQL, Analytics, Database Management
 icon: https://avatars.githubusercontent.com/u/6453780?s=48&v=4
@@ -125,7 +207,7 @@ toolPreview:
 env:
   - name: Snowflake Account
     key: SNOWFLAKE_ACCOUNT
-    description: Your Snowflake account identifier (e.g., RTKAIWN-APB69594)
+    description: Your Snowflake account identifier
     required: true
     sensitive: false
   - name: Snowflake User
@@ -135,7 +217,7 @@ env:
     sensitive: false
   - name: Snowflake Password
     key: SNOWFLAKE_PASSWORD
-    description: Your Snowflake password
+    description: Your Snowflake password (NOT Personal Access Token)
     required: true
     sensitive: true
   - name: Snowflake Host
@@ -150,7 +232,7 @@ env:
     sensitive: false
   - name: Service Config YAML
     key: SERVICE_CONFIG_YAML
-    description: YAML configuration for service managers and SQL statement permissions
+    description: YAML configuration for service managers and SQL statement permissions, refer to readme for more details
     required: false
     sensitive: false
     file: true
