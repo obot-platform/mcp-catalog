@@ -1,0 +1,89 @@
+name: Google Cloud Run
+description: |
+  A Model Context Protocol (MCP) server that enables AI agents to deploy applications to Google Cloud Run. Provides comprehensive deployment capabilities including file-based deployment, container image deployment, and service management with full monitoring and logging support.
+
+  ## Features
+  - **File-based Deployment**: Deploy applications by providing file contents directly to Cloud Run
+  - **Container Image Deployment**: Deploy pre-built container images to Cloud Run services
+  - **Service Management**: List, get details, and monitor Cloud Run services across projects and regions
+  - **Project Management**: List available GCP projects and create new ones with billing integration
+  - **Logging & Monitoring**: Access service logs and error messages for troubleshooting
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Google Cloud Application Credentials**: Your Google Cloud Service Account Credentials.
+
+  **Optional:**
+  - **Google Cloud Region**: Default region for Cloud Run deployments (e.g., europe-west1, us-central1) default: europe-west1
+
+  ## Important Notes:
+  - **API Enablement**: The Cloud Run Admin API must be enabled in each GCP project where you plan to deploy services
+  - **Deployment Time**: Cloud Run deployments typically take 1-3 minutes depending on container size and complexity
+  - **First Deployment**: Initial deployments may take longer as they need to build and push container images
+  
+
+metadata:
+  categories: Cloud Infrastructure, Deployment, Container Orchestration
+icon: https://avatars.githubusercontent.com/u/2810941?s=48&v=4
+repoURL: https://github.com/obot-platform/cloud-run-mcp
+
+toolPreview:
+  - name: deploy-file-contents
+    description: Deploy files to Cloud Run by providing their contents directly. Takes an array of file objects containing filename and content. Use this tool if the files only exist in the current chat context.
+    params:
+      project: "Google Cloud project ID. Leave unset for the app to be deployed in a new project. If provided, make sure the user confirms the project ID they want to deploy to"
+      service: "Name of the Cloud Run service to deploy to"
+      region: "Region to deploy the service to - default: us-central1"
+      files: "Array of file objects containing filename and content"
+  - name: deploy-container-image
+    description: Deploys a container image to Cloud Run. Use this tool if the user provides a container image URL.
+    params:
+      project: "Google Cloud project ID. Do not select it yourself, make sure the user provides or confirms the project ID"
+      service: "Name of the Cloud Run service to deploy to"
+      region: "Region to deploy the service to - default: us-central1"
+      imageUrl: "The URL of the container image to deploy (e.g. \"gcr.io/cloudrun/hello\")"
+  - name: list-services
+    description: Lists Cloud Run services in a given project and region.
+    params:
+      project: "Google Cloud project ID"
+      region: "Region where the services are located - default: us-central1"
+  - name: get-service
+    description: Gets details for a specific Cloud Run service.
+    params:
+      project: "Google Cloud project ID containing the service"
+      service: "Name of the Cloud Run service"
+      region: "Region where the service is located - default: us-central1"
+  - name: get-service-log
+    description: Gets Logs and Error Messages for a specific Cloud Run service.
+    params:
+      project: "Google Cloud project ID containing the service"
+      service: "Name of the Cloud Run service"
+      region: "Region where the service is located - default: us-central1"
+  - name: list-projects
+    description: Lists available GCP projects
+    params:
+      random_string: "Dummy parameter for no-parameter tools"
+  - name: create-project
+    description: Creates a new GCP project and attempts to attach it to the first available billing account. A project ID can be optionally specified; otherwise it will be automatically generated.
+    params:
+      projectId: "Optional. The desired ID for the new GCP project. If not provided, an ID will be auto-generated"
+
+env:
+  - name: Google Application Credentials
+    key: GOOGLE_APPLICATION_CREDENTIALS
+    description: Your Google Cloud Service Account Credentials.(Content copied from a service account JSON file)
+    required: true
+    sensitive: true
+    file: true
+  - name: Google Cloud Region
+    key: GOOGLE_CLOUD_REGION
+    description: Default region for Cloud Run deployments (e.g., europe-west1, us-central1) default -- europe-west1
+    required: false
+    sensitive: false
+
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/google-cloud-run:main
+  port: 3000
+  path: "/mcp"
