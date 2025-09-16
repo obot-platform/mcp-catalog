@@ -44,7 +44,7 @@ remoteConfig:
   URLTemplate: ${DATABRICKS_WORKSPACE_URL}/api/2.0/mcp/genie/${DATABRICKS_GENIE_SPACE_ID}
   headers:
   - name: Personal Access Token with prefix "Bearer "
-    description: Databricks PAT, make sure to add the prefix "Bearer ", for example: "Bearer <your_pat>"
+    description: Databricks PAT, make sure to add the prefix "Bearer ", for example -- "Bearer <your_pat>"
     key: Authorization
     required: true
     sensitive: true
