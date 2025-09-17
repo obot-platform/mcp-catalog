@@ -1,0 +1,56 @@
+name: Contact
+description: |
+  ![Contact MCP Server](https://img.shields.io/badge/Contact-MCP%20Server-blue?style=for-the-badge&logo=microsoft-outlook)
+  ![Go](https://img.shields.io/badge/Go-1.23+-green?style=for-the-badge&logo=go)
+  ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+
+  A Model Context Protocol (MCP) server for Microsoft 365 Contact integration, providing comprehensive contact management capabilities through Microsoft Graph API.
+
+  ## Features
+  - **Complete Contact Management**: Create, read, update, and delete Outlook contacts with full CRUD operations
+  - **Contact Information**: Manage names, email addresses, and business phone numbers for all contacts
+  - **Bulk Operations**: Support for multiple email addresses and phone numbers per contact
+  - **Advanced Search**: List and retrieve contact details with comprehensive filtering capabilities
+  - **Data Validation**: Built-in validation for email formats and contact information integrity
+
+  ## What you'll need to connect
+
+  **No Setup Required**: Authentication is handled automatically through OAuth2 workflow with Microsoft Graph API
+
+  **Microsoft Account**: Requires valid Microsoft/Outlook account for authentication
+
+metadata:
+  categories: Business
+  allow-multiple: "true"
+icon: https://img.icons8.com/?size=100&id=GmYe21I1IHOY&format=png&color=000000
+repoURL: https://github.com/obot-platform/tools/tree/main/microsoft365/contact-mcp-go
+runtime: remote
+remoteConfig:
+  fixedURL: https://m365-contact-mcp.obot.ai/mcp
+toolPreview:
+  - name: list_contacts
+    description: List all Outlook contacts available to the user.
+    params: {}
+  - name: create_contact
+    description: Create a new Outlook contact.
+    params:
+      given_name: The given name of the contact (optional)
+      surname: The surname of the contact (optional)
+      emails: Comma-separated list of email addresses (optional)
+      business_phones: Comma-separated list of business phone numbers (optional)
+  - name: update_contact
+    description: Update an existing Outlook contact.
+    params:
+      contact_id: The ID of the contact to update
+      given_name: Replace the given name of the contact (optional)
+      surname: Replace the surname of the contact (optional)
+      emails: Comma-separated list of email addresses (replaces existing emails) (optional)
+      business_phones: Comma-separated list of business phone numbers (replaces existing phones) (optional)
+  - name: delete_contact
+    description: Delete an existing Outlook contact.
+    params:
+      contact_id: The ID of the contact to delete
+  - name: get_contact
+    description: Get the details of an existing Outlook contact.
+    params:
+      contact_id: The ID of the contact to get

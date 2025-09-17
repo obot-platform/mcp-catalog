@@ -1,0 +1,42 @@
+name: Word
+description: |
+  ![Word MCP Server](https://img.shields.io/badge/Word-MCP%20Server-blue?style=for-the-badge&logo=microsoft-word)
+  ![Go](https://img.shields.io/badge/Go-1.23+-green?style=for-the-badge&logo=go)
+  ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+
+  A Model Context Protocol (MCP) server for Microsoft Word integration, providing comprehensive document management capabilities through Microsoft Graph API.
+
+  ## Features
+  - **Document Discovery**: List and search all Word documents across OneDrive with detailed metadata
+  - **Content Reading**: Extract plain text content from Word documents (.doc and .docx formats)
+  - **Document Creation**: Create new Word documents with markdown content conversion
+  - **Content Writing**: Write and update document content with automatic markdown to DOCX conversion
+
+  ## What you'll need to connect
+
+  **No Setup Required**: Authentication is handled automatically through OAuth2 workflow with Microsoft Graph API
+
+  **Microsoft Account**: Requires valid Microsoft/Word account for authentication
+
+metadata:
+  categories: Business
+  allow-multiple: "true"
+icon: https://img.icons8.com/?size=100&id=13674&format=png&color=000000
+repoURL: https://github.com/obot-platform/tools/tree/main/microsoft365/word-mcp-go
+runtime: remote
+remoteConfig:
+  fixedURL: https://m365-word-mcp.obot.ai/mcp
+toolPreview:
+  - name: list_docs
+    description: List all Microsoft Word documents available to the user in OneDrive.
+    params: {}
+  - name: read_doc
+    description: Read the contents of a Microsoft Word document from OneDrive.
+    params:
+      doc_id: ID or Path of the Microsoft Word document to get (prefer ID if available)
+  - name: write_doc
+    description: Write a Microsoft Word document in OneDrive with the specified title and optional content.
+    params:
+      doc_name: The name of the document to write to (OneDrive ID or filepath)
+      doc_content: Markdown formatted content to write to the document (optional)
+      overwrite_if_exists: Whether to overwrite the document if it already exists (optional, defaults to false)

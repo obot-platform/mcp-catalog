@@ -1,0 +1,96 @@
+name: OneDrive
+description: |
+  ![OneDrive MCP Server](https://img.shields.io/badge/OneDrive-MCP%20Server-blue?style=for-the-badge&logo=microsoft-onedrive)
+  ![Go](https://img.shields.io/badge/Go-1.23+-green?style=for-the-badge&logo=go)
+  ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+
+  A Model Context Protocol (MCP) server for Microsoft OneDrive integration, providing comprehensive cloud file management capabilities through Microsoft Graph API.
+
+  ## Features
+  - **Drive Management**: Access personal and shared organization drives with detailed information
+  - **File & Folder Operations**: Create, delete, copy, move, and rename files and folders across drives
+  - **Sharing & Permissions**: Grant and manage file permissions with role-based access control
+  - **Cross-Drive Operations**: Copy and move files between different drives seamlessly
+
+  ## What you'll need to connect
+
+  **No Setup Required**: Authentication is handled automatically through OAuth2 workflow with Microsoft Graph API
+
+  **Microsoft Account**: Requires valid Microsoft/OneDrive account for authentication
+
+metadata:
+  categories: Business
+  allow-multiple: "true"
+icon: https://img.icons8.com/?size=100&id=13638&format=png&color=000000
+repoURL: https://github.com/obot-platform/tools/tree/main/microsoft365/onedrive-mcp-go
+runtime: remote
+remoteConfig:
+  fixedURL: https://m365-onedrive-mcp.obot.ai/mcp
+toolPreview:
+  - name: list_all_drives
+    description: Lists all available OneDrive drives for a user, including personal and shared organization drives.
+    params: {}
+  - name: get_drive
+    description: Gets details about a specific OneDrive drive.
+    params:
+      drive_id: The ID of the drive to get details about (optional, defaults to personal drive)
+  - name: list_drive_items
+    description: Lists items under a specific folder or path in a user's OneDrive.
+    params:
+      drive_id: The ID of the drive to list files in
+      folder_id: The ID of the folder to list files in (optional, defaults to root folder)
+  - name: list_shared_with_me_items
+    description: Lists all files and folders that have been shared with the user by others.
+    params: {}
+  - name: get_drive_item
+    description: Gets details about a specific file in a user's OneDrive.
+    params:
+      drive_id: The ID of the drive to get the file from
+      item_id: The ID of the item to get details about
+  - name: create_folder
+    description: Creates a new folder under a specific folder or path in a user's OneDrive.
+    params:
+      folder_name: The name of the folder to create
+      drive_id: The ID of the drive to create the folder in
+      folder_id: The ID of the folder to create the folder in (use 'root' for root folder)
+  - name: delete_drive_item
+    description: Deletes a file from a user's OneDrive.
+    params:
+      drive_id: The ID of the drive to delete the file from
+      item_id: The ID of the item to delete
+  - name: copy_drive_item
+    description: Copies a file from one location to another in a user's OneDrive.
+    params:
+      source_drive_id: The ID of the drive to copy the file from
+      source_item_id: The ID of the item to copy
+      target_drive_id: The ID of the drive to copy the file to
+      target_folder_id: The ID of the folder to copy the file to
+      new_name: The new name of the file (optional)
+  - name: move_and_rename_item
+    description: Moves and renames a file in a user's OneDrive.
+    params:
+      drive_id: The ID of the drive to update the file in
+      item_id: The ID of the item to update
+      new_folder_id: The ID of the folder to move the file to (optional)
+      new_name: The new name of the file (optional)
+  - name: add_permission
+    description: Grants permission to users via email for a specific file in OneDrive.
+    params:
+      drive_id: The ID of the drive to add the permission to
+      item_id: The ID of the item to add the permission to
+      emails: Comma-separated list of email addresses to grant permission to
+      role: The role to grant to the users (read or write)
+      message: The message to send to the users (optional)
+      password: The password to use for the permission (optional)
+      expiration_date_time: The expiration date and time of the permission in YYYY-MM-DDTHH:MM:SSZ format (optional)
+  - name: delete_permission
+    description: Removes a specific permission from a file in OneDrive.
+    params:
+      drive_id: The ID of the drive to delete the permission from
+      item_id: The ID of the item to delete the permission from
+      permission_id: The ID of the permission to delete
+  - name: list_permissions
+    description: Lists all permissions for a specific file in OneDrive.
+    params:
+      drive_id: The ID of the drive to list the permissions from
+      item_id: The ID of the item to list the permissions from

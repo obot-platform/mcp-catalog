@@ -1,0 +1,75 @@
+name: Excel
+description: |
+  ![Excel MCP Server](https://img.shields.io/badge/Excel-MCP%20Server-blue?style=for-the-badge&logo=microsoft-excel)
+  ![Go](https://img.shields.io/badge/Go-1.23+-green?style=for-the-badge&logo=go)
+  ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+
+  A Model Context Protocol (MCP) server for Microsoft Excel integration, providing comprehensive spreadsheet management capabilities through Microsoft Graph API.
+
+  ## Features
+  - **Workbook Management**: List and access all Excel workbooks in OneDrive with complete metadata
+  - **Worksheet Operations**: Create, list, and manage worksheets within workbooks
+  - **Data Manipulation**: Read worksheet data, add rows and columns with formula support
+  - **Table Management**: Access and work with Excel tables for structured data operations
+  - **Date Conversion**: Convert Excel serial numbers to readable date formats
+  - **CSV Export**: Export worksheet data in CSV format for compatibility with other tools
+
+  ## What you'll need to connect
+
+  **No Setup Required**: Authentication is handled automatically through OAuth2 workflow with Microsoft Graph API
+
+  **Microsoft Account**: Requires valid Microsoft/Excel account for authentication
+
+metadata:
+  categories: Business
+  allow-multiple: "true"
+icon: https://img.icons8.com/?size=100&id=13654&format=png&color=000000
+repoURL: https://github.com/obot-platform/tools/tree/main/microsoft365/excel-mcp-go
+runtime: remote
+remoteConfig:
+  fixedURL: https://m365-excel-mcp.obot.ai/mcp
+toolPreview:
+  - name: list_workbooks
+    description: Lists all workbooks available to the user.
+    params: {}
+  - name: list_worksheets
+    description: Lists all worksheets available in a workbook.
+    params:
+      workbook_id: ID of the workbook to list worksheets from
+  - name: get_worksheet_data
+    description: Get all the data of a worksheet in a workbook.
+    params:
+      workbook_id: ID of the workbook to get worksheet data from
+      worksheet_id: ID of the worksheet to get data from
+  - name: get_worksheet_column_headers
+    description: Get the first 3 rows of a worksheet in a workbook to determine if there are column headers.
+    params:
+      workbook_id: ID of the workbook to get worksheet data from
+      worksheet_id: ID of the worksheet to get data from
+  - name: get_worksheet_tables
+    description: Get the names and IDs of the tables on a worksheet in a workbook.
+    params:
+      workbook_id: ID of the workbook to get worksheet data from
+      worksheet_id: ID of the worksheet to get data from
+  - name: add_worksheet_row
+    description: Adds rows to an existing worksheet in a workbook.
+    params:
+      workbook_id: ID of the workbook to add row to
+      worksheet_id: ID of the worksheet to add row to
+      contents: The rows to add to the worksheet (cells within a row must be pipe-separated)
+  - name: add_worksheet_column
+    description: Adds a column to an existing worksheet in a workbook.
+    params:
+      workbook_id: ID of the workbook to add column to
+      worksheet_id: ID of the worksheet to add column to
+      contents: Values to add as a new column
+      column_id: The starting address of the column to put the values in (e.g. B1)
+  - name: create_worksheet
+    description: Creates a new worksheet in a workbook.
+    params:
+      workbook_id: ID of the workbook to create worksheet in
+      name: Name of the new worksheet
+  - name: get_dates_from_serials
+    description: Gets the date in 'YYYY-MM-DD' format from Excel serial numbers.
+    params:
+      serials: A list of excel serial numbers to transform into dates
