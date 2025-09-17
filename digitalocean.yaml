@@ -18,9 +18,7 @@ description: |
 
   **Required:**
   - **DigitalOcean API Token**: Personal Access Token with appropriate permissions for your DigitalOcean account
-
-  **Optional Configuration:**
-  - **Services Selection**: Use `--services` flag to specify which services to enable (e.g., `apps,droplets,databases`)
+  - **Enabled Services**: Comma-separated list of enabled services (e.g., apps,droplets).
 
   ## Available Services
 
@@ -46,7 +44,7 @@ description: |
 
 metadata:
   categories: Cloud & Infrastructure, Developer Tools
-icon: https://avatars.githubusercontent.com/u/150292484?s=48&v=4
+icon: https://cdn.brandfetch.io/idvF37rNoN/theme/dark/symbol.svg?c=1dxbfHSJFAPEGdCLU4o5B
 repoURL: https://github.com/digitalocean-labs/mcp-digitalocean
 env:
   - key: DIGITALOCEAN_API_TOKEN
@@ -54,13 +52,18 @@ env:
     required: true
     sensitive: true
     description: Your DigitalOcean Personal Access Token with appropriate permissions
+  - key: ENABLED_SERVICES
+    name: Enabled Services
+    required: true
+    sensitive: false
+    description: Comma-separated list of enabled services (e.g., apps,droplets).
 
 runtime: npx
 npxConfig:
   package: '@digitalocean/mcp@latest'
   args:
     - --services
-    - apps,droplets,accounts,networking,databases
+    - ${ENABLED_SERVICES}
 
 toolPreview:
   - name: apps-create-app-from-spec
