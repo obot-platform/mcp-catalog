@@ -58,12 +58,11 @@ env:
     sensitive: false
     description: Comma-separated list of enabled services (e.g., apps,droplets).
 
-runtime: npx
-npxConfig:
-  package: '@digitalocean/mcp@latest'
-  args:
-    - --services
-    - ${ENABLED_SERVICES}
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/digitalocean:1.0.10
+  port: 8099
+  path: "/"
 
 toolPreview:
   - name: apps-create-app-from-spec
