@@ -1,0 +1,165 @@
+name: Stripe
+description: |
+  A Model Context Protocol (MCP) server for the Stripe API that enables AI agents to interact with Stripe payments, billing, and commerce functionality. This server provides comprehensive tools for managing customers, products, payments, subscriptions, invoices, and disputes with full API coverage for building agentic payment workflows.
+
+  ## Features
+  - **Customer Management**: Create, list, and manage customers with comprehensive data handling
+  - **Product & Pricing**: Create products and flexible pricing models including one-time and recurring billing
+  - **Payment Processing**: Handle payment intents, refunds, and payment links for seamless transactions
+  - **Subscription Billing**: Full subscription lifecycle management with updates, cancellations, and modifications
+  - **Invoice System**: Create, manage, finalize, and track invoices with line items
+  - **Dispute Resolution**: List and respond to disputes with evidence submission
+  - **Coupon Management**: Create and manage discount coupons with flexible terms
+  - **Search & Discovery**: Advanced search across all Stripe resources with custom query syntax
+  - **Account Operations**: Access account information and balance details
+
+  ## What you'll need to connect
+
+  **No Setup Required**: Authentication is handled automatically through OAuth2 workflow
+
+  ## Example Usage
+
+  - "Create a customer named John Doe with email john@example.com"
+  - "List all active subscriptions for customer cus_123"
+  - "Create a $10 monthly subscription product"
+  - "Generate a payment link for $50 one-time payment"
+  - "Show all disputes and their current status"
+
+metadata:
+  categories: SaaS & API Integrations,Payments,Billing
+icon: https://avatars.githubusercontent.com/u/856813?s=200&v=4
+repoURL: https://docs.stripe.com/mcp
+toolPreview:
+  - name: get_stripe_account_info
+    description: Retrieve account information for the authenticated Stripe account.
+    params: {}
+  - name: retrieve_balance
+    description: Get the current balance and available funds in the Stripe account.
+    params: {}
+  - name: create_customer
+    description: Create a new customer in Stripe.
+    params:
+      name: The name of the customer
+      email: The email address of the customer (optional)
+  - name: list_customers
+    description: List customers with optional filtering and pagination.
+    params:
+      limit: Maximum number of customers to return (1-100)
+      email: Filter customers by email address
+  - name: create_product
+    description: Create a new product in Stripe.
+    params:
+      name: The name of the product
+      description: Description of the product (optional)
+  - name: list_products
+    description: List all products with optional pagination.
+    params:
+      limit: Maximum number of products to return (1-100)
+  - name: create_price
+    description: Create a price for a product, supporting one-time or recurring billing.
+    params:
+      product: The ID of the product to create the price for
+      unit_amount: The price amount in currency minor units (e.g., cents)
+      currency: The currency code (e.g., usd, eur)
+      recurring: Recurring billing configuration (optional)
+  - name: list_prices
+    description: List prices with optional filtering by product.
+    params:
+      product: Filter prices by product ID (optional)
+      limit: Maximum number of prices to return (1-100)
+  - name: create_payment_link
+    description: Create a payment link for easy customer checkout.
+    params:
+      price: The ID of the price to create the payment link for
+      quantity: The quantity of the product to include
+  - name: list_payment_intents
+    description: List payment intents with optional customer filtering.
+    params:
+      customer: Filter by customer ID (optional)
+      limit: Maximum number of payment intents to return (1-100)
+  - name: create_refund
+    description: Refund a payment intent fully or partially.
+    params:
+      payment_intent: The ID of the payment intent to refund
+      amount: Amount to refund in minor currency units (optional, defaults to full refund)
+      reason: Reason for refund - duplicate, fraudulent, or requested_by_customer (optional)
+  - name: create_invoice
+    description: Create a new invoice for a customer.
+    params:
+      customer: The ID of the customer to invoice
+      days_until_due: Number of days until invoice is due (optional)
+  - name: list_invoices
+    description: List invoices with optional customer filtering.
+    params:
+      customer: Filter by customer ID (optional)
+      limit: Maximum number of invoices to return (1-100)
+  - name: create_invoice_item
+    description: Add a line item to an existing invoice.
+    params:
+      customer: The ID of the customer
+      price: The ID of the price for the line item
+      invoice: The ID of the invoice to add the item to
+  - name: finalize_invoice
+    description: Finalize an invoice to make it ready for payment.
+    params:
+      invoice: The ID of the invoice to finalize
+  - name: list_subscriptions
+    description: List subscriptions with filtering options.
+    params:
+      customer: Filter by customer ID (optional)
+      price: Filter by price ID (optional)
+      status: Filter by subscription status (optional)
+      limit: Maximum number of subscriptions to return (1-100)
+  - name: cancel_subscription
+    description: Cancel an active subscription.
+    params:
+      subscription: The ID of the subscription to cancel
+  - name: update_subscription
+    description: Update an existing subscription with new items or modifications.
+    params:
+      subscription: The ID of the subscription to update
+      items: Array of subscription items to add, modify, or remove
+      proration_behavior: How to handle prorations (optional)
+  - name: create_coupon
+    description: Create a discount coupon with percentage or fixed amount off.
+    params:
+      name: Display name of the coupon
+      percent_off: Percentage discount (0-100, use either this or amount_off)
+      amount_off: Fixed amount discount in minor currency units (use either this or percent_off)
+      currency: Currency for amount_off (required if using amount_off)
+      duration: How long discount lasts - once, repeating, or forever (optional)
+      duration_in_months: Months for repeating duration (optional)
+  - name: list_coupons
+    description: List all available coupons.
+    params:
+      limit: Maximum number of coupons to return (1-100)
+  - name: list_disputes
+    description: List payment disputes that need attention.
+    params:
+      charge: Filter by specific charge ID (optional)
+      payment_intent: Filter by payment intent ID (optional)
+      limit: Maximum number of disputes to return (1-100)
+  - name: update_dispute
+    description: Submit evidence or update information for a payment dispute.
+    params:
+      dispute: The ID of the dispute to update
+      evidence: Evidence object with supporting documentation
+      submit: Whether to immediately submit evidence to the bank (optional)
+  - name: search_stripe_resources
+    description: Search across multiple Stripe resource types using custom query syntax.
+    params:
+      query: Search query in format 'resource:query_clause' (e.g., 'customers:email:"john@example.com"')
+  - name: fetch_stripe_resources
+    description: Retrieve detailed information for any Stripe object by its ID.
+    params:
+      id: The Stripe object ID (e.g., cus_123, pi_456, sub_789)
+  - name: search_stripe_documentation
+    description: Search Stripe documentation and knowledge base for help and guidance.
+    params:
+      question: Your question about Stripe integration or API usage
+      language: Programming language context (optional)
+      search_only_api_ref: Whether to search only API reference docs (optional)
+
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.stripe.com 
