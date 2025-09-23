@@ -72,9 +72,13 @@ env:
     required: false
     sensitive: false
     description: Service identifier for chart generation records
-runtime: npx
-npxConfig:
-  package: '@antv/mcp-server-chart@0.8.3'
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/antv-charts:0.8.3
+  port: 8099
+  path: /
+  args:
+    - mcp-server-chart
 toolPreview:
   - name: generate_area_chart
     description: Generate an area chart to show data trends under continuous independent variables and observe overall data trends, such as velocity over time.

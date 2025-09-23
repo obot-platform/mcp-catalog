@@ -27,7 +27,6 @@ description: |
   - "look up documentation on S3 bucket naming rule. cite your sources"
   - "recommend content for page https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html"
 
-
 metadata:
   categories: Documentation & Learning, SaaS & API Integrations
 icon: https://avatars.githubusercontent.com/u/3299148?s=48&v=4
@@ -54,9 +53,13 @@ env:
     sensitive: false
     description: AWS Region, default to us-east-1
 
-runtime: uvx
-uvxConfig:
-  package: 'awslabs.aws-documentation-mcp-server@1.1.6'
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/aws-documentation:1.1.6
+  port: 8099
+  path: /
+  args:
+    - awslabs.aws-documentation-mcp-server
 toolPreview:
   - name: read_documentation
     description: Fetch and convert an AWS documentation page to markdown format. Retrieves content from AWS documentation pages and converts it to markdown format. For long documents, you can make multiple calls with different start_index values to retrieve the entire content in chunks.
@@ -72,4 +75,4 @@ toolPreview:
   - name: recommend
     description: Get content recommendations for an AWS documentation page. Provides recommendations for related AWS documentation pages including highly rated, new, similar, and journey categories. Available for global AWS partition only.
     params:
-      url: URL of the AWS documentation page to get recommendations for (must be a valid AWS documentation URL) 
+      url: URL of the AWS documentation page to get recommendations for (must be a valid AWS documentation URL)

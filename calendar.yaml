@@ -1,0 +1,99 @@
+name: Calendar
+description: |
+  ![Calendar MCP Server](https://img.shields.io/badge/Calendar-MCP%20Server-blue?style=for-the-badge&logo=microsoft-outlook)
+  ![Go](https://img.shields.io/badge/Go-1.25+-green?style=for-the-badge&logo=go)
+  ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+
+  A Model Context Protocol (MCP) server for Microsoft 365 Calendar integration, providing comprehensive calendar and event management capabilities through Microsoft Graph API.
+
+  ## Features
+  - **Calendar Management**: Access personal and group calendars with full metadata and permissions
+  - **Event Operations**: Create, view, modify, and delete calendar events with full lifecycle management
+  - **Advanced Scheduling**: Support for recurring events, online meetings, and attendee management
+  - **Attendee Management**: Add, remove, and modify required and optional attendees dynamically
+  - **Event Responses**: Accept, decline, or tentatively accept event invitations programmatically
+  - **Search & Discovery**: Powerful event search capabilities across all accessible calendars
+
+  ## What you'll need to connect
+
+  **No Setup Required**: Authentication is handled automatically through OAuth2 workflow with Microsoft Graph API
+
+  **Microsoft Account**: Requires valid Microsoft/Outlook account for authentication
+
+metadata:
+  categories: Business
+  allow-multiple: "true"
+icon: https://img.icons8.com/?size=100&id=WpQIVxfhhzqt&format=png&color=000000
+repoURL: https://github.com/obot-platform/tools/tree/main/microsoft365/calendar-mcp-go
+runtime: remote
+remoteConfig:
+  fixedURL: https://m365-calendar-mcp.obot.ai/mcp
+toolPreview:
+  - name: list_calendars
+    description: List all calendars available to the user.
+    params: {}
+  - name: list_events_today
+    description: List all events for today in all calendars available to the user.
+    params: {}
+  - name: list_events
+    description: List all events in the given time frame in all calendars available to the user.
+    params:
+      start: Start date/time in RFC 3339 format
+      end: End date/time in RFC 3339 format
+      calendar_ids: Comma-separated list of calendar IDs to filter (optional)
+      limit: Maximum number of events per calendar (optional, default 50)
+  - name: create_event
+    description: Create a new calendar event.
+    params:
+      subject: Event title
+      location: Event location
+      body: Event details/description
+      attendees: Comma-separated email addresses of required attendees
+      optional_attendees: Comma-separated email addresses of optional attendees (optional)
+      is_online: Whether event is online or in-person (true/false)
+      start: Start time in RFC 3339 format
+      end: End time in RFC 3339 format
+      recurrence: Plain English description of recurrence pattern (optional)
+      calendar_id: Specific calendar ID to create event in (optional)
+      owner_type: user or group (optional, required if calendar_id is set)
+  - name: get_event_details
+    description: Get the details for a particular event.
+    params:
+      event_id: Unique event ID
+      calendar_id: Calendar/group ID (optional)
+      owner_type: user or group (optional, required if calendar_id is set)
+  - name: get_event_attachments
+    description: Download the attachments for a particular event.
+    params:
+      event_id: Unique event ID
+      calendar_id: Calendar/group ID (optional)
+      owner_type: user or group (optional, required if calendar_id is set)
+  - name: modify_event_attendees
+    description: Adds or removes attendees from an existing event.
+    params:
+      event_id: Unique event ID
+      calendar_id: Calendar/group ID (optional)
+      owner_type: user or group (optional, required if calendar_id is set)
+      add_required_attendees: Comma-separated emails to add as required (optional)
+      add_optional_attendees: Comma-separated emails to add as optional (optional)
+      remove_attendees: Comma-separated emails to remove (optional)
+  - name: delete_event
+    description: Delete a calendar event.
+    params:
+      event_id: Unique event ID
+      delete_series: Delete entire recurring series (optional, default false)
+      calendar_id: Calendar/group ID (optional)
+      owner_type: user or group (optional, required if calendar_id is set)
+  - name: search_events
+    description: Search for events based on a query string.
+    params:
+      query: Search query string
+      start: Search time frame start in RFC 3339 format
+      end: Search time frame end in RFC 3339 format
+  - name: respond_to_event
+    description: Accept, tentatively accept, or decline an event invitation.
+    params:
+      event_id: Unique event ID
+      calendar_id: Calendar/group ID (optional)
+      owner_type: user or group (optional, required if calendar_id is set)
+      response: accept, tentative, or decline

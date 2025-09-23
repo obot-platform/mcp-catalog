@@ -18,10 +18,6 @@ description: |
   **Required:**
   - **EXA API Key**: Your Exa API key from [dashboard.exa.ai/api-keys](https://dashboard.exa.ai/api-keys)
 
-
-
-
-  
 metadata:
   categories: Retrieval & Search,Science & Research,Developer Tools
 icon: https://avatars.githubusercontent.com/u/77906174?v=4
@@ -64,8 +60,11 @@ toolPreview:
     params:
       taskId: The task ID returned from deep_researcher_start
 
-runtime: npx
-npxConfig:
-  package: exa-mcp-server@2.0.3
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/exa-search:2.0.3
+  port: 8099
+  path: /
   args:
+    - exa-mcp-server
     - --tools=web_search_exa,research_paper_search,company_research,crawling,competitor_finder,linkedin_search,wikipedia_search_exa,github_search

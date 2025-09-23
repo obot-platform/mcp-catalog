@@ -71,8 +71,11 @@ toolPreview:
   - name: analyze_db_health
     description: Performs comprehensive health checks including cache hit rates, connections, indexes, and vacuum status
 
-runtime: uvx
-uvxConfig:
-  package: 'postgres-mcp'
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/postgresql:0.3.0
+  port: 8099
+  path: /
   args:
+    - postgres-mcp
     - --access-mode=unrestricted

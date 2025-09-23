@@ -20,7 +20,6 @@ description: |
   - **AWS Region**: AWS region to use (default: `us-east-1`)
   - **AWS Session Token**: Required only for temporary credentials like SSO or STS AssumeRole
 
-
 metadata:
   categories: Infrastructure & DevOps, SaaS & API Integrations
 icon: https://avatars.githubusercontent.com/u/3299148?s=48&v=4
@@ -47,9 +46,13 @@ env:
     sensitive: false
     description: AWS Region, default to us-east-1
 
-runtime: uvx
-uvxConfig:
-  package: awslabs.cdk-mcp-server@1.0.7
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/aws-cdk:1.0.7
+  port: 8099
+  path: /
+  args:
+    - awslabs.cdk-mcp-server
 toolPreview:
   - name: CDKGeneralGuidance
     description: Use this tool to get prescriptive CDK advice for building applications on AWS.
@@ -81,4 +84,4 @@ toolPreview:
   - name: LambdaLayerDocumentationProvider
     description: Provide documentation sources for Lambda layers. This tool returns information about where to find documentation for Lambda layers and instructs the MCP Client to fetch and process this documentation.
     params:
-      layer_type: Type of layer ("generic" or "python") 
+      layer_type: Type of layer ("generic" or "python")

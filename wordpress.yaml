@@ -1,11 +1,11 @@
 name: WordPress
 description: |
   A Model Context Protocol (MCP) server that integrates with a self-hosted WordPress site (wordpress.com not supported).
-  
+
   ## Features
   - **WordPress Feature API**: Standardized adapter providing streamlined access to core WordPress functionality
   - **REST API CRUD Tools**: Flexible generic tools for interacting with any WordPress REST API endpoint, including APIs from plugins.
-  
+
   ## What you'll need to connect
 
   ### Install plugin to your WordPress site
@@ -26,7 +26,7 @@ repoURL: https://github.com/Automattic/wordpress-mcp
 
 env:
   - name: WordPress Site URL
-    description: 'The full URL to your WordPress site (wordpress.com not supported). Must start with http:// or https://.'
+    description: "The full URL to your WordPress site (wordpress.com not supported). Must start with http:// or https://."
     key: WP_API_URL
     required: true
   - name: WordPress Username
@@ -39,9 +39,13 @@ env:
     required: true
     sensitive: true
 
-runtime: npx
-npxConfig:
-  package: '@automattic/mcp-wordpress-remote@0.2.10'
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/wordpress:0.2.10
+  port: 8099
+  path: /
+  args:
+    - mcp-wordpress-remote
 
 toolPreview:
   - name: get_site_info
@@ -52,7 +56,7 @@ toolPreview:
     description: Get the actual file content (blob) of a WordPress media item
     params:
       id: The ID of the media item
-      size: 'Optional. The size of the image to retrieve (thumbnail, medium, large, full). Defaults to full/original size.'
+      size: "Optional. The size of the image to retrieve (thumbnail, medium, large, full). Defaults to full/original size."
   - name: list_api_functions
     description: List all available WordPress REST API endpoints that support CRUD operations (Create, Read, Update, Delete). Use this first to discover what API functions are available before inspecting or calling them.
     params:
@@ -66,5 +70,5 @@ toolPreview:
     description: Execute a specific WordPress REST API function by providing the endpoint route, HTTP method, and any required parameters or request body. Supports standard CRUD operations - GET (read), POST (create), PATCH (update), DELETE (remove).
     params:
       route: 'The REST API route (e.g., "/wp/v2/posts", "/wp/v2/users/123")'
-      method: 'The HTTP method to use: GET, POST, PATCH, or DELETE'
-      data: 'Payload for POST or PATCH requests. Not required for GET or DELETE.'
+      method: "The HTTP method to use: GET, POST, PATCH, or DELETE"
+      data: "Payload for POST or PATCH requests. Not required for GET or DELETE."

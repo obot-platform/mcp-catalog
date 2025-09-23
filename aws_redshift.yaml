@@ -70,9 +70,13 @@ env:
     sensitive: false
     description: AWS Region, default to us-east-1
 
-runtime: uvx
-uvxConfig:
-  package: awslabs.redshift-mcp-server@0.0.7
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/aws-redshift:0.0.7
+  port: 8099
+  path: /
+  args:
+    - awslabs.redshift-mcp-server
 
 toolPreview:
   - name: list_clusters

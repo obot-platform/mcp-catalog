@@ -7,15 +7,15 @@ description: |
   - **Cluster Management**: List, inspect, and create MongoDB Atlas clusters including free tier clusters
 
   ## What you'll need to connect
-  
+
   ### MongoDB Atlas API Credentials (Required)
   You'll need Service Account Atlas API credentials to use the Atlas management tools:
-  
+
   - **API Client ID**: Your MongoDB Atlas Service Account Client ID
   - **API Client Secret**: Your MongoDB Atlas Service Account Client Secret (keep this secure)
 
   ### Setting up Atlas API Access
-  
+
   1. **Create a Service Account:**
      - Log in to MongoDB Atlas at [cloud.mongodb.com](https://cloud.mongodb.com)
      - Navigate to Access Manager > Organization Access
@@ -121,11 +121,13 @@ toolPreview:
     params:
       projectId: Project ID to list alerts for
 
-
-runtime: npx
-npxConfig:
-  package: mongodb-mcp-server@0.3.0
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/mongodb-atlas:0.3.0
+  port: 8099
+  path: /
   args:
+    - mongodb-mcp-server
     - --apiClientId
     - ${MDB_MCP_API_CLIENT_ID}
     - --apiClientSecret

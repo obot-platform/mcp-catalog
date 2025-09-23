@@ -38,10 +38,13 @@ env:
   #   sensitive: false
   #   description: The project ID for your Supabase project. You can find it in `General` > `Project Settings` > `Project ID`.
 
-runtime: npx
-npxConfig:
-  package: '@supabase/mcp-server-supabase@0.5.1'
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/supabase:0.5.1
+  port: 8099
+  path: /
   args:
+    - mcp-server-supabase
     # - "--project-ref=${SUPABASE_PROJECT_REF}" # TODO: add this back once we support dynamic args, see issue https://github.com/obot-platform/obot/issues/3619 feature request 1
 
 toolPreview:

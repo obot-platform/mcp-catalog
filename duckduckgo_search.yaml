@@ -29,6 +29,10 @@ toolPreview:
     params:
       url: The webpage URL to fetch content from
 
-runtime: uvx
-uvxConfig:
-  package: duckduckgo-mcp-server@0.1.1
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/duckduckgo-search:0.1.1
+  port: 8099
+  path: /
+  args:
+    - duckduckgo-mcp-server

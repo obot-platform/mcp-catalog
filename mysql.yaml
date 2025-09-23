@@ -56,7 +56,10 @@ env:
     required: true
     sensitive: false
     description: The name of your MySQL database.
-runtime: uvx
-uvxConfig:
-  package: mysql-mcp-server
-  command: mysql_mcp_server
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/mysql-mcp-server:0.2.2
+  port: 8099
+  path: /
+  args:
+    - mysql_mcp_server

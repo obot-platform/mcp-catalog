@@ -15,7 +15,6 @@ description: |
 
   **No Setup Required**: Playwright works out-of-the-box with no API keys or configuration needed.
 
-
 metadata:
   categories: Automation & Browsers
   unsupportedTools: browser_snapshot,browser_take_screenshot,browser_screen_capture,browser_pdf_save,browser_install
@@ -100,6 +99,10 @@ toolPreview:
     description: Returns all network requests since loading the page (Read-only -  true)
   - name: browser_console_messages
     description: Returns all console messages (Read-only -  true)
-runtime: npx
-npxConfig:
-  package: '@playwright/mcp@0.0.35'
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/playwright:0.0.35
+  port: 8099
+  path: /
+  args:
+    - mcp-server-playwright

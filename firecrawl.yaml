@@ -39,7 +39,6 @@ description: |
   | deep_research       | In-depth, multi-source research          | summary, sources|
   | generate_llmstxt    | LLMs.txt for a domain                    | text            |
 
-
 metadata:
   categories: Retrieval & Search,Automation & Browsers,Science & Research
   source: vendor
@@ -52,10 +51,10 @@ toolPreview:
       actions: List of actions to perform before scraping
       excludeTags: HTML tags to exclude from extraction
       extract: Configuration for structured data extraction
-      formats: 'Content formats to extract (default: [''markdown''])'
+      formats: "Content formats to extract (default: ['markdown'])"
       includeTags: HTML tags to specifically include in extraction
       location: Location settings for scraping
-      maxAge: 'Maximum age in milliseconds for cached content. Use cached data if available and younger than maxAge, otherwise scrape fresh. Enables 500% faster scrapes for recently cached pages. Default: 0 (always scrape fresh)'
+      maxAge: "Maximum age in milliseconds for cached content. Use cached data if available and younger than maxAge, otherwise scrape fresh. Enables 500% faster scrapes for recently cached pages. Default: 0 (always scrape fresh)"
       mobile: Use mobile viewport
       onlyMainContent: Extract only the main content, filtering out navigation, footers, etc.
       removeBase64Images: Remove base64 encoded images from output
@@ -94,10 +93,10 @@ toolPreview:
   - name: firecrawl_search
     description: Search the web and optionally extract content from search results.
     params:
-      country: 'Country code for search results (default: us)'
+      country: "Country code for search results (default: us)"
       filter: Search filter
-      lang: 'Language code for search results (default: en)'
-      limit: 'Maximum number of results to return (default: 5)'
+      lang: "Language code for search results (default: en)"
+      limit: "Maximum number of results to return (default: 5)"
       location: Location settings for search
       query: Search query string
       scrapeOptions: Options for scraping search results
@@ -115,7 +114,7 @@ toolPreview:
   - name: firecrawl_generate_llmstxt
     description: Generate a standardized llms.txt (and optionally llms-full.txt) file for a given domain. This file defines how large language models should interact with the site
     params:
-      maxUrls: 'Maximum number of URLs to process (1-100, default: 10)'
+      maxUrls: "Maximum number of URLs to process (1-100, default: 10)"
       showFullText: Whether to show the full LLMs-full.txt in the response
       url: The URL to generate LLMs.txt from
 env:
@@ -124,6 +123,10 @@ env:
     required: true
     sensitive: true
     description: Your Firecrawl API key.
-runtime: npx
-npxConfig:
-  package: firecrawl-mcp@2.0.2
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/firecrawl:2.0.2
+  port: 8099
+  path: /
+  args:
+    - firecrawl-mcp

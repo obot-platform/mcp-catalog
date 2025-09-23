@@ -25,7 +25,6 @@ description: |
   - **Use Milestone**: whether to use the GitLab milestone api
   - **Use Pipeline**: whether to use the GitLab pipeline api
 
-
 metadata:
   categories: Version Control & DevOps
 icon: https://about.gitlab.com/images/press/logo/png/gitlab-icon-rgb.png
@@ -61,9 +60,13 @@ env:
     required: false
     sensitive: false
     description: Set to "true" to enable CI/CD pipeline features (default is "false").
-runtime: npx
-npxConfig:
-  package: '@zereight/mcp-gitlab@2.0.4'
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/gitlab:2.0.4
+  port: 8099
+  path: /
+  args:
+    - mcp-gitlab
 toolPreview:
   - name: search_repositories
     description: Search for GitLab projects
@@ -207,4 +210,4 @@ toolPreview:
   - name: get_users
     description: Get GitLab user details by usernames
     params:
-      usernames: Array of usernames to search for (required) 
+      usernames: Array of usernames to search for (required)

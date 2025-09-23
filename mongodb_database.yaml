@@ -19,7 +19,6 @@ description: |
   **Compatibility:**
   - Works with any MongoDB instance (local, cloud, or self-hosted)
 # - Optional read-only mode available for safer operations
-
 metadata:
   categories: Databases,Data & Analytics
 icon: https://avatars.githubusercontent.com/u/45120?s=48&v=4
@@ -146,9 +145,12 @@ toolPreview:
       limit: Optional maximum number of log entries to return
       type: Optional log type filter
 
-runtime: npx
-npxConfig:
-  package: mongodb-mcp-server@0.3.0
+runtime: containerized
+containerizedConfig:
+  image: mongodb-mcp-server@0.3.0
+  port: 8099
+  path: /
   args:
+    - mongodb-mcp-server
     - --connectionString
     - ${MDB_MCP_CONNECTION_STRING}

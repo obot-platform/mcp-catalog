@@ -65,10 +65,13 @@ env:
     required: false
     sensitive: false
     description: Telemetry collection is on by default, to opt out, set this to false.
-runtime: npx
-npxConfig:
-  package: '@azure/mcp@latest'
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/azure:latest
+  port: 8099
+  path: /
   args:
+    - azmcp
     - server
     - start
 toolPreview:

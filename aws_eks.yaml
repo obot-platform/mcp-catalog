@@ -52,10 +52,13 @@ env:
     sensitive: false
     description: AWS Region, default to us-east-1
 
-runtime: uvx
-uvxConfig:
-  package: 'awslabs.eks-mcp-server@0.1.13'
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/aws-eks:0.1.13
+  port: 8099
+  path: /
   args:
+    - awslabs.eks-mcp-server
     - --allow-write
     - --allow-sensitive-data-access
 toolPreview:
@@ -167,4 +170,4 @@ toolPreview:
   - name: search_eks_troubleshoot_guide
     description: Search the EKS Troubleshoot Guide knowledge base for troubleshooting information and step-by-step solutions for EKS issues.
     params:
-      query: Specific question or issue description related to EKS troubleshooting (less than 300 characters)  
+      query: Specific question or issue description related to EKS troubleshooting (less than 300 characters)

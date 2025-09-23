@@ -1,0 +1,167 @@
+name: DigitalOcean
+description: |
+  A Model Context Protocol (MCP) server that provides comprehensive interface for managing DigitalOcean resources and performing actions using the DigitalOcean API. Built on top of the godo library, this integration enables seamless management of your DigitalOcean infrastructure through AI agents.
+
+  ## Features
+  - **App Platform Management**: Deploy, manage, and monitor applications on DigitalOcean App Platform
+  - **Droplet Operations**: Create, manage, resize, snapshot, and monitor virtual machines (droplets)
+  - **Account Management**: Access account information, billing, balance, invoices, and SSH keys
+  - **Networking Services**: Manage domains, DNS records, certificates, firewalls, reserved IPs, VPCs, and CDNs
+  - **Database Management**: Provision, manage, and monitor managed database clusters (Postgres, MySQL, Redis, etc.)
+  - **Kubernetes (DOKS)**: Manage DigitalOcean Kubernetes clusters and node pools
+  - **Object Storage (Spaces)**: Manage DigitalOcean Spaces and access keys for S3-compatible storage
+  - **Marketplace Integration**: Discover and manage DigitalOcean Marketplace applications
+  - **Monitoring & Insights**: Monitor resources, endpoints, and receive alerts for performance and SSL certificates
+  - **Modular Services**: Enable only the services you need to reduce context size and improve accuracy
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **DigitalOcean API Token**: Personal Access Token with appropriate permissions for your DigitalOcean account
+  - **Enabled Services**: Comma-separated list of enabled services (e.g., apps,droplets).
+
+  ## Available Services
+
+  | Service | Description | Flag |
+  |---------|-------------|------|
+  | **Apps** | DigitalOcean App Platform applications, deployments, and configurations | `apps` |
+  | **Droplets** | Virtual machines - create, manage, resize, snapshot, and monitor | `droplets` |
+  | **Accounts** | Account information, billing, balance, invoices, and SSH keys | `accounts` |
+  | **Networking** | Domains, DNS records, certificates, firewalls, reserved IPs, VPCs, CDNs | `networking` |
+  | **Databases** | Managed database clusters (Postgres, MySQL, Redis, etc.) | `databases` |
+  | **DOKS** | DigitalOcean Kubernetes clusters and node pools | `doks` |
+  | **Spaces** | Object storage and access keys for S3-compatible storage | `spaces` |
+  | **Marketplace** | DigitalOcean Marketplace applications | `marketplace` |
+  | **Insights** | Resource monitoring, endpoint alerts, SSL certificate monitoring | `insights` |
+
+  ## Examples
+  - **Deploy App**: "Deploy a Node.js app from my GitHub repository to App Platform"
+  - **Create Droplet**: "Create a new Ubuntu 22.04 droplet in NYC3 region"
+  - **Manage Database**: "Create a PostgreSQL database cluster with 2 nodes"
+  - **DNS Management**: "Add an A record for my domain pointing to my droplet's IP"
+  - **Kubernetes**: "List my DOKS clusters and their node pools"
+  - **Monitoring**: "Show me the status of all my droplets and their resource usage"
+
+metadata:
+  categories: Cloud & Infrastructure, Developer Tools
+icon: https://cdn.brandfetch.io/idvF37rNoN/theme/dark/symbol.svg?c=1dxbfHSJFAPEGdCLU4o5B
+repoURL: https://github.com/digitalocean-labs/mcp-digitalocean
+env:
+  - key: DIGITALOCEAN_API_TOKEN
+    name: DigitalOcean API Token
+    required: true
+    sensitive: true
+    description: Your DigitalOcean Personal Access Token with appropriate permissions
+  - key: ENABLED_SERVICES
+    name: Enabled Services
+    required: true
+    sensitive: false
+    description: Comma-separated list of enabled services (e.g., apps,droplets).
+
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/digitalocean:1.0.10
+  port: 8099
+  path: "/"
+  args:
+    - mcp
+    - --services
+    - ${ENABLED_SERVICES}
+
+toolPreview:
+  - name: apps-create-app-from-spec
+    description: Create a new application on DigitalOcean App Platform from an app specification
+    params:
+      spec: The app specification object containing configuration details
+      project_id: Optional UUID of the project to assign the app to (optional)
+  - name: apps-list
+    description: List all applications on DigitalOcean App Platform
+    params:
+      Page: The page number to retrieve (default is 1) (optional)
+      PerPage: The number of items per page (default is 30) (optional)
+  - name: apps-get-info
+    description: Get detailed information about a specific application
+    params:
+      AppID: The application ID of the app to retrieve information for
+  - name: apps-get-deployment-status
+    description: Retrieve the active deployment status for an application
+    params:
+      AppID: The application ID of the app to retrieve deployment status for
+  - name: apps-update
+    description: Update an existing application on DigitalOcean App Platform
+    params:
+      update: Object containing app_id and request with updated app specification
+  - name: apps-delete
+    description: Delete an existing application on DigitalOcean App Platform
+    params:
+      AppID: The application ID of the app to delete
+  - name: region-list
+    description: List all available regions with features and droplet size availability
+    params:
+      Page: Page number (default is 1) (optional)
+      PerPage: Items per page (default is 50) (optional)
+  - name: droplet-create
+    description: Create a new droplet (virtual machine)
+    params:
+      name: Name for the droplet
+      region: Region slug where to create the droplet
+      size: Size slug for the droplet
+      image: Image slug or ID for the droplet
+      ssh_keys: Array of SSH key IDs or fingerprints (optional)
+      backups: Enable automated backups (optional)
+      ipv6: Enable IPv6 networking (optional)
+      monitoring: Enable monitoring agent (optional)
+      tags: Array of tags to apply (optional)
+  - name: droplet-list
+    description: List all droplets in your account
+    params:
+      page: Page number for pagination (optional)
+      per_page: Number of droplets per page (optional)
+      tag_name: Filter by tag name (optional)
+  - name: droplet-get
+    description: Get information about a specific droplet
+    params:
+      droplet_id: The ID of the droplet to retrieve
+  - name: droplet-delete
+    description: Delete a droplet
+    params:
+      droplet_id: The ID of the droplet to delete
+  - name: droplet-resize
+    description: Resize a droplet to a different size
+    params:
+      droplet_id: The ID of the droplet to resize
+      size: New size slug for the droplet
+      disk: Whether to resize the disk (optional)
+  - name: database-create
+    description: Create a new managed database cluster
+    params:
+      name: Name for the database cluster
+      engine: Database engine (postgres, mysql, redis, etc.)
+      version: Database version
+      region: Region slug where to create the cluster
+      size: Size slug for the database nodes
+      num_nodes: Number of nodes in the cluster
+  - name: database-list
+    description: List all database clusters
+    params:
+      page: Page number for pagination (optional)
+      per_page: Number of clusters per page (optional)
+  - name: domain-create
+    description: Create a new domain
+    params:
+      name: The domain name
+      ip_address: IP address for the domain's A record (optional)
+  - name: domain-list
+    description: List all domains in your account
+    params: {}
+  - name: domain-record-create
+    description: Create a new DNS record for a domain
+    params:
+      domain: The domain name
+      type: Record type (A, AAAA, CNAME, MX, TXT, etc.)
+      name: Record name
+      data: Record data/value
+      priority: Priority for MX records (optional)
+      port: Port for SRV records (optional)
+      ttl: Time to live in seconds (optional)
+      weight: Weight for SRV records (optional) 

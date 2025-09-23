@@ -56,7 +56,7 @@ env:
     name: Confluence Instance URL
     required: false
     sensitive: false
-    description: 'Base URL for your Confluence instance (Cloud or Server/DC). Example: https://your-company.atlassian.net/wiki or https://confluence.your-company.com'
+    description: "Base URL for your Confluence instance (Cloud or Server/DC). Example: https://your-company.atlassian.net/wiki or https://confluence.your-company.com"
   - key: CONFLUENCE_USERNAME
     name: Confluence Username (Cloud)
     required: false
@@ -71,7 +71,7 @@ env:
     name: Jira Instance URL
     required: false
     sensitive: false
-    description: 'Base URL for your Jira instance (Cloud or Server/DC). Example: https://your-company.atlassian.net or https://jira.your-company.com'
+    description: "Base URL for your Jira instance (Cloud or Server/DC). Example: https://your-company.atlassian.net or https://jira.your-company.com"
   - key: JIRA_USERNAME
     name: Jira Username (Cloud)
     required: false
@@ -94,7 +94,7 @@ env:
     description: Comma-separated list of enabled tool names (e.g., confluence_search,jira_get_issue).
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/sooperset/mcp-atlassian:latest
+  image: ghcr.io/obot-platform/mcp-images/atlassian:latest
   path: /mcp
   port: 8080
   command: mcp-atlassian

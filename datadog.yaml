@@ -36,9 +36,13 @@ env:
     sensitive: false
     description: (Optional) The Datadog site of your organization, such as `datadoghq.eu` or `us3.datadoghq.com`. Default is `datadoghq.com`.
 
-runtime: npx
-npxConfig:
-  package: '@winor30/mcp-server-datadog'
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/datadog:latest
+  port: 8099
+  path: /
+  args:
+    - mcp-server-datadog
 toolPreview:
   - name: list_incidents
     description: Retrieve a list of incidents from Datadog (Read-only - true)

@@ -50,9 +50,13 @@ env:
     sensitive: false
     description: AWS Region, default to us-east-1
 
-runtime: uvx
-uvxConfig:
-  package: awslabs.amazon-kendra-index-mcp-server@1.0.6
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/aws-kendra:1.0.6
+  port: 8099
+  path: /
+  args:
+    - awslabs.amazon-kendra-index-mcp-server
 
 toolPreview:
   - name: KendraQueryTool

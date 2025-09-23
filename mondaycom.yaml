@@ -1,0 +1,267 @@
+name: Monday.com
+description: |
+
+  A Model Context Protocol (MCP) server for monday.com integration, providing comprehensive work management capabilities through monday.com's API.
+
+  ## Features
+  - **Access monday.com data from compatible AI applications**
+  - **Create and manage boards, items, and projects through natural language**
+  - **Automate workflows and track progress across teams**
+  - **Generate reports and insights based on monday.com data**
+  - **Manage users, teams, and workspace organization**
+  - **Create forms and collect data submissions**
+  - **Build dashboards and visualizations**
+
+  ## What you'll need to connect
+
+  **Step 1: Install the Monday MCP App**
+  
+  Before using service, you need to install the Monday MCP app from the marketplace:
+  
+  - Visit [monday MCP app in the marketplace](https://monday.com/marketplace/listing/10000806/monday-mcp)
+  - Click "Install" and follow the instructions to add it to your account
+  
+  **Step 2: Authentication**
+  
+  Authentication is handled automatically through OAuth2 workflow.
+
+  ## Examples
+  - "Create a new board for Q2 planning with status columns"
+  - "List all items with status 'Done' from the Marketing board"
+  - "Add a new team member to the project and assign them tasks"
+  - "Create a dashboard showing project progress across all boards"
+  - "Generate a report of completed tasks this week"
+
+metadata:
+  categories: Business, Project Management, Productivity
+  allow-multiple: "true"
+icon: https://avatars.githubusercontent.com/u/61420283?s=48&v=4
+repoURL: https://github.com/mondaycom/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.monday.com/sse
+toolPreview:
+  # Board Operations
+  - name: create_board
+    description: Create a new monday.com board with specified columns and structure.
+    params:
+      boardName: "The name of the board to create"
+      boardDescription: "The description of the board to create"
+      boardKind: "The kind of board to create (private, public, share)"
+      workspaceId: "The ID of the workspace to create the board in"
+
+  - name: get_board_info
+    description: Get comprehensive board information including metadata, structure, owners, and configuration.
+    params:
+      boardId: "The id of the board to get information for"
+
+  - name: get_board_activity
+    description: Get board activity logs for a specified time range (defaults to last 30 days).
+    params:
+      boardId: "The id of the board to get activity for"
+      fromDate: "Start date for activity range (ISO8601DateTime format)"
+      toDate: "End date for activity range (ISO8601DateTime format)"
+
+  # Item Operations
+  - name: create_item
+    description: Create a new item in a monday.com board with specified column values.
+    params:
+      boardId: "The id of the board to which the new item will be added"
+      name: "The name of the new item to be created"
+      columnValues: "A string containing the new column values for the item"
+      groupId: "The id of the group to which the new item will be added"
+
+  - name: get_board_items_by_name
+    description: Search for items by board ID and term/name.
+    params:
+      boardId: "The board ID to search in"
+      term: "The search term to find items"
+
+  - name: create_update
+    description: Create a new update/comment in a monday.com item.
+    params:
+      itemId: "The id of the item to which the update will be added"
+      body: "The update content to be created"
+
+  # Column Operations
+  - name: create_column
+    description: Create a new column in a monday.com board.
+    params:
+      boardId: "The id of the board to which the new column will be added"
+      columnType: "The type of the column to be created"
+      columnTitle: "The title of the column to be created"
+      columnDescription: "The description of the column to be created"
+      columnSettings: "Column-specific configuration settings as a JSON string"
+
+  - name: get_column_type_info
+    description: Retrieves comprehensive information about a specific column type.
+    params:
+      columnType: "The column type to retrieve information for"
+
+  # Group Operations
+  - name: create_group
+    description: Create a new group in a monday.com board for organizing items.
+    params:
+      boardId: "The ID of the board to create the group in"
+      groupName: "The name of the new group"
+      groupColor: "The color for the group"
+      positionRelativeMethod: "Whether to position before or after another group"
+      relativeTo: "The ID of the group to position relative to"
+
+  # User & Team Management
+  - name: list_users_and_teams
+    description: Precision-first user and team retrieval tool for getting user and team information.
+    params:
+      getMe: "Get current authenticated user information"
+      name: "Name-based user search (fuzzy matching)"
+      userIds: "Specific user IDs to fetch (max 500)"
+      teamIds: "Specific team IDs to fetch (max 500)"
+      includeTeams: "Include general teams data alongside users"
+      teamsOnly: "Fetch only teams, no users returned"
+      includeTeamMembers: "Control team member data inclusion"
+
+  # Workspace Operations
+  - name: list_workspaces
+    description: List all workspaces available to the user.
+    params:
+      random_string: "Dummy parameter for no-parameter tools"
+
+  - name: workspace_info
+    description: Get boards, docs and folders in a workspace and their folder organization.
+    params:
+      workspace_id: "The ID of the workspace to get information for"
+
+  - name: create_workspace
+    description: Create a new workspace in monday.com.
+    params:
+      name: "The name of the new workspace to be created"
+      workspaceKind: "The kind of workspace to create (closed, open, template)"
+      description: "The description of the new workspace"
+      accountProductId: "The account product ID associated with the workspace"
+
+  - name: update_workspace
+    description: Update an existing workspace in monday.com.
+    params:
+      id: "The ID of the workspace to update"
+      attributes: "Attributes to update in the workspace"
+
+  # Folder Operations
+  - name: create_folder
+    description: Create a new folder in a monday.com workspace.
+    params:
+      workspaceId: "The ID of the workspace where the folder will be created"
+      name: "The name of the folder to be created"
+      color: "The color of the folder"
+      customIcon: "The custom icon of the folder"
+      fontWeight: "The font weight of the folder"
+      parentFolderId: "The ID of the parent folder"
+
+  - name: update_folder
+    description: Update an existing folder in monday.com.
+    params:
+      folderId: "The ID of the folder to update"
+      name: "The new name of the folder"
+      color: "The new color of the folder"
+      customIcon: "The new custom icon of the folder"
+      fontWeight: "The new font weight of the folder"
+      parentFolderId: "The ID of the new parent folder"
+      workspaceId: "The ID of the workspace containing the folder"
+
+  - name: move_object
+    description: Move a folder, board, or overview in monday.com.
+    params:
+      objectType: "The type of object to move (Board, Folder, Overview)"
+      id: "The ID of the object to move"
+      parentFolderId: "The ID of the new parent folder"
+      workspaceId: "The ID of the workspace containing the object"
+      position: "The new position of the object"
+
+  # Form Operations
+  - name: create_form
+    description: Create a monday.com form with a new board for storing responses.
+    params:
+      destination_workspace_id: "The workspace in which the form will be created"
+      destination_name: "The name of the board for storing form responses"
+      board_kind: "The board kind for the response board"
+      board_owner_ids: "Array of user IDs who will have owner permissions"
+      board_subscriber_ids: "Array of user IDs who will receive notifications"
+
+  - name: get_form
+    description: Get a monday.com form by its form token.
+    params:
+      formToken: "The unique identifier token for the form"
+
+  - name: update_form
+    description: Update a monday.com form with various settings and configurations.
+    params:
+      formToken: "The unique identifier token for the form"
+      action: "The type of update action to perform"
+      form: "The form data to update"
+      formPassword: "Set a password on a form to restrict access"
+      tag: "The tag data to create, update or delete"
+
+  - name: form_questions_editor
+    description: Create, update, or delete a question in a monday.com form.
+    params:
+      action: "The type of operation to perform (delete, update, create)"
+      formToken: "The unique identifier token for the form"
+      question: "The question object containing all properties"
+      questionId: "The unique identifier for the question"
+
+  # Document Operations
+  - name: read_docs
+    description: Get a collection of monday.com documents with their content as markdown.
+    params:
+      ids: "ID query object specifying type and array of values"
+      limit: "Number of docs per page (default: 25)"
+      order_by: "The order in which to retrieve docs (created_at, used_at)"
+      page: "The page number to return (starts at 1)"
+
+  - name: create_doc
+    description: Create a new monday.com doc either inside a workspace or attached to an item.
+    params:
+      location: "Location where the document should be created"
+      doc_name: "Name for the new document"
+      markdown: "Markdown content for the document"
+
+  # Dashboard & Widget Operations
+  - name: create_dashboard
+    description: Create a new monday.com dashboard that aggregates data from boards.
+    params:
+      name: "Human-readable dashboard title"
+      workspace_id: "ID of the workspace that will own the dashboard"
+      board_ids: "List of board IDs as strings (min 1 element)"
+      kind: "Visibility level (PUBLIC or PRIVATE)"
+      board_folder_id: "Optional folder ID to place dashboard"
+
+  - name: all_widgets_schema
+    description: Fetch complete JSON Schema 7 definitions for all available widget types.
+    params:
+      random_string: "Dummy parameter for no-parameter tools"
+
+  - name: create_widget
+    description: Create a new widget in a dashboard or board view with specific configuration.
+    params:
+      parent_container_id: "ID of the parent container (dashboard or board view)"
+      parent_container_type: "Type of parent container (DASHBOARD or BOARD_VIEW)"
+      widget_kind: "Type of widget to create (CHART, NUMBER, BATTERY)"
+      widget_name: "Widget display name"
+      settings: "Widget-specific settings as JSON object"
+
+  # Advanced API Operations
+  - name: all_monday_api
+    description: Execute any monday.com API operation by generating GraphQL queries dynamically.
+    params:
+      query: "Custom GraphQL query/mutation"
+      variables: "JSON string containing variables for the GraphQL operation"
+
+  - name: get_graphql_schema
+    description: Fetch the monday.com GraphQL schema structure including queries and mutations.
+    params:
+      operationType: "Type of operation: 'read' for queries, 'write' for mutations"
+      random_string: "Dummy parameter for no-parameter tools"
+
+  - name: get_type_details
+    description: Get detailed information about a specific GraphQL type from monday.com API schema.
+    params:
+      typeName: "The name of the GraphQL type to get details for" 

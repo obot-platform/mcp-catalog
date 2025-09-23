@@ -73,7 +73,7 @@ icon: https://img.icons8.com/?size=100&id=4n94I13nDTyw&format=png&color=000000
 repoURL: https://github.com/obot-platform/tools
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/tools/slack
+  image: ghcr.io/obot-platform/tools/slack:latest
   port: 3000
   path: "/mcp"
 env:
