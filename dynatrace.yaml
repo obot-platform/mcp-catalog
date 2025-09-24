@@ -1,0 +1,133 @@
+name: Dynatrace
+description: |
+
+  A Model Context Protocol (MCP) server for Dynatrace integration, providing comprehensive observability and monitoring capabilities through Dynatrace's API.
+
+  ## Features
+  - **Access Dynatrace observability data from compatible AI applications**
+  - **Query logs, metrics, spans, and events using natural language**
+  - **Manage problems, vulnerabilities, and entities through Dynatrace APIs**
+  - **Generate reports and insights based on Dynatrace monitoring data**
+  - **Analyze performance data and get AI-powered troubleshooting suggestions**
+
+  ## What you'll need to connect
+
+  **Required Credentials**:
+  - `DT_PLATFORM_TOKEN`: Your Dynatrace Platform Token. To create one, refer to the [Dynatrace documentation](https://www.dynatrace.com/support/help/shortlink/platform-tokens) for more details.
+  - `DT_ENVIRONMENT`: Your Dynatrace environment URL (e.g., https://abc12345.apps.dynatrace.com)
+
+metadata:
+  categories: Monitoring, Developer Tools, DevOps
+  allow-multiple: "true"
+icon: https://avatars.githubusercontent.com/u/58178984?s=48&v=4
+repoURL: https://github.com/dynatrace-oss/dynatrace-mcp
+env:
+- key: DT_PLATFORM_TOKEN
+  name: Dynatrace Platform Token
+  required: true
+  sensitive: true
+  description: Your Dynatrace Platform Token.
+- key: DT_ENVIRONMENT
+  name: Dynatrace Environment
+  required: true
+  sensitive: false
+  description: Your Dynatrace environment URL (e.g., https://abc12345.apps.dynatrace.com)
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/dynatrace:0.6.0
+  port: 9000
+  path: "/"
+toolPreview:
+- name: get_environment_info
+  description: Get information about the connected Dynatrace Environment (Tenant) and verify the connection and authentication.
+  params:
+    random_string: "Dummy parameter for no-parameter tools"
+
+# Vulnerability Management
+- name: list_vulnerabilities
+  description: List all non-muted vulnerabilities from Dynatrace for the last 30 days. An additional filter can be provided using DQL filter.
+  params:
+    additionalFilter: "Additional filter for DQL statement for vulnerabilities, e.g., 'vulnerability.stack == \"CODE_LIBRARY\"' or 'vulnerability.risk.level == \"CRITICAL\"'"
+    maxVulnerabilitiesToDisplay: "Maximum number of vulnerabilities to display in the response (default: 25)"
+    riskScore: "Minimum risk score of vulnerabilities to list (default: 8.0)"
+
+# Problem Management
+- name: list_problems
+  description: List all problems (dt.davis.problems) known on Dynatrace, sorted by their recency, for the last 12h. An additional filter can be provided using DQL filter.
+  params:
+    additionalFilter: "Additional filter for DQL statement for dt.davis.problems, e.g., 'entity_tags == array(\"dt.owner:team-foobar\", \"tag:tag\")'"
+    maxProblemsToDisplay: "Maximum number of problems to display in the response (default: 10)"
+
+# Entity Management
+- name: find_entity_by_name
+  description: Get the entityId of a monitored entity (service, host, process-group, application, kubernetes-node, ...) within the topology based on the name of the entity on Dynatrace.
+  params:
+    entityName: "Name of the entity to search for, e.g., \"my-service\" or \"my-host\""
+
+- name: get_entity_details
+  description: Get details of a monitored entity based on the entityId on Dynatrace.
+  params:
+    entityId: "The entity ID to get details for"
+
+- name: get_ownership
+  description: Get detailed Ownership information for one or multiple entities on Dynatrace.
+  params:
+    entityIds: "Comma separated list of entityIds"
+
+# Data Querying (GRAIL)
+- name: execute_dql
+  description: Get Logs, Metrics, Spans or Events from Dynatrace GRAIL by executing a Dynatrace Query Language (DQL) statement.
+  params:
+    dqlStatement: "DQL Statement (Ex: \"fetch [logs, spans, events] | filter <some-filter> | summarize count(), by:{some-fields}.\", or for metrics: \"timeseries { avg(<metric-name>), value.A = avg(<metric-name>, scalar: true) }\")"
+
+- name: verify_dql
+  description: Verify a Dynatrace Query Language (DQL) statement on Dynatrace GRAIL before executing it. This step is recommended for DQL statements that have been dynamically created by non-expert tools.
+  params:
+    dqlStatement: "The DQL statement to verify"
+
+- name: explain_dql_in_natural_language
+  description: Explain Dynatrace Query Language (DQL) statements in natural language using Davis CoPilot AI.
+  params:
+    dql: "The DQL statement to explain"
+
+# AI Assistant
+- name: chat_with_davis_copilot
+  description: Use this tool in case no specific tool is available. Get an answer to any Dynatrace related question as well as troubleshooting, and guidance. *(Note: Davis CoPilot AI is GA, but the Davis CoPilot APIs are in preview)*
+  params:
+    text: "Your question or request for Davis CoPilot"
+    context: "Optional context to provide additional information"
+    instruction: "Optional instruction for how to format the response"
+
+# Kubernetes Integration
+- name: get_kubernetes_events
+  description: Get all events from a specific Kubernetes (K8s) cluster.
+  params:
+    clusterId: "The Kubernetes (K8s) Cluster Id, referred to as k8s.cluster.uid (this is NOT the Dynatrace environment)"
+
+# Communication & Notifications
+- name: send_slack_message
+  description: Sends a Slack message to a dedicated Slack Channel via Slack Connector on Dynatrace.
+  params:
+    channel: "The Slack channel to send the message to"
+    message: "The message content to send"
+
+- name: send_email
+  description: Send an email using the Dynatrace Email API. The sender will be no-reply@apps.dynatrace.com. Maximum 10 recipients total across TO, CC, and BCC.
+  params:
+    toRecipients: "Array of email addresses for TO recipients"
+    subject: "Subject line of the email"
+    body: "Body content of the email (plain text only)"
+    ccRecipients: "Array of email addresses for CC recipients"
+    bccRecipients: "Array of email addresses for BCC recipients"
+
+# Workflow Management
+- name: make_workflow_public
+  description: Modify a workflow and make it publicly available to everyone on the Dynatrace Environment.
+  params:
+    workflowId: "The workflow ID to make public"
+
+# Budget Management
+- name: reset_grail_budget
+  description: Reset the Grail query budget after it was exhausted, allowing new queries to be executed. This clears all tracked bytes scanned in the current session.
+  params:
+    random_string: "Dummy parameter for no-parameter tools" 
