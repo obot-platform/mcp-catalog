@@ -1,15 +1,12 @@
 name: WordPress
-description: 'A Model Context Protocol (MCP) server that integrates with a self-hosted
-  WordPress site (wordpress.com not supported).
+description: 'A Model Context Protocol (MCP) server that integrates with a self-hosted WordPress site (wordpress.com not supported).
 
 
   ## Features
 
-  - **WordPress Feature API**: Standardized adapter providing streamlined access to
-  core WordPress functionality
+  - **WordPress Feature API**: Standardized adapter providing streamlined access to core WordPress functionality
 
-  - **REST API CRUD Tools**: Flexible generic tools for interacting with any WordPress
-  REST API endpoint, including APIs from plugins.
+  - **REST API CRUD Tools**: Flexible generic tools for interacting with any WordPress REST API endpoint, including APIs from plugins.
 
 
   ## What you''ll need to connect
@@ -19,13 +16,11 @@ description: 'A Model Context Protocol (MCP) server that integrates with a self-
 
   - Download `wordpress-mcp.zip` from the [plugin releases page](https://github.com/Automattic/wordpress-mcp/releases)
 
-  - Upload the plugin to your WordPress site in the `/wp-content/plugins/wordpress-mcp`
-  directory
+  - Upload the plugin to your WordPress site in the `/wp-content/plugins/wordpress-mcp` directory
 
   - Activate the plugin.
 
-  - Navigate to Settings > MCP, enable the MCP functionality, and configure other
-  settings as needed.
+  - Navigate to Settings > MCP, enable the MCP functionality, and configure other settings as needed.
 
 
   ### have your credentials ready
@@ -34,8 +29,7 @@ description: 'A Model Context Protocol (MCP) server that integrates with a self-
 
   - **WordPress username**
 
-  - **WordPress app password**: The application password that you generated in your
-  WordPress settings. Note -- This is different from your user password.
+  - **WordPress app password**: The application password that you generated in your WordPress settings. Note -- This is different from your user password.
 
   '
 metadata:
@@ -44,8 +38,7 @@ icon: https://img.icons8.com/?size=100&id=13664&format=png&color=000000
 repoURL: https://github.com/Automattic/wordpress-mcp
 env:
 - name: WordPress Site URL
-  description: The full URL to your WordPress site (wordpress.com not supported).
-    Must start with http:// or https://.
+  description: The full URL to your WordPress site (wordpress.com not supported). Must start with http:// or https://.
   key: WP_API_URL
   required: true
 - name: WordPress Username
@@ -53,8 +46,7 @@ env:
   key: WP_API_USERNAME
   required: true
 - name: WordPress App Password
-  description: The application password that you generated in your WordPress settings.
-    Note -- This is different from your user password.
+  description: The application password that you generated in your WordPress settings. Note -- This is different from your user password.
   key: WP_API_PASSWORD
   required: true
   sensitive: true
@@ -67,34 +59,25 @@ containerizedConfig:
   - mcp-wordpress-remote
 toolPreview:
 - name: get_site_info
-  description: Provides detailed information about the WordPress site like site name,
-    url, description, admin email, plugins, themes, users, and more
+  description: Provides detailed information about the WordPress site like site name, url, description, admin email, plugins, themes, users, and more
   params:
     random_string: Dummy parameter for no-parameter tools
 - name: wp_get_media_file
   description: Get the actual file content (blob) of a WordPress media item
   params:
     id: The ID of the media item
-    size: Optional. The size of the image to retrieve (thumbnail, medium, large, full).
-      Defaults to full/original size.
+    size: Optional. The size of the image to retrieve (thumbnail, medium, large, full). Defaults to full/original size.
 - name: list_api_functions
-  description: List all available WordPress REST API endpoints that support CRUD operations
-    (Create, Read, Update, Delete). Use this first to discover what API functions
-    are available before inspecting or calling them.
+  description: List all available WordPress REST API endpoints that support CRUD operations (Create, Read, Update, Delete). Use this first to discover what API functions are available before inspecting or calling them.
   params:
     random_string: Dummy parameter for no-parameter tools
 - name: get_function_details
-  description: Get detailed metadata for a specific WordPress REST API endpoint and
-    HTTP method. Includes available parameters, required fields, authentication needs,
-    and expected response structure. Use this to get the details of a specific function
-    before calling it.
+  description: Get detailed metadata for a specific WordPress REST API endpoint and HTTP method. Includes available parameters, required fields, authentication needs, and expected response structure. Use this to get the details of a specific function before calling it.
   params:
     route: The REST API route (e.g., "/wp/v2/posts", "/wp/v2/users")
     method: The HTTP method to retrieve metadata for
 - name: run_api_function
-  description: Execute a specific WordPress REST API function by providing the endpoint
-    route, HTTP method, and any required parameters or request body. Supports standard
-    CRUD operations - GET (read), POST (create), PATCH (update), DELETE (remove).
+  description: Execute a specific WordPress REST API function by providing the endpoint route, HTTP method, and any required parameters or request body. Supports standard CRUD operations - GET (read), POST (create), PATCH (update), DELETE (remove).
   params:
     route: The REST API route (e.g., "/wp/v2/posts", "/wp/v2/users/123")
     method: 'The HTTP method to use: GET, POST, PATCH, or DELETE'
