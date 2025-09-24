@@ -1,29 +1,5 @@
 name: MongoDB Atlas Management
-description: "A Model Context Protocol (MCP) server for interacting with the MongoDB\
-  \ Atlas Cloud Service. This connector allows you to perform management actions with\
-  \ clusters, projects, databases, collections, and database users.\n\n## Features\n\
-  - **Atlas Management**: Create and manage MongoDB Atlas projects, clusters, and\
-  \ database users\n- **Cluster Management**: List, inspect, and create MongoDB Atlas\
-  \ clusters including free tier clusters\n\n## What you'll need to connect\n\n###\
-  \ MongoDB Atlas API Credentials (Required)\nYou'll need Service Account Atlas API\
-  \ credentials to use the Atlas management tools:\n\n- **API Client ID**: Your MongoDB\
-  \ Atlas Service Account Client ID\n- **API Client Secret**: Your MongoDB Atlas Service\
-  \ Account Client Secret (keep this secure)\n\n### Setting up Atlas API Access\n\n\
-  1. **Create a Service Account:**\n   - Log in to MongoDB Atlas at [cloud.mongodb.com](https://cloud.mongodb.com)\n\
-  \   - Navigate to Access Manager > Organization Access\n   - Click Add New > Applications\
-  \ > Service Accounts\n   - Enter name, description and expiration for your service\
-  \ account\n   - (Recommended) Assign only the minimum permissions needed for your\
-  \ use case\n\n2. **Save Client Credentials:**\n   - After creation, copy and save\
-  \ the Client ID and Client Secret\n   - **Important:** The Client Secret won't be\
-  \ displayed again\n\n### Required Permissions by Operation\n\n| Operation | Required\
-  \ Role | Scope |\n|-----------|---------------|-------|\n| List organizations/projects\
-  \ | Org Member or Org Read Only | Organization |\n| Create new projects | Org Project\
-  \ Creator | Organization |\n| View clusters/databases | Project Read Only | Project\
-  \ |\n| Create/manage clusters | Project Cluster Manager | Project |\n| Manage IP\
-  \ access lists | Project IP Access List Admin | Project |\n| Manage database users\
-  \ | Project Database Access Admin | Project |\n\n**Security Note:** Prefer project-level\
-  \ roles for most operations. Avoid Organization Owner unless you require full administrative\
-  \ control.\n"
+description: "A Model Context Protocol (MCP) server for interacting with the MongoDB Atlas Cloud Service. This connector allows you to perform management actions with clusters, projects, databases, collections, and database users.\n\n## Features\n- **Atlas Management**: Create and manage MongoDB Atlas projects, clusters, and database users\n- **Cluster Management**: List, inspect, and create MongoDB Atlas clusters including free tier clusters\n\n## What you'll need to connect\n\n### MongoDB Atlas API Credentials (Required)\nYou'll need Service Account Atlas API credentials to use the Atlas management tools:\n\n- **API Client ID**: Your MongoDB Atlas Service Account Client ID\n- **API Client Secret**: Your MongoDB Atlas Service Account Client Secret (keep this secure)\n\n### Setting up Atlas API Access\n\n1. **Create a Service Account:**\n   - Log in to MongoDB Atlas at [cloud.mongodb.com](https://cloud.mongodb.com)\n   - Navigate to Access Manager > Organization Access\n   - Click Add New > Applications > Service Accounts\n   - Enter name, description and expiration for your service account\n   - (Recommended) Assign only the minimum permissions needed for your use case\n\n2. **Save Client Credentials:**\n   - After creation, copy and save the Client ID and Client Secret\n   - **Important:** The Client Secret won't be displayed again\n\n### Required Permissions by Operation\n\n| Operation | Required Role | Scope |\n|-----------|---------------|-------|\n| List organizations/projects | Org Member or Org Read Only | Organization |\n| Create new projects | Org Project Creator | Organization |\n| View clusters/databases | Project Read Only | Project |\n| Create/manage clusters | Project Cluster Manager | Project |\n| Manage IP access lists | Project IP Access List Admin | Project |\n| Manage database users | Project Database Access Admin | Project |\n\n**Security Note:** Prefer project-level roles for most operations. Avoid Organization Owner unless you require full administrative control.\n"
 metadata:
   categories: Databases,Data & Analytics
 icon: https://avatars.githubusercontent.com/u/45120?s=48&v=4
