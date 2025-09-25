@@ -1,7 +1,7 @@
 name: Dynatrace
 description: |
 
-  A Model Context Protocol (MCP) server for Dynatrace integration, providing comprehensive observability and monitoring capabilities through Dynatrace's API.
+  A Model Context Protocol (MCP) server for Dynatrace integration, providing comprehensive observability and monitoring capabilities through Dynatrace API.
 
   ## Features
   - **Access Dynatrace observability data from compatible AI applications**
@@ -10,11 +10,12 @@ description: |
   - **Generate reports and insights based on Dynatrace monitoring data**
   - **Analyze performance data and get AI-powered troubleshooting suggestions**
 
-  ## What you'll need to connect
+  ## What you will need to connect
 
   **Required Credentials**:
   - `DT_PLATFORM_TOKEN`: Your Dynatrace Platform Token. To create one, refer to the [Dynatrace documentation](https://www.dynatrace.com/support/help/shortlink/platform-tokens) for more details.
   - `DT_ENVIRONMENT`: Your Dynatrace environment URL (e.g., https://abc12345.apps.dynatrace.com)
+
 
 metadata:
   categories: Monitoring, Developer Tools, DevOps
@@ -31,12 +32,14 @@ env:
   name: Dynatrace Environment
   required: true
   sensitive: false
-  description: Your Dynatrace environment URL (e.g., https://abc12345.apps.dynatrace.com)
+  description: Your Dynatrace environment URL
 runtime: containerized
 containerizedConfig:
   image: ghcr.io/obot-platform/mcp-images/dynatrace:0.6.0
-  port: 9000
-  path: "/"
+  port: 8099
+  path: /
+  args:
+  - mcp-server-dynatrace
 toolPreview:
 - name: get_environment_info
   description: Get information about the connected Dynatrace Environment (Tenant) and verify the connection and authentication.
@@ -92,7 +95,7 @@ toolPreview:
 
 # AI Assistant
 - name: chat_with_davis_copilot
-  description: Use this tool in case no specific tool is available. Get an answer to any Dynatrace related question as well as troubleshooting, and guidance. *(Note: Davis CoPilot AI is GA, but the Davis CoPilot APIs are in preview)*
+  description: "Use this tool in case no specific tool is available. Get an answer to any Dynatrace related question as well as troubleshooting, and guidance. *(Note: Davis CoPilot AI is GA, but the Davis CoPilot APIs are in preview)*"
   params:
     text: "Your question or request for Davis CoPilot"
     context: "Optional context to provide additional information"
