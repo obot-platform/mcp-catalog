@@ -1,5 +1,5 @@
 name: Dynatrace
-description: |
+description: |2
 
   A Model Context Protocol (MCP) server for Dynatrace integration, providing comprehensive observability and monitoring capabilities through Dynatrace API.
 
@@ -133,4 +133,4 @@ toolPreview:
 - name: reset_grail_budget
   description: Reset the Grail query budget after it was exhausted, allowing new queries to be executed. This clears all tracked bytes scanned in the current session.
   params:
-    random_string: "Dummy parameter for no-parameter tools" 
+    random_string: "Dummy parameter for no-parameter tools"
