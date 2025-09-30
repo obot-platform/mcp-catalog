@@ -183,8 +183,6 @@ def fetch_registry_servers() -> list[dict]:
         if not nxt:
             break
         params["cursor"] = nxt
-        # TEST
-        break
 
     return [v[1] for v in best.values()]
 
@@ -384,7 +382,7 @@ def create_issue_for_server(server: dict) -> tuple[str, int]:
     r = requests.post(
         f"https://api.github.com/repos/{CATALOG_OWNER}/{CATALOG_REPO}/issues",
         headers=headers,
-        json={"title": title, "body": body, "labels": ISSUE_LABELS or []},
+        json={"title": title, "body": body, "labels": ISSUE_LABELS or [], "type": "Feature"},
         timeout=30
     )
     r.raise_for_status()
@@ -465,6 +463,73 @@ def add_server_to_state(server: dict, issue_url: str, existing_servers: dict) ->
     return existing_servers
 
 # =============================================================================
+# AI CATEGORIZATION CACHE
+# =============================================================================
+
+CACHE_FILE_PATH = os.path.join(
+    os.path.dirname(__file__), 
+    "ai_categorization_cache.json"
+)
+
+def load_ai_cache() -> dict:
+    """
+    Load AI categorization cache from JSON file.
+    
+    Returns:
+        Dict mapping server identifiers to categorization results:
+        {
+            "server_name": {
+                "ai_decision": "official" | "community" | "uncertain",
+                "ai_confidence": 0.0-1.0,
+                "ai_reason": "reason text",
+                "cached_at": "ISO timestamp",
+                "repository_url": "https://..."
+            }
+        }
+    """
+    if not os.path.exists(CACHE_FILE_PATH):
+        print(f"No AI cache found at {CACHE_FILE_PATH}, starting fresh")
+        return {}
+    
+    try:
+        with open(CACHE_FILE_PATH, 'r', encoding='utf-8') as f:
+            cache = json.load(f)
+        print(f"✓ Loaded AI categorization cache with {len(cache)} entries")
+        return cache
+    except Exception as e:
+        print(f"Warning: Could not load AI cache: {e}")
+        return {}
+
+def save_ai_cache(cache: dict):
+    """
+    Save AI categorization cache to JSON file.
+    
+    Args:
+        cache: Dict mapping server identifiers to categorization results
+    """
+    try:
+        # Ensure directory exists
+        os.makedirs(os.path.dirname(CACHE_FILE_PATH), exist_ok=True)
+        
+        # Write with pretty formatting
+        with open(CACHE_FILE_PATH, 'w', encoding='utf-8') as f:
+            json.dump(cache, f, indent=2, ensure_ascii=False)
+        
+        print(f"✓ Saved AI categorization cache with {len(cache)} entries to {CACHE_FILE_PATH}")
+    except Exception as e:
+        print(f"Error saving AI cache: {e}")
+
+def get_cache_key(server: dict) -> str:
+    """
+    Generate a stable cache key for a server.
+    Uses repository URL if available, otherwise server name.
+    """
+    repo_url = server.get('repository', {}).get('url', '')
+    if repo_url:
+        return normalize_url(repo_url)
+    return server.get('name', f"unknown_{id(server)}")
+
+# =============================================================================
 # AI-POWERED CLASSIFICATION
 # =============================================================================
 
@@ -485,6 +550,7 @@ Strong signals of Official:
 - Remote endpoints are on the organization's domain and reference the product (e.g., mcp.ai.teamwork.com, mcp.blockscout.com, strata.klavis.ai).
 - Verified GitHub Organization; repository is not a fork and not archived.
 - Package namespace owned by the org (e.g., npm scope @brave/*, docker image under the org).
+- if `Test` is in the server_name, then it might be a test server and should be community. Judge this by your best judgement.
 
 Generic services require stricter proof:
 - For generic/ubiquitous services {"gmail","postgres","postgresql","mysql","slack","github","jira","confluence","notion","airtable","sheets","docs"}:
@@ -554,6 +620,11 @@ def filter_group_x_ai(servers: List[dict], catalog_entries: List[dict], existing
     non_active = []
     likely_remote = []
     
+    # Load AI categorization cache
+    ai_cache = load_ai_cache()
+    cache_hits = 0
+    cache_misses = 0
+    
     print(f"Starting AI-enhanced filtering with {len(servers)} servers...")
     url_sets = set(normalize_url(y.get("repoURL")) for y in catalog_entries)
     one_long_name_str = " ".join([y.get("name") for y in catalog_entries]).lower()
@@ -593,9 +664,34 @@ def filter_group_x_ai(servers: List[dict], catalog_entries: List[dict], existing
             print(f"Error fetching repo info for {owner}/{repo}: {err}")
             continue
 
-        # Use AI judge to determine official vs community
-        ai_response = gpt5_judge_service_ownership(server)
-        ai_result = json.loads(ai_response.output[0].content[0].text)
+        # Check AI categorization cache first
+        cache_key = get_cache_key(server)
+        cached_result = ai_cache.get(cache_key)
+        
+        if cached_result:
+            # Use cached AI decision
+            ai_result = {
+                "decision": cached_result["ai_decision"],
+                "confidence": cached_result["ai_confidence"],
+                "reason": cached_result["ai_reason"]
+            }
+            cache_hits += 1
+            print(f"  💾 Using cached AI decision for {owner}/{repo}")
+        else:
+            # Call AI judge to determine official vs community
+            ai_response = gpt5_judge_service_ownership(server)
+            ai_result = json.loads(ai_response.output[0].content[0].text)
+            
+            # Save to cache
+            ai_cache[cache_key] = {
+                "ai_decision": ai_result["decision"],
+                "ai_confidence": ai_result["confidence"],
+                "ai_reason": ai_result["reason"],
+                "cached_at": time.strftime('%Y-%m-%d %H:%M:%S UTC', time.gmtime()),
+                "repository_url": url,
+                "server_name": server.get('name', '')
+            }
+            cache_misses += 1
         
         server["_ai_decision"] = ai_result["decision"]
         server["_ai_confidence"] = ai_result["confidence"]
@@ -628,9 +724,17 @@ def filter_group_x_ai(servers: List[dict], catalog_entries: List[dict], existing
     official_count = len([s for s in filtered_servers if s.get("kind") == "official"])
     community_count = len([s for s in filtered_servers if s.get("kind") == "community"])
     
+    # Save updated AI cache
+    if cache_misses > 0:
+        save_ai_cache(ai_cache)
+    
     print(f"\nFiltered down to {len(filtered_servers)} servers:")
     print(f"  - Official: {official_count}")
     print(f"  - Community: {community_count}")
+    print(f"\nAI Cache Statistics:")
+    print(f"  - Cache hits: {cache_hits}")
+    print(f"  - Cache misses (new AI calls): {cache_misses}")
+    print(f"  - Total cached entries: {len(ai_cache)}")
     
     return filtered_servers, non_active, likely_remote
 _project_id_cache = {}
@@ -826,18 +930,15 @@ def main():
     filtered_servers, non_active, likely_remote = filter_group_x_ai(servers, catalog_entries, existing_servers)
 
     # Step 5: Create issues for new servers
-    print(f"\nProcessing {len(filtered_servers + likely_remote)} servers...")
+    print(f"\nProcessing {len(filtered_servers)} servers...")
     new_issues_created = 0
-    merged_servers = filtered_servers + likely_remote
 
-    for server in merged_servers:
+    for server in filtered_servers:
         issue_url, issue_number  = create_issue_for_server(server)
         add_issue_to_project(issue_url, issue_number, project_id, ISSUE_TOKEN)
         existing_servers = add_server_to_state(server, issue_url, existing_servers)
         new_issues_created += 1
-        
-        # TEST
-        break
+
 
     # Step 6: Save updated state
     save_selected_servers(existing_servers)
