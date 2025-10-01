@@ -168,7 +168,7 @@ def fetch_registry_servers() -> list[dict]:
 def github_api(url: str, params=None) -> dict:
     """Make authenticated GitHub API request."""
     r = SESSION.get(url, params=params or {}, timeout=30)
-    if r.status_code == 403 and "rate limit" in r.text.lower():
+    if r.status_code == 429 and "rate limit" in r.text.lower():
         reset = r.headers.get("x-ratelimit-reset")
         raise RuntimeError(f"GitHub API rate-limited. Try later. reset={reset}")
     r.raise_for_status()
@@ -452,7 +452,7 @@ Output JSON only:
 Keep reasons short and evidence‑based (mention org, service, and the key signal).
 """
 
-def gpt5_judge_service_ownership(server):
+def gpt_judge_service_ownership(server):
     """Use AI to determine if a server is official or community."""
     response = client.responses.create(
         model="gpt-4.1",
@@ -537,7 +537,7 @@ def filter_group_x_ai(servers: List[dict], catalog_entries: List[dict], existing
             print(f"  💾 Using cached AI decision for {owner}/{repo}")
         else:
             # Call AI judge to determine official vs community
-            ai_response = gpt5_judge_service_ownership(server)
+            ai_response = gpt_judge_service_ownership(server)
             ai_result = json.loads(ai_response.output[0].content[0].text)
             
             # Save to cache
