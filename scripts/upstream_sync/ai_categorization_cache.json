@@ -2206,5 +2206,21 @@
     "cached_at": "2025-09-30 23:50:22 UTC",
     "repository_url": "https://github.com/609NFT/solana-mcp",
     "server_name": "trade.neglect/mcp-server"
+  },
+  "io.github.VictoriaMetrics-Community/mcp-victorialogs:https://github.com/VictoriaMetrics-Community/mcp-victorialogs": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "The publisher is VictoriaMetrics-Community (not the main VictoriaMetrics org), indicating a third-party implementation for VictoriaLogs.",
+    "cached_at": "2025-10-01 01:00:22 UTC",
+    "repository_url": "https://github.com/VictoriaMetrics-Community/mcp-victorialogs",
+    "server_name": "io.github.VictoriaMetrics-Community/mcp-victorialogs"
+  },
+  "io.github.VictoriaMetrics-Community/mcp-victoriametrics:https://github.com/VictoriaMetrics-Community/mcp-victoriametrics": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "Published by 'VictoriaMetrics-Community', not the official 'VictoriaMetrics' org, indicating a third-party implementation.",
+    "cached_at": "2025-10-01 01:00:29 UTC",
+    "repository_url": "https://github.com/VictoriaMetrics-Community/mcp-victoriametrics",
+    "server_name": "io.github.VictoriaMetrics-Community/mcp-victoriametrics"
   }
 }

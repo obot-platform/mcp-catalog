@@ -15,7 +15,6 @@ import math
 import datetime as dt
 from typing import List, Dict, Optional, Tuple
 from urllib.parse import urlparse, urlunparse
-from difflib import SequenceMatcher
 
 import requests
 import yaml
@@ -33,8 +32,7 @@ CATALOG_OWNER = os.getenv("CATALOG_OWNER", "obot-platform")
 CATALOG_REPO = os.getenv("CATALOG_REPO", "mcp-catalog")
 
 # Authentication tokens
-ISSUE_TOKEN = os.environ["GITHUB_TOKEN"]
-CATALOG_TOKEN = os.environ["GITHUB_TOKEN"]
+GITHUB_TOKEN = os.environ["GITHUB_TOKEN"]
 
 # Runtime configuration
 ISSUE_LABELS = [s.strip() for s in os.getenv("ISSUE_LABELS", "VerifiedMCPServer").split(",") if s.strip()]
@@ -42,23 +40,17 @@ STAR_MIN = int(os.getenv("STAR_MIN", "500"))
 RECENT_DAYS = int(os.getenv("RECENT_DAYS", "30"))
 
 # State tracking
-SELECTED_SERVERS_FILE = os.path.join(
-    os.path.dirname(__file__) if __file__ else ".",
-    "selected_server.json"
-)
+SELECTED_SERVERS_FILE = os.path.join(os.path.dirname(__file__) or ".", "selected_server.json")
 
 # Parse repository info
 OWNER, REPO = TARGET_REPO_FULL.split("/", 1)
 
-# Initialize HTTP sessions
-S = requests.Session()
-S.headers.update({"User-Agent": "mcp-registry-sync/1.0"})
-
-GH = requests.Session()
-GH.headers.update({
+# Initialize HTTP session with authentication
+SESSION = requests.Session()
+SESSION.headers.update({
     "User-Agent": "mcp-catalog-selector/1.1", 
     "Accept": "application/vnd.github+json",
-    "Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}"
+    "Authorization": f"Bearer {GITHUB_TOKEN}"
 })
 
 # Initialize OpenAI client
@@ -67,20 +59,6 @@ client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 # =============================================================================
 # UTILITY FUNCTIONS
 # =============================================================================
-
-def _auth_headers(token: str) -> Dict[str, str]:
-    """Generate authorization headers for GitHub API."""
-    return {
-        "Authorization": f"Bearer {token}", 
-        "Accept": "application/vnd.github+json"
-    } if token else {"Accept": "application/vnd.github+json"}
-
-def first_str(*vals) -> Optional[str]:
-    """Return the first non-empty string from the arguments."""
-    for v in vals:
-        if isinstance(v, str) and v.strip():
-            return v.strip()
-    return None
 
 def _norm(s: str | None) -> str:
     """Normalize string for comparison by removing special chars and common suffixes."""
@@ -91,10 +69,6 @@ def _norm(s: str | None) -> str:
     s = re.sub(r"(inc|corp|labs|llc|ltd|hq)$", "", s)  # drop common tails
     s = re.sub(r"(ai|app)$", "", s)  # mild heuristic
     return s
-
-def _sim(a: str, b: str) -> float:
-    """Calculate similarity ratio between two normalized strings."""
-    return SequenceMatcher(None, _norm(a), _norm(b)).ratio()
 
 def days_since(iso: str | None) -> float:
     """Calculate days since an ISO timestamp."""
@@ -152,7 +126,7 @@ def fetch_registry_servers() -> list[dict]:
     params, attempts = {"limit": 100}, 0
 
     while True:
-        r = S.get(REGISTRY_URL, params=params, timeout=30)
+        r = SESSION.get(REGISTRY_URL, params=params, timeout=30)
         if r.status_code >= 500 and attempts < 3:
             attempts += 1
             time.sleep(2 ** attempts)
@@ -191,9 +165,9 @@ def fetch_registry_servers() -> list[dict]:
 # GITHUB API FUNCTIONS
 # =============================================================================
 
-def github_api(url: str, token: str = "", params=None) -> dict:
+def github_api(url: str, params=None) -> dict:
     """Make authenticated GitHub API request."""
-    r = S.get(url, headers=_auth_headers(token), params=params or {}, timeout=30)
+    r = SESSION.get(url, params=params or {}, timeout=30)
     if r.status_code == 403 and "rate limit" in r.text.lower():
         reset = r.headers.get("x-ratelimit-reset")
         raise RuntimeError(f"GitHub API rate-limited. Try later. reset={reset}")
@@ -213,14 +187,14 @@ def parse_repo_url(url: str):
     except Exception:
         return (None, None)
 
-def get_default_branch(owner: str, repo: str, token: str = "") -> str:
+def get_default_branch(owner: str, repo: str) -> str:
     """Get the default branch for a repository."""
-    data = github_api(f"https://api.github.com/repos/{owner}/{repo}", token)
+    data = github_api(f"https://api.github.com/repos/{owner}/{repo}")
     return data.get("default_branch", "main")
 
 def repo_info(owner: str, repo: str):
     """Get repository information using the authenticated session."""
-    r = GH.get(f"https://api.github.com/repos/{owner}/{repo}", timeout=20)
+    r = SESSION.get(f"https://api.github.com/repos/{owner}/{repo}", timeout=20)
     r.raise_for_status()
     d = r.json()
     return {
@@ -232,22 +206,14 @@ def repo_info(owner: str, repo: str):
         "is_archived": bool(d.get("archived")),
     }
 
-def org_verified(owner_login: str) -> bool:
-    """Check if a GitHub organization is verified."""
-    r = GH.get(f"https://api.github.com/orgs/{owner_login}", timeout=20)
-    if r.status_code == 404:
-        return False
-    r.raise_for_status()
-    return bool(r.json().get("is_verified", False))
-
 # =============================================================================
 # CATALOG MANAGEMENT
 # =============================================================================
 
-def list_yaml_paths(owner: str, repo: str, token: str = "") -> List[str]:
+def list_yaml_paths(owner: str, repo: str) -> List[str]:
     """List *.yml/*.yaml files in the root directory only."""
-    branch = get_default_branch(owner, repo, token)
-    tree = github_api(f"https://api.github.com/repos/{owner}/{repo}/git/trees/{branch}", token)
+    branch = get_default_branch(owner, repo)
+    tree = github_api(f"https://api.github.com/repos/{owner}/{repo}/git/trees/{branch}")
     paths = []
     for node in tree.get("tree", []):
         if (node.get("type") == "blob" and 
@@ -256,26 +222,26 @@ def list_yaml_paths(owner: str, repo: str, token: str = "") -> List[str]:
             paths.append(node["path"])
     return paths
 
-def read_file_text(owner: str, repo: str, path: str, token: str = "") -> str:
+def read_file_text(owner: str, repo: str, path: str) -> str:
     """Read file content from GitHub repository."""
     url = f"https://api.github.com/repos/{owner}/{repo}/contents/{path}"
-    data = github_api(url, token)
+    data = github_api(url)
     if isinstance(data, dict) and data.get("encoding") == "base64":
         return base64.b64decode(data["content"]).decode("utf-8", errors="replace")
     # fallback if api returns redirect/download_url
     download_url = data.get("download_url")
     if download_url:
-        r = S.get(download_url, timeout=30)
+        r = SESSION.get(download_url, timeout=30)
         r.raise_for_status()
         return r.text
     raise RuntimeError(f"Unsupported content response shape for {path}")
 
-def load_y_ids_from_catalog(owner: str, repo: str, token: str = "") -> list[dict]:
+def load_y_ids_from_catalog(owner: str, repo: str) -> list[dict]:
     """Load catalog entries from YAML files."""
     res = []
-    for path in list_yaml_paths(owner, repo, token):
+    for path in list_yaml_paths(owner, repo):
         try:
-            txt = read_file_text(owner, repo, path, token)
+            txt = read_file_text(owner, repo, path)
             doc = yaml.safe_load(txt)
         except Exception:
             continue
@@ -307,82 +273,50 @@ def create_issue_for_server(server: dict) -> tuple[str, int, str]:
     name = server.get('name', 'Unknown')
     title = f"[MCP Catalog] New MCP server candidate: {name}"
     
-    # Extract metadata
-    description = server.get('description', '')
-    version = server.get('version', '')
-    repo_info = server.get('repository', {})
-    repo_url = repo_info.get('url', '') if repo_info else ''
+    # Build issue body
+    body_lines = ["Automatically Discovered via MCP Registry.", ""]
     
-    # Extract packages info
-    packages = server.get('packages', [])
-    pkg_info = []
-    if packages:
-        for pkg in packages:
-            if isinstance(pkg, dict):
-                pkg_id = pkg.get('identifier', '')
-                pkg_version = pkg.get('version', '')
-                registry_type = pkg.get('registryType', '')
-                if pkg_id:
-                    pkg_info.append(f"  - {pkg_id} (v{pkg_version}, {registry_type})")
-    
-    # Extract remotes info
-    remotes = server.get('remotes', [])
-    remote_info = []
-    if remotes:
-        for remote in remotes:
-            if isinstance(remote, dict):
-                remote_type = remote.get('type', '')
-                remote_url = remote.get('url', '')
-                if remote_url:
-                    remote_info.append(f"  - {remote_type}: {remote_url}")
-    
-    # Build the issue body
-    body_parts = [
-        "Automatically Discovered via MCP Registry.", 
-        ""
-    ]
-    
+    # Add metadata fields if present
     if name:
-        body_parts.append(f"**Name:** {name}")
-    if "kind" in server:
-        body_parts.append(f"**Kind:** {server['kind']}")
-    if description:
-        body_parts.append(f"**Description:** {description}")
-    if version:
-        body_parts.append(f"**Version:** {version}")
-    if repo_url:
-        body_parts.append(f"**Repository:** {repo_url}")
+        body_lines.append(f"**Name:** {name}")
+    if server.get("kind"):
+        body_lines.append(f"**Kind:** {server['kind']}")
+    if desc := server.get('description'):
+        body_lines.append(f"**Description:** {desc}")
+    if version := server.get('version'):
+        body_lines.append(f"**Version:** {version}")
+    if repo_url := server.get('repository', {}).get('url'):
+        body_lines.append(f"**Repository:** {repo_url}")
     
-    if pkg_info:
-        body_parts.extend(["", "**Packages:**"] + pkg_info)
+    # Add packages info
+    if packages := server.get('packages', []):
+        body_lines.extend(["", "**Packages:**"])
+        for pkg in packages:
+            if isinstance(pkg, dict) and (pkg_id := pkg.get('identifier')):
+                body_lines.append(f"  - {pkg_id} (v{pkg.get('version', '')}, {pkg.get('registryType', '')})")
     
-    if remote_info:
-        body_parts.extend(["", "**Remote Endpoints:**"] + remote_info)
+    # Add remote endpoints
+    if remotes := server.get('remotes', []):
+        body_lines.extend(["", "**Remote Endpoints:**"])
+        for remote in remotes:
+            if isinstance(remote, dict) and (remote_url := remote.get('url')):
+                body_lines.append(f"  - {remote.get('type', '')}: {remote_url}")
     
-    if server.get('kind'):
-        body_parts.extend(["", f"**Server Type:** {server['kind']}"])
-    
-    body_parts.extend([
-        "", "---", "", 
+    body_lines.extend([
+        "", "---", "",
         "If we want to catalog this server, please add/update its YAML in `obot-platform/mcp-catalog` and link the PR here."
     ])
     
-    body = "\n".join(body_parts)
-    
+    body = "\n".join(body_lines)
     print("→", title)
     
-    if not ISSUE_TOKEN:
+    if not GITHUB_TOKEN:
         print(f"   [DRY RUN] Would create issue with body:\n{body[:200]}...")
-        return "https://github.com/example/repo/issues/12345", 12345, "mock_node_id"  # Mock for dry run
-    
-    headers = {
-        'Authorization': f'token {ISSUE_TOKEN}',
-        'Accept': 'application/vnd.github+json',
-    }
+        return "https://github.com/example/repo/issues/12345", 12345, "mock_node_id"
     
     r = requests.post(
         f"https://api.github.com/repos/{CATALOG_OWNER}/{CATALOG_REPO}/issues",
-        headers=headers,
+        headers={'Authorization': f'token {GITHUB_TOKEN}', 'Accept': 'application/vnd.github+json'},
         json={"title": title, "body": body, "labels": ISSUE_LABELS or [], "type": "Feature"},
         timeout=30
     )
@@ -403,13 +337,13 @@ def create_issue_for_server(server: dict) -> tuple[str, int, str]:
 def load_selected_servers() -> dict:
     """Load the selected servers data from the JSON file."""
     if not os.path.exists(SELECTED_SERVERS_FILE):
-        print(f"No selected servers file found at {SELECTED_SERVERS_FILE}, starting fresh")
+        print(f"No selected servers file found, starting fresh")
         return {}
     
     try:
         with open(SELECTED_SERVERS_FILE, 'r', encoding='utf-8') as f:
             data = json.load(f)
-        print(f"✓ Loaded {len(data)} previously processed servers from {SELECTED_SERVERS_FILE}")
+        print(f"✓ Loaded {len(data)} previously processed servers")
         return data if isinstance(data, dict) else {}
     except Exception as e:
         print(f"Warning: Could not load selected servers file: {e}")
@@ -418,24 +352,19 @@ def load_selected_servers() -> dict:
 def save_selected_servers(selected_servers: dict):
     """Save the selected servers data to the JSON file."""
     try:
-        # Ensure directory exists
-        os.makedirs(os.path.dirname(SELECTED_SERVERS_FILE), exist_ok=True)
-        
-        # Write with pretty formatting
+        os.makedirs(os.path.dirname(SELECTED_SERVERS_FILE) or ".", exist_ok=True)
         with open(SELECTED_SERVERS_FILE, 'w', encoding='utf-8') as f:
             json.dump(selected_servers, f, indent=2, ensure_ascii=False)
-        
-        print(f"✓ Saved {len(selected_servers)} selected servers to {SELECTED_SERVERS_FILE}")
+        print(f"✓ Saved {len(selected_servers)} selected servers")
     except Exception as e:
         print(f"Error saving selected servers file: {e}")
 
 def add_server_to_state(server: dict, issue_url: str, existing_servers: dict) -> dict:
     """Add a newly processed server to the state dict."""
-    server_name = server.get('name', '')
-    if not server_name:
+    if not (server_name := server.get('name', '')):
         return existing_servers
     
-    server_record = {
+    existing_servers[server_name] = {
         'name': server_name,
         'description': server.get('description', ''),
         'version': server.get('version', ''),
@@ -444,37 +373,18 @@ def add_server_to_state(server: dict, issue_url: str, existing_servers: dict) ->
         'issue_url': issue_url,
         'processed_at': time.strftime('%Y-%m-%d %H:%M:%S UTC', time.gmtime())
     }
-    
-    existing_servers[server_name] = server_record
     return existing_servers
 
 # =============================================================================
 # AI CATEGORIZATION CACHE
 # =============================================================================
 
-CACHE_FILE_PATH = os.path.join(
-    os.path.dirname(__file__), 
-    "ai_categorization_cache.json"
-)
+CACHE_FILE_PATH = os.path.join(os.path.dirname(__file__) or ".", "ai_categorization_cache.json")
 
 def load_ai_cache() -> dict:
-    """
-    Load AI categorization cache from JSON file.
-    
-    Returns:
-        Dict mapping server identifiers to categorization results:
-        {
-            "server_name": {
-                "ai_decision": "official" | "community" | "uncertain",
-                "ai_confidence": 0.0-1.0,
-                "ai_reason": "reason text",
-                "cached_at": "ISO timestamp",
-                "repository_url": "https://..."
-            }
-        }
-    """
+    """Load AI categorization cache from JSON file."""
     if not os.path.exists(CACHE_FILE_PATH):
-        print(f"No AI cache found at {CACHE_FILE_PATH}, starting fresh")
+        print(f"No AI cache found, starting fresh")
         return {}
     
     try:
@@ -487,34 +397,20 @@ def load_ai_cache() -> dict:
         return {}
 
 def save_ai_cache(cache: dict):
-    """
-    Save AI categorization cache to JSON file.
-    
-    Args:
-        cache: Dict mapping server identifiers to categorization results
-    """
+    """Save AI categorization cache to JSON file."""
     try:
-        # Ensure directory exists
-        os.makedirs(os.path.dirname(CACHE_FILE_PATH), exist_ok=True)
-        
-        # Write with pretty formatting
+        os.makedirs(os.path.dirname(CACHE_FILE_PATH) or ".", exist_ok=True)
         with open(CACHE_FILE_PATH, 'w', encoding='utf-8') as f:
             json.dump(cache, f, indent=2, ensure_ascii=False)
-        
-        print(f"✓ Saved AI categorization cache with {len(cache)} entries to {CACHE_FILE_PATH}")
+        print(f"✓ Saved AI categorization cache with {len(cache)} entries")
     except Exception as e:
         print(f"Error saving AI cache: {e}")
 
 def get_cache_key(server: dict) -> str:
-    """
-    Generate a stable cache key for a server.
-    Uses repository URL if available, otherwise server name.
-    """
+    """Generate a stable cache key for a server."""
     repo_url = server.get('repository', {}).get('url', '')
     repo_name = server.get("name", "")
-    if repo_url:
-        return f"{repo_name}:{normalize_url(repo_url)}"
-    return server.get('name', f"unknown_{id(server)}")
+    return f"{repo_name}:{normalize_url(repo_url)}" if repo_url else server.get('name', f"unknown_{id(server)}")
 
 # =============================================================================
 # AI-POWERED CLASSIFICATION
@@ -563,31 +459,6 @@ def gpt5_judge_service_ownership(server):
         input=AI_OFFICIAL_JUDGE_PROMPT + "\n\nInput:\n" + json.dumps(server)
     )
     return response
-
-def name_reversed_domain(name: str | None) -> str | None:
-    """Extract vendor token from reversed domain name."""
-    if not name or "/" not in name: 
-        return None
-    prefix = name.split("/", 1)[0]  # e.g., com.google
-    labels = prefix.split(".")
-    if len(labels) < 2: 
-        return None
-    sld = labels[-1]  # 'google' or 'containers'
-    return _norm(sld)
-
-def remote_domains(remotes: list | None) -> set[str]:
-    """Extract normalized domain names from remote URLs."""
-    out = set()
-    for r in remotes or []:
-        try:
-            host = urlparse(r.get("url", "")).netloc.lower()
-            if host:
-                parts = host.split(".")
-                if len(parts) >= 2:
-                    out.add(_norm(parts[-2]))  # SLD: vercel, atlassian, google
-        except Exception:
-            pass
-    return out
 
 def is_popular_community(repo_meta: dict) -> bool:
     """Check if a community server meets popularity criteria."""
@@ -726,31 +597,14 @@ def filter_group_x_ai(servers: List[dict], catalog_entries: List[dict], existing
     return filtered_servers, non_active, likely_remote
 _project_id_cache = {}
 
-def get_project_id(project_number: int, owner: str, token: str = None) -> str:
-    """
-    Get the GitHub project ID from project number (cached).
-    
-    Args:
-        project_number: The project number (e.g., 2)
-        owner: GitHub username or organization name
-        token: GitHub personal access token
-    
-    Returns:
-        Project ID string, or None if not found
-    """
+def get_project_id(project_number: int, owner: str) -> str:
+    """Get the GitHub project ID from project number (cached)."""
     cache_key = f"{owner}:{project_number}"
     
-    # Return cached value if available
     if cache_key in _project_id_cache:
         return _project_id_cache[cache_key]
     
-    if token is None:
-        token = os.getenv('GITHUB_TOKEN')
-    
-    headers = {
-        'Authorization': f'Bearer {token}',
-        'Content-Type': 'application/json',
-    }
+    headers = {'Authorization': f'Bearer {GITHUB_TOKEN}', 'Content-Type': 'application/json'}
     
     query = """
     query($owner: String!, $number: Int!) {
@@ -792,33 +646,15 @@ def get_project_id(project_number: int, owner: str, token: str = None) -> str:
     
     return project_id
 
-def add_issue_to_project(issue_node_id: str, issue_number: int, project_id: str, token: str = None) -> bool:
-    """
-    Add an existing issue to a GitHub project.
+def add_issue_to_project(issue_node_id: str, issue_number: int, project_id: str) -> bool:
+    """Add an existing issue to a GitHub project."""
     
-    Args:
-        issue_node_id: Issue's GraphQL node ID (from create response)
-        issue_number: Issue number (for logging only)
-        project_id: Project ID (from get_project_id - cached)
-        token: GitHub personal access token
-    
-    Returns:
-        True if successful, False otherwise
-    """
-    
-    if token is None:
-        token = os.getenv('GITHUB_TOKEN')
-    
-    headers = {
-        'Authorization': f'Bearer {token}',
-        'Content-Type': 'application/json',
-    }
+    headers = {'Authorization': f'Bearer {GITHUB_TOKEN}', 'Content-Type': 'application/json'}
     
     if not issue_node_id:
         print(f"   ✗ Missing node ID for issue #{issue_number}")
         return False
     
-    # Add issue to project
     add_item_mutation = """
     mutation($projectId: ID!, $contentId: ID!) {
       addProjectV2ItemById(input: {projectId: $projectId, contentId: $contentId}) {
@@ -853,23 +689,9 @@ def add_issue_to_project(issue_node_id: str, issue_number: int, project_id: str,
     print(f"   ✓ Added issue #{issue_number} to project")
     return True
 
-def get_issue_node_id(issue_number: int, owner: str, repo: str, token: str) -> Optional[str]:
-    """
-    Get the GraphQL node ID for an issue.
-    
-    Args:
-        issue_number: Issue number
-        owner: Repository owner
-        repo: Repository name
-        token: GitHub personal access token
-    
-    Returns:
-        Node ID string or None if not found
-    """
-    headers = {
-        "Authorization": f"Bearer {token}",
-        "Content-Type": "application/json"
-    }
+def get_issue_node_id(issue_number: int, owner: str, repo: str) -> Optional[str]:
+    """Get the GraphQL node ID for an issue."""
+    headers = {"Authorization": f"Bearer {GITHUB_TOKEN}", "Content-Type": "application/json"}
     
     url = f"https://api.github.com/repos/{owner}/{repo}/issues/{issue_number}"
     response = requests.get(url, headers=headers)
@@ -878,25 +700,10 @@ def get_issue_node_id(issue_number: int, owner: str, repo: str, token: str) -> O
     return None
 
 def add_sub_issue_graphql(parent_node_id: str, child_node_id: str,
-                          token: str, parent_issue_number: int = None, child_issue_number: int = None) -> bool:
-    """
-    Add a sub-issue using GitHub's GraphQL API.
+                          parent_issue_number: int = None, child_issue_number: int = None) -> bool:
+    """Add a sub-issue using GitHub's GraphQL API."""
     
-    Args:
-        parent_node_id: Parent issue's GraphQL node ID (cached)
-        child_node_id: Child issue's GraphQL node ID (from create response)
-        token: GitHub personal access token
-        parent_issue_number: Parent issue number (for logging only)
-        child_issue_number: Child issue number (for logging only)
-    
-    Returns:
-        True if successful
-    """
-    
-    headers = {
-        "Authorization": f"Bearer {token}",
-        "Content-Type": "application/json"
-    }
+    headers = {"Authorization": f"Bearer {GITHUB_TOKEN}", "Content-Type": "application/json"}
     
     if not child_node_id:
         if child_issue_number:
@@ -905,7 +712,6 @@ def add_sub_issue_graphql(parent_node_id: str, child_node_id: str,
             print(f"   ✗ Missing child node ID")
         return False
     
-    # Step 2: Use GraphQL mutation to add sub-issue
     query = """
     mutation AddSubIssue($parentIssueId: ID!, $subIssueId: ID!) {
       addSubIssue(input: {issueId: $parentIssueId, subIssueId: $subIssueId}) {
@@ -961,19 +767,20 @@ def main():
     PROJECT_NUMBER = 2  # fixed Obot AI project
     INDEX_ISSUE_NUMBER = 143  # Index issue for all MCP servers
     
-    project_id = get_project_id(PROJECT_NUMBER, CATALOG_OWNER, ISSUE_TOKEN)
+    project_id = get_project_id(PROJECT_NUMBER, CATALOG_OWNER)
     if not project_id:
         print("Error: Could not get project ID")
         exit(1)
     
     # Fetch parent node ID once (cached for all sub-issue operations)
     print(f"Fetching node ID for index issue #{INDEX_ISSUE_NUMBER}...")
-    parent_node_id = get_issue_node_id(INDEX_ISSUE_NUMBER, CATALOG_OWNER, CATALOG_REPO, ISSUE_TOKEN)
+    parent_node_id = get_issue_node_id(INDEX_ISSUE_NUMBER, CATALOG_OWNER, CATALOG_REPO)
     if not parent_node_id:
         print(f"Warning: Could not get node ID for index issue #{INDEX_ISSUE_NUMBER}")
         print("Sub-issues will not be created, but other operations will continue.")
     else:
         print(f"✓ Cached parent node ID for issue #{INDEX_ISSUE_NUMBER}")
+    
     # Step 1: Fetch servers from registry
     print("Fetching servers from MCP registry...")
     servers = fetch_registry_servers()
@@ -981,7 +788,7 @@ def main():
 
     # Step 2: Load existing catalog IDs to avoid duplicates
     print("\nLoading existing catalog IDs...")
-    catalog_entries = load_y_ids_from_catalog(CATALOG_OWNER, CATALOG_REPO, CATALOG_TOKEN)
+    catalog_entries = load_y_ids_from_catalog(CATALOG_OWNER, CATALOG_REPO)
     print(f"Found {len(catalog_entries)} existing catalog entries")
 
     # Step 3: Load existing state
@@ -999,15 +806,14 @@ def main():
 
     for server in filtered_servers:
         issue_url, issue_number, issue_node_id = create_issue_for_server(server)
-        add_issue_to_project(issue_node_id, issue_number, project_id, ISSUE_TOKEN)
+        add_issue_to_project(issue_node_id, issue_number, project_id)
         
         # Add as sub-issue if parent node ID was successfully fetched
         if parent_node_id and issue_node_id:
-            add_sub_issue_graphql(parent_node_id, issue_node_id, ISSUE_TOKEN, INDEX_ISSUE_NUMBER, issue_number)
+            add_sub_issue_graphql(parent_node_id, issue_node_id, INDEX_ISSUE_NUMBER, issue_number)
         
         existing_servers = add_server_to_state(server, issue_url, existing_servers)
         new_issues_created += 1
-
 
     # Step 6: Save updated state
     save_selected_servers(existing_servers)
