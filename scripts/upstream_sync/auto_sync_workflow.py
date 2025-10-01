@@ -42,9 +42,10 @@ STAR_MIN = int(os.getenv("STAR_MIN", "500"))
 RECENT_DAYS = int(os.getenv("RECENT_DAYS", "30"))
 
 # State tracking
-ISSUE_NUMBER = 143
-START_MARK = "<!-- BEGIN MCP-SELECTED-SERVERS -->"
-END_MARK = "<!-- END MCP-SELECTED-SERVERS -->"
+SELECTED_SERVERS_FILE = os.path.join(
+    os.path.dirname(__file__) if __file__ else ".",
+    "selected_server.json"
+)
 
 # Parse repository info
 OWNER, REPO = TARGET_REPO_FULL.split("/", 1)
@@ -296,12 +297,12 @@ def load_y_ids_from_catalog(owner: str, repo: str, token: str = "") -> list[dict
 # ISSUE MANAGEMENT
 # =============================================================================
 
-def create_issue_for_server(server: dict) -> tuple[str, int]:
+def create_issue_for_server(server: dict) -> tuple[str, int, str]:
     """
     Create a GitHub issue for an MCP server using its metadata.
     
     Returns:
-        Tuple of (issue_url, issue_number)
+        Tuple of (issue_url, issue_number, node_id)
     """
     name = server.get('name', 'Unknown')
     title = f"[MCP Catalog] New MCP server candidate: {name}"
@@ -337,7 +338,7 @@ def create_issue_for_server(server: dict) -> tuple[str, int]:
     
     # Build the issue body
     body_parts = [
-        "Automatically Discovered via MCP Registry. **Parent Issue:** #143 (MCP Catalog Sync Tracking)", 
+        "Automatically Discovered via MCP Registry.", 
         ""
     ]
     
@@ -372,7 +373,7 @@ def create_issue_for_server(server: dict) -> tuple[str, int]:
     
     if not ISSUE_TOKEN:
         print(f"   [DRY RUN] Would create issue with body:\n{body[:200]}...")
-        return "https://github.com/example/repo/issues/12345", 12345  # Mock for dry run
+        return "https://github.com/example/repo/issues/12345", 12345, "mock_node_id"  # Mock for dry run
     
     headers = {
         'Authorization': f'token {ISSUE_TOKEN}',
@@ -390,58 +391,43 @@ def create_issue_for_server(server: dict) -> tuple[str, int]:
     issue_data = r.json()
     issue_url = issue_data.get('html_url', 'unknown URL')
     issue_number = issue_data.get('number', 0)
+    node_id = issue_data.get('node_id', '')
     
     print(f"   ✓ Created issue #{issue_number}: {issue_url}")
-    return issue_url, issue_number
+    return issue_url, issue_number, node_id
 
 # =============================================================================
 # STATE MANAGEMENT
 # =============================================================================
 
 def load_selected_servers() -> dict:
-    """Load the selected servers data from the state issue."""
-    if not ISSUE_TOKEN:
-        raise RuntimeError("GITHUB_TOKEN missing; cannot read state issue.")
-    
-    data = github_api(f"https://api.github.com/repos/{OWNER}/{REPO}/issues/{ISSUE_NUMBER}", ISSUE_TOKEN)
-    body = data.get("body") or ""
-    m = re.search(re.escape(START_MARK) + r"(.*?)" + re.escape(END_MARK), body, flags=re.DOTALL)
-    if not m:
-        return {}
-    
-    inner = m.group(1)
-    m2 = re.search(r"```json\s*(.*?)```", inner, flags=re.DOTALL)
-    if not m2:
+    """Load the selected servers data from the JSON file."""
+    if not os.path.exists(SELECTED_SERVERS_FILE):
+        print(f"No selected servers file found at {SELECTED_SERVERS_FILE}, starting fresh")
         return {}
     
     try:
-        data = json.loads(m2.group(1).strip())
+        with open(SELECTED_SERVERS_FILE, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        print(f"✓ Loaded {len(data)} previously processed servers from {SELECTED_SERVERS_FILE}")
         return data if isinstance(data, dict) else {}
-    except Exception:
+    except Exception as e:
+        print(f"Warning: Could not load selected servers file: {e}")
         return {}
 
 def save_selected_servers(selected_servers: dict):
-    """Save the selected servers data to the state issue."""
-    data = github_api(f"https://api.github.com/repos/{OWNER}/{REPO}/issues/{ISSUE_NUMBER}", ISSUE_TOKEN)
-    body = data.get("body") or ""
-
-    json_block = json.dumps(selected_servers, indent=2, ensure_ascii=False)
-    new_block = f"{START_MARK}\n```json\n{json_block}\n```\n{END_MARK}"
-    pattern = re.escape(START_MARK) + r".*?" + re.escape(END_MARK)
-
-    if START_MARK in body and END_MARK in body:
-        body = re.sub(pattern, lambda m: new_block, body, count=1, flags=re.DOTALL)
-    else:
-        body = new_block + "\n\n" + body
-
-    r = S.patch(
-        f"https://api.github.com/repos/{OWNER}/{REPO}/issues/{ISSUE_NUMBER}",
-        headers=_auth_headers(ISSUE_TOKEN),
-        json={"body": body},
-        timeout=30
-    )
-    r.raise_for_status()
-    print(f"✓ Saved {len(selected_servers)} selected servers to state issue")
+    """Save the selected servers data to the JSON file."""
+    try:
+        # Ensure directory exists
+        os.makedirs(os.path.dirname(SELECTED_SERVERS_FILE), exist_ok=True)
+        
+        # Write with pretty formatting
+        with open(SELECTED_SERVERS_FILE, 'w', encoding='utf-8') as f:
+            json.dump(selected_servers, f, indent=2, ensure_ascii=False)
+        
+        print(f"✓ Saved {len(selected_servers)} selected servers to {SELECTED_SERVERS_FILE}")
+    except Exception as e:
+        print(f"Error saving selected servers file: {e}")
 
 def add_server_to_state(server: dict, issue_url: str, existing_servers: dict) -> dict:
     """Add a newly processed server to the state dict."""
@@ -525,8 +511,9 @@ def get_cache_key(server: dict) -> str:
     Uses repository URL if available, otherwise server name.
     """
     repo_url = server.get('repository', {}).get('url', '')
+    repo_name = server.get("name", "")
     if repo_url:
-        return normalize_url(repo_url)
+        return f"{repo_name}:{normalize_url(repo_url)}"
     return server.get('name', f"unknown_{id(server)}")
 
 # =============================================================================
@@ -805,13 +792,13 @@ def get_project_id(project_number: int, owner: str, token: str = None) -> str:
     
     return project_id
 
-def add_issue_to_project(issue_url: str, issue_number: int, project_id: str, token: str = None) -> bool:
+def add_issue_to_project(issue_node_id: str, issue_number: int, project_id: str, token: str = None) -> bool:
     """
     Add an existing issue to a GitHub project.
     
     Args:
-        issue_url: Full URL of the issue
-        issue_number: Issue number (from create_issue_for_server)
+        issue_node_id: Issue's GraphQL node ID (from create response)
+        issue_number: Issue number (for logging only)
         project_id: Project ID (from get_project_id - cached)
         token: GitHub personal access token
     
@@ -827,41 +814,8 @@ def add_issue_to_project(issue_url: str, issue_number: int, project_id: str, tok
         'Content-Type': 'application/json',
     }
     
-    # Parse issue URL to get owner and repo
-    parts = issue_url.rstrip('/').split('/')
-    issue_owner = parts[-4]
-    issue_repo = parts[-3]
-    
-    # Get issue node ID
-    get_issue_query = """
-    query($owner: String!, $repo: String!, $number: Int!) {
-      repository(owner: $owner, name: $repo) {
-        issue(number: $number) {
-          id
-        }
-      }
-    }
-    """
-    
-    response = requests.post(
-        'https://api.github.com/graphql',
-        json={'query': get_issue_query, 'variables': {
-            'owner': issue_owner,
-            'repo': issue_repo,
-            'number': issue_number
-        }},
-        headers=headers
-    )
-    
-    if response.status_code != 200:
-        print(f"Error getting issue ID: {response.status_code}")
-        return False
-    
-    data = response.json()
-    issue_id = data.get('data', {}).get('repository', {}).get('issue', {}).get('id')
-    
-    if not issue_id:
-        print("Error: Could not find issue ID")
+    if not issue_node_id:
+        print(f"   ✗ Missing node ID for issue #{issue_number}")
         return False
     
     # Add issue to project
@@ -879,7 +833,7 @@ def add_issue_to_project(issue_url: str, issue_number: int, project_id: str, tok
         'https://api.github.com/graphql',
         json={'query': add_item_mutation, 'variables': {
             'projectId': project_id,
-            'contentId': issue_id
+            'contentId': issue_node_id
         }},
         headers=headers
     )
@@ -898,6 +852,105 @@ def add_issue_to_project(issue_url: str, issue_number: int, project_id: str, tok
     
     print(f"   ✓ Added issue #{issue_number} to project")
     return True
+
+def get_issue_node_id(issue_number: int, owner: str, repo: str, token: str) -> Optional[str]:
+    """
+    Get the GraphQL node ID for an issue.
+    
+    Args:
+        issue_number: Issue number
+        owner: Repository owner
+        repo: Repository name
+        token: GitHub personal access token
+    
+    Returns:
+        Node ID string or None if not found
+    """
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json"
+    }
+    
+    url = f"https://api.github.com/repos/{owner}/{repo}/issues/{issue_number}"
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        return response.json()["node_id"]
+    return None
+
+def add_sub_issue_graphql(parent_node_id: str, child_node_id: str,
+                          token: str, parent_issue_number: int = None, child_issue_number: int = None) -> bool:
+    """
+    Add a sub-issue using GitHub's GraphQL API.
+    
+    Args:
+        parent_node_id: Parent issue's GraphQL node ID (cached)
+        child_node_id: Child issue's GraphQL node ID (from create response)
+        token: GitHub personal access token
+        parent_issue_number: Parent issue number (for logging only)
+        child_issue_number: Child issue number (for logging only)
+    
+    Returns:
+        True if successful
+    """
+    
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json"
+    }
+    
+    if not child_node_id:
+        if child_issue_number:
+            print(f"   ✗ Missing node ID for issue #{child_issue_number}")
+        else:
+            print(f"   ✗ Missing child node ID")
+        return False
+    
+    # Step 2: Use GraphQL mutation to add sub-issue
+    query = """
+    mutation AddSubIssue($parentIssueId: ID!, $subIssueId: ID!) {
+      addSubIssue(input: {issueId: $parentIssueId, subIssueId: $subIssueId}) {
+        issue {
+          id
+          title
+        }
+        subIssue {
+          id
+          title
+          url
+        }
+      }
+    }
+    """
+    
+    variables = {
+        'parentIssueId': parent_node_id,
+        'subIssueId': child_node_id
+    }
+    
+    response = requests.post(
+        "https://api.github.com/graphql",
+        headers=headers,
+        json={"query": query, "variables": variables}
+    )
+    
+    result = response.json()
+    
+    if 'errors' in result:
+        print(f"   ✗ GraphQL errors adding sub-issue:")
+        for error in result['errors']:
+            print(f"     - {error.get('message')}")
+        return False
+    
+    if 'data' in result and result['data'].get('addSubIssue'):
+        if parent_issue_number:
+            print(f"   ✓ Added as sub-issue of #{parent_issue_number}")
+        else:
+            print(f"   ✓ Added as sub-issue")
+        return True
+    
+    print(f"   ✗ Unexpected response: {result}")
+    return False
+
 # =============================================================================
 # MAIN EXECUTION
 # =============================================================================
@@ -905,11 +958,22 @@ def add_issue_to_project(issue_url: str, issue_number: int, project_id: str, tok
 def main():
     """Main execution function."""
     print("=== MCP Server Catalog Selection Workflow ===\n")
-    PROJECT_NUMBER = 2 # fixed Obot AI project
+    PROJECT_NUMBER = 2  # fixed Obot AI project
+    INDEX_ISSUE_NUMBER = 143  # Index issue for all MCP servers
+    
     project_id = get_project_id(PROJECT_NUMBER, CATALOG_OWNER, ISSUE_TOKEN)
     if not project_id:
         print("Error: Could not get project ID")
         exit(1)
+    
+    # Fetch parent node ID once (cached for all sub-issue operations)
+    print(f"Fetching node ID for index issue #{INDEX_ISSUE_NUMBER}...")
+    parent_node_id = get_issue_node_id(INDEX_ISSUE_NUMBER, CATALOG_OWNER, CATALOG_REPO, ISSUE_TOKEN)
+    if not parent_node_id:
+        print(f"Warning: Could not get node ID for index issue #{INDEX_ISSUE_NUMBER}")
+        print("Sub-issues will not be created, but other operations will continue.")
+    else:
+        print(f"✓ Cached parent node ID for issue #{INDEX_ISSUE_NUMBER}")
     # Step 1: Fetch servers from registry
     print("Fetching servers from MCP registry...")
     servers = fetch_registry_servers()
@@ -934,8 +998,13 @@ def main():
     new_issues_created = 0
 
     for server in filtered_servers:
-        issue_url, issue_number  = create_issue_for_server(server)
-        add_issue_to_project(issue_url, issue_number, project_id, ISSUE_TOKEN)
+        issue_url, issue_number, issue_node_id = create_issue_for_server(server)
+        add_issue_to_project(issue_node_id, issue_number, project_id, ISSUE_TOKEN)
+        
+        # Add as sub-issue if parent node ID was successfully fetched
+        if parent_node_id and issue_node_id:
+            add_sub_issue_graphql(parent_node_id, issue_node_id, ISSUE_TOKEN, INDEX_ISSUE_NUMBER, issue_number)
+        
         existing_servers = add_server_to_state(server, issue_url, existing_servers)
         new_issues_created += 1
 
