@@ -2,9 +2,7 @@ name: Exa Search
 description: '[![npm version](https://badge.fury.io/js/exa-mcp-server.svg)](https://www.npmjs.com/package/exa-mcp-server)
 
 
-  A Model Context Protocol (MCP) server that lets AI assistants use the Exa AI Search
-  API for web searches. Get real-time web information in a safe and controlled way
-  with advanced search capabilities and content extraction.
+  A Model Context Protocol (MCP) server that lets AI assistants use the Exa AI Search API for web searches. Get real-time web information in a safe and controlled way with advanced search capabilities and content extraction.
 
 
   ## Features
@@ -44,59 +42,38 @@ env:
   description: Your Exa API key.
 toolPreview:
 - name: web_search_exa
-  description: Search the web using Exa AI - performs real-time web searches and can
-    scrape content from specific URLs. Supports configurable result counts and returns
-    the content from the most relevant websites.
+  description: Search the web using Exa AI - performs real-time web searches and can scrape content from specific URLs. Supports configurable result counts and returns the content from the most relevant websites.
   params:
     query: The search query string
     numResults: Optional number of results to return
 - name: company_research_exa
-  description: Research companies using Exa AI - finds comprehensive information about
-    businesses, organizations, and corporations. Provides insights into company operations,
-    news, financial information, and industry analysis.
+  description: Research companies using Exa AI - finds comprehensive information about businesses, organizations, and corporations. Provides insights into company operations, news, financial information, and industry analysis.
   params:
     companyName: Name of the company to research
     numResults: Optional number of results to return
 - name: crawling_exa
-  description: Extract and crawl content from specific URLs using Exa AI - retrieves
-    full text content, metadata, and structured information from web pages. Ideal
-    for extracting detailed content from known URLs.
+  description: Extract and crawl content from specific URLs using Exa AI - retrieves full text content, metadata, and structured information from web pages. Ideal for extracting detailed content from known URLs.
   params:
     url: The URL to crawl and extract content from
     maxCharacters: Optional maximum number of characters to extract
 - name: linkedin_search_exa
-  description: Search LinkedIn profiles and companies using Exa AI - finds professional
-    profiles, company pages, and business-related content on LinkedIn. Useful for
-    networking, recruitment, and business research.
+  description: Search LinkedIn profiles and companies using Exa AI - finds professional profiles, company pages, and business-related content on LinkedIn. Useful for networking, recruitment, and business research.
   params:
     query: The LinkedIn search query
     numResults: Optional number of results to return
     searchType: Optional search type specification
 - name: deep_researcher_start
-  description: Start a comprehensive AI-powered deep research task for complex queries.
-    This tool initiates an intelligent agent that performs extensive web searches,
-    crawls relevant pages, analyzes information, and synthesizes findings into a detailed
-    research report. The agent thinks critically about the research topic and provides
-    thorough, well-sourced answers. Use this for complex research questions that require
-    in-depth analysis rather than simple searches. After starting a research task,
-    IMMEDIATELY use deep_researcher_check with the returned task ID to monitor progress
-    and retrieve results.
+  description: Start a comprehensive AI-powered deep research task for complex queries. This tool initiates an intelligent agent that performs extensive web searches, crawls relevant pages, analyzes information, and synthesizes findings into a detailed research report. The agent thinks critically about the research topic and provides thorough, well-sourced answers. Use this for complex research questions that require in-depth analysis rather than simple searches. After starting a research task, IMMEDIATELY use deep_researcher_check with the returned task ID to monitor progress and retrieve results.
   params:
     instructions: Research instructions and topic description
     model: Optional AI model to use for research
 - name: deep_researcher_check
-  description: Check the status and retrieve results of a deep research task. This
-    tool monitors the progress of an AI agent that performs comprehensive web searches,
-    analyzes multiple sources, and synthesizes findings into detailed research reports.
-    The tool includes a built-in 5-second delay before checking to allow processing
-    time. IMPORTANT - You must call this tool repeatedly (poll) until the status becomes
-    'completed' to get the final research results. When status is 'running', wait
-    a few seconds and call this tool again with the same task ID.
+  description: Check the status and retrieve results of a deep research task. This tool monitors the progress of an AI agent that performs comprehensive web searches, analyzes multiple sources, and synthesizes findings into detailed research reports. The tool includes a built-in 5-second delay before checking to allow processing time. IMPORTANT - You must call this tool repeatedly (poll) until the status becomes 'completed' to get the final research results. When status is 'running', wait a few seconds and call this tool again with the same task ID.
   params:
     taskId: The task ID returned from deep_researcher_start
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/exa-search:2.0.3
+  image: ghcr.io/obot-platform/mcp-images/exa-search:2.1.0
   port: 8099
   path: /
   args:

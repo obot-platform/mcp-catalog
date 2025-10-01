@@ -16,21 +16,24 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Checkout PR code if running for a PR
-        if: ${{ github.event_name == 'pull_request_target' }}
+      - name: Checkout base repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.base.ref || github.ref }}
+
+      - name: Fetch PR changes if running for a PR
+        if: ${{ github.event_name == 'pull_request_target' }}
+        run: |
+          git remote add fork ${{ github.event.pull_request.head.repo.clone_url }}
+          git fetch fork ${{ github.event.pull_request.head.ref }}
+          git checkout -b pr-branch FETCH_HEAD
       - name: Generate matrix from yaml
         id: set-matrix
         run: |
           if [ "${{ github.event_name }}" = "pull_request_target" ]; then
             # Get changed files in PR, filter for .yaml files
-            changed_files=$(git diff --name-only origin/${{ github.event.pull_request.base.ref }}..HEAD | grep '\.yaml$' || true)
+            changed_files=$(git diff --name-only origin/${{ github.event.pull_request.base.ref }}..pr-branch | grep '\.yaml$' || true)
             matrix=$(for f in $changed_files; do
               [ -f "$f" ] && yq eval 'has("toolPreview")' --exit-status "$f" >/dev/null 2>&1 \
                 && echo "{\"filename\":\"$f\"}"

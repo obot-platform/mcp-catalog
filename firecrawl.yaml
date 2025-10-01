@@ -155,7 +155,7 @@ env:
   description: Your Firecrawl API key.
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/firecrawl:2.0.2
+  image: ghcr.io/obot-platform/mcp-images/firecrawl:3.3.6
   port: 8099
   path: /
   args:

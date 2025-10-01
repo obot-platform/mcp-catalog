@@ -45,86 +45,86 @@ metadata:
 icon: https://avatars.githubusercontent.com/u/45120?s=48&v=4
 repoURL: https://github.com/mongodb-js/mongodb-mcp-server
 env:
-  - key: MDB_MCP_API_CLIENT_ID
-    name: MongoDB API Client ID
-    required: true
-    sensitive: false
-    description: The client ID for your MongoDB Service Accounts Atlas API credentials.
-  - key: MDB_MCP_API_CLIENT_SECRET
-    name: MongoDB API Client Secret
-    required: true
-    sensitive: true
-    description: The client secret for your MongoDB Service Accounts Atlas API credentials.
+- key: MDB_MCP_API_CLIENT_ID
+  name: MongoDB API Client ID
+  required: true
+  sensitive: false
+  description: The client ID for your MongoDB Service Accounts Atlas API credentials.
+- key: MDB_MCP_API_CLIENT_SECRET
+  name: MongoDB API Client Secret
+  required: true
+  sensitive: true
+  description: The client secret for your MongoDB Service Accounts Atlas API credentials.
 toolPreview:
-  - name: atlas-list-clusters
-    description: List MongoDB Atlas clusters
-    params:
-      projectId: Optional project ID to filter clusters
-  - name: atlas-list-projects
-    description: List MongoDB Atlas projects
-    params:
-      orgId: Optional organization ID to filter projects
-  - name: atlas-inspect-cluster
-    description: Inspect MongoDB Atlas cluster
-    params:
-      clusterName: Name of the cluster to inspect
-      projectId: Project ID containing the cluster
-  - name: atlas-create-free-cluster
-    description: Create a free MongoDB Atlas cluster
-    params:
-      name: Name for the new cluster
-      projectId: Project ID where cluster will be created
-      region: Optional region for the cluster
-  - name: atlas-create-access-list
-    description: Allow Ip/CIDR ranges to access your MongoDB Atlas clusters.
-    params:
-      projectId: Project ID to configure access for
-      cidrBlocks: Optional array of CIDR blocks to allow
-      comment: Optional comment for the access list entry
-      currentIpAddress: Optional boolean to allow current IP address
-      ipAddresses: Optional array of IP addresses to allow
-  - name: atlas-inspect-access-list
-    description: Inspect Ip/CIDR ranges with access to your MongoDB Atlas clusters.
-    params:
-      projectId: Project ID to inspect access list for
-  - name: atlas-list-db-users
-    description: List MongoDB Atlas database users
-    params:
-      projectId: Project ID to list users for
-  - name: atlas-create-db-user
-    description: Create an MongoDB Atlas database user
-    params:
-      projectId: Project ID to create user in
-      roles: Array of role objects with collectionName, databaseName, and roleName
-      username: Username for the new database user
-      clusters: Optional array of cluster names to restrict access to
-      password: Optional password for the user
-  - name: atlas-create-project
-    description: Create a MongoDB Atlas project
-    params:
-      organizationId: Optional organization ID
-      projectName: Optional name for the new project
-  - name: atlas-list-orgs
-    description: List MongoDB Atlas organizations
-  - name: atlas-connect-cluster
-    description: Connect to MongoDB Atlas cluster
-    params:
-      clusterName: Name of the cluster to connect to
-      projectId: Project ID containing the cluster
-  - name: atlas-list-alerts
-    description: List MongoDB Atlas alerts
-    params:
-      projectId: Project ID to list alerts for
+- name: atlas-list-clusters
+  description: List MongoDB Atlas clusters
+  params:
+    projectId: Optional project ID to filter clusters
+- name: atlas-list-projects
+  description: List MongoDB Atlas projects
+  params:
+    orgId: Optional organization ID to filter projects
+- name: atlas-inspect-cluster
+  description: Inspect MongoDB Atlas cluster
+  params:
+    clusterName: Name of the cluster to inspect
+    projectId: Project ID containing the cluster
+- name: atlas-create-free-cluster
+  description: Create a free MongoDB Atlas cluster
+  params:
+    name: Name for the new cluster
+    projectId: Project ID where cluster will be created
+    region: Optional region for the cluster
+- name: atlas-create-access-list
+  description: Allow Ip/CIDR ranges to access your MongoDB Atlas clusters.
+  params:
+    projectId: Project ID to configure access for
+    cidrBlocks: Optional array of CIDR blocks to allow
+    comment: Optional comment for the access list entry
+    currentIpAddress: Optional boolean to allow current IP address
+    ipAddresses: Optional array of IP addresses to allow
+- name: atlas-inspect-access-list
+  description: Inspect Ip/CIDR ranges with access to your MongoDB Atlas clusters.
+  params:
+    projectId: Project ID to inspect access list for
+- name: atlas-list-db-users
+  description: List MongoDB Atlas database users
+  params:
+    projectId: Project ID to list users for
+- name: atlas-create-db-user
+  description: Create an MongoDB Atlas database user
+  params:
+    projectId: Project ID to create user in
+    roles: Array of role objects with collectionName, databaseName, and roleName
+    username: Username for the new database user
+    clusters: Optional array of cluster names to restrict access to
+    password: Optional password for the user
+- name: atlas-create-project
+  description: Create a MongoDB Atlas project
+  params:
+    organizationId: Optional organization ID
+    projectName: Optional name for the new project
+- name: atlas-list-orgs
+  description: List MongoDB Atlas organizations
+- name: atlas-connect-cluster
+  description: Connect to MongoDB Atlas cluster
+  params:
+    clusterName: Name of the cluster to connect to
+    projectId: Project ID containing the cluster
+- name: atlas-list-alerts
+  description: List MongoDB Atlas alerts
+  params:
+    projectId: Project ID to list alerts for
 runtime: containerized
 containerizedConfig:
   image: ghcr.io/obot-platform/mcp-images/mongodb-atlas:0.3.0
   port: 8099
   path: /
   args:
-    - mongodb-mcp-server
-    - --apiClientId
-    - ${MDB_MCP_API_CLIENT_ID}
-    - --apiClientSecret
-    - ${MDB_MCP_API_CLIENT_SECRET}
-    - --disabledTools
-    - mongodb
+  - mongodb-mcp-server
+  - --apiClientId
+  - ${MDB_MCP_API_CLIENT_ID}
+  - --apiClientSecret
+  - ${MDB_MCP_API_CLIENT_SECRET}
+  - --disabledTools
+  - mongodb
