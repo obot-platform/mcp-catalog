@@ -19,13 +19,13 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
-          python-version: '3.11'
+          python-version: '3.13'
       
       - name: Install dependencies
         run: |
-          pip install requests pyyaml packaging openai
+          pip install -r scripts/upstream_sync/requirements.txt
       
       - name: Run MCP Registry Sync
         env:
