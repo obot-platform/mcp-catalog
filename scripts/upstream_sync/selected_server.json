@@ -1,0 +1,677 @@
+{
+  "ai.mcpcap/mcpcap": {
+    "name": "ai.mcpcap/mcpcap",
+    "description": "An MCP server for analyzing PCAP files.",
+    "version": "0.4.3",
+    "repository_url": "https://github.com/mcpcap/mcpcap",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/146",
+    "processed_at": "2025-09-30 19:38:22 UTC"
+  },
+  "ai.klavis/strata": {
+    "name": "ai.klavis/strata",
+    "description": "MCP server for progressive tool usage at any scale (see https://klavis.ai)",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/Klavis-AI/klavis",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/147",
+    "processed_at": "2025-09-30 19:44:21 UTC"
+  },
+  "ai.smithery/smithery-ai-cookbook-python-quickstart": {
+    "name": "ai.smithery/smithery-ai-cookbook-python-quickstart",
+    "description": "A simple MCP server built with FastMCP and python",
+    "version": "1.13.1",
+    "repository_url": "https://github.com/smithery-ai/smithery-cookbook",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/150",
+    "processed_at": "2025-09-30 21:50:34 UTC"
+  },
+  "ai.smithery/smithery-ai-cookbook-ts-smithery-cli": {
+    "name": "ai.smithery/smithery-ai-cookbook-ts-smithery-cli",
+    "description": "A simple Typescript MCP server built using the official MCP Typescript SDK and smithery/cli. This…",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/smithery-ai/smithery-cookbook",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/151",
+    "processed_at": "2025-09-30 22:05:00 UTC"
+  },
+  "ai.toolprint/hypertool-mcp": {
+    "name": "ai.toolprint/hypertool-mcp",
+    "description": "Dynamically expose tools from proxied servers based on an Agent Persona",
+    "version": "0.0.42",
+    "repository_url": "https://github.com/toolprint/hypertool-mcp",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/152",
+    "processed_at": "2025-09-30 22:05:01 UTC"
+  },
+  "app.thoughtspot/mcp-server": {
+    "name": "app.thoughtspot/mcp-server",
+    "description": "MCP Server for ThoughtSpot - provides OAuth authentication and tools for querying data",
+    "version": "1.0.1",
+    "repository_url": "https://github.com/thoughtspot/mcp-server",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/153",
+    "processed_at": "2025-09-30 22:05:03 UTC"
+  },
+  "co.axiom/mcp": {
+    "name": "co.axiom/mcp",
+    "description": "List datasets, schemas, run APL queries, and use prompts for exploration, anomalies, and monitoring.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/axiomhq/mcp",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/154",
+    "processed_at": "2025-09-30 22:05:04 UTC"
+  },
+  "com.apify/apify-mcp-server": {
+    "name": "com.apify/apify-mcp-server",
+    "description": "Apify MCP server provides access to a marketplace for web scraping and data extraction tools.",
+    "version": "0.4.15",
+    "repository_url": "https://github.com/apify/apify-mcp-server",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/155",
+    "processed_at": "2025-09-30 22:05:06 UTC"
+  },
+  "com.devcycle/mcp": {
+    "name": "com.devcycle/mcp",
+    "description": "DevCycle MCP server for feature flag management",
+    "version": "6.1.0",
+    "repository_url": "https://github.com/DevCycleHQ/cli",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/156",
+    "processed_at": "2025-09-30 22:05:07 UTC"
+  },
+  "com.gibsonai/mcp": {
+    "name": "com.gibsonai/mcp",
+    "description": "GibsonAI MCP server: manage your databases with natural language",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/gibsonai/mcp",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/157",
+    "processed_at": "2025-09-30 22:05:09 UTC"
+  },
+  "com.mux/mcp": {
+    "name": "com.mux/mcp",
+    "description": "The official MCP Server for the Mux API",
+    "version": "12.8.0",
+    "repository_url": "https://github.com/muxinc/mux-node-sdk",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/158",
+    "processed_at": "2025-09-30 22:05:10 UTC"
+  },
+  "com.onkernel/kernel-mcp-server": {
+    "name": "com.onkernel/kernel-mcp-server",
+    "description": "Access Kernel's cloud-based browsers and app actions via MCP (remote HTTP + OAuth).",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/onkernel/kernel-mcp-server",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/159",
+    "processed_at": "2025-09-30 22:05:13 UTC"
+  },
+  "com.pulsemcp.servers/pulse-fetch": {
+    "name": "com.pulsemcp.servers/pulse-fetch",
+    "description": "MCP server that extracts clean, structured content from web pages with anti-bot bypass capabilities.",
+    "version": "0.2.14",
+    "repository_url": "https://github.com/pulsemcp/mcp-servers",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/160",
+    "processed_at": "2025-09-30 22:05:14 UTC"
+  },
+  "com.redpanda/docs-mcp": {
+    "name": "com.redpanda/docs-mcp",
+    "description": "Get authoritative answers to questions about Redpanda.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/redpanda-data/docs-site",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/161",
+    "processed_at": "2025-09-30 22:05:16 UTC"
+  },
+  "com.smartbear/smartbear-mcp": {
+    "name": "com.smartbear/smartbear-mcp",
+    "description": "MCP server for AI access to SmartBear tools, including BugSnag, Reflect, API Hub, PactFlow.",
+    "version": "0.6.0",
+    "repository_url": "https://github.com/SmartBear/smartbear-mcp",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/162",
+    "processed_at": "2025-09-30 22:05:17 UTC"
+  },
+  "com.teamwork/mcp": {
+    "name": "com.teamwork/mcp",
+    "description": "The Teamwork.com official MCP server helps teams efficiently manage client projects with AI.",
+    "version": "1.5.6",
+    "repository_url": "https://github.com/teamwork/mcp",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/163",
+    "processed_at": "2025-09-30 22:05:19 UTC"
+  },
+  "com.xcodebuildmcp/XcodeBuildMCP": {
+    "name": "com.xcodebuildmcp/XcodeBuildMCP",
+    "description": "XcodeBuildMCP provides tools for Xcode project management, simulator management, and app utilities.",
+    "version": "1.14.1",
+    "repository_url": "https://github.com/cameroncooke/XcodeBuildMCP",
+    "server_type": "community",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/164",
+    "processed_at": "2025-09-30 22:05:21 UTC"
+  },
+  "com.zomato/mcp": {
+    "name": "com.zomato/mcp",
+    "description": "An MCP server that exposes functionalities to use Zomato's services.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/Zomato/mcp-server-manifest",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/165",
+    "processed_at": "2025-09-30 22:05:22 UTC"
+  },
+  "dev.augments/mcp": {
+    "name": "dev.augments/mcp",
+    "description": "Augments MCP Server - A comprehensive framework documentation provider for Claude Code",
+    "version": "2.0.2",
+    "repository_url": "https://github.com/augmnt/augments-mcp-server",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/166",
+    "processed_at": "2025-09-30 22:05:24 UTC"
+  },
+  "dev.promplate/hmr": {
+    "name": "dev.promplate/hmr",
+    "description": "Docs for hot-module-reload and reactive programming for Python (`hmr` on PyPI)",
+    "version": "1.0.2",
+    "repository_url": "https://github.com/promplate/hmr",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/167",
+    "processed_at": "2025-09-30 22:05:25 UTC"
+  },
+  "io.balldontlie/mcp": {
+    "name": "io.balldontlie/mcp",
+    "description": "Provides access to live sports data and analytics from BALLDONTLIE: The Sports API",
+    "version": "1.1.0",
+    "repository_url": "https://github.com/balldontlie-api/mcp",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/168",
+    "processed_at": "2025-09-30 22:05:27 UTC"
+  },
+  "io.foqal/Foqal": {
+    "name": "io.foqal/Foqal",
+    "description": "Foqal turns Slack/Teams into efficient support platforms with AI-powered ticketing.",
+    "version": "2.0.1",
+    "repository_url": "https://github.com/foqal/mcp",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/169",
+    "processed_at": "2025-09-30 22:05:29 UTC"
+  },
+  "io.github.ChromeDevTools/chrome-devtools-mcp": {
+    "name": "io.github.ChromeDevTools/chrome-devtools-mcp",
+    "description": "MCP server for Chrome DevTools",
+    "version": "0.5.1",
+    "repository_url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/170",
+    "processed_at": "2025-09-30 22:05:31 UTC"
+  },
+  "io.github.CodeAlive-AI/codealive-mcp": {
+    "name": "io.github.CodeAlive-AI/codealive-mcp",
+    "description": "Semantic code search and analysis from CodeAlive for AI assistants and agents.",
+    "version": "0.3.0",
+    "repository_url": "https://github.com/CodeAlive-AI/codealive-mcp.git",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/171",
+    "processed_at": "2025-09-30 22:05:32 UTC"
+  },
+  "io.github.CodeLogicIncEngineering/codelogic-mcp-server": {
+    "name": "io.github.CodeLogicIncEngineering/codelogic-mcp-server",
+    "description": "An MCP Server to utilize Codelogic's rich software dependency data in your AI programming assistant.",
+    "version": "1.0.11",
+    "repository_url": "https://github.com/CodeLogicIncEngineering/codelogic-mcp-server",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/172",
+    "processed_at": "2025-09-30 22:05:33 UTC"
+  },
+  "io.github.CursorTouch/Windows-MCP": {
+    "name": "io.github.CursorTouch/Windows-MCP",
+    "description": "An MCP Server for computer-use in Windows OS",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/CursorTouch/Windows-MCP",
+    "server_type": "community",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/173",
+    "processed_at": "2025-09-30 22:05:35 UTC"
+  },
+  "io.github.Flightradar24/fr24api-mcp": {
+    "name": "io.github.Flightradar24/fr24api-mcp",
+    "description": "MCP server providing access to the Flightradar24 API for real-time and historical flight data",
+    "version": "1.0.1",
+    "repository_url": "https://github.com/Flightradar24/fr24api-mcp",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/174",
+    "processed_at": "2025-09-30 22:05:37 UTC"
+  },
+  "io.github.GLips/Figma-Context-MCP": {
+    "name": "io.github.GLips/Figma-Context-MCP",
+    "description": "Give your coding agent access to your Figma data. Implement designs in any framework in one-shot.",
+    "version": "0.6.0",
+    "repository_url": "https://github.com/GLips/Figma-Context-MCP",
+    "server_type": "community",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/175",
+    "processed_at": "2025-09-30 22:05:38 UTC"
+  },
+  "io.github.GoogleCloudPlatform/gemini-cloud-assist-mcp": {
+    "name": "io.github.GoogleCloudPlatform/gemini-cloud-assist-mcp",
+    "description": "MCP Server for understanding, managing & troubleshooting your GCP environment.",
+    "version": "0.1.1",
+    "repository_url": "https://github.com/GoogleCloudPlatform/gemini-cloud-assist-mcp",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/176",
+    "processed_at": "2025-09-30 22:05:40 UTC"
+  },
+  "io.github.OpenCageData/opencage-geocoding-mcp": {
+    "name": "io.github.OpenCageData/opencage-geocoding-mcp",
+    "description": "MCP server for OpenCage geocoding API",
+    "version": "1.0.3",
+    "repository_url": "https://github.com/OpenCageData/opencage-geocoding-mcp",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/177",
+    "processed_at": "2025-09-30 22:05:42 UTC"
+  },
+  "io.github.SonarSource/sonarqube-mcp-server": {
+    "name": "io.github.SonarSource/sonarqube-mcp-server",
+    "description": "An MCP server that enables integration with SonarQube Server or Cloud for code quality and security.",
+    "version": "0.0.8",
+    "repository_url": "https://github.com/SonarSource/sonarqube-mcp-server",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/178",
+    "processed_at": "2025-09-30 22:05:43 UTC"
+  },
+  "io.github.Synclub-tech/synclub-dxt": {
+    "name": "io.github.Synclub-tech/synclub-dxt",
+    "description": "SynClub MCP Server for AI-powered comic creation with script generation and image tools",
+    "version": "0.6.0",
+    "repository_url": "https://github.com/Synclub-tech/Synclub-dxt",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/179",
+    "processed_at": "2025-09-30 22:05:45 UTC"
+  },
+  "io.github.anyproto/anytype-mcp": {
+    "name": "io.github.anyproto/anytype-mcp",
+    "description": "Official MCP server for Anytype API - your encrypted, local and collaborative wiki.",
+    "version": "1.0.7",
+    "repository_url": "https://github.com/anyproto/anytype-mcp",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/180",
+    "processed_at": "2025-09-30 22:05:46 UTC"
+  },
+  "io.github.appwrite/mcp-for-api": {
+    "name": "io.github.appwrite/mcp-for-api",
+    "description": "MCP (Model Context Protocol) server for Appwrite",
+    "version": "0.2.7",
+    "repository_url": "https://github.com/appwrite/mcp-for-api",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/181",
+    "processed_at": "2025-09-30 22:05:48 UTC"
+  },
+  "io.github.augmnt/augments-mcp-server": {
+    "name": "io.github.augmnt/augments-mcp-server",
+    "description": "Augments MCP Server - A comprehensive framework documentation provider for Claude Code",
+    "version": "1.0.2",
+    "repository_url": "https://github.com/augmnt/augments-mcp-server",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/182",
+    "processed_at": "2025-09-30 22:05:50 UTC"
+  },
+  "io.github.bytedance/mcp-server-browser": {
+    "name": "io.github.bytedance/mcp-server-browser",
+    "description": "MCP server for browser use access",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/bytedance/UI-TARS-desktop",
+    "server_type": "community",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/183",
+    "processed_at": "2025-09-30 22:05:51 UTC"
+  },
+  "io.github.bytedance/mcp-server-commands": {
+    "name": "io.github.bytedance/mcp-server-commands",
+    "description": "An MCP server to run arbitrary commands",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/bytedance/UI-TARS-desktop",
+    "server_type": "community",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/184",
+    "processed_at": "2025-09-30 22:05:53 UTC"
+  },
+  "io.github.bytedance/mcp-server-filesystem": {
+    "name": "io.github.bytedance/mcp-server-filesystem",
+    "description": "MCP server for filesystem access",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/bytedance/UI-TARS-desktop",
+    "server_type": "community",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/185",
+    "processed_at": "2025-09-30 22:05:54 UTC"
+  },
+  "io.github.bytedance/mcp-server-search": {
+    "name": "io.github.bytedance/mcp-server-search",
+    "description": "MCP server for web search operations",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/bytedance/UI-TARS-desktop",
+    "server_type": "community",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/186",
+    "processed_at": "2025-09-30 22:05:56 UTC"
+  },
+  "io.github.cameroncooke/XcodeBuildMCP": {
+    "name": "io.github.cameroncooke/XcodeBuildMCP",
+    "description": "XcodeBuildMCP provides tools for Xcode project management, simulator management, and app utilities.",
+    "version": "1.12.8",
+    "repository_url": "https://github.com/cameroncooke/XcodeBuildMCP",
+    "server_type": "community",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/187",
+    "processed_at": "2025-09-30 22:05:58 UTC"
+  },
+  "io.github.containers/kubernetes-mcp-server": {
+    "name": "io.github.containers/kubernetes-mcp-server",
+    "description": "An MCP server that provides [describe what your server does]",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/containers/kubernetes-mcp-server",
+    "server_type": "community",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/188",
+    "processed_at": "2025-09-30 22:06:00 UTC"
+  },
+  "io.github.croit/mcp-croit-ceph": {
+    "name": "io.github.croit/mcp-croit-ceph",
+    "description": "MCP server for Croit Ceph cluster management with dynamic OpenAPI tool generation",
+    "version": "0.2.16",
+    "repository_url": "https://github.com/croit/mcp-croit-ceph",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/189",
+    "processed_at": "2025-09-30 22:06:01 UTC"
+  },
+  "io.github.dynatrace-oss/Dynatrace-mcp": {
+    "name": "io.github.dynatrace-oss/Dynatrace-mcp",
+    "description": "Model Context Protocol server for Dynatrace - access logs, events, metrics from Dynatrace via MCP.",
+    "version": "0.6.0-rc.2",
+    "repository_url": "https://github.com/dynatrace-oss/Dynatrace-mcp",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/190",
+    "processed_at": "2025-09-30 22:06:03 UTC"
+  },
+  "io.github.florentine-ai/mcp": {
+    "name": "io.github.florentine-ai/mcp",
+    "description": "MCP server for Florentine.ai - Natural language to MongoDB aggregations",
+    "version": "0.2.0",
+    "repository_url": "https://github.com/florentine-ai/mcp",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/191",
+    "processed_at": "2025-09-30 22:06:04 UTC"
+  },
+  "io.github.hellocoop/admin-mcp": {
+    "name": "io.github.hellocoop/admin-mcp",
+    "description": "Model Context Protocol (MCP) for Hellō Admin API.",
+    "version": "1.5.7",
+    "repository_url": "https://github.com/hellocoop/admin-mcp",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/192",
+    "processed_at": "2025-09-30 22:06:06 UTC"
+  },
+  "io.github.localstack/localstack-mcp-server": {
+    "name": "io.github.localstack/localstack-mcp-server",
+    "description": "A LocalStack MCP Server providing essential tools for local cloud development & testing",
+    "version": "0.1.5",
+    "repository_url": "https://github.com/localstack/localstack-mcp-server",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/193",
+    "processed_at": "2025-09-30 22:06:08 UTC"
+  },
+  "io.github.mapbox/mcp-server": {
+    "name": "io.github.mapbox/mcp-server",
+    "description": "Geospatial intelligence with Mapbox APIs like geocoding, POI search, directions, isochrones, etc.",
+    "version": "0.5.4-dev-5",
+    "repository_url": "https://github.com/mapbox/mcp-server",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/194",
+    "processed_at": "2025-09-30 22:06:09 UTC"
+  },
+  "io.github.mobile-next/mobile-mcp": {
+    "name": "io.github.mobile-next/mobile-mcp",
+    "description": "MCP server for iOS and Android Mobile Development, Automation and Testing",
+    "version": "0.0.26",
+    "repository_url": "https://github.com/mobile-next/mobile-mcp",
+    "server_type": "community",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/195",
+    "processed_at": "2025-09-30 22:06:11 UTC"
+  },
+  "io.github.motherduckdb/mcp-server-motherduck": {
+    "name": "io.github.motherduckdb/mcp-server-motherduck",
+    "description": "Fast analytics and data processing with DuckDB and MotherDuck",
+    "version": "0.7.0",
+    "repository_url": "https://github.com/motherduckdb/mcp-server-motherduck",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/196",
+    "processed_at": "2025-09-30 22:06:12 UTC"
+  },
+  "io.github.nrwl/nx-console": {
+    "name": "io.github.nrwl/nx-console",
+    "description": "A Model Context Protocol server implementation for Nx",
+    "version": "0.6.12",
+    "repository_url": "https://github.com/nrwl/nx-console",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/197",
+    "processed_at": "2025-09-30 22:06:14 UTC"
+  },
+  "io.github.pubnub/mcp-server": {
+    "name": "io.github.pubnub/mcp-server",
+    "description": "PubNub MCP for Real-time messaging. API Access and SDK documentation.",
+    "version": "1.0.106",
+    "repository_url": "https://github.com/pubnub/pubnub-mcp-server",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/198",
+    "processed_at": "2025-09-30 22:06:15 UTC"
+  },
+  "io.github.railwayapp/mcp-server": {
+    "name": "io.github.railwayapp/mcp-server",
+    "description": "Official Railway MCP server",
+    "version": "0.1.5",
+    "repository_url": "https://github.com/railwayapp/railway-mcp-server",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/199",
+    "processed_at": "2025-09-30 22:06:17 UTC"
+  },
+  "io.github.ref-tools/ref-tools-mcp": {
+    "name": "io.github.ref-tools/ref-tools-mcp",
+    "description": "Token efficient search for coding agents over public and private documentation.",
+    "version": "3.0.1",
+    "repository_url": "https://github.com/ref-tools/ref-tools-mcp",
+    "server_type": "community",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/200",
+    "processed_at": "2025-09-30 22:06:19 UTC"
+  },
+  "io.github.ruvnet/claude-flow": {
+    "name": "io.github.ruvnet/claude-flow",
+    "description": "AI orchestration with hive-mind swarms, neural networks, and 87 MCP tools for enterprise dev.",
+    "version": "2.0.0-alpha.107",
+    "repository_url": "https://github.com/ruvnet/claude-flow",
+    "server_type": "community",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/201",
+    "processed_at": "2025-09-30 22:06:21 UTC"
+  },
+  "io.github.ryanbaumann/platform-ai": {
+    "name": "io.github.ryanbaumann/platform-ai",
+    "description": "Google Maps Platform Code Assist MCP",
+    "version": "0.2.0",
+    "repository_url": "https://github.com/googlemaps/platform-ai",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/202",
+    "processed_at": "2025-09-30 22:06:22 UTC"
+  },
+  "io.github.saucelabs-sample-test-frameworks/sauce-api-mcp": {
+    "name": "io.github.saucelabs-sample-test-frameworks/sauce-api-mcp",
+    "description": "An open-source MCP server that provides LLM access to the Sauce Labs API",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/saucelabs/sauce-api-mcp",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/203",
+    "processed_at": "2025-09-30 22:06:24 UTC"
+  },
+  "io.github.schemacrawler/schemacrawler-ai": {
+    "name": "io.github.schemacrawler/schemacrawler-ai",
+    "description": "Enables natural language schema queries — explore tables, keys, procedures, and get SQL help fast",
+    "version": "v16.28.3-1",
+    "repository_url": "https://github.com/schemacrawler/SchemaCrawler-AI",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/204",
+    "processed_at": "2025-09-30 22:06:26 UTC"
+  },
+  "io.github.tuananh/hyper-mcp": {
+    "name": "io.github.tuananh/hyper-mcp",
+    "description": "📦️ A fast, secure MCP server that extends its capabilities through WebAssembly plugins",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/tuananh/hyper-mcp",
+    "server_type": "community",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/205",
+    "processed_at": "2025-09-30 22:06:27 UTC"
+  },
+  "io.github.variflight/variflight-mcp": {
+    "name": "io.github.variflight/variflight-mcp",
+    "description": "VariFlight's official MCP server provides tools to query flight, weather, comfort, and fare data.",
+    "version": "1.0.2",
+    "repository_url": "https://github.com/variflight/variflight-mcp",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/206",
+    "processed_at": "2025-09-30 22:06:29 UTC"
+  },
+  "io.github.wonderwhy-er/desktop-commander": {
+    "name": "io.github.wonderwhy-er/desktop-commander",
+    "description": "MCP server for terminal commands, file operations, and process management",
+    "version": "0.2.16",
+    "repository_url": "https://github.com/wonderwhy-er/DesktopCommanderMCP",
+    "server_type": "community",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/207",
+    "processed_at": "2025-09-30 22:06:31 UTC"
+  },
+  "io.github.yifancong/rsdoctor": {
+    "name": "io.github.yifancong/rsdoctor",
+    "description": "An MCP server that provides build analysis and optimization recommendations for Rspack projects.",
+    "version": "0.1.0",
+    "repository_url": "https://github.com/web-infra-dev/rsdoctor",
+    "server_type": "community",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/208",
+    "processed_at": "2025-09-30 22:06:33 UTC"
+  },
+  "io.github.zenml-io/mcp-zenml": {
+    "name": "io.github.zenml-io/mcp-zenml",
+    "description": "MCP server for ZenML - browse stacks, pipelines, runs, artifacts & trigger pipeline runs via API",
+    "version": "1.0.4",
+    "repository_url": "https://github.com/zenml-io/mcp-zenml",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/209",
+    "processed_at": "2025-09-30 22:06:35 UTC"
+  },
+  "io.globalping/mcp": {
+    "name": "io.globalping/mcp",
+    "description": "Interact with a global network measurement platform.Run network commands from any point in the world",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/jsdelivr/globalping-mcp-server",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/210",
+    "processed_at": "2025-09-30 22:06:36 UTC"
+  },
+  "io.scorecard/mcp": {
+    "name": "io.scorecard/mcp",
+    "description": "MCP server providing access to the Scorecard API to evaluate and optimize LLM systems.",
+    "version": "2.1.1",
+    "repository_url": "https://github.com/scorecard-ai/scorecard-node",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/211",
+    "processed_at": "2025-09-30 22:06:38 UTC"
+  },
+  "io.snyk/mcp": {
+    "name": "io.snyk/mcp",
+    "description": "Easily find and fix security issues in your applications leveraging Snyk platform capabilities.",
+    "version": "1.1299.1",
+    "repository_url": "https://github.com/snyk/snyk-ls",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/212",
+    "processed_at": "2025-09-30 22:06:40 UTC"
+  },
+  "net.gepuro.mcp-company-lens-v1/company-lens-mcp-registry": {
+    "name": "net.gepuro.mcp-company-lens-v1/company-lens-mcp-registry",
+    "description": "Search Japanese company database",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/gepuro/company-lens-mcp-registry",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/213",
+    "processed_at": "2025-09-30 22:06:41 UTC"
+  },
+  "ai.smithery/blockscout-mcp-server": {
+    "name": "ai.smithery/blockscout-mcp-server",
+    "description": "Provide AI agents and automation tools with contextual access to blockchain data including balance…",
+    "version": "1.13.1",
+    "repository_url": "https://github.com/blockscout/mcp-server",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/215",
+    "processed_at": "2025-09-30 23:50:25 UTC"
+  },
+  "ai.waystation/mcp": {
+    "name": "ai.waystation/mcp",
+    "description": "Ultimate toolbox to connect your LLM to popular productivity tools such as Monday, AirTable, Slack",
+    "version": "0.3.1",
+    "repository_url": "https://github.com/waystation-ai/mcp",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/216",
+    "processed_at": "2025-09-30 23:50:26 UTC"
+  },
+  "ai.waystation/office": {
+    "name": "ai.waystation/office",
+    "description": "Create, edit, and collaborate on Office documents and spreadsheets.",
+    "version": "0.3.1",
+    "repository_url": "https://github.com/waystation-ai/mcp",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/217",
+    "processed_at": "2025-09-30 23:50:28 UTC"
+  },
+  "com.blockscout/mcp-server": {
+    "name": "com.blockscout/mcp-server",
+    "description": "MCP server for Blockscout",
+    "version": "0.11.0",
+    "repository_url": "https://github.com/blockscout/mcp-server",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/218",
+    "processed_at": "2025-09-30 23:50:30 UTC"
+  },
+  "com.docfork/docfork-mcp": {
+    "name": "com.docfork/docfork-mcp",
+    "description": "MCP server for Docfork",
+    "version": "0.7.2",
+    "repository_url": "https://github.com/docfork/docfork-mcp",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/219",
+    "processed_at": "2025-09-30 23:50:32 UTC"
+  },
+  "com.falkordb/QueryWeaver": {
+    "name": "com.falkordb/QueryWeaver",
+    "description": "An MCP server for Text2SQL: transforms natural language into SQL using graph schema understanding.",
+    "version": "0.0.11",
+    "repository_url": "https://github.com/FalkorDB/QueryWeaver",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/220",
+    "processed_at": "2025-09-30 23:50:33 UTC"
+  },
+  "io.github.brave/brave-search-mcp-server": {
+    "name": "io.github.brave/brave-search-mcp-server",
+    "description": "Brave Search MCP Server: web results, images, videos, rich results, AI summaries, and more.",
+    "version": "2.0.24",
+    "repository_url": "https://github.com/brave/brave-search-mcp-server",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/221",
+    "processed_at": "2025-09-30 23:50:35 UTC"
+  },
+  "io.github.macuse-app/macuse": {
+    "name": "io.github.macuse-app/macuse",
+    "description": "Bridges AI assistants with native macOS functionality through the Model Context Protocol (MCP).",
+    "version": "1.0.1",
+    "repository_url": "https://github.com/macuse-app/macuse",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/222",
+    "processed_at": "2025-09-30 23:50:37 UTC"
+  },
+  "io.ignission/mcp": {
+    "name": "io.ignission/mcp",
+    "description": "TikTok video data analytics and content strategy tools",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/ignission-io/mcp",
+    "server_type": "official",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/223",
+    "processed_at": "2025-09-30 23:50:39 UTC"
+  }
+}
