@@ -1,0 +1,115 @@
+name: Brave Search
+description: 'A Model Context Protocol (MCP) server that provides comprehensive web search capabilities through the Brave Search API. It enables AI assistants to search the web, find news articles, discover videos and images, locate local businesses, and generate AI-powered summaries of search results.
+
+
+  ## Features
+
+  - **Web Search**: Fast, privacy-focused web search with customizable filters, freshness controls, and rich metadata
+
+  - **News Search**: Find breaking news and recent articles with time-based filtering
+
+  - **Image Search**: Search for images with safety filters and detailed metadata
+
+  - **Video Search**: Discover video content with duration, thumbnails, and source information
+
+  - **Local Search**: Find local businesses, restaurants, and points of interest with ratings and reviews
+
+  - **AI Summarizer**: Generate concise summaries of search results with inline references
+
+
+  ## What you''ll need to connect
+
+
+  **Required:**
+
+  - **Brave API Key**: Get your API key at [brave.com/search/api](https://brave.com/search/api). Free tier available with 2,000 queries/month.
+
+  '
+metadata:
+  categories: Retrieval & Search, SaaS & API Integrations
+icon: https://brave.com/static-assets/images/brave-logo-sans-text.svg
+repoURL: https://github.com/brave/brave-search-mcp-server
+env:
+- key: BRAVE_API_KEY
+  name: Brave API Key
+  required: true
+  sensitive: true
+  description: Your Brave Search API key. Get one at https://brave.com/search/api
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/brave-search:2.0.24
+  port: 8099
+  path: /
+  args:
+  - brave-search-mcp-server
+toolPreview:
+- name: brave_web_search
+  description: Search the web for real-time information using Brave's privacy-focused search engine. Returns comprehensive web results with titles, URLs, descriptions, and rich metadata including FAQ, discussions, videos, and news when available. Use this for general information queries, research, current events, or finding specific web pages.
+  params:
+    query: Search query (max 400 chars, 50 words)
+    count: Number of results (1-20, default 10)
+    offset: Pagination offset (max 9, default 0)
+    country: Search country code (e.g., US, GB, FR)
+    search_lang: Search language code (e.g., en, es, fr)
+    ui_lang: UI language preference (e.g., en-US, es-ES)
+    safesearch: Adult content filter (off, moderate, strict)
+    freshness: Time filter (pd=24h, pw=7d, pm=31d, py=365d, or date range)
+    text_decorations: Include highlighting markers (default true)
+    spellcheck: Enable spellcheck (default true)
+    result_filter: Filter result types (web, news, videos, locations, etc.)
+    goggles: Custom Goggle URL or definition for re-ranking
+    units: Measurement units (metric or imperial)
+    extra_snippets: Get up to 5 additional excerpts (requires Pro plan)
+    summary: Enable summary key generation for summarizer (requires Pro AI plan)
+- name: brave_news_search
+  description: Search for news articles and breaking news using Brave's News Search API. Returns recent news stories with titles, URLs, descriptions, and publication timestamps. Ideal for finding current events, news updates, and articles about specific topics or entities. Always cite sources with hyperlinks when sharing results.
+  params:
+    query: Search query (max 400 chars, 50 words)
+    count: Number of results (1-50, default 20)
+    offset: Pagination offset (max 9, default 0)
+    country: Search country code
+    search_lang: Search language code
+    ui_lang: UI language preference
+    safesearch: Adult content filter (off, moderate, strict)
+    freshness: Time filter (default pd=24h)
+    spellcheck: Enable spellcheck (default true)
+    goggles: Custom Goggle for re-ranking
+    extra_snippets: Get additional excerpts (requires Pro plan)
+- name: brave_image_search
+  description: Search for images using Brave's Image Search API. Returns image results with URLs, dimensions, thumbnails, and confidence ratings. Helpful for finding pictures of people, places, things, graphic design ideas, art inspiration, and more. Includes safety filtering options.
+  params:
+    query: Search query (max 400 chars, 50 words)
+    count: Number of results (1-200, default 50)
+    country: Search country code
+    search_lang: Search language code
+    safesearch: Adult content filter (off, strict - default strict)
+    spellcheck: Enable spellcheck (default true)
+- name: brave_video_search
+  description: Search for videos using Brave's Video Search API. Returns video results with titles, URLs, descriptions, durations, thumbnails, and creator information. Useful for discovering video content, tutorials, entertainment, or videos from specific creators/publishers.
+  params:
+    query: Search query (max 400 chars, 50 words)
+    count: Number of results (1-50, default 20)
+    offset: Pagination offset (max 9, default 0)
+    country: Search country code
+    search_lang: Search language code
+    ui_lang: UI language preference
+    safesearch: Adult content filter (off, moderate, strict)
+    freshness: Time filter (pd, pw, pm, py, or date range)
+    spellcheck: Enable spellcheck (default true)
+- name: brave_local_search
+  description: Search for local businesses and places using Brave's Local Search API. Returns detailed information including business names, addresses, ratings, review counts, phone numbers, and opening hours. Best for queries about physical locations, restaurants, services, or searches with 'near me' intent. Requires Brave Search API Pro plan. Falls back to web search if no local results found.
+  params:
+    query: Search query with location context
+    count: Number of results (1-20, default 10)
+    offset: Pagination offset (max 9, default 0)
+    country: Search country code
+    search_lang: Search language code
+    safesearch: Adult content filter
+    spellcheck: Enable spellcheck (default true)
+- name: brave_summarizer
+  description: Generate AI-powered summaries of web search results using Brave's Summarizer API. Creates concise, coherent summaries that synthesize information from multiple sources. Useful for quick overviews of complex topics, fact-checking, or research tasks. Must first perform web search with summary=true parameter. Requires Brave Search API Pro AI plan.
+  params:
+    key: Summary key from search results (required)
+    entity_info: Include extra entity information (default false)
+    inline_references: Add inline source references (default false)
+
