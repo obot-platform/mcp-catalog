@@ -1,0 +1,40 @@
+name: MarkItDown
+description: 'A Model Context Protocol (MCP) server that provides powerful file-to-Markdown conversion capabilities. Convert various document formats and web content to clean, structured Markdown optimized for LLM consumption.
+
+
+  ## Features
+
+  - **Multi-Format Support**: Convert PDF, PowerPoint, Word, Excel, Images (with OCR), Audio (with transcription), HTML, CSV, JSON, XML, ZIP files, EPubs, and YouTube URLs
+
+  - **Structure Preservation**: Maintains important document structure including headings, lists, tables, and links in Markdown format
+
+  - **LLM-Optimized Output**: Markdown output is designed specifically for large language model processing and text analysis pipelines
+
+  - **Metadata Extraction**: Extracts EXIF metadata from images and audio files
+
+  - **Web Content**: Fetch and convert web pages and online documents via HTTP/HTTPS URLs
+
+  - **Token Efficient**: Markdown conventions are highly token-efficient for LLM applications
+
+
+  ## What you''ll need to connect
+
+
+  **No Setup Required**: MarkItDown works out-of-the-box with no API keys or configuration needed. Simply provide a URI (http://, https://, file://, or data:) to convert content to Markdown.
+
+  '
+metadata:
+  categories: Document Processing
+icon: https://avatars.githubusercontent.com/u/6154722?s=48&v=4
+repoURL: https://github.com/microsoft/markitdown/tree/main/packages/markitdown-mcp
+toolPreview:
+- name: convert_to_markdown
+  description: Convert files and web content to Markdown format. Supports PDF, Office documents, images, audio, HTML, and more.
+  params:
+    uri: The URI of the content to convert (supports http://, https://, file://, data:)
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/markitdown:main
+  port: 8099
+  path: /mcp
+
