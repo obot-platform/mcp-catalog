@@ -1,0 +1,58 @@
+name: Ref
+description: '![Ref MCP](https://github.com/ref-tools/ref-tools-mcp/raw/main/header.png)
+
+
+  ![GitHub Repo stars](https://img.shields.io/github/stars/ref-tools/ref-tools-mcp?style=social)
+
+
+  A Model Context Protocol (MCP) server that provides token-efficient search over public and private documentation. Ref MCP is designed to stop hallucinations by giving your AI coding tool or agent access to accurate, up-to-date documentation for APIs, services, libraries, and frameworks in a fast and token-efficient way.
+
+
+  ## Features
+
+  - **Agentic Documentation Search**: Intelligent search designed to match how models search while using minimal context to reduce context rot
+
+  - **Token Efficiency**: Filters repeated search results in sessions and fetches only the most relevant 5k tokens from documentation pages
+
+  - **Public & Private Docs**: Search across web documentation, GitHub repositories, and private resources like repos and PDFs
+
+  - **Smart Context Management**: Uses MCP sessions to track search trajectory and minimize context usage
+
+  - **URL Content Fetching**: Convert web pages to markdown with intelligent section filtering based on search history
+
+
+  ## What you''ll need to connect
+
+
+  **Required:**
+
+  - **Ref API Key**: Sign up at [ref.tools](https://ref.tools) to get your API key
+
+  '
+metadata:
+  categories: Retrieval & Search, Documentation, Developer Tools
+icon: https://avatars.githubusercontent.com/u/210568548?s=48&v=4
+repoURL: https://github.com/ref-tools/ref-tools-mcp
+env:
+- key: REF_API_KEY
+  name: Ref API Key
+  required: true
+  sensitive: true
+  description: Your Ref API key. Sign up at https://ref.tools to get one
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/ref:3.0.1
+  port: 8099
+  path: /
+  args:
+  - ref-tools-mcp
+toolPreview:
+- name: ref_search_documentation
+  description: Search technical documentation from public and private sources. Use this tool when you need to find facts, code snippets, or API documentation. Can search web documentation, GitHub repositories, and private resources. Returns relevant documentation snippets with URLs. The search is optimized to avoid returning duplicate results in the same session and provides exactly what you need with minimal token usage.
+  params:
+    query: Query to search for relevant documentation. Should be a full sentence or question (e.g., "How to authenticate with FastAPI OAuth2?" or "React hooks best practices"). Can include 'ref_src=private' to search private documentation.
+- name: ref_read_url
+  description: Fetch and read content from a URL, converting it to clean markdown format. Use this tool to read the full content from URLs returned by ref_search_documentation. Ref intelligently extracts the most relevant 5k tokens from the page based on your search history, filtering out irrelevant sections. This is more efficient than standard web scraping which can pull in 20k+ tokens of mostly irrelevant content.
+  params:
+    url: The complete URL of the webpage to read (typically from ref_search_documentation results)
+
