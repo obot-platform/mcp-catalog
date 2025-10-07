@@ -36,5 +36,7 @@ runtime: containerized
 containerizedConfig:
   image: ghcr.io/obot-platform/mcp-images/markitdown:main
   port: 8099
-  path: /mcp
+  path: /
+  args:
+  - markitdown-mcp
 
