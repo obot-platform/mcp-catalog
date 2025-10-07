@@ -33,19 +33,16 @@ metadata:
   categories: Retrieval & Search, Documentation, Developer Tools
 icon: https://avatars.githubusercontent.com/u/210568548?s=48&v=4
 repoURL: https://github.com/ref-tools/ref-tools-mcp
-env:
-- key: REF_API_KEY
-  name: Ref API Key
-  required: true
-  sensitive: true
-  description: Your Ref API key. Sign up at https://ref.tools to get one
-runtime: containerized
-containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/ref:3.0.1
-  port: 8099
-  path: /
-  args:
-  - ref-tools-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.ref.tools/mcp
+  headers:
+  - name: Ref API Key
+    description: Ref API Key
+    key: x-ref-api-key
+    required: true
+    sensitive: true
+
 toolPreview:
 - name: ref_search_documentation
   description: Search technical documentation from public and private sources. Use this tool when you need to find facts, code snippets, or API documentation. Can search web documentation, GitHub repositories, and private resources. Returns relevant documentation snippets with URLs. The search is optimized to avoid returning duplicate results in the same session and provides exactly what you need with minimal token usage.
