@@ -117,7 +117,7 @@ toolPreview:
     projectId: Project ID to list alerts for
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/mongodb-atlas:0.3.0
+  image: ghcr.io/obot-platform/mcp-images/mongodb-atlas:1.0.2
   port: 8099
   path: /
   args:
