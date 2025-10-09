@@ -116,6 +116,6 @@ containerizedConfig:
   port: 8099
   path: /
   args:
-    - redis-mcp-server
-    - --url
-    - ${REDIS_URI}
+  - redis-mcp-server
+  - --url
+  - ${REDIS_URI}
