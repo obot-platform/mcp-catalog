@@ -73,7 +73,7 @@ toolPreview:
     taskId: The task ID returned from deep_researcher_start
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/exa-search:2.1.0
+  image: ghcr.io/obot-platform/mcp-images/exa-search:3.0.5
   port: 8099
   path: /
   args:
