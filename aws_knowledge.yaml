@@ -1,0 +1,75 @@
+name: AWS Knowledge
+description: 'A Model Context Protocol (MCP) server that provides comprehensive AWS knowledge access including documentation search, regional availability checking, and content recommendations. Built and hosted by AWS Labs.
+
+
+  ## Features
+
+  - **Regional Availability**: Check AWS service and resource availability across regions for both API operations and CloudFormation resources
+
+  - **Region Information**: List all AWS regions with their identifiers and friendly names
+
+  - **Documentation Search**: Search across all AWS documentation using the official AWS Documentation Search API
+
+  - **Documentation Reader**: Fetch and convert AWS documentation pages to markdown format with pagination support
+
+  - **Content Recommendations**: Get related documentation recommendations including highly rated, new, similar, and commonly viewed next pages
+
+
+  ## What you''ll need to connect
+
+
+  **No Setup Required**: AWS Knowledge MCP server is hosted by AWS and works out-of-the-box with no API keys or configuration needed.
+
+
+  ## Basic Usage
+
+
+  Examples:
+
+  - "Is AWS Lambda available in eu-west-1?"
+
+  - "Check if AWS::EC2::Instance CloudFormation resource is available in ap-southeast-2"
+
+  - "List all AWS regions"
+
+  - "Search for S3 bucket versioning documentation"
+
+  - "Read documentation from https://docs.aws.amazon.com/lambda/latest/dg/lambda-invocation.html"
+
+  - "Recommend related content for the Lambda invocation documentation page"
+
+  '
+metadata:
+  categories: Documentation & Learning, Developer Tools
+icon: https://avatars.githubusercontent.com/u/3299148?s=48&v=4
+repoURL: https://github.com/awslabs/mcp/tree/main/src/aws-knowledge-mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://knowledge-mcp.global.api.aws
+toolPreview:
+- name: get_regional_availability
+  description: Retrieve AWS regional availability information for SDK service APIs and CloudFormation resources. Check real-time availability across AWS regions with support for batch queries and filtering.
+  params:
+    region: Target AWS region code (e.g., us-east-1, eu-west-1, ap-southeast-2)
+    resource_type: Type of AWS resource to check - 'api' for API operations or 'cfn' for CloudFormation resources
+    filters: Optional list of specific resources to check. For APIs use format 'SdkServiceId+APIOperation' (e.g., ['IAM+GetSSHPublicKey']). For CloudFormation use resource type (e.g., ['AWS::EC2::Instance'])
+    next_token: Pagination token for retrieving additional results (only when no filters specified)
+- name: list_regions
+  description: Retrieve a list of all AWS regions including their region codes and human-friendly names. Useful for infrastructure planning and region validation.
+  params: {}
+- name: read_documentation
+  description: Fetch and convert an AWS documentation page to markdown format. Supports pagination for long documents through start_index parameter. Works with docs.aws.amazon.com and aws.amazon.com domains.
+  params:
+    url: URL of the AWS documentation page to read
+    max_length: Maximum number of characters to return (optional)
+    start_index: Starting character index for pagination of long documents (optional)
+- name: search_documentation
+  description: Search AWS documentation using the official AWS Documentation Search API. Searches across AWS docs, blogs, solutions library, getting started guides, architecture center, and prescriptive guidance.
+  params:
+    search_phrase: Search phrase to use (use specific technical terms and include service names for better results)
+    limit: Maximum number of results to return (optional)
+- name: recommend
+  description: Get content recommendations for an AWS documentation page. Returns four categories - highly rated (popular pages), new (recently added), similar (related topics), and journey (commonly viewed next).
+  params:
+    url: URL of the AWS documentation page to get recommendations for (must be from docs.aws.amazon.com domain)
+
