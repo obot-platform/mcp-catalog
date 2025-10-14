@@ -1,0 +1,120 @@
+name: AWS API
+description: 'A Model Context Protocol (MCP) server for AWS CLI operations. Execute AWS CLI commands and get intelligent command suggestions across all AWS services safely and efficiently.
+
+
+  ## Features
+
+  - **Universal AWS CLI Access**: Execute any AWS CLI command across all AWS services
+
+  - **Intelligent Command Suggestions**: Get AI-powered suggestions for AWS CLI commands based on natural language queries
+
+  - **Multi-Service Support**: Work with EC2, S3, Lambda, IAM, RDS, DynamoDB, and 200+ other AWS services
+
+  - **Built-in Validation**: Commands are validated before execution to prevent errors
+
+  - **Automatic Pagination**: Handle large result sets with automatic pagination support
+
+
+  ## What you''ll need to connect
+
+
+  **Required AWS Credentials:**
+
+  - **AWS Access Key ID**: Your AWS credential access key
+
+  - **AWS Secret Access Key**: Your AWS credential access secret
+
+
+  **Optional Configuration:**
+
+  - **AWS Region**: AWS region to use (default: `us-east-1`)
+
+  - **AWS Session Token**: Required only for temporary credentials like SSO or STS AssumeRole
+
+
+  **IAM Permissions Required:**
+
+  - Permissions depend on the AWS services you want to interact with
+
+  - For read-only operations: Consider using AWS managed policy `ReadOnlyAccess`
+
+  - For administrative access: Use appropriate service-specific policies
+
+
+  ## Basic Usage
+
+
+  ### Common Workflows
+
+
+  1. **Identity Verification**: Check your AWS credentials and account information
+
+  2. **Resource Discovery**: List and discover AWS resources across services
+
+  3. **Resource Management**: Create, update, and manage AWS resources
+
+  4. **Query and Monitoring**: Query resource states and monitor your infrastructure
+
+
+  ### Simple Examples
+
+
+  - "List all my S3 buckets"
+
+  - "Show me all running EC2 instances"
+
+  - "Get my AWS account information"
+
+  - "List all Lambda functions in us-west-2"
+
+  - "Describe my RDS instances"
+
+  - "Show IAM users in my account"
+
+  - "Create a new S3 bucket named my-new-bucket"
+
+  '
+metadata:
+  categories: Infrastructure,Cloud Services,DevOps
+icon: https://avatars.githubusercontent.com/u/3299148?s=48&v=4
+repoURL: https://github.com/awslabs/mcp/tree/main/src/aws-api-mcp-server
+env:
+- key: AWS_ACCESS_KEY_ID
+  name: AWS Access Key ID
+  required: true
+  sensitive: true
+  description: Your AWS Access Key ID
+- key: AWS_SECRET_ACCESS_KEY
+  name: AWS Secret Access Key
+  required: true
+  sensitive: true
+  description: AWS Secret Access Key
+- key: AWS_SESSION_TOKEN
+  name: AWS Session Token
+  required: false
+  sensitive: true
+  description: AWS Session Token, only required if using temporary credentials such as temporary AWS credentials, such as those obtained through aws sso login or other temporary access methods (for example, STS AssumeRole)
+- key: AWS_REGION
+  name: AWS Region
+  required: false
+  sensitive: false
+  description: AWS Region, default to us-east-1
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/aws-api:1.0.1
+  port: 8099
+  path: /
+  args:
+  - awslabs.aws-api-mcp-server
+toolPreview:
+- name: call_aws
+  description: Execute AWS CLI commands with validation and proper error handling. Supports any AWS service and operation.
+  params:
+    cli_command: The complete AWS CLI command to execute (must start with "aws")
+    max_results: Optional limit for number of results (useful for pagination)
+- name: suggest_aws_commands
+  description: Get AI-powered suggestions for AWS CLI commands based on natural language queries
+  params:
+    query: A natural language description of what you want to accomplish in AWS
+
+
