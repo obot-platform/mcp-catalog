@@ -33,7 +33,7 @@ description: '![Tavily Crawl Beta](https://raw.githubusercontent.com/tavily-ai/t
 
   **Required:**
 
-  - **Tavily API Key**: Get your free API key at [app.tavily.com](https://app.tavily.com/home), make sure to add the prefix "Bearer ", for example -- "Bearer <your_api_key>"
+  - **Tavily API Key**: Get your free API key at [app.tavily.com](https://app.tavily.com/home)
 
   '
 metadata:
@@ -44,11 +44,12 @@ runtime: remote
 remoteConfig:
   fixedURL: https://mcp.tavily.com/mcp/
   headers:
-  - name: Tavily API Key with prefix "Bearer "
-    description: Tavily API Key, make sure to add the prefix "Bearer ", for example -- "Bearer <your_api_key>"
+  - name: Tavily API Key
+    description: Tavily API Key
     key: Authorization
     required: true
     sensitive: true
+    prefix: "Bearer "
 toolPreview:
 - name: tavily_search
   description: Search the web for real-time information about any topic. Use this tool when you need up-to-date information that might not be available in your training data, or when you need to verify current facts. The search results will include relevant snippets and URLs from web pages. This is particularly useful for questions about current events, technology updates, or any topic that requires recent information.
