@@ -26,7 +26,7 @@ description: 'A Model Context Protocol (MCP) server that enables you to manage y
 
   **Required:**
 
-  - **Render API Key**: Create an API key from your Render Account Settings page at [dashboard.render.com/account/settings](https://dashboard.render.com/account/settings). Add the prefix "Bearer ", for example -- "Bearer <your_api_key>"
+  - **Render API Key**: Create an API key from your Render Account Settings page at [dashboard.render.com/account/settings](https://dashboard.render.com/account/settings)
 
 
   **Note:** Render API keys are broadly scoped and grant access to all workspaces and services your account can access. Before using, ensure you''re comfortable granting these permissions to your AI app.
@@ -40,11 +40,12 @@ runtime: remote
 remoteConfig:
   fixedURL: https://mcp.render.com/mcp
   headers:
-  - name: Render API Key with prefix "Bearer "
-    description: Render API Key, make sure to add the prefix "Bearer ", for example -- "Bearer <your_api_key>"
+  - name: Render API Key
+    description: Render API Key
     key: Authorization
     required: true
     sensitive: true
+    prefix: "Bearer "
 toolPreview:
 - name: mcp_render_list_workspaces
   description: List the workspaces that you have access to
