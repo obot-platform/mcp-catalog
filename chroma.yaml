@@ -40,20 +40,20 @@ icon: https://avatars.githubusercontent.com/u/105881770?s=48&v=4
 repoURL: https://github.com/chroma-core/chroma-mcp
 env:
 - key: CHROMA_TENANT
-  name: Tenant ID
+  name: Chroma Cloud Tenant ID
   required: false
   sensitive: false
-  description: Chroma Cloud tenant identifier (required for cloud client)
+  description: Chroma Cloud tenant identifier
 - key: CHROMA_DATABASE
-  name: Database Name
+  name: Chroma Cloud Database Name
   required: false
   sensitive: false
-  description: Database name (required for cloud client)
+  description: Database name
 - key: CHROMA_API_KEY
-  name: API Key
+  name: Chroma Cloud API Key
   required: false
   sensitive: true
-  description: API key for Chroma Cloud (required for cloud client)
+  description: API key for Chroma Cloud
 runtime: containerized
 containerizedConfig:
   image: ghcr.io/obot-platform/mcp-images/chroma:0.2.6
