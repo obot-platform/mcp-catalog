@@ -1,0 +1,151 @@
+name: Chroma Cloud
+description: 'A Model Context Protocol (MCP) server implementation that provides database capabilities for Chroma, the open-source embedding database. This server enables AI models to create collections, store documents with embeddings, and retrieve data using vector search, full-text search, metadata filtering, and more.
+
+
+  ## Features
+
+  - **Collection Management**: Create, modify, delete, and list collections with configurable HNSW parameters
+
+  - **Document Operations**: Add, query, update, and delete documents with optional metadata
+
+  - **Advanced Search**: Semantic search with vector embeddings, full-text search, and metadata filtering
+
+  - **Multiple Embedding Functions**: Support for default, Cohere, OpenAI, Jina, Voyage AI, and Roboflow embedding functions
+
+
+  ## What you''ll need to connect
+
+  - **Tenant ID**: Your Chroma Cloud tenant identifier
+
+  - **Database Name**: Your database name
+
+  - **API Key**: Your Chroma Cloud API key
+
+  ## Examples
+
+  - **Create Collection**: "Create a collection named ''customer-support'' with OpenAI embeddings"
+
+  - **Add Documents**: "Add these support messages to the collection with their metadata"
+
+  - **Semantic Search**: "Find documents similar to ''billing issues'' in the support collection"
+
+  - **Metadata Filtering**: "Get all documents from the category ''technical'' created after January 2025"
+
+  - **Update Documents**: "Update the document with ID ''doc123'' to include new metadata"
+
+  '
+metadata:
+  categories: Database, Developer Tools, AI & Machine Learning
+icon: https://avatars.githubusercontent.com/u/105881770?s=48&v=4
+repoURL: https://github.com/chroma-core/chroma-mcp
+env:
+- key: CHROMA_TENANT
+  name: Tenant ID
+  required: false
+  sensitive: false
+  description: Chroma Cloud tenant identifier (required for cloud client)
+- key: CHROMA_DATABASE
+  name: Database Name
+  required: false
+  sensitive: false
+  description: Database name (required for cloud client)
+- key: CHROMA_API_KEY
+  name: API Key
+  required: false
+  sensitive: true
+  description: API key for Chroma Cloud (required for cloud client)
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/chroma:0.2.6
+  port: 8099
+  path: /
+  args:
+  - chroma-mcp
+  - --client-type
+  - cloud
+  - --tenant
+  - ${CHROMA_TENANT}
+  - --database
+  - ${CHROMA_DATABASE}
+  - --api-key
+  - ${CHROMA_API_KEY}
+toolPreview:
+- name: chroma_list_collections
+  description: List all collections with pagination support
+  params:
+    limit: Maximum number of collections to return (optional)
+    offset: Number of collections to skip before returning results (optional)
+- name: chroma_create_collection
+  description: Create a new collection with configurable HNSW parameters and embedding function
+  params:
+    collection_name: Name of the collection to create
+    embedding_function_name: Name of the embedding function to use (default, cohere, openai, jina, voyageai, roboflow) (optional)
+    metadata: Optional metadata dict to add to the collection (optional)
+- name: chroma_peek_collection
+  description: Peek at documents in a collection
+  params:
+    collection_name: Name of the collection to peek into
+    limit: Number of documents to peek at (default is 5) (optional)
+- name: chroma_get_collection_info
+  description: Get detailed information about a collection including sample documents
+  params:
+    collection_name: Name of the collection to get info about
+- name: chroma_get_collection_count
+  description: Get the number of documents in a collection
+  params:
+    collection_name: Name of the collection to count
+- name: chroma_modify_collection
+  description: Modify a collection's name or metadata
+  params:
+    collection_name: Name of the collection to modify
+    new_name: Optional new name for the collection (optional)
+    new_metadata: Optional new metadata for the collection (optional)
+- name: chroma_fork_collection
+  description: Fork a collection to create a copy
+  params:
+    collection_name: Name of the collection to fork
+    new_collection_name: Name of the new collection to create
+- name: chroma_delete_collection
+  description: Delete a collection
+  params:
+    collection_name: Name of the collection to delete
+- name: chroma_add_documents
+  description: Add documents to a collection with optional metadata and custom IDs
+  params:
+    collection_name: Name of the collection to add documents to
+    documents: List of text documents to add
+    ids: List of IDs for the documents (required)
+    metadatas: Optional list of metadata dictionaries for each document (optional)
+- name: chroma_query_documents
+  description: Query documents using semantic search with advanced filtering
+  params:
+    collection_name: Name of the collection to query
+    query_texts: List of query texts to search for
+    n_results: Number of results to return per query (default is 5) (optional)
+    where: Optional metadata filters using Chroma's query operators (optional)
+    where_document: Optional document content filters (optional)
+    include: List of what to include in response (optional)
+- name: chroma_get_documents
+  description: Get documents from a collection with optional filtering and pagination
+  params:
+    collection_name: Name of the collection to get documents from
+    ids: Optional list of document IDs to retrieve (optional)
+    where: Optional metadata filters using Chroma's query operators (optional)
+    where_document: Optional document content filters (optional)
+    include: List of what to include in response (optional)
+    limit: Optional maximum number of documents to return (optional)
+    offset: Optional number of documents to skip (optional)
+- name: chroma_update_documents
+  description: Update existing documents' content, metadata, or embeddings
+  params:
+    collection_name: Name of the collection to update documents in
+    ids: List of document IDs to update (required)
+    embeddings: Optional list of new embeddings for the documents (optional)
+    metadatas: Optional list of new metadata dictionaries (optional)
+    documents: Optional list of new text documents (optional)
+- name: chroma_delete_documents
+  description: Delete specific documents from a collection
+  params:
+    collection_name: Name of the collection to delete documents from
+    ids: List of document IDs to delete
+
