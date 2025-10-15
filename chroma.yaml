@@ -13,7 +13,7 @@ description: 'A Model Context Protocol (MCP) server implementation that provides
   - **Multiple Embedding Functions**: Support for default, Cohere, OpenAI, Jina, Voyage AI, and Roboflow embedding functions
 
 
-  ## What you''ll need to connect
+  ## What you'll need to connect
 
   - **Tenant ID**: Your Chroma Cloud tenant identifier
 
