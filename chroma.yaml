@@ -13,7 +13,7 @@ description: 'A Model Context Protocol (MCP) server implementation that provides
   - **Multiple Embedding Functions**: Support for default, Cohere, OpenAI, Jina, Voyage AI, and Roboflow embedding functions
 
 
-  ## What you'll need to connect
+  ## What you''ll need to connect
 
   - **Tenant ID**: Your Chroma Cloud tenant identifier
 
@@ -23,16 +23,12 @@ description: 'A Model Context Protocol (MCP) server implementation that provides
 
   ## Examples
 
-  - **Create Collection**: "Create a collection named 'customer-support' with OpenAI embeddings"
-
+  - **Create Collection**: "Create a collection named ''customer-support'' with OpenAI embeddings"
   - **Add Documents**: "Add these support messages to the collection with their metadata"
-
-  - **Semantic Search**: "Find documents similar to 'billing issues' in the support collection"
-
-  - **Metadata Filtering**: "Get all documents from the category 'technical' created after January 2025"
-
-  - **Update Documents**: "Update the document with ID 'doc123' to include new metadata"
-
+  - **Semantic Search**: "Find documents similar to ''billing issues'' in the support collection"
+  - **Metadata Filtering**: "Get all documents from the category ''technical'' created after January 2025"
+  - **Update Documents**: "Update the document with ID ''doc123'' to include new metadata"
+  '
 metadata:
   categories: Database, Developer Tools, AI & Machine Learning
 icon: https://avatars.githubusercontent.com/u/105881770?s=48&v=4
@@ -40,17 +36,17 @@ repoURL: https://github.com/chroma-core/chroma-mcp
 env:
 - key: CHROMA_TENANT
   name: Chroma Cloud Tenant ID
-  required: false
+  required: true
   sensitive: false
   description: Chroma Cloud tenant identifier
 - key: CHROMA_DATABASE
   name: Chroma Cloud Database Name
-  required: false
+  required: true
   sensitive: false
   description: Database name
 - key: CHROMA_API_KEY
   name: Chroma Cloud API Key
-  required: false
+  required: true
   sensitive: true
   description: API key for Chroma Cloud
 runtime: containerized
