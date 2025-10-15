@@ -100,7 +100,7 @@ env:
   description: Telemetry collection is on by default, to opt out, set this to false.
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/azure:0.8.4
+  image: ghcr.io/obot-platform/mcp-images/azure:0.9.1
   port: 8099
   path: /
   args:
