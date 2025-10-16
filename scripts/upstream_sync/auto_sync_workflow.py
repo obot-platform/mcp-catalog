@@ -15,8 +15,9 @@ import math
 import datetime as dt
 from typing import List, Dict, Optional, Tuple
 from urllib.parse import urlparse, urlunparse
-
 import requests
+from bs4 import BeautifulSoup
+
 import yaml
 from packaging.version import Version, InvalidVersion
 from openai import OpenAI
@@ -26,7 +27,8 @@ from openai import OpenAI
 # =============================================================================
 
 # Registry and repository configuration
-REGISTRY_URL = os.getenv("REGISTRY_URL", "https://registry.modelcontextprotocol.io/v0/servers")
+MODELCONTEXTPROTOCOL_REGISTRY_URL = "https://registry.modelcontextprotocol.io/v0/servers"
+GITHUB_MCP_REGISTRY_URL = "https://github.com/mcp"
 TARGET_REPO_FULL = os.getenv("GITHUB_REPOSITORY", "obot-platform/mcp-catalog")
 CATALOG_OWNER = os.getenv("CATALOG_OWNER", "obot-platform")
 CATALOG_REPO = os.getenv("CATALOG_REPO", "mcp-catalog")
@@ -120,13 +122,53 @@ def _parse_ver_str(v: Optional[str]) -> Optional[Version]:
     except InvalidVersion:
         return None
 
-def fetch_registry_servers() -> list[dict]:
+
+def pull_github_mcp_registry(url: str = GITHUB_MCP_REGISTRY_URL) -> dict:
+
+    HEADERS = {
+        "User-Agent": "curl/8.5 (compatible; mcp-scraper)",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.7",
+    }
+    r = requests.get(url, headers=HEADERS, timeout=30)
+    r.raise_for_status()
+    soup = BeautifulSoup(r.text, "html.parser")
+
+    script = soup.find("script", attrs={
+        "type": "application/json",
+        "data-target": "react-app.embeddedData",
+    })
+    if not script or not script.string:
+        # Fallback: scan any JSON script for the key we need
+        for cand in soup.find_all("script", attrs={"type": "application/json"}):
+            if cand.string and "mcpRegistryRoute" in cand.string:
+                script = cand
+                break
+    if not script or not script.string:
+        raise RuntimeError("Embedded JSON payload not found.")
+
+    try:
+        data = json.loads(script.string)
+    except json.JSONDecodeError as e:
+        # GitHub sometimes includes HTML-escaped sequences; try unescape
+        from html import unescape
+        data = json.loads(unescape(script.string))
+
+    data = data["payload"]["mcpRegistryRoute"]["serversData"]["servers"]
+    # reformat it properly
+    for p in data:
+        p["repository"] = {"url" : p["url"]}
+        p["active"] = "active"
+    return data
+
+
+def fetch_modelcontextprotocol_registry_servers() -> list[dict]:
     """Fetch all servers with pagination; keep only the highest version per server."""
     best: dict[str, Tuple[Optional[Version], dict]] = {}  # key -> (semver, entry)
     params, attempts = {"limit": 100}, 0
 
     while True:
-        r = SESSION.get(REGISTRY_URL, params=params, timeout=30)
+        r = SESSION.get(MODELCONTEXTPROTOCOL_REGISTRY_URL, params=params, timeout=30)
         if r.status_code >= 500 and attempts < 3:
             attempts += 1
             time.sleep(2 ** attempts)
@@ -506,7 +548,7 @@ def filter_group_x_ai(servers: List[dict], catalog_entries: List[dict], existing
         url = server.get("repository", {}).get("url", "")
         if url:
             if normalize_url(url) in url_sets:
-                print(f"Skipping server {server.get('name')} {url} because it already exists in the catalog, URL duplicate.")
+                print(f"[SKIP] Skipping server {server.get('name')} {url} because it already exists in the catalog, URL duplicate.")
                 continue
                 
         owner, repo = parse_repo_url(url)
@@ -783,8 +825,10 @@ def main():
     
     # Step 1: Fetch servers from registry
     print("Fetching servers from MCP registry...")
-    servers = fetch_registry_servers()
-    print(f"Found {len(servers)} servers from registry")
+    modelcontextprotocol_servers = fetch_modelcontextprotocol_registry_servers()
+    github_mcp_servers = pull_github_mcp_registry()
+    servers = modelcontextprotocol_servers + github_mcp_servers
+    print(f"Found {len(modelcontextprotocol_servers)} servers from modelcontextprotocol registry and {len(github_mcp_servers)} from github mcp registry")
 
     # Step 2: Load existing catalog IDs to avoid duplicates
     print("\nLoading existing catalog IDs...")
