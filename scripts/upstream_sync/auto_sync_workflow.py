@@ -602,18 +602,18 @@ def filter_group_x_ai(servers: List[dict], catalog_entries: List[dict], existing
 
         full_name = server.get("name")
         if full_name in existing_servers:
-            print(f"Skipping server {full_name} because it already exists in the state index.")
+            # print(f"Skipping server {full_name} because it already exists in the state index.")
             continue
             
         name = full_name.split("/")[-1].lower()
         if name != "mcp" and name in one_long_name_str:
-            print(f"[SKIP] Skipping server {full_name} because it is a duplicate of an existing server in the catalog.")
+            # print(f"[SKIP] Skipping server {full_name} because it is a duplicate of an existing server in the catalog.")
             continue
         
         url = server.get("repository", {}).get("url", "")
         if url:
             if normalize_url(url) in url_sets:
-                print(f"[SKIP] Skipping server {server.get('name')} {url} because it already exists in the catalog, URL duplicate.")
+                # print(f"[SKIP] Skipping server {server.get('name')} {url} because it already exists in the catalog, URL duplicate.")
                 continue
                 
         owner, repo = parse_repo_url(url)
@@ -641,7 +641,6 @@ def filter_group_x_ai(servers: List[dict], catalog_entries: List[dict], existing
                 "reason": cached_result["ai_reason"]
             }
             cache_hits += 1
-            print(f"  💾 Using cached AI decision for {owner}/{repo}")
         else:
             # Call AI judge to determine official vs community
             ai_response = gpt_judge_service_ownership(server)
@@ -665,8 +664,6 @@ def filter_group_x_ai(servers: List[dict], catalog_entries: List[dict], existing
         # Determine final classification
         if ai_result["decision"] == "official":
             server["kind"] = "official"
-            print(f"  ✅ Official: {owner}/{repo} (AI confidence: {ai_result['confidence']:.2f})")
-            print(f"    🤖 AI: {ai_result['reason']}")
             filtered_servers.append(server)
             
         elif ai_result["decision"] == "community":
@@ -675,16 +672,7 @@ def filter_group_x_ai(servers: List[dict], catalog_entries: List[dict], existing
             
             if community_ok:
                 server["kind"] = "community"
-                print(f"  ✓ Community: {owner}/{repo} (AI confidence: {ai_result['confidence']:.2f}, stars: {m['stars']}, recent: {days_since(m['pushed_at']):.0f}d)")
-                print(f"    🤖 AI: {ai_result['reason']}")
                 filtered_servers.append(server)
-            else:
-                print(f"  ✗ Community (filtered): {owner}/{repo} - insufficient stars ({m['stars']}) or not recent ({days_since(m['pushed_at']):.0f}d)")
-                print(f"    🤖 AI: {ai_result['reason']}")
-        
-        else:  # uncertain
-            print(f"  ❓ Uncertain: {owner}/{repo} (AI confidence: {ai_result['confidence']:.2f})")
-            print(f"    🤖 AI: {ai_result['reason']}")
 
     official_count = len([s for s in filtered_servers if s.get("kind") == "official"])
     community_count = len([s for s in filtered_servers if s.get("kind") == "community"])
