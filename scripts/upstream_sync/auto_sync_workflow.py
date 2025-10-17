@@ -540,10 +540,6 @@ def check_display_name_overlaps(filtered_servers: List[dict], catalog_entries: L
             catalog_names.add(normalized)
             catalog_display_names[normalized] = name
     
-    print(f"\nChecking display_name overlaps...")
-    print(f"  Catalog entries: {len(catalog_entries)}")
-    print(f"  Filtered servers to check: {len(filtered_servers)}")
-    print("="*80)
     
     servers_with_display_name = 0
     
@@ -560,8 +556,6 @@ def check_display_name_overlaps(filtered_servers: List[dict], catalog_entries: L
         # Check if display_name matches any catalog entry
         if normalized_display in catalog_names:
             catalog_match = catalog_display_names[normalized_display]
-            print(f"  ⚠ OVERLAP: '{display_name}' (from {server.get('name', 'unknown')})")
-            print(f"           matches catalog entry '{catalog_match}'")
             overlapping.append({
                 'server': server,
                 'display_name': display_name,
@@ -582,8 +576,6 @@ def check_display_name_overlaps(filtered_servers: List[dict], catalog_entries: L
         print(f"\n⚠ Found {len(overlapping)} servers with overlapping display names:")
         for overlap in overlapping:
             print(f"    - {overlap['display_name']} → catalog: {overlap['catalog_match']}")
-            print(f"      server: {overlap['server_name']}")
-            print(f"      repo: {overlap['repository']}")
     
     return overlapping, non_overlapping
 
