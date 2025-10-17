@@ -3,6 +3,7 @@ description: |
   [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
   [![Python Version](https://img.shields.io/badge/python-3.13%2B-blue)](https://www.python.org/downloads/)
   A Model Context Protocol (MCP) server that provides tools to interact with your PagerDuty account directly from your MCP-enabled client. Manage incidents, services, teams, on-call schedules, and more using natural language commands.
+
   ## Features
   - **Incident Management**: Create, update, resolve incidents, add notes and responders
   - **Service Operations**: Manage services and their configurations
@@ -11,6 +12,7 @@ description: |
   - **Alert Grouping**: Configure intelligent alert grouping settings
   - **Event Orchestrations**: Manage event routing and orchestration rules
   - **Escalation Policies**: View and manage escalation policies
+
   ## What you'll need to connect
   **Required:**
   - **PagerDuty API Key**: User API token from your PagerDuty account with appropriate permissions
