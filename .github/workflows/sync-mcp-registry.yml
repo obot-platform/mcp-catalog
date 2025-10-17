@@ -41,18 +41,18 @@ jobs:
         run: |
           python scripts/upstream_sync/auto_sync_workflow.py
       
-      - name: Commit AI cache if changed
+      - name: Commit sync data if changed
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           
-          # Check if cache file has changes
-          if git diff --quiet scripts/upstream_sync/ai_categorization_cache.json; then
-            echo "No changes to AI cache"
+          # Check if cache or selected_server files have changes
+          if git diff --quiet scripts/upstream_sync/ai_categorization_cache.json scripts/upstream_sync/selected_server.json; then
+            echo "No changes to sync data files"
           else
-            echo "AI cache updated, committing changes..."
-            git add scripts/upstream_sync/ai_categorization_cache.json
-            git commit -m "chore: update AI categorization cache [skip ci]"
+            echo "Sync data updated, committing changes..."
+            git add scripts/upstream_sync/ai_categorization_cache.json scripts/upstream_sync/selected_server.json
+            git commit -m "chore: update sync data (AI cache and selected servers) [skip ci]"
             git push
           fi
       
