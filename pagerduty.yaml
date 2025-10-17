@@ -1,0 +1,242 @@
+name: PagerDuty
+description: |
+  [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+  [![Python Version](https://img.shields.io/badge/python-3.13%2B-blue)](https://www.python.org/downloads/)
+  A Model Context Protocol (MCP) server that provides tools to interact with your PagerDuty account directly from your MCP-enabled client. Manage incidents, services, teams, on-call schedules, and more using natural language commands.
+  ## Features
+  - **Incident Management**: Create, update, resolve incidents, add notes and responders
+  - **Service Operations**: Manage services and their configurations
+  - **Team Management**: Create and manage teams, add/remove members
+  - **On-Call & Schedules**: View on-call rotations, create schedule overrides
+  - **Alert Grouping**: Configure intelligent alert grouping settings
+  - **Event Orchestrations**: Manage event routing and orchestration rules
+  - **Escalation Policies**: View and manage escalation policies
+  ## What you'll need to connect
+  **Required:**
+  - **PagerDuty API Key**: User API token from your PagerDuty account with appropriate permissions
+  **Optional:**
+  - **API Host**: Custom API host for EU region (`https://api.eu.pagerduty.com`) or use default US region
+
+toolPreview:
+- name: list_incidents
+  description: Lists incidents with optional filtering by status, urgency, service, and date range
+  params:
+    status: Filter by incident status (triggered, acknowledged, resolved)
+    urgency: Filter by urgency level (high, low)
+    service_ids: Filter by service IDs
+    limit: Maximum number of results (up to 1000)
+- name: get_incident
+  description: Retrieves details for a specific incident
+  params:
+    incident_id: The ID or number of the incident to retrieve
+- name: create_incident
+  description: Creates a new incident
+  params:
+    title: The incident title
+    service: The service reference with ID
+    urgency: Incident urgency (high or low)
+    body: Additional details about the incident
+- name: manage_incidents
+  description: Bulk update incidents (acknowledge, resolve, change urgency, reassign)
+  params:
+    incident_ids: Array of incident IDs to update
+    status: New status (acknowledged or resolved)
+    urgency: New urgency level
+    assignment: User to assign incidents to
+- name: add_note_to_incident
+  description: Adds a note to an existing incident
+  params:
+    incident_id: The incident ID
+    note: The note text to add
+- name: add_responders
+  description: Request additional responders for an incident
+  params:
+    incident_id: The incident ID
+    requester_id: User ID of the requester
+    message: Message to include with the request
+    responder_request_targets: Array of user or escalation policy IDs
+- name: list_services
+  description: Lists all services with optional filtering
+  params:
+    query: Filter by service name
+    teams_ids: Filter by team IDs
+    limit: Maximum results (up to 100)
+- name: get_service
+  description: Retrieves details for a specific service
+  params:
+    service_id: The service ID
+- name: create_service
+  description: Creates a new service
+  params:
+    name: Service name
+    description: Service description
+    escalation_policy: Escalation policy reference with ID
+    teams: Array of team references
+- name: update_service
+  description: Updates an existing service
+  params:
+    service_id: The service ID
+    name: Updated service name
+    description: Updated description
+    escalation_policy: Updated escalation policy reference
+- name: list_teams
+  description: Lists teams with optional filtering
+  params:
+    query: Filter by team name
+    scope: Scope of query (all or my teams)
+    limit: Maximum results (up to 100)
+- name: get_team
+  description: Retrieves details for a specific team
+  params:
+    team_id: The team ID or name
+- name: list_team_members
+  description: Lists members of a team
+  params:
+    team_id: The team ID
+- name: create_team
+  description: Creates a new team
+  params:
+    name: Team name
+    description: Team description
+    default_role: Default role for new members (manager or none)
+- name: update_team
+  description: Updates an existing team
+  params:
+    team_id: The team ID
+    name: Updated team name
+    description: Updated description
+- name: delete_team
+  description: Deletes a team
+  params:
+    team_id: The team ID to delete
+- name: add_team_member
+  description: Adds a user to a team with a specific role
+  params:
+    team_id: The team ID
+    user_id: The user ID to add
+    role: Member role (observer, responder, or manager)
+- name: remove_team_member
+  description: Removes a user from a team
+  params:
+    team_id: The team ID
+    user_id: The user ID to remove
+- name: get_user_data
+  description: Gets the current authenticated user's information
+  params: {}
+- name: list_users
+  description: Lists users with optional filtering
+  params:
+    query: Filter by user name
+    teams_ids: Filter by team IDs
+    limit: Maximum results (up to 100)
+- name: list_oncalls
+  description: Lists on-call schedules with filtering by schedule, user, or date range
+  params:
+    schedule_ids: Filter by schedule IDs
+    user_ids: Filter by user IDs
+    since: Start of time range
+    until: End of time range
+- name: list_schedules
+  description: Lists schedules with optional filtering
+  params:
+    query: Filter by schedule name or description
+    team_ids: Filter by team IDs
+    user_ids: Filter by user IDs
+- name: get_schedule
+  description: Retrieves details for a specific schedule
+  params:
+    schedule_id: The schedule ID
+- name: list_schedule_users
+  description: Lists users assigned to a schedule
+  params:
+    schedule_id: The schedule ID
+- name: create_schedule_override
+  description: Creates an override for a schedule
+  params:
+    schedule_id: The schedule ID
+    start: Override start time
+    end: Override end time
+    user: User reference for the override
+- name: list_escalation_policies
+  description: Lists escalation policies with filtering
+  params:
+    query: Filter by name or description
+    team_ids: Filter by team IDs
+    user_ids: Filter by user IDs
+- name: get_escalation_policy
+  description: Retrieves details for a specific escalation policy
+  params:
+    policy_id: The escalation policy ID
+- name: list_event_orchestrations
+  description: Lists event orchestrations with optional filtering
+  params:
+    limit: Maximum results (up to 100)
+    sort_by: Sort field and direction
+- name: get_event_orchestration
+  description: Retrieves details for a specific event orchestration
+  params:
+    orchestration_id: The orchestration ID
+- name: get_event_orchestration_router
+  description: Gets the router configuration for an event orchestration
+  params:
+    orchestration_id: The orchestration ID
+- name: update_event_orchestration_router
+  description: Updates the router configuration for an event orchestration
+  params:
+    orchestration_id: The orchestration ID
+    router_update: Updated router configuration with rules and catch-all actions
+- name: append_event_orchestration_router_rule
+  description: Appends a new routing rule to an event orchestration router
+  params:
+    orchestration_id: The orchestration ID
+    new_rule: New rule configuration with conditions and actions
+- name: list_alert_grouping_settings
+  description: Lists alert grouping settings with optional filtering
+  params:
+    service_ids: Filter by service IDs
+    limit: Maximum results (up to 100)
+- name: get_alert_grouping_setting
+  description: Retrieves details for a specific alert grouping setting
+  params:
+    setting_id: The alert grouping setting ID
+- name: create_alert_grouping_setting
+  description: Creates a new alert grouping setting
+  params:
+    type: Grouping type (content_based, intelligent, time)
+    config: Configuration based on the type
+    services: Array of service references
+- name: update_alert_grouping_setting
+  description: Updates an existing alert grouping setting
+  params:
+    setting_id: The setting ID
+    type: Updated grouping type
+    config: Updated configuration
+- name: delete_alert_grouping_setting
+  description: Deletes an alert grouping setting
+  params:
+    setting_id: The alert grouping setting ID to delete
+
+metadata:
+  categories: Monitoring & Observability
+icon: https://avatars.githubusercontent.com/u/766800?s=48&v=4
+repoURL: https://github.com/PagerDuty/pagerduty-mcp-server
+env:
+- key: PAGERDUTY_USER_API_KEY
+  name: PagerDuty API Key
+  required: true
+  sensitive: true
+  description: User API token from your PagerDuty account. Generate this in PagerDuty under User Settings > API Access Keys.
+- key: PAGERDUTY_API_HOST
+  name: PagerDuty API Host
+  required: false
+  sensitive: false
+  description: API host URL. Use https://api.eu.pagerduty.com for EU accounts, or leave blank for default US (https://api.pagerduty.com).
+
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/pagerduty:0.2.1
+  port: 8099
+  path: /
+  args:
+  - pagerduty-mcp
+  - --enable-write-tools
