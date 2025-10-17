@@ -316,7 +316,8 @@ def create_issue_for_server(server: dict) -> tuple[str, int, str]:
     title = f"[MCP Catalog] New MCP server candidate: {name}"
     
     # Build issue body
-    body_lines = ["Automatically Discovered via MCP Registry.", ""]
+    upstream_source = server.get('_upstream_source', 'Unknown')
+    body_lines = [f"Automatically Discovered via MCP Registry ({upstream_source}).", ""]
     
     # Add metadata fields if present
     if name:
@@ -412,6 +413,7 @@ def add_server_to_state(server: dict, issue_url: str, existing_servers: dict) ->
         'version': server.get('version', ''),
         'repository_url': server.get('repository', {}).get('url', ''),
         'server_type': server.get('kind', ''),
+        'upstream_source': server.get('_upstream_source', 'unknown'),
         'issue_url': issue_url,
         'processed_at': time.strftime('%Y-%m-%d %H:%M:%S UTC', time.gmtime())
     }
@@ -513,6 +515,77 @@ def is_popular_community(repo_meta: dict) -> bool:
 # =============================================================================
 # FILTERING AND CLASSIFICATION
 # =============================================================================
+
+def check_display_name_overlaps(filtered_servers: List[dict], catalog_entries: List[dict]) -> Tuple[List[dict], List[dict]]:
+    """
+    Check if filtered servers with display_name field overlap with existing catalog entries.
+    
+    Args:
+        filtered_servers: List of filtered MCP servers from registry
+        catalog_entries: List of existing catalog entries
+        
+    Returns:
+        Tuple of (overlapping_servers, non_overlapping_servers)
+    """
+    overlapping = []
+    non_overlapping = []
+    
+    # Create normalized name sets from catalog
+    catalog_names = set()
+    catalog_display_names = {}  # normalized_name -> original_name
+    
+    for entry in catalog_entries:
+        if name := entry.get("name"):
+            normalized = _norm(name)
+            catalog_names.add(normalized)
+            catalog_display_names[normalized] = name
+    
+    print(f"\nChecking display_name overlaps...")
+    print(f"  Catalog entries: {len(catalog_entries)}")
+    print(f"  Filtered servers to check: {len(filtered_servers)}")
+    print("="*80)
+    
+    servers_with_display_name = 0
+    
+    for server in filtered_servers:
+        display_name = server.get("display_name") or server.get("displayName")
+        
+        if not display_name:
+            non_overlapping.append(server)
+            continue
+        
+        servers_with_display_name += 1
+        normalized_display = _norm(display_name)
+        
+        # Check if display_name matches any catalog entry
+        if normalized_display in catalog_names:
+            catalog_match = catalog_display_names[normalized_display]
+            print(f"  ⚠ OVERLAP: '{display_name}' (from {server.get('name', 'unknown')})")
+            print(f"           matches catalog entry '{catalog_match}'")
+            overlapping.append({
+                'server': server,
+                'display_name': display_name,
+                'catalog_match': catalog_match,
+                'server_name': server.get('name', ''),
+                'repository': server.get('repository', {}).get('url', '')
+            })
+        else:
+            non_overlapping.append(server)
+    
+    print("="*30)
+    print(f"Display name overlap check results:")
+    print(f"  Servers with display_name field: {servers_with_display_name}")
+    print(f"  Overlapping with catalog: {len(overlapping)}")
+    print(f"  Non-overlapping: {len(non_overlapping)}")
+    
+    if overlapping:
+        print(f"\n⚠ Found {len(overlapping)} servers with overlapping display names:")
+        for overlap in overlapping:
+            print(f"    - {overlap['display_name']} → catalog: {overlap['catalog_match']}")
+            print(f"      server: {overlap['server_name']}")
+            print(f"      repo: {overlap['repository']}")
+    
+    return overlapping, non_overlapping
 
 def filter_group_x_ai(servers: List[dict], catalog_entries: List[dict], existing_servers: List[dict]) -> Tuple[List[dict], List[dict], List[dict]]:
     """Filter MCP servers using AI judge for official/community classification."""
@@ -827,6 +900,14 @@ def main():
     print("Fetching servers from MCP registry...")
     modelcontextprotocol_servers = fetch_modelcontextprotocol_registry_servers()
     github_mcp_servers = pull_github_mcp_registry()
+    
+    # Tag each server with its upstream source
+    for server in modelcontextprotocol_servers:
+        server['_upstream_source'] = 'modelcontextprotocol.io'
+    
+    for server in github_mcp_servers:
+        server['_upstream_source'] = 'github.com/mcp'
+    
     servers = modelcontextprotocol_servers + github_mcp_servers
     print(f"Found {len(modelcontextprotocol_servers)} servers from modelcontextprotocol registry and {len(github_mcp_servers)} from github mcp registry")
 
@@ -844,11 +925,17 @@ def main():
     print("\nFiltering and classifying servers...")
     filtered_servers, non_active, likely_remote = filter_group_x_ai(servers, catalog_entries, existing_servers)
 
-    # Step 5: Create issues for new servers
-    print(f"\nProcessing {len(filtered_servers)} servers...")
-    new_issues_created = 0
+    # Step 4.5: Check for display_name overlaps with existing catalog
+    print("\nChecking for display_name overlaps with catalog...")
+    overlapping_servers, non_overlapping_servers = check_display_name_overlaps(filtered_servers, catalog_entries)
+    
+    # Use non-overlapping servers for issue creation (or filtered_servers if you want to include overlaps)
+    servers_to_process = non_overlapping_servers  # Change to filtered_servers to include overlaps
 
-    for server in filtered_servers:
+    # Step 5: Create issues for new servers
+    print(f"\nProcessing {len(servers_to_process)} servers...")
+    new_issues_created = 0
+    for server in servers_to_process:
         issue_url, issue_number, issue_node_id = create_issue_for_server(server)
         add_issue_to_project(issue_node_id, issue_number, project_id)
         
@@ -866,6 +953,7 @@ def main():
     print(f"\n=== Summary ===")
     print(f"New issues created: {new_issues_created}")
     print(f"Total tracked servers: {len(existing_servers)}")
+    print(f"Display name overlaps detected: {len(overlapping_servers)}")
     print(f"Non-active servers: {len(non_active)}")
     print(f"Remote servers: {len(likely_remote)}")
 

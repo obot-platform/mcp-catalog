@@ -3302,5 +3302,293 @@
     "cached_at": "2025-10-17 02:32:01 UTC",
     "repository_url": "https://github.com/vulnersCom/vulners-mcp",
     "server_name": "io.github.vulnersCom/vulners-mcp"
+  },
+  "io.github.Apoth3osis-ai/agent-payment-mcp:https://github.com/Apoth3osis-ai/agent-payment-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.7,
+    "ai_reason": "GitHub org 'Apoth3osis-ai' does not directly match the blockchain or USDC providers referenced; no strong brand-owner signal.",
+    "cached_at": "2025-10-17 05:06:05 UTC",
+    "repository_url": "https://github.com/Apoth3osis-ai/agent-payment-mcp",
+    "server_name": "io.github.Apoth3osis-ai/agent-payment-mcp"
+  },
+  "io.github.tech-sushant/calculator-mcp:https://github.com/tech-sushant/calculator-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "The repo is owned by a personal GitHub user (tech-sushant), not an organization, and 'calculator' is a generic service with no evidence of brand ownership.",
+    "cached_at": "2025-10-17 05:06:57 UTC",
+    "repository_url": "https://github.com/tech-sushant/calculator-mcp",
+    "server_name": "io.github.tech-sushant/calculator-mcp"
+  },
+  "oraios/serena:https://github.com/oraios/serena": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "The org 'oraios' does not directly match a product or service named 'Serena', and there is no strong signal this is owned by a recognizable product/service brand.",
+    "cached_at": "2025-10-17 05:07:07 UTC",
+    "repository_url": "https://github.com/oraios/serena",
+    "server_name": "oraios/serena"
+  },
+  "chromedevtools/chrome-devtools-mcp:https://github.com/ChromeDevTools/chrome-devtools-mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 0.97,
+    "ai_reason": "GitHub organization ChromeDevTools matches the Chrome DevTools product name and server name, indicating clear brand ownership.",
+    "cached_at": "2025-10-17 05:07:09 UTC",
+    "repository_url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+    "server_name": "chromedevtools/chrome-devtools-mcp"
+  },
+  "firecrawl/firecrawl-mcp-server:https://github.com/firecrawl/firecrawl-mcp-server": {
+    "ai_decision": "official",
+    "ai_confidence": 0.97,
+    "ai_reason": "GitHub Organization 'firecrawl' matches product name 'Firecrawl' and integrates with Firecrawl service.",
+    "cached_at": "2025-10-17 05:07:12 UTC",
+    "repository_url": "https://github.com/firecrawl/firecrawl-mcp-server",
+    "server_name": "firecrawl/firecrawl-mcp-server"
+  },
+  "coplaydev/unity-mcp:https://github.com/CoplayDev/unity-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "Organization 'CoplayDev' does not match 'Unity' brand; no indicators that CoplayDev owns or operates Unity.",
+    "cached_at": "2025-10-17 05:07:14 UTC",
+    "repository_url": "https://github.com/CoplayDev/unity-mcp",
+    "server_name": "coplaydev/unity-mcp"
+  },
+  "azure/azure-mcp:https://github.com/azure/azure-mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 1.0,
+    "ai_reason": "GitHub organization 'azure' matches the product/service name Azure and repo is not a fork or archived.",
+    "cached_at": "2025-10-17 05:07:15 UTC",
+    "repository_url": "https://github.com/azure/azure-mcp",
+    "server_name": "azure/azure-mcp"
+  },
+  "hashicorp/terraform-mcp-server:https://github.com/hashicorp/terraform-mcp-server": {
+    "ai_decision": "official",
+    "ai_confidence": 1.0,
+    "ai_reason": "Repository is published by HashiCorp organization for Terraform, directly matching the product and brand.",
+    "cached_at": "2025-10-17 05:07:18 UTC",
+    "repository_url": "https://github.com/hashicorp/terraform-mcp-server",
+    "server_name": "hashicorp/terraform-mcp-server"
+  },
+  "microsoftdocs/mcp:https://github.com/microsoftdocs/mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 0.98,
+    "ai_reason": "GitHub org 'MicrosoftDocs' matches Microsoft brand, targets Microsoft Learn/docs, description confirms integration with official content.",
+    "cached_at": "2025-10-17 05:07:21 UTC",
+    "repository_url": "https://github.com/microsoftdocs/mcp",
+    "server_name": "microsoftdocs/mcp"
+  },
+  "stripe/agent-toolkit:https://github.com/stripe/agent-toolkit": {
+    "ai_decision": "official",
+    "ai_confidence": 1.0,
+    "ai_reason": "The GitHub organization 'stripe' clearly matches the Stripe brand, and the repository integrates with the Stripe API.",
+    "cached_at": "2025-10-17 05:07:23 UTC",
+    "repository_url": "https://github.com/stripe/agent-toolkit",
+    "server_name": "stripe/agent-toolkit"
+  },
+  "microsoft/azure-devops-mcp:https://github.com/microsoft/azure-devops-mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 1.0,
+    "ai_reason": "The repo is published by the verified Microsoft org for an Azure DevOps integration, which is their own product.",
+    "cached_at": "2025-10-17 05:07:26 UTC",
+    "repository_url": "https://github.com/microsoft/azure-devops-mcp",
+    "server_name": "microsoft/azure-devops-mcp"
+  },
+  "antfu/nuxt-mcp:https://github.com/antfu/nuxt-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "Repository is owned by a personal user (antfu), not the Nuxt or Vite orgs, so it is a community implementation.",
+    "cached_at": "2025-10-17 05:07:28 UTC",
+    "repository_url": "https://github.com/antfu/nuxt-mcp",
+    "server_name": "antfu/nuxt-mcp"
+  },
+  "neondatabase/mcp-server-neon:https://github.com/neondatabase/mcp-server-neon": {
+    "ai_decision": "official",
+    "ai_confidence": 0.98,
+    "ai_reason": "The GitHub organization 'neondatabase' matches the underlying product 'Neon' and the server name, and the repo is active and not a fork.",
+    "cached_at": "2025-10-17 05:07:29 UTC",
+    "repository_url": "https://github.com/neondatabase/mcp-server-neon",
+    "server_name": "neondatabase/mcp-server-neon"
+  },
+  "apify/apify-mcp-server:https://github.com/apify/apify-mcp-server": {
+    "ai_decision": "official",
+    "ai_confidence": 0.97,
+    "ai_reason": "GitHub org 'apify' matches the product name 'Apify' in server name and description, and repo is active, not a fork, and owned by the org.",
+    "cached_at": "2025-10-17 05:07:31 UTC",
+    "repository_url": "https://github.com/apify/apify-mcp-server",
+    "server_name": "apify/apify-mcp-server"
+  },
+  "getsentry/sentry-mcp:https://github.com/getsentry/sentry-mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 0.98,
+    "ai_reason": "The GitHub organization (getsentry) matches the product (Sentry), and the repo is active and not a fork, signaling official publication.",
+    "cached_at": "2025-10-17 05:07:34 UTC",
+    "repository_url": "https://github.com/getsentry/sentry-mcp",
+    "server_name": "getsentry/sentry-mcp"
+  },
+  "sunriseapps/imagesorcery-mcp:https://github.com/sunriseapps/imagesorcery-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.7,
+    "ai_reason": "No evidence that 'sunriseapps' is the brand owner of a widely-recognized product/service called Imagesorcery; likely a third-party or standalone implementation.",
+    "cached_at": "2025-10-17 05:07:36 UTC",
+    "repository_url": "https://github.com/sunriseapps/imagesorcery-mcp",
+    "server_name": "sunriseapps/imagesorcery-mcp"
+  },
+  "azure-ai-foundry/mcp-foundry:https://github.com/azure-ai-foundry/mcp-foundry": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "The organization 'azure-ai-foundry' does not match the official Azure/Microsoft branding and there is no strong evidence it is operated by Microsoft.",
+    "cached_at": "2025-10-17 05:07:39 UTC",
+    "repository_url": "https://github.com/azure-ai-foundry/mcp-foundry",
+    "server_name": "azure-ai-foundry/mcp-foundry"
+  },
+  "doist/todoist-ai:https://github.com/Doist/todoist-ai": {
+    "ai_decision": "official",
+    "ai_confidence": 0.98,
+    "ai_reason": "GitHub organization 'Doist' matches the service 'Todoist', indicating official ownership.",
+    "cached_at": "2025-10-17 05:07:41 UTC",
+    "repository_url": "https://github.com/Doist/todoist-ai",
+    "server_name": "doist/todoist-ai"
+  },
+  "pydantic/logfire-mcp:https://github.com/pydantic/logfire-mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 0.85,
+    "ai_reason": "GitHub organization 'pydantic' matches the 'pydantic/logfire-mcp' repo and server integrates 'Logfire', which is a product from the same org; not a fork and org is established.",
+    "cached_at": "2025-10-17 05:07:44 UTC",
+    "repository_url": "https://github.com/pydantic/logfire-mcp",
+    "server_name": "pydantic/logfire-mcp"
+  },
+  "evalstate/hf-mcp-server:https://github.com/evalstate/hf-mcp-server": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "Repository is under the 'evalstate' organization, not the official Hugging Face org, despite server name and branding targeting Hugging Face.",
+    "cached_at": "2025-10-17 05:07:46 UTC",
+    "repository_url": "https://github.com/evalstate/hf-mcp-server",
+    "server_name": "evalstate/hf-mcp-server"
+  },
+  "azure/aks-mcp:https://github.com/Azure/aks-mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 0.98,
+    "ai_reason": "The repo is published by the Azure GitHub org and integrates with Azure Kubernetes Service (AKS), a Microsoft/Azure product.",
+    "cached_at": "2025-10-17 05:07:48 UTC",
+    "repository_url": "https://github.com/Azure/aks-mcp",
+    "server_name": "azure/aks-mcp"
+  },
+  "webflow/mcp-server:https://github.com/webflow/mcp-server": {
+    "ai_decision": "official",
+    "ai_confidence": 0.98,
+    "ai_reason": "The repository is published by the verified Webflow organization, and both the org and repo name directly match the integrated product/service.",
+    "cached_at": "2025-10-17 05:07:50 UTC",
+    "repository_url": "https://github.com/webflow/mcp-server",
+    "server_name": "webflow/mcp-server"
+  },
+  "box-community/mcp-server-box:https://github.com/box-community/mcp-server-box": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "The GitHub org is box-community, not Box's official org, indicating a third-party/community implementation for Box.",
+    "cached_at": "2025-10-17 05:07:52 UTC",
+    "repository_url": "https://github.com/box-community/mcp-server-box",
+    "server_name": "box-community/mcp-server-box"
+  },
+  "postmanlabs/postman-mcp-server:https://github.com/postmanlabs/postman-mcp-server": {
+    "ai_decision": "official",
+    "ai_confidence": 1.0,
+    "ai_reason": "Published by the verified Postman organization ('postmanlabs') for the Postman product, with name and description matching.",
+    "cached_at": "2025-10-17 05:07:54 UTC",
+    "repository_url": "https://github.com/postmanlabs/postman-mcp-server",
+    "server_name": "postmanlabs/postman-mcp-server"
+  },
+  "microsoft/fabric-rti-mcp:https://github.com/microsoft/fabric-rti-mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 1.0,
+    "ai_reason": "Repository published by Microsoft organization for their Microsoft Fabric product; org and product names match.",
+    "cached_at": "2025-10-17 05:07:56 UTC",
+    "repository_url": "https://github.com/microsoft/fabric-rti-mcp",
+    "server_name": "microsoft/fabric-rti-mcp"
+  },
+  "codacy/codacy-mcp-server:https://github.com/codacy/codacy-mcp-server": {
+    "ai_decision": "official",
+    "ai_confidence": 1.0,
+    "ai_reason": "The repository is under the codacy GitHub Organization, matches the Codacy product, and implements Codacy integration.",
+    "cached_at": "2025-10-17 05:07:58 UTC",
+    "repository_url": "https://github.com/codacy/codacy-mcp-server",
+    "server_name": "codacy/codacy-mcp-server"
+  },
+  "atlassian/atlassian-mcp-server:https://github.com/atlassian/atlassian-mcp-server": {
+    "ai_decision": "official",
+    "ai_confidence": 1.0,
+    "ai_reason": "Published in the verified Atlassian GitHub organization, directly integrates with Atlassian's own products (Jira, Confluence), and both org and repo names match the official brand.",
+    "cached_at": "2025-10-17 05:08:01 UTC",
+    "repository_url": "https://github.com/atlassian/atlassian-mcp-server",
+    "server_name": "atlassian/atlassian-mcp-server"
+  },
+  "microsoft/clarity-mcp-server:https://github.com/microsoft/clarity-mcp-server": {
+    "ai_decision": "official",
+    "ai_confidence": 0.99,
+    "ai_reason": "GitHub org is 'microsoft', matching the Clarity product (owned by Microsoft), and repo is not a fork or archived.",
+    "cached_at": "2025-10-17 05:08:04 UTC",
+    "repository_url": "https://github.com/microsoft/clarity-mcp-server",
+    "server_name": "microsoft/clarity-mcp-server"
+  },
+  "cognitionai/deepwiki:https://github.com/CognitionAI/deepwiki": {
+    "ai_decision": "official",
+    "ai_confidence": 0.85,
+    "ai_reason": "The repository is under the CognitionAI organization and directly matches the product/service name DeepWiki in both org and repo.",
+    "cached_at": "2025-10-17 05:08:06 UTC",
+    "repository_url": "https://github.com/CognitionAI/deepwiki",
+    "server_name": "cognitionai/deepwiki"
+  },
+  "figma/mcp-server-guide:https://github.com/figma/mcp-server-guide": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "The repository is published under the verified 'figma' GitHub organization, directly matching the integrated product/service name.",
+    "cached_at": "2025-10-17 05:08:08 UTC",
+    "repository_url": "https://github.com/figma/mcp-server-guide",
+    "server_name": "figma/mcp-server-guide"
+  },
+  "launchdarkly/mcp-server:https://github.com/launchdarkly/mcp-server": {
+    "ai_decision": "official",
+    "ai_confidence": 1.0,
+    "ai_reason": "The repo is published under the LaunchDarkly GitHub organization, with both server and org name matching the product/brand, indicating clear official ownership.",
+    "cached_at": "2025-10-17 05:08:10 UTC",
+    "repository_url": "https://github.com/launchdarkly/mcp-server",
+    "server_name": "launchdarkly/mcp-server"
+  },
+  "microsoft/devbox-mcp-server:https://github.com/microsoft/devbox-mcp-server": {
+    "ai_decision": "official",
+    "ai_confidence": 0.98,
+    "ai_reason": "Published by the verified Microsoft GitHub organization for Dev Box (a Microsoft product), with no negative or conflicting signals.",
+    "cached_at": "2025-10-17 05:08:12 UTC",
+    "repository_url": "https://github.com/microsoft/devbox-mcp-server",
+    "server_name": "microsoft/devbox-mcp-server"
+  },
+  "zapier/zapier-mcp:https://github.com/zapier/zapier-mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 0.98,
+    "ai_reason": "Published by the verified Zapier organization and server integrates with Zapier's own product.",
+    "cached_at": "2025-10-17 05:08:15 UTC",
+    "repository_url": "https://github.com/zapier/zapier-mcp",
+    "server_name": "zapier/zapier-mcp"
+  },
+  "axiomhq/mcp:https://github.com/axiomhq/mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 0.98,
+    "ai_reason": "Repository is in the 'axiomhq' GitHub organization, matching the product/service 'Axiom', and not a fork or archived.",
+    "cached_at": "2025-10-17 05:08:17 UTC",
+    "repository_url": "https://github.com/axiomhq/mcp",
+    "server_name": "axiomhq/mcp"
+  },
+  "jfrog/jfrog-mcp-server:https://github.com/jfrog/jfrog-mcp-server": {
+    "ai_decision": "official",
+    "ai_confidence": 1.0,
+    "ai_reason": "Published under the verified JFrog organization matching product/brand and described as JFrog Platform integration.",
+    "cached_at": "2025-10-17 05:08:19 UTC",
+    "repository_url": "https://github.com/jfrog/jfrog-mcp-server",
+    "server_name": "jfrog/jfrog-mcp-server"
+  },
+  "intercom/intercom-mcp-server:https://github.com/intercom/intercom-mcp-server": {
+    "ai_decision": "official",
+    "ai_confidence": 0.98,
+    "ai_reason": "Repo is owned by the verified Intercom organization and integrates with Intercom, indicating direct brand ownership.",
+    "cached_at": "2025-10-17 05:08:22 UTC",
+    "repository_url": "https://github.com/intercom/intercom-mcp-server",
+    "server_name": "intercom/intercom-mcp-server"
   }
 }
