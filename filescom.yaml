@@ -50,16 +50,6 @@ containerizedConfig:
   args:
   - files-com-mcp
 toolPreview:
-- name: Download_File_to_Local
-  description: Download a file from Files.com to the local filesystem
-  params:
-    remote_path: The full path on Files.com of the file to be downloaded
-    local_path: The full path on the local system to save the downloaded file to
-- name: Upload_File_from_Local
-  description: Upload a file from the local filesystem to Files.com
-  params:
-    local_path: The full path on the local system of the file to be uploaded
-    remote_path: The full path on Files.com for the file to be uploaded to
 - name: List_Bundle
   description: List all bundles (share links) in your Files.com account
   params: {}
