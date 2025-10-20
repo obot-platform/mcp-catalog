@@ -15,7 +15,7 @@ description: 'A Model Context Protocol (MCP) server that provides comprehensive 
   - **Content Recommendations**: Get related documentation recommendations including highly rated, new, similar, and commonly viewed next pages
 
 
-  ## What you'll need to connect
+  ## What you''ll need to connect
 
 
   **No Setup Required**: AWS Knowledge MCP server is hosted by AWS and works out-of-the-box with no API keys or configuration needed.
