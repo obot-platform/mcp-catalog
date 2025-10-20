@@ -33,6 +33,7 @@ description: 'A Model Context Protocol (MCP) server that provides comprehensive 
   '
 metadata:
   categories: Cloud & Infrastructure, File Transfer, Storage, Security & Compliance
+  unsupportedTools: Download_File_to_Local, Upload_File_from_Local
 icon: https://avatars.githubusercontent.com/u/59619169?s=48&v=4
 repoURL: https://github.com/Files-com/files-mcp
 env:
