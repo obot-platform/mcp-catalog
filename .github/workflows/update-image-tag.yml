@@ -116,13 +116,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "Update ${{ github.event.inputs.image_name || github.event.client_payload.image_name }} to tag ${{ github.event.inputs.new_tag || github.event.client_payload.new_tag }}"
           title: "Update ${{ github.event.inputs.image_name || github.event.client_payload.image_name }} to tag ${{ github.event.inputs.new_tag || github.event.client_payload.new_tag }}"
-          reviewers: |
-            drpebcak
-            thedadams
-            g-linville
-            tybalex
-            njhale
-            StrongMonkey
+          reviewers: tybalex
           body: |
             This PR updates the container image tag for `${{ github.event.inputs.image_name || github.event.client_payload.image_name }}` to `${{ github.event.inputs.new_tag || github.event.client_payload.new_tag }}`.
 
