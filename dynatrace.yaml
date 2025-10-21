@@ -35,7 +35,7 @@ env:
   description: Your Dynatrace environment URL
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/dynatrace:0.9.2
+  image: ghcr.io/obot-platform/mcp-images/dynatrace:0.10.0
   port: 8099
   path: /
   args:
