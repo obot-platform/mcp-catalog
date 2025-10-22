@@ -292,7 +292,7 @@ env:
     sensitive: true
   - name: Terraform Address
     key: TFE_ADDRESS
-    description: HCP Terraform or Terraform Enterprise address. default to https://app.terraform.io
+    description: HCP Terraform or Terraform Enterprise address. Defaults to https://app.terraform.io
     required: false
     sensitive: false
 
