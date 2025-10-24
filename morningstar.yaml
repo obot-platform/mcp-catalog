@@ -25,10 +25,10 @@ description: |
 metadata:
   categories: Finance & Business
 icon: https://www.morningstar.com/favicon.ico
-repoURL: https://mcp-uat.morningstar.com/mcp
+repoURL: https://mcp.morningstar.com/mcp
 runtime: remote
 remoteConfig:
-  fixedURL: https://mcp-uat.morningstar.com/mcp
+  fixedURL: https://mcp.morningstar.com/mcp
 toolPreview:
 - name: morningstar-id-lookup-tool
   description: Look up Morningstar IDs for investments and datapoints by their names or ticker symbols. This is typically the first tool to use before retrieving data, as most other tools require Morningstar IDs. Returns investment IDs, datapoint IDs, definitions, and time-series support information for over 400 available datapoints.
