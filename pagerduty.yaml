@@ -2,7 +2,7 @@ name: PagerDuty
 description: |
   [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
   [![Python Version](https://img.shields.io/badge/python-3.13%2B-blue)](https://www.python.org/downloads/)
-  
+
   A Model Context Protocol (MCP) server that provides tools to interact with your PagerDuty account directly from your MCP-enabled client. Manage incidents, services, teams, on-call schedules, and more using natural language commands.
 
   ## Features
@@ -17,7 +17,7 @@ description: |
   ## What you'll need to connect
   **Required:**
   - **PagerDuty API Key**: User API token from your PagerDuty account with appropriate permissions
-  
+
   **Optional:**
   - **API Host**: Custom API host for EU region (`https://api.eu.pagerduty.com`) or use default US region
 
@@ -238,7 +238,7 @@ env:
 
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/pagerduty:0.2.1
+  image: ghcr.io/obot-platform/mcp-images/pagerduty:0.5.0
   port: 8099
   path: /
   args:
