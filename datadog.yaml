@@ -46,7 +46,7 @@ env:
   description: (Optional) The Datadog site of your organization, such as `datadoghq.eu` or `us3.datadoghq.com`. Default is `datadoghq.com`.
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/datadog:latest
+  image: ghcr.io/obot-platform/mcp-images/datadog:1.7.0
   port: 8099
   path: /
   args:
