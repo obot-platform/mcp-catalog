@@ -71,7 +71,7 @@ env:
   description: AWS Region, default to us-east-1
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/aws-eks:0.1.13
+  image: ghcr.io/obot-platform/mcp-images/aws-eks:0.1.15
   port: 8099
   path: /
   args:
