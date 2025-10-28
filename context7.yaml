@@ -77,7 +77,7 @@ toolPreview:
     topic: Optional topic to focus the docs on (e.g., "routing", "hooks")
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/context7:1.0.20
+  image: ghcr.io/obot-platform/mcp-images/context7:1.0.26
   port: 8099
   path: /
   args:
