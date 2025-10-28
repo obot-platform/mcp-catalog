@@ -17,10 +17,8 @@ description: |
 
   **Required:**
   - **Postman API Key**: Your Postman API key
-
-  **Optional:**
-  - **Region Selection**: Choose between US (`https://mcp.postman.com`) or EU (`https://mcp.eu.postman.com`) regions
-  - **Tool Configuration**: Select between Minimal (37 essential tools) or Full (100+ tools) mode
+  - **Host URL**: Choose between US (`https://mcp.postman.com`) or EU (`https://mcp.eu.postman.com`) regions
+  - **Tool Configuration**: Select between `minimal` (38 essential tools) or `mcp` (all 100+ tools) mode
 
 
 metadata:
@@ -28,9 +26,21 @@ metadata:
 icon: https://avatars.githubusercontent.com/u/10251060?s=48&v=4
 repoURL: https://github.com/postmanlabs/postman-mcp-server
 
+env:
+  - name: Postman Host URL
+    key: HOST_URL
+    description: The URL of the Postman MCP server, choose between US (`https://mcp.postman.com`) or EU (`https://mcp.eu.postman.com`) regions
+    required: true
+    sensitive: false
+  - name: Tool Configuration
+    key: TOOL_CONFIGURATION
+    description: Select between `minimal` (38 essential tools) or `mcp` (all 100+ tools) mode
+    required: true
+    sensitive: false
+
 runtime: remote
 remoteConfig:
-  hostname: mcp.postman.com
+  URLTemplate: ${HOST_URL}/${TOOL_CONFIGURATION}
   headers:
   - name: Postman API Key
     description: Your Postman API key
