@@ -81,7 +81,7 @@ env:
   description: Set to "true" to enable CI/CD pipeline features (default is "false").
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/gitlab:2.0.8
+  image: ghcr.io/obot-platform/mcp-images/gitlab:2.0.9
   port: 8099
   path: /
   args:
