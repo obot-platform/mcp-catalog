@@ -238,7 +238,7 @@ env:
 
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/pagerduty:0.5.0
+  image: ghcr.io/obot-platform/mcp-images/pagerduty:0.6.0
   port: 8099
   path: /
   args:
