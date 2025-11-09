@@ -4174,5 +4174,181 @@
     "cached_at": "2025-11-02 02:33:42 UTC",
     "repository_url": "https://github.com/wrenchpilot/it-tools-mcp",
     "server_name": "io.github.wrenchpilot/it-tools-mcp"
+  },
+  "ai.explorium/mcp-explorium:https://github.com/explorium-ai/mcp-explorium": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "The GitHub org 'explorium-ai' matches the product name 'Explorium', and the remote endpoint uses the official explorium.ai domain.",
+    "cached_at": "2025-11-09 02:31:07 UTC",
+    "repository_url": "https://github.com/explorium-ai/mcp-explorium",
+    "server_name": "ai.explorium/mcp-explorium"
+  },
+  "capital.hove/read-only-local-mysql-mcp-server:https://github.com/hovecapital/read-only-local-mysql-mcp-server": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "MySQL is a generic service and hovecapital is not the owner of MySQL; thus this is a community implementation.",
+    "cached_at": "2025-11-09 02:31:49 UTC",
+    "repository_url": "https://github.com/hovecapital/read-only-local-mysql-mcp-server",
+    "server_name": "capital.hove/read-only-local-mysql-mcp-server"
+  },
+  "ch.pfx/mcp-server:https://github.com/pitwch/pfx-mcp-server": {
+    "ai_decision": "community",
+    "ai_confidence": 0.7,
+    "ai_reason": "The GitHub org 'pitwch' does not clearly match the Proffix or Forterro brand, and no verified or official signals are present.",
+    "cached_at": "2025-11-09 02:31:53 UTC",
+    "repository_url": "https://github.com/pitwch/pfx-mcp-server",
+    "server_name": "ch.pfx/mcp-server"
+  },
+  "com.scoutapm/scout-mcp-local:https://github.com/scoutapp/scout-mcp-local": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub org 'scoutapp' matches the product (Scout Monitoring), repo is not a fork/archived, and Docker/PyPI packages are under org namespace.",
+    "cached_at": "2025-11-09 02:31:58 UTC",
+    "repository_url": "https://github.com/scoutapp/scout-mcp-local",
+    "server_name": "com.scoutapm/scout-mcp-local"
+  },
+  "dev.ohmyposh/validator:https://github.com/JanDeDobbeleer/oh-my-posh": {
+    "ai_decision": "official",
+    "ai_confidence": 0.9,
+    "ai_reason": "Repo and remote are on ohmyposh.dev domain and tied to oh-my-posh GitHub org and service.",
+    "cached_at": "2025-11-09 02:32:02 UTC",
+    "repository_url": "https://github.com/JanDeDobbeleer/oh-my-posh",
+    "server_name": "dev.ohmyposh/validator"
+  },
+  "io.github.SajmustafaKe/frappe-dev-mcp-server:https://github.com/SajmustafaKe/frappe-dev-mcp-server": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "Repository is owned by a personal user (SajmustafaKe), not by the Frappe or ERPNext organization.",
+    "cached_at": "2025-11-09 02:32:14 UTC",
+    "repository_url": "https://github.com/SajmustafaKe/frappe-dev-mcp-server",
+    "server_name": "io.github.SajmustafaKe/frappe-dev-mcp-server"
+  },
+  "io.github.ScrapeGraphAI/scrapegraph-mcp:https://github.com/ScrapeGraphAI/scrapegraph-mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub org ScrapeGraphAI matches product ScrapeGraph in server name and API, with no fork/archive signals.",
+    "cached_at": "2025-11-09 02:32:16 UTC",
+    "repository_url": "https://github.com/ScrapeGraphAI/scrapegraph-mcp",
+    "server_name": "io.github.ScrapeGraphAI/scrapegraph-mcp"
+  },
+  "io.github.bharath-krishna/mcp-test:https://github.com/bharath-krishna/mcp-test": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "The publisher is a personal user (bharath-krishna), the repo name includes 'test', and there is no product/service brand ownership.",
+    "cached_at": "2025-11-09 02:32:23 UTC",
+    "repository_url": "https://github.com/bharath-krishna/mcp-test",
+    "server_name": "io.github.bharath-krishna/mcp-test"
+  },
+  "io.github.clarenceh/expenselm-mcp-server:https://github.com/expenselm/expenselm-mcp-server": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub organization 'expenselm' matches the product name 'ExpenseLM' in both server name and repo, with no evidence of third-party ownership.",
+    "cached_at": "2025-11-09 02:32:26 UTC",
+    "repository_url": "https://github.com/expenselm/expenselm-mcp-server",
+    "server_name": "io.github.clarenceh/expenselm-mcp-server"
+  },
+  "io.github.goldbergyoni/test-coverage-mcp:https://github.com/goldbergyoni/test-coverage-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub org 'goldbergyoni' is a user, not the owner of any underlying service; repo is a test/coverage utility, not a product integration.",
+    "cached_at": "2025-11-09 02:32:33 UTC",
+    "repository_url": "https://github.com/goldbergyoni/test-coverage-mcp",
+    "server_name": "io.github.goldbergyoni/test-coverage-mcp"
+  },
+  "io.github.jkawamoto/mcp-memos:https://github.com/jkawamoto/mcp-memos": {
+    "ai_decision": "community",
+    "ai_confidence": 0.98,
+    "ai_reason": "Repository is owned by a personal GitHub user (jkawamoto), not an organization tied to Memos.",
+    "cached_at": "2025-11-09 02:32:41 UTC",
+    "repository_url": "https://github.com/jkawamoto/mcp-memos",
+    "server_name": "io.github.jkawamoto/mcp-memos"
+  },
+  "io.github.neo4j-contrib/mcp-neo4j-aura-manager:https://github.com/neo4j-contrib/mcp-neo4j": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "Repository is under neo4j-contrib GitHub org, which is for community contributions, not the official Neo4j organization.",
+    "cached_at": "2025-11-09 02:32:49 UTC",
+    "repository_url": "https://github.com/neo4j-contrib/mcp-neo4j",
+    "server_name": "io.github.neo4j-contrib/mcp-neo4j-aura-manager"
+  },
+  "io.github.neo4j-contrib/mcp-neo4j-cypher:https://github.com/neo4j-contrib/mcp-neo4j": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "Published under neo4j-contrib org, not the official Neo4j organization, indicating a community implementation for the Neo4j service.",
+    "cached_at": "2025-11-09 02:32:51 UTC",
+    "repository_url": "https://github.com/neo4j-contrib/mcp-neo4j",
+    "server_name": "io.github.neo4j-contrib/mcp-neo4j-cypher"
+  },
+  "io.github.neo4j-contrib/mcp-neo4j-data-modeling:https://github.com/neo4j-contrib/mcp-neo4j": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "The repo is published under 'neo4j-contrib', not the official 'neo4j' org, indicating a community contribution rather than an official Neo4j release.",
+    "cached_at": "2025-11-09 02:32:53 UTC",
+    "repository_url": "https://github.com/neo4j-contrib/mcp-neo4j",
+    "server_name": "io.github.neo4j-contrib/mcp-neo4j-data-modeling"
+  },
+  "io.github.neo4j-contrib/mcp-neo4j-memory:https://github.com/neo4j-contrib/mcp-neo4j": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "The repo is under neo4j-contrib, not the official Neo4j org, indicating this is a community-contributed integration rather than official.",
+    "cached_at": "2025-11-09 02:32:56 UTC",
+    "repository_url": "https://github.com/neo4j-contrib/mcp-neo4j",
+    "server_name": "io.github.neo4j-contrib/mcp-neo4j-memory"
+  },
+  "io.github.raisiqueira/django-telescope:https://github.com/raisiqueira/django-telescope": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "Repo is under a personal user (raisiqueira) and not an official Django organization.",
+    "cached_at": "2025-11-09 02:33:04 UTC",
+    "repository_url": "https://github.com/raisiqueira/django-telescope",
+    "server_name": "io.github.raisiqueira/django-telescope"
+  },
+  "io.github.retailbox-automation/clickup-mcp:https://github.com/retailbox-automation/clickup-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "The GitHub org 'retailbox-automation' does not match the ClickUp brand and there is no evidence the publisher is ClickUp itself.",
+    "cached_at": "2025-11-09 02:33:06 UTC",
+    "repository_url": "https://github.com/retailbox-automation/clickup-mcp",
+    "server_name": "io.github.retailbox-automation/clickup-mcp"
+  },
+  "io.github.shinpr/sub-agents-mcp:https://github.com/shinpr/sub-agents-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "Repo is owned by a personal user (shinpr), not an org, and no evidence ties publisher to Cursor or a recognizable product/service brand.",
+    "cached_at": "2025-11-09 02:33:10 UTC",
+    "repository_url": "https://github.com/shinpr/sub-agents-mcp",
+    "server_name": "io.github.shinpr/sub-agents-mcp"
+  },
+  "io.github.simonenavifare/navifare-mcp:https://github.com/navifare/navifare-mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub org navifare matches server and product name Navifare, remotes use navifare.com domain, no negative signals.",
+    "cached_at": "2025-11-09 02:33:12 UTC",
+    "repository_url": "https://github.com/navifare/navifare-mcp",
+    "server_name": "io.github.simonenavifare/navifare-mcp"
+  },
+  "io.github.stevenvo/slack-mcp-server:https://github.com/stevenvo/slack-mcp-server": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "GitHub user 'stevenvo' is not Slack; for generic service Slack, only Slack-published repos are official.",
+    "cached_at": "2025-11-09 02:33:18 UTC",
+    "repository_url": "https://github.com/stevenvo/slack-mcp-server",
+    "server_name": "io.github.stevenvo/slack-mcp-server"
+  },
+  "io.github.sumup/mcp:https://github.com/sumup/sumup-agent-toolkit": {
+    "ai_decision": "official",
+    "ai_confidence": 0.97,
+    "ai_reason": "GitHub org 'sumup' matches the SumUp product, repo is not a fork or archived, npm scope is '@sumup', indicating official ownership.",
+    "cached_at": "2025-11-09 02:33:21 UTC",
+    "repository_url": "https://github.com/sumup/sumup-agent-toolkit",
+    "server_name": "io.github.sumup/mcp"
+  },
+  "io.github.yarnabrina/mcp-learning:https://github.com/yarnabrina/learn-model-context-protocol": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "The repo is owned by a personal user (yarnabrina), not an official organization, and the server is a generic arithmetic demonstrator.",
+    "cached_at": "2025-11-09 02:33:27 UTC",
+    "repository_url": "https://github.com/yarnabrina/learn-model-context-protocol",
+    "server_name": "io.github.yarnabrina/mcp-learning"
   }
 }

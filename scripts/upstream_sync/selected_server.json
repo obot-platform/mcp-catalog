@@ -1437,5 +1437,115 @@
     "upstream_source": "modelcontextprotocol.io",
     "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/454",
     "processed_at": "2025-11-02 02:33:59 UTC"
+  },
+  "ai.explorium/mcp-explorium": {
+    "name": "ai.explorium/mcp-explorium",
+    "description": "Access live company and contact data from Explorium's AgentSource B2B platform.",
+    "version": "1.0.1",
+    "repository_url": "https://github.com/explorium-ai/mcp-explorium",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/475",
+    "processed_at": "2025-11-09 02:33:33 UTC"
+  },
+  "com.scoutapm/scout-mcp-local": {
+    "name": "com.scoutapm/scout-mcp-local",
+    "description": "An MCP server for Scout Monitoring data interactions.",
+    "version": "2025.11.4",
+    "repository_url": "https://github.com/scoutapp/scout-mcp-local",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/476",
+    "processed_at": "2025-11-09 02:33:35 UTC"
+  },
+  "dev.ohmyposh/validator": {
+    "name": "dev.ohmyposh/validator",
+    "description": "Validate oh-my-posh configurations and segment snippets against the official schema.",
+    "version": "27.5.2",
+    "repository_url": "https://github.com/JanDeDobbeleer/oh-my-posh",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/477",
+    "processed_at": "2025-11-09 02:33:36 UTC"
+  },
+  "io.github.ScrapeGraphAI/scrapegraph-mcp": {
+    "name": "io.github.ScrapeGraphAI/scrapegraph-mcp",
+    "description": "AI-powered web scraping and data extraction capabilities through ScrapeGraph API",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/ScrapeGraphAI/scrapegraph-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/478",
+    "processed_at": "2025-11-09 02:33:37 UTC"
+  },
+  "io.github.clarenceh/expenselm-mcp-server": {
+    "name": "io.github.clarenceh/expenselm-mcp-server",
+    "description": "An MCP server that provides access to your expense data on ExpenseLM.",
+    "version": "0.2.2",
+    "repository_url": "https://github.com/expenselm/expenselm-mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/479",
+    "processed_at": "2025-11-09 02:33:38 UTC"
+  },
+  "io.github.neo4j-contrib/mcp-neo4j-aura-manager": {
+    "name": "io.github.neo4j-contrib/mcp-neo4j-aura-manager",
+    "description": "MCP server for Neo4j Aura Database Instance Manager.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/neo4j-contrib/mcp-neo4j",
+    "server_type": "community",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/480",
+    "processed_at": "2025-11-09 02:33:40 UTC"
+  },
+  "io.github.neo4j-contrib/mcp-neo4j-cypher": {
+    "name": "io.github.neo4j-contrib/mcp-neo4j-cypher",
+    "description": "A simple Neo4j MCP server that allows you to run Cypher queries against a Neo4j database.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/neo4j-contrib/mcp-neo4j",
+    "server_type": "community",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/481",
+    "processed_at": "2025-11-09 02:33:41 UTC"
+  },
+  "io.github.neo4j-contrib/mcp-neo4j-data-modeling": {
+    "name": "io.github.neo4j-contrib/mcp-neo4j-data-modeling",
+    "description": "A simple Neo4j MCP server for creating graph data models.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/neo4j-contrib/mcp-neo4j",
+    "server_type": "community",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/482",
+    "processed_at": "2025-11-09 02:33:43 UTC"
+  },
+  "io.github.neo4j-contrib/mcp-neo4j-memory": {
+    "name": "io.github.neo4j-contrib/mcp-neo4j-memory",
+    "description": "MCP Neo4j Knowledge Graph Memory Server",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/neo4j-contrib/mcp-neo4j",
+    "server_type": "community",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/483",
+    "processed_at": "2025-11-09 02:33:44 UTC"
+  },
+  "io.github.simonenavifare/navifare-mcp": {
+    "name": "io.github.simonenavifare/navifare-mcp",
+    "description": "Flight price comparison MCP server. Search multiple booking sources to find better flight prices.",
+    "version": "0.1.3",
+    "repository_url": "https://github.com/navifare/navifare-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/484",
+    "processed_at": "2025-11-09 02:33:45 UTC"
+  },
+  "io.github.sumup/mcp": {
+    "name": "io.github.sumup/mcp",
+    "description": "Tools to explore SumUp accounts, payments, customers, and payouts.",
+    "version": "0.1.1",
+    "repository_url": "https://github.com/sumup/sumup-agent-toolkit",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/485",
+    "processed_at": "2025-11-09 02:33:46 UTC"
   }
 }
