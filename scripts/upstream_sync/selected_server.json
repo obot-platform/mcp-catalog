@@ -1547,5 +1547,115 @@
     "upstream_source": "modelcontextprotocol.io",
     "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/485",
     "processed_at": "2025-11-09 02:33:46 UTC"
+  },
+  "io.github.IvanMurzak/Unity-MCP": {
+    "name": "io.github.IvanMurzak/Unity-MCP",
+    "description": "Make 3D games in Unity Engine with AI. MCP Server + Plugin for Unity Editor and Unity games.",
+    "version": "0.17.1",
+    "repository_url": "https://github.com/IvanMurzak/Unity-MCP",
+    "server_type": "community",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/504",
+    "processed_at": "2025-11-16 02:33:52 UTC"
+  },
+  "io.github.bgauryy/octocode-mcp": {
+    "name": "io.github.bgauryy/octocode-mcp",
+    "description": "AI code research platform. Search, analyze, and extract insights from any GitHub repository.",
+    "version": "7.0.9",
+    "repository_url": "https://github.com/bgauryy/octocode-mcp",
+    "server_type": "community",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/505",
+    "processed_at": "2025-11-16 02:33:53 UTC"
+  },
+  "io.github.comet-ml/opik-mcp": {
+    "name": "io.github.comet-ml/opik-mcp",
+    "description": "Interact with Opik prompts, traces, and metrics through the Model Context Protocol.",
+    "version": "0.1.3",
+    "repository_url": "https://github.com/comet-ml/opik-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/506",
+    "processed_at": "2025-11-16 02:33:54 UTC"
+  },
+  "io.github.goreleaser/mcp": {
+    "name": "io.github.goreleaser/mcp",
+    "description": "GoReleaser MCP server",
+    "version": "0.2.0",
+    "repository_url": "https://github.com/goreleaser/mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/507",
+    "processed_at": "2025-11-16 02:33:55 UTC"
+  },
+  "io.github.simplifier-ag/simplifier-mcp": {
+    "name": "io.github.simplifier-ag/simplifier-mcp",
+    "description": "MCP Server for Simplifier - manage Connectors, BusinessObjects, Datatypes and logins",
+    "version": "0.9.55",
+    "repository_url": "https://github.com/simplifier-ag/simplifier-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/508",
+    "processed_at": "2025-11-16 02:33:57 UTC"
+  },
+  "io.github.tago-io/mcp-server": {
+    "name": "io.github.tago-io/mcp-server",
+    "description": "Model Context Protocol server for TagoIO data and analytics",
+    "version": "2.1.3",
+    "repository_url": "https://github.com/tago-io/mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/509",
+    "processed_at": "2025-11-16 02:33:58 UTC"
+  },
+  "io.oxylabs/oxylabs-mcp": {
+    "name": "io.oxylabs/oxylabs-mcp",
+    "description": "Fetch and process content from specified URLs & sources using the Oxylabs Web Scraper API.",
+    "version": "0.7.2",
+    "repository_url": "https://github.com/oxylabs/oxylabs-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/510",
+    "processed_at": "2025-11-16 02:33:59 UTC"
+  },
+  "io.tweekit/mcp": {
+    "name": "io.tweekit/mcp",
+    "description": "Normalize and convert 400+ file types via TweekIT's hosted MCP endpoint.",
+    "version": "1.5.0",
+    "repository_url": "https://github.com/equilibrium-team/tweekit-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/511",
+    "processed_at": "2025-11-16 02:34:00 UTC"
+  },
+  "microsoft/azure-mcp-server": {
+    "name": "microsoft/azure-mcp-server",
+    "description": "Production-ready MCP server connecting AI agents with 40+ Azure services including AI Foundry, AI Search, App Service, Storage, databases, and monitoring tools",
+    "version": "",
+    "repository_url": "https://github.com/microsoft/mcp",
+    "server_type": "official",
+    "upstream_source": "github.com/mcp",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/512",
+    "processed_at": "2025-11-16 02:34:01 UTC"
+  },
+  "huggingface/hf-mcp-server": {
+    "name": "huggingface/hf-mcp-server",
+    "description": "Access Hugging Face models, datasets, Spaces, papers, collections via MCP.",
+    "version": "",
+    "repository_url": "https://github.com/huggingface/hf-mcp-server",
+    "server_type": "official",
+    "upstream_source": "github.com/mcp",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/513",
+    "processed_at": "2025-11-16 02:34:02 UTC"
+  },
+  "goreleaser/mcp": {
+    "name": "goreleaser/mcp",
+    "description": "GoReleaser MCP server for build automation",
+    "version": "",
+    "repository_url": "https://github.com/goreleaser/mcp",
+    "server_type": "official",
+    "upstream_source": "github.com/mcp",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/514",
+    "processed_at": "2025-11-16 02:34:03 UTC"
   }
 }
