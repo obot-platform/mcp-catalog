@@ -1,0 +1,117 @@
+name: Salesforce
+description: |
+  ![Salesforce MCP Server](https://img.shields.io/badge/Salesforce-MCP%20Server-blue?style=for-the-badge&logo=salesforce)
+  ![Python](https://img.shields.io/badge/Python-3.8+-green?style=for-the-badge&logo=python)
+  ![Docker](https://img.shields.io/badge/Docker-Ready-blue?style=for-the-badge&logo=docker)
+  ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+
+  A Model Context Protocol (MCP) server for Salesforce integration, providing comprehensive CRM management capabilities through the Salesforce API.
+
+  ## Features
+  - **Object Management**: Create, read, update, and delete Salesforce records
+  - **SOQL Queries**: Execute Salesforce Object Query Language queries
+  - **Metadata Access**: Retrieve and manage Salesforce metadata
+  - **Multi-Object Support**: Work with standard and custom objects
+  - **Bulk Operations**: Handle large data operations efficiently
+
+  ## What you'll need to connect
+
+  **Salesforce Connected App**: You'll need to create a Connected App in Salesforce and get the client credentials
+
+  ### How to create a Connected App and get your credentials:
+
+  1. **Create a new Salesforce External Client App**
+     - Log in to your Salesforce portal
+     - Go to Setup, and then search for 'External Client App Manager'
+     - Select 'New External Client App' from the top right
+     - Enter `Salesforce` as the External Client App Name
+     - Fill in a Contact Email for your Salesforce Administrator
+     - Set 'Distribution State' to 'Local' from the dropdown menu
+     - (Optionally) Fill in the other fields
+     - Click the `Create` button
+
+  2. **Configure OAuth Settings**
+     - Expand the 'Api (Enable OAuth Settings)' section, and check the box to Enable OAuth
+     - Enter your callback url. Any url will work, as we will only use the client id and secret to authenticate.
+     - Check on "Enable Client Credentials Flow".
+     - In the 'App Settings' section
+       - Select the `Manage user data via APIs (api)` and `Perform requests at any time (refresh_token, offline_access)` OAuth Scopes from the list
+     - Click the 'Create' button
+
+  3. **Register your OAuth App credentials**
+     - Go to Your app's settings page. Under the "Policy" -> "Oauth policy" section, click "Edit".
+     - Check on "Enable Client Credentials Flow". Put an username that you want to run as the user with client credentials.
+     - From the 'Settings' tab for your External Client App
+       - Expand the 'OAuth Settings' box and then click 'Consumer Key and Secret' from inside the 'App Settings' block
+     - Save the consumer key and secret as you will use them later.
+
+  4. **Find your Salesforce domain**
+     - Go to "Setup"
+     - in "Quick Find" search for "My Domain"
+     - Click on "My Domain". Find the domain in "Current My Domain URL". Use the one before salesforce.com. For example, if the url is https://mydomain.devloping.my.salesforce.com, the domain is mydomain.devloping.my.
+     - Copy the domain and save it for later.
+
+  5. **Environment Variables**
+     - Set `SFDC_CLIENT_ID` to your Consumer Key
+     - Set `SFDC_CLIENT_SECRET` to your Consumer Secret
+     - Set `SFDC_DOMAIN` to your Salesforce domain (for example, mydomain.devloping.my)
+
+metadata:
+  categories: CRM
+  allow-multiple: "true"
+icon: https://img.icons8.com/?size=100&id=38804&format=png&color=000000
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/salesforce-mcp/salesforce-mcp:latest
+  port: 9000
+  path: "/"
+env:
+  - key: SFDC_CLIENT_ID
+    name: Salesforce Client ID
+    required: true
+    sensitive: true
+    description: Your Salesforce Connected App Consumer Key (Client ID)
+  - key: SFDC_CLIENT_SECRET
+    name: Salesforce Client Secret
+    required: true
+    sensitive: true
+    description: Your Salesforce Connected App Consumer Secret (Client Secret)
+  - key: SFDC_DOMAIN
+    name: Salesforce Domain
+    required: false
+    sensitive: false
+    description: Your Salesforce domain (defaults to 'organization.my' if not specified)
+
+toolPreview:
+  - name: query_records
+    description: Execute a SOQL query to retrieve Salesforce records
+    params:
+      query: The SOQL query string to execute
+  - name: create_record
+    description: Create a new record in Salesforce
+    params:
+      object_type: The Salesforce object type (e.g., Account, Contact, Lead)
+      fields: JSON object containing the field values for the new record
+  - name: get_record
+    description: Retrieve a specific record by ID
+    params:
+      object_type: The Salesforce object type
+      record_id: The ID of the record to retrieve
+  - name: update_record
+    description: Update an existing Salesforce record
+    params:
+      object_type: The Salesforce object type
+      record_id: The ID of the record to update
+      fields: JSON object containing the field values to update
+  - name: delete_record
+    description: Delete a Salesforce record
+    params:
+      object_type: The Salesforce object type
+      record_id: The ID of the record to delete
+  - name: describe_object
+    description: Get metadata information about a Salesforce object
+    params:
+      object_type: The Salesforce object type to describe
+  - name: list_objects
+    description: List all available Salesforce objects
+    params: {}
