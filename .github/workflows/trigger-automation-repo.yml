@@ -9,10 +9,60 @@ jobs:
   notify-automation:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v47
+        with:
+          files: "*.yaml"
+          json: true
+          escape_json: false
+
+      - name: Extract config from changed files
+        id: extract-config
+        run: |
+          changed_files='${{ steps.changed-files.outputs.all_changed_files }}'
+
+          if [ "$changed_files" == "[]" ] || [ -z "$changed_files" ]; then
+            echo "file_configs=[]" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Build JSON array with file data
+          file_configs="[]"
+
+          echo "$changed_files" | jq -r '.[]' | while read -r file; do
+            if [ -f "$file" ]; then
+              containerized_config=$(yq eval '.containerizedConfig' "$file" -o=json -I=0)
+
+              # Only include files that have containerizedConfig (not null)
+              if [ "$containerized_config" != "null" ]; then
+                env_config=$(yq eval '.env' "$file" -o=json -I=0)
+
+                # Create entry for this file
+                entry=$(jq -n \
+                  --arg file "$file" \
+                  --argjson containerized "$containerized_config" \
+                  --argjson env "$env_config" \
+                  '{file: $file, containerizedConfig: $containerized, env: $env}')
+
+                # Append to array
+                file_configs=$(echo "$file_configs" | jq --argjson entry "$entry" '. += [$entry]')
+              fi
+            fi
+          done
+
+          # Output must be on single line for GitHub Actions
+          echo "file_configs=$(echo "$file_configs" | jq -c .)" >> $GITHUB_OUTPUT
+
       - name: Trigger Automation Repository
         uses: peter-evans/repository-dispatch@v4
         with:
           token: ${{ secrets.AUTOMATION_PAT }}
           repository: obot-platform/mcp-server-validation-automation
           event-type: pr-created
-          client-payload: '{"pr_number": "${{ github.event.pull_request.number }}"}'
+          client-payload: '{"pr_number": "${{ github.event.pull_request.number }}", "changed_files": ${{ steps.extract-config.outputs.file_configs }}}'
