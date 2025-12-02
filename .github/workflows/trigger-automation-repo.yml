@@ -1,7 +1,7 @@
 name: Notify Automation Workflow on PR Creation
 
 on:
-  pull_request_target:
+  pull_request:
     branches:
       - main
 
@@ -11,8 +11,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Get changed files
         id: changed-files
