@@ -62,7 +62,7 @@ jobs:
       - name: Trigger Automation Repository
         uses: peter-evans/repository-dispatch@v4
         with:
-          token: ${{ secrets.AUTOMATION_PAT }}
+          token: ${{ secrets.DISPATCH_PAT }}
           repository: obot-platform/mcp-server-validation-automation
           event-type: pr-created
           client-payload: '{"pr_number": "${{ github.event.pull_request.number }}", "changed_files": ${{ steps.extract-config.outputs.file_configs }}}'
