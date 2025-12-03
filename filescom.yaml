@@ -1,4 +1,5 @@
 name: Files.com
+shortDescription: Manage files, users, groups, permissions, and secure file sharing bundles
 description: 'A Model Context Protocol (MCP) server that provides comprehensive interface for managing Files.com resources and performing file transfer operations. Files.com is the modern platform for secure file transfer, automation, and storage integration, connecting cloud apps, on-prem systems, and human workflows through a single interface.
 
 

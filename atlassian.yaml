@@ -1,4 +1,5 @@
 name: Atlassian
+shortDescription: Manage Jira issues, Confluence pages, and Compass services with AI assistance
 description: |
 
   A Model Context Protocol (MCP) server that bridges between your Atlassian Cloud site and compatible external tools. Once configured, it enables those tools to interact with Jira, Compass, and Confluence data in real-time.

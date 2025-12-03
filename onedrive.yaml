@@ -1,4 +1,5 @@
 name: OneDrive
+shortDescription: Manage OneDrive files, folders, sharing, and cross-drive operations
 description: |
   ![OneDrive MCP Server](https://img.shields.io/badge/OneDrive-MCP%20Server-blue?style=for-the-badge&logo=microsoft-onedrive)
   ![Go](https://img.shields.io/badge/Go-1.23+-green?style=for-the-badge&logo=go)

@@ -1,4 +1,5 @@
 name: Terraform
+shortDescription: Manage Terraform Cloud workspaces, runs, variables, and explore the registry
 description: |
   A Model Context Protocol (MCP) server that provides seamless integration with the Terraform ecosystem, enabling advanced automation and interaction capabilities for Infrastructure as Code (IaC) development. Connect to Terraform Cloud or Terraform Enterprise to manage workspaces, runs, variables, and explore the Terraform Registry.
 

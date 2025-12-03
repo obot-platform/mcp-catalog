@@ -1,4 +1,5 @@
 name: Google Drive
+shortDescription: Manage Google Drive files, folders, permissions, and sharing with OAuth2
 description: |
   ![Google Drive MCP Server](https://img.shields.io/badge/Google%20Drive-MCP%20Server-blue?style=for-the-badge&logo=google-drive)
   ![Python](https://img.shields.io/badge/Python-3.13+-green?style=for-the-badge&logo=python)

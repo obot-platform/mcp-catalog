@@ -1,4 +1,5 @@
 name: Grafana
+shortDescription: Query metrics, logs, traces, manage dashboards, alerts, and on-call schedules
 description: |
   A Model Context Protocol (MCP) server that provides comprehensive integration with Grafana, enabling seamless interaction with observability data, dashboards, alerts, and incident management. Connect to Grafana Cloud or self-hosted Grafana instances to query metrics, logs, traces, profiles, manage dashboards and alerts, and coordinate on-call schedules.
 

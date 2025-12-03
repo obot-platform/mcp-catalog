@@ -1,4 +1,5 @@
 name: Postman
+shortDescription: Manage Postman collections, mocks, monitors, environments, and API specs
 description: |
   A Model Context Protocol (MCP) server that provides seamless integration with Postman's API Platform. Connect your AI tools to Postman's comprehensive API development ecosystem, enabling intelligent workflows for collections, environments, mocks, monitors, and API specifications.
 

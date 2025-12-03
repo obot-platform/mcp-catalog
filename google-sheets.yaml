@@ -1,4 +1,5 @@
 name: Google Sheets
+shortDescription: Create and manage Google Sheets spreadsheets, worksheets, cells, and formulas
 description: |
   ![Google Sheets MCP Server](https://img.shields.io/badge/Google%20Sheets-MCP%20Server-blue?style=for-the-badge&logo=google-sheets)
   ![Python](https://img.shields.io/badge/Python-3.13+-green?style=for-the-badge&logo=python)

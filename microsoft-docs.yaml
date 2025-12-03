@@ -1,4 +1,5 @@
 name: Microsoft Learn
+shortDescription: Search Microsoft Learn documentation and find official code samples
 description: |
 
   The official Microsoft Learn MCP Server that enables AI assistants to access trusted, up-to-date information directly from Microsoft's official documentation and code samples.
