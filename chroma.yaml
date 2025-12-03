@@ -1,4 +1,5 @@
 name: Chroma Cloud
+shortDescription: Manage collections, documents, and vector search in Chroma embedding database
 description: 'A Model Context Protocol (MCP) server implementation that provides database capabilities for Chroma Cloud, the open-source embedding database. This server enables AI models to create collections, store documents with embeddings, and retrieve data using vector search, full-text search, metadata filtering, and more.
 
 

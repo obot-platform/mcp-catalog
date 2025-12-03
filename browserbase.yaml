@@ -1,4 +1,5 @@
 name: Browserbase
+shortDescription: Cloud browser automation with web scraping, screenshots, and AI interactions
 description: 'A Model Context Protocol (MCP) server that provides cloud browser automation capabilities using Browserbase and Stagehand. Enable LLMs to interact with web pages, take screenshots, extract information, and perform automated actions with atomic precision.
 
 

@@ -1,4 +1,5 @@
 name: AWS EKS
+shortDescription: Manage Amazon EKS clusters, Kubernetes resources, and containerized applications
 description: 'A Model Context Protocol (MCP) server for Amazon EKS that provides AI code assistants with resource management tools and real-time cluster state visibility. Streamline application development through tailored guidance from initial setup through production optimization and troubleshooting.
 
 

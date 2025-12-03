@@ -1,4 +1,5 @@
 name: Salesforce
+shortDescription: Manage Salesforce CRM records, execute SOQL queries, and access metadata
 description: |
   ![Salesforce MCP Server](https://img.shields.io/badge/Salesforce-MCP%20Server-blue?style=for-the-badge&logo=salesforce)
   ![Python](https://img.shields.io/badge/Python-3.8+-green?style=for-the-badge&logo=python)

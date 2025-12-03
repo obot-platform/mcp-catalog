@@ -1,4 +1,5 @@
 name: Databricks Genie Spaces
+shortDescription: Ask natural language questions about your data with AI-powered analytics
 description: |
   A Model Context Protocol (MCP) server that provides easy connection to Databricks Genie Spaces using managed MCP servers. Ask natural language questions about your data and get insights through AI-powered analytics with built-in Unity Catalog security.
 

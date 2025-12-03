@@ -1,4 +1,5 @@
 name: Contact
+shortDescription: Manage Microsoft 365 contacts with CRUD operations and advanced search
 description: |
   ![Contact MCP Server](https://img.shields.io/badge/Contact-MCP%20Server-blue?style=for-the-badge&logo=microsoft-outlook)
   ![Go](https://img.shields.io/badge/Go-1.23+-green?style=for-the-badge&logo=go)

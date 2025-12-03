@@ -1,4 +1,5 @@
 name: Brave Search
+shortDescription: Search the web, news, images, videos, and local businesses with Brave Search API
 description: 'A Model Context Protocol (MCP) server that provides comprehensive web search capabilities through the Brave Search API. It enables AI assistants to search the web, find news articles, discover videos and images, locate local businesses, and generate AI-powered summaries of search results.
 
 

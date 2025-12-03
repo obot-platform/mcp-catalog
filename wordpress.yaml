@@ -1,4 +1,5 @@
 name: WordPress
+shortDescription: Manage WordPress posts, categories, tags, and media on self-hosted sites
 description: |
   A Model Context Protocol (MCP) server that integrates with a self-hosted WordPress site (wordpress.com not supported).
   

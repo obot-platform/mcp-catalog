@@ -1,4 +1,5 @@
 name: MongoDB Database
+shortDescription: Manage MongoDB databases, collections, documents, and aggregation pipelines
 description: |
   A Model Context Protocol (MCP) server for interacting with MongoDB databases. Provides comprehensive tools for database operations, collection management, and data manipulation with any MongoDB instance (local, cloud, or self-hosted).
 

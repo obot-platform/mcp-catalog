@@ -1,4 +1,5 @@
 name: Excel
+shortDescription: Manage Excel workbooks, worksheets, tables, and data with Microsoft Graph API
 description: |
   ![Excel MCP Server](https://img.shields.io/badge/Excel-MCP%20Server-blue?style=for-the-badge&logo=microsoft-excel)
   ![Go](https://img.shields.io/badge/Go-1.23+-green?style=for-the-badge&logo=go)

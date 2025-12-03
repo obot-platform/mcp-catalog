@@ -1,4 +1,5 @@
 name: Render
+shortDescription: Manage Render services, databases, deployments, logs, and performance metrics
 description: 'A Model Context Protocol (MCP) server that enables you to manage your Render infrastructure directly from compatible AI apps. Using natural language prompts, you can spin up new services, query your databases, analyze metrics and logs, and more.
 
 
