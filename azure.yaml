@@ -1,4 +1,5 @@
 name: Azure
+shortDescription: Manage Azure services including AI, databases, compute, storage, and monitoring
 description: 'A Model Context Protocol (MCP) server that implements the MCP specification to create a seamless connection between AI agents and Azure services. Supercharge your agents with Azure context across compute, storage, databases, AI services, and more.
 
 

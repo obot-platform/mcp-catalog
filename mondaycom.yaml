@@ -1,4 +1,5 @@
 name: Monday.com
+shortDescription: Manage Monday.com boards, items, workflows, and team collaboration
 description: |
 
   A Model Context Protocol (MCP) server for monday.com integration, providing comprehensive work management capabilities through monday.com's API.

@@ -1,4 +1,5 @@
 name: MarkItDown
+shortDescription: Convert documents, images, audio, and web content to LLM-optimized Markdown
 description: 'A Model Context Protocol (MCP) server that provides powerful file-to-Markdown conversion capabilities. Convert various document formats and web content to clean, structured Markdown optimized for LLM consumption.
 
 

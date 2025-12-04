@@ -1,4 +1,5 @@
 name: HubSpot
+shortDescription: Manage HubSpot CRM objects, schemas, properties, and workflows
 description: |
   A Model Context Protocol (MCP) server that integrates with HubSpot CRM.
 

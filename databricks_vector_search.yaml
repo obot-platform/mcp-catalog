@@ -1,4 +1,5 @@
 name: Databricks Vector Search
+shortDescription: Semantic search and similarity queries with Databricks Vector Search indexes
 description: |
   A Model Context Protocol (MCP) server that provides easy connection to Databricks Vector Search using managed MCP servers. Access your vector search indexes for semantic search and similarity queries with built-in Unity Catalog security.
 

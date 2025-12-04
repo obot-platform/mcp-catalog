@@ -1,4 +1,5 @@
 name: PagerDuty
+shortDescription: Manage incidents, services, teams, on-call schedules, and escalation policies
 description: |
   [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
   [![Python Version](https://img.shields.io/badge/python-3.13%2B-blue)](https://www.python.org/downloads/)

@@ -1,4 +1,5 @@
 name: BigQuery Toolbox
+shortDescription: Execute SQL queries and explore Google BigQuery datasets with secure access
 description: |
   A Model Context Protocol (MCP) server that enables secure interaction with Google BigQuery. This server facilitates communication between AI applications and BigQuery datasets, making data exploration and analysis structured through a controlled interface.
 

@@ -1,4 +1,5 @@
 name: Zapier
+shortDescription: Access 30,000+ actions across 8,000+ apps in Zapier automation platform
 description: |
   A Model Context Protocol (MCP) server for Zapier, providing access to apps and actions.
 

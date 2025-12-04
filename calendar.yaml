@@ -1,4 +1,5 @@
 name: Calendar
+shortDescription: Manage Microsoft 365 calendars, events, meetings, and attendees
 description: |
   ![Calendar MCP Server](https://img.shields.io/badge/Calendar-MCP%20Server-blue?style=for-the-badge&logo=microsoft-outlook)
   ![Go](https://img.shields.io/badge/Go-1.25+-green?style=for-the-badge&logo=go)

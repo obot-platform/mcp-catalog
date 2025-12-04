@@ -1,4 +1,5 @@
 name: AWS Knowledge
+shortDescription: Check AWS service regional availability and search AWS documentation
 description: 'A Model Context Protocol (MCP) server that provides comprehensive AWS knowledge access including documentation search, regional availability checking, and content recommendations. Built and hosted by AWS Labs.
 
 

@@ -1,4 +1,5 @@
 name: Dynatrace
+shortDescription: Query logs, metrics, spans, and manage problems with Dynatrace observability
 description: |2
 
   A Model Context Protocol (MCP) server for Dynatrace integration, providing comprehensive observability and monitoring capabilities through Dynatrace API.

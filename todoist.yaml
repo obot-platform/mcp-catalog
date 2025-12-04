@@ -1,4 +1,5 @@
 name: Todoist
+shortDescription: Manage Todoist tasks, projects, and team collaboration through natural language
 description: |
 
   A Model Context Protocol (MCP) server for Todoist integration, providing comprehensive task and project management capabilities through Todoist's API.

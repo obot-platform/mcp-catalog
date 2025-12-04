@@ -1,4 +1,5 @@
 name: Neon Database
+shortDescription: Manage Neon Postgres databases with natural language, branching, and migrations
 description: |
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://neon.com/brand/neon-logo-dark-color.svg">

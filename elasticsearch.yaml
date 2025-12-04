@@ -1,4 +1,5 @@
 name: Elasticsearch
+shortDescription: Search, query, and manage Elasticsearch indices with vector and full-text search
 description: |
   > [!CAUTION]
   > **WARNING: this MCP server is EXPERIMENTAL.**

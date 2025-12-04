@@ -1,4 +1,5 @@
 name: Wix
+shortDescription: Access Wix APIs to manage sites, bookings, pricing plans, and CMS
 description: |
   A Model Context Protocol (MCP) server for Wix, providing access to Wix's API and documentation.
 

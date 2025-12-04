@@ -1,4 +1,5 @@
 name: DeepWiki
+shortDescription: Access AI-generated documentation for any public GitHub repository
 description: |
 
   A Model Context Protocol (MCP) server that provides AI-generated documentation for any public GitHub repository. Search, read, and ask questions about codebases through comprehensive, automatically-generated documentation.

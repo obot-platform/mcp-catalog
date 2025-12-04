@@ -1,4 +1,5 @@
 name: DigitalOcean
+shortDescription: Manage DigitalOcean droplets, apps, databases, Kubernetes, and networking
 description: 'A Model Context Protocol (MCP) server that provides comprehensive interface for managing DigitalOcean resources and performing actions using the DigitalOcean API. Built on top of the godo library, this integration enables seamless management of your DigitalOcean infrastructure through AI agents.
 
 

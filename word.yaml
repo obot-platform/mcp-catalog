@@ -1,4 +1,5 @@
 name: Word
+shortDescription: Create and manage Microsoft Word documents with markdown content conversion
 description: |
   ![Word MCP Server](https://img.shields.io/badge/Word-MCP%20Server-blue?style=for-the-badge&logo=microsoft-word)
   ![Go](https://img.shields.io/badge/Go-1.23+-green?style=for-the-badge&logo=go)

@@ -1,4 +1,5 @@
 name: Slack
+shortDescription: Send messages, manage channels, search history, and handle threads in Slack workspaces
 description: |
   ![Slack MCP Server](https://img.shields.io/badge/Slack-MCP%20Server-blue?style=for-the-badge&logo=slack)
   ![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-green?style=for-the-badge&logo=typescript)

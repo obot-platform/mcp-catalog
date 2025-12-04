@@ -1,4 +1,5 @@
 name: Google Cloud Run
+shortDescription: Deploy and manage applications on Google Cloud Run with monitoring and logging
 description: |
   A Model Context Protocol (MCP) server that enables AI agents to deploy applications to Google Cloud Run. Provides comprehensive deployment capabilities including file-based deployment, container image deployment, and service management with full monitoring and logging support.
 

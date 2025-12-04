@@ -1,4 +1,5 @@
 name: Datadog
+shortDescription: Monitor incidents, logs, dashboards, metrics, APM traces, and infrastructure with Datadog
 description: 'A Model Context Protocol (MCP) server that provides access to Datadog''s monitoring and observability platform. This server enables AI agents to interact with key Datadog features including incidents, monitors, logs, dashboards, metrics, APM traces, infrastructure monitoring, and RUM analytics through a comprehensive set of tools.
 
 

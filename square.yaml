@@ -1,4 +1,5 @@
 name: Square
+shortDescription: Manage Square payments, customers, orders, catalog, and business operations
 description: |
   A Model Context Protocol (MCP) server for Square that connects AI assistants directly to the full Square API platform, providing programmatic access to customers, orders, items, payments, and commerce operations.
 

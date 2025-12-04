@@ -1,4 +1,5 @@
 name: Cloudflare
+shortDescription: Manage Cloudflare Workers, security, performance, AI services, and observability
 description: |
   A Model Context Protocol (MCP) server for Cloudflare's services. Connect to your Cloudflare account using natural language to manage configurations, process information, and make changes across application development, security, and performance services.
 

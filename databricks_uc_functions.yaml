@@ -1,4 +1,5 @@
 name: Databricks Unity Catalog Functions
+shortDescription: Execute and manage Databricks Unity Catalog serverless functions
 description: |
   A Model Context Protocol (MCP) server that provides easy connection to Databricks Unity Catalog Functions using managed MCP servers. Execute and manage your registered serverless functions with built-in Unity Catalog security and governance.
 

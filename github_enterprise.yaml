@@ -1,4 +1,5 @@
 name: GitHub Enterprise
+shortDescription: Connect AI tools to GitHub Enterprise Server and Enterprise Cloud with data residency
 description: |
   A Model Context Protocol (MCP) server that connects AI tools directly to GitHub's platform or [GitHub Enterprise](https://github.com/github/github-mcp-server?tab=readme-ov-file#github-enterprise-server-and-enterprise-cloud-with-data-residency-ghecom). This gives AI agents, assistants, and chatbots the ability to read repositories and code files, manage issues and PRs, analyze code, and automate workflows through natural language interactions. Supports GitHub Enterprise Server and Enterprise Cloud with data residency.
 

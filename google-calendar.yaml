@@ -1,4 +1,5 @@
 name: Google Calendar
+shortDescription: Manage Google Calendar events, recurring events, and attendees with OAuth2
 description: |
   ![Google Calendar MCP Server](https://img.shields.io/badge/Google%20Calendar-MCP%20Server-blue?style=for-the-badge&logo=google-calendar)
   ![Python](https://img.shields.io/badge/Python-3.13+-green?style=for-the-badge&logo=python)

@@ -1,4 +1,5 @@
 name: Playwright
+shortDescription: Browser automation with accessibility-based interactions using Playwright
 description: 'A Model Context Protocol (MCP) server that provides browser automation capabilities using Playwright. This server enables AI agents to interact with web pages through structured accessibility snapshots, bypassing the need for screenshots or visually-tuned models for fast, deterministic automation.
 
 
