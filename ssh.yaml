@@ -1,0 +1,84 @@
+name: SSH
+description: |
+Execute commands and manage files on remote servers via SSH with private key authentication.
+
+## Features
+- Execute arbitrary commands on remote servers
+- Read files with line-range selection (token-efficient)
+- Write and append content to remote files
+- Edit specific text blocks in remote files
+- Search files with pattern matching and context
+
+metadata:
+categories: infrastructure, remote-management, devops
+
+icon: https://www.openssh.com/images/openssh.gif
+repoURL: https://github.com/anthropics/mcp-servers
+
+# Environment variables your server needs
+env:
+- key: SSH_PRIVATE_KEY
+name: SSH Private Key Path
+required: false
+sensitive: true
+description: Path to SSH private key (defaults to ~/.ssh/id_ed25519 if not set)
+
+# Preview your server's tools
+toolPreview:
+- name: remote-ssh
+description: Execute SSH commands on remote servers with private key authentication
+params:
+host: Remote server hostname or IP address
+user: SSH username
+command: Command to execute on remote server
+port: SSH port (default: 22)
+privateKeyPath: Path to SSH private key (optional, falls back to SSH_PRIVATE_KEY env var)
+
+- name: ssh-read-lines
+description: Read specific lines from remote files (token-efficient for large files)
+params:
+host: Remote server hostname or IP address
+user: SSH username
+filePath: Path to file on remote server
+startLine: Starting line number 1-based (default: 1)
+endLine: Ending line number (optional, reads to end if not specified)
+maxLines: Maximum lines to read (default: 100)
+port: SSH port (default: 22)
+privateKeyPath: Path to SSH private key (optional)
+
+- name: ssh-write-chunk
+description: Write content to remote files with append/rewrite modes (token-efficient for large content)
+params:
+host: Remote server hostname or IP address
+user: SSH username
+filePath: Path to file on remote server
+content: Content to write
+mode: Write mode - "rewrite" or "append" (default: "rewrite")
+port: SSH port (default: 22)
+privateKeyPath: Path to SSH private key (optional)
+
+- name: ssh-edit-block
+description: Edit specific text blocks in remote files (token-efficient alternative to full rewrites)
+params:
+host: Remote server hostname or IP address
+user: SSH username
+filePath: Path to file on remote server
+oldText: Text to find and replace
+newText: Replacement text
+port: SSH port (default: 22)
+privateKeyPath: Path to SSH private key (optional)
+expectedReplacements: Expected number of replacements (default: 1)
+
+- name: ssh-search-code
+description: Search for patterns in remote files without reading full content (token-efficient)
+params:
+host: Remote server hostname or IP address
+user: SSH username
+path: Directory path to search on remote server
+pattern: Text pattern to search for
+filePattern: File pattern (e.g., "*.js", "*.py")
+contextLines: Lines of context around matches (default: 2)
+ignoreCase: Case-insensitive search (default: false)
+maxResults: Maximum number of results (default: 50)
+port: SSH port (default: 22)
+privateKeyPath: Path to SSH private key (optional)
