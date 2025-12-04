@@ -58,10 +58,72 @@ jobs:
           # Output must be on single line for GitHub Actions
           echo "file_configs=$(echo "$file_configs" | jq -c .)" >> $GITHUB_OUTPUT
 
+      - name: Generate correlation id
+        id: cid
+        run: |
+          CID="${{ github.run_id }}-${{ github.job }}-${{ github.run_attempt }}"
+          echo "cid=$CID" >> "$GITHUB_OUTPUT"
+
       - name: Trigger Automation Repository
         uses: peter-evans/repository-dispatch@v4
         with:
           token: ${{ secrets.DISPATCH_PAT }}
           repository: obot-platform/mcp-server-validation-automation
           event-type: pr-created
-          client-payload: '{"pr_number": "${{ github.event.pull_request.number }}", "changed_files": ${{ steps.extract-config.outputs.file_configs }}}'
+          client-payload: '{"correlation_id":"${{ steps.cid.outputs.cid }}","pr_number": "${{ github.event.pull_request.number }}", "changed_files": ${{ steps.extract-config.outputs.file_configs }}}'
+
+      - name: Poll for result
+        id: wait
+        run: |
+          GH_TOKEN=${{ secrets.DISPATCH_PAT }}
+          CID="${{ steps.cid.outputs.cid }}"
+          REPO="obot-platform/mcp-server-validation-automation"
+          WORKFLOW="pr-trigger.yml"
+
+          MAX_ATTEMPTS=120
+          SLEEP_SECONDS=10
+
+          attempt=1
+          while [ $attempt -le $MAX_ATTEMPTS ]; do
+            echo "Polling attempt $attempt for correlation_id=$CID"
+
+            runs=$(curl -s \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/$REPO/actions/workflows/$WORKFLOW/runs?event=repository_dispatch&per_page=50")
+
+            # Find the run whose name contains our correlation id
+            run=$(echo "$runs" | jq -r --arg CID "$CID" '
+              .workflow_runs
+              | map(select(.name | contains($CID)))
+              | sort_by(.created_at)
+              | last
+            ')
+
+            if [ "$run" = "null" ] || [ -z "$run" ]; then
+              echo "No matching run found yet."
+            else
+              status=$(echo "$run" | jq -r '.status')
+              conclusion=$(echo "$run" | jq -r '.conclusion')
+              html_url=$(echo "$run" | jq -r '.html_url')
+
+              echo "Found run: $html_url"
+              echo "Status: $status, conclusion: $conclusion"
+
+              if [ "$status" = "completed" ]; then
+                if [ "$conclusion" = "success" ]; then
+                  echo "Remote workflow succeeded ✅"
+                  exit 0
+                else
+                  echo "Remote workflow failed ❌: $conclusion"
+                  exit 1
+                fi
+              fi
+            fi
+
+            attempt=$((attempt+1))
+            sleep $SLEEP_SECONDS
+          done
+
+          echo "Timed out waiting for remote workflow for correlation_id=$CID"
+          exit 1
