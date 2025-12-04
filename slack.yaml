@@ -34,9 +34,11 @@ description: |
      - Under "Scopes" > "Bot Token Scopes", add these permissions:
        - `channels:history` - Read channel messages
        - `channels:read` - View basic channel info
+       - `channels:write.invite` - Invite users to public channels
        - `chat:write` - Send messages
        - `groups:history` - Read private channel messages
        - `groups:read` - View private channels
+       - `groups:write.invites` - Invite users to private channels
        - `im:history` - Read direct messages
        - `im:read` - View direct messages
        - `im:write` - Send direct messages
@@ -71,10 +73,10 @@ metadata:
   categories: Communication
   allow-multiple: "true"
 icon: https://img.icons8.com/?size=100&id=4n94I13nDTyw&format=png&color=000000
-repoURL: https://github.com/obot-platform/tools
+repoURL: https://github.com/obot-platform/slack-mcp
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/tools/slack:latest
+  image: ghcr.io/obot-platform/slack-mcp:latest
   port: 3000
   path: "/mcp"
 env:
@@ -85,6 +87,11 @@ env:
     description: Your Slack Bot Token for your slack APP that is installed in the workspace
 
 toolPreview:
+  - name: add_user_to_channel
+    description: Add a user to a channel in the Slack workspace.
+    params:
+      channelId: The ID of the channel to add the user to
+      userId: The ID of the user to add to the channel
   - name: list_channels
     description: List all channels in the Slack workspace. Returns the name and ID for each channel.
     params: {}
