@@ -61,9 +61,10 @@ metadata:
   categories: CRM
   allow-multiple: "true"
 icon: https://img.icons8.com/?size=100&id=38804&format=png&color=000000
+repoURL: https://github.com/obot-platform/salesforce-mcp
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/salesforce-mcp/salesforce-mcp:latest
+  image: ghcr.io/obot-platform/salesforce-mcp:latest
   port: 9000
   path: "/"
 env:
