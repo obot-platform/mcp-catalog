@@ -56,7 +56,6 @@ description: |
      - Set `SFDC_CLIENT_ID` to your Consumer Key
      - Set `SFDC_CLIENT_SECRET` to your Consumer Secret
      - Set `SFDC_DOMAIN` to your Salesforce domain (for example, mydomain.devloping.my)
-
 metadata:
   categories: CRM
   allow-multiple: "true"
@@ -66,7 +65,7 @@ runtime: containerized
 containerizedConfig:
   image: ghcr.io/obot-platform/salesforce-mcp:latest
   port: 9000
-  path: "/"
+  path: /
 env:
   - key: SFDC_CLIENT_ID
     name: Salesforce Client ID
@@ -85,35 +84,111 @@ env:
     description: Your Salesforce domain (defaults to 'organization.my' if not specified)
 
 toolPreview:
-  - name: query_records
-    description: Execute a SOQL query to retrieve Salesforce records
+  - name: convert_lead_to_opportunity
+    description: Converts an existing lead into a new Opportunity in Salesforce.
     params:
-      query: The SOQL query string to execute
-  - name: create_record
-    description: Create a new record in Salesforce
+      account_id: The Salesforce Id of an existing account to associate with the opportunity
+      contact_id: The Salesforce Id of an existing contact to associate with the opportunity
+      converted_status: The converted status of the lead. Must exist within Salesforce.
+      lead_id: A string containing the Salesforce Id of the lead to update
+      opportunity_name: The name of the opportunity to create
+  - name: create_account
+    description: Create a new account in Salesforce.
     params:
-      object_type: The Salesforce object type (e.g., Account, Contact, Lead)
-      fields: JSON object containing the field values for the new record
-  - name: get_record
-    description: Retrieve a specific record by ID
+      account: A JSON-formatted string containing the account fields to use for the new account
+  - name: create_case
+    description: Create a new case in Salesforce.
     params:
-      object_type: The Salesforce object type
-      record_id: The ID of the record to retrieve
-  - name: update_record
-    description: Update an existing Salesforce record
+      case: A JSON-formatted string containing the case fields to use for the new case
+  - name: create_contact
+    description: Create a new contact in Salesforce.
     params:
-      object_type: The Salesforce object type
-      record_id: The ID of the record to update
-      fields: JSON object containing the field values to update
-  - name: delete_record
-    description: Delete a Salesforce record
+      contact: A JSON-formatted string containing the contact fields to use for the new contact
+  - name: create_lead
+    description: Create a new lead in Salesforce.
     params:
-      object_type: The Salesforce object type
-      record_id: The ID of the record to delete
-  - name: describe_object
-    description: Get metadata information about a Salesforce object
+      lead: A JSON-formatted string containing the lead fields to use for the new lead
+  - name: create_opportunity
+    description: Create a new opportunity in Salesforce.
     params:
-      object_type: The Salesforce object type to describe
-  - name: list_objects
-    description: List all available Salesforce objects
+      opportunity: A JSON-formatted string containing the opportunity fields to use for the new opportunity
+  - name: delete_account
+    description: Delete an existing account in Salesforce.
+    params:
+      account_id: A string containing the Salesforce Id of the account to delete
+  - name: delete_case
+    description: Delete an existing case in Salesforce.
+    params:
+      case_id: A string containing the Salesforce Id of the case to delete
+  - name: delete_contact
+    description: Delete an existing contact in Salesforce.
+    params:
+      contact_id: A string containing the Salesforce Id of the contact to delete
+  - name: delete_lead
+    description: Delete an existing lead in Salesforce.
+    params:
+      lead_id: A string containing the Salesforce Id of the lead to delete
+  - name: delete_opportunity
+    description: Delete an existing opportunity in Salesforce.
+    params:
+      opportunity_id: A string containing the Salesforce Id of the opportunity to delete
+  - name: describe_account_schema
+    description: Describes the available fields for an account object in Salesforce.
     params: {}
+  - name: describe_case_schema
+    description: Describes the available fields for a case object in Salesforce.
+    params: {}
+  - name: describe_contact_schema
+    description: Describes the available fields for a contact object in Salesforce.
+    params: {}
+  - name: describe_lead_schema
+    description: Describes the available fields for a lead object in Salesforce.
+    params: {}
+  - name: describe_opportunity_schema
+    description: Describes the available fields for an opportunity object in Salesforce.
+    params: {}
+  - name: email_message
+    description: Create an Email in Salesforce using Enhanced Email functionality.
+    params:
+      from_address: The email address of the sender
+      from_name: The name of the sender
+      html_body: The HTML body of the email
+      related_object_id: The Salesforce Id of the object to which the email should be related
+      status: The numeric status of the email (3 = Sent, 5 = Draft). Create messages as drafts by default.
+      subject: The subject of the email
+      text_body: The plaintext body of the email
+      to_address: The email address of the recipient
+  - name: get_direct_link
+    description: Get a direct weblink to a Salesforce object.
+    params:
+      object_id: The ID of the Salesforce object to get the direct link for.
+      object_type: The type of Salesforce object to get the direct link for. Use singular form, starting with a capital letter (e.g., Account, Contact, Lead, Opportunity, Case)
+  - name: query
+    description: Query Salesforce using SOQL.
+    params:
+      query: The SOQL query to execute
+  - name: update_account
+    description: Update an existing account in Salesforce.
+    params:
+      account: A JSON-formatted string containing the account fields to update in the existing account
+      account_id: A string containing the Salesforce Id of the account to update
+  - name: update_case
+    description: Update an existing case in Salesforce.
+    params:
+      case: A JSON-formatted string containing the case fields to update in the existing case
+      case_id: A string containing the Salesforce Id of the case to update
+  - name: update_contact
+    description: Update an existing contact in Salesforce.
+    params:
+      contact: A JSON-formatted string containing the contact fields to update in the existing contact
+      contact_id: A string containing the Salesforce Id of the contact to update
+  - name: update_lead
+    description: Update an existing lead in Salesforce.
+    params:
+      lead: A JSON-formatted string containing the lead fields to update in the existing lead
+      lead_id: A string containing the Salesforce Id of the lead to update
+  - name: update_opportunity
+    description: Update an existing opportunity in Salesforce.
+    params:
+      opportunity: A JSON-formatted string containing the opportunity fields to update in the existing opportunity
+      opportunity_id: A string containing the Salesforce Id of the opportunity to update
