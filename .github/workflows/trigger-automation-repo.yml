@@ -1,9 +1,14 @@
 name: Notify Automation Workflow on PR Creation
 
 on:
-  pull_request:
+  pull_request_target:
     branches:
       - main
+    types: [opened, reopened, synchronize]
+
+permissions:
+  contents: read
+  pull-requests: read
 
 jobs:
   notify-automation:
@@ -11,6 +16,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
 
       - name: Get changed files
         id: changed-files
@@ -20,6 +29,7 @@ jobs:
             **.yaml
           json: true
           escape_json: false
+          use_rest_api: true
 
       - name: Extract config from changed files
         id: extract-config
