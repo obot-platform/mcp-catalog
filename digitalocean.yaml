@@ -94,7 +94,7 @@ env:
   description: Comma-separated list of enabled services (e.g., apps,droplets).
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/digitalocean:1.0.22
+  image: ghcr.io/obot-platform/mcp-images/digitalocean:1.0.30
   port: 8099
   path: /
   args:
