@@ -148,7 +148,7 @@ toolPreview:
 
 runtime: containerized
 containerizedConfig:
-  image: mongodb-mcp-server@1.3.0
+  image: ghcr.io/obot-platform/mcp-images/mongodb-database:1.3.0
   port: 8099
   path: /
   args:
