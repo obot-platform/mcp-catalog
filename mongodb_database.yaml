@@ -153,5 +153,3 @@ containerizedConfig:
   path: /
   args:
     - mongodb-mcp-server
-    - --connectionString
-    - ${MDB_MCP_CONNECTION_STRING}
