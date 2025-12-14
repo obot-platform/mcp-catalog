@@ -1967,5 +1967,125 @@
     "upstream_source": "github.com/mcp",
     "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/555",
     "processed_at": "2025-12-07 02:42:17 UTC"
+  },
+  "ai.kubit/mcp-server": {
+    "name": "ai.kubit/mcp-server",
+    "description": "Bring Kubit into your AI workflow — query your warehouse with natural language",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/Kubit-AI/mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/568",
+    "processed_at": "2025-12-14 02:40:58 UTC"
+  },
+  "com.glean/mcp": {
+    "name": "com.glean/mcp",
+    "description": "Remote MCP Server that securely connects Glean Enterprise Knowledge with your IDE, LLM, or agents.",
+    "version": "1.0.1",
+    "repository_url": "https://github.com/gleanwork/remote-mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/569",
+    "processed_at": "2025-12-14 02:40:59 UTC"
+  },
+  "io.github.Memphora/memphora": {
+    "name": "io.github.Memphora/memphora",
+    "description": "Add persistent memory to AI assistants. Store and recall info across conversations.",
+    "version": "0.1.3",
+    "repository_url": "https://github.com/Memphora/memphora-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/570",
+    "processed_at": "2025-12-14 02:41:00 UTC"
+  },
+  "io.github.PayRam/payram-helper-mcp": {
+    "name": "io.github.PayRam/payram-helper-mcp",
+    "description": "Remote MCP server to integrate and validate self-hosted Payram deployments.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/PayRam/payram-helper-mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/571",
+    "processed_at": "2025-12-14 02:41:01 UTC"
+  },
+  "io.github.SymbioticSec/mcp": {
+    "name": "io.github.SymbioticSec/mcp",
+    "description": "Symbiotic CLI MCP Server for security scanning and analysis",
+    "version": "1.0.0-beta1",
+    "repository_url": "https://github.com/SymbioticSec/mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/572",
+    "processed_at": "2025-12-14 02:41:02 UTC"
+  },
+  "io.github.arm/arm-mcp": {
+    "name": "io.github.arm/arm-mcp",
+    "description": "Official Arm MCP server for code migration, optimization, and Arm architecture guidance",
+    "version": "1.0.2",
+    "repository_url": "https://github.com/arm/mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/573",
+    "processed_at": "2025-12-14 02:41:04 UTC"
+  },
+  "io.github.byteplant-dev/byteplant-mcp": {
+    "name": "io.github.byteplant-dev/byteplant-mcp",
+    "description": "An MCP server that provides Email, Phone and Address Validation Services from Byteplant",
+    "version": "1.0.0.post2",
+    "repository_url": "https://github.com/byteplant-dev/byteplant-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/574",
+    "processed_at": "2025-12-14 02:41:05 UTC"
+  },
+  "io.github.taybenlor/runno": {
+    "name": "io.github.taybenlor/runno",
+    "description": "MCP Server for the Runno Sandbox",
+    "version": "0.10.6",
+    "repository_url": "https://github.com/taybenlor/runno",
+    "server_type": "community",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/575",
+    "processed_at": "2025-12-14 02:41:06 UTC"
+  },
+  "io.github.themesberg/flowbite-mcp": {
+    "name": "io.github.themesberg/flowbite-mcp",
+    "description": "MCP server to convert Figma designs to Flowbite UI components in Tailwind CSS",
+    "version": "1.1.3",
+    "repository_url": "https://github.com/themesberg/flowbite-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/576",
+    "processed_at": "2025-12-14 02:41:07 UTC"
+  },
+  "io.github.timescale/tiger-skills": {
+    "name": "io.github.timescale/tiger-skills",
+    "description": "Provider agnostic skills implementation, with skills sourced from local paths or GitHub repositories",
+    "version": "0.1.4",
+    "repository_url": "https://github.com/timescale/tiger-skills-mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/577",
+    "processed_at": "2025-12-14 02:41:09 UTC"
+  },
+  "io.github.youdotcom-oss/mcp": {
+    "name": "io.github.youdotcom-oss/mcp",
+    "description": "Web search, AI agent, and content extraction via You.com APIs",
+    "version": "1.3.8",
+    "repository_url": "https://github.com/youdotcom-oss/dx-toolkit",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/578",
+    "processed_at": "2025-12-14 02:41:10 UTC"
+  },
+  "io.scrapfly.mcp/mcp": {
+    "name": "io.scrapfly.mcp/mcp",
+    "description": "Scrape any website, extract structured data, and collect web content at scale with AI agents",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/scrapfly/scrapfly-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/579",
+    "processed_at": "2025-12-14 02:41:11 UTC"
   }
 }
