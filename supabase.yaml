@@ -1,4 +1,5 @@
 name: Supabase
+shortDescription: Manage Supabase projects, databases, Edge Functions, and storage with AI assistance
 description: '![supabase-mcp-demo](https://github.com/user-attachments/assets/3fce101a-b7d4-482f-9182-0be70ed1ad56)
 
 
@@ -42,7 +43,7 @@ env:
   description: Your Supabase Personal Access Token.
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/supabase:0.5.6
+  image: ghcr.io/obot-platform/mcp-images/supabase:0.5.8
   port: 8099
   path: /
   args:

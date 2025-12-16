@@ -1,4 +1,5 @@
 name: Asana
+shortDescription: Manage Asana tasks and projects with natural language through AI integration
 description: |
 
   A Model Context Protocol (MCP) server for Asana integration, providing comprehensive project management capabilities through Asana's API.

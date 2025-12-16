@@ -1,4 +1,5 @@
 name: GitLab
+shortDescription: Manage GitLab projects, repositories, issues, merge requests, and CI/CD pipelines
 description: 'A Model Context Protocol (MCP) server that provides comprehensive GitLab integration capabilities. Enable LLMs to interact with GitLab projects, manage repositories, handle issues and merge requests, and perform automated GitLab operations with precision.
 
 
@@ -81,7 +82,7 @@ env:
   description: Set to "true" to enable CI/CD pipeline features (default is "false").
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/gitlab:2.0.4
+  image: ghcr.io/obot-platform/mcp-images/gitlab:2.0.11
   port: 8099
   path: /
   args:

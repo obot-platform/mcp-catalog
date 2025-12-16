@@ -1,0 +1,392 @@
+name: Grafana
+shortDescription: Query metrics, logs, traces, manage dashboards, alerts, and on-call schedules
+description: |
+  A Model Context Protocol (MCP) server that provides comprehensive integration with Grafana, enabling seamless interaction with observability data, dashboards, alerts, and incident management. Connect to Grafana Cloud or self-hosted Grafana instances to query metrics, logs, traces, profiles, manage dashboards and alerts, and coordinate on-call schedules.
+
+  ## Features
+  - **Observability Data Queries**: Query Prometheus metrics, Loki logs, Tempo traces, and Pyroscope profiles
+  - **Dashboard Management**: Search, view, create, update dashboards with full JSONPath support for efficient modifications
+  - **Alerting**: Manage alert rules, contact points, and alert groups with comprehensive monitoring capabilities
+  - **Datasource Integration**: List and interact with all configured datasources (Prometheus, Loki, Tempo, Pyroscope, etc.)
+  - **Incident Management**: Create, track, and manage incidents with timeline activities and drill incidents
+  - **OnCall Management**: Manage on-call schedules, shifts, users, and teams for incident response coordination
+  - **Sift Investigations**: Run automated investigations to find slow requests and error patterns in logs
+  - **User & Organization Management**: Manage teams, users, folders, and organizational resources
+  - **Deeplink Generation**: Generate direct URLs to dashboards, panels, and Explore queries
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Grafana URL**: The URL of your Grafana instance (e.g., https://your-org.grafana.net for Grafana Cloud, or your self-hosted instance URL)
+
+  **Authentication (choose one method):**
+  - **Service Account Token** (Recommended): Generate a service account token from Administration > Service Accounts in Grafana. Make sure to grant the token the necessary permissions for the intended operations. This is the preferred authentication method for production use.
+  - **Username & Password** (Alternative): Use basic authentication with your Grafana username and password. Suitable for development or local instances.
+
+  **Optional:**
+  - **Organization ID**: Specify a particular organization ID for multi-org Grafana instances.
+metadata:
+  categories: Observability, Monitoring, DevOps, Incident Management
+icon: https://avatars.githubusercontent.com/u/7195757?s=48&v=4
+repoURL: https://github.com/grafana/mcp-grafana
+
+toolPreview:
+- name: list_datasources
+  description: Lists all available datasources in Grafana. Use this to discover Prometheus, Loki, Tempo, Pyroscope and other datasources before querying.
+  params:
+    type: "Optional. Filter by datasource type (e.g., 'prometheus', 'loki', 'tempo', 'grafana-pyroscope-datasource')"
+- name: search_dashboards
+  description: Searches for Grafana dashboards by query string. Returns matching dashboards with title, UID, folder, tags, and URL.
+  params:
+    query: "Search query to find dashboards (e.g., 'kubernetes', 'alerts')"
+- name: get_dashboard_summary
+  description: Gets a compact summary of a dashboard including title, panel count, panel types, variables, and metadata without loading the full JSON. Efficient for dashboard overview.
+  params:
+    uid: "The UID of the dashboard to get summary for"
+- name: get_dashboard_property
+  description: Extracts specific dashboard properties using JSONPath expressions to minimize context usage. Use for targeted queries like panel titles, queries, or variables.
+  params:
+    uid: "The UID of the dashboard"
+    jsonPath: "JSONPath expression (e.g., '$.title', '$.panels[*].title', '$.panels[0].targets[*].expr', '$.templating.list')"
+- name: update_dashboard
+  description: Creates or updates a dashboard using full JSON or efficient patch operations. Supports JSONPath-based patches for targeted modifications.
+  params:
+    dashboard: "Optional. Full dashboard JSON for creating new dashboards"
+    uid: "Optional. UID of existing dashboard to update (required when using patch operations)"
+    operations: "Optional. Array of patch operations with 'op' (replace/add/remove), 'path' (JSONPath), and 'value' fields"
+    folderUid: "Optional. The UID of the dashboard's folder"
+    message: "Optional. Commit message for version history"
+    overwrite: "Optional. Whether to overwrite existing dashboard (default: false)"
+- name: query_prometheus
+  description: Executes PromQL queries against a Prometheus datasource. Supports both instant queries (single point in time) and range queries (over time periods).
+  params:
+    datasourceUid: "The UID of the Prometheus datasource"
+    expr: "The PromQL expression to query (e.g., 'up', 'rate(http_requests_total[5m])')"
+    queryType: "Query type: 'instant' or 'range'"
+    startTime: "Start time (RFC3339 or relative like 'now-1h')"
+    endTime: "Optional. End time (required for range queries)"
+    stepSeconds: "Optional. Time series step size in seconds (required for range queries)"
+- name: query_loki_logs
+  description: Executes LogQL queries against a Loki datasource to retrieve log entries or metric values. Returns logs with timestamps, labels, and lines.
+  params:
+    datasourceUid: "The UID of the Loki datasource"
+    logql: "LogQL query (e.g., '{app=\"nginx\"}', '{app=\"foo\"} |= \"error\"', 'rate({app=\"bar\"}[1m])')"
+    startRfc3339: "Optional. Start time in RFC3339 format (default: 1 hour ago)"
+    endRfc3339: "Optional. End time in RFC3339 format (default: now)"
+    limit: "Optional. Maximum number of log lines to return (default: 10, max: 100)"
+    direction: "Optional. Direction: 'forward' (oldest first) or 'backward' (newest first, default)"
+- name: list_prometheus_metric_names
+  description: Lists metric names from a Prometheus datasource with optional regex filtering and pagination.
+  params:
+    datasourceUid: "The UID of the Prometheus datasource"
+    regex: "Optional. Regex to match against metric names"
+    limit: "Optional. Maximum number of results to return"
+    page: "Optional. Page number for pagination"
+- name: list_prometheus_label_names
+  description: Lists label names in a Prometheus datasource with optional filtering by series selectors and time range.
+  params:
+    datasourceUid: "The UID of the Prometheus datasource"
+    matches: "Optional. Array of label matchers to filter results (e.g., [{'filters': [{'name': 'job', 'type': '=', 'value': 'api'}]}])"
+    startRfc3339: "Optional. Start time to filter results"
+    endRfc3339: "Optional. End time to filter results"
+    limit: "Optional. Maximum number of results to return"
+- name: list_prometheus_label_values
+  description: Gets values for a specific label name in Prometheus with optional filtering by series selectors and time range.
+  params:
+    datasourceUid: "The UID of the Prometheus datasource"
+    labelName: "The name of the label to query (e.g., 'job', 'instance', 'environment')"
+    matches: "Optional. Array of selectors to filter results"
+    startRfc3339: "Optional. Start time of the query"
+    endRfc3339: "Optional. End time of the query"
+    limit: "Optional. Maximum number of results to return"
+- name: list_loki_label_names
+  description: Lists all available label names (keys) found in logs within a Loki datasource and time range.
+  params:
+    datasourceUid: "The UID of the Loki datasource"
+    startRfc3339: "Optional. Start time in RFC3339 format (default: 1 hour ago)"
+    endRfc3339: "Optional. End time in RFC3339 format (default: now)"
+- name: list_loki_label_values
+  description: Retrieves all unique values for a specific label name within a Loki datasource. Useful for discovering filter options.
+  params:
+    datasourceUid: "The UID of the Loki datasource"
+    labelName: "The name of the label to retrieve values for (e.g., 'app', 'env', 'pod')"
+    startRfc3339: "Optional. Start time in RFC3339 format (default: 1 hour ago)"
+    endRfc3339: "Optional. End time in RFC3339 format (default: now)"
+- name: list_pyroscope_profile_types
+  description: Lists all available profile types in a Pyroscope datasource (e.g., CPU, memory, goroutines). Required before fetching profiles.
+  params:
+    data_source_uid: "The UID of the Pyroscope datasource"
+    start_rfc_3339: "Optional. Start time in RFC3339 format (default: 1 hour ago)"
+    end_rfc_3339: "Optional. End time in RFC3339 format (default: now)"
+- name: fetch_pyroscope_profile
+  description: Fetches a profile from Pyroscope datasource for analysis. Returns profile in DOT format for visualization.
+  params:
+    data_source_uid: "The UID of the Pyroscope datasource"
+    profile_type: "Profile type from list_pyroscope_profile_types (e.g., 'process_cpu:cpu:nanoseconds:cpu:nanoseconds')"
+    matchers: "Optional. Prometheus style matchers to filter (e.g., '{service_name=\"foo\"}')"
+    start_rfc_3339: "Optional. Start time in RFC3339 format (default: 1 hour ago)"
+    end_rfc_3339: "Optional. End time in RFC3339 format (default: now)"
+    max_node_depth: "Optional. Maximum depth of nodes (default: 100, use -1 for unbounded)"
+- name: list_alert_rules
+  description: Lists Grafana alert rules with UID, title, current state (pending, firing, inactive), and labels. Supports filtering by labels and pagination.
+  params:
+    label_selectors: "Optional. Array of matchers to filter by labels (e.g., [{'filters': [{'name': 'severity', 'type': '=', 'value': 'critical'}]}])"
+    limit: "Optional. Maximum number of results (default: 100)"
+    page: "Optional. Page number for pagination"
+- name: get_alert_rule_by_uid
+  description: Retrieves complete configuration and status of a specific alert rule including title, condition, queries, evaluation settings, and labels.
+  params:
+    uid: "The UID of the alert rule"
+- name: create_alert_rule
+  description: Creates a new Grafana alert rule with specified configuration including queries, conditions, and notification settings.
+  params:
+    title: "The title of the alert rule"
+    ruleGroup: "The rule group name"
+    folderUID: "The folder UID where the rule will be created"
+    condition: "The query condition identifier (e.g., 'A', 'B')"
+    data: "Array of query data objects"
+    noDataState: "State when no data: 'NoData', 'Alerting', or 'OK'"
+    execErrState: "State on execution error: 'NoData', 'Alerting', or 'OK'"
+    for: "Duration before alert fires (e.g., '5m')"
+    orgID: "The organization ID"
+    annotations: "Optional. Key-value pairs for annotations"
+    labels: "Optional. Key-value pairs for labels"
+    uid: "Optional. UID for the alert rule"
+- name: update_alert_rule
+  description: Updates an existing Grafana alert rule. Requires all parameters from create_alert_rule plus the UID of the rule to update.
+  params:
+    uid: "The UID of the alert rule to update"
+    title: "The title of the alert rule"
+    ruleGroup: "The rule group name"
+    folderUID: "The folder UID"
+    condition: "The query condition identifier"
+    data: "Array of query data objects"
+    noDataState: "State when no data"
+    execErrState: "State on execution error"
+    for: "Duration before alert fires"
+    orgID: "The organization ID"
+- name: delete_alert_rule
+  description: Deletes a Grafana alert rule by UID. This action cannot be undone.
+  params:
+    uid: "The UID of the alert rule to delete"
+- name: list_contact_points
+  description: Lists Grafana notification contact points with UID, name, and type. Supports filtering by exact name match.
+  params:
+    name: "Optional. Filter by contact point name (exact match)"
+    limit: "Optional. Maximum number of results (default: 100)"
+- name: list_incidents
+  description: Lists Grafana incidents with filtering by status and option to include drill incidents.
+  params:
+    status: "Optional. Filter by status: 'active' or 'resolved'"
+    drill: "Optional. Whether to include drill incidents (default: false)"
+    limit: "Optional. Maximum number of incidents to return"
+- name: get_incident
+  description: Gets detailed information for a specific incident including title, status, severity, labels, timestamps, and metadata.
+  params:
+    id: "The ID of the incident to retrieve"
+- name: create_incident
+  description: Creates a new Grafana incident. Use sparingly as it may notify many people. Should be confirmed with user first.
+  params:
+    title: "The title of the incident"
+    severity: "The severity level (e.g., 'critical', 'high', 'medium', 'low')"
+    roomPrefix: "The prefix of the room to create the incident in"
+    status: "Optional. Initial status of the incident"
+    labels: "Optional. Array of label objects with key, label, description, colorHex fields"
+    attachUrl: "Optional. URL to attach to the incident"
+    attachCaption: "Optional. Caption for the attachment"
+    isDrill: "Optional. Whether this is a drill incident (default: false)"
+- name: add_activity_to_incident
+  description: Adds a note (userNote activity) to an incident's timeline. The note body can include URLs which will be attached as context.
+  params:
+    incidentId: "The ID of the incident to add activity to"
+    body: "The body of the activity note (URLs will be parsed and attached)"
+    eventTime: "Optional. Time the activity occurred (default: current time)"
+- name: list_oncall_users
+  description: Lists users from Grafana OnCall with details like ID, username, role, and email. Can retrieve specific user or filter by username.
+  params:
+    userId: "Optional. Get details for specific user by ID"
+    username: "Optional. Filter by username"
+    page: "Optional. Page number for pagination"
+- name: list_oncall_schedules
+  description: Lists Grafana OnCall schedules with optional filtering by team. Returns schedule ID, name, team ID, timezone, and shift IDs.
+  params:
+    scheduleId: "Optional. Get details for specific schedule by ID"
+    teamId: "Optional. Filter schedules by team ID"
+    page: "Optional. Page number for pagination"
+- name: get_current_oncall_users
+  description: Gets the list of users currently on-call for a specific schedule.
+  params:
+    scheduleId: "The ID of the schedule to get current on-call users for"
+- name: list_oncall_teams
+  description: Lists teams configured in Grafana OnCall with pagination support.
+  params:
+    page: "Optional. Page number for pagination"
+- name: list_alert_groups
+  description: Lists alert groups from Grafana OnCall with extensive filtering options including state, time range, labels, and tags.
+  params:
+    id: "Optional. Filter by specific alert group ID"
+    integrationId: "Optional. Filter by integration ID"
+    routeId: "Optional. Filter by route ID"
+    state: "Optional. Filter by state: 'new', 'acknowledged', 'resolved', or 'silenced'"
+    startedAt: "Optional. Time range filter in format '{start}_{end}' ISO 8601 (e.g., '2025-01-19T00:00:00_2025-01-19T23:59:59')"
+    labels: "Optional. Array of label filters in format 'key:value' (e.g., ['env:prod', 'severity:high'])"
+    name: "Optional. Filter by alert group name"
+    teamId: "Optional. Filter by team ID"
+    page: "Optional. Page number for pagination"
+- name: find_slow_requests
+  description: Searches Tempo datasources for slow requests, analyzes patterns, and returns results. Useful for performance troubleshooting.
+  params:
+    name: "Name of the investigation"
+    labels: "Labels to scope the analysis (key-value object)"
+    start: "Optional. Start time for investigation (ISO 8601, default: 30 minutes ago)"
+    end: "Optional. End time for investigation (ISO 8601, default: now)"
+- name: find_error_pattern_logs
+  description: Searches Loki logs for elevated error patterns compared to historical averages, identifies anomalies, and returns patterns found.
+  params:
+    name: "Name of the investigation"
+    labels: "Labels to scope the analysis (key-value object)"
+    start: "Optional. Start time for investigation (ISO 8601, default: 30 minutes ago)"
+    end: "Optional. End time for investigation (ISO 8601, default: now)"
+- name: list_sift_investigations
+  description: Retrieves list of Sift investigations (automated troubleshooting analyses) with optional limit.
+  params:
+    limit: "Optional. Maximum number of investigations to return (default: 10)"
+- name: get_sift_investigation
+  description: Retrieves detailed information about a specific Sift investigation by UUID.
+  params:
+    id: "The UUID of the investigation as a string (e.g., '02adab7c-bf5b-45f2-9459-d71a2c29e11b')"
+- name: generate_deeplink
+  description: Generates deeplink URLs for Grafana resources like dashboards, panels, or Explore queries with optional time ranges.
+  params:
+    resourceType: "Type of resource: 'dashboard', 'panel', or 'explore'"
+    dashboardUid: "Optional. Dashboard UID (required for dashboard and panel types)"
+    panelId: "Optional. Panel ID (required for panel type)"
+    datasourceUid: "Optional. Datasource UID (required for explore type)"
+    timeRange: "Optional. Time range object with 'from' and 'to' fields (e.g., {'from': 'now-1h', 'to': 'now'})"
+    queryParams: "Optional. Additional query parameters (key-value object)"
+- name: list_teams
+  description: Searches for Grafana teams by query string. Returns matching teams with name, ID, and URL.
+  params:
+    query: "Search query for teams (can be empty to fetch all teams)"
+- name: list_users_by_org
+  description: Lists users in the current organization with details like user ID, email, role, and last seen information.
+  params: {}
+- name: search_folders
+  description: Searches for Grafana folders by query string. Returns matching folders with title, UID, and URL.
+  params:
+    query: "Search query for folders (can be empty to fetch all folders)"
+- name: create_folder
+  description: Creates a new Grafana folder for organizing dashboards.
+  params:
+    title: "The title of the folder"
+    uid: "Optional. Folder UID (Grafana will generate if omitted)"
+    parentUid: "Optional. Parent folder UID to create nested folder"
+- name: get_datasource_by_uid
+  description: Retrieves detailed information about a specific datasource including name, type, URL, access settings, and configuration.
+  params:
+    uid: "The UID of the datasource"
+- name: get_datasource_by_name
+  description: Retrieves detailed information about a specific datasource using its name.
+  params:
+    name: "The name of the datasource"
+- name: get_dashboard_by_uid
+  description: Retrieves the complete dashboard JSON including all panels, variables, and settings. WARNING - Large dashboards consume significant context. Consider using get_dashboard_summary or get_dashboard_property for more efficient queries.
+  params:
+    uid: "The UID of the dashboard"
+- name: get_dashboard_panel_queries
+  description: Retrieves panel queries and information from a dashboard. Returns array of panels with title, query, and datasource information.
+  params:
+    uid: "The UID of the dashboard"
+- name: query_loki_stats
+  description: Retrieves statistics about log streams matching a LogQL selector. Returns count of streams, chunks, entries, and bytes. Only accepts label selectors (no line filters or aggregations).
+  params:
+    datasourceUid: "The UID of the Loki datasource"
+    logql: "LogQL label selector only (e.g., '{app=\"nginx\", env=\"prod\"}') - no line filters or aggregations"
+    startRfc3339: "Optional. Start time in RFC3339 format (default: 1 hour ago)"
+    endRfc3339: "Optional. End time in RFC3339 format (default: now)"
+- name: list_pyroscope_label_names
+  description: Lists all available label names (keys) in profiles within a Pyroscope datasource. Excludes internal labels with double underscores.
+  params:
+    data_source_uid: "The UID of the Pyroscope datasource"
+    matchers: "Optional. Prometheus style matchers to filter (e.g., '{service_name=\"foo\"}')"
+    start_rfc_3339: "Optional. Start time in RFC3339 format (default: 1 hour ago)"
+    end_rfc_3339: "Optional. End time in RFC3339 format (default: now)"
+- name: list_pyroscope_label_values
+  description: Lists all available label values for a specific label name in profiles within a Pyroscope datasource.
+  params:
+    data_source_uid: "The UID of the Pyroscope datasource"
+    name: "The label name to get values for"
+    matchers: "Optional. Prometheus style matchers to filter (e.g., '{service_name=\"foo\"}')"
+    start_rfc_3339: "Optional. Start time in RFC3339 format (default: 1 hour ago)"
+    end_rfc_3339: "Optional. End time in RFC3339 format (default: now)"
+- name: list_prometheus_metric_metadata
+  description: Lists Prometheus metric metadata including type, help text, and units. Returns metadata about metrics currently scraped from targets. Note - This endpoint is experimental.
+  params:
+    datasourceUid: "The UID of the Prometheus datasource"
+    metric: "Optional. Specific metric to query metadata for"
+    limit: "Optional. Maximum number of metrics to return"
+    limitPerMetric: "Optional. Maximum number of metrics to return per metric"
+- name: get_alert_group
+  description: Gets detailed information for a specific alert group from Grafana OnCall by ID.
+  params:
+    alertGroupId: "The ID of the alert group to retrieve"
+- name: get_oncall_shift
+  description: Gets detailed information for a specific OnCall shift by ID. A shift represents a designated time period when users are actively on-call.
+  params:
+    shiftId: "The ID of the shift to get details for"
+- name: get_sift_analysis
+  description: Retrieves a specific analysis from a Sift investigation by UUID.
+  params:
+    investigationId: "The UUID of the investigation (e.g., '02adab7c-bf5b-45f2-9459-d71a2c29e11b')"
+    analysisId: "The UUID of the specific analysis to retrieve"
+- name: get_assertions
+  description: Gets assertion summary for a given entity with its type, name, environment, site, namespace, and time range.
+  params:
+    entityType: "The type of entity (e.g., 'Service', 'Node', 'Pod')"
+    entityName: "The name of the entity"
+    env: "Optional. The environment of the entity"
+    site: "Optional. The site of the entity"
+    namespace: "Optional. The namespace of the entity"
+    startTime: "Start time in RFC3339 format"
+    endTime: "End time in RFC3339 format"
+
+env:
+- name: Grafana URL
+  key: GRAFANA_URL
+  description: The URL of your Grafana instance (e.g., https://your-org.grafana.net for Grafana Cloud, or your self-hosted instance URL)
+  required: true
+  sensitive: false
+- name: Grafana Service Account Token
+  key: GRAFANA_SERVICE_ACCOUNT_TOKEN
+  description: (Recommended) Your Grafana service account token for API authentication. Generate from Administration > Service Accounts in Grafana. Requires appropriate permissions for intended operations.
+  required: false
+  sensitive: true
+- key: GRAFANA_USERNAME
+  name: Grafana Username
+  required: false
+  sensitive: false
+  description: (Optional) Your Grafana username for basic authentication.
+- key: GRAFANA_PASSWORD
+  name: Grafana Password
+  required: false
+  sensitive: true
+  description: (Optional) Your Grafana password for basic authentication.
+- key: GRAFANA_ORG_ID
+  name: Grafana Organization ID
+  required: false
+  sensitive: false
+  description: (Optional) Your Grafana organization ID for multi-org support.
+
+
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/grafana:latest
+  port: 8080
+  path: "/mcp"
+  args:
+  - -t
+  - streamable-http
+  - --address
+  - 0.0.0.0:8080
+
+

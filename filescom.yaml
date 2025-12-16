@@ -1,0 +1,263 @@
+name: Files.com
+shortDescription: Manage files, users, groups, permissions, and secure file sharing bundles
+description: 'A Model Context Protocol (MCP) server that provides comprehensive interface for managing Files.com resources and performing file transfer operations. Files.com is the modern platform for secure file transfer, automation, and storage integration, connecting cloud apps, on-prem systems, and human workflows through a single interface.
+
+
+  ## Features
+
+  - **File & Folder Operations**: Upload, download, copy, move, and delete files and folders with full path management
+
+  - **User Management**: Create, update, list, and delete users with authentication methods and permission controls
+
+  - **Group Management**: Organize users into groups with shared permissions and access controls
+
+  - **Bundle Management (Share Links)**: Create, manage, and track public file sharing bundles
+
+  - **Permission Management**: Fine-grained access control with folder-level permissions for users and groups
+
+  - **History & Audit Logging**: Comprehensive activity tracking for files, folders, users, and login events
+
+  - **Automation Support**: List and manage Files.com automation workflows
+
+  - **Remote Server Management**: Manage remote server connections for hybrid cloud/on-prem file transfers
+
+  - **Bundle Recipients**: Send bundles to specific recipients with tracking
+
+
+  ## What you''ll need to connect
+
+
+  **Required:**
+
+  - **Files.com API Key**: API key with appropriate permissions for your Files.com account (can be created at https://app.files.com/api_keys)
+
+  '
+metadata:
+  categories: Cloud & Infrastructure, File Transfer, Storage, Security & Compliance
+  unsupportedTools: Download_File_to_Local,Upload_File_from_Local
+icon: https://avatars.githubusercontent.com/u/59619169?s=48&v=4
+repoURL: https://github.com/Files-com/files-mcp
+env:
+- key: FILES_COM_API_KEY
+  name: Files.com API Key
+  required: true
+  sensitive: true
+  description: Your Files.com API Key with appropriate permissions (create at https://app.files.com/api_keys)
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/files-com:1.0.40
+  port: 8099
+  path: /
+  args:
+  - files-com-mcp
+toolPreview:
+- name: List_Bundle
+  description: List all bundles (share links) in your Files.com account
+  params: {}
+- name: Find_Bundle
+  description: Get details about a specific bundle by ID
+  params:
+    id: Bundle ID to retrieve
+- name: Create_Bundle
+  description: Create a new bundle (share link) for public file sharing
+  params:
+    paths: Array of paths to include in the bundle
+    description: Public description of the bundle (optional)
+    note: Internal note for the bundle (optional)
+    password: Password protection for the bundle (optional)
+    expires_at: Bundle expiration date/time (optional)
+    max_uses: Maximum number of times bundle can be accessed (optional)
+    require_registration: Show registration page to capture downloader info (optional)
+- name: Update_Bundle
+  description: Update an existing bundle's properties
+  params:
+    id: Bundle ID to update
+    expires_at: Updated expiration date/time (optional)
+- name: Delete_Bundle
+  description: Delete a bundle (share link)
+  params:
+    id: Bundle ID to delete
+- name: List_Bundle_Download
+  description: List all downloads for a specific bundle
+  params:
+    bundle_id: Bundle ID to retrieve downloads for
+- name: List_Bundle_Notification
+  description: List all bundle notifications
+  params: {}
+- name: Find_Bundle_Notification
+  description: Get details about a specific bundle notification
+  params:
+    id: Bundle Notification ID
+- name: Create_Bundle_Notification
+  description: Create a notification for bundle activities
+  params:
+    bundle_id: Bundle ID to notify on
+    notify_user_id: The user ID to notify
+- name: Update_Bundle_Notification
+  description: Update bundle notification settings
+  params:
+    id: Bundle Notification ID
+    notify_on_registration: Trigger notification on registration (optional)
+    notify_on_upload: Trigger notification on upload (optional)
+- name: Delete_Bundle_Notification
+  description: Delete a bundle notification
+  params:
+    id: Bundle Notification ID to delete
+- name: List_Bundle_Recipient
+  description: List recipients for a specific bundle
+  params:
+    bundle_id: Bundle ID to list recipients for
+- name: Create_Bundle_Recipient
+  description: Add a recipient to a bundle and send them an email
+  params:
+    bundle_id: Bundle ID to share
+    recipient: Email address of the recipient
+    name: Name of recipient (optional)
+    company: Company of recipient (optional)
+    note: Note to include in email (optional)
+- name: List_Bundle_Registration
+  description: List all registrations for a bundle
+  params:
+    bundle_id: Bundle ID to list registrations for
+- name: Delete_File
+  description: Delete a file or folder from Files.com
+  params:
+    path: Path of the file or folder to delete
+- name: Find_File
+  description: Get details about a specific file or folder by path
+  params:
+    path: Path to the file or folder
+- name: Copy_File
+  description: Copy a file or folder to a new location
+  params:
+    path: Source path to copy from
+    destination: Destination path to copy to
+- name: Move_File
+  description: Move a file or folder to a new location
+  params:
+    path: Source path to move from
+    destination: Destination path to move to
+- name: List_For_Folder
+  description: List all files and folders within a specific folder
+  params:
+    path: Path of the folder to list contents of
+- name: Create_Folder
+  description: Create a new folder
+  params:
+    path: Path where the folder should be created
+- name: List_Group
+  description: List all groups in your Files.com account
+  params: {}
+- name: Find_Group
+  description: Get details about a specific group by ID
+  params:
+    id: Group ID to retrieve
+- name: Create_Group
+  description: Create a new group for organizing users
+  params:
+    name: Name of the group
+    notes: Notes about the group (optional)
+    user_ids: Comma-delimited list of user IDs to add (optional)
+    admin_ids: Comma-delimited list of admin user IDs (optional)
+- name: Update_Group
+  description: Update an existing group's properties
+  params:
+    id: Group ID to update
+    name: Updated name for the group (optional)
+    notes: Updated notes (optional)
+    user_ids: Updated comma-delimited list of user IDs (optional)
+    admin_ids: Updated comma-delimited list of admin user IDs (optional)
+- name: Delete_Group
+  description: Delete a group
+  params:
+    id: Group ID to delete
+- name: List_User
+  description: List all users in your Files.com account
+  params: {}
+- name: Find_User
+  description: Get details about a specific user by ID
+  params:
+    id: User ID to retrieve
+- name: Create_User
+  description: Create a new user account
+  params:
+    username: Username for the new user
+    email: Email address for the user (optional)
+    name: Full name of the user (optional)
+    password: Password for the user (optional)
+    authentication_method: How the user is authenticated (optional)
+    company: User's company (optional)
+    notes: Internal notes about the user (optional)
+    group_ids: Comma-delimited list of group IDs (optional)
+    user_root: Root folder for FTP/SFTP access (optional)
+    user_home: Home folder for FTP/SFTP access (optional)
+    require_password_change: Require password change on next login (optional)
+- name: Update_User
+  description: Update an existing user's properties
+  params:
+    id: User ID to update
+    username: Updated username (optional)
+    email: Updated email address (optional)
+    name: Updated full name (optional)
+    password: Updated password (optional)
+    authentication_method: Updated authentication method (optional)
+    company: Updated company (optional)
+    notes: Updated notes (optional)
+    group_ids: Updated comma-delimited list of group IDs (optional)
+    user_root: Updated root folder (optional)
+    user_home: Updated home folder (optional)
+    require_password_change: Updated password change requirement (optional)
+- name: Delete_User
+  description: Delete a user account
+  params:
+    id: User ID to delete
+- name: List_Automation
+  description: List all automation workflows
+  params: {}
+- name: Find_Automation
+  description: Get details about a specific automation by ID
+  params:
+    id: Automation ID to retrieve
+- name: List_For_File_History
+  description: Get history for a specific file
+  params:
+    path: Path of the file to retrieve history for
+- name: List_For_Folder_History
+  description: Get history for a specific folder
+  params:
+    path: Path of the folder to retrieve history for
+- name: List_For_User_History
+  description: Get history for a specific user's actions
+  params:
+    user_id: User ID to retrieve history for
+- name: List_Logins_History
+  description: Get site-wide login history
+  params: {}
+- name: List_History
+  description: Get site-wide full action history
+  params: {}
+- name: List_Permission
+  description: List all permissions, optionally filtered by path, user, or group
+  params:
+    path: Permission path to scope to (optional)
+    user_id: Filter by user ID (optional)
+    group_id: Filter by group ID (optional)
+- name: Create_Permission
+  description: Create a new permission for a folder
+  params:
+    path: Folder path to apply permission to
+    permission: Permission type (admin, full, readonly, writeonly, list, or history)
+    user_id: User ID to grant permission to (optional, provide user_id or group_id)
+    group_id: Group ID to grant permission to (optional, provide user_id or group_id)
+- name: Delete_Permission
+  description: Delete a permission
+  params:
+    id: Permission ID to delete
+- name: List_Remote_Server
+  description: List all remote server connections
+  params: {}
+- name: Find_Remote_Server
+  description: Get details about a specific remote server by ID
+  params:
+    id: Remote Server ID to retrieve
+

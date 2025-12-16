@@ -1,4 +1,5 @@
 name: Datadog
+shortDescription: Monitor incidents, logs, dashboards, metrics, APM traces, and infrastructure with Datadog
 description: 'A Model Context Protocol (MCP) server that provides access to Datadog''s monitoring and observability platform. This server enables AI agents to interact with key Datadog features including incidents, monitors, logs, dashboards, metrics, APM traces, infrastructure monitoring, and RUM analytics through a comprehensive set of tools.
 
 
@@ -46,7 +47,7 @@ env:
   description: (Optional) The Datadog site of your organization, such as `datadoghq.eu` or `us3.datadoghq.com`. Default is `datadoghq.com`.
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/datadog:latest
+  image: ghcr.io/obot-platform/mcp-images/datadog:1.7.0
   port: 8099
   path: /
   args:

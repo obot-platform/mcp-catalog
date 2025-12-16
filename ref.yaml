@@ -1,4 +1,5 @@
 name: Ref
+shortDescription: Token-efficient search over documentation to prevent AI hallucinations
 description: '![Ref MCP](https://github.com/ref-tools/ref-tools-mcp/raw/main/header.png)
 
 

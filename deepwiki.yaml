@@ -1,0 +1,44 @@
+name: DeepWiki
+shortDescription: Access AI-generated documentation for any public GitHub repository
+description: |
+
+  A Model Context Protocol (MCP) server that provides AI-generated documentation for any public GitHub repository. Search, read, and ask questions about codebases through comprehensive, automatically-generated documentation.
+
+  ## Features
+
+  - **Repository Documentation**: Access comprehensive, AI-generated documentation for any public GitHub repository
+
+  - **Wiki Structure**: Browse hierarchical documentation structure with sections and subsections
+
+  - **Content Reading**: Read detailed wiki content covering architecture, design patterns, and implementation details
+
+  - **Question Answering**: Ask specific questions about any repository and get detailed, contextual answers
+
+
+  ## What you'll need to connect
+
+
+  **No Setup Required**: DeepWiki works out-of-the-box for public GitHub repositories with no API keys or configuration needed.
+metadata:
+  categories: Documentation
+icon: https://mintcdn.com/cognitionai/k89q9Lsp7DOurdC0/logo/devin.png?fit=max&auto=format&n=k89q9Lsp7DOurdC0&q=85&s=e83fbc727ea2cae8f1b80442fa772c50
+repoURL: https://github.com/CognitionAI/deepwiki
+env: []
+toolPreview:
+- name: read_wiki_structure
+  description: Get the hierarchical structure of documentation topics for a GitHub repository.
+  params:
+    repoName: GitHub repository in owner/repo format (e.g. "facebook/react")
+- name: read_wiki_contents
+  description: View detailed documentation about a GitHub repository.
+  params:
+    repoName: GitHub repository in owner/repo format (e.g. "facebook/react")
+- name: ask_question
+  description: Ask any question about a GitHub repository and get detailed answers.
+  params:
+    repoName: GitHub repository in owner/repo format (e.g. "facebook/react")
+    question: The question to ask about the repository
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.deepwiki.com/mcp
+

@@ -1,4 +1,5 @@
 name: MongoDB Atlas Management
+shortDescription: Create and manage MongoDB Atlas projects, clusters, and database users
 description: |
   A Model Context Protocol (MCP) server for interacting with the MongoDB Atlas Cloud Service. This connector allows you to perform management actions with clusters, projects, databases, collections, and database users.
 
@@ -117,7 +118,7 @@ toolPreview:
     projectId: Project ID to list alerts for
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/mongodb-atlas:1.1.0
+  image: ghcr.io/obot-platform/mcp-images/mongodb-atlas:1.3.0
   port: 8099
   path: /
   args:

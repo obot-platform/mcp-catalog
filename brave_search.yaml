@@ -1,4 +1,5 @@
 name: Brave Search
+shortDescription: Search the web, news, images, videos, and local businesses with Brave Search API
 description: 'A Model Context Protocol (MCP) server that provides comprehensive web search capabilities through the Brave Search API. It enables AI assistants to search the web, find news articles, discover videos and images, locate local businesses, and generate AI-powered summaries of search results.
 
 
@@ -37,7 +38,7 @@ env:
   description: Your Brave Search API key. Get one at https://brave.com/search/api
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/brave-search:2.0.54
+  image: ghcr.io/obot-platform/mcp-images/brave-search:2.0.58
   port: 8099
   path: /
   args:

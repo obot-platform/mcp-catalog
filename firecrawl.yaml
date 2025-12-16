@@ -1,4 +1,5 @@
 name: Firecrawl
+shortDescription: Web scraping, crawling, search, and structured data extraction with Firecrawl
 description: 'A Model Context Protocol (MCP) server that integrates with Firecrawl for web scraping capabilities. Perform web scraping, crawling, search, and content extraction with automatic retries and rate limiting.
 
 
@@ -73,7 +74,7 @@ metadata:
   categories: Retrieval & Search,Automation & Browsers,Science & Research
   source: vendor
 icon: https://avatars.githubusercontent.com/u/135057108?v=4
-repoURL: https://github.com/mendableai/firecrawl-mcp-server
+repoURL: https://github.com/firecrawl/firecrawl-mcp-server
 toolPreview:
 - name: firecrawl_scrape
   description: Scrape content from a single URL with advanced options.
@@ -155,7 +156,7 @@ env:
   description: Your Firecrawl API key.
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/firecrawl:3.3.6
+  image: ghcr.io/obot-platform/mcp-images/firecrawl:3.6.0
   port: 8099
   path: /
   args:

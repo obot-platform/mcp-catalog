@@ -1,4 +1,5 @@
 name: AWS API
+shortDescription: Execute AWS CLI commands across all AWS services with intelligent suggestions
 description: 'A Model Context Protocol (MCP) server for AWS CLI operations. Execute AWS CLI commands and get intelligent command suggestions across all AWS services safely and efficiently.
 
 
@@ -101,7 +102,7 @@ env:
   description: AWS Region, default to us-east-1
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/aws-api:1.0.1
+  image: ghcr.io/obot-platform/mcp-images/aws-api:1.1.4
   port: 8099
   path: /
   args:

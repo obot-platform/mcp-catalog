@@ -1,4 +1,5 @@
 name: AWS Documentation
+shortDescription: Access, search, and get recommendations from AWS documentation
 description: '![AWS Documentation MCP Demo](https://github.com/awslabs/mcp/blob/main/src/aws-documentation-mcp-server/basic-usage.gif?raw=true)
 
 
@@ -71,7 +72,7 @@ env:
   description: AWS Region, default to us-east-1
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/aws-documentation:1.1.8
+  image: ghcr.io/obot-platform/mcp-images/aws-documentation:1.1.9
   port: 8099
   path: /
   args:

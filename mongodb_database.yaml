@@ -1,4 +1,5 @@
 name: MongoDB Database
+shortDescription: Manage MongoDB databases, collections, documents, and aggregation pipelines
 description: |
   A Model Context Protocol (MCP) server for interacting with MongoDB databases. Provides comprehensive tools for database operations, collection management, and data manipulation with any MongoDB instance (local, cloud, or self-hosted).
 
@@ -147,10 +148,8 @@ toolPreview:
 
 runtime: containerized
 containerizedConfig:
-  image: mongodb-mcp-server@0.3.0
+  image: ghcr.io/obot-platform/mcp-images/mongodb-database:1.3.0
   port: 8099
   path: /
   args:
     - mongodb-mcp-server
-    - --connectionString
-    - ${MDB_MCP_CONNECTION_STRING}

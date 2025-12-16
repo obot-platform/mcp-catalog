@@ -1,0 +1,44 @@
+name: Microsoft Learn
+shortDescription: Search Microsoft Learn documentation and find official code samples
+description: |
+
+  The official Microsoft Learn MCP Server that enables AI assistants to access trusted, up-to-date information directly from Microsoft's official documentation and code samples.
+
+  ## Features
+  - **Search Microsoft Learn documentation** using semantic search across official Microsoft docs
+  - **Find official code samples** with language-specific filtering (Python, C#, JavaScript, TypeScript, etc.)
+  - **Fetch complete documentation pages** in markdown format for comprehensive deep dives
+  - **Real-time updates** - access the latest Microsoft documentation as it's published
+  - **High-quality content** - all content comes from Microsoft's official documentation sources
+
+  ## What you'll need to connect
+
+  **No Setup Required**: This is a public MCP server that requires no authentication or API keys.
+
+metadata:
+  categories: Documentation, Developer Tools
+icon: https://avatars.githubusercontent.com/u/22479449?s=48&v=4
+repoURL: https://github.com/microsoftdocs/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://learn.microsoft.com/api/mcp
+toolPreview:
+  # Documentation Search
+  - name: microsoft_docs_search
+    description: Search official Microsoft/Azure documentation to find the most relevant and trustworthy content for a user's query. Returns up to 10 high-quality content chunks (each max 500 tokens) from Microsoft Learn and other official sources. Each result includes the article title, URL, and a self-contained content excerpt.
+    params:
+      query: "A query or topic about Microsoft/Azure products, services, platforms, developer tools, frameworks, or APIs"
+
+  # Code Sample Search
+  - name: microsoft_code_sample_search
+    description: Search for code snippets and examples in official Microsoft Learn documentation. Retrieves relevant code samples from Microsoft documentation pages providing developers with practical implementation examples and best practices for Microsoft/Azure products and services. Use this when generating any Microsoft/Azure related code.
+    params:
+      query: "A descriptive query, SDK name, method name or code snippet related to Microsoft/Azure products, services, platforms, developer tools, frameworks, APIs or SDKs"
+      language: "Optional parameter specifying the programming language of code snippets to retrieve. Can significantly improve search quality if provided. Eligible values: csharp, javascript, typescript, python, powershell, azurecli, al, sql, java, kusto, cpp, go, rust, ruby, php"
+
+  # Full Documentation Fetch
+  - name: microsoft_docs_fetch
+    description: Fetch and convert a Microsoft Learn documentation page to markdown format. Retrieves the latest complete content of Microsoft documentation pages including Azure, .NET, Microsoft 365, and other Microsoft technologies. Use this when search results provide incomplete information or when you need complete step-by-step procedures, tutorials, troubleshooting sections, or detailed explanations.
+    params:
+      url: "URL of the Microsoft documentation page to read (must be a valid link from the microsoft.com domain)"
+

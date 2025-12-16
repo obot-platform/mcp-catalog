@@ -1,4 +1,5 @@
 name: AWS Kendra
+shortDescription: Query Amazon Kendra indices for enhanced RAG context in AI applications
 description: 'A Model Context Protocol (MCP) server for Amazon Kendra developed by AWS Labs. Use Kendra Indices as additional context for RAG to enhance your existing MCP-enabled ChatBot and coding assistants.
 
 
@@ -67,7 +68,7 @@ env:
   description: AWS Region, default to us-east-1
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/aws-kendra:1.0.6
+  image: ghcr.io/obot-platform/mcp-images/aws-kendra:1.0.7
   port: 8099
   path: /
   args:

@@ -1,0 +1,187 @@
+name: Todoist
+shortDescription: Manage Todoist tasks, projects, and team collaboration through natural language
+description: |
+
+  A Model Context Protocol (MCP) server for Todoist integration, providing comprehensive task and project management capabilities through Todoist's API.
+
+  ## Features
+  - **Access Todoist data from compatible AI applications**
+  - **Create and manage tasks, projects, and sections through natural language**
+  - **Track activity and completed tasks with detailed history**
+  - **Manage team collaboration and task assignments**
+  - **Search across tasks and projects efficiently**
+
+  ## What you'll need to connect
+
+  **No Setup Required**: Authentication is handled automatically through Todoist's OAuth2 workflow
+
+metadata:
+  categories: Business, Productivity
+  allow-multiple: "true"
+icon: https://img.icons8.com/?size=100&id=MFaX6nJlDgiU&format=png&color=000000
+repoURL: https://github.com/Doist/todoist-ai
+runtime: remote
+remoteConfig:
+  fixedURL: https://ai.todoist.net/mcp
+toolPreview:
+  # User & Account Information
+  - name: user-info
+    description: Get comprehensive user information including user ID, full name, email, timezone with current local time, week start day preferences, current week dates, daily/weekly goal progress, and user plan (Free/Pro/Business).
+    params: {}
+
+  # Overview & Navigation
+  - name: get-overview
+    description: Get a Markdown overview. If no projectId is provided, shows all projects with hierarchy and sections (useful for navigation). If projectId is provided, shows detailed overview of that specific project including all tasks grouped by sections.
+    params:
+      projectId: "Optional project ID. If provided, shows detailed overview of that project. If omitted, shows overview of all projects."
+
+  # Project Management
+  - name: add-projects
+    description: Add one or more new projects. Essential for project setup and organization.
+    params:
+      projects: "Array of projects to add, each with name (required), parentId (optional for sub-projects), viewStyle (optional: list, board, calendar), and isFavorite (optional boolean)"
+  - name: update-projects
+    description: Update multiple existing projects with new values. Modify project properties like name, view style, favorite status, or parent (to reorganize hierarchy).
+    params:
+      projects: "Array of projects to update, each requiring id and optional fields: name, viewStyle, isFavorite, parentId"
+  - name: find-projects
+    description: List all projects or search for projects by name. If search parameter is omitted, all projects are returned. Use for project discovery and navigation.
+    params:
+      search: "Search for a project by name (partial and case insensitive match). If omitted, all projects are returned."
+      limit: "Maximum number of projects to return (1-100, default: 50)"
+      cursor: "Cursor for pagination to get the next page of projects"
+
+  # Section Management
+  - name: add-sections
+    description: Add one or more new sections to projects. Essential for organizing tasks within projects.
+    params:
+      sections: "Array of sections to add, each with name (required) and projectId (required)"
+  - name: update-sections
+    description: Update multiple existing sections with new values. Modify section names.
+    params:
+      sections: "Array of sections to update, each requiring id and name"
+  - name: find-sections
+    description: Search for sections by name or other criteria in a project. If search omitted, all sections in the project are returned.
+    params:
+      projectId: "The ID of the project to search sections in (required)"
+      search: "Search for a section by name (partial and case insensitive match). If omitted, all sections returned."
+
+  # Task Management - Creation & Updates
+  - name: add-tasks
+    description: Add one or more tasks to a project, section, or parent. Supports assignment to project collaborators. Returns task IDs with confirmation.
+    params:
+      tasks: "Array of tasks to add, each with content (required), projectId, sectionId, parentId, description, dueString (natural language), priority (p1-p4), labels (array), duration, deadlineDate, responsibleUser"
+  - name: update-tasks
+    description: Update existing tasks including content, dates, priorities, and assignments. Essential for task modifications.
+    params:
+      tasks: "Array of tasks to update, each requiring id and optional fields: content, description, dueString, priority, labels, projectId, sectionId, parentId, responsibleUser, duration, deadlineDate, order"
+  - name: complete-tasks
+    description: Complete one or more tasks by their IDs. Mark tasks as done.
+    params:
+      ids: "Array of task IDs to complete (required)"
+
+  # Task Management - Search & Discovery
+  - name: find-tasks
+    description: Find tasks by text search, or by project/section/parent container/responsible user. At least one filter must be provided. Essential for task queries.
+    params:
+      searchText: "The text to search for in tasks"
+      projectId: "Find tasks in this project"
+      sectionId: "Find tasks in this section"
+      parentId: "Find subtasks of this parent task"
+      responsibleUser: "Find tasks assigned to this user (can be user ID, name, or email)"
+      responsibleUserFiltering: "How to filter by responsible user: 'assigned' (only tasks assigned to others), 'unassignedOrMe' (default: unassigned or assigned to me), 'all' (all tasks)"
+      labels: "Array of labels to filter tasks by"
+      labelsOperator: "Operator for label filtering: 'and' (task has all labels) or 'or' (default: task has any label)"
+      limit: "Maximum number of tasks to return (1-100, default: 10)"
+      cursor: "Pagination cursor for retrieving more results"
+  - name: find-tasks-by-date
+    description: Get tasks by date range. Use startDate 'today' to get today's tasks including overdue items, or provide a specific date/date range. Essential for daily planning.
+    params:
+      startDate: "The start date to get tasks for (YYYY-MM-DD format or 'today')"
+      daysCount: "Number of days to get tasks for, starting from start date (1-30, default: 1)"
+      overdueOption: "How to handle overdue tasks: 'overdue-only', 'include-overdue' (default), or 'exclude-overdue'"
+      responsibleUser: "Find tasks assigned to this user (can be user ID, name, or email)"
+      responsibleUserFiltering: "How to filter by responsible user: 'assigned', 'unassignedOrMe' (default), or 'all'"
+      labels: "Array of labels to filter tasks by"
+      labelsOperator: "Operator for label filtering: 'and' or 'or' (default)"
+      limit: "Maximum number of tasks to return (1-100, default: 10)"
+      cursor: "Pagination cursor for retrieving more results"
+  - name: find-completed-tasks
+    description: Get completed tasks (includes all collaborators by default—use responsibleUser to narrow). Track task completion history.
+    params:
+      since: "The start date to get tasks for (YYYY-MM-DD format, required)"
+      until: "The end date to get tasks for (YYYY-MM-DD format, required)"
+      getBy: "Method to use: 'completion' (default: when task was completed) or 'due' (when task was due)"
+      projectId: "The ID of the project to get tasks for"
+      sectionId: "The ID of the section to get tasks for"
+      parentId: "The ID of the parent task to get tasks for"
+      responsibleUser: "Find tasks assigned to this user (defaults to all collaborators when omitted)"
+      labels: "Array of labels to filter tasks by"
+      labelsOperator: "Operator for label filtering: 'and' or 'or' (default)"
+      workspaceId: "The ID of the workspace to get tasks for"
+      limit: "Maximum number of tasks to return (1-200, default: 50)"
+      cursor: "Pagination cursor for retrieving more results"
+
+  # Comments & Collaboration
+  - name: add-comments
+    description: Add multiple comments to tasks or projects. Each comment must specify either taskId or projectId. Use for discussion and feedback.
+    params:
+      comments: "Array of comments to add, each with content (required) and either taskId or projectId"
+  - name: find-comments
+    description: Find comments by task, project, or get a specific comment by ID. Exactly one of taskId, projectId, or commentId must be provided.
+    params:
+      taskId: "Find comments for a specific task"
+      projectId: "Find comments for a specific project"
+      commentId: "Get a specific comment by ID"
+      limit: "Maximum number of comments to return (1-10)"
+      cursor: "Pagination cursor for retrieving more results"
+  - name: update-comments
+    description: Update multiple existing comments with new content. Modify comment text.
+    params:
+      comments: "Array of comments to update, each requiring id and content"
+
+  # Activity & History
+  - name: find-activity
+    description: Retrieve recent activity logs to monitor and audit changes in Todoist. Shows events from all users by default (use initiatorId to filter by specific user). Track task completions, updates, deletions, project changes, and more with flexible filtering.
+    params:
+      eventType: "Type of event to filter by: 'added', 'updated', 'deleted', 'completed', 'uncompleted', 'archived', 'unarchived', 'shared', 'left'"
+      objectType: "Type of object to filter by: 'task', 'project', 'comment'"
+      objectId: "Filter by specific object ID (task, project, or comment)"
+      projectId: "Filter events by parent project ID"
+      taskId: "Filter events by parent task ID (for subtask events)"
+      initiatorId: "Filter by the user ID who initiated the event"
+      limit: "Maximum number of activity events to return (1-100, default: 20)"
+      cursor: "Pagination cursor for retrieving the next page of results"
+
+  # Team & Collaboration Management
+  - name: find-project-collaborators
+    description: Search for collaborators by name or other criteria in a project. If search omitted, all collaborators in the project are returned.
+    params:
+      projectId: "The ID of the project to search for collaborators in (required)"
+      searchTerm: "Search for a collaborator by name or email (partial and case insensitive match). If omitted, all collaborators returned."
+  - name: manage-assignments
+    description: Bulk assignment operations for multiple tasks. Supports assign, unassign, and reassign operations with atomic rollback on failures. Essential for team task management.
+    params:
+      operation: "The assignment operation to perform: 'assign', 'unassign', 'reassign' (required)"
+      taskIds: "Array of task IDs to operate on (max 50, required)"
+      responsibleUser: "The user to assign tasks to (user ID, name, or email). Required for 'assign' and 'reassign' operations."
+      fromAssigneeUser: "For 'reassign' operations: the current assignee to reassign from (user ID, name, or email). Optional - if not provided, reassigns from any current assignee."
+      dryRun: "If true, validates operations without executing them (default: false)"
+
+  # Deletion
+  - name: delete-object
+    description: Delete a project, section, task, or comment by its ID. Use with caution as this action is irreversible.
+    params:
+      type: "The type of entity to delete: 'project', 'section', 'task', 'comment' (required)"
+      id: "The ID of the entity to delete (required)"
+
+  # OpenAI MCP Compatibility - Search & Fetch
+  - name: search
+    description: Search across tasks and projects in Todoist. Returns a list of relevant results with IDs, titles, and URLs. OpenAI MCP compatible.
+    params:
+      query: "The search query string to find tasks and projects (required)"
+  - name: fetch
+    description: Fetch the full contents of a task or project by its ID. The ID should be in the format "task:{id}" or "project:{id}". OpenAI MCP compatible.
+    params:
+      id: "A unique identifier for the document in the format 'task:{id}' or 'project:{id}' (required)"
+

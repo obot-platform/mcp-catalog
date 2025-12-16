@@ -1,0 +1,183 @@
+name: MCP Server Validation Automation
+
+on:
+  pull_request_target:
+    branches:
+      - main
+    types: [opened, reopened, synchronize]
+
+jobs:
+  generate-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.extract-config.outputs.file_configs }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v47
+        with:
+          files: |
+            **.yaml
+          json: true
+          escape_json: false
+          use_rest_api: true
+
+      - name: Extract config from changed files
+        id: extract-config
+        run: |
+          changed_files='${{ steps.changed-files.outputs.all_changed_files }}'
+
+          if [ "$changed_files" == "[]" ] || [ -z "$changed_files" ]; then
+            echo "file_configs=[]" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Build JSON array with file data
+          file_configs="[]"
+
+          while read -r file; do
+            if [ -f "$file" ]; then
+              containerized_config=$(yq eval '.containerizedConfig' "$file" -o=json -I=0)
+
+              # Only include files that have containerizedConfig (not null)
+              if [ "$containerized_config" != "null" ]; then
+                env_config=$(yq eval '.env' "$file" -o=json -I=0)
+
+                # Create entry for this file
+                entry=$(jq -n \
+                  --arg file "$file" \
+                  --argjson containerized "$containerized_config" \
+                  --argjson env "$env_config" \
+                  '{file: $file, containerizedConfig: $containerized, env: $env}')
+
+                # Append to array
+                file_configs=$(echo "$file_configs" | jq --argjson entry "$entry" '. += [$entry]')
+              fi
+            fi
+          done < <(echo "$changed_files" | jq -r '.[]')
+
+          # Output must be on single line for GitHub Actions
+          echo "file_configs=$(echo "$file_configs" | jq -c .)" >> $GITHUB_OUTPUT
+
+  run-validation:
+    needs: generate-matrix
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        server: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+
+    permissions:
+      id-token: write
+      actions: read
+      checks: read
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Cache NPM Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run OBOT container
+        run: |
+          docker run -d --name obot \
+            -p 8080:8080 \
+            -v /var/run/docker.sock:/var/run/docker.sock \
+            -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
+            -e OBOT_SERVER_DISABLE_UPDATE_CHECK=true \
+            ghcr.io/obot-platform/obot:latest
+
+      - name: Wait for OBOT to be ready
+        run: |
+          echo "Waiting for OBOT container..."
+          for i in {1..12}; do
+            if curl -sf http://localhost:8080/api/me | grep -q '"username":"nobody"'; then
+              echo "OBOT API is ready."
+              break
+            fi
+            echo "Not ready yet... retry #$i"
+            sleep 5
+          done
+
+      - name: Remove file extension
+        env:
+          MATRIX_SERVER_FILE: ${{ matrix.server.file }}
+        run: |
+          MCP_SERVER_NAME="${MATRIX_SERVER_FILE/.yaml/}"
+          echo "MCP_SERVER_NAME=$MCP_SERVER_NAME" >> $GITHUB_ENV
+
+      - name: Create catalog entry
+        run: |
+          #!/bin/env bash
+          echo "Waiting for default catalog..."
+          MAX_RETRIES=20
+          COUNT=0
+          SLEEP_SECONDS=2
+
+          while [ $COUNT -lt $MAX_RETRIES ]; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "localhost:8080/api/mcp-catalogs/default/entries")
+
+            if [ "$STATUS" != "404" ]; then
+                echo "Success! Endpoint returned HTTP $STATUS"
+                break
+            fi
+
+            echo "Still 404... retrying in $SLEEP_SECONDS seconds."
+            sleep "$SLEEP_SECONDS"
+            COUNT=$((COUNT + 1))
+          done
+
+          curl localhost:8080/api/mcp-catalogs/default/entries -X POST -H "Content-Type: application/json" \
+          -d '{
+            "name": "'"test-${MCP_SERVER_NAME}"'",
+            "description": "'"testing ${MCP_SERVER_NAME} mcp"'",
+            "icon": "https://avatars.githubusercontent.com/u/9919?v=4",
+            "repoURL": "https://github.com/testing/testing",
+            "runtime": "containerized",
+            "containerizedConfig": {
+              "image": "${{ matrix.server.containerizedConfig.image }}",
+              "port": ${{ matrix.server.containerizedConfig.port }},
+              "path": "${{ matrix.server.containerizedConfig.path }}",
+              "args": ${{ toJson(matrix.server.containerizedConfig.args) }}
+            },
+            "env": ${{ toJson(matrix.server.env) }},
+            "metadata": {
+              "categories": "testing"
+            }
+          }'
+
+      - name: Install dependencies
+        run: |
+          cd mcp-server-validation-automation
+          npm ci
+
+      - name: Run WDIO Tests
+        env: ${{ secrets }}
+        run: |
+          cd mcp-server-validation-automation
+          npx wdio run wdio.conf.ts --cucumberOpts.name="^Validate test-${MCP_SERVER_NAME} MCP Server sequential prompts on Obot$"

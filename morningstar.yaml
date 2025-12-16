@@ -1,0 +1,64 @@
+name: Morningstar
+shortDescription: Access Morningstar financial data, analyst research, and investment screening
+description: |
+
+  A Model Context Protocol (MCP) server that provides comprehensive access to Morningstar's institutional-grade financial data and research. Retrieve real-time and historical market data, access professional analyst research with economic moat ratings, screen investments across stocks/ETFs/funds, analyze fund holdings, and explore 400+ financial datapoints for any publicly traded security.
+
+  ## Features
+
+  - **Investment & Datapoint Lookup**: Look up Morningstar IDs for any stock, ETF, or mutual fund by name or ticker, plus access to 400+ financial datapoints with definitions
+
+  - **Market Data & Time-Series**: Retrieve current and historical price data, market caps, P/E ratios, and other financial metrics with customizable date ranges
+
+  - **Analyst Research Reports**: Access comprehensive Morningstar analyst research including economic moat ratings, fair value estimates, financial health assessments, and risk analysis
+
+  - **Investment Screening**: Screen stocks, ETFs, and mutual funds with custom criteria using various financial metrics and operators
+
+  - **Fund Holdings Analysis**: Get detailed portfolio composition and top holdings for any mutual fund or ETF with position weights
+
+  - **Research Articles**: Search Morningstar's editorial content on investment strategies, retirement planning, and sustainable investing
+
+
+  ## What you'll need to connect
+
+  **No Setup Required**: Authentication is handled automatically through OAuth2 workflow
+
+metadata:
+  categories: Finance & Business
+icon: https://www.morningstar.com/favicon.ico
+repoURL: https://mcp.morningstar.com/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.morningstar.com/mcp
+toolPreview:
+- name: morningstar-id-lookup-tool
+  description: Look up Morningstar IDs for investments and datapoints by their names or ticker symbols. This is typically the first tool to use before retrieving data, as most other tools require Morningstar IDs. Returns investment IDs, datapoint IDs, definitions, and time-series support information for over 400 available datapoints.
+  params:
+    investments: List of investments with investment_name and/or ticker_symbol
+    datapoints: List of datapoint objects with name field (e.g., Current Price, Market Cap, P/E Ratio)
+- name: morningstar-data-tool
+  description: Retrieve specific financial data for stocks, funds, or other investments using Morningstar IDs. Returns current values for non-time-series datapoints and historical time-series data where supported. Use this after obtaining IDs from the lookup tool to get actual market data, valuations, and financial metrics.
+  params:
+    investment_ids: List of Morningstar Investment IDs (from lookup tool)
+    datapoints: List of objects with morningstar_datapoint_id and supports_time_series fields
+    start_date: Optional start date for time series data (YYYY-MM-DD format)
+    end_date: Optional end date for time series data (YYYY-MM-DD format)
+- name: morningstar-articles-tool
+  description: Search and retrieve Morningstar research articles and editorial content on finance, investing, sustainable investing, investment strategies, portfolios, and retirement planning. Returns articles with content excerpts, publication dates, titles, and source URLs. Provides expert insights and analysis rather than real-time market data.
+  params:
+    question: Natural language question about investment topics or strategies
+- name: morningstar-analyst-research-tool
+  description: Retrieve comprehensive Morningstar analyst research reports and analysis for a specific security. Returns detailed analyst notes, economic moat analysis, financial health assessments, valuation analysis, business strategy outlook, risk assessments, and bull/bear arguments. Requires a Morningstar investment ID.
+  params:
+    investment_id: Morningstar investment ID (from lookup tool, not ticker symbol)
+- name: morningstar-screener-tool
+  description: Screen and filter investments based on specific criteria to find stocks, ETFs, or mutual funds that match your requirements. Returns up to 100 matching investments with key datapoints. Supports various operators (=, like, >, <) and multiple criteria with AND/OR logic. Use lookup tool first to get datapoint IDs.
+  params:
+    universe: Investment universe (ST for stocks, FE for ETFs, FO for mutual funds)
+    screener_criteria: List of criteria with datapoint_id, operator, value, and relation fields
+- name: morningstar-fund-holdings-tool
+  description: Retrieve the top holdings of Open-End mutual funds or ETFs with detailed position information. Returns Morningstar IDs, holding names, and portfolio weights for each holding. Supports up to 10 investment IDs per request with 10-100 holdings per fund. Use this to analyze fund composition and portfolio concentration.
+  params:
+    investment_ids: List of Morningstar Investment IDs for funds/ETFs (up to 10)
+    num_holdings: Number of holdings to retrieve per fund (10-100)
+

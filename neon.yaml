@@ -1,4 +1,5 @@
 name: Neon Database
+shortDescription: Manage Neon Postgres databases with natural language, branching, and migrations
 description: |
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://neon.com/brand/neon-logo-dark-color.svg">
@@ -34,7 +35,7 @@ description: |
 metadata:
   categories: Databases
 icon: https://avatars.githubusercontent.com/u/183852044?v=4
-repoURL: https://github.com/neondatabase-labs/mcp-server-neon
+repoURL: https://github.com/neondatabase/mcp-server-neon
 runtime: remote
 remoteConfig:
   fixedURL: https://mcp.neon.tech/mcp

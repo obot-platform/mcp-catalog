@@ -1,4 +1,5 @@
 name: Browserbase
+shortDescription: Cloud browser automation with web scraping, screenshots, and AI interactions
 description: 'A Model Context Protocol (MCP) server that provides cloud browser automation capabilities using Browserbase and Stagehand. Enable LLMs to interact with web pages, take screenshots, extract information, and perform automated actions with atomic precision.
 
 
@@ -53,7 +54,7 @@ env:
   description: Your Gemini API key.
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/browserbase:2.2.0
+  image: ghcr.io/obot-platform/mcp-images/browserbase:2.4.0
   port: 8099
   path: /
   args:

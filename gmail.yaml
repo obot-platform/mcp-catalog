@@ -1,4 +1,5 @@
 name: Gmail
+shortDescription: Send, read, draft, and organize Gmail emails with label management and search
 description: |
   ![Gmail MCP Server](https://img.shields.io/badge/Gmail-MCP%20Server-blue?style=for-the-badge&logo=gmail)
   ![Python](https://img.shields.io/badge/Python-3.13+-green?style=for-the-badge&logo=python)

@@ -1,4 +1,5 @@
 name: AWS CDK
+shortDescription: AWS CDK best practices, architecture patterns, and CDK Nag security compliance
 description: 'A Model Context Protocol (MCP) server for AWS Cloud Development Kit (CDK) best practices, infrastructure as code patterns, and security compliance with CDK Nag. Provides prescriptive guidance, vetted architecture patterns, and automated security validation for building AWS applications.
 
 
@@ -61,7 +62,7 @@ env:
   description: AWS Region, default to us-east-1
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/aws-cdk:1.0.7
+  image: ghcr.io/obot-platform/mcp-images/aws-cdk:1.0.8
   port: 8099
   path: /
   args:

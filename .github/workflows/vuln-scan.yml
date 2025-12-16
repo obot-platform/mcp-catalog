@@ -33,7 +33,7 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "pull_request_target" ]; then
             # Get changed files in PR, filter for .yaml files
-            changed_files=$(git diff --name-only origin/${{ github.event.pull_request.base.ref }}..pr-branch | grep '\.yaml$' || true)
+            changed_files=$(git diff --name-only origin/${{ github.event.pull_request.base.ref }}...pr-branch | grep '\.yaml$' || true)
             matrix=$(for f in $changed_files; do
               [ -f "$f" ] && yq eval 'has("toolPreview")' --exit-status "$f" >/dev/null 2>&1 \
                 && echo "{\"filename\":\"$f\"}"
@@ -47,7 +47,7 @@ jobs:
           fi
           echo "matrix=$matrix" >> $GITHUB_OUTPUT
 
-  repackage:
+  vuln-scan:
     needs: generate-matrix
     strategy:
       fail-fast: false

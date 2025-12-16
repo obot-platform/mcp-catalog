@@ -1,0 +1,194 @@
+name: Salesforce
+shortDescription: Manage Salesforce CRM records, execute SOQL queries, and access metadata
+description: |
+  ![Salesforce MCP Server](https://img.shields.io/badge/Salesforce-MCP%20Server-blue?style=for-the-badge&logo=salesforce)
+  ![Python](https://img.shields.io/badge/Python-3.8+-green?style=for-the-badge&logo=python)
+  ![Docker](https://img.shields.io/badge/Docker-Ready-blue?style=for-the-badge&logo=docker)
+  ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+
+  A Model Context Protocol (MCP) server for Salesforce integration, providing comprehensive CRM management capabilities through the Salesforce API.
+
+  ## Features
+  - **Object Management**: Create, read, update, and delete Salesforce records
+  - **SOQL Queries**: Execute Salesforce Object Query Language queries
+  - **Metadata Access**: Retrieve and manage Salesforce metadata
+  - **Multi-Object Support**: Work with standard and custom objects
+  - **Bulk Operations**: Handle large data operations efficiently
+
+  ## What you'll need to connect
+
+  **Salesforce Connected App**: You'll need to create a Connected App in Salesforce and get the client credentials
+
+  ### How to create a Connected App and get your credentials:
+
+  1. **Create a new Salesforce External Client App**
+     - Log in to your Salesforce portal
+     - Go to Setup, and then search for 'External Client App Manager'
+     - Select 'New External Client App' from the top right
+     - Enter `Salesforce` as the External Client App Name
+     - Fill in a Contact Email for your Salesforce Administrator
+     - Set 'Distribution State' to 'Local' from the dropdown menu
+     - (Optionally) Fill in the other fields
+     - Click the `Create` button
+
+  2. **Configure OAuth Settings**
+     - Expand the 'Api (Enable OAuth Settings)' section, and check the box to Enable OAuth
+     - Enter your callback url. Any url will work, as we will only use the client id and secret to authenticate.
+     - Check on "Enable Client Credentials Flow".
+     - In the 'App Settings' section
+       - Select the `Manage user data via APIs (api)` and `Perform requests at any time (refresh_token, offline_access)` OAuth Scopes from the list
+     - Click the 'Create' button
+
+  3. **Register your OAuth App credentials**
+     - Go to Your app's settings page. Under the "Policy" -> "Oauth policy" section, click "Edit".
+     - Check on "Enable Client Credentials Flow". Put an username that you want to run as the user with client credentials.
+     - From the 'Settings' tab for your External Client App
+       - Expand the 'OAuth Settings' box and then click 'Consumer Key and Secret' from inside the 'App Settings' block
+     - Save the consumer key and secret as you will use them later.
+
+  4. **Find your Salesforce domain**
+     - Go to "Setup"
+     - in "Quick Find" search for "My Domain"
+     - Click on "My Domain". Find the domain in "Current My Domain URL". Use the one before salesforce.com. For example, if the url is https://mydomain.devloping.my.salesforce.com, the domain is mydomain.devloping.my.
+     - Copy the domain and save it for later.
+
+  5. **Environment Variables**
+     - Set `SFDC_CLIENT_ID` to your Consumer Key
+     - Set `SFDC_CLIENT_SECRET` to your Consumer Secret
+     - Set `SFDC_DOMAIN` to your Salesforce domain (for example, mydomain.devloping.my)
+metadata:
+  categories: CRM
+  allow-multiple: "true"
+icon: https://img.icons8.com/?size=100&id=38804&format=png&color=000000
+repoURL: https://github.com/obot-platform/salesforce-mcp
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/salesforce-mcp:latest
+  port: 9000
+  path: /
+env:
+  - key: SFDC_CLIENT_ID
+    name: Salesforce Client ID
+    required: true
+    sensitive: true
+    description: Your Salesforce Connected App Consumer Key (Client ID)
+  - key: SFDC_CLIENT_SECRET
+    name: Salesforce Client Secret
+    required: true
+    sensitive: true
+    description: Your Salesforce Connected App Consumer Secret (Client Secret)
+  - key: SFDC_DOMAIN
+    name: Salesforce Domain
+    required: false
+    sensitive: false
+    description: Your Salesforce domain (defaults to 'organization.my' if not specified)
+
+toolPreview:
+  - name: convert_lead_to_opportunity
+    description: Converts an existing lead into a new Opportunity in Salesforce.
+    params:
+      account_id: The Salesforce Id of an existing account to associate with the opportunity
+      contact_id: The Salesforce Id of an existing contact to associate with the opportunity
+      converted_status: The converted status of the lead. Must exist within Salesforce.
+      lead_id: A string containing the Salesforce Id of the lead to update
+      opportunity_name: The name of the opportunity to create
+  - name: create_account
+    description: Create a new account in Salesforce.
+    params:
+      account: A JSON-formatted string containing the account fields to use for the new account
+  - name: create_case
+    description: Create a new case in Salesforce.
+    params:
+      case: A JSON-formatted string containing the case fields to use for the new case
+  - name: create_contact
+    description: Create a new contact in Salesforce.
+    params:
+      contact: A JSON-formatted string containing the contact fields to use for the new contact
+  - name: create_lead
+    description: Create a new lead in Salesforce.
+    params:
+      lead: A JSON-formatted string containing the lead fields to use for the new lead
+  - name: create_opportunity
+    description: Create a new opportunity in Salesforce.
+    params:
+      opportunity: A JSON-formatted string containing the opportunity fields to use for the new opportunity
+  - name: delete_account
+    description: Delete an existing account in Salesforce.
+    params:
+      account_id: A string containing the Salesforce Id of the account to delete
+  - name: delete_case
+    description: Delete an existing case in Salesforce.
+    params:
+      case_id: A string containing the Salesforce Id of the case to delete
+  - name: delete_contact
+    description: Delete an existing contact in Salesforce.
+    params:
+      contact_id: A string containing the Salesforce Id of the contact to delete
+  - name: delete_lead
+    description: Delete an existing lead in Salesforce.
+    params:
+      lead_id: A string containing the Salesforce Id of the lead to delete
+  - name: delete_opportunity
+    description: Delete an existing opportunity in Salesforce.
+    params:
+      opportunity_id: A string containing the Salesforce Id of the opportunity to delete
+  - name: describe_account_schema
+    description: Describes the available fields for an account object in Salesforce.
+    params: {}
+  - name: describe_case_schema
+    description: Describes the available fields for a case object in Salesforce.
+    params: {}
+  - name: describe_contact_schema
+    description: Describes the available fields for a contact object in Salesforce.
+    params: {}
+  - name: describe_lead_schema
+    description: Describes the available fields for a lead object in Salesforce.
+    params: {}
+  - name: describe_opportunity_schema
+    description: Describes the available fields for an opportunity object in Salesforce.
+    params: {}
+  - name: email_message
+    description: Create an Email in Salesforce using Enhanced Email functionality.
+    params:
+      from_address: The email address of the sender
+      from_name: The name of the sender
+      html_body: The HTML body of the email
+      related_object_id: The Salesforce Id of the object to which the email should be related
+      status: The numeric status of the email (3 = Sent, 5 = Draft). Create messages as drafts by default.
+      subject: The subject of the email
+      text_body: The plaintext body of the email
+      to_address: The email address of the recipient
+  - name: get_direct_link
+    description: Get a direct weblink to a Salesforce object.
+    params:
+      object_id: The ID of the Salesforce object to get the direct link for.
+      object_type: The type of Salesforce object to get the direct link for. Use singular form, starting with a capital letter (e.g., Account, Contact, Lead, Opportunity, Case)
+  - name: query
+    description: Query Salesforce using SOQL.
+    params:
+      query: The SOQL query to execute
+  - name: update_account
+    description: Update an existing account in Salesforce.
+    params:
+      account: A JSON-formatted string containing the account fields to update in the existing account
+      account_id: A string containing the Salesforce Id of the account to update
+  - name: update_case
+    description: Update an existing case in Salesforce.
+    params:
+      case: A JSON-formatted string containing the case fields to update in the existing case
+      case_id: A string containing the Salesforce Id of the case to update
+  - name: update_contact
+    description: Update an existing contact in Salesforce.
+    params:
+      contact: A JSON-formatted string containing the contact fields to update in the existing contact
+      contact_id: A string containing the Salesforce Id of the contact to update
+  - name: update_lead
+    description: Update an existing lead in Salesforce.
+    params:
+      lead: A JSON-formatted string containing the lead fields to update in the existing lead
+      lead_id: A string containing the Salesforce Id of the lead to update
+  - name: update_opportunity
+    description: Update an existing opportunity in Salesforce.
+    params:
+      opportunity: A JSON-formatted string containing the opportunity fields to update in the existing opportunity
+      opportunity_id: A string containing the Salesforce Id of the opportunity to update

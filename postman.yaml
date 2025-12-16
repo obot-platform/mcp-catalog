@@ -1,0 +1,674 @@
+name: Postman
+shortDescription: Manage Postman collections, mocks, monitors, environments, and API specs
+description: |
+  A Model Context Protocol (MCP) server that provides seamless integration with Postman's API Platform. Connect your AI tools to Postman's comprehensive API development ecosystem, enabling intelligent workflows for collections, environments, mocks, monitors, and API specifications.
+
+  ## Features
+  - **Collection Management**: Create, read, update, and manage Postman collections with full CRUD operations
+  - **Request & Response Operations**: Build and manage API requests, responses, folders, and examples
+  - **Mock Server Integration**: Create, configure, and manage mock servers for API testing
+  - **Monitor Management**: Set up and manage API monitors for continuous testing
+  - **Environment Management**: Create and manage environment variables and configurations
+  - **Workspace Operations**: Organize and manage workspaces with comprehensive access controls
+  - **API Specification Support**: Create, sync, and manage OpenAPI and AsyncAPI specifications
+  - **Documentation Publishing**: Publish and manage public API documentation
+  - **Collaboration Tools**: Comment threads, tagging, and team collaboration features
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Postman API Key**: Your Postman API key
+  - **Host URL**: Choose between US (`https://mcp.postman.com`) or EU (`https://mcp.eu.postman.com`) regions
+  - **Tool Configuration**: Select between `minimal` (38 essential tools) or `mcp` (all 100+ tools) mode
+
+
+metadata:
+  categories: Developer Tools,API Development,Testing
+icon: https://avatars.githubusercontent.com/u/10251060?s=48&v=4
+repoURL: https://github.com/postmanlabs/postman-mcp-server
+
+env:
+  - name: Postman Host URL
+    key: HOST_URL
+    description: The URL of the Postman MCP server, choose between US (`https://mcp.postman.com`) or EU (`https://mcp.eu.postman.com`) regions
+    required: true
+    sensitive: false
+  - name: Tool Configuration
+    key: TOOL_CONFIGURATION
+    description: Select between `minimal` (38 essential tools) or `mcp` (all 100+ tools) mode
+    required: true
+    sensitive: false
+
+runtime: remote
+remoteConfig:
+  URLTemplate: ${HOST_URL}/${TOOL_CONFIGURATION}
+  headers:
+  - name: Postman API Key
+    description: Your Postman API key
+    key: Authorization
+    required: true
+    sensitive: true
+    prefix: "Bearer "
+
+toolPreview:
+  - name: getAuthenticatedUser
+    description: Gets information about the authenticated user
+    params: {}
+  - name: createCollection
+    description: Creates a collection using the Postman Collection v2.1.0 schema format
+    params:
+      workspace: The workspace's ID (required)
+      collection: Collection information including name, schema, and items (required)
+  - name: getCollection
+    description: Gets information about a collection
+    params:
+      collectionId: The collection ID in <OWNER_ID>-<UUID> format (required)
+      access_key: Collection's read-only access key (optional)
+      model: Return minimal model with only root-level IDs (optional)
+  - name: getCollections
+    description: Gets all collections in a workspace
+    params:
+      workspace: The workspace's ID (required)
+      limit: Maximum number of rows to return (optional)
+      name: Filter by collection name (optional)
+      offset: Zero-based offset of first item (optional)
+  - name: putCollection
+    description: Replaces the contents of a collection using Postman Collection v2.1.0 schema
+    params:
+      collectionId: The collection ID (required)
+      collection: Complete collection object (required)
+      Prefer: Use 'respond-async' for asynchronous updates (optional)
+  - name: patchCollection
+    description: Updates specific collection information such as name, events, or variables
+    params:
+      collectionId: The collection ID (required)
+      collection: Collection properties to update (required)
+  - name: deleteCollection
+    description: Deletes a collection
+    params:
+      collectionId: The collection ID in <OWNER_ID>-<UUID> format (required)
+  - name: createCollectionFolder
+    description: Creates a folder in a collection
+    params:
+      collectionId: The collection's ID (required)
+      name: The folder's name (optional but recommended)
+      folder: ID of parent folder (optional)
+  - name: getCollectionFolder
+    description: Gets information about a folder in a collection
+    params:
+      collectionId: The collection's ID (required)
+      folderId: The folder's ID (required)
+      ids: Return only ID values (optional)
+      populate: Return all item contents (optional)
+      uid: Return IDs in UID format (optional)
+  - name: updateCollectionFolder
+    description: Updates a folder in a collection
+    params:
+      collectionId: The collection's ID (required)
+      folderId: The folder's ID (required)
+      name: The folder's name (optional)
+      description: The folder's description (optional)
+  - name: deleteCollectionFolder
+    description: Deletes a folder in a collection
+    params:
+      collectionId: The collection's ID (required)
+      folderId: The folder's ID (required)
+  - name: createCollectionRequest
+    description: Creates a request in a collection
+    params:
+      collectionId: The collection's ID (required)
+      name: The request's name (optional but recommended)
+      folderId: The folder ID to create request in (optional)
+  - name: getCollectionRequest
+    description: Gets information about a request in a collection
+    params:
+      collectionId: The collection's ID (required)
+      requestId: The request's ID (required)
+      ids: Return only ID values (optional)
+      populate: Return all item contents (optional)
+      uid: Return IDs in UID format (optional)
+  - name: updateCollectionRequest
+    description: Updates a request in a collection
+    params:
+      collectionId: The collection's ID (required)
+      requestId: The request's ID (required)
+      name: The request's name (optional)
+      method: The request's HTTP method (optional)
+  - name: deleteCollectionRequest
+    description: Deletes a request in a collection
+    params:
+      collectionId: The collection's ID (required)
+      requestId: The request's ID (required)
+  - name: createCollectionResponse
+    description: Creates a request response in a collection
+    params:
+      collectionId: The collection's ID (required)
+      requestId: The parent request's ID (required)
+      name: The response's name (optional but recommended)
+  - name: getCollectionResponse
+    description: Gets information about a response in a collection
+    params:
+      collectionId: The collection's ID (required)
+      responseId: The response's ID (required)
+      ids: Return only ID values (optional)
+      populate: Return all item contents (optional)
+      uid: Return IDs in UID format (optional)
+  - name: updateCollectionResponse
+    description: Updates a response in a collection
+    params:
+      collectionId: The collection's ID (required)
+      responseId: The response's ID (required)
+      name: The response's name (optional)
+      responseCode: HTTP response code information (optional)
+  - name: deleteCollectionResponse
+    description: Deletes a response in a collection
+    params:
+      collectionId: The collection's ID (required)
+      responseId: The response's ID (required)
+  - name: createCollectionFork
+    description: Creates a fork from an existing collection into a workspace
+    params:
+      collectionId: The collection's ID (required)
+      workspace: The workspace ID to create fork in (required)
+      label: The fork's label (required)
+  - name: getCollectionForks
+    description: Gets a collection's forked collections
+    params:
+      collectionId: The collection's ID (required)
+      cursor: Pointer to first record of paginated results (optional)
+      direction: Sort by creation date asc/desc (optional)
+      limit: Maximum rows to return (optional)
+  - name: mergeCollectionFork
+    description: Merges a forked collection back into its parent collection
+    params:
+      source: The source collection's unique ID (required)
+      destination: The destination collection's unique ID (required)
+      strategy: Merge strategy - deleteSource or updateSourceWithDestination (optional)
+  - name: pullCollectionChanges
+    description: Pulls changes from parent collection into forked collection
+    params:
+      collectionId: The collection's ID (required)
+  - name: getSourceCollectionStatus
+    description: Checks if there are changes between forked collection and parent
+    params:
+      collectionId: The collection's ID (required)
+  - name: duplicateCollection
+    description: Creates a duplicate of a collection in another workspace
+    params:
+      collectionId: The collection's unique ID (required)
+      workspace: The workspace ID to duplicate into (required)
+      suffix: Optional suffix for duplicated collection name (optional)
+  - name: getDuplicateCollectionTaskStatus
+    description: Gets the status of a collection duplication task
+    params:
+      taskId: The task's unique ID (required)
+  - name: transferCollectionFolders
+    description: Copies or moves folders into a collection or folder
+    params:
+      ids: List of folder UIDs to transfer (required)
+      mode: Transfer operation - copy or move (required)
+      target: Destination location information (required)
+      location: Placement in target destination (required)
+  - name: transferCollectionRequests
+    description: Copies or moves requests into a collection or folder
+    params:
+      ids: List of request UIDs to transfer (required)
+      mode: Transfer operation - copy or move (required)
+      target: Destination location information (required)
+      location: Placement in target destination (required)
+  - name: transferCollectionResponses
+    description: Copies or moves responses into a request
+    params:
+      ids: List of response UIDs to transfer (required)
+      mode: Transfer operation - copy or move (required)
+      target: Destination location information (required)
+      location: Placement in target destination (required)
+  - name: getCollectionComments
+    description: Gets all comments left by users in a collection
+    params:
+      collectionId: The collection's unique ID (required)
+  - name: createCollectionComment
+    description: Creates a comment on a collection
+    params:
+      collectionId: The collection's unique ID (required)
+      body: The contents of the comment (required)
+      tags: Information about tagged users (optional)
+      threadId: Thread ID to create reply (optional)
+  - name: updateCollectionComment
+    description: Updates a comment on a collection
+    params:
+      collectionId: The collection's unique ID (required)
+      commentId: The comment's ID (required)
+      body: The updated comment contents (required)
+      tags: Information about tagged users (optional)
+  - name: deleteCollectionComment
+    description: Deletes a comment from a collection
+    params:
+      collectionId: The collection's unique ID (required)
+      commentId: The comment's ID (required)
+  - name: getFolderComments
+    description: Gets all comments left by users in a folder
+    params:
+      collectionId: The collection's unique ID (required)
+      folderId: The folder's unique ID (required)
+  - name: createFolderComment
+    description: Creates a comment on a folder
+    params:
+      collectionId: The collection's unique ID (required)
+      folderId: The folder's unique ID (required)
+      body: The contents of the comment (required)
+      tags: Information about tagged users (optional)
+      threadId: Thread ID to create reply (optional)
+  - name: updateFolderComment
+    description: Updates a comment on a folder
+    params:
+      collectionId: The collection's unique ID (required)
+      folderId: The folder's unique ID (required)
+      commentId: The comment's ID (required)
+      body: The updated comment contents (required)
+      tags: Information about tagged users (optional)
+  - name: deleteFolderComment
+    description: Deletes a comment from a folder
+    params:
+      collectionId: The collection's unique ID (required)
+      folderId: The folder's unique ID (required)
+      commentId: The comment's ID (required)
+  - name: getRequestComments
+    description: Gets all comments left by users in a request
+    params:
+      collectionId: The collection's unique ID (required)
+      requestId: The request ID with team ID prefix (required)
+  - name: createRequestComment
+    description: Creates a comment on a request
+    params:
+      collectionId: The collection's unique ID (required)
+      requestId: The request ID with team ID prefix (required)
+      body: The contents of the comment (required)
+      tags: Information about tagged users (optional)
+      threadId: Thread ID to create reply (optional)
+  - name: updateRequestComment
+    description: Updates a comment on a request
+    params:
+      collectionId: The collection's unique ID (required)
+      requestId: The request's unique ID (required)
+      commentId: The comment's ID (required)
+      body: The updated comment contents (required)
+      tags: Information about tagged users (optional)
+  - name: deleteRequestComment
+    description: Deletes a comment from a request
+    params:
+      collectionId: The collection's unique ID (required)
+      requestId: The request's unique ID (required)
+      commentId: The comment's ID (required)
+  - name: getResponseComments
+    description: Gets all comments left by users in a response
+    params:
+      collectionId: The collection's unique ID (required)
+      responseId: The response's unique ID (required)
+  - name: createResponseComment
+    description: Creates a comment on a response
+    params:
+      collectionId: The collection's unique ID (required)
+      responseId: The response's unique ID (required)
+      body: The contents of the comment (required)
+      tags: Information about tagged users (optional)
+      threadId: Thread ID to create reply (optional)
+  - name: updateResponseComment
+    description: Updates a comment on a response
+    params:
+      collectionId: The collection's unique ID (required)
+      responseId: The response's unique ID (required)
+      commentId: The comment's ID (required)
+      body: The updated comment contents (required)
+      tags: Information about tagged users (optional)
+  - name: deleteResponseComment
+    description: Deletes a comment from a response
+    params:
+      collectionId: The collection's unique ID (required)
+      responseId: The response's unique ID (required)
+      commentId: The comment's ID (required)
+  - name: resolveCommentThread
+    description: Resolves a comment thread and any associated replies
+    params:
+      threadId: The comment's thread ID (required)
+  - name: getCollectionTags
+    description: Gets all tags associated with a collection
+    params:
+      collectionId: The collection's unique ID (required)
+  - name: updateCollectionTags
+    description: Updates a collection's associated tags
+    params:
+      collectionId: The collection's unique ID (required)
+      tags: List of associated tags as slugs (required)
+  - name: getCollectionUpdatesTasks
+    description: Gets the status of an asynchronous collection update task
+    params:
+      taskId: The task's ID (required)
+  - name: getCollectionsForkedByUser
+    description: Gets a list of all authenticated user's forked collections
+    params:
+      cursor: Pointer to first record of paginated results (optional)
+      direction: Sort by creation date asc/desc (optional)
+      limit: Maximum rows to return (optional)
+  - name: createEnvironment
+    description: Creates an environment
+    params:
+      workspace: The workspace's ID (required)
+      environment: Environment information including name and values (required)
+  - name: getEnvironment
+    description: Gets information about an environment
+    params:
+      environmentId: The environment's ID (required)
+  - name: getEnvironments
+    description: Gets information about all environments
+    params:
+      workspace: The workspace's ID (optional)
+  - name: putEnvironment
+    description: Replaces all contents of an environment
+    params:
+      environmentId: The environment's ID (required)
+      environment: Complete environment object (required)
+  - name: patchEnvironment
+    description: Updates specific environment properties
+    params:
+      environmentId: The environment's ID (required)
+      body: Array of operations to perform (required)
+  - name: deleteEnvironment
+    description: Deletes an environment
+    params:
+      environmentId: The environment's ID (required)
+  - name: createMock
+    description: Creates a mock server in a collection
+    params:
+      workspace: The workspace's ID (required)
+      mock: Mock server information (required)
+  - name: getMock
+    description: Gets information about a mock server
+    params:
+      mockId: The mock's ID (required)
+  - name: getMocks
+    description: Gets all active mock servers
+    params:
+      teamId: Return results for team ID (optional)
+      workspace: Return results for workspace ID (optional)
+  - name: updateMock
+    description: Updates a mock server
+    params:
+      mockId: The mock's ID (required)
+      mock: Mock server properties to update (required)
+  - name: deleteMock
+    description: Deletes a mock server
+    params:
+      mockId: The mock's ID (required)
+  - name: publishMock
+    description: Publishes a mock server (sets Access Control to public)
+    params:
+      mockId: The mock's ID (required)
+  - name: unpublishMock
+    description: Unpublishes a mock server (sets Access Control to private)
+    params:
+      mockId: The mock's ID (required)
+  - name: createMonitor
+    description: Creates a monitor
+    params:
+      workspace: The workspace's ID (required)
+      monitor: Monitor information (required)
+  - name: getMonitor
+    description: Gets information about a monitor
+    params:
+      monitorId: The monitor's ID (required)
+  - name: getMonitors
+    description: Gets all monitors
+    params:
+      workspace: Return results for workspace ID (optional)
+      active: Return only active monitors (optional)
+      collectionUid: Filter by collection UID (optional)
+      environmentUid: Filter by environment UID (optional)
+      owner: Filter by user ID (optional)
+      cursor: Pointer to first record (optional)
+      limit: Maximum rows to return (optional)
+  - name: updateMonitor
+    description: Updates a monitor's configurations
+    params:
+      monitorId: The monitor's ID (required)
+      monitor: Monitor properties to update (required)
+  - name: deleteMonitor
+    description: Deletes a monitor
+    params:
+      monitorId: The monitor's ID (required)
+  - name: runMonitor
+    description: Runs a monitor and returns its run results
+    params:
+      monitorId: The monitor's ID (required)
+      async: Run asynchronously (optional)
+  - name: createWorkspace
+    description: Creates a new workspace
+    params:
+      workspace: Workspace information (required)
+  - name: getWorkspace
+    description: Gets information about a workspace
+    params:
+      workspaceId: The workspace's ID (required)
+      include: Include additional information (optional)
+  - name: getWorkspaces
+    description: Gets all workspaces you have access to
+    params:
+      type: Filter by workspace type (optional)
+      createdBy: Filter by creator user ID (optional)
+      include: Include additional information (optional)
+  - name: updateWorkspace
+    description: Updates a workspace
+    params:
+      workspaceId: The workspace's ID (required)
+      workspace: Workspace properties to update (required)
+  - name: deleteWorkspace
+    description: Deletes an existing workspace
+    params:
+      workspaceId: The workspace's ID (required)
+  - name: getWorkspaceGlobalVariables
+    description: Gets a workspace's global variables
+    params:
+      workspaceId: The workspace's ID (required)
+  - name: updateWorkspaceGlobalVariables
+    description: Updates a workspace's global variables
+    params:
+      workspaceId: The workspace's ID (required)
+      values: Array of variable objects (required)
+  - name: getWorkspaceTags
+    description: Gets all tags associated with a workspace
+    params:
+      workspaceId: The workspace's ID (required)
+  - name: updateWorkspaceTags
+    description: Updates a workspace's associated tags
+    params:
+      workspaceId: The workspace's ID (required)
+      tags: List of associated tags (required)
+  - name: createSpec
+    description: Creates an API specification in Postman's Spec Hub
+    params:
+      workspaceId: The workspace's ID (required)
+      name: The specification's name (required)
+      type: The specification's type - OPENAPI:3.0 or ASYNCAPI:2.0 (required)
+      files: List of specification files (required)
+  - name: getSpec
+    description: Gets information about an API specification
+    params:
+      specId: The spec's ID (required)
+  - name: getAllSpecs
+    description: Gets all API specifications in a workspace
+    params:
+      workspaceId: The workspace's ID (required)
+      cursor: Pointer to first record (optional)
+      limit: Maximum rows to return (optional)
+  - name: updateSpec
+    description: Updates an API specification
+    params:
+      specId: The spec's ID (required)
+      spec: Specification properties to update (required)
+  - name: deleteSpec
+    description: Deletes an API specification
+    params:
+      specId: The spec's ID (required)
+  - name: getSpecDefinition
+    description: Gets complete contents of an API specification's definition
+    params:
+      specId: The spec's ID (required)
+  - name: getSpecFiles
+    description: Gets all files in an API specification
+    params:
+      specId: The spec's ID (required)
+  - name: createSpecFile
+    description: Creates an API specification file
+    params:
+      specId: The spec's ID (required)
+      path: The file's path (required)
+      content: The file's stringified contents (required)
+  - name: getSpecFile
+    description: Gets the contents of an API specification's file
+    params:
+      specId: The spec's ID (required)
+      filePath: The path to the file (required)
+  - name: updateSpecFile
+    description: Updates an API specification file
+    params:
+      specId: The spec's ID (required)
+      filePath: The path to the file (required)
+      content: The updated file contents (required)
+  - name: deleteSpecFile
+    description: Deletes a file in an API specification
+    params:
+      specId: The spec's ID (required)
+      filePath: The path to the file (required)
+  - name: generateCollection
+    description: Creates a collection from an API specification
+    params:
+      specId: The spec's ID (required)
+      elementType: The 'collection' element type (required)
+      name: The generated collection's name (required)
+      options: Advanced creation options (optional)
+  - name: getSpecCollections
+    description: Gets all of an API specification's generated collections
+    params:
+      specId: The spec's ID (required)
+      elementType: The 'collection' element type (required)
+      cursor: Pointer to first record (optional)
+      limit: Maximum rows to return (optional)
+  - name: syncCollectionWithSpec
+    description: Syncs a collection generated from an API specification
+    params:
+      collectionUid: The collection's unique ID (required)
+      specId: The spec's ID (required)
+  - name: generateSpecFromCollection
+    description: Generates an API specification for a collection
+    params:
+      collectionUid: The collection's unique ID (required)
+      elementType: The 'spec' value (required)
+      name: The API specification's name (required)
+      type: The specification's type (required)
+      format: The format - JSON or YAML (required)
+  - name: getGeneratedCollectionSpecs
+    description: Gets the API specification generated for a collection
+    params:
+      collectionUid: The collection's unique ID (required)
+      elementType: The 'spec' value (required)
+  - name: syncSpecWithCollection
+    description: Syncs an API specification linked to a collection
+    params:
+      specId: The spec's ID (required)
+      collectionUid: The collection's unique ID (required)
+  - name: getAsyncSpecTaskStatus
+    description: Gets the status of an asynchronous API specification creation task
+    params:
+      elementType: Element to filter by - collections or specs (required)
+      elementId: The element's ID (required)
+      taskId: The task's ID (required)
+  - name: publishDocumentation
+    description: Publishes a collection's documentation
+    params:
+      collectionId: The collection's unique ID (required)
+      documentationLayout: Default layout style (optional)
+      environmentUid: Environment UID to publish with (optional)
+      customColor: Theme colors in hexcode (optional)
+      customization: Documentation customization (optional)
+  - name: unpublishDocumentation
+    description: Unpublishes a collection's documentation
+    params:
+      collectionId: The collection's unique ID (required)
+  - name: getAllElementsAndFolders
+    description: Gets folders and elements in team's Private API Network
+    params:
+      parentFolderId: Return elements in specific folder (optional)
+      type: Filter by element type (optional)
+      name: Filter by name (optional)
+      description: Filter by description (optional)
+      summary: Filter by summary (optional)
+      createdBy: Filter by creator user ID (optional)
+      addedBy: Filter by publisher user ID (optional)
+      since: Created since time (optional)
+      until: Created until time (optional)
+      sort: Sort by field (optional)
+      direction: Sort direction asc/desc (optional)
+      limit: Maximum results (optional)
+      offset: Zero-based offset (optional)
+  - name: postPanElementOrFolder
+    description: Publishes element or creates folder in Private API Network
+    params:
+      body: Element or folder information (required)
+  - name: updatePanElementOrFolder
+    description: Updates element or folder in Private API Network
+    params:
+      elementId: The element's ID or UUID (required)
+      elementType: The element type (required)
+      body: Updated properties (required)
+  - name: deletePanElementOrFolder
+    description: Removes element or deletes folder from Private API Network
+    params:
+      elementId: The element's ID or UUID (required)
+      elementType: The element type (required)
+  - name: getAllPanAddElementRequests
+    description: Gets list of requests to add elements to Private API Network
+    params:
+      name: Filter by element name (optional)
+      type: Filter by element type (optional)
+      status: Filter by request status (optional)
+      requestedBy: Filter by user ID (optional)
+      since: Created since time (optional)
+      until: Created until time (optional)
+      sort: Sort by field (optional)
+      direction: Sort direction asc/desc (optional)
+      limit: Maximum results (optional)
+      offset: Zero-based offset (optional)
+  - name: respondPanElementAddRequest
+    description: Responds to a request to add element to Private API Network
+    params:
+      requestId: The request's ID (required)
+      response: Response with status and optional note (required)
+  - name: getTaggedEntities
+    description: Gets Postman elements by a given tag
+    params:
+      slug: The tag's ID (required)
+      entityType: Filter by entity type (optional)
+      direction: Sort direction asc/desc (optional)
+      limit: Maximum results (optional)
+      cursor: Cursor for pagination (optional)
+  - name: getStatusOfAnAsyncApiTask
+    description: Gets the status of an asynchronous task
+    params:
+      apiId: The API's ID (required)
+      taskId: The task's ID (required)
+      Accept: The required request header (required)
+  - name: deleteApiCollectionComment
+    description: Deletes a comment from an API's collection
+    params:
+      apiId: The API's ID (required)
+      collectionId: The collection's unique ID (required)
+      commentId: The comment's ID (required)
+  - name: updateApiCollectionComment
+    description: Updates a comment on an API's collection
+    params:
+      apiId: The API's ID (required)
+      collectionId: The collection's unique ID (required)
+      commentId: The comment's ID (required)
+      body: The updated comment contents (required)
+      tags: Information about tagged users (optional)
+
