@@ -38,7 +38,7 @@ env:
   description: Your Brave Search API key. Get one at https://brave.com/search/api
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/brave-search:2.0.58
+  image: ghcr.io/obot-platform/mcp-images/brave-search:2.0.62
   port: 8099
   path: /
   args:
