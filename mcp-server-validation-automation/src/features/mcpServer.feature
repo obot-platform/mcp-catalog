@@ -40,7 +40,7 @@ Feature: Connect MCP servers on Obot
             | test-aws_knowledge               | AWS Knowledge                      | AWS Knowledge    | AWS Knowledge    |
             | test-aws_redshift                | AWS Redshift                       | AWS Redshift     | AWS Redshift     |
             | test-context7                    | Context7                           | Context7         | Context7         |
-            | test-paperduty                   | PaperDuty                          | PaperDuty        | PaperDuty        |
+            | test-pagerduty                   | PagerDuty                          | PagerDuty        | PagerDuty        |
             | test-markitdown                  | MarkItDown                         | MarkItDown       | MarkItDown       |
             | test-microsoft-docs              | Microsoft Learn                    | Microsoft Learn  | Microsoft Learn  |
             | test-duckduckgo_search           | DuckDuckGo Search                  | DuckDuckGo Search| DuckDuckGo Search|
