@@ -69,11 +69,10 @@ jobs:
   run-validation:
     needs: generate-matrix
     runs-on: ubuntu-latest
-    if: needs.generate-matrix.outputs.file_configs != '[]'
     strategy:
       fail-fast: false
       matrix:
-        server: ${{ fromJson(needs.generate-matrix.outputs.file_configs) }}
+        server: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
 
     permissions:
       id-token: write
