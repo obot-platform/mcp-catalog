@@ -178,8 +178,8 @@ Then(/^User connects to the "(.*)" MCP server$/, async (mcpServer: string) => {
       await slowInputFilling('//input[@id="Exa API Key"]', process.env.TAVILY_API_KEY);
       break;
 
-    case "paperduty":
-      await slowInputFilling('//input[@id="PagerDuty API Key"]', process.env.PAPERDUTY_API_KEY);
+    case "pagerduty":
+      await slowInputFilling('//input[@id="PagerDuty API Key"]', process.env.PAGERDUTY_API_KEY);
       break;
 
     case "postman":

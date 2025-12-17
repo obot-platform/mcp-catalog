@@ -43,7 +43,7 @@ Feature: Connect MCP servers on Obot
             | test-markitdown                  | MarkItDown                         | MarkItDown       | MarkItDown       |
             | test-microsoft-docs              | Microsoft Learn                    | Microsoft Learn  | Microsoft Learn  |
             # | test-postman                     | Postman                            | Postman          | Postman          |
-            | test-paperduty                   | PaperDuty                          | PaperDuty        | PaperDuty        |
+            | test-pagerduty                   | PagerDuty                          | PagerDuty        | PagerDuty        |
             | test-redis                       | Redis                              | Redis            | Redis            |
             | test-salesforce                  | Salesforce                         | Salesforce       | Salesforce       |
             # | test-slack                       | Slack                              | Slack            | Slack            |
