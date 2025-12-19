@@ -51,6 +51,10 @@ Then(/^User selects "([^"]*)" MCP server$/, async (MCPServer) => {
 Then(/^User selects "([^"]*)" button$/, async (Button) => {
   await isElementDisplayed(Selectors.MCP.btnClick(Button), SHORT_PAUSE);
   await clickToElement(Selectors.MCP.btnClick(Button));
+  await browser.pause(SHORT_PAUSE);
+  if(await $(Selectors.MCP.btnClick("Connect New Server")).isDisplayed()) {
+    await clickToElement(Selectors.MCP.btnClick("Connect New Server"));
+  }
 });
 
 Then(/^User asks obot "([^"]*)"$/, async (prompt) => {
@@ -224,7 +228,7 @@ Then(/^User connects to the "(.*)" MCP server$/, async (mcpServer: string) => {
     case "microsoft learn":
     case "aws knowledge":
     case "antv charts":
-      skipLaunch = true;
+      switchLaunch = true;
       break;
 
     default:
