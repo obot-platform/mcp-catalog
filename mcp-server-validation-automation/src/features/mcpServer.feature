@@ -46,6 +46,6 @@ Feature: Connect MCP servers on Obot
             | test-pagerduty                   | PagerDuty                          | PagerDuty        | PagerDuty        |
             | test-redis                       | Redis                              | Redis            | Redis            |
             | test-salesforce                  | Salesforce                         | Salesforce       | Salesforce       |
-            # | test-slack                       | Slack                              | Slack            | Slack            |
+            | test-slack                       | Slack                              | Slack            | Slack            |
             | test-tavily_search               | Tavily Search                      | Tavily Search    | Tavily Search    |
             | test-wordpress                   | WordPress                          | WordPress        | WordPress        |
