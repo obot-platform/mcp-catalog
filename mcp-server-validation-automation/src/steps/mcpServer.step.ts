@@ -219,6 +219,14 @@ Then(/^User connects to the "(.*)" MCP server$/, async (mcpServer: string) => {
       await slowInputFilling(Selectors.MCP.slack.slackBotToken, process.env.SLACK_BOT_TOKEN);
       break;
 
+    case "ref":
+      await slowInputFilling(Selectors.MCP.ref.refAPIKey, process.env.REF_API_KEY);
+      break;
+    
+    case "render":
+      await slowInputFilling(Selectors.MCP.render.renderAPIKey, process.env.RENDER_API_KEY);
+      break;
+
     case "deepwiki":
     case "context7":
       break;
