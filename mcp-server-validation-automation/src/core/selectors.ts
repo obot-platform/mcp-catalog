@@ -288,6 +288,12 @@ const Selectors = {
         slack: {
             slackBotToken: '//input[@id="Slack Bot Token"]',
         },
+        ref: {
+            refAPIKey: '//input[@id="Ref API Key"]',
+        },
+        render: {
+            renderAPIKey: '//input[@id="Render API Key"]',
+        },
     }
 }
 export default Selectors;

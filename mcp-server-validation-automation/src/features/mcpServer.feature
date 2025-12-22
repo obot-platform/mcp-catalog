@@ -49,3 +49,5 @@ Feature: Connect MCP servers on Obot
             | test-slack                       | Slack                              | Slack            | Slack            |
             | test-tavily_search               | Tavily Search                      | Tavily Search    | Tavily Search    |
             | test-wordpress                   | WordPress                          | WordPress        | WordPress        |
+            | test-ref                         | Ref                                | Ref              | Ref              |
+            | test-render                      | Render                             | Render           | Render           |
