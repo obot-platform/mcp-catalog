@@ -43,7 +43,7 @@ env:
   description: Your Supabase Personal Access Token.
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/supabase:0.5.8
+  image: ghcr.io/obot-platform/mcp-images/supabase:0.5.9
   port: 8099
   path: /
   args:
