@@ -38,7 +38,6 @@ toolPreview:
       destination: Required. Destination waypoint.
       origin: Required. Origin waypoint.
       travelMode: Optional. Specifies the mode of transportation.
-    enabled: true
   - id: lookup_weather
     name: lookup_weather
     description: |
@@ -76,7 +75,6 @@ toolPreview:
       hour: Optional. The hour of the requested weather information, in 24-hour format (0-23). This value is relative to the local timezone of the location specified in the location field. Hourly forecast is only supported for the next 48 hours from the current time.
       location: Required. The location to get the weather conditions for.
       unitsSystem: Optional. The units system to use for the returned weather conditions. If not provided, the returned weather conditions will be in the metric system (default = METRIC).
-    enabled: true
   - id: search_places
     name: search_places
     description: |2
@@ -116,4 +114,3 @@ toolPreview:
       locationBias: An optional region to bias the search results to. If an explicit location is in `text_query`, it will be used to bias the search results instead of this field.
       regionCode: Optional. The Unicode country/region code (CLDR) of the location where the request is coming from. This parameter is used to display the place details, like region-specific place name, if available. The parameter can affect results based on applicable law. For example, "US" for United States. For more information, see https://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html. Note that 3-digit region codes are not currently supported.
       textQuery: Required. The text query.
-    enabled: true
