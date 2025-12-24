@@ -214,8 +214,8 @@ const Selectors = {
         navigationbtn: '//button[@class="icon-button z-20"]',
         clickChatObot: '//button[normalize-space(text())="Chat"]',
         connectorbtn: '//p[normalize-space(text())="Connectors"]/following-sibling::button',
-        mcpSearchInput: '//input[normalize-space(@placeholder)="Search by name..."]',
-        selectMCPServer: (option: string) => `//p[normalize-space(text())="${option}"]/ancestor::div[contains(@class, 'flex')]/button`,
+        mcpSearchInput: '//input[normalize-space(@placeholder)="Search servers..."]',
+        selectMCPServer: (option: string) => `//p[normalize-space(text())="${option}"]/ancestor::tr`,
         btnClick: (option: string) => `//button[normalize-space(text())="${option}"]`,
         promptInput: '//div[@class="plaintext-editor text-md relative w-full flex-1 grow resize-none p-2 leading-8 outline-none"]',
         obotInput: "//div[contains(@class,'ProseMirror') and @contenteditable='true']",
@@ -274,7 +274,26 @@ const Selectors = {
             hostURL: `//input[@id="HOST_URL"]`,
             toolCOnfig: `//input[@id="TOOL_CONFIGURATION"]`,
             postmanAPIKey: `//input[@id="Postman API Key"]`,
-        }
+        },
+        googleCloudRun: {
+            googleCloudCredentials: '//input[@name="Google Application Credentials"]//following-sibling::div[1]',
+        },
+        grafana: {
+            grafanaURL: '//input[@id="GRAFANA_URL"]',
+        },
+        salesforce: {
+            salesforceClientID: '//input[@id="Salesforce Client ID"]',
+            salesforceClientSecret: '//input[@id="Salesforce Client Secret"]',
+        },
+        slack: {
+            slackBotToken: '//input[@id="Slack Bot Token"]',
+        },
+        ref: {
+            refAPIKey: '//input[@id="Ref API Key"]',
+        },
+        render: {
+            renderAPIKey: '//input[@id="Render API Key"]',
+        },
     }
 }
 export default Selectors;

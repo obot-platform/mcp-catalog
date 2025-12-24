@@ -51,6 +51,10 @@ Then(/^User selects "([^"]*)" MCP server$/, async (MCPServer) => {
 Then(/^User selects "([^"]*)" button$/, async (Button) => {
   await isElementDisplayed(Selectors.MCP.btnClick(Button), SHORT_PAUSE);
   await clickToElement(Selectors.MCP.btnClick(Button));
+  await browser.pause(SHORT_PAUSE);
+  if(await $(Selectors.MCP.btnClick("Connect New Server")).isDisplayed()) {
+    await clickToElement(Selectors.MCP.btnClick("Connect New Server"));
+  }
 });
 
 Then(/^User asks obot "([^"]*)"$/, async (prompt) => {
@@ -109,175 +113,91 @@ Then(/^User connects to the "(.*)" MCP server$/, async (mcpServer: string) => {
 
   switch (mcpServer.toLowerCase()) {
     case "wordpress":
-      await slowInputFilling(
-        Selectors.MCP.wordpressMCP.wpSiteURL,
-        process.env.WP_URL,
-      );
-      await slowInputFilling(
-        Selectors.MCP.wordpressMCP.wpUsername,
-        process.env.WP_USERNAME,
-      );
-      await slowInputFilling(
-        Selectors.MCP.wordpressMCP.wpPassword,
-        process.env.WP_PASSWORD,
-      );
+      await slowInputFilling(Selectors.MCP.wordpressMCP.wpSiteURL, process.env.WP_URL);
+      await slowInputFilling(Selectors.MCP.wordpressMCP.wpUsername, process.env.WP_USERNAME);
+      await slowInputFilling(Selectors.MCP.wordpressMCP.wpPassword, process.env.WP_PASSWORD);
       break;
 
     case "gitlab":
-      await slowInputFilling(
-        Selectors.MCP.gitlabMCP.gitlabToken,
-        process.env.GITLAB_TOKEN,
-      );
+      await slowInputFilling(Selectors.MCP.gitlabMCP.gitlabToken, process.env.GITLAB_TOKEN);
       break;
 
     case "bigquery":
-      await slowInputFilling(
-        Selectors.MCP.bigQuery.googleCloudProjectID,
-        process.env.BQ_PROJECTID,
-      );
-      await $(Selectors.MCP.bigQuery.googleCloudCredentials).setValue(
-        process.env.BQ_APP_CREDS,
-      );
+      await slowInputFilling(Selectors.MCP.bigQuery.googleCloudProjectID, process.env.BQ_PROJECTID);
+      await $(Selectors.MCP.bigQuery.googleCloudCredentials).setValue(process.env.BQ_APP_CREDS);
       break;
 
     case "datadog":
-      await slowInputFilling(
-        Selectors.MCP.datadog.datadogAPIKey,
-        process.env.DD_API_KEY,
-      );
-      await slowInputFilling(
-        Selectors.MCP.datadog.datadogAPPKey,
-        process.env.DD_APP_KEY,
-      );
+      await slowInputFilling(Selectors.MCP.datadog.datadogAPIKey, process.env.DD_API_KEY);
+      await slowInputFilling(Selectors.MCP.datadog.datadogAPPKey, process.env.DD_APP_KEY);
       break;
 
     case "databricks utility":
-      await slowInputFilling(
-        Selectors.MCP.databricks.utility.workspaceHostname,
-        process.env.DB_UTILITY_WORKSPACENAME,
-      );
-      await slowInputFilling(
-        Selectors.MCP.databricks.utility.functionCatalog,
-        process.env.DB_UTILITY_FUNCATALOG || "workspace",
-      );
-      await slowInputFilling(
-        Selectors.MCP.databricks.utility.functionalSchema,
-        process.env.DB_UTILITY_FUNSCHEMA || "information_schema",
-      );
-      await slowInputFilling(
-        Selectors.MCP.databricks.utility.PAT,
-        process.env.DB_UTILITY_PAT,
-      );
+      await slowInputFilling(Selectors.MCP.databricks.utility.workspaceHostname, process.env.DB_UTILITY_WORKSPACENAME);
+      await slowInputFilling(Selectors.MCP.databricks.utility.functionCatalog, process.env.DB_UTILITY_FUNCATALOG || "workspace");
+      await slowInputFilling(Selectors.MCP.databricks.utility.functionalSchema, process.env.DB_UTILITY_FUNSCHEMA || "information_schema");
+      await slowInputFilling(Selectors.MCP.databricks.utility.PAT, process.env.DB_UTILITY_PAT);
       break;
 
     case "databricks vector space":
-      await slowInputFilling(
-        Selectors.MCP.databricks.utility.workspaceHostname,
-        process.env.DB_UTILITY_WORKSPACENAME,
-      );
-      await slowInputFilling(
-        Selectors.MCP.databricks.vector.vectorCatalog,
-        process.env.DB_UTILITY_FUNCATALOG || "workspace",
-      );
-      await slowInputFilling(
-        Selectors.MCP.databricks.vector.vectorSchema,
-        process.env.DB_UTILITY_FUNSCHEMA || "information_schema",
-      );
-      await slowInputFilling(
-        Selectors.MCP.databricks.utility.PAT,
-        process.env.DB_UTILITY_PAT,
-      );
+      await slowInputFilling(Selectors.MCP.databricks.utility.workspaceHostname, process.env.DB_UTILITY_WORKSPACENAME);
+      await slowInputFilling(Selectors.MCP.databricks.vector.vectorCatalog, process.env.DB_UTILITY_FUNCATALOG || "workspace");
+      await slowInputFilling(Selectors.MCP.databricks.vector.vectorSchema, process.env.DB_UTILITY_FUNSCHEMA || "information_schema");
+      await slowInputFilling(Selectors.MCP.databricks.utility.PAT, process.env.DB_UTILITY_PAT);
       break;
 
     case "databricks genie space":
-      await slowInputFilling(
-        Selectors.MCP.databricks.utility.workspaceHostname,
-        process.env.DB_UTILITY_WORKSPACENAME,
-      );
-      await slowInputFilling(
-        Selectors.MCP.databricks.genie.genieSpaceID,
-        process.env.DB_GENIE_ID,
-      );
-      await slowInputFilling(
-        Selectors.MCP.databricks.utility.PAT,
-        process.env.DB_UTILITY_PAT,
-      );
+      await slowInputFilling(Selectors.MCP.databricks.utility.workspaceHostname, process.env.DB_UTILITY_WORKSPACENAME);
+      await slowInputFilling(Selectors.MCP.databricks.genie.genieSpaceID, process.env.DB_GENIE_ID);
+      await slowInputFilling(Selectors.MCP.databricks.utility.PAT, process.env.DB_UTILITY_PAT);
       break;
 
     case "brave search":
-      await slowInputFilling(
-        Selectors.MCP.brave.braveAPIKey,
-        process.env.BRAVE_API_KEY,
-      );
+      await slowInputFilling(Selectors.MCP.brave.braveAPIKey, process.env.BRAVE_API_KEY);
       break;
 
     case "chroma cloud":
-      await slowInputFilling(
-        Selectors.MCP.chromaCloud.tenentID,
-        process.env.CHROMA_TENENT_ID,
-      );
-      await slowInputFilling(
-        Selectors.MCP.chromaCloud.DBName,
-        process.env.CHROMA_DB_NAME || "obot-test",
-      );
-      await slowInputFilling(
-        Selectors.MCP.chromaCloud.APIKey,
-        process.env.CHROMA_API_KEY,
-      );
+      await slowInputFilling(Selectors.MCP.chromaCloud.tenentID, process.env.CHROMA_TENENT_ID);
+      await slowInputFilling(Selectors.MCP.chromaCloud.DBName, process.env.CHROMA_DB_NAME || "obot-test");
+      await slowInputFilling(Selectors.MCP.chromaCloud.APIKey, process.env.CHROMA_API_KEY);
       break;
 
     case "firecrawl":
-      await slowInputFilling(
-        Selectors.MCP.fireCrawl.API_key,
-        process.env.FIRECRAWL_API_KEY,
-      );
+      await slowInputFilling(Selectors.MCP.fireCrawl.API_key, process.env.FIRECRAWL_API_KEY);
       break;
 
     case "gitmcp":
-      await slowInputFilling(
-        Selectors.MCP.gitMCP.urlLink,
-        "https://gitmcp.io/docs",
-      );
+      await slowInputFilling(Selectors.MCP.gitMCP.urlLink, "https://gitmcp.io/docs");
       break;
 
     case "redis":
-      await slowInputFilling(
-        Selectors.MCP.redis.urlLink,
-        process.env.REDIS_URL,
-      );
+      await slowInputFilling(Selectors.MCP.redis.urlLink, process.env.REDIS_URL);
       break;
 
     case "tavily search":
-      await slowInputFilling(
-        '//input[@id="Tavily API Key"]',
-        process.env.TAVILY_API_KEY,
-      );
+      await slowInputFilling('//input[@id="Tavily API Key"]', process.env.TAVILY_API_KEY);
       break;
 
     case "exa search":
-      await slowInputFilling(
-        '//input[@id="Exa API Key"]',
-        process.env.TAVILY_API_KEY,
-      );
+      await slowInputFilling('//input[@id="Exa API Key"]', process.env.TAVILY_API_KEY);
       break;
 
     case "pagerduty":
-      await slowInputFilling(
-        '//input[@id="PagerDuty API Key"]',
-        process.env.PAGERDUTY_API_KEY,
-      );
+      await slowInputFilling('//input[@id="PagerDuty API Key"]', process.env.PAGERDUTY_API_KEY);
       break;
 
     case "postman":
-      await slowInputFilling(
-        Selectors.MCP.postman.hostURL,
-        "https://mcp.postman.com",
-      );
+      await slowInputFilling(Selectors.MCP.postman.hostURL, "https://mcp.postman.com");
       await slowInputFilling(Selectors.MCP.postman.toolCOnfig, "mcp");
-      await slowInputFilling(
-        Selectors.MCP.postman.postmanAPIKey,
-        process.env.POSTMAN_API_KEY,
-      );
+      await slowInputFilling(Selectors.MCP.postman.postmanAPIKey, process.env.POSTMAN_API_KEY);
+      break;
+
+    case "google cloud run":
+      await $(Selectors.MCP.googleCloudRun.googleCloudCredentials).setValue(process.env.GCLOUD_APP_CREDS);
+      break;
+
+    case "grafana":
+      await slowInputFilling(Selectors.MCP.grafana.grafanaURL, process.env.GRAFANA_URL);
       break;
 
     case "aws api":
@@ -286,14 +206,25 @@ Then(/^User connects to the "(.*)" MCP server$/, async (mcpServer: string) => {
     case "aws eks":
     case "aws kendra":
     case "aws redshift":
-      await slowInputFilling(
-        `//input[@id="AWS Access Key ID"]`,
-        process.env.AWS_KEY_ID,
-      );
-      await slowInputFilling(
-        `//input[@id="AWS Secret Access Key"]`,
-        process.env.AWS_ACCESS_ID,
-      );
+      await slowInputFilling(`//input[@id="AWS Access Key ID"]`, process.env.AWS_KEY_ID);
+      await slowInputFilling(`//input[@id="AWS Secret Access Key"]`, process.env.AWS_ACCESS_ID);
+      break;
+
+    case "salesforce":
+      await slowInputFilling(Selectors.MCP.salesforce.salesforceClientID, process.env.SF_CLIENT_ID);
+      await slowInputFilling(Selectors.MCP.salesforce.salesforceClientSecret, process.env.SF_CLIENT_SECRET);
+      break;
+
+    case "slack":
+      await slowInputFilling(Selectors.MCP.slack.slackBotToken, process.env.SLACK_BOT_TOKEN);
+      break;
+
+    case "ref":
+      await slowInputFilling(Selectors.MCP.ref.refAPIKey, process.env.REF_API_KEY);
+      break;
+    
+    case "render":
+      await slowInputFilling(Selectors.MCP.render.renderAPIKey, process.env.RENDER_API_KEY);
       break;
 
     case "deepwiki":
@@ -304,6 +235,7 @@ Then(/^User connects to the "(.*)" MCP server$/, async (mcpServer: string) => {
     case "markitdown":
     case "microsoft learn":
     case "aws knowledge":
+    case "antv charts":
       switchLaunch = true;
       break;
 
