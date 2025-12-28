@@ -2237,5 +2237,25 @@
     "upstream_source": "github.com/mcp",
     "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/600",
     "processed_at": "2025-12-21 02:40:44 UTC"
+  },
+  "com.wix/mcp": {
+    "name": "com.wix/mcp",
+    "description": "A Model Context Protocol server for Wix AI tools",
+    "version": "1.0.2",
+    "repository_url": "https://github.com/wix/wix-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/603",
+    "processed_at": "2025-12-28 02:45:20 UTC"
+  },
+  "io.github.wishfinity/wishfinity-mcp-plusw": {
+    "name": "io.github.wishfinity/wishfinity-mcp-plusw",
+    "description": "Save any product URL to your Wishfinity wishlist. Works with any MCP client.",
+    "version": "1.2.2",
+    "repository_url": "https://github.com/wishfinity/wishfinity-mcp-plusw",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/604",
+    "processed_at": "2025-12-28 02:45:21 UTC"
   }
 }
