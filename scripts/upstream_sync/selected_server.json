@@ -2257,5 +2257,95 @@
     "upstream_source": "modelcontextprotocol.io",
     "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/604",
     "processed_at": "2025-12-28 02:45:21 UTC"
+  },
+  "io.github.Crawleo/Crawleo-MCP": {
+    "name": "io.github.Crawleo/Crawleo-MCP",
+    "description": "Hosted Crawleo MCP (remote streamable HTTP endpoint).",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/Crawleo/Crawleo-MCP",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/605",
+    "processed_at": "2026-01-04 02:48:35 UTC"
+  },
+  "io.github.contextstreamio/mcp-server": {
+    "name": "io.github.contextstreamio/mcp-server",
+    "description": "ContextStream MCP server for code context, memory, search, and AI tools.",
+    "version": "0.3.63",
+    "repository_url": "https://github.com/contextstream/mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/606",
+    "processed_at": "2026-01-04 02:48:37 UTC"
+  },
+  "io.github.digidenone/synapse-audit": {
+    "name": "io.github.digidenone/synapse-audit",
+    "description": "AI-Powered Security Scanner for LLMs. Detects vulnerabilities and syncs with SynapseAudit.",
+    "version": "3.0.0",
+    "repository_url": "https://github.com/digidenone/SynapseAudit",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/607",
+    "processed_at": "2026-01-04 02:48:38 UTC"
+  },
+  "io.github.growthbook/growthbook-mcp": {
+    "name": "io.github.growthbook/growthbook-mcp",
+    "description": "MCP Server for interacting with GrowthBook",
+    "version": "1.4.3",
+    "repository_url": "https://github.com/growthbook/growthbook-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/608",
+    "processed_at": "2026-01-04 02:48:40 UTC"
+  },
+  "io.github.ldclabs/KIP": {
+    "name": "io.github.ldclabs/KIP",
+    "description": "Knowledge Graphs to enable memory persistence, knowledge evolution, explainable interaction.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/ldclabs/KIP",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/609",
+    "processed_at": "2026-01-04 02:48:41 UTC"
+  },
+  "io.github.lilo-property/mcp-server": {
+    "name": "io.github.lilo-property/mcp-server",
+    "description": "Vacation rental booking and protection for AI agents. Instant API key, 10 free credits.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/lilo-property/mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/610",
+    "processed_at": "2026-01-04 02:48:43 UTC"
+  },
+  "io.github.profitelligence/mcp-server": {
+    "name": "io.github.profitelligence/mcp-server",
+    "description": "Financial intelligence: insider trades, SEC filings, 13F holdings, and market signals.",
+    "version": "1.0.2",
+    "repository_url": "https://github.com/profitelligence/profitelligence-mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/611",
+    "processed_at": "2026-01-04 02:48:44 UTC"
+  },
+  "io.github.scrape-badger/scrapebadger": {
+    "name": "io.github.scrape-badger/scrapebadger",
+    "description": "Twitter/X scraping API for AI agents. Get profiles, tweets, trends, and more.",
+    "version": "0.1.1",
+    "repository_url": "https://github.com/scrape-badger/scrapebadger-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/612",
+    "processed_at": "2026-01-04 02:48:46 UTC"
+  },
+  "io.github.timescale/pg-aiguide": {
+    "name": "io.github.timescale/pg-aiguide",
+    "description": "Comprehensive PostgreSQL documentation and best practices, including ecosystem tools",
+    "version": "0.2.4",
+    "repository_url": "https://github.com/timescale/pg-aiguide",
+    "server_type": "community",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/613",
+    "processed_at": "2026-01-04 02:48:47 UTC"
   }
 }
