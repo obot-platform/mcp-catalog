@@ -14,45 +14,68 @@ jobs:
   generate-matrix:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      matrix: ${{ steps.extract-config.outputs.file_configs }}
     steps:
-      - name: Checkout base repository
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.sha }}
           fetch-depth: 0
-          ref: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.base.ref || github.ref }}
 
-      - name: Fetch PR changes if running for a PR
-        if: ${{ github.event_name == 'pull_request_target' }}
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v47
+        with:
+          files: |
+            **.yaml
+          json: true
+          escape_json: false
+          use_rest_api: true
+
+      - name: Extract config from changed files
+        id: extract-config
         run: |
-          git remote add fork ${{ github.event.pull_request.head.repo.clone_url }}
-          git fetch fork ${{ github.event.pull_request.head.ref }}
-          git checkout -b pr-branch FETCH_HEAD
-      - name: Generate matrix from yaml
-        id: set-matrix
-        run: |
-          if [ "${{ github.event_name }}" = "pull_request_target" ]; then
-            # Get changed files in PR, filter for .yaml files
-            changed_files=$(git diff --name-only origin/${{ github.event.pull_request.base.ref }}...pr-branch | grep '\.yaml$' || true)
-            matrix=$(for f in $changed_files; do
-              [ -f "$f" ] && yq eval 'has("toolPreview")' --exit-status "$f" >/dev/null 2>&1 \
-                && echo "{\"filename\":\"$f\"}"
-            done | jq -cs .)
-          else
-            # For workflow_dispatch, scan all yaml files
-            matrix=$(for f in *.yaml; do
-              yq eval 'has("toolPreview")' --exit-status "$f" >/dev/null 2>&1 \
-                && echo "{\"filename\":\"$f\"}"
-            done | jq -cs .)
+          changed_files='${{ steps.changed-files.outputs.all_changed_files }}'
+
+          if [ "$changed_files" == "[]" ] || [ -z "$changed_files" ]; then
+            echo "file_configs=[]" >> $GITHUB_OUTPUT
+            exit 0
           fi
-          echo "matrix=$matrix" >> $GITHUB_OUTPUT
+
+          # Build JSON array with file data
+          file_configs="[]"
+
+          while read -r file; do
+            if [ -f "$file" ]; then
+              containerized_config=$(yq eval '.containerizedConfig' "$file" -o=json -I=0)
+
+              # Only include files that have containerizedConfig (not null)
+              if [ "$containerized_config" != "null" ]; then
+                env_config=$(yq eval '.env' "$file" -o=json -I=0)
+
+                # Create entry for this file
+                entry=$(jq -n \
+                  --arg file "$file" \
+                  --argjson containerized "$containerized_config" \
+                  --argjson env "$env_config" \
+                  '{file: $file, containerizedConfig: $containerized, env: $env}')
+
+                # Append to array
+                file_configs=$(echo "$file_configs" | jq --argjson entry "$entry" '. += [$entry]')
+              fi
+            fi
+          done < <(echo "$changed_files" | jq -r '.[]')
+
+          # Output must be on single line for GitHub Actions
+          echo "file_configs=$(echo "$file_configs" | jq -c .)" >> $GITHUB_OUTPUT
 
   mcpwn-scan:
     needs: generate-matrix
     strategy:
       fail-fast: false
       matrix:
-        include: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+        server: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
     runs-on: depot-ubuntu-22.04
     steps:
       - name: Remove file extension
@@ -99,3 +122,7 @@ jobs:
             -e OBOT_SERVER_DISABLE_UPDATE_CHECK=true \
             ${DOCKER_ENV_ARGS} \
             ${{ matrix.server.containerizedConfig.image }}
+
+      - name: Run mcpwn scan
+        run: |
+          python3 mcpwn.py --safe-mode --host http://localhost:8080
