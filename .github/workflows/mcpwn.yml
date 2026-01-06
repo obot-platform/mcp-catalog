@@ -1,0 +1,101 @@
+name: Scan with Mcpwn
+permissions:
+  id-token: write
+  contents: read
+  packages: read
+  actions: read
+
+on:
+  workflow_dispatch:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  generate-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - name: Checkout base repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.base.ref || github.ref }}
+
+      - name: Fetch PR changes if running for a PR
+        if: ${{ github.event_name == 'pull_request_target' }}
+        run: |
+          git remote add fork ${{ github.event.pull_request.head.repo.clone_url }}
+          git fetch fork ${{ github.event.pull_request.head.ref }}
+          git checkout -b pr-branch FETCH_HEAD
+      - name: Generate matrix from yaml
+        id: set-matrix
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request_target" ]; then
+            # Get changed files in PR, filter for .yaml files
+            changed_files=$(git diff --name-only origin/${{ github.event.pull_request.base.ref }}...pr-branch | grep '\.yaml$' || true)
+            matrix=$(for f in $changed_files; do
+              [ -f "$f" ] && yq eval 'has("toolPreview")' --exit-status "$f" >/dev/null 2>&1 \
+                && echo "{\"filename\":\"$f\"}"
+            done | jq -cs .)
+          else
+            # For workflow_dispatch, scan all yaml files
+            matrix=$(for f in *.yaml; do
+              yq eval 'has("toolPreview")' --exit-status "$f" >/dev/null 2>&1 \
+                && echo "{\"filename\":\"$f\"}"
+            done | jq -cs .)
+          fi
+          echo "matrix=$matrix" >> $GITHUB_OUTPUT
+
+  mcpwn-scan:
+    needs: generate-matrix
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+    runs-on: depot-ubuntu-22.04
+    steps:
+      - name: Remove file extension
+        env:
+          MATRIX_SERVER_FILE: ${{ matrix.server.file }}
+        run: |
+          MCP_SERVER_NAME="${MATRIX_SERVER_FILE/.yaml/}"
+          echo "MCP_SERVER_NAME=$MCP_SERVER_NAME" >> $GITHUB_ENV
+
+      - name: Checkout mcpwn
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          repository: drpebcak/mcpwn
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Convert env to docker args
+        run: |
+          ENV_JSON='${{ toJson(matrix.server.env) }}'
+          if [ "$ENV_JSON" != "null" ] && [ -n "$ENV_JSON" ]; then
+            DOCKER_ENV_ARGS=$(echo "$ENV_JSON" | jq -r 'keys | map("-e " + .) | join(" ")')
+            echo "DOCKER_ENV_ARGS=$DOCKER_ENV_ARGS" >> $GITHUB_ENV
+          else
+            echo "DOCKER_ENV_ARGS=" >> $GITHUB_ENV
+          fi
+
+      - name: Start mcp server
+        env: ${{ secrets }}
+        run: |
+          docker run -d --name ${MCP_SERVER_NAME} \
+            -p 8080:${{ matrix.server.containerizedConfig.port }} \
+            -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
+            -e OBOT_SERVER_DISABLE_UPDATE_CHECK=true \
+            ${DOCKER_ENV_ARGS} \
+            ${{ matrix.server.containerizedConfig.image }}

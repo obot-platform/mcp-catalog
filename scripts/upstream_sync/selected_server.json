@@ -2087,5 +2087,265 @@
     "upstream_source": "modelcontextprotocol.io",
     "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/579",
     "processed_at": "2025-12-14 02:41:11 UTC"
+  },
+  "app.tradeit/mcp": {
+    "name": "app.tradeit/mcp",
+    "description": "Trade stock, crypto, and options on Robinhood, ETrade, Webull, Charles Schwab, Coinbase, or Kraken.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/trade-it-inc/trade-it-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/586",
+    "processed_at": "2025-12-21 02:40:30 UTC"
+  },
+  "com.getguru/mcp-server": {
+    "name": "com.getguru/mcp-server",
+    "description": "Guru MCP Server - Connect AI tools to your Guru knowledge base",
+    "version": "1.0.1",
+    "repository_url": "https://github.com/guruhq/remote-mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/587",
+    "processed_at": "2025-12-21 02:40:31 UTC"
+  },
+  "com.stackoverflow.mcp/mcp": {
+    "name": "com.stackoverflow.mcp/mcp",
+    "description": "Access Stack Overflow's trusted and verified technical questions and answers.",
+    "version": "1.1.3",
+    "repository_url": "https://github.com/StackExchange/Stack-MCP",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/588",
+    "processed_at": "2025-12-21 02:40:32 UTC"
+  },
+  "io.github.EOX-A/EOxElements": {
+    "name": "io.github.EOX-A/EOxElements",
+    "description": "A server to provide information about EOxElements custom elements for coding agents.",
+    "version": "1.0.1",
+    "repository_url": "https://github.com/EOX-A/EOxElements",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/589",
+    "processed_at": "2025-12-21 02:40:33 UTC"
+  },
+  "io.github.KittyCAD/zoo-mcp": {
+    "name": "io.github.KittyCAD/zoo-mcp",
+    "description": "An MCP server that provides access to the Zoo API for various CAD operations and tools.",
+    "version": "0.9.1",
+    "repository_url": "https://github.com/KittyCAD/zoo-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/590",
+    "processed_at": "2025-12-21 02:40:34 UTC"
+  },
+  "io.github.MervinPraison/praisonai": {
+    "name": "io.github.MervinPraison/praisonai",
+    "description": "AI Agents Framework with Self Reflection and MCP support",
+    "version": "2.3.42",
+    "repository_url": "https://github.com/MervinPraison/PraisonAI",
+    "server_type": "community",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/591",
+    "processed_at": "2025-12-21 02:40:35 UTC"
+  },
+  "io.github.Vonage/vonage-documentation-mcp": {
+    "name": "io.github.Vonage/vonage-documentation-mcp",
+    "description": "MCP server for Vonage API documentation, code snippets, tutorials, and troubleshooting.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/Vonage/vonage-mcp-server-documentation",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/592",
+    "processed_at": "2025-12-21 02:40:36 UTC"
+  },
+  "io.github.alphavantage/alpha_vantage_mcp": {
+    "name": "io.github.alphavantage/alpha_vantage_mcp",
+    "description": "Real-time financial market data: stocks, forex, crypto, commodities, and economic indicators",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/alphavantage/alpha_vantage_mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/593",
+    "processed_at": "2025-12-21 02:40:37 UTC"
+  },
+  "io.github.bytebase/dbhub": {
+    "name": "io.github.bytebase/dbhub",
+    "description": "Minimal Database MCP Server for PostgreSQL, MySQL, SQL Server, SQLite, MariaDB",
+    "version": "0.13.2",
+    "repository_url": "https://github.com/bytebase/dbhub",
+    "server_type": "community",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/594",
+    "processed_at": "2025-12-21 02:40:38 UTC"
+  },
+  "io.github.foxitsoftware/foxit-pdf-api-mcp-server": {
+    "name": "io.github.foxitsoftware/foxit-pdf-api-mcp-server",
+    "description": "MCP server that exposes Foxit PDF API capabilities via stdio.",
+    "version": "0.2.4",
+    "repository_url": "https://github.com/foxitsoftware/foxit-pdf-api-mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/595",
+    "processed_at": "2025-12-21 02:40:39 UTC"
+  },
+  "io.github.getsentry/sentry-mcp": {
+    "name": "io.github.getsentry/sentry-mcp",
+    "description": "MCP server for Sentry - error monitoring, issue tracking, and debugging for AI assistants",
+    "version": "0.25.0",
+    "repository_url": "https://github.com/getsentry/sentry-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/596",
+    "processed_at": "2025-12-21 02:40:40 UTC"
+  },
+  "io.github.hjain-perforce/p4mcp-server": {
+    "name": "io.github.hjain-perforce/p4mcp-server",
+    "description": "Perforce P4 MCP Server is a MCP server that integrates with the Perforce P4 version control system.",
+    "version": "2025.1.2830393",
+    "repository_url": "https://github.com/perforce/p4mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/597",
+    "processed_at": "2025-12-21 02:40:41 UTC"
+  },
+  "io.github.miroapp/mcp-server": {
+    "name": "io.github.miroapp/mcp-server",
+    "description": "Official Miro MCP server (Beta) - Supports context to code and creating diagrams & visualizations.",
+    "version": "0.1.2",
+    "repository_url": "https://github.com/miroapp/miro-ai",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/598",
+    "processed_at": "2025-12-21 02:40:42 UTC"
+  },
+  "io.github.timescale/tiger-cli": {
+    "name": "io.github.timescale/tiger-cli",
+    "description": "Provides programmatic access to Tiger Cloud services, databases, and documentation.",
+    "version": "0.19.8",
+    "repository_url": "https://github.com/timescale/tiger-cli",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/599",
+    "processed_at": "2025-12-21 02:40:43 UTC"
+  },
+  "bytebase/dbhub": {
+    "name": "bytebase/dbhub",
+    "description": "Minimal Database MCP Server for PostgreSQL, MySQL, SQL Server, SQLite, MariaDB",
+    "version": "",
+    "repository_url": "https://github.com/bytebase/dbhub",
+    "server_type": "community",
+    "upstream_source": "github.com/mcp",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/600",
+    "processed_at": "2025-12-21 02:40:44 UTC"
+  },
+  "com.wix/mcp": {
+    "name": "com.wix/mcp",
+    "description": "A Model Context Protocol server for Wix AI tools",
+    "version": "1.0.2",
+    "repository_url": "https://github.com/wix/wix-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/603",
+    "processed_at": "2025-12-28 02:45:20 UTC"
+  },
+  "io.github.wishfinity/wishfinity-mcp-plusw": {
+    "name": "io.github.wishfinity/wishfinity-mcp-plusw",
+    "description": "Save any product URL to your Wishfinity wishlist. Works with any MCP client.",
+    "version": "1.2.2",
+    "repository_url": "https://github.com/wishfinity/wishfinity-mcp-plusw",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/604",
+    "processed_at": "2025-12-28 02:45:21 UTC"
+  },
+  "io.github.Crawleo/Crawleo-MCP": {
+    "name": "io.github.Crawleo/Crawleo-MCP",
+    "description": "Hosted Crawleo MCP (remote streamable HTTP endpoint).",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/Crawleo/Crawleo-MCP",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/605",
+    "processed_at": "2026-01-04 02:48:35 UTC"
+  },
+  "io.github.contextstreamio/mcp-server": {
+    "name": "io.github.contextstreamio/mcp-server",
+    "description": "ContextStream MCP server for code context, memory, search, and AI tools.",
+    "version": "0.3.63",
+    "repository_url": "https://github.com/contextstream/mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/606",
+    "processed_at": "2026-01-04 02:48:37 UTC"
+  },
+  "io.github.digidenone/synapse-audit": {
+    "name": "io.github.digidenone/synapse-audit",
+    "description": "AI-Powered Security Scanner for LLMs. Detects vulnerabilities and syncs with SynapseAudit.",
+    "version": "3.0.0",
+    "repository_url": "https://github.com/digidenone/SynapseAudit",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/607",
+    "processed_at": "2026-01-04 02:48:38 UTC"
+  },
+  "io.github.growthbook/growthbook-mcp": {
+    "name": "io.github.growthbook/growthbook-mcp",
+    "description": "MCP Server for interacting with GrowthBook",
+    "version": "1.4.3",
+    "repository_url": "https://github.com/growthbook/growthbook-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/608",
+    "processed_at": "2026-01-04 02:48:40 UTC"
+  },
+  "io.github.ldclabs/KIP": {
+    "name": "io.github.ldclabs/KIP",
+    "description": "Knowledge Graphs to enable memory persistence, knowledge evolution, explainable interaction.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/ldclabs/KIP",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/609",
+    "processed_at": "2026-01-04 02:48:41 UTC"
+  },
+  "io.github.lilo-property/mcp-server": {
+    "name": "io.github.lilo-property/mcp-server",
+    "description": "Vacation rental booking and protection for AI agents. Instant API key, 10 free credits.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/lilo-property/mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/610",
+    "processed_at": "2026-01-04 02:48:43 UTC"
+  },
+  "io.github.profitelligence/mcp-server": {
+    "name": "io.github.profitelligence/mcp-server",
+    "description": "Financial intelligence: insider trades, SEC filings, 13F holdings, and market signals.",
+    "version": "1.0.2",
+    "repository_url": "https://github.com/profitelligence/profitelligence-mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/611",
+    "processed_at": "2026-01-04 02:48:44 UTC"
+  },
+  "io.github.scrape-badger/scrapebadger": {
+    "name": "io.github.scrape-badger/scrapebadger",
+    "description": "Twitter/X scraping API for AI agents. Get profiles, tweets, trends, and more.",
+    "version": "0.1.1",
+    "repository_url": "https://github.com/scrape-badger/scrapebadger-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/612",
+    "processed_at": "2026-01-04 02:48:46 UTC"
+  },
+  "io.github.timescale/pg-aiguide": {
+    "name": "io.github.timescale/pg-aiguide",
+    "description": "Comprehensive PostgreSQL documentation and best practices, including ecosystem tools",
+    "version": "0.2.4",
+    "repository_url": "https://github.com/timescale/pg-aiguide",
+    "server_type": "community",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/613",
+    "processed_at": "2026-01-04 02:48:47 UTC"
   }
 }
