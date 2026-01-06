@@ -107,7 +107,7 @@ jobs:
         run: |
           ENV_JSON='${{ toJson(matrix.server.env) }}'
           if [ "$ENV_JSON" != "null" ] && [ -n "$ENV_JSON" ]; then
-            DOCKER_ENV_ARGS=$(echo "$ENV_JSON" | jq -r 'keys | map("-e " + .) | join(" ")')
+            DOCKER_ENV_ARGS=$(echo "$ENV_JSON" | jq -r 'map("-e " + .key) | join(" ")')
             echo "DOCKER_ENV_ARGS=$DOCKER_ENV_ARGS" >> $GITHUB_ENV
           else
             echo "DOCKER_ENV_ARGS=" >> $GITHUB_ENV
