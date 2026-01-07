@@ -3,30 +3,30 @@ name: Sync MCP Registry
 on:
   schedule:
     # Run daily at 2 AM UTC
-    - cron: '0 2 * * 0'
-  workflow_dispatch:  # Allow manual trigger
+    - cron: "0 2 * * 0"
+  workflow_dispatch: # Allow manual trigger
 
 permissions:
-  contents: write  # Required to commit changes
-  issues: write    # Required to create issues
+  contents: write # Required to commit changes
+  issues: write # Required to create issues
 
 jobs:
   sync:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
-      
+        uses: actions/checkout@v6
+
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: '3.13'
-      
+          python-version: "3.13"
+
       - name: Install dependencies
         run: |
           pip install -r scripts/upstream_sync/requirements.txt
-      
+
       - name: Run MCP Registry Sync
         env:
           UPSTREAM_SYNC_WORKFLOW_PAT: ${{ secrets.UPSTREAM_SYNC_WORKFLOW_PAT }}
@@ -40,12 +40,12 @@ jobs:
           RECENT_DAYS: "30"
         run: |
           python scripts/upstream_sync/auto_sync_workflow.py
-      
+
       - name: Commit sync data if changed
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          
+
           # Check if cache or selected_server files have changes
           if git diff --quiet scripts/upstream_sync/ai_categorization_cache.json scripts/upstream_sync/selected_server.json; then
             echo "No changes to sync data files"
@@ -55,7 +55,7 @@ jobs:
             git commit -m "chore: update sync data (AI cache and selected servers) [skip ci]"
             git push
           fi
-      
+
       - name: Summary
         if: always()
         run: |
@@ -63,4 +63,4 @@ jobs:
           if [ -f scripts/upstream_sync/ai_categorization_cache.json ]; then
             echo "Cache file size: $(du -h scripts/upstream_sync/ai_categorization_cache.json | cut -f1)"
             echo "Cache entries: $(jq 'length' scripts/upstream_sync/ai_categorization_cache.json)"
-          fi 
+          fi

@@ -1,0 +1,116 @@
+name: Google Maps Grounding Lite
+shortDescription: The server provides tools for developers to build LLM applications on top of Google Maps Platform.
+description: |
+  The Google Maps Grounding Lite API offers a suite of tools that enable developers to create applications leveraging the capabilities of Google Maps Platform. This API provides functionalities such as route computation, weather lookup, and place search, allowing for the integration of rich geographical data and services into applications. With these tools, developers can enhance user experiences by providing accurate and contextually relevant information based on location data.
+metadata:
+  categories: Maps, Developer Tools
+  allow-multiple: "true"
+icon: https://img.icons8.com/?size=100&id=DcygmpZqBEd9&format=png&color=000000
+repoURL: https://developers.google.com/maps/ai/grounding-lite/reference/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mapstools.googleapis.com/mcp
+  headers:
+    - name: API Key
+      description: A Google Cloud API Key with access to the Maps Grounding Lite service in Google Cloud
+      key: X-Goog-Api-Key
+      sensitive: true
+      required: true
+toolPreview:
+  - id: compute_routes
+    name: compute_routes
+    description: |
+      Computes a travel route between a specified origin and destination. **Supported Travel Modes:** DRIVE (default), WALK.
+
+      **Input Requirements (CRITICAL):**
+      Requires both **origin** and **destination**. Each must be provided using one of the following methods, nested within its respective field:
+
+      *   **address:** (string, e.g., 'Eiffel Tower, Paris'). Note: The more granular or specific the input address is, the better the results will be.
+
+      *   **lat_lng:** (object, {"latitude": number, "longitude": number})
+
+      *   **place_id:** (string, e.g., 'ChIJOwE_Id1w5EAR4Q27FkL6T_0') Note: This id can be obtained from the search_places tool.
+      Any combination of input types is allowed (e.g., origin by address, destination by lat_lng). If either the origin or destination is missing, **you MUST ask the user for clarification** before attempting to call the tool.
+
+      **Example Tool Call:**
+      {"origin":{"address":"Eiffel Tower"},"destination":{"place_id":"ChIJt_5xIthw5EARoJ71mGq7t74"},"travel_mode":"DRIVE"}
+    params:
+      destination: Required. Destination waypoint.
+      origin: Required. Origin waypoint.
+      travelMode: Optional. Specifies the mode of transportation.
+  - id: lookup_weather
+    name: lookup_weather
+    description: |
+      Retrieves comprehensive weather data including current conditions, hourly, and daily forecasts.
+      **Specific Data Available:** Temperature (Current, Feels Like, Max/Min, Heat Index), Wind (Speed, Gusts, Direction), Celestial Events (Sunrise/Sunset, Moon Phase), Precipitation (Type, Probability, Quantity/QPF), Atmospheric Conditions (UV Index, Humidity, Cloud Cover, Thunderstorm Probability), and Geocoded Location Address.
+      **Location & Location Rules (CRITICAL):**
+      The location for which weather data is requested is specified using the 'location' field.
+      This field is a 'oneof' structure, meaning you MUST provide a value for ONLY ONE
+      of the three location sub-fields below to ensure an accurate weather data lookup.
+      1. Geographic Coordinates (lat_lng)
+        * Use it when you are provided with exact lat/lng coordinates.
+        * Example:
+          "lat_lng": { "latitude": 34.0522, "longitude": -118.2437 } // Los Angeles
+      2. Place ID (place_id)
+        * An unambiguous string identifier (Google Maps Place ID).
+        * The place_id can be fetched from the search_places tool.
+        * Example:
+          "place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0" // Eiffel Tower
+      3. Address String (address)
+        * A free-form string that requires specificity for geocoding.
+        * City & Region: Always include region/country (e.g., "London, UK", not "London").
+        * Street Address: Provide the full address (e.g., "1600 Pennsylvania Ave NW, Washington, DC").
+        * Postal/Zip Codes: MUST be accompanied by a country name (e.g., "90210, USA", NOT "90210").
+      **Usage Modes:**
+      1.  **Current Weather:** Provide `address` only. Do not specify `date` and `hour`.
+      2.  **Hourly Forecast:** Provide `address`, `date`, and `hour` (0-23). Use for specific times (e.g., "at 5 PM") or terms like 'next few hours' or 'later today.'. If the user specifies minute, round down to the nearest hour. Hourly forecast beyond 48 hours from now is not supported.
+      3.  **Daily Forecast:** Provide `address` and `date`. Do not specify `hour`. Use for general day requests (e.g., "weather for tomorrow", "weather on Friday", "weather on 12/25"). If today's date is not in the context, you should clarify it with the user. Daily forecast beyond 7 days including today is not supported. Historical weather is not supported.
+      **Parameter Constraints:**
+      *   **Timezones:** All `date` and `hour` inputs must be relative to the **location's local time zone**, not the user's time zone.
+      *   **Date Format:** Inputs must be separated into `{year, month, day}` integers.
+      *   **Units:** Defaults to `METRIC`. Set `units_system` to `IMPERIAL` for Fahrenheit/Miles if the user implies US standards or explicitly requests it.
+    params:
+      DEPRECATEDAddress: "DEPRECATED: Use location instead."
+      date: "Optional. The date of the required weather information. Note: This date is relative to the local timezone of the location specified in the location field. The date must be within the next 7 days."
+      hour: Optional. The hour of the requested weather information, in 24-hour format (0-23). This value is relative to the local timezone of the location specified in the location field. Hourly forecast is only supported for the next 48 hours from the current time.
+      location: Required. The location to get the weather conditions for.
+      unitsSystem: Optional. The units system to use for the returned weather conditions. If not provided, the returned weather conditions will be in the metric system (default = METRIC).
+  - id: search_places
+    name: search_places
+    description: |2
+
+        Call this tool when the user's request is to find places, businesses, addresses, locations, points of interest, or any other Google Maps related search.
+
+        **Input Requirements (CRITICAL):**
+
+        1.  **`text_query` (string - MANDATORY):** The primary search query. This must clearly define what the user is looking for.
+
+            *   **Examples:** `'restaurants in New York'`, `'coffee shops near Golden Gate Park'`, `'SF MoMA'`, `'1600 Amphitheatre Pkwy, Mountain View, CA, USA'`, `'pets friendly parks in Manhattan, New York'`, `'date night restaurants in Chicago'`, `'accessible public libraries in Los Angeles'`.
+
+            *   **For specific place details:** Include the requested attribute (e.g., `'Google Store Mountain View opening hours'`, `'SF MoMa phone number'`, `'Shoreline Park Mountain View address'`).
+
+        2.  **`location_bias` (object - OPTIONAL):** Use this to prioritize results near a specific geographic area.
+            *   **Format:** `{"location_bias": {"circle": {"center": {"latitude": [value], "longitude": [value]}, "radius_meters": [value (optional)]}}}`
+
+            *   **Usage:**
+                *   **To bias to a 5km radius:** `{"location_bias": {"circle": {"center": {"latitude": 34.052235, "longitude": -118.243683}, "radius_meters": 5000}}}`
+                *   **To bias strongly to the center point:** `{"location_bias": {"circle": {"center": {"latitude": 34.052235, "longitude": -118.243683}}}}` (omitting `radius_meters`).
+
+        3. **`language_code` (string - OPTIONAL):** The language to show the search results summary in.
+            *   **Format:** A two-letter language code (ISO 639-1), optionally followed by an underscore and a two-letter country code (ISO 3166-1 alpha-2), e.g., `en`, `ja`, `en_US`, `zh_CN`, `es_MX`. If the language code is not provided, the results will be in English.
+
+        4. **`region_code` (string - OPTIONAL):** The Unicode CLDR region code of the user. This parameter is used to display the place details, like region-specific place name, if available. The parameter canaffect results based on applicable law.
+            *   **Format:** A two-letter country code (ISO 3166-1 alpha-2), e.g., `US`, `CA`.
+
+        **Instructions for Tool Call:**
+
+        *   Location Information (CRITICAL): The search must contain sufficient location information. If the location is ambiguous (e.g., just "pizza places"), *you must* specify it in the `text_query` (e.g., "pizza places in New York") or use the `location_bias` parameter. Include city, state/province, and region/country name if needed for disambiguation.
+
+        *   Always provide the most specific and contextually rich `text_query` possible.
+
+        *   Only use `location_bias` if coordinates are explicitly provided or if inferring a location from a user's known context is appropriate *and* necessary for better results.
+    params:
+      languageCode: 'Optional. The language to request that the summary is returned in. If the language code is unspecified or unrecognized, the summary with a preference for English will be returned. For example, "en" for English. Current list of supported languages: https://developers.google.com/maps/faq#languagesupport.'
+      locationBias: An optional region to bias the search results to. If an explicit location is in `text_query`, it will be used to bias the search results instead of this field.
+      regionCode: Optional. The Unicode country/region code (CLDR) of the location where the request is coming from. This parameter is used to display the place details, like region-specific place name, if available. The parameter can affect results based on applicable law. For example, "US" for United States. For more information, see https://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html. Note that 3-digit region codes are not currently supported.
+      textQuery: Required. The text query.

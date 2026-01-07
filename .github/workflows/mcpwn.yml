@@ -1,0 +1,129 @@
+name: Scan with Mcpwn
+permissions:
+  id-token: write
+  contents: read
+  packages: read
+  actions: read
+
+on:
+  workflow_dispatch:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  generate-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.extract-config.outputs.file_configs }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v47
+        with:
+          files: |
+            **.yaml
+          json: true
+          escape_json: false
+          use_rest_api: true
+
+      - name: Extract config from changed files
+        id: extract-config
+        run: |
+          changed_files='${{ steps.changed-files.outputs.all_changed_files }}'
+
+          if [ "$changed_files" == "[]" ] || [ -z "$changed_files" ]; then
+            echo "file_configs=[]" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Build JSON array with file data
+          file_configs="[]"
+
+          while read -r file; do
+            if [ -f "$file" ]; then
+              containerized_config=$(yq eval '.containerizedConfig' "$file" -o=json -I=0)
+
+              # Only include files that have containerizedConfig (not null)
+              if [ "$containerized_config" != "null" ]; then
+                env_config=$(yq eval '.env' "$file" -o=json -I=0)
+
+                # Create entry for this file
+                entry=$(jq -n \
+                  --arg file "$file" \
+                  --argjson containerized "$containerized_config" \
+                  --argjson env "$env_config" \
+                  '{file: $file, containerizedConfig: $containerized, env: $env}')
+
+                # Append to array
+                file_configs=$(echo "$file_configs" | jq --argjson entry "$entry" '. += [$entry]')
+              fi
+            fi
+          done < <(echo "$changed_files" | jq -r '.[]')
+
+          # Output must be on single line for GitHub Actions
+          echo "file_configs=$(echo "$file_configs" | jq -c .)" >> $GITHUB_OUTPUT
+
+  mcpwn-scan:
+    needs: generate-matrix
+    strategy:
+      fail-fast: false
+      matrix:
+        server: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+    runs-on: depot-ubuntu-22.04
+    steps:
+      - name: Remove file extension
+        env:
+          MATRIX_SERVER_FILE: ${{ matrix.server.file }}
+        run: |
+          MCP_SERVER_NAME="${MATRIX_SERVER_FILE/.yaml/}"
+          echo "MCP_SERVER_NAME=$MCP_SERVER_NAME" >> $GITHUB_ENV
+
+      - name: Checkout mcpwn
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+          repository: drpebcak/mcpwn
+          ref: remote
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Convert env to docker args
+        run: |
+          ENV_JSON='${{ toJson(matrix.server.env) }}'
+          if [ "$ENV_JSON" != "null" ] && [ -n "$ENV_JSON" ]; then
+            DOCKER_ENV_ARGS=$(echo "$ENV_JSON" | jq -r 'map("-e " + .key) | join(" ")')
+            echo "DOCKER_ENV_ARGS=$DOCKER_ENV_ARGS" >> $GITHUB_ENV
+          else
+            echo "DOCKER_ENV_ARGS=" >> $GITHUB_ENV
+          fi
+
+      - name: Start mcp server
+        env: ${{ secrets }}
+        run: |
+          docker run -d --name ${MCP_SERVER_NAME} \
+            -p 8080:${{ matrix.server.containerizedConfig.port }} \
+            -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
+            -e OBOT_SERVER_DISABLE_UPDATE_CHECK=true \
+            ${DOCKER_ENV_ARGS} \
+            ${{ matrix.server.containerizedConfig.image }}
+
+      - name: Run mcpwn scan
+        run: |
+          python3 mcpwn.py --output-sarif results.sarif --safe-mode http://localhost:8080
