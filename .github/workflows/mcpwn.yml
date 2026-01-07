@@ -90,6 +90,7 @@ jobs:
         with:
           fetch-depth: 1
           repository: drpebcak/mcpwn
+          ref: remote
 
       - name: Set up Python
         uses: actions/setup-python@v6
