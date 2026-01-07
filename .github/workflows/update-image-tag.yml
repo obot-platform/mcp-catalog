@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -40,7 +40,7 @@ jobs:
       - name: Setup Go for mcptools
         uses: actions/setup-go@v5
         with:
-          go-version: '1.21'
+          go-version: "1.21"
 
       - name: Install mcptools
         run: |
@@ -54,40 +54,40 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           echo "Running MCP tools validation..."
-          
+
           # Get package info from client payload
           PACKAGE_TYPE="${{ github.event.client_payload.type }}"
           PACKAGE_NAME="${{ github.event.client_payload.package }}"
           NEW_VERSION="${{ github.event.inputs.new_tag || github.event.client_payload.new_tag }}"
           CATALOG_NAME="${{ github.event.client_payload.name }}"
-          
+
           # Get old version from local catalog YAML
           CATALOG_FILE="${CATALOG_NAME}.yaml"
           OLD_VERSION=""
-          
+
           if [ -f "$CATALOG_FILE" ]; then
             # Extract current image tag from catalog YAML
             OLD_VERSION=$(yq eval '.containerizedConfig.image' "$CATALOG_FILE" 2>/dev/null | grep -o ':[^:]*$' | sed 's/://' || echo "")
           fi
-          
+
           if [ -z "$OLD_VERSION" ]; then
             echo "⚠️  Could not determine old version from $CATALOG_FILE"
             echo "Skipping validation (new package or missing catalog file)"
             echo "validation_skipped=true" >> $GITHUB_OUTPUT
             exit 0
           fi
-          
+
           echo "Package: $PACKAGE_NAME"
           echo "Old version: $OLD_VERSION"
           echo "New version: $NEW_VERSION"
-          
+
           # Skip validation if versions are the same
           if [ "$OLD_VERSION" = "$NEW_VERSION" ]; then
             echo "⚠️  Old and new versions are the same, skipping validation"
             echo "validation_skipped=true" >> $GITHUB_OUTPUT
             exit 0
           fi
-          
+
           # Run validation script
           bash scripts/validation/compare-mcp-tools.sh \
             "$PACKAGE_TYPE" \

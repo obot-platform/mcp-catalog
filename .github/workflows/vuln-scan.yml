@@ -17,7 +17,7 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - name: Checkout base repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           ref: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.base.ref || github.ref }}
@@ -56,11 +56,11 @@ jobs:
     runs-on: depot-ubuntu-22.04
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Checkout PR code if running for a PR
         if: ${{ github.event_name == 'pull_request_target' }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 1
           repository: ${{ github.event.pull_request.head.repo.full_name }}
