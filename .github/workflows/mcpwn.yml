@@ -125,4 +125,4 @@ jobs:
 
       - name: Run mcpwn scan
         run: |
-          python3 mcpwn.py --safe-mode --host http://localhost:8080
+          python3 mcpwn.py --output-sarif results.sarif --safe-mode http://localhost:8080
