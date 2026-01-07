@@ -114,15 +114,23 @@ jobs:
             echo "DOCKER_ENV_ARGS=" >> $GITHUB_ENV
           fi
 
+      - name: Convert args to string
+        run: |
+          ARGS_JSON='${{ toJson(matrix.server.containerizedConfig.args) }}'
+          if [ "$ARGS_JSON" != "null" ] && [ -n "$ARGS_JSON" ]; then
+            ARGS_STRING=$(echo "$ARGS_JSON" | jq -r 'join(" ")')
+            echo "ARGS_STRING=$ARGS_STRING" >> $GITHUB_ENV
+          else
+            echo "ARGS_STRING=" >> $GITHUB_ENV
+          fi
+
       - name: Start mcp server
         env: ${{ secrets }}
         run: |
           docker run -d --name ${MCP_SERVER_NAME} \
             -p 8080:${{ matrix.server.containerizedConfig.port }} \
-            -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
-            -e OBOT_SERVER_DISABLE_UPDATE_CHECK=true \
             ${DOCKER_ENV_ARGS} \
-            ${{ matrix.server.containerizedConfig.image }}
+            ${{ matrix.server.containerizedConfig.image }} ${ARGS_STRING}
 
       - name: Run mcpwn scan
         run: |
