@@ -4,7 +4,7 @@ permissions:
   contents: read
   packages: read
   actions: read
-  security-events: write
+  issues: write
 
 on:
   workflow_dispatch:
@@ -137,7 +137,14 @@ jobs:
         run: |
           python3 mcpwn.py --output-sarif mcpwn-results.sarif --safe-mode http://localhost:8080
 
-      - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v3
+      - name: Post SARIF findings in the pull request
+        if: github.event_name == 'pull_request_target'
+        uses: sett-and-hive/sarif-to-comment-action@v2.0.1
         with:
-          sarif_file: mcpwn-results.sarif
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          branch: ${{ github.head_ref }}
+          pr-number: ${{ github.event.number }}
+          sarif-file: mcpwn-results.sarif
+          title: Mcpwn Security Scan Results
+          dry-run: false
