@@ -4,6 +4,7 @@ permissions:
   contents: read
   packages: read
   actions: read
+  security-events: write
 
 on:
   workflow_dispatch:
@@ -88,7 +89,7 @@ jobs:
       - name: Checkout mcpwn
         uses: actions/checkout@v6
         with:
-          fetch-depth: 1
+          fetch-depth: 1/
           repository: drpebcak/mcpwn
           ref: remote
 
@@ -134,4 +135,9 @@ jobs:
 
       - name: Run mcpwn scan
         run: |
-          python3 mcpwn.py --output-sarif results.sarif --safe-mode http://localhost:8080
+          python3 mcpwn.py --output-sarif mcpwn-results.sarif --safe-mode http://localhost:8080
+
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: mcpwn-results.sarif
