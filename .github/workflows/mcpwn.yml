@@ -4,7 +4,7 @@ permissions:
   contents: read
   packages: read
   actions: read
-  issues: write
+  pull-requests: write
 
 on:
   workflow_dispatch:
@@ -137,14 +137,26 @@ jobs:
         run: |
           python3 mcpwn.py --output-sarif mcpwn-results.sarif --safe-mode http://localhost:8080
 
-      - name: Post SARIF findings in the pull request
-        if: github.event_name == 'pull_request_target'
-        uses: sett-and-hive/sarif-to-comment-action@main
+      - name: Checkout mcp-catalog
+        uses: actions/checkout@v6
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: ${{ github.repository }}
-          branch: ${{ github.head_ref }}
-          pr-number: ${{ github.event.number }}
-          sarif-file: mcpwn-results.sarif
-          title: Mcpwn Security Scan Results
-          dry-run: false
+          path: mcp-catalog
+
+      - name: Convert SARIF to Markdown
+        run: |
+          python3 mcp-catalog/.github/scripts/sarif_to_md.py mcpwn-results.sarif > sarif_comment.md
+
+      - name: Find existing SARIF comment
+        id: find
+        uses: peter-evans/find-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body-includes: "<!-- sarif-comment-marker -->"
+
+      - name: Create or update SARIF comment
+        uses: peter-evans/create-or-update-comment@v5
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-id: ${{ steps.find.outputs.comment-id }}
+          body-path: sarif_comment.md
+          edit-mode: replace
