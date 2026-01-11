@@ -2347,5 +2347,125 @@
     "upstream_source": "modelcontextprotocol.io",
     "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/613",
     "processed_at": "2026-01-04 02:48:47 UTC"
+  },
+  "ai.com.mcp/registry": {
+    "name": "ai.com.mcp/registry",
+    "description": "Publish and discover MCP servers via the official MCP Registry. Powered by HAPI MCP server.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/modelcontextprotocol/registry",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/614",
+    "processed_at": "2026-01-11 02:48:40 UTC"
+  },
+  "ai.parallel/search-mcp": {
+    "name": "ai.parallel/search-mcp",
+    "description": "The best web search for your AI Agent",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/parallel-web/search-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/615",
+    "processed_at": "2026-01-11 02:48:41 UTC"
+  },
+  "ai.parallel/task-mcp": {
+    "name": "ai.parallel/task-mcp",
+    "description": "An MCP server for deep research or task groups",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/parallel-web/task-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/616",
+    "processed_at": "2026-01-11 02:48:42 UTC"
+  },
+  "co.dockai/mcp": {
+    "name": "co.dockai/mcp",
+    "description": "Discover MCP endpoints for real-world entities by resolving business domains.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/dock-ai/mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/617",
+    "processed_at": "2026-01-11 02:48:44 UTC"
+  },
+  "com.scanmalware.mcp/scanmalware-mcp": {
+    "name": "com.scanmalware.mcp/scanmalware-mcp",
+    "description": "MCP server for ScanMalware.com URL scanning, malware detection, and analysis.",
+    "version": "0.1.6",
+    "repository_url": "https://github.com/scanmalware/mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/618",
+    "processed_at": "2026-01-11 02:48:45 UTC"
+  },
+  "io.github.Banana-Prompts/banana-prompts-mcp": {
+    "name": "io.github.Banana-Prompts/banana-prompts-mcp",
+    "description": "MCP server to search Nano Banana prompts from bananaprompts.fun",
+    "version": "1.0.2",
+    "repository_url": "https://github.com/Banana-Prompts/banana-prompts-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/619",
+    "processed_at": "2026-01-11 02:48:46 UTC"
+  },
+  "io.github.MattStellisoft/stellify-mcp": {
+    "name": "io.github.MattStellisoft/stellify-mcp",
+    "description": "Build Laravel apps through conversation. Code stored as structured JSON for surgical AI edits.",
+    "version": "0.1.2",
+    "repository_url": "https://github.com/Stellify-Software-Ltd/stellify-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/620",
+    "processed_at": "2026-01-11 02:48:47 UTC"
+  },
+  "io.github.PostHog/mcp": {
+    "name": "io.github.PostHog/mcp",
+    "description": "Official PostHog MCP Server for product analytics, feature flags, experiments, and more.",
+    "version": "1.0.1",
+    "repository_url": "https://github.com/PostHog/posthog",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/621",
+    "processed_at": "2026-01-11 02:48:49 UTC"
+  },
+  "io.github.charo360/statecli": {
+    "name": "io.github.charo360/statecli",
+    "description": "State replay and self-debugging for AI agents. Track, replay, undo, checkpoint.",
+    "version": "0.5.0",
+    "repository_url": "https://github.com/statecli/mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/622",
+    "processed_at": "2026-01-11 02:48:50 UTC"
+  },
+  "io.github.dev-proxy-tools/mcp": {
+    "name": "io.github.dev-proxy-tools/mcp",
+    "description": "MCP server for Dev Proxy that enables AI assistants to interact with Dev Proxy.",
+    "version": "0.3.1",
+    "repository_url": "https://github.com/dev-proxy-tools/mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/623",
+    "processed_at": "2026-01-11 02:48:52 UTC"
+  },
+  "io.github.inkog-io/inkog": {
+    "name": "io.github.inkog-io/inkog",
+    "description": "Scan AI agents for security vulnerabilities. Audit MCP servers before installation.",
+    "version": "1.0.5",
+    "repository_url": "https://github.com/inkog-io/inkog-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/624",
+    "processed_at": "2026-01-11 02:48:53 UTC"
+  },
+  "io.github.taytrom/bitsbound-contract-automation": {
+    "name": "io.github.taytrom/bitsbound-contract-automation",
+    "description": "AI contract automation with partner-level redlines, OOXML Track Changes, and risk analysis.",
+    "version": "1.0.14",
+    "repository_url": "https://github.com/taytrom/bitsbound-mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/625",
+    "processed_at": "2026-01-11 02:48:54 UTC"
   }
 }
