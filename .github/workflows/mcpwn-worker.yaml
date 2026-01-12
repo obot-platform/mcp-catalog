@@ -1,0 +1,123 @@
+name: Mcpwn Worker (scan one YAML target)
+
+on:
+  workflow_dispatch:
+    inputs:
+      file:
+        description: "Repo YAML file path"
+        required: true
+        type: string
+      image:
+        description: "Container image"
+        required: true
+        type: string
+      port:
+        description: "Container port to publish on 8080"
+        required: true
+        type: string
+      args_b64:
+        description: "Base64 JSON array of args"
+        required: true
+        type: string
+      env_b64:
+        description: "Base64 JSON object of env"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  packages: read
+  # If you also want to upload SARIF into Code Scanning, uncomment:
+  # security-events: write
+
+jobs:
+  scan:
+    runs-on: depot-ubuntu-22.04
+
+    steps:
+      - name: Derive MCP_SERVER_NAME
+        env:
+          TARGET_FILE: ${{ inputs.file }}
+        run: |
+          set -euo pipefail
+          MCP_SERVER_NAME="${TARGET_FILE%.yaml}"
+          # avoid slashes in docker name
+          MCP_SERVER_NAME="${MCP_SERVER_NAME//\//-}"
+          echo "MCP_SERVER_NAME=$MCP_SERVER_NAME" >> $GITHUB_ENV
+          echo "TARGET_FILE=$TARGET_FILE" >> $GITHUB_ENV
+
+      - name: Checkout mcpwn
+        uses: actions/checkout@v5
+        with:
+          repository: drpebcak/mcpwn
+          ref: remote
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Decode args/env and build docker flags
+        env:
+          ARGS_B64: ${{ inputs.args_b64 }}
+          ENV_B64: ${{ inputs.env_b64 }}
+        run: |
+          set -euo pipefail
+
+          ARGS_JSON=$(echo "$ARGS_B64" | base64 -d)
+          ENV_JSON=$(echo "$ENV_B64"  | base64 -d)
+
+          echo "ARGS_JSON=$ARGS_JSON" > decoded.txt
+          echo "ENV_JSON=$ENV_JSON" >> decoded.txt
+
+          # Build env flags from object -> -e KEY=VALUE
+          DOCKER_ENV_ARGS=$(echo "$ENV_JSON" | jq -r '
+            if type=="object" then
+              to_entries | map("-e " + .key + "=" + (.value|tostring)) | join(" ")
+            else
+              ""
+            end
+          ')
+          echo "DOCKER_ENV_ARGS=$DOCKER_ENV_ARGS" >> $GITHUB_ENV
+
+          # Build args string from array -> "a b c"
+          ARGS_STRING=$(echo "$ARGS_JSON" | jq -r 'if type=="array" then join(" ") else "" end')
+          echo "ARGS_STRING=$ARGS_STRING" >> $GITHUB_ENV
+
+      - name: Start mcp server
+        env:
+          IMAGE: ${{ inputs.image }}
+          PORT: ${{ inputs.port }}
+        run: |
+          set -euo pipefail
+          docker rm -f "${MCP_SERVER_NAME}" >/dev/null 2>&1 || true
+
+          docker run -d --name "${MCP_SERVER_NAME}" \
+            -p 8080:"${PORT}" \
+            ${DOCKER_ENV_ARGS} \
+            "${IMAGE}" ${ARGS_STRING}
+
+      - name: Run mcpwn scan
+        run: |
+          set -euo pipefail
+          python3 mcpwn.py --output-sarif mcpwn-results.sarif --safe-mode http://localhost:8080
+
+      - name: Stop container
+        if: always()
+        run: |
+          docker rm -f "${MCP_SERVER_NAME}" >/dev/null 2>&1 || true
+
+      - name: Upload SARIF artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mcpwn-results-${{ env.MCP_SERVER_NAME }}
+          path: mcpwn-results.sarif
+          retention-days: 1

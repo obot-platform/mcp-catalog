@@ -1,0 +1,94 @@
+name: Mcpwn Fan-out (dispatch one run per YAML)
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Build targets list (matrix.json)
+        id: build
+        run: |
+          set -euo pipefail
+
+          all_files=$(find . -name "*.yaml" -type f | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          file_configs="[]"
+
+          if [ "$all_files" = "[]" ] || [ -z "$all_files" ]; then
+            echo "[]" > matrix.json
+          else
+            while read -r file; do
+              file="${file#./}"
+
+              if [ -f "$file" ]; then
+                containerized_config=$(yq eval '.containerizedConfig' "$file" -o=json -I=0)
+
+                if [ "$containerized_config" != "null" ]; then
+                  env_config=$(yq eval '.env' "$file" -o=json -I=0)
+
+                  entry=$(jq -n \
+                    --arg file "$file" \
+                    --argjson containerized "$containerized_config" \
+                    --argjson env "$env_config" \
+                    '{file: $file, containerizedConfig: $containerized, env: $env}')
+
+                  file_configs=$(echo "$file_configs" | jq --argjson entry "$entry" '. += [$entry]')
+                fi
+              fi
+            done < <(echo "$all_files" | jq -r '.[]')
+
+            echo "$file_configs" | jq -c . > matrix.json
+          fi
+
+          echo "count=$(jq length matrix.json)" >> "$GITHUB_OUTPUT"
+          echo "Targets: $(jq length matrix.json)"
+
+      - name: Dispatch one worker run per target
+        if: ${{ steps.build.outputs.count != '0' }}
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require('fs');
+
+            const targets = JSON.parse(fs.readFileSync('matrix.json', 'utf8'));
+            core.info(`Dispatching ${targets.length} worker run(s)...`);
+
+            // Dispatch the worker workflow by file name
+            const workflow_id = 'mcpwn-worker.yml';
+            const ref = context.ref.replace('refs/heads/', '');
+
+            for (const t of targets) {
+              // Encode potentially-large JSON fields safely into strings
+              const argsJson = JSON.stringify(t.containerizedConfig?.args ?? []);
+              const envJson  = JSON.stringify(t.env ?? {});
+
+              const argsB64 = Buffer.from(argsJson, 'utf8').toString('base64');
+              const envB64  = Buffer.from(envJson, 'utf8').toString('base64');
+
+              core.info(`Dispatching: ${t.file}`);
+
+              await github.rest.actions.createWorkflowDispatch({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                workflow_id,
+                ref,
+                inputs: {
+                  file: t.file,
+                  image: String(t.containerizedConfig.image),
+                  port: String(t.containerizedConfig.port),
+                  args_b64: argsB64,
+                  env_b64: envB64
+                }
+              });
+            }
+
+      - name: No targets
+        if: ${{ steps.build.outputs.count == '0' }}
+        run: echo "No YAML files with containerizedConfig found."
