@@ -60,12 +60,24 @@ jobs:
             const targets = JSON.parse(fs.readFileSync('matrix.json', 'utf8'));
             core.info(`Dispatching ${targets.length} worker run(s)...`);
 
-            // Dispatch the worker workflow by file name
-            const workflow_id = 'mcpwn-worker.yml';
-            const ref = context.ref.replace('refs/heads/', '');
+            // Find the workflow by path, then dispatch by numeric ID
+            const workflows = await github.rest.actions.listRepoWorkflows({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            });
+
+            const workerPath = '.github/workflows/mcpwn-worker.yml';
+            const worker = workflows.data.workflows.find(w => w.path === workerPath);
+
+            if (!worker) {
+              core.setFailed(`Cannot find workflow at ${workerPath}. Check the file name/path on the branch you're running.`);
+              return;
+            }
+
+            // Use the exact commit SHA of this controller run so the worker file definitely exists there
+            const ref = context.sha;
 
             for (const t of targets) {
-              // Encode potentially-large JSON fields safely into strings
               const argsJson = JSON.stringify(t.containerizedConfig?.args ?? []);
               const envJson  = JSON.stringify(t.env ?? {});
 
@@ -77,7 +89,7 @@ jobs:
               await github.rest.actions.createWorkflowDispatch({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                workflow_id,
+                workflow_id: worker.id,
                 ref,
                 inputs: {
                   file: t.file,
