@@ -74,45 +74,34 @@ jobs:
           ARGS_JSON=$(echo "$ARGS_B64" | base64 -d)
           ENV_JSON=$(echo "$ENV_B64"  | base64 -d)
 
-          echo "ARGS_JSON=$ARGS_JSON" > decoded.txt
-          echo "ENV_JSON=$ENV_JSON" >> decoded.txt
-
           # Build env flags from object -> -e KEY=VALUE
-          DOCKER_ENV_ARGS=$(echo "$ENV_JSON" | jq -r '
-            if type=="object" then
-              to_entries | map("-e " + .key + "=" + (.value|tostring)) | join(" ")
-            else
-              ""
-            end
-          ')
-          echo "DOCKER_ENV_ARGS=$DOCKER_ENV_ARGS" >> $GITHUB_ENV
+          if [ "$ENV_JSON" != "null" ] && [ -n "$ENV_JSON" ]; then
+            DOCKER_ENV_ARGS=$(echo "$ENV_JSON" | jq -r 'map("-e " + .key) | join(" ")')
+            echo "DOCKER_ENV_ARGS=$DOCKER_ENV_ARGS" >> $GITHUB_ENV
+          else
+            echo "DOCKER_ENV_ARGS=" >> $GITHUB_ENV
+          fi
 
           # Build args string from array -> "a b c"
-          ARGS_STRING=$(echo "$ARGS_JSON" | jq -r 'if type=="array" then join(" ") else "" end')
-          echo "ARGS_STRING=$ARGS_STRING" >> $GITHUB_ENV
+          if [ "$ARGS_JSON" != "null" ] && [ -n "$ARGS_JSON" ]; then
+            ARGS_STRING=$(echo "$ARGS_JSON" | jq -r 'join(" ")')
+            echo "ARGS_STRING=$ARGS_STRING" >> $GITHUB_ENV
+          else
+            echo "ARGS_STRING=" >> $GITHUB_ENV
+          fi
 
       - name: Start mcp server
-        env:
-          IMAGE: ${{ inputs.image }}
-          PORT: ${{ inputs.port }}
+        env: ${{ secrets }}
         run: |
-          set -euo pipefail
-          docker rm -f "${MCP_SERVER_NAME}" >/dev/null 2>&1 || true
-
-          docker run -d --name "${MCP_SERVER_NAME}" \
-            -p 8080:"${PORT}" \
+          docker run -d --name ${MCP_SERVER_NAME} \
+            -p 8080:${{ inputs.port }} \
             ${DOCKER_ENV_ARGS} \
-            "${IMAGE}" ${ARGS_STRING}
+            ${{ inputs.image }} ${ARGS_STRING}
 
       - name: Run mcpwn scan
         run: |
           set -euo pipefail
           python3 mcpwn.py --output-sarif mcpwn-results.sarif --safe-mode http://localhost:8080
-
-      - name: Stop container
-        if: always()
-        run: |
-          docker rm -f "${MCP_SERVER_NAME}" >/dev/null 2>&1 || true
 
       - name: Upload SARIF artifact
         if: always()
