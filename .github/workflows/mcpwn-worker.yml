@@ -99,6 +99,23 @@ jobs:
             ${DOCKER_ENV_ARGS} \
             ${{ inputs.image }} ${ARGS_STRING}
 
+      - name: Verify container is running
+        run: |
+          set -euo pipefail
+
+          # Give container a moment to start
+          sleep 2
+
+          # Check if container is still running
+          if ! docker ps --filter "name=${MCP_SERVER_NAME}" --format "{{.Names}}" | grep -q "${MCP_SERVER_NAME}"; then
+            echo "ERROR: Container ${MCP_SERVER_NAME} exited unexpectedly"
+            echo "Container logs:"
+            docker logs ${MCP_SERVER_NAME} || true
+            exit 1
+          fi
+
+          echo "Container ${MCP_SERVER_NAME} is running"
+
       - name: Run mcpwn scan
         run: |
           set -euo pipefail
