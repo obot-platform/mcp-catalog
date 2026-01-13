@@ -32,6 +32,7 @@ permissions:
 
 jobs:
   scan:
+    name: Scan ${{ inputs.file }}
     runs-on: depot-ubuntu-22.04
 
     steps:
