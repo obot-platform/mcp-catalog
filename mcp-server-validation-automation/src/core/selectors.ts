@@ -222,6 +222,7 @@ const Selectors = {
         submitPrompt: '//button[@type="submit"]',
         lastBotReply: '//div[@class="message-content"]',
         messageContainer: "//div[contains(@class, 'flex-1') and contains(@class, 'flex-col') and contains(@class, 'justify-start') and contains(@class, 'gap-8')]",
+        popupContinueButton: '//h2[text()="Welcome to Obot!"]/following::button[text()="Continue"]',
         wordpressMCP:{
             wpSiteURL: '//input[normalize-space(@id)="WORDPRESS_SITE"]',
             wpUsername: '//input[normalize-space(@id)="WORDPRESS_USERNAME"]',

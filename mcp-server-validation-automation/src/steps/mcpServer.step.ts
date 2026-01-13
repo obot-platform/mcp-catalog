@@ -21,6 +21,10 @@ Given(/^User navigates to the Obot main login page$/, async () => {
 });
 
 Then(/^User opens chat Obot$/, async () => {
+  await browser.pause(MEDIUM_PAUSE);
+  if(await $('//h2[text()="Welcome to Obot!"]').isDisplayed()) {
+    await clickToElement(Selectors.MCP.popupContinueButton);
+  }
   await clickToElement(Selectors.MCP.navigationbtn);
   await clickToElement(Selectors.MCP.clickChatObot);
 });
@@ -229,13 +233,13 @@ Then(/^User connects to the "(.*)" MCP server$/, async (mcpServer: string) => {
 
     case "deepwiki":
     case "context7":
+    case "antv charts":
       break;
 
     case "duckduckgo search":
     case "markitdown":
     case "microsoft learn":
     case "aws knowledge":
-    case "antv charts":
       switchLaunch = true;
       break;
 
