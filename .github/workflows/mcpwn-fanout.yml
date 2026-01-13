@@ -70,12 +70,17 @@ jobs:
             const worker = workflows.data.workflows.find(w => w.path === workerPath);
 
             if (!worker) {
-              core.setFailed(`Cannot find workflow at ${workerPath}. Check the file name/path on the branch you're running.`);
+              core.setFailed(`Cannot find workflow at ${workerPath}. Check the file name/path on the branch.`);
               return;
             }
 
-            // Use the exact commit SHA of this controller run so the worker file definitely exists there
-            const ref = context.sha;
+            // IMPORTANT: ref must be a branch or tag name (NOT a SHA)
+            // For workflow_dispatch runs, this will typically be 'main' or whatever branch you selected in the UI.
+            const refName = (process.env.GITHUB_REF_NAME || '').trim();
+            if (!refName) {
+              core.setFailed(`GITHUB_REF_NAME is empty. Ref must be a branch or tag name.`);
+              return;
+            }
 
             for (const t of targets) {
               const argsJson = JSON.stringify(t.containerizedConfig?.args ?? []);
@@ -84,13 +89,13 @@ jobs:
               const argsB64 = Buffer.from(argsJson, 'utf8').toString('base64');
               const envB64  = Buffer.from(envJson, 'utf8').toString('base64');
 
-              core.info(`Dispatching: ${t.file}`);
+              core.info(`Dispatching: ${t.file} on ref ${refName}`);
 
               await github.rest.actions.createWorkflowDispatch({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 workflow_id: worker.id,
-                ref,
+                ref: refName,
                 inputs: {
                   file: t.file,
                   image: String(t.containerizedConfig.image),
