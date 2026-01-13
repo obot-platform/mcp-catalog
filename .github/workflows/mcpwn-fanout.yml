@@ -82,6 +82,22 @@ jobs:
               return;
             }
 
+            // Retry helper function
+            async function retryDispatch(fn, maxRetries = 3, delayMs = 1000) {
+              for (let attempt = 1; attempt <= maxRetries; attempt++) {
+                try {
+                  return await fn();
+                } catch (error) {
+                  if (attempt === maxRetries) {
+                    throw error;
+                  }
+                  core.warning(`Attempt ${attempt} failed: ${error.message}. Retrying in ${delayMs}ms...`);
+                  await new Promise(resolve => setTimeout(resolve, delayMs));
+                  delayMs *= 2; // Exponential backoff
+                }
+              }
+            }
+
             for (const t of targets) {
               const argsJson = JSON.stringify(t.containerizedConfig?.args ?? []);
               const envJson  = JSON.stringify(t.env ?? {});
@@ -91,18 +107,20 @@ jobs:
 
               core.info(`Dispatching: ${t.file} on ref ${refName}`);
 
-              await github.rest.actions.createWorkflowDispatch({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                workflow_id: worker.id,
-                ref: refName,
-                inputs: {
-                  file: t.file,
-                  image: String(t.containerizedConfig.image),
-                  port: String(t.containerizedConfig.port),
-                  args_b64: argsB64,
-                  env_b64: envB64
-                }
+              await retryDispatch(async () => {
+                return await github.rest.actions.createWorkflowDispatch({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  workflow_id: worker.id,
+                  ref: refName,
+                  inputs: {
+                    file: t.file,
+                    image: String(t.containerizedConfig.image),
+                    port: String(t.containerizedConfig.port),
+                    args_b64: argsB64,
+                    env_b64: envB64
+                  }
+                });
               });
             }
 
