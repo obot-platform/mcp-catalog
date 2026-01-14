@@ -1,6 +1,13 @@
 name: Mcpwn Fan-out (dispatch one run per YAML)
+run-name: ${{ inputs.workflow_name || 'Mcpwn Scan' }} - Fan-out
 on:
   workflow_dispatch:
+    inputs:
+      workflow_name:
+        description: "Custom workflow name (optional)"
+        required: false
+        type: string
+        default: "Mcpwn Scan"
 
 permissions:
   contents: read
@@ -54,6 +61,8 @@ jobs:
       - name: Dispatch one worker run per target
         if: ${{ steps.build.outputs.count != '0' }}
         uses: actions/github-script@v8
+        env:
+          WORKFLOW_NAME: ${{ inputs.workflow_name }}
         with:
           script: |
             const fs = require('fs');
@@ -119,7 +128,8 @@ jobs:
                     image: String(t.containerizedConfig.image),
                     port: String(t.containerizedConfig.port),
                     args_b64: argsB64,
-                    env_b64: envB64
+                    env_b64: envB64,
+                    workflow_name: process.env.WORKFLOW_NAME || 'Mcpwn Scan'
                   }
                 });
               });
