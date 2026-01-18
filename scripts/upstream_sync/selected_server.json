@@ -2467,5 +2467,215 @@
     "upstream_source": "modelcontextprotocol.io",
     "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/625",
     "processed_at": "2026-01-11 02:48:54 UTC"
+  },
+  "com.jotform/mcp": {
+    "name": "com.jotform/mcp",
+    "description": "Jotform MCP",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/jotform/mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/626",
+    "processed_at": "2026-01-18 02:47:26 UTC"
+  },
+  "com.microsoft/sentinel-data-exploration": {
+    "name": "com.microsoft/sentinel-data-exploration",
+    "description": "Find relevant security data from Sentinel data lake for building effective agents. More:aka.ms/s/de",
+    "version": "1.0.1",
+    "repository_url": "https://github.com/microsoft/sentinel-data-exploration-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/627",
+    "processed_at": "2026-01-18 02:47:27 UTC"
+  },
+  "com.qualityclouds/mcp-server-qualityclouds": {
+    "name": "com.qualityclouds/mcp-server-qualityclouds",
+    "description": "Secure MCP runtime server for scanning and autofixing code issues",
+    "version": "1.0.2",
+    "repository_url": "https://github.com/qualityclouds/qualityclouds",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/628",
+    "processed_at": "2026-01-18 02:47:28 UTC"
+  },
+  "com.vercel/vercel-mcp": {
+    "name": "com.vercel/vercel-mcp",
+    "description": "An MCP server for Vercel",
+    "version": "0.0.3",
+    "repository_url": "https://github.com/vercel/vercel-mcp-overview",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/629",
+    "processed_at": "2026-01-18 02:47:29 UTC"
+  },
+  "io.github.BlockRunAI/blockrun-mcp": {
+    "name": "io.github.BlockRunAI/blockrun-mcp",
+    "description": "BlockRun MCP Server - Access 30+ AI models via x402 micropayments. No API keys needed.",
+    "version": "0.2.2",
+    "repository_url": "https://github.com/BlockRunAI/blockrun-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/630",
+    "processed_at": "2026-01-18 02:47:30 UTC"
+  },
+  "io.github.ReGenNow/regennexus-mcp": {
+    "name": "io.github.ReGenNow/regennexus-mcp",
+    "description": "AI-controlled hardware: GPIO, robotics, sensors, cameras, mesh networking for IoT",
+    "version": "0.1.1",
+    "repository_url": "https://github.com/ReGenNow/regennexus-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/631",
+    "processed_at": "2026-01-18 02:47:31 UTC"
+  },
+  "io.github.RedHatInsights/insights-mcp": {
+    "name": "io.github.RedHatInsights/insights-mcp",
+    "description": "Model Context Protocol server for Red Hat Lightspeed - advisor, image builder, inventory, and more",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/RedHatInsights/insights-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/632",
+    "processed_at": "2026-01-18 02:47:32 UTC"
+  },
+  "io.github.aistatusdashboard/aistatusdashboard": {
+    "name": "io.github.aistatusdashboard/aistatusdashboard",
+    "description": "Read-only MCP server for AIStatusDashboard status, incidents, metrics, and fallback recommendations.",
+    "version": "1.0.1",
+    "repository_url": "https://github.com/aistatusdashboard/aistatusdashboard",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/633",
+    "processed_at": "2026-01-18 02:47:33 UTC"
+  },
+  "io.github.apollographql/apollo-mcp-server": {
+    "name": "io.github.apollographql/apollo-mcp-server",
+    "description": "MCP server that exposes GraphQL operations as tools for AI models.",
+    "version": "1.4.1",
+    "repository_url": "https://github.com/apollographql/apollo-mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/634",
+    "processed_at": "2026-01-18 02:47:35 UTC"
+  },
+  "io.github.backspacevenkat/perspectives": {
+    "name": "io.github.backspacevenkat/perspectives",
+    "description": "Query multiple AI models (GPT-4, Claude, Gemini, Grok) in parallel for diverse perspectives",
+    "version": "1.8.59",
+    "repository_url": "https://github.com/polydev-ai/perspectives-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/635",
+    "processed_at": "2026-01-18 02:47:36 UTC"
+  },
+  "io.github.discourse/mcp": {
+    "name": "io.github.discourse/mcp",
+    "description": "Discourse MCP CLI server (stdio) exposing Discourse tools via MCP",
+    "version": "0.2.3",
+    "repository_url": "https://github.com/discourse/discourse-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/636",
+    "processed_at": "2026-01-18 02:47:37 UTC"
+  },
+  "io.github.docfork/docfork": {
+    "name": "io.github.docfork/docfork",
+    "description": "Up-to-date Docs for AI Agents.",
+    "version": "1.3.2",
+    "repository_url": "https://github.com/docfork/docfork",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/637",
+    "processed_at": "2026-01-18 02:47:38 UTC"
+  },
+  "io.github.dynatrace-oss/dynatrace-managed-mcp": {
+    "name": "io.github.dynatrace-oss/dynatrace-managed-mcp",
+    "description": "MCP server for Dynatrace Managed to access logs, events, and metrics.",
+    "version": "0.4.0",
+    "repository_url": "https://github.com/dynatrace-oss/dynatrace-managed-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/638",
+    "processed_at": "2026-01-18 02:47:39 UTC"
+  },
+  "io.github.eansearch/eansearch-mcp-server": {
+    "name": "io.github.eansearch/eansearch-mcp-server",
+    "description": "MCP server for real-time product search by barcode (EAN, UPC, GTIN) or keyword on ean-search.org",
+    "version": "0.1.0",
+    "repository_url": "https://github.com/eansearch/eansearch-mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/639",
+    "processed_at": "2026-01-18 02:47:41 UTC"
+  },
+  "io.github.flowzap-xyz/flowzap": {
+    "name": "io.github.flowzap-xyz/flowzap",
+    "description": "Generates instant beautiful workflow and sequence diagrams via AI assistants and FlowZap Code.",
+    "version": "1.0.5",
+    "repository_url": "https://github.com/flowzap-xyz/flowzap-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/640",
+    "processed_at": "2026-01-18 02:47:42 UTC"
+  },
+  "io.github.glidermcp/glider": {
+    "name": "io.github.glidermcp/glider",
+    "description": "Roslyn-powered C# code analysis server for LLMs. Supports stdio and HTTP transports.",
+    "version": "3.4.0",
+    "repository_url": "https://github.com/glidermcp/glidermcp.com",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/641",
+    "processed_at": "2026-01-18 02:47:43 UTC"
+  },
+  "io.github.hoklims/stacksfinder": {
+    "name": "io.github.hoklims/stacksfinder",
+    "description": "Deterministic tech stack recommendations, audits, and project estimates. No hallucinations.",
+    "version": "1.3.7",
+    "repository_url": "https://github.com/hoklims/stacksfinder-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/642",
+    "processed_at": "2026-01-18 02:47:44 UTC"
+  },
+  "io.github.signnow/sn-api-helper-mcp": {
+    "name": "io.github.signnow/sn-api-helper-mcp",
+    "description": "MCP server for SignNow API helper tools (stdio only).",
+    "version": "0.1.1",
+    "repository_url": "https://github.com/signnow/sn-api-helper-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/643",
+    "processed_at": "2026-01-18 02:47:45 UTC"
+  },
+  "io.github.signnow/sn-mcp-server": {
+    "name": "io.github.signnow/sn-mcp-server",
+    "description": "A MCP server that gives AI agents access to SignNow eSignature workflows over STDIO.",
+    "version": "0.3.1",
+    "repository_url": "https://github.com/signnow/sn-mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/644",
+    "processed_at": "2026-01-18 02:47:46 UTC"
+  },
+  "io.port/Port": {
+    "name": "io.port/Port",
+    "description": "Port.io mcp server",
+    "version": "1.0.2",
+    "repository_url": "https://github.com/port-labs/remote-mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/645",
+    "processed_at": "2026-01-18 02:47:47 UTC"
+  },
+  "vercel/next-devtools-mcp": {
+    "name": "vercel/next-devtools-mcp",
+    "description": "Next.js development tools MCP server with stdio transport",
+    "version": "",
+    "repository_url": "https://github.com/vercel/next-devtools-mcp",
+    "server_type": "official",
+    "upstream_source": "github.com/mcp",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/646",
+    "processed_at": "2026-01-18 02:47:49 UTC"
   }
 }
