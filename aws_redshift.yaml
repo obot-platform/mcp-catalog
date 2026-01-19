@@ -103,7 +103,7 @@ env:
   description: AWS Region, default to us-east-1
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/aws-redshift:0.0.11
+  image: ghcr.io/obot-platform/mcp-images/aws-redshift:0.0.12
   port: 8099
   path: /
   args:
