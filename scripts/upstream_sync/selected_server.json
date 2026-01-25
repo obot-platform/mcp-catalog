@@ -2677,5 +2677,125 @@
     "upstream_source": "github.com/mcp",
     "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/646",
     "processed_at": "2026-01-18 02:47:49 UTC"
+  },
+  "com.microsoft/template-server-name": {
+    "name": "com.microsoft/template-server-name",
+    "description": "Template MCP server example.",
+    "version": "0.0.12-alpha.5792017",
+    "repository_url": "https://github.com/microsoft/mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/647",
+    "processed_at": "2026-01-25 02:49:59 UTC"
+  },
+  "io.github.ABTdomain/domainkits-mcp": {
+    "name": "io.github.ABTdomain/domainkits-mcp",
+    "description": "Domain intelligence tools - NS reverse lookup and newly registered domain search",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/ABTdomain/domainkits-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/648",
+    "processed_at": "2026-01-25 02:50:00 UTC"
+  },
+  "io.github.AyozeMiguel/lapalma24-mcp": {
+    "name": "io.github.AyozeMiguel/lapalma24-mcp",
+    "description": "Search vacation rentals in La Palma, Canary Islands with real-time availability and pricing.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/La-Palma-24/lapalma24-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/649",
+    "processed_at": "2026-01-25 02:50:01 UTC"
+  },
+  "io.github.SocioLogicAI/signal-relay": {
+    "name": "io.github.SocioLogicAI/signal-relay",
+    "description": "Connect AI agents to SocioLogic's synthetic persona platform for market research.",
+    "version": "1.0.2",
+    "repository_url": "https://github.com/SocioLogicAI/signal-relay",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/650",
+    "processed_at": "2026-01-25 02:50:03 UTC"
+  },
+  "io.github.agenthotspot/agenthotspot-mcp": {
+    "name": "io.github.agenthotspot/agenthotspot-mcp",
+    "description": "Search thousands of MCP connectors from the AgentHotspot marketplace via your AI agent.",
+    "version": "1.0.2",
+    "repository_url": "https://github.com/AgentHotspot/agenthotspot-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/651",
+    "processed_at": "2026-01-25 02:50:04 UTC"
+  },
+  "io.github.basicmachines-co/basic-memory": {
+    "name": "io.github.basicmachines-co/basic-memory",
+    "description": "Local-first knowledge management with bi-directional LLM sync via Markdown files.",
+    "version": "0.17.7",
+    "repository_url": "https://github.com/basicmachines-co/basic-memory.git",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/652",
+    "processed_at": "2026-01-25 02:50:05 UTC"
+  },
+  "io.github.gridinsoft/inspector": {
+    "name": "io.github.gridinsoft/inspector",
+    "description": "Website safety and trust analysis. Verify domain reputation and detect phishing with GridinSoft.",
+    "version": "1.0.6",
+    "repository_url": "https://github.com/gridinsoft/mcp-inspector",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/653",
+    "processed_at": "2026-01-25 02:50:06 UTC"
+  },
+  "io.github.lexsocket/mcp-ted": {
+    "name": "io.github.lexsocket/mcp-ted",
+    "description": "TED MCP Server: Real-time EU public tenders access. https://www.lexsocket.ai/",
+    "version": "1.0.7",
+    "repository_url": "https://github.com/lexsocket/mcp-ted",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/654",
+    "processed_at": "2026-01-25 02:50:08 UTC"
+  },
+  "io.github.nrwl/nx-mcp": {
+    "name": "io.github.nrwl/nx-mcp",
+    "description": "A Model Context Protocol server implementation for Nx",
+    "version": "0.14.0",
+    "repository_url": "https://github.com/nrwl/nx-console",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/655",
+    "processed_at": "2026-01-25 02:50:09 UTC"
+  },
+  "io.nestr/mcp": {
+    "name": "io.nestr/mcp",
+    "description": "Connect AI to Nestr for Holacracy, Sociocracy, and self-organizing teams.",
+    "version": "0.1.21",
+    "repository_url": "https://github.com/nestr-dev/nestr-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/656",
+    "processed_at": "2026-01-25 02:50:10 UTC"
+  },
+  "wonderwhy-er/desktop-commander": {
+    "name": "wonderwhy-er/desktop-commander",
+    "description": "MCP server for terminal commands, file operations, and process management",
+    "version": "",
+    "repository_url": "https://github.com/wonderwhy-er/DesktopCommanderMCP",
+    "server_type": "community",
+    "upstream_source": "github.com/mcp",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/657",
+    "processed_at": "2026-01-25 02:50:11 UTC"
+  },
+  "SonarSource/sonarqube-mcp-server": {
+    "name": "SonarSource/sonarqube-mcp-server",
+    "description": "An MCP server that enables integration with SonarQube Server or Cloud for code quality and security.",
+    "version": "",
+    "repository_url": "https://github.com/SonarSource/sonarqube-mcp-server",
+    "server_type": "official",
+    "upstream_source": "github.com/mcp",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/658",
+    "processed_at": "2026-01-25 02:50:13 UTC"
   }
 }
