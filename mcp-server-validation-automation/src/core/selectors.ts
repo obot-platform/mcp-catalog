@@ -222,6 +222,7 @@ const Selectors = {
         submitPrompt: '//button[@type="submit"]',
         lastBotReply: '//div[@class="message-content"]',
         messageContainer: "//div[contains(@class, 'flex-1') and contains(@class, 'flex-col') and contains(@class, 'justify-start') and contains(@class, 'gap-8')]",
+        popupContinueButton: '//h2[text()="Welcome to Obot!"]/following::button[text()="Continue"]',
         wordpressMCP:{
             wpSiteURL: '//input[normalize-space(@id)="WORDPRESS_SITE"]',
             wpUsername: '//input[normalize-space(@id)="WORDPRESS_USERNAME"]',
@@ -293,6 +294,93 @@ const Selectors = {
         },
         render: {
             renderAPIKey: '//input[@id="Render API Key"]',
+        },
+        tavily: {
+            apiKeyInput: '//input[@id="Tavily API Key"]',
+        },
+        exa: {
+            apiKeyInput: '//input[@id="Exa API Key"]',
+        },
+        pagerduty: {
+            apiKeyInput: '//input[@id="PagerDuty API Key"]',
+        },
+        aws: {
+            accessKeyIdInput: '//input[@id="AWS Access Key ID"]',
+            secretAccessKeyInput: '//input[@id="AWS Secret Access Key"]',
+            regionInput: '//input[contains(@id, "AWS_REGION")]',
+            genericAccessKeyIdInput: '//input[contains(@id, "AWS_ACCESS_KEY_ID")]',
+        },
+        antvCharts: {
+            requestServerInput: '//input[@id="VIS_REQUEST_SERVER"]',
+            disabledToolsInput: '//input[@id="DISABLED_TOOLS"]',
+            serviceIdInput: '//input[@id="SERVICE_ID"]',
+        },
+        serversPage: {
+            searchInput: '//input[@placeholder="Search servers..."]',
+            serverRow: (name: string) =>
+                `//p[normalize-space(text())="${name}"]/ancestor::tr`,
+            actionMenu: (name: string) =>
+                `//p[normalize-space(text())="${name}"]/ancestor::td/following-sibling::td[last()]//button`,
+            menuActionBtn: (actionText: string) =>
+                `//button[contains(@class,'menu-button') and normalize-space(text())='${actionText}']`,
+            connectedStatus: (name: string) =>
+                `//p[normalize-space(text())="${name}"]/ancestor::tr/td[2]//div[contains(@class,"pill")][contains(text(),"Connected")]`,
+            updateConfigBtn: '//button[normalize-space()="Update" and not(@disabled)]',
+            renameInput: '//input[@id="serverName"]',
+            renameUpdateBtn: '//button[text()="Update"]',
+            successToast: '[data-testid="toast-success"]',
+            backBtn: '//*[name()="svg" and contains(@class,"lucide-chevron-left")]/ancestor::button',
+            disconnectedStatus: '[data-testid="server-status-disconnected"]',
+            serverNameInDetailsHeader: '//nav//h1',
+            serverNameInDetails: '//nav/following-sibling::div//h1[contains(@class, "capitalize")]',
+            gitlabDescription: '//div[contains(@class,"milkdown-content")]//p[1]',
+            braveSearchDescription: '//div[contains(@class,"milkdown-content")]//p[1]',
+            awsApiDescription: '//div[contains(@class,"milkdown-content")]//p[1]',
+            antvChartsDescription: '//div[contains(@class,"milkdown-content")]//p[2]',
+        },
+        deployments: {
+            deploymentsAndConnectionsTabButton: '//button[text()="Deployments & Connections"]',
+            lastRestartValue: `//p[normalize-space()="Last Restart"]
+      /ancestor::div[contains(@class,"grid")]
+      //p[contains(@class,"font-light")]`,
+            deleteConfirmDialog: (serverName: string) =>
+                `//dialog[@open]//h4[normalize-space()="Delete ${serverName}?"]`,
+            confirmDeleteButton: (serverName: string) =>
+                `//dialog[@open]//h4[normalize-space()="Delete ${serverName}?"]/following-sibling::p/following-sibling::div//button[normalize-space()="Yes, I'm sure"]`,
+            deletedServerRow: (serverName: string) =>
+                `//tr[.//p[normalize-space()="${serverName}"]]`,
+            serverEntriesButton: '//button[text()="Server Entries"]',
+        },
+        compositeServers: {
+            addMcpServerButton: '//button[.//span[normalize-space()="Add MCP Server"]]',
+            addServerMenuButton: '//button[@class="menu-button" and text()="Add server"]',
+            createCompositeServerHeader: '//h1[text()="Create Composite Server"]',
+            selectServerTypeButton: (serverType: string) =>
+                `//button[.//p[normalize-space()="${serverType}"]]`,
+            serverNameInput: '//input[@id="name"]',
+            addComponentServerButton: '//h4[text()="Component Servers"]/following-sibling::button[normalize-space()="Add MCP Server"]',
+            componentSearchInput: '//input[@placeholder="Search by name..."]',
+            componentServerOption: (server: string) =>
+                `//button[.//p[normalize-space()="${server}"]]`,
+            configureToolsDialogTitle: (server: string) =>
+                `//dialog[@open]//h3[.//span[normalize-space()="Configure ${server} Tools"]]`,
+            skipConfigureButton: '//dialog[@open]//button[normalize-space()="Skip, I\'ll Do Later"]',
+            componentServerInList: (server: string) =>
+                `//h4[normalize-space()="Component Servers"]/following-sibling::div//div[@class="font-medium" and normalize-space()="${server}"]`,
+            saveButton: '//button[normalize-space()="Save"]',
+            skipConnectDialogTitle: (connectionName: string) =>
+                `//dialog[@open]//h3[contains(@class,"dialog-title") and contains(normalize-space(.),"${connectionName}")]`,
+            skipConnectButton: '//dialog[@open]//button[text()="Skip"]',
+            serverRow: (serverName: string) =>
+                `//p[normalize-space(text())="${serverName}"]/ancestor::tr`,
+            compositeServerDialogTitle: '//dialog[@open]//h3[contains(@class,"dialog-title") and contains(normalize-space(.),"MCP Composite Server")]',
+            continueButton: '//dialog[@open]//button[text()="Continue"]',
+        },
+        adminNavigation: {
+            userDropdownMenu: '//button[.//div[normalize-space()="?"]]',
+            mcpPlatformOption: '//a[@href="/admin/mcp-servers"]',
+            connectionUrlLabel: '//label[@for="connectURL"]',
+            welcomeToObotTitle: '//h2[text()="Welcome to Obot!"]',
         },
     }
 }

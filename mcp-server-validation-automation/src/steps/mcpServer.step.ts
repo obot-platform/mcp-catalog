@@ -21,6 +21,10 @@ Given(/^User navigates to the Obot main login page$/, async () => {
 });
 
 Then(/^User opens chat Obot$/, async () => {
+  await browser.pause(MEDIUM_PAUSE);
+  if(await $(Selectors.MCP.adminNavigation.welcomeToObotTitle).isDisplayed()) {
+    await clickToElement(Selectors.MCP.popupContinueButton);
+  }
   await clickToElement(Selectors.MCP.navigationbtn);
   await clickToElement(Selectors.MCP.clickChatObot);
 });
@@ -175,15 +179,15 @@ Then(/^User connects to the "(.*)" MCP server$/, async (mcpServer: string) => {
       break;
 
     case "tavily search":
-      await slowInputFilling('//input[@id="Tavily API Key"]', process.env.TAVILY_API_KEY);
+      await slowInputFilling(Selectors.MCP.tavily.apiKeyInput, process.env.TAVILY_API_KEY);
       break;
 
     case "exa search":
-      await slowInputFilling('//input[@id="Exa API Key"]', process.env.TAVILY_API_KEY);
+      await slowInputFilling(Selectors.MCP.exa.apiKeyInput, process.env.TAVILY_API_KEY);
       break;
 
     case "pagerduty":
-      await slowInputFilling('//input[@id="PagerDuty API Key"]', process.env.PAGERDUTY_API_KEY);
+      await slowInputFilling(Selectors.MCP.pagerduty.apiKeyInput, process.env.PAGERDUTY_API_KEY);
       break;
 
     case "postman":
@@ -206,8 +210,8 @@ Then(/^User connects to the "(.*)" MCP server$/, async (mcpServer: string) => {
     case "aws eks":
     case "aws kendra":
     case "aws redshift":
-      await slowInputFilling(`//input[@id="AWS Access Key ID"]`, process.env.AWS_KEY_ID);
-      await slowInputFilling(`//input[@id="AWS Secret Access Key"]`, process.env.AWS_ACCESS_ID);
+      await slowInputFilling(Selectors.MCP.aws.accessKeyIdInput, process.env.AWS_KEY_ID);
+      await slowInputFilling(Selectors.MCP.aws.secretAccessKeyInput, process.env.AWS_ACCESS_ID);
       break;
 
     case "salesforce":
@@ -229,13 +233,13 @@ Then(/^User connects to the "(.*)" MCP server$/, async (mcpServer: string) => {
 
     case "deepwiki":
     case "context7":
+    case "antv charts":
       break;
 
     case "duckduckgo search":
     case "markitdown":
     case "microsoft learn":
     case "aws knowledge":
-    case "antv charts":
       switchLaunch = true;
       break;
 
