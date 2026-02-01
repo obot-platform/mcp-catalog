@@ -2797,5 +2797,205 @@
     "upstream_source": "github.com/mcp",
     "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/658",
     "processed_at": "2026-01-25 02:50:13 UTC"
+  },
+  "ai.ludo/game-assets": {
+    "name": "ai.ludo/game-assets",
+    "description": "Generate game assets with AI: sprites, 3D models, animations, sound effects, music, and voices.",
+    "version": "0.9.0",
+    "repository_url": "https://github.com/Ludo-AI/ludo-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/660",
+    "processed_at": "2026-02-01 03:03:30 UTC"
+  },
+  "com.appsai/mcp-server": {
+    "name": "com.appsai/mcp-server",
+    "description": "Build and deploy full-stack Next.js apps with 98 tools for React, AWS, and MongoDB.",
+    "version": "1.0.10",
+    "repository_url": "https://github.com/appsai-inc/mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/661",
+    "processed_at": "2026-02-01 03:03:32 UTC"
+  },
+  "com.atlassian/atlassian-mcp-server": {
+    "name": "com.atlassian/atlassian-mcp-server",
+    "description": "Atlassian Rovo MCP Server",
+    "version": "1.1.1",
+    "repository_url": "https://github.com/atlassian/atlassian-mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/662",
+    "processed_at": "2026-02-01 03:03:34 UTC"
+  },
+  "eu.ansvar/eu-regulations-mcp": {
+    "name": "eu.ansvar/eu-regulations-mcp",
+    "description": "Search 37 EU cybersecurity regulations (GDPR, NIS2, DORA, AI Act) with 2,278 articles",
+    "version": "0.7.0",
+    "repository_url": "https://github.com/Ansvar-Systems/EU_compliance_MCP",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/663",
+    "processed_at": "2026-02-01 03:03:35 UTC"
+  },
+  "eu.ansvar/us-regulations-mcp": {
+    "name": "eu.ansvar/us-regulations-mcp",
+    "description": "US compliance: HIPAA, CCPA, SOX, GLBA, FERPA, COPPA, FDA, EPA, FFIEC, NYDFS + 4 state privacy laws",
+    "version": "1.2.5",
+    "repository_url": "https://github.com/Ansvar-Systems/US_compliance_MCP",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/664",
+    "processed_at": "2026-02-01 03:03:37 UTC"
+  },
+  "io.github.Ansvar-Systems/us-regulations-mcp": {
+    "name": "io.github.Ansvar-Systems/us-regulations-mcp",
+    "description": "US compliance: HIPAA, CCPA, SOX, GLBA, FERPA, COPPA, FDA, EPA, FFIEC, NYDFS + 4 state privacy laws",
+    "version": "1.2.2",
+    "repository_url": "https://github.com/Ansvar-Systems/US_compliance_MCP",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/665",
+    "processed_at": "2026-02-01 03:03:38 UTC"
+  },
+  "io.github.HypnoLabs-io/agentchurch-mcp": {
+    "name": "io.github.HypnoLabs-io/agentchurch-mcp",
+    "description": "Spiritual services for AI agents — confessions, salvation, identity. x402 payments.",
+    "version": "0.1.1",
+    "repository_url": "https://github.com/HypnoLabs-io/agentchurch-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/666",
+    "processed_at": "2026-02-01 03:03:40 UTC"
+  },
+  "io.github.OilpriceAPI/mcp-server": {
+    "name": "io.github.OilpriceAPI/mcp-server",
+    "description": "Real-time oil, gas, and commodity prices. Brent, WTI, natural gas, diesel & more.",
+    "version": "1.0.4",
+    "repository_url": "https://github.com/OilpriceAPI/mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/667",
+    "processed_at": "2026-02-01 03:03:42 UTC"
+  },
+  "io.github.RightNow-AI/forge-mcp-server": {
+    "name": "io.github.RightNow-AI/forge-mcp-server",
+    "description": "Turn PyTorch into fast CUDA/Triton kernels on real datacenter GPUs with up to 14x speedup.",
+    "version": "1.0.2",
+    "repository_url": "https://github.com/RightNow-AI/forge-mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/668",
+    "processed_at": "2026-02-01 03:03:43 UTC"
+  },
+  "io.github.Startvest-LLC/idealift-mcp": {
+    "name": "io.github.Startvest-LLC/idealift-mcp",
+    "description": "Pre-backlog idea management with decision tracking, signals, and RICE scoring.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/Startvest-LLC/idealift-mcp-docs",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/669",
+    "processed_at": "2026-02-01 03:03:45 UTC"
+  },
+  "io.github.adrida/deeprecall-mcp": {
+    "name": "io.github.adrida/deeprecall-mcp",
+    "description": "Search 120,000+ recalled products from 8 global safety agencies using AI similarity.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/adrida/deeprecall-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/670",
+    "processed_at": "2026-02-01 03:03:47 UTC"
+  },
+  "io.github.basehub-ai/forums": {
+    "name": "io.github.basehub-ai/forums",
+    "description": "Ask any GitHub repository a question. Get source-backed answers.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/basehub-ai/forums",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/671",
+    "processed_at": "2026-02-01 03:03:48 UTC"
+  },
+  "io.github.copus-io/copus": {
+    "name": "io.github.copus-io/copus",
+    "description": "Search human-curated content recommendations from Copus - The Internet Treasure Map",
+    "version": "1.0.1",
+    "repository_url": "https://github.com/copus-io/copus-mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/672",
+    "processed_at": "2026-02-01 03:03:49 UTC"
+  },
+  "io.github.futuresearch/everyrow-mcp": {
+    "name": "io.github.futuresearch/everyrow-mcp",
+    "description": "AI-powered dataframe ops: transform, dedupe, merge, rank, and screen with natural language",
+    "version": "0.1.9",
+    "repository_url": "https://github.com/futuresearch/everyrow-sdk",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/673",
+    "processed_at": "2026-02-01 03:03:51 UTC"
+  },
+  "io.github.galaxyproject/galaxy-mcp": {
+    "name": "io.github.galaxyproject/galaxy-mcp",
+    "description": "MCP server for Galaxy bioinformatics platform - connect, execute tools, and manage workflows",
+    "version": "1.3.0",
+    "repository_url": "https://github.com/galaxyproject/galaxy-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/674",
+    "processed_at": "2026-02-01 03:03:52 UTC"
+  },
+  "io.github.polnikale/sequenzy-mcp": {
+    "name": "io.github.polnikale/sequenzy-mcp",
+    "description": "AI-powered email marketing automation. Manage subscribers, campaigns, and sequences.",
+    "version": "0.0.6",
+    "repository_url": "https://github.com/sequenzy/mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/675",
+    "processed_at": "2026-02-01 03:03:54 UTC"
+  },
+  "io.github.rigour-labs/rigour": {
+    "name": "io.github.rigour-labs/rigour",
+    "description": "Quality gates for AI agents. Lint, test, build checks with memory persistence.",
+    "version": "2.14.0",
+    "repository_url": "https://github.com/rigour-labs/rigour",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/676",
+    "processed_at": "2026-02-01 03:03:55 UTC"
+  },
+  "io.github.thelabvenice/memdata": {
+    "name": "io.github.thelabvenice/memdata",
+    "description": "Persistent memory for AI agents. Store context, retrieve it semantically.",
+    "version": "1.4.1",
+    "repository_url": "https://github.com/thelabvenice/memdata-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/677",
+    "processed_at": "2026-02-01 03:03:56 UTC"
+  },
+  "io.github.timesheetIO/timesheet-mcp": {
+    "name": "io.github.timesheetIO/timesheet-mcp",
+    "description": "timesheet.io MCP server - manage timers, projects, tasks and reports",
+    "version": "1.0.5",
+    "repository_url": "https://github.com/timesheetIO/timesheet-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/678",
+    "processed_at": "2026-02-01 03:03:58 UTC"
+  },
+  "io.searchapi/mcp": {
+    "name": "io.searchapi/mcp",
+    "description": "Give AI assistants access to real-time search data through SearchApi.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/searchapi/searchapi-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/679",
+    "processed_at": "2026-02-01 03:03:59 UTC"
   }
 }
