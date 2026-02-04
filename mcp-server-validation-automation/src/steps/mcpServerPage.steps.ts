@@ -1,6 +1,7 @@
 import { When, Then } from '@wdio/cucumber-framework';
 import Selectors from "../core/selectors";
 import {
+    clickToElement,
   slowInputFilling,
 } from "../core/func";
 import { Key } from "webdriverio";
@@ -8,6 +9,10 @@ import { expect } from '@wdio/globals';
 import { MEDIUM_PAUSE, WAIT_FOR_TIMEOUT, SHORT_TIMEOUT } from '../core/timeouts';
 
 When(/^User searches for MCP server "([^"]*)"$/, async (serverName: string) => {
+    await browser.pause(MEDIUM_PAUSE);
+    if(await $(Selectors.MCP.adminNavigation.welcomeToObotTitle).isDisplayed()) {
+        await clickToElement(Selectors.MCP.popupContinueButton);
+    }
     const input = await $(Selectors.MCP.serversPage.searchInput);
     await input.waitForDisplayed();
     await input.clearValue();
