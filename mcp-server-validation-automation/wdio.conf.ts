@@ -26,6 +26,16 @@ export const config: WebdriverIO.Config = {
     specs: [
         './src/features/*.feature',
     ],
+    //
+    // ==================
+    // Test Suites
+    // ==================
+    // Smoke: fast validation on PR. Regression: full validation on merge to main. Full: scheduled or manual.
+    suites: {
+        smoke: ['./src/features/UI_Tests/mcpServerPage.feature'],
+        regression: ['./src/features/UI_Tests/mcpServerPage.feature'],
+        full: ['./src/features/UI_Tests/mcpServerPage.feature'],
+    },
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -115,7 +125,7 @@ export const config: WebdriverIO.Config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['devtools'],
+    services: [], // Disabled DevTools service which was causing "No page found" errors on long-running tests
     //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber

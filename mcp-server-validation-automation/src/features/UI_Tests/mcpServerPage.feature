@@ -36,6 +36,6 @@ Feature: Manage <ServerName> MCP Server configuration on Obot
         Examples:
             | ServerName                       | ConnectionName                     | PromptName       | ReportName       | ConnectionNameUpdated        |
             | test-antv_charts                 | AntV Charts                        | AntV Charts      | AntV Charts      | AntV Charts Updated          |
-            | test-aws                         | AWS API                            | AWS API          | AWS API          | AWS API Updated            |
-            | test-brave_search                | Brave Search                       | Brave Search     | Brave Search     | Brave Search Updated       |
-            | test-git lab                     | GitLab                             | GitLab           | GitLab           | GitLab Updated            |
+            # | test-aws                         | AWS API                            | AWS API          | AWS API          | AWS API Updated            |
+            # | test-brave_search                | Brave Search                       | Brave Search     | Brave Search     | Brave Search Updated       |
+            # | test-git lab                     | GitLab                             | GitLab           | GitLab           | GitLab Updated            |

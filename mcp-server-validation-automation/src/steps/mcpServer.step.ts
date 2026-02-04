@@ -96,6 +96,9 @@ When(
         this.promptResults.push({ prompt: prompts[i], error: err.message });
       }
     }
+    
+    // recovery pause after all prompts to let browser settle
+    await browser.pause(MEDIUM_PAUSE);
   },
 );
 
@@ -117,9 +120,9 @@ Then(/^User connects to the "(.*)" MCP server$/, async (mcpServer: string) => {
 
   switch (mcpServer.toLowerCase()) {
     case "wordpress":
-      await slowInputFilling(Selectors.MCP.wordpressMCP.wpSiteURL, process.env.WP_URL);
-      await slowInputFilling(Selectors.MCP.wordpressMCP.wpUsername, process.env.WP_USERNAME);
-      await slowInputFilling(Selectors.MCP.wordpressMCP.wpPassword, process.env.WP_PASSWORD);
+      await slowInputFilling('//input[contains(@id, "WORDPRESS_SITE")]', process.env.WP_URL);
+      await slowInputFilling('//input[contains(@id, "WORDPRESS_USERNAME")]', process.env.WP_USERNAME);
+      await slowInputFilling('//input[contains(@id, "WordPress App Password")]', process.env.WP_PASSWORD);
       break;
 
     case "gitlab":

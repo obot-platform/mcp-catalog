@@ -375,6 +375,11 @@ const Selectors = {
                 `//p[normalize-space(text())="${serverName}"]/ancestor::tr`,
             compositeServerDialogTitle: '//dialog[@open]//h3[contains(@class,"dialog-title") and contains(normalize-space(.),"MCP Composite Server")]',
             continueButton: '//dialog[@open]//button[text()="Continue"]',
+            serverTab: (tabName: string) =>
+                `//button[normalize-space()="${tabName}"]`,
+            componentServerInListDeleteButton: (serverName: string) =>
+                `//div[@class="font-medium" and normalize-space(.)="${serverName}"]/ancestor::div[contains(@class,"flex items-center")]//button[contains(@class,"text-red-500")]`,
+            updateCompositeServerButton: '//div[contains(@class,"sticky") and contains(@class,"bottom-0")]//button[normalize-space(.)="Update"]'
         },
         adminNavigation: {
             userDropdownMenu: '//button[.//div[normalize-space()="?"]]',

@@ -16,7 +16,9 @@ export async function sendPromptAndWaitForReply(promptText: string) {
   const input = await element(Selectors.MCP.obotInput);
   await input.waitForDisplayed({ timeout: ELEMENT_TIMEOUT });
   await clickToElement(Selectors.MCP.obotInput);
-  await $(Selectors.MCP.obotInput).setValue(promptText);
+  
+  await input.addValue(promptText);
+  
   await clickToElement(Selectors.MCP.submitPrompt);
 
   // Wait for a new reply to appear

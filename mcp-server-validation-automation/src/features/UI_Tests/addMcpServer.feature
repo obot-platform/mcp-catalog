@@ -26,6 +26,15 @@ Feature: Add Composite <ServerName> MCP Server on Obot
         And User sends prompts to Obot AI chat for "<PromptName>" MCP server
         Then All prompt results should be validated and a report generated for the selected "<ReportName>" MCP server
 
+        When User goes back to MCP server list
+        And User performs "Disconnect" action on MCP server "<ConnectionName>"
+        Then MCP server "<ConnectionName>" should be disconnected successfully
+
+        When User searches for MCP server "<ConnectionName>"
+        And User performs "Delete Entry" action on MCP server "<ConnectionName>"
+        And User confirms deletion of MCP server "<ConnectionName>"
+        Then MCP server "<ConnectionName>" should be deleted successfully
+
         Examples:
             | ConnectionName                    | ComponentServers                                                                | PromptName                 | ReportName                 |
             | AntV Exa Composite Server         | AntV Charts,Exa Search                                                          | AntV Exa Composite         | AntV Exa Composite         |

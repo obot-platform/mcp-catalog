@@ -162,6 +162,11 @@ export const hooks = {
    * @param {Object}                 context          Cucumber World object
    */
   async afterScenario() {
-    await browser.reloadSession();
+    try {
+      await browser.reloadSession();
+    } catch (error) {
+      console.warn('Failed to reload session:', error.message);
+      // Continue anyway - don't fail the test cleanup
+    }
   },
 };

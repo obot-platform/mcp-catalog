@@ -37,6 +37,53 @@ When(/^User add "([^"]*)" component servers to composite server$/, async(compone
     }
 });
 
+When(/^User add "([^"]*)" component servers with initial config to composite server$/, async(componentServers: string) => {
+    const servers = componentServers.split(',');
+    for (const server of servers) {
+        const trimmed = server.trim();
+        await clickToElement(Selectors.MCP.compositeServers.addComponentServerButton);
+        // select component servers from the modal
+        await slowInputFilling(Selectors.MCP.compositeServers.componentSearchInput, trimmed);
+        await browser.pause(MEDIUM_PAUSE);
+        await clickToElement(Selectors.MCP.compositeServers.componentServerOption(trimmed));
+        // wait for configure tools modal and click skip
+        await $(Selectors.MCP.compositeServers.configureToolsDialogTitle(trimmed)).waitForDisplayed();
+        await clickToElement('//button[text()="Configure Tools"]');
+
+        await $(`//dialog[@open]//h3/span[normalize-space(.)="Configure ${trimmed} Tools"]`).waitForDisplayed({ timeout: MEDIUM_PAUSE });
+        await clickToElement('//dialog[@open]//button[normalize-space(.)="Get Started"]')
+
+        // add configurations based on server type
+        switch (trimmed) {
+            case 'AntV Charts':
+                break;
+            case 'Exa Search':
+                await slowInputFilling(Selectors.MCP.exa.apiKeyInput, process.env.EXA_API_KEY);
+                break;
+            case 'AWS API':
+                await slowInputFilling(Selectors.MCP.aws.accessKeyIdInput, process.env.AWS_KEY_ID);
+                await slowInputFilling(Selectors.MCP.aws.secretAccessKeyInput, process.env.AWS_SECRET_ACCESS_KEY);
+                await slowInputFilling(Selectors.MCP.aws.regionInput, 'us-east-2');
+                break;
+            case 'GitLab':
+                await slowInputFilling(Selectors.MCP.gitlabMCP.gitlabToken, process.env.GITLAB_TOKEN);
+                break;
+            case 'WordPress':
+                await slowInputFilling(Selectors.MCP.wordpressMCP.wpSiteURL, process.env.WP_URL);
+                await slowInputFilling(Selectors.MCP.wordpressMCP.wpUsername, process.env.WP_USERNAME);
+                await slowInputFilling(Selectors.MCP.wordpressMCP.wpPassword, process.env.WP_PASSWORD);
+                break;
+        }
+
+        await clickToElement('//dialog[@open]//button[text()="Continue"]');
+
+        await $(`//dialog[@open]//h3/span[normalize-space(.)="Configure ${trimmed} Tools"]`).waitForDisplayed({ timeout: MEDIUM_PAUSE });
+        await clickToElement('//dialog[@open]//button[text()="Confirm"]');
+        // validate component server is added
+        await expect($(Selectors.MCP.compositeServers.componentServerInList(trimmed))).toBeDisplayed();
+    }
+});
+
 When(/^User save the composite MCP server$/, async() => {
     await clickToElement(Selectors.MCP.compositeServers.saveButton);
     await browser.pause(LONG_PAUSE);
@@ -88,9 +135,9 @@ Then(/^User Connect to "([^"]*)" MCP server$/, async(serverName: string) => {
             // add GitLab Personal Access Token
             await slowInputFilling(Selectors.MCP.gitlabMCP.gitlabToken, process.env.GITLAB_TOKEN);
             // add WordPress Admin Password
-            await slowInputFilling(Selectors.MCP.wordpressMCP.wpSiteURL, process.env.WP_URL);
-            await slowInputFilling(Selectors.MCP.wordpressMCP.wpUsername, process.env.WP_USERNAME);
-            await slowInputFilling(Selectors.MCP.wordpressMCP.wpPassword, process.env.WP_PASSWORD);
+            await slowInputFilling('//input[contains(@id, "WORDPRESS_SITE")]', process.env.WP_URL);
+            await slowInputFilling('//input[contains(@id, "WORDPRESS_USERNAME")]', process.env.WP_USERNAME);
+            await slowInputFilling('//input[contains(@id, "WordPress App Password")]', process.env.WP_PASSWORD);
             break;
         default:
             throw new Error(`Unknown MCP Server: ${serverName}`);

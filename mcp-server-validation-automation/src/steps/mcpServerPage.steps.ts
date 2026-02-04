@@ -5,7 +5,7 @@ import {
 } from "../core/func";
 import { Key } from "webdriverio";
 import { expect } from '@wdio/globals';
-import { MEDIUM_PAUSE, WAIT_FOR_TIMEOUT } from '../core/timeouts';
+import { MEDIUM_PAUSE, WAIT_FOR_TIMEOUT, SHORT_TIMEOUT } from '../core/timeouts';
 
 When(/^User searches for MCP server "([^"]*)"$/, async (serverName: string) => {
     const input = await $(Selectors.MCP.serversPage.searchInput);
@@ -123,11 +123,21 @@ Then(/^MCP server details for "([^"]*)" should be correct$/, async (serverName: 
 });
 
 When(/^User navigates back to MCP server list$/, async () => {
-    await $(Selectors.MCP.serversPage.backBtn).click();
+    const backButton = await $(Selectors.MCP.serversPage.backBtn);
+    await backButton.waitForDisplayed({ timeout: SHORT_TIMEOUT });
+    await backButton.click();
+    // Wait for page to navigate back
+    await $(Selectors.MCP.serversPage.searchInput).waitForDisplayed({ 
+        timeout: WAIT_FOR_TIMEOUT 
+    });
 });
 
 When(/^User goes back to MCP server list$/, async () => {
     await browser.url(`${process.env.OBOT_URL}/admin/mcp-servers`);
+    // Wait for the page to load and search input to be visible
+    await $(Selectors.MCP.serversPage.searchInput).waitForDisplayed({ 
+        timeout: WAIT_FOR_TIMEOUT 
+    });
 });
 
 Then(/^MCP server "([^"]*)" should be disconnected successfully$/, async (serverName: string) => {
