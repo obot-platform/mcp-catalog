@@ -1,0 +1,238 @@
+# Run via: Actions → MCP Server UI Test Suites → Run workflow (workflow_dispatch only).
+
+name: MCP Server UI Test Suites
+
+on:
+  workflow_dispatch:
+
+jobs:
+  smoke-run:
+    name: Smoke Run
+    runs-on: ubuntu-latest
+    steps:
+      - name: Suite trigger reference (for clients)
+        run: |
+          echo "## Test suite triggers (for reference)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Suite | Intended trigger |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|------------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| **Smoke** | Pull request |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Regression** | When code merges to main |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Full Test** | Scheduled run or manual trigger |" >> $GITHUB_STEP_SUMMARY
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Cache NPM Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('mcp-server-validation-automation/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run OBOT container
+        run: |
+          docker run -d --name obot \
+            -p 8080:8080 \
+            -v /var/run/docker.sock:/var/run/docker.sock \
+            -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
+            -e OBOT_SERVER_DISABLE_UPDATE_CHECK=true \
+            ghcr.io/obot-platform/obot:latest
+
+      - name: Wait for OBOT to be ready
+        run: |
+          echo "Waiting for OBOT container..."
+          for i in {1..12}; do
+            if curl -sf http://localhost:8080/api/me | grep -q '"username":"nobody"'; then
+              echo "OBOT API is ready."
+              break
+            fi
+            echo "Not ready yet... retry #$i"
+            sleep 5
+          done
+
+      - name: Install dependencies
+        run: |
+          cd mcp-server-validation-automation
+          npm ci
+
+      - name: Run Smoke suite
+        env: ${{ secrets }}
+        run: |
+          cd mcp-server-validation-automation
+          npx wdio run wdio.conf.ts --suite smoke
+
+      - name: Upload allure results (Smoke)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-results-smoke
+          path: mcp-server-validation-automation/allure-results
+          retention-days: 7
+
+  regression-run:
+    name: Regression Run
+    runs-on: ubuntu-latest
+    steps:
+      - name: Suite trigger reference (for clients)
+        run: |
+          echo "## Test suite triggers (for reference)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Suite | Intended trigger |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|------------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| **Smoke** | Pull request |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Regression** | When code merges to main |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Full Test** | Scheduled run or manual trigger |" >> $GITHUB_STEP_SUMMARY
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Cache NPM Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('mcp-server-validation-automation/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run OBOT container
+        run: |
+          docker run -d --name obot \
+            -p 8080:8080 \
+            -v /var/run/docker.sock:/var/run/docker.sock \
+            -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
+            -e OBOT_SERVER_DISABLE_UPDATE_CHECK=true \
+            ghcr.io/obot-platform/obot:latest
+
+      - name: Wait for OBOT to be ready
+        run: |
+          echo "Waiting for OBOT container..."
+          for i in {1..12}; do
+            if curl -sf http://localhost:8080/api/me | grep -q '"username":"nobody"'; then
+              echo "OBOT API is ready."
+              break
+            fi
+            echo "Not ready yet... retry #$i"
+            sleep 5
+          done
+
+      - name: Install dependencies
+        run: |
+          cd mcp-server-validation-automation
+          npm ci
+
+      - name: Run Regression suite
+        env: ${{ secrets }}
+        run: |
+          cd mcp-server-validation-automation
+          npx wdio run wdio.conf.ts --suite regression
+
+      - name: Upload allure results (Regression)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-results-regression
+          path: mcp-server-validation-automation/allure-results
+          retention-days: 14
+
+  full-test-run:
+    name: Full Test Run
+    runs-on: ubuntu-latest
+    steps:
+      - name: Suite trigger reference (for clients)
+        run: |
+          echo "## Test suite triggers (for reference)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Suite | Intended trigger |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|------------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| **Smoke** | Pull request |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Regression** | When code merges to main |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Full Test** | Scheduled run or manual trigger |" >> $GITHUB_STEP_SUMMARY
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Cache NPM Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('mcp-server-validation-automation/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run OBOT container
+        run: |
+          docker run -d --name obot \
+            -p 8080:8080 \
+            -v /var/run/docker.sock:/var/run/docker.sock \
+            -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
+            -e OBOT_SERVER_DISABLE_UPDATE_CHECK=true \
+            ghcr.io/obot-platform/obot:latest
+
+      - name: Wait for OBOT to be ready
+        run: |
+          echo "Waiting for OBOT container..."
+          for i in {1..12}; do
+            if curl -sf http://localhost:8080/api/me | grep -q '"username":"nobody"'; then
+              echo "OBOT API is ready."
+              break
+            fi
+            echo "Not ready yet... retry #$i"
+            sleep 5
+          done
+
+      - name: Install dependencies
+        run: |
+          cd mcp-server-validation-automation
+          npm ci
+
+      - name: Run Full test suite
+        env: ${{ secrets }}
+        run: |
+          cd mcp-server-validation-automation
+          npx wdio run wdio.conf.ts --suite full
+
+      - name: Upload allure results (Full)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-results-full
+          path: mcp-server-validation-automation/allure-results
+          retention-days: 30
