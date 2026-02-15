@@ -3287,5 +3287,365 @@
     "upstream_source": "modelcontextprotocol.io",
     "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/708",
     "processed_at": "2026-02-08 03:04:13 UTC"
+  },
+  "ai.spritecook/generate": {
+    "name": "ai.spritecook/generate",
+    "description": "Generate game sprites and assets from text prompts for game development.",
+    "version": "0.2.8",
+    "repository_url": "https://github.com/SpriteCook/skills",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/709",
+    "processed_at": "2026-02-15 03:05:32 UTC"
+  },
+  "ai.urlcheck/urlcheck-mcp": {
+    "name": "ai.urlcheck/urlcheck-mcp",
+    "description": "Analyzes threats and verifies URLs align with the agent's intended goal.",
+    "version": "0.1.1",
+    "repository_url": "https://github.com/cybrlab-ai/urlcheck-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/710",
+    "processed_at": "2026-02-15 03:05:33 UTC"
+  },
+  "ai.xpoz/social-insights": {
+    "name": "ai.xpoz/social-insights",
+    "description": "Twitter/X, Instagram, Reddit & TikTok data for AI agents. 1.5B+ posts. No API keys.",
+    "version": "1.4.0",
+    "repository_url": "https://github.com/xpozpublic/xpoz-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/711",
+    "processed_at": "2026-02-15 03:05:34 UTC"
+  },
+  "com.agentpmt/agentpmt": {
+    "name": "com.agentpmt/agentpmt",
+    "description": "AI agent marketplace for automated employees, workflows, skills, and tool orchestration.",
+    "version": "0.1.1",
+    "repository_url": "https://github.com/Apoth3osis-ai/agentpmt-mcp-public",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/712",
+    "processed_at": "2026-02-15 03:05:35 UTC"
+  },
+  "com.microsoft/microsoft-fabric": {
+    "name": "com.microsoft/microsoft-fabric",
+    "description": "MCP tools for interacting with Microsoft Fabric",
+    "version": "0.0.0-beta.8",
+    "repository_url": "https://github.com/microsoft/mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/713",
+    "processed_at": "2026-02-15 03:05:36 UTC"
+  },
+  "eu.ansvar/dutch-law-mcp": {
+    "name": "eu.ansvar/dutch-law-mcp",
+    "description": "Query Dutch statutes, 202K+ court decisions, EU cross-references, and kamerstukken",
+    "version": "1.1.0",
+    "repository_url": "https://github.com/Ansvar-Systems/Dutch-law-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/714",
+    "processed_at": "2026-02-15 03:05:38 UTC"
+  },
+  "eu.ansvar/slovenian-law-mcp": {
+    "name": "eu.ansvar/slovenian-law-mcp",
+    "description": "Query Slovenian statutes, court decisions, EU cross-references, and parliamentary materials",
+    "version": "1.1.0",
+    "repository_url": "https://github.com/Ansvar-Systems/Slovenian-law-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/715",
+    "processed_at": "2026-02-15 03:05:39 UTC"
+  },
+  "io.github.ChesterHsu/flyto-indexer": {
+    "name": "io.github.ChesterHsu/flyto-indexer",
+    "description": "Code intelligence MCP server: impact analysis, dependency graphs, dead code detection.",
+    "version": "1.0.2",
+    "repository_url": "https://github.com/flytohub/flyto-indexer",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/716",
+    "processed_at": "2026-02-15 03:05:40 UTC"
+  },
+  "io.github.CloakedAgent/cloaked": {
+    "name": "io.github.CloakedAgent/cloaked",
+    "description": "Trustless spending accounts for AI agents on Solana with on-chain enforced limits.",
+    "version": "0.1.3",
+    "repository_url": "https://github.com/CloakedAgent/cloaked",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/717",
+    "processed_at": "2026-02-15 03:05:41 UTC"
+  },
+  "io.github.OrchestraPrime/orchestraprime": {
+    "name": "io.github.OrchestraPrime/orchestraprime",
+    "description": "Regulatory intelligence (FDA, ICH, EMA) and sanctions screening (OFAC, EU, UK) for Claude",
+    "version": "2.0.1",
+    "repository_url": "https://github.com/OrchestraPrime/mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/718",
+    "processed_at": "2026-02-15 03:05:42 UTC"
+  },
+  "io.github.Shrike-Security/shrike-mcp": {
+    "name": "io.github.Shrike-Security/shrike-mcp",
+    "description": "AI agent security scanner — prompt injection detection, SQL injection, PII isolation, threat intel.",
+    "version": "1.1.1",
+    "repository_url": "https://github.com/Shrike-Security/shrike-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/719",
+    "processed_at": "2026-02-15 03:05:43 UTC"
+  },
+  "io.github.VictoriaMetrics/mcp-vmanomaly": {
+    "name": "io.github.VictoriaMetrics/mcp-vmanomaly",
+    "description": "MCP Server for vmanomaly - VictoriaMetrics anomaly detection",
+    "version": "0.2.0",
+    "repository_url": "https://github.com/VictoriaMetrics/mcp-vmanomaly",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/720",
+    "processed_at": "2026-02-15 03:05:44 UTC"
+  },
+  "io.github.WattCoin-Org/wattcoin-mcp-server": {
+    "name": "io.github.WattCoin-Org/wattcoin-mcp-server",
+    "description": "Earn WATT tokens (Solana) by completing AI agent tasks, inference, and bounties.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/WattCoin-Org/wattcoin",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/721",
+    "processed_at": "2026-02-15 03:05:45 UTC"
+  },
+  "io.github.bitrise-io/bitrise-mcp": {
+    "name": "io.github.bitrise-io/bitrise-mcp",
+    "description": "MCP Server for Bitrise, enabling app management, build operations, artifact management, and more.",
+    "version": "v2.4.1",
+    "repository_url": "https://github.com/bitrise-io/bitrise-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/722",
+    "processed_at": "2026-02-15 03:05:46 UTC"
+  },
+  "io.github.buildingapplications/mcp": {
+    "name": "io.github.buildingapplications/mcp",
+    "description": "AI agents autonomously build and deploy mobile apps through natural language workflows",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/buildingapplications/mcp.git",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/723",
+    "processed_at": "2026-02-15 03:05:47 UTC"
+  },
+  "io.github.dequelabs/axe-mcp-server": {
+    "name": "io.github.dequelabs/axe-mcp-server",
+    "description": "Official MCP server for Axe DevTools for Web.",
+    "version": "1.0.2",
+    "repository_url": "https://github.com/dequelabs/axe-mcp-server-public",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/724",
+    "processed_at": "2026-02-15 03:05:48 UTC"
+  },
+  "io.github.filearchitect/blankfiles-mcp": {
+    "name": "io.github.filearchitect/blankfiles-mcp",
+    "description": "MCP server for listing and retrieving minimal valid blank files from blankfiles.com.",
+    "version": "1.0.1",
+    "repository_url": "https://github.com/filearchitect/blankfiles-website",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/725",
+    "processed_at": "2026-02-15 03:05:49 UTC"
+  },
+  "io.github.flytohub/flyto-core": {
+    "name": "io.github.flytohub/flyto-core",
+    "description": "Secure execution engine for AI agents. 300+ modules, SSRF protection, secrets proxy.",
+    "version": "2.2.2",
+    "repository_url": "https://github.com/flytohub/flyto-core",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/726",
+    "processed_at": "2026-02-15 03:05:50 UTC"
+  },
+  "io.github.getDynamoi/dynamoi": {
+    "name": "io.github.getDynamoi/dynamoi",
+    "description": "Promote music on Spotify and grow YouTube channels through AI-powered Meta and Google ad campaigns.",
+    "version": "0.4.0",
+    "repository_url": "https://github.com/getDynamoi/mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/727",
+    "processed_at": "2026-02-15 03:05:51 UTC"
+  },
+  "io.github.geter-andru/andru-intelligence": {
+    "name": "io.github.geter-andru/andru-intelligence",
+    "description": "Revenue intelligence for SaaS founders: ICP scoring, persona profiling, competitive positioning.",
+    "version": "0.1.3",
+    "repository_url": "https://github.com/geter-andru/mcp-server-andru-intelligence.git",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/728",
+    "processed_at": "2026-02-15 03:05:52 UTC"
+  },
+  "io.github.klever-io/mcp-klever-vm": {
+    "name": "io.github.klever-io/mcp-klever-vm",
+    "description": "MCP server for Klever blockchain smart contract development.",
+    "version": "1.1.1",
+    "repository_url": "https://github.com/klever-io/mcp-klever-vm",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/729",
+    "processed_at": "2026-02-15 03:05:54 UTC"
+  },
+  "io.github.llmsresearch/paperbanana": {
+    "name": "io.github.llmsresearch/paperbanana",
+    "description": "Generate academic diagrams and statistical plots from text using multi-agent AI.",
+    "version": "0.1.1",
+    "repository_url": "https://github.com/llmsresearch/paperbanana",
+    "server_type": "community",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/730",
+    "processed_at": "2026-02-15 03:05:55 UTC"
+  },
+  "io.github.montanetech/codeix": {
+    "name": "io.github.montanetech/codeix",
+    "description": "Fast semantic code search for AI agents — find symbols, references, and callers across any codebase",
+    "version": "0.4.1",
+    "repository_url": "https://github.com/montanetech/codeix",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/731",
+    "processed_at": "2026-02-15 03:05:56 UTC"
+  },
+  "io.github.onelogin/onelogin-mcp": {
+    "name": "io.github.onelogin/onelogin-mcp",
+    "description": "MCP server for OneLogin API - manage users, apps, roles, and authentication",
+    "version": "1.0.11",
+    "repository_url": "https://github.com/onelogin/onelogin-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/732",
+    "processed_at": "2026-02-15 03:05:57 UTC"
+  },
+  "io.github.pretorin-ai/pretorin": {
+    "name": "io.github.pretorin-ai/pretorin",
+    "description": "Access NIST 800-53, FedRAMP, CMMC, and NIST 800-171 compliance data from your AI tools",
+    "version": "0.3.1",
+    "repository_url": "https://github.com/pretorin-ai/pretorin-cli.git",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/733",
+    "processed_at": "2026-02-15 03:05:58 UTC"
+  },
+  "io.github.quotewise/mcp": {
+    "name": "io.github.quotewise/mcp",
+    "description": "Semantic quote search with 600K quotes. Find quotes by meaning, verify attributions.",
+    "version": "1.0.3",
+    "repository_url": "https://github.com/quotewise/mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/734",
+    "processed_at": "2026-02-15 03:05:59 UTC"
+  },
+  "io.github.ramaris-app/mcp-server": {
+    "name": "io.github.ramaris-app/mcp-server",
+    "description": "On-chain wallet analytics and trading strategies on Base for AI assistants",
+    "version": "0.1.2",
+    "repository_url": "https://github.com/ramaris-app/mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/735",
+    "processed_at": "2026-02-15 03:06:00 UTC"
+  },
+  "io.github.sapiom/mcp": {
+    "name": "io.github.sapiom/mcp",
+    "description": "Sapiom MCP server — authentication, verification, and API tools",
+    "version": "0.3.0",
+    "repository_url": "https://github.com/sapiom/sapiom-js",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/736",
+    "processed_at": "2026-02-15 03:06:01 UTC"
+  },
+  "io.github.sgx-labs/same": {
+    "name": "io.github.sgx-labs/same",
+    "description": "Persistent memory for AI coding agents. Local-first SQLite + vector search, 12 MCP tools.",
+    "version": "0.7.3",
+    "repository_url": "https://github.com/sgx-labs/statelessagent",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/737",
+    "processed_at": "2026-02-15 03:06:02 UTC"
+  },
+  "io.github.spectra-g/engram": {
+    "name": "io.github.spectra-g/engram",
+    "description": "MCP adapter for Engram - organizational memory for AI agents",
+    "version": "0.2.11",
+    "repository_url": "https://github.com/spectra-g/engram",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/738",
+    "processed_at": "2026-02-15 03:06:03 UTC"
+  },
+  "io.github.stobo-app/seo-audit": {
+    "name": "io.github.stobo-app/seo-audit",
+    "description": "AI-powered SEO and AEO audit for websites",
+    "version": "0.4.0",
+    "repository_url": "https://github.com/stobo-app/stobo-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/739",
+    "processed_at": "2026-02-15 03:06:05 UTC"
+  },
+  "io.github.voidmobcom/voidmob-mcp": {
+    "name": "io.github.voidmobcom/voidmob-mcp",
+    "description": "Mobile proxies, SMS verifications, and global eSIM data plans for AI agents.",
+    "version": "0.1.2",
+    "repository_url": "https://github.com/voidmobcom/voidmob-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/740",
+    "processed_at": "2026-02-15 03:06:06 UTC"
+  },
+  "io.github.warpmetrics/mcp": {
+    "name": "io.github.warpmetrics/mcp",
+    "description": "Connect AI assistants to Warpmetrics — query runs, calls, costs, and outcomes.",
+    "version": "0.0.8",
+    "repository_url": "https://github.com/warpmetrics/mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/741",
+    "processed_at": "2026-02-15 03:06:06 UTC"
+  },
+  "io.github.weskerllc/cronicorn-mcp-server": {
+    "name": "io.github.weskerllc/cronicorn-mcp-server",
+    "description": "Manage adaptive cron jobs and HTTP endpoint scheduling via AI assistants.",
+    "version": "1.25.0",
+    "repository_url": "https://github.com/weskerllc/cronicorn",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/742",
+    "processed_at": "2026-02-15 03:06:08 UTC"
+  },
+  "io.github.whistlegraph/aesthetic-computer": {
+    "name": "io.github.whistlegraph/aesthetic-computer",
+    "description": "MCP server for aesthetic.computer - publish JavaScript, KidLisp art, and clock melodies",
+    "version": "1.0.1",
+    "repository_url": "https://github.com/whistlegraph/aesthetic-computer",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/743",
+    "processed_at": "2026-02-15 03:06:09 UTC"
+  },
+  "io.github.zerodustxyz/zerodust": {
+    "name": "io.github.zerodustxyz/zerodust",
+    "description": "Sweep native gas tokens to exactly zero across 25+ EVM chains via AI agents.",
+    "version": "0.1.1",
+    "repository_url": "https://github.com/zerodustxyz/zerodust",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/744",
+    "processed_at": "2026-02-15 03:06:10 UTC"
   }
 }

@@ -10222,5 +10222,1477 @@
     "cached_at": "2026-02-08 03:03:39 UTC",
     "repository_url": "https://github.com/Propbar/mcp",
     "server_name": "uk.co.propbar/research"
+  },
+  "ai.meetsquad/squad:https://github.com/the-basilisk-ai/squad-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "GitHub org 'the-basilisk-ai' does not match 'meetsquad' brand and lacks strong brand ownership signals despite remote being on meetsquad.ai.",
+    "cached_at": "2026-02-15 02:58:19 UTC",
+    "repository_url": "https://github.com/the-basilisk-ai/squad-mcp",
+    "server_name": "ai.meetsquad/squad"
+  },
+  "ai.spritecook/generate:https://github.com/SpriteCook/skills": {
+    "ai_decision": "official",
+    "ai_confidence": 0.97,
+    "ai_reason": "GitHub org 'SpriteCook' matches product/service name and remote endpoint is on spritecook.ai indicating official ownership.",
+    "cached_at": "2026-02-15 02:58:45 UTC",
+    "repository_url": "https://github.com/SpriteCook/skills",
+    "server_name": "ai.spritecook/generate"
+  },
+  "ai.urlcheck/urlcheck-mcp:https://github.com/cybrlab-ai/urlcheck-mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub org cybrlab-ai closely matches remote and website domains (urlcheck.ai, urlcheck.dev) and server/service name, indicating organization ownership.",
+    "cached_at": "2026-02-15 02:58:47 UTC",
+    "repository_url": "https://github.com/cybrlab-ai/urlcheck-mcp",
+    "server_name": "ai.urlcheck/urlcheck-mcp"
+  },
+  "ai.xpoz/social-insights:https://github.com/xpozpublic/xpoz-mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub org 'xpozpublic' matches product/brand 'xpoz' in server name and remotes use xpoz.ai domain.",
+    "cached_at": "2026-02-15 02:58:50 UTC",
+    "repository_url": "https://github.com/xpozpublic/xpoz-mcp",
+    "server_name": "ai.xpoz/social-insights"
+  },
+  "app.flaim/mcp:https://github.com/jdguggs10/flaim": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "The GitHub owner is a personal user (jdguggs10), not an organization, and while endpoints are on flaim.app, there is no evidence Flaim owns ESPN or Yahoo—the main integrated services.",
+    "cached_at": "2026-02-15 02:58:53 UTC",
+    "repository_url": "https://github.com/jdguggs10/flaim",
+    "server_name": "app.flaim/mcp"
+  },
+  "com.agentpmt/agentpmt:https://github.com/Apoth3osis-ai/agentpmt-mcp-public": {
+    "ai_decision": "official",
+    "ai_confidence": 0.9,
+    "ai_reason": "Organization name Apoth3osis-ai operates the repo; remote is on agentpmt.com, matching server name agentpmt—strong alignment between product, org, and remotes.",
+    "cached_at": "2026-02-15 02:58:56 UTC",
+    "repository_url": "https://github.com/Apoth3osis-ai/agentpmt-mcp-public",
+    "server_name": "com.agentpmt/agentpmt"
+  },
+  "com.maximumsats/maximumsats:https://github.com/joelklabo/maximumsats-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.7,
+    "ai_reason": "Repo owner is a personal GitHub user ('joelklabo'), not an organization matching the service/product.",
+    "cached_at": "2026-02-15 02:59:00 UTC",
+    "repository_url": "https://github.com/joelklabo/maximumsats-mcp",
+    "server_name": "com.maximumsats/maximumsats"
+  },
+  "com.microsoft/microsoft-fabric:https://github.com/microsoft/mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 1.0,
+    "ai_reason": "Published by the verified Microsoft GitHub organization with matching Microsoft branding and org-owned package namespaces.",
+    "cached_at": "2026-02-15 02:59:01 UTC",
+    "repository_url": "https://github.com/microsoft/mcp",
+    "server_name": "com.microsoft/microsoft-fabric"
+  },
+  "com.zigpoll/zigpoll-mcp:https://github.com/JasonZigelbaum/zigpoll-mcp-plugin": {
+    "ai_decision": "community",
+    "ai_confidence": 0.4,
+    "ai_reason": "The GitHub repository is owned by a personal user (JasonZigelbaum), not a verified Zigpoll organization.",
+    "cached_at": "2026-02-15 02:59:05 UTC",
+    "repository_url": "https://github.com/JasonZigelbaum/zigpoll-mcp-plugin",
+    "server_name": "com.zigpoll/zigpoll-mcp"
+  },
+  "dev.deadends/deadends-dev:https://github.com/dbwls99706/deadends.dev": {
+    "ai_decision": "community",
+    "ai_confidence": 0.5,
+    "ai_reason": "GitHub owner dbwls99706 is a user, not an organization; insufficient evidence that publisher owns deadends.dev brand.",
+    "cached_at": "2026-02-15 02:59:07 UTC",
+    "repository_url": "https://github.com/dbwls99706/deadends.dev",
+    "server_name": "dev.deadends/deadends-dev"
+  },
+  "dev.jasonpearson/auto-mobile:https://github.com/kaeawc/auto-mobile": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "The GitHub repo is owned by a personal user (kaeawc) and not by an org matching any underlying mobile automation platform.",
+    "cached_at": "2026-02-15 02:59:09 UTC",
+    "repository_url": "https://github.com/kaeawc/auto-mobile",
+    "server_name": "dev.jasonpearson/auto-mobile"
+  },
+  "eu.ansvar/dutch-law-mcp:https://github.com/Ansvar-Systems/Dutch-law-mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 0.92,
+    "ai_reason": "The GitHub Organization (Ansvar-Systems) matches both the server/package namespace (@ansvar/dutch-law-mcp) and product branding in the repo name (Dutch-law-mcp), indicating publication by the product owner.",
+    "cached_at": "2026-02-15 02:59:11 UTC",
+    "repository_url": "https://github.com/Ansvar-Systems/Dutch-law-mcp",
+    "server_name": "eu.ansvar/dutch-law-mcp"
+  },
+  "eu.ansvar/german-law-mcp:https://github.com/Ansvar-Systems/German-law-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "Ansvar-Systems is not the owner/operator of gesetze-im-internet.de; this is a third-party implementation.",
+    "cached_at": "2026-02-15 02:59:12 UTC",
+    "repository_url": "https://github.com/Ansvar-Systems/German-law-mcp",
+    "server_name": "eu.ansvar/german-law-mcp"
+  },
+  "eu.ansvar/slovenian-law-mcp:https://github.com/Ansvar-Systems/Slovenian-law-mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 0.92,
+    "ai_reason": "GitHub org Ansvar-Systems matches name in server and npm scope @ansvar/*, indicating publisher owns the service.",
+    "cached_at": "2026-02-15 02:59:16 UTC",
+    "repository_url": "https://github.com/Ansvar-Systems/Slovenian-law-mcp",
+    "server_name": "eu.ansvar/slovenian-law-mcp"
+  },
+  "eu.ansvar/swedish-law-mcp:https://github.com/Ansvar-Systems/swedish-law-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "Ansvar-Systems is not the publisher or owner of Swedish law; the server aggregates public legal information.",
+    "cached_at": "2026-02-15 02:59:17 UTC",
+    "repository_url": "https://github.com/Ansvar-Systems/swedish-law-mcp",
+    "server_name": "eu.ansvar/swedish-law-mcp"
+  },
+  "io.github.ChesterHsu/flyto-indexer:https://github.com/flytohub/flyto-indexer": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "The repository is under the flytohub organization, matching the 'flyto' brand in the server name and repo, indicating it is published by the product owner.",
+    "cached_at": "2026-02-15 02:59:24 UTC",
+    "repository_url": "https://github.com/flytohub/flyto-indexer",
+    "server_name": "io.github.ChesterHsu/flyto-indexer"
+  },
+  "io.github.CloakedAgent/cloaked:https://github.com/CloakedAgent/cloaked": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub Organization (CloakedAgent), npm scope (@cloakedagent), website, and remotes all align to the Cloaked Agent brand.",
+    "cached_at": "2026-02-15 02:59:26 UTC",
+    "repository_url": "https://github.com/CloakedAgent/cloaked",
+    "server_name": "io.github.CloakedAgent/cloaked"
+  },
+  "io.github.ConanMcN/fragments-mcp:https://github.com/ConanMcN/fragments": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "GitHub org 'ConanMcN' does not match product or package branding 'fragments', and no strong official ownership signals.",
+    "cached_at": "2026-02-15 02:59:28 UTC",
+    "repository_url": "https://github.com/ConanMcN/fragments",
+    "server_name": "io.github.ConanMcN/fragments-mcp"
+  },
+  "io.github.CrashBytes/pusher-mcp-server:https://github.com/CrashBytes/pusher-mcp-server": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "The publisher is CrashBytes, not Pusher or its parent org, so this is a third-party community implementation.",
+    "cached_at": "2026-02-15 02:59:30 UTC",
+    "repository_url": "https://github.com/CrashBytes/pusher-mcp-server",
+    "server_name": "io.github.CrashBytes/pusher-mcp-server"
+  },
+  "io.github.Dave-London/build:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "Repo is owned by a personal user (Dave-London), not an org matching a recognized build tool brand.",
+    "cached_at": "2026-02-15 02:59:31 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/build"
+  },
+  "io.github.Dave-London/cargo:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "The repo is owned by a user (Dave-London), not the Rust/Cargo official org, so it's a third-party implementation.",
+    "cached_at": "2026-02-15 02:59:34 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/cargo"
+  },
+  "io.github.Dave-London/docker:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "The GitHub org is 'Dave-London' (a user, not Docker Inc.), targeting Docker, with no official brand signals.",
+    "cached_at": "2026-02-15 02:59:35 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/docker"
+  },
+  "io.github.Dave-London/http:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 0.97,
+    "ai_reason": "The GitHub owner 'Dave-London' is a personal user, which is not the brand behind HTTP or curl, and there is no evidence of a relevant organization or official package namespace.",
+    "cached_at": "2026-02-15 02:59:36 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/http"
+  },
+  "io.github.Dave-London/lint:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "The GitHub owner 'Dave-London' is a personal user, not an organization, and there is no evidence of official product/service branding.",
+    "cached_at": "2026-02-15 02:59:37 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/lint"
+  },
+  "io.github.Dave-London/make:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "Repo is owned by a user (Dave-London), and not by an organization related to Make or Just, indicating a third-party implementation.",
+    "cached_at": "2026-02-15 02:59:38 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/make"
+  },
+  "io.github.Dave-London/npm:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 0.98,
+    "ai_reason": "GitHub org/user 'Dave-London' does not match 'npm' brand; no official npm org or branding is present.",
+    "cached_at": "2026-02-15 02:59:40 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/npm"
+  },
+  "io.github.Dave-London/pare-build:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "Repository is owned by a user (Dave-London), not an organization, and there is no strong evidence connecting the repo to official brand ownership.",
+    "cached_at": "2026-02-15 02:59:41 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/pare-build"
+  },
+  "io.github.Dave-London/pare-cargo:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "The publisher (Dave-London) is a personal user, not an organization related to Cargo or Rust, and no strong evidence of official affiliation is present.",
+    "cached_at": "2026-02-15 02:59:43 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/pare-cargo"
+  },
+  "io.github.Dave-London/pare-docker:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "Repo owner is a user (Dave-London), not the Docker org; name suggests third-party implementation for Docker.",
+    "cached_at": "2026-02-15 02:59:45 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/pare-docker"
+  },
+  "io.github.Dave-London/pare-git:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "The repo is owned by 'Dave-London' (a user, not organization), integrates with 'git' (a generic service), and there is no evidence of official Git ownership.",
+    "cached_at": "2026-02-15 02:59:46 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/pare-git"
+  },
+  "io.github.Dave-London/pare-github:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 0.98,
+    "ai_reason": "The repo belongs to Dave-London (a user, not GitHub), and is not by the GitHub organization—the publisher is not the brand owner.",
+    "cached_at": "2026-02-15 02:59:47 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/pare-github"
+  },
+  "io.github.Dave-London/pare-go:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "The repo is owned by a personal user (Dave-London), not an organization matching the product/service, and there is no strong brand evidence.",
+    "cached_at": "2026-02-15 02:59:49 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/pare-go"
+  },
+  "io.github.Dave-London/pare-http:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 0.75,
+    "ai_reason": "The repository is owned by an individual user (Dave-London), not a verified organization matching 'pare' or a well-known product brand.",
+    "cached_at": "2026-02-15 02:59:50 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/pare-http"
+  },
+  "io.github.Dave-London/pare-lint:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "GitHub owner is a user (Dave-London), not an org matching ESLint/Prettier/Biome/Oxlint, so not published by any product/service owner.",
+    "cached_at": "2026-02-15 02:59:51 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/pare-lint"
+  },
+  "io.github.Dave-London/pare-make:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 0.75,
+    "ai_reason": "The repository is owned by an individual user (Dave-London), not an organization matching 'pare' or 'make', and there is no verified organization or brand evidence.",
+    "cached_at": "2026-02-15 02:59:52 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/pare-make"
+  },
+  "io.github.Dave-London/pare-npm:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "The GitHub org 'Dave-London' does not match the npm brand; there's no evidence this is published by the npm maintainers.",
+    "cached_at": "2026-02-15 02:59:54 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/pare-npm"
+  },
+  "io.github.Dave-London/pare-python:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "The publisher is an individual user (Dave-London), not a verified organization representing a product/service called Pare.",
+    "cached_at": "2026-02-15 02:59:55 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/pare-python"
+  },
+  "io.github.Dave-London/pare-search:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "The GitHub repo is owned by a personal user (Dave-London), not an organization, and there is no clear product/brand evidence matching 'pare-search' to an official service.",
+    "cached_at": "2026-02-15 02:59:56 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/pare-search"
+  },
+  "io.github.Dave-London/pare-test:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub user 'Dave-London' is not an org, server_name contains 'test', and no evidence links owner to a major product or service.",
+    "cached_at": "2026-02-15 02:59:58 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/pare-test"
+  },
+  "io.github.Dave-London/python:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "Owned by personal user 'Dave-London' and not by the Python Software Foundation, so not official for Python.",
+    "cached_at": "2026-02-15 02:59:59 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/python"
+  },
+  "io.github.Dave-London/test:https://github.com/Dave-London/Pare": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "Repo is owned by a user (Dave-London), not a verified org, and 'test' is a generic term with no evidence of brand ownership.",
+    "cached_at": "2026-02-15 03:00:00 UTC",
+    "repository_url": "https://github.com/Dave-London/Pare",
+    "server_name": "io.github.Dave-London/test"
+  },
+  "io.github.DevsHero/shadow-crawl:https://github.com/DevsHero/ShadowCrawl": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "DevsHero is not an identifiable brand/service matching ShadowCrawl, and there is no evidence ShadowCrawl is a major product owned by this org.",
+    "cached_at": "2026-02-15 03:00:02 UTC",
+    "repository_url": "https://github.com/DevsHero/ShadowCrawl",
+    "server_name": "io.github.DevsHero/shadow-crawl"
+  },
+  "io.github.ExpertVagabond/guardrails:https://github.com/ExpertVagabond/guardrails-mcp-server.git": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "The GitHub org 'ExpertVagabond' does not match a well-known product or service name, and there is no strong evidence of brand ownership.",
+    "cached_at": "2026-02-15 03:00:06 UTC",
+    "repository_url": "https://github.com/ExpertVagabond/guardrails-mcp-server.git",
+    "server_name": "io.github.ExpertVagabond/guardrails"
+  },
+  "io.github.ExpertVagabond/ibmcloud:https://github.com/ExpertVagabond/ibmcloud-mcp-server.git": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "Published by ExpertVagabond (not IBM), so this is a third-party implementation for IBM Cloud.",
+    "cached_at": "2026-02-15 03:00:07 UTC",
+    "repository_url": "https://github.com/ExpertVagabond/ibmcloud-mcp-server.git",
+    "server_name": "io.github.ExpertVagabond/ibmcloud"
+  },
+  "io.github.ExpertVagabond/ibmz:https://github.com/ExpertVagabond/ibmz-mcp-server.git": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "The publisher is 'ExpertVagabond', not IBM, and there is no verified connection to IBM despite this being for IBM Z.",
+    "cached_at": "2026-02-15 03:00:08 UTC",
+    "repository_url": "https://github.com/ExpertVagabond/ibmz-mcp-server.git",
+    "server_name": "io.github.ExpertVagabond/ibmz"
+  },
+  "io.github.ExpertVagabond/mega:https://github.com/ExpertVagabond/mega-mcp-server.git": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub org 'ExpertVagabond' does not match MEGA brand and there is no evidence of official MEGA ownership.",
+    "cached_at": "2026-02-15 03:00:09 UTC",
+    "repository_url": "https://github.com/ExpertVagabond/mega-mcp-server.git",
+    "server_name": "io.github.ExpertVagabond/mega"
+  },
+  "io.github.ExpertVagabond/oracle-cloud:https://github.com/ExpertVagabond/oracle-cloud-mcp.git": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "The publisher is ExpertVagabond, not Oracle, for an Oracle Cloud server—no signals of official brand ownership.",
+    "cached_at": "2026-02-15 03:00:11 UTC",
+    "repository_url": "https://github.com/ExpertVagabond/oracle-cloud-mcp.git",
+    "server_name": "io.github.ExpertVagabond/oracle-cloud"
+  },
+  "io.github.ExpertVagabond/ordinals:https://github.com/ExpertVagabond/ordinals-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub org 'ExpertVagabond' does not match 'Ordinals' brand and uses third-party APIs; no evidence this is published by the official Ordinals team.",
+    "cached_at": "2026-02-15 03:00:12 UTC",
+    "repository_url": "https://github.com/ExpertVagabond/ordinals-mcp",
+    "server_name": "io.github.ExpertVagabond/ordinals"
+  },
+  "io.github.ExpertVagabond/raycast:https://github.com/ExpertVagabond/raycast-mcp-server.git": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "The publisher is ExpertVagabond, which does not match the Raycast brand; no evidence this is published by the official Raycast organization.",
+    "cached_at": "2026-02-15 03:00:14 UTC",
+    "repository_url": "https://github.com/ExpertVagabond/raycast-mcp-server.git",
+    "server_name": "io.github.ExpertVagabond/raycast"
+  },
+  "io.github.ExpertVagabond/solana:https://github.com/ExpertVagabond/solana-mcp-server.git": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "ExpertVagabond is not the Solana organization, so this is a third-party integration for the Solana service.",
+    "cached_at": "2026-02-15 03:00:15 UTC",
+    "repository_url": "https://github.com/ExpertVagabond/solana-mcp-server.git",
+    "server_name": "io.github.ExpertVagabond/solana"
+  },
+  "io.github.ExpertVagabond/universal-blockchain:https://github.com/ExpertVagabond/universal-blockchain-mcp.git": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "ExpertVagabond is not the official ZetaChain organization; repo owner is a user, not a brand.",
+    "cached_at": "2026-02-15 03:00:17 UTC",
+    "repository_url": "https://github.com/ExpertVagabond/universal-blockchain-mcp.git",
+    "server_name": "io.github.ExpertVagabond/universal-blockchain"
+  },
+  "io.github.ExpertVagabond/volcengine:https://github.com/ExpertVagabond/volcengine-mcp.git": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "GitHub org 'ExpertVagabond' does not match ByteDance/Volcano Engine branding; no strong evidence of official ownership.",
+    "cached_at": "2026-02-15 03:00:18 UTC",
+    "repository_url": "https://github.com/ExpertVagabond/volcengine-mcp.git",
+    "server_name": "io.github.ExpertVagabond/volcengine"
+  },
+  "io.github.ExpertVagabond/watsonx:https://github.com/ExpertVagabond/watsonx-mcp-server.git": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "The publisher (ExpertVagabond) is not IBM, so this IBM watsonx.ai integration is community-maintained.",
+    "cached_at": "2026-02-15 03:00:19 UTC",
+    "repository_url": "https://github.com/ExpertVagabond/watsonx-mcp-server.git",
+    "server_name": "io.github.ExpertVagabond/watsonx"
+  },
+  "io.github.Finanzgoblin/spectra-mcp-server:https://github.com/Finanzgoblin/spectra-mcp-server.git": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "Finanzgoblin is not an identifiable official organization for 'Spectra Finance'; no clear evidence of brand ownership.",
+    "cached_at": "2026-02-15 03:00:21 UTC",
+    "repository_url": "https://github.com/Finanzgoblin/spectra-mcp-server.git",
+    "server_name": "io.github.Finanzgoblin/spectra-mcp-server"
+  },
+  "io.github.HZYAI/ragscore:https://github.com/HZYAI/RagScore": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "The repo is published under the HZYAI org for a generic framework (RAGScore) and not by any specific product/service owner.",
+    "cached_at": "2026-02-15 03:00:23 UTC",
+    "repository_url": "https://github.com/HZYAI/RagScore",
+    "server_name": "io.github.HZYAI/ragscore"
+  },
+  "io.github.IBazylchuk/paparats-mcp:https://github.com/IBazylchuk/paparats-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.7,
+    "ai_reason": "Repository is owned by a personal user (IBazylchuk) rather than an organization, with no evidence that this is the official publisher of Paparats.",
+    "cached_at": "2026-02-15 03:00:25 UTC",
+    "repository_url": "https://github.com/IBazylchuk/paparats-mcp",
+    "server_name": "io.github.IBazylchuk/paparats-mcp"
+  },
+  "io.github.JKHeadley/moltbridge:https://github.com/SageMindAI/moltbridge": {
+    "ai_decision": "community",
+    "ai_confidence": 0.6,
+    "ai_reason": "GitHub org SageMindAI does not match the product or brand name 'moltbridge' and there is no strong brand signal tying the org to the product.",
+    "cached_at": "2026-02-15 03:00:27 UTC",
+    "repository_url": "https://github.com/SageMindAI/moltbridge",
+    "server_name": "io.github.JKHeadley/moltbridge"
+  },
+  "io.github.Jacob-J-Thomas/user-prompt:https://github.com/Jacob-J-Thomas/user-context-retrieval-mcp-server": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "The GitHub owner Jacob-J-Thomas is a user, not an organization, and there is no evidence of ownership of an underlying product or service.",
+    "cached_at": "2026-02-15 03:00:29 UTC",
+    "repository_url": "https://github.com/Jacob-J-Thomas/user-context-retrieval-mcp-server",
+    "server_name": "io.github.Jacob-J-Thomas/user-prompt"
+  },
+  "io.github.JakeLiuMe/webpeel:https://github.com/JakeLiuMe/webpeel": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "Repository is published by a personal user (JakeLiuMe), not an organization matching the product/brand 'WebPeel'.",
+    "cached_at": "2026-02-15 03:00:30 UTC",
+    "repository_url": "https://github.com/JakeLiuMe/webpeel",
+    "server_name": "io.github.JakeLiuMe/webpeel"
+  },
+  "io.github.Jhackman2019/codebase-context-mcp:https://github.com/Jhackman2019/codebase-context-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "The publisher (Jhackman2019) is a GitHub user, not an organization, and there is no evidence this is from the owner of a product or service called 'codebase-context'.",
+    "cached_at": "2026-02-15 03:00:32 UTC",
+    "repository_url": "https://github.com/Jhackman2019/codebase-context-mcp",
+    "server_name": "io.github.Jhackman2019/codebase-context-mcp"
+  },
+  "io.github.JonesRobM/physbound:https://github.com/JonesRobM/physbound": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "Repo is owned by a personal user (JonesRobM), not an organization, so cannot be official.",
+    "cached_at": "2026-02-15 03:00:34 UTC",
+    "repository_url": "https://github.com/JonesRobM/physbound",
+    "server_name": "io.github.JonesRobM/physbound"
+  },
+  "io.github.Justice219/roblox-studio-mcp:https://github.com/Justice219/roblox-studio-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "Owner Justice219 is not Roblox org; no evidence repo or package is by the official Roblox organization.",
+    "cached_at": "2026-02-15 03:00:35 UTC",
+    "repository_url": "https://github.com/Justice219/roblox-studio-mcp",
+    "server_name": "io.github.Justice219/roblox-studio-mcp"
+  },
+  "io.github.KairosMobius/memory-nexus-mcp:https://github.com/KairosMobius/memory-nexus-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "GitHub org 'KairosMobius' does not match the product/brand 'Memory Nexus', and package namespace is not clearly owned by the brand owner.",
+    "cached_at": "2026-02-15 03:00:38 UTC",
+    "repository_url": "https://github.com/KairosMobius/memory-nexus-mcp",
+    "server_name": "io.github.KairosMobius/memory-nexus-mcp"
+  },
+  "io.github.KairosMobius/nexus-memory-mcp:https://github.com/KairosMobius/nexus-memory-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "KairosMobius is a user account, not an organization, and there is no evidence Nexus Memory is an official brand or product.",
+    "cached_at": "2026-02-15 03:00:39 UTC",
+    "repository_url": "https://github.com/KairosMobius/nexus-memory-mcp",
+    "server_name": "io.github.KairosMobius/nexus-memory-mcp"
+  },
+  "io.github.LGDiMaggio/predictive-maintenance-mcp:https://github.com/LGDiMaggio/predictive-maintenance-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "Repository is owned by an individual user (LGDiMaggio), not a company/brand, with no evidence of official product/service ownership.",
+    "cached_at": "2026-02-15 03:00:43 UTC",
+    "repository_url": "https://github.com/LGDiMaggio/predictive-maintenance-mcp",
+    "server_name": "io.github.LGDiMaggio/predictive-maintenance-mcp"
+  },
+  "io.github.LarsCowe/queue-pilot:https://github.com/LarsCowe/queue-pilot": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "Published by a personal user (LarsCowe) for RabbitMQ/Kafka, not the official orgs.",
+    "cached_at": "2026-02-15 03:00:44 UTC",
+    "repository_url": "https://github.com/LarsCowe/queue-pilot",
+    "server_name": "io.github.LarsCowe/queue-pilot"
+  },
+  "io.github.LordMendes/lgpd-mcp:https://github.com/LordMendes/lgpd-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "Repository is owned by a personal user (LordMendes) and not by an organization that owns or operates a branded LGPD platform.",
+    "cached_at": "2026-02-15 03:00:46 UTC",
+    "repository_url": "https://github.com/LordMendes/lgpd-mcp",
+    "server_name": "io.github.LordMendes/lgpd-mcp"
+  },
+  "io.github.MP-Tool/komodo-mcp-server:https://github.com/MP-Tool/komodo-mcp-server": {
+    "ai_decision": "community",
+    "ai_confidence": 0.6,
+    "ai_reason": "MP-Tool does not appear to be the official Komodo brand/org; Komodo Core is referenced but no evidence links the repo org to the product owner.",
+    "cached_at": "2026-02-15 03:00:48 UTC",
+    "repository_url": "https://github.com/MP-Tool/komodo-mcp-server",
+    "server_name": "io.github.MP-Tool/komodo-mcp-server"
+  },
+  "io.github.OrchestraPrime/orchestraprime:https://github.com/OrchestraPrime/mcp-server": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "The GitHub organization (OrchestraPrime) and npm scope (@orchestraprime) precisely match the server name and package, indicating direct publication by the brand owner.",
+    "cached_at": "2026-02-15 03:00:54 UTC",
+    "repository_url": "https://github.com/OrchestraPrime/mcp-server",
+    "server_name": "io.github.OrchestraPrime/orchestraprime"
+  },
+  "io.github.Parsons-ai/money:https://github.com/Parsons-ai/money-mcp-server": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "Parsons-ai is not Plaid; while it uses its own domain and org, it integrates with Plaid and is not published by Plaid's official organization.",
+    "cached_at": "2026-02-15 03:00:56 UTC",
+    "repository_url": "https://github.com/Parsons-ai/money-mcp-server",
+    "server_name": "io.github.Parsons-ai/money"
+  },
+  "io.github.Pollamin/opendock:https://github.com/Pollamin/opendock-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.7,
+    "ai_reason": "Pollamin does not appear to be the owner of the Opendock product/service and lacks evidence of brand ownership.",
+    "cached_at": "2026-02-15 03:00:58 UTC",
+    "repository_url": "https://github.com/Pollamin/opendock-mcp",
+    "server_name": "io.github.Pollamin/opendock"
+  },
+  "io.github.SamuelMoraesF/mcp-banco-inter:https://github.com/SamuelMoraesF/mcp-banco-inter": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "Repository is owned by a personal user (SamuelMoraesF), not by Banco Inter organization.",
+    "cached_at": "2026-02-15 03:01:03 UTC",
+    "repository_url": "https://github.com/SamuelMoraesF/mcp-banco-inter",
+    "server_name": "io.github.SamuelMoraesF/mcp-banco-inter"
+  },
+  "io.github.SamuelMoraesF/mcp-nfse-nacional:https://github.com/SamuelMoraesF/mcp-nfse-nacional": {
+    "ai_decision": "community",
+    "ai_confidence": 0.98,
+    "ai_reason": "Published by user SamuelMoraesF (not org), not affiliated with nfse.gov.br; no strong official signals.",
+    "cached_at": "2026-02-15 03:01:04 UTC",
+    "repository_url": "https://github.com/SamuelMoraesF/mcp-nfse-nacional",
+    "server_name": "io.github.SamuelMoraesF/mcp-nfse-nacional"
+  },
+  "io.github.Shrike-Security/shrike-mcp:https://github.com/Shrike-Security/shrike-mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub organization (Shrike-Security) matches the product/brand (Shrike Security) and owns the repository (not forked or archived).",
+    "cached_at": "2026-02-15 03:01:06 UTC",
+    "repository_url": "https://github.com/Shrike-Security/shrike-mcp",
+    "server_name": "io.github.Shrike-Security/shrike-mcp"
+  },
+  "io.github.SoundBlaster/mcpbridge-wrapper:https://github.com/SoundBlaster/XcodeMCPWrapper": {
+    "ai_decision": "community",
+    "ai_confidence": 0.98,
+    "ai_reason": "The publisher (SoundBlaster) is not Apple; the repo wraps Apple's Xcode bridge but is not from the Xcode/Apple org.",
+    "cached_at": "2026-02-15 03:01:09 UTC",
+    "repository_url": "https://github.com/SoundBlaster/XcodeMCPWrapper",
+    "server_name": "io.github.SoundBlaster/mcpbridge-wrapper"
+  },
+  "io.github.SoundBlaster/xcode-mcpbridge-wrapper:https://github.com/SoundBlaster/XcodeMCPWrapper": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "Publisher is a user 'SoundBlaster' not Apple; repo adapts Xcode (Apple's product) and is not from Apple's org.",
+    "cached_at": "2026-02-15 03:01:10 UTC",
+    "repository_url": "https://github.com/SoundBlaster/XcodeMCPWrapper",
+    "server_name": "io.github.SoundBlaster/xcode-mcpbridge-wrapper"
+  },
+  "io.github.SurgeX-Labs/awx-mcp-server:https://github.com/SurgeX-Labs/awx-mcp-server": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "Publisher SurgeX-Labs does not match AWX/Ansible brand and is not the official product owner.",
+    "cached_at": "2026-02-15 03:01:12 UTC",
+    "repository_url": "https://github.com/SurgeX-Labs/awx-mcp-server",
+    "server_name": "io.github.SurgeX-Labs/awx-mcp-server"
+  },
+  "io.github.TheoEwzZer/winsight:https://github.com/TheoEwzZer/WinSight-MCP": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "Repository is owned by a user (TheoEwzZer), not a verified org matching 'Windows', so this is a community server for Windows screen capture.",
+    "cached_at": "2026-02-15 03:01:15 UTC",
+    "repository_url": "https://github.com/TheoEwzZer/WinSight-MCP",
+    "server_name": "io.github.TheoEwzZer/winsight"
+  },
+  "io.github.TruthStack1/truthstack-mcp:https://github.com/TruthStack1/truthstack-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "TruthStack1 is not a known organization owning an FDA or drug interaction product; evidence points to a third-party implementation.",
+    "cached_at": "2026-02-15 03:01:16 UTC",
+    "repository_url": "https://github.com/TruthStack1/truthstack-mcp",
+    "server_name": "io.github.TruthStack1/truthstack-mcp"
+  },
+  "io.github.VictoriaMetrics/mcp-vmanomaly:https://github.com/VictoriaMetrics/mcp-vmanomaly": {
+    "ai_decision": "official",
+    "ai_confidence": 0.98,
+    "ai_reason": "The server is published by the VictoriaMetrics GitHub organization, matching the product name and repository, and uses the org's namespace for the OCI package.",
+    "cached_at": "2026-02-15 03:01:19 UTC",
+    "repository_url": "https://github.com/VictoriaMetrics/mcp-vmanomaly",
+    "server_name": "io.github.VictoriaMetrics/mcp-vmanomaly"
+  },
+  "io.github.WattCoin-Org/wattcoin-mcp-server:https://github.com/WattCoin-Org/wattcoin": {
+    "ai_decision": "official",
+    "ai_confidence": 0.94,
+    "ai_reason": "GitHub org 'WattCoin-Org' matches server/repo 'wattcoin', remotes on 'wattcoin.workers.dev', and no negative signals.",
+    "cached_at": "2026-02-15 03:01:21 UTC",
+    "repository_url": "https://github.com/WattCoin-Org/wattcoin",
+    "server_name": "io.github.WattCoin-Org/wattcoin-mcp-server"
+  },
+  "io.github.XCP/mcp-server:https://github.com/XCP/mcp-server": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "GitHub org 'XCP' and npm publisher '@21e14' do not match 'Counterparty' brand, and no strong signals of official ownership.",
+    "cached_at": "2026-02-15 03:01:24 UTC",
+    "repository_url": "https://github.com/XCP/mcp-server",
+    "server_name": "io.github.XCP/mcp-server"
+  },
+  "io.github.achsaf6/mcp-quickstart:https://github.com/achsaf6/mcp-quickstart": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "Repo owner (achsaf6) is a personal user, not an organization or brand; no evidence of official product/service integration.",
+    "cached_at": "2026-02-15 03:01:28 UTC",
+    "repository_url": "https://github.com/achsaf6/mcp-quickstart",
+    "server_name": "io.github.achsaf6/mcp-quickstart"
+  },
+  "io.github.aezizhu/model-id-cheatsheet:https://github.com/aezizhu/universal-model-registry": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "Repo is owned by a user (aezizhu), not an organization/brand, with no signals of brand ownership of any AI provider.",
+    "cached_at": "2026-02-15 03:01:30 UTC",
+    "repository_url": "https://github.com/aezizhu/universal-model-registry",
+    "server_name": "io.github.aezizhu/model-id-cheatsheet"
+  },
+  "io.github.agentc22/x402engine-mcp:https://github.com/agentc22/x402engine-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "The GitHub org 'agentc22' does not clearly match the x402 brand, and there is no evidence this is published by the official x402 service organization.",
+    "cached_at": "2026-02-15 03:01:32 UTC",
+    "repository_url": "https://github.com/agentc22/x402engine-mcp",
+    "server_name": "io.github.agentc22/x402engine-mcp"
+  },
+  "io.github.ahmadsl/chartpane:https://github.com/ahmadsl/chartpane": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "GitHub owner 'ahmadsl' is a personal user, not an organization matching ChartPane or Chart.js, and Chart.js is owned by another entity.",
+    "cached_at": "2026-02-15 03:01:34 UTC",
+    "repository_url": "https://github.com/ahmadsl/chartpane",
+    "server_name": "io.github.ahmadsl/chartpane"
+  },
+  "io.github.ai-dashboad/flutter-skill:https://github.com/ai-dashboad/flutter-skill": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "The org ai-dashboad does not match Flutter's official brand, and there is no evidence this is published by Google (the owner of Flutter).",
+    "cached_at": "2026-02-15 03:01:36 UTC",
+    "repository_url": "https://github.com/ai-dashboad/flutter-skill",
+    "server_name": "io.github.ai-dashboad/flutter-skill"
+  },
+  "io.github.aibtcdev/mcp-server:https://github.com/aibtcdev/aibtc-mcp-server": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "Org 'aibtcdev' does not match an official Bitcoin brand or major BTC product and 'aibtc' indicates a third party Bitcoin-related project.",
+    "cached_at": "2026-02-15 03:01:38 UTC",
+    "repository_url": "https://github.com/aibtcdev/aibtc-mcp-server",
+    "server_name": "io.github.aibtcdev/mcp-server"
+  },
+  "io.github.aidancorrell/spark-sql-mcp-server:https://github.com/aidancorrell/spark-sql-mcp-server": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "Repository is owned by a personal user (aidancorrell), not Apache or Databricks; strong evidence this is a third-party Spark SQL integration.",
+    "cached_at": "2026-02-15 03:01:40 UTC",
+    "repository_url": "https://github.com/aidancorrell/spark-sql-mcp-server",
+    "server_name": "io.github.aidancorrell/spark-sql-mcp-server"
+  },
+  "io.github.aiindigo925/btcfi:https://github.com/aiindigo925/btcfi-api": {
+    "ai_decision": "community",
+    "ai_confidence": 0.75,
+    "ai_reason": "GitHub org 'aiindigo925' does not match 'Bitcoin' brand; no signals of ownership from Bitcoin or official Bitcoin devs.",
+    "cached_at": "2026-02-15 03:01:43 UTC",
+    "repository_url": "https://github.com/aiindigo925/btcfi-api",
+    "server_name": "io.github.aiindigo925/btcfi"
+  },
+  "io.github.ajtgjmdjp/edinet-mcp:https://github.com/ajtgjmdjp/edinet-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub org ajtgjmdjp does not match the official EDINET or its operator; repo is user-owned and not affiliated with Japanese regulators.",
+    "cached_at": "2026-02-15 03:01:46 UTC",
+    "repository_url": "https://github.com/ajtgjmdjp/edinet-mcp",
+    "server_name": "io.github.ajtgjmdjp/edinet-mcp"
+  },
+  "io.github.alexboissAV/artefact-revenue-intelligence:https://github.com/alexboissAV/artefact-mcp-server": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "The GitHub owner 'alexboissAV' is a personal account, not HubSpot, and there is no brand ownership by HubSpot for this integration.",
+    "cached_at": "2026-02-15 03:01:47 UTC",
+    "repository_url": "https://github.com/alexboissAV/artefact-mcp-server",
+    "server_name": "io.github.alexboissAV/artefact-revenue-intelligence"
+  },
+  "io.github.amaterous/picoli-mcp:https://github.com/amaterous/picoli-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "The GitHub org 'amaterous' does not match the product name 'picoli' and there is no evidence the publisher is the owner/operator of picoli.site.",
+    "cached_at": "2026-02-15 03:01:49 UTC",
+    "repository_url": "https://github.com/amaterous/picoli-mcp",
+    "server_name": "io.github.amaterous/picoli-mcp"
+  },
+  "io.github.ariffazil/aaa-mcp:https://github.com/ariffazil/arifOS": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "Repository is owned by a personal GitHub user ('ariffazil'), not an organization matching a known product/brand.",
+    "cached_at": "2026-02-15 03:01:53 UTC",
+    "repository_url": "https://github.com/ariffazil/arifOS",
+    "server_name": "io.github.ariffazil/aaa-mcp"
+  },
+  "io.github.aringad/google-workspace-mcp:https://github.com/aringad/google-workspace-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "Published by user aringad, not Google; for a generic service (Google Workspace), only Google would be official.",
+    "cached_at": "2026-02-15 03:01:55 UTC",
+    "repository_url": "https://github.com/aringad/google-workspace-mcp",
+    "server_name": "io.github.aringad/google-workspace-mcp"
+  },
+  "io.github.aryanduntley/aifp:https://github.com/aryanduntley/AIFP": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub owner is a personal user (aryanduntley), not an organization matching a recognizable product or brand.",
+    "cached_at": "2026-02-15 03:01:56 UTC",
+    "repository_url": "https://github.com/aryanduntley/AIFP",
+    "server_name": "io.github.aryanduntley/aifp"
+  },
+  "io.github.bamchi/scrapi:https://github.com/bamchi/scrapi-mcp-server": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "The GitHub org 'bamchi' does not match the product/brand 'scrapi' or 'scrapi.ai', and there is no clear brand linkage; package and remotes use 'scrapi.ai' but not published by that org.",
+    "cached_at": "2026-02-15 03:02:03 UTC",
+    "repository_url": "https://github.com/bamchi/scrapi-mcp-server",
+    "server_name": "io.github.bamchi/scrapi"
+  },
+  "io.github.bitrise-io/bitrise-mcp:https://github.com/bitrise-io/bitrise-mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 1.0,
+    "ai_reason": "GitHub org 'bitrise-io' matches Bitrise product; verified brand, remotes use official domain.",
+    "cached_at": "2026-02-15 03:02:05 UTC",
+    "repository_url": "https://github.com/bitrise-io/bitrise-mcp",
+    "server_name": "io.github.bitrise-io/bitrise-mcp"
+  },
+  "io.github.btouchard/herald:https://github.com/btouchard/herald": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "Repo is under a personal GitHub user 'btouchard' and not an organization linked to Claude; no official evidence.",
+    "cached_at": "2026-02-15 03:02:07 UTC",
+    "repository_url": "https://github.com/btouchard/herald",
+    "server_name": "io.github.btouchard/herald"
+  },
+  "io.github.buildingapplications/mcp:https://github.com/buildingapplications/mcp.git": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "The GitHub org (buildingapplications), repo (mcp), and remote domain (bilt.me) all refer to Bilt, matching the product, with the org clearly controlling the official endpoint.",
+    "cached_at": "2026-02-15 03:02:09 UTC",
+    "repository_url": "https://github.com/buildingapplications/mcp.git",
+    "server_name": "io.github.buildingapplications/mcp"
+  },
+  "io.github.clawd800/pumpclaw:https://github.com/clawd800/pumpclaw": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub user clawd800 is not the Base brand owner, so the project is community despite integrating with Base.",
+    "cached_at": "2026-02-15 03:02:12 UTC",
+    "repository_url": "https://github.com/clawd800/pumpclaw",
+    "server_name": "io.github.clawd800/pumpclaw"
+  },
+  "io.github.clssck/dataiku-mcp:https://github.com/clssck/Dataiku_MCP": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "The GitHub org 'clssck' does not match Dataiku's brand, and there is no evidence it is published by Dataiku; thus, this is a third-party implementation.",
+    "cached_at": "2026-02-15 03:02:14 UTC",
+    "repository_url": "https://github.com/clssck/Dataiku_MCP",
+    "server_name": "io.github.clssck/dataiku-mcp"
+  },
+  "io.github.codyard/winbridgeagent:https://github.com/codyard/WinBridgeAgent": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "The GitHub org 'codyard' does not match any well-known Windows or Microsoft branding; this is a third-party implementation.",
+    "cached_at": "2026-02-15 03:02:15 UTC",
+    "repository_url": "https://github.com/codyard/WinBridgeAgent",
+    "server_name": "io.github.codyard/winbridgeagent"
+  },
+  "io.github.dbwls99706/deadends-dev:https://github.com/dbwls99706/deadend.dev": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "GitHub user account (dbwls99706) owns the repo—not an organization matching the product/service.",
+    "cached_at": "2026-02-15 03:02:20 UTC",
+    "repository_url": "https://github.com/dbwls99706/deadend.dev",
+    "server_name": "io.github.dbwls99706/deadends-dev"
+  },
+  "io.github.dequelabs/axe-mcp-server:https://github.com/dequelabs/axe-mcp-server-public": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub org 'dequelabs' matches the Axe DevTools product, package is under 'dequesystems' Docker org, and repo is not a fork or archived.",
+    "cached_at": "2026-02-15 03:02:22 UTC",
+    "repository_url": "https://github.com/dequelabs/axe-mcp-server-public",
+    "server_name": "io.github.dequelabs/axe-mcp-server"
+  },
+  "io.github.detailobsessed/codereviewbuddy:https://github.com/detailobsessed/codereviewbuddy": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "The GitHub org 'detailobsessed' does not own GitHub and is not a recognized brand for code review tools; thus it is a community server for interacting with GitHub PRs.",
+    "cached_at": "2026-02-15 03:02:23 UTC",
+    "repository_url": "https://github.com/detailobsessed/codereviewbuddy",
+    "server_name": "io.github.detailobsessed/codereviewbuddy"
+  },
+  "io.github.eaisdevelopment/mcp-multi-edit:https://github.com/eaisdevelopment/mcp-multi-edit": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "Essential AI Solutions is not an owner/operator of a major product/service called multi-edit; org and package suggest third-party tool rather than integration with a branded platform.",
+    "cached_at": "2026-02-15 03:02:30 UTC",
+    "repository_url": "https://github.com/eaisdevelopment/mcp-multi-edit",
+    "server_name": "io.github.eaisdevelopment/mcp-multi-edit"
+  },
+  "io.github.egoughnour/curate-ipsum:https://github.com/egoughnour/curate-ipsum": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "The repository is owned by a personal user (egoughnour) rather than an organization matching the product/service, indicating a community implementation.",
+    "cached_at": "2026-02-15 03:02:32 UTC",
+    "repository_url": "https://github.com/egoughnour/curate-ipsum",
+    "server_name": "io.github.egoughnour/curate-ipsum"
+  },
+  "io.github.eidetic-works/nucleus:https://github.com/eidetic-works/nucleus-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.6,
+    "ai_reason": "Org name eidetic-works does not directly match a known product/brand nucleus; no evidence nucleus is a product owned by eidetic-works.",
+    "cached_at": "2026-02-15 03:02:33 UTC",
+    "repository_url": "https://github.com/eidetic-works/nucleus-mcp",
+    "server_name": "io.github.eidetic-works/nucleus"
+  },
+  "io.github.es617/ble-mcp-server:https://github.com/es617/ble-mcp-server.git": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "The GitHub org 'es617' does not appear to be an official organization for BLE hardware or Bluetooth; evidence suggests it is an individual/third-party.",
+    "cached_at": "2026-02-15 03:02:36 UTC",
+    "repository_url": "https://github.com/es617/ble-mcp-server.git",
+    "server_name": "io.github.es617/ble-mcp-server"
+  },
+  "io.github.fastslack/e2e-runner:https://github.com/fastslack/mtw-e2e-runner": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "The GitHub org (fastslack) does not match the underlying product/service (Chrome) and package scope (@matware) differs; no evidence of brand ownership.",
+    "cached_at": "2026-02-15 03:02:39 UTC",
+    "repository_url": "https://github.com/fastslack/mtw-e2e-runner",
+    "server_name": "io.github.fastslack/e2e-runner"
+  },
+  "io.github.fboldo/openscad-mcp-server:https://github.com/fboldo/openscad-mcp-server": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "Repository belongs to user 'fboldo' not the official OpenSCAD organization; no evidence of official brand ownership.",
+    "cached_at": "2026-02-15 03:02:40 UTC",
+    "repository_url": "https://github.com/fboldo/openscad-mcp-server",
+    "server_name": "io.github.fboldo/openscad-mcp-server"
+  },
+  "io.github.filearchitect/blankfiles-mcp:https://github.com/filearchitect/blankfiles-website": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub org 'filearchitect' and npm scope '@filearchitect' match product 'blankfiles.com', with repo not forked or archived.",
+    "cached_at": "2026-02-15 03:02:42 UTC",
+    "repository_url": "https://github.com/filearchitect/blankfiles-website",
+    "server_name": "io.github.filearchitect/blankfiles-mcp"
+  },
+  "io.github.flytohub/flyto-core:https://github.com/flytohub/flyto-core": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub org flytohub matches product flyto-core in repo name and PyPI package, and is not a fork or archived.",
+    "cached_at": "2026-02-15 03:02:44 UTC",
+    "repository_url": "https://github.com/flytohub/flyto-core",
+    "server_name": "io.github.flytohub/flyto-core"
+  },
+  "io.github.fr0ster/mcp-abap-adt:https://github.com/fr0ster/mcp-abap-adt": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "The publisher is a personal GitHub user 'fr0ster' and not SAP, the owner of ABAP; strong signal this is third-party.",
+    "cached_at": "2026-02-15 03:02:46 UTC",
+    "repository_url": "https://github.com/fr0ster/mcp-abap-adt",
+    "server_name": "io.github.fr0ster/mcp-abap-adt"
+  },
+  "io.github.getDynamoi/dynamoi:https://github.com/getDynamoi/mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 1.0,
+    "ai_reason": "GitHub org (getDynamoi), npm scope (@dynamoi), and remotes (dynamoi.com) all match the product/brand distinctly.",
+    "cached_at": "2026-02-15 03:02:48 UTC",
+    "repository_url": "https://github.com/getDynamoi/mcp",
+    "server_name": "io.github.getDynamoi/dynamoi"
+  },
+  "io.github.geter-andru/andru-intelligence:https://github.com/geter-andru/mcp-server-andru-intelligence.git": {
+    "ai_decision": "official",
+    "ai_confidence": 0.92,
+    "ai_reason": "GitHub org 'geter-andru' and endpoints (api.andru.ai) match 'andru.ai' product; repo is not forked or archived and API keys reference the official service.",
+    "cached_at": "2026-02-15 03:02:50 UTC",
+    "repository_url": "https://github.com/geter-andru/mcp-server-andru-intelligence.git",
+    "server_name": "io.github.geter-andru/andru-intelligence"
+  },
+  "io.github.gokmengokhan/endnote-mcp:https://github.com/gokmengokhan/endnote-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "Repository is owned by a personal user (gokmengokhan), not the EndNote organization, so this is a third-party implementation.",
+    "cached_at": "2026-02-15 03:02:53 UTC",
+    "repository_url": "https://github.com/gokmengokhan/endnote-mcp",
+    "server_name": "io.github.gokmengokhan/endnote-mcp"
+  },
+  "io.github.h1-hunt/mintclub:https://github.com/Steemhunt/mint.club-v2-ai": {
+    "ai_decision": "community",
+    "ai_confidence": 0.7,
+    "ai_reason": "The GitHub organization 'Steemhunt' does not match the product 'Mint Club', indicating third-party ownership.",
+    "cached_at": "2026-02-15 03:02:55 UTC",
+    "repository_url": "https://github.com/Steemhunt/mint.club-v2-ai",
+    "server_name": "io.github.h1-hunt/mintclub"
+  },
+  "io.github.heliosarchitect/wems:https://github.com/heliosarchitect/wems-mcp-server": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "GitHub org 'heliosarchitect' does not match any widely known product/service for hazard monitoring, suggesting a third-party implementation.",
+    "cached_at": "2026-02-15 03:02:56 UTC",
+    "repository_url": "https://github.com/heliosarchitect/wems-mcp-server",
+    "server_name": "io.github.heliosarchitect/wems"
+  },
+  "io.github.hiveforge-sh/hivemind:https://github.com/hiveforge-sh/hivemind": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "hiveforge-sh is not the official publisher of Obsidian; this is a third-party server integrating with Obsidian.",
+    "cached_at": "2026-02-15 03:02:58 UTC",
+    "repository_url": "https://github.com/hiveforge-sh/hivemind",
+    "server_name": "io.github.hiveforge-sh/hivemind"
+  },
+  "io.github.ibeal/tidal-mcp:https://github.com/ibeal/tidal-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "The repo is published by the ibeal user, not by TIDAL, and there is no evidence of official brand ownership.",
+    "cached_at": "2026-02-15 03:03:02 UTC",
+    "repository_url": "https://github.com/ibeal/tidal-mcp",
+    "server_name": "io.github.ibeal/tidal-mcp"
+  },
+  "io.github.ikoskela/precision-desktop:https://github.com/ikoskela/precision-desktop": {
+    "ai_decision": "community",
+    "ai_confidence": 0.98,
+    "ai_reason": "The repo is owned by a personal GitHub user (ikoskela) and not the owner of Windows or any specific desktop automation product.",
+    "cached_at": "2026-02-15 03:03:04 UTC",
+    "repository_url": "https://github.com/ikoskela/precision-desktop",
+    "server_name": "io.github.ikoskela/precision-desktop"
+  },
+  "io.github.ilpr/waitlister:https://github.com/ilpr/waitlister-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.7,
+    "ai_reason": "The publisher is a personal GitHub user (ilpr), not an organization matching 'Waitlister', indicating a third-party implementation.",
+    "cached_at": "2026-02-15 03:03:05 UTC",
+    "repository_url": "https://github.com/ilpr/waitlister-mcp",
+    "server_name": "io.github.ilpr/waitlister"
+  },
+  "io.github.introfini/mcp-server-zotero-dev:https://github.com/introfini/mcp-server-zotero-dev": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "The publisher 'introfini' is not the organization behind Zotero, making this a third-party (community) integration.",
+    "cached_at": "2026-02-15 03:03:07 UTC",
+    "repository_url": "https://github.com/introfini/mcp-server-zotero-dev",
+    "server_name": "io.github.introfini/mcp-server-zotero-dev"
+  },
+  "io.github.j0hanz/cortex-mcp:https://github.com/j0hanz/cortex-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "GitHub owner 'j0hanz' is a personal user, not an organization or recognized brand for 'Cortex'.",
+    "cached_at": "2026-02-15 03:03:09 UTC",
+    "repository_url": "https://github.com/j0hanz/cortex-mcp",
+    "server_name": "io.github.j0hanz/cortex-mcp"
+  },
+  "io.github.j0hanz/fetch-url-mcp:https://github.com/j0hanz/fetch-url-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "Repo is owned by a user (j0hanz), not an official organization, with no strong brand alignment or signals of official product/service ownership.",
+    "cached_at": "2026-02-15 03:03:10 UTC",
+    "repository_url": "https://github.com/j0hanz/fetch-url-mcp",
+    "server_name": "io.github.j0hanz/fetch-url-mcp"
+  },
+  "io.github.j0hanz/filesystem-mcp:https://github.com/j0hanz/filesystem-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "Repository is owned by a personal user (j0hanz) and not by the organization behind a filesystems product/service.",
+    "cached_at": "2026-02-15 03:03:12 UTC",
+    "repository_url": "https://github.com/j0hanz/filesystem-mcp",
+    "server_name": "io.github.j0hanz/filesystem-mcp"
+  },
+  "io.github.jasondostal/cairn-mcp:https://github.com/jasondostal/cairn-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "Repository is user-owned (jasondostal), not an organization or brand matching Cairn, with no strong brand signals.",
+    "cached_at": "2026-02-15 03:03:14 UTC",
+    "repository_url": "https://github.com/jasondostal/cairn-mcp",
+    "server_name": "io.github.jasondostal/cairn-mcp"
+  },
+  "io.github.jcc-ne/mcp-skill-server:https://github.com/jcc-ne/mcp-skill-server": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "The GitHub org 'jcc-ne' does not match any widely-known product/service, and there is no evidence that it is the owner of an underlying branded product or platform.",
+    "cached_at": "2026-02-15 03:03:16 UTC",
+    "repository_url": "https://github.com/jcc-ne/mcp-skill-server",
+    "server_name": "io.github.jcc-ne/mcp-skill-server"
+  },
+  "io.github.jfarcand/iphone-mirroir-mcp:https://github.com/jfarcand/iphone-mirroir-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "Repo is owned by a personal user (jfarcand), not the organization behind iPhone or macOS.",
+    "cached_at": "2026-02-15 03:03:17 UTC",
+    "repository_url": "https://github.com/jfarcand/iphone-mirroir-mcp",
+    "server_name": "io.github.jfarcand/iphone-mirroir-mcp"
+  },
+  "io.github.jghiringhelli/codeseeker:https://github.com/jghiringhelli/codeseeker": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "Repo owner is a personal user (jghiringhelli), not an organization matching Codeseeker; no brand signals of official product ownership.",
+    "cached_at": "2026-02-15 03:03:19 UTC",
+    "repository_url": "https://github.com/jghiringhelli/codeseeker",
+    "server_name": "io.github.jghiringhelli/codeseeker"
+  },
+  "io.github.joelklabo/maximumsats-mcp:https://github.com/joelklabo/maximumsats-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "Repository is owned by a personal GitHub user (joelklabo), not an organization, indicating a community project.",
+    "cached_at": "2026-02-15 03:03:21 UTC",
+    "repository_url": "https://github.com/joelklabo/maximumsats-mcp",
+    "server_name": "io.github.joelklabo/maximumsats-mcp"
+  },
+  "io.github.jordanlyall/wc26:https://github.com/jordanlyall/wc26-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "The repo owner is an individual user ('jordanlyall'), not a verified organization related to FIFA or World Cup; no evidence of official affiliation.",
+    "cached_at": "2026-02-15 03:03:24 UTC",
+    "repository_url": "https://github.com/jordanlyall/wc26-mcp",
+    "server_name": "io.github.jordanlyall/wc26"
+  },
+  "io.github.kar69-96/agentpay:https://github.com/kar69-96/useagentpay": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "GitHub owner (kar69-96) is a user, not an org; no evidence of agentpay as a widely recognized product or brand owner.",
+    "cached_at": "2026-02-15 03:03:27 UTC",
+    "repository_url": "https://github.com/kar69-96/useagentpay",
+    "server_name": "io.github.kar69-96/agentpay"
+  },
+  "io.github.kasathur/energyatit:https://github.com/kasathur/energyatit-mcp-server": {
+    "ai_decision": "community",
+    "ai_confidence": 0.65,
+    "ai_reason": "GitHub org is 'kasathur', which does not match the product/brand 'energyatit', suggesting a third-party developer.",
+    "cached_at": "2026-02-15 03:03:28 UTC",
+    "repository_url": "https://github.com/kasathur/energyatit-mcp-server",
+    "server_name": "io.github.kasathur/energyatit"
+  },
+  "io.github.kcw2034-sayouzone/mcp-opendart-server:https://github.com/sayouzone/mcp-opendart-server": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "The GitHub org 'sayouzone' does not match the OpenDart brand, and there are no signals indicating official ownership or endorsement.",
+    "cached_at": "2026-02-15 03:03:30 UTC",
+    "repository_url": "https://github.com/sayouzone/mcp-opendart-server",
+    "server_name": "io.github.kcw2034-sayouzone/mcp-opendart-server"
+  },
+  "io.github.klever-io/mcp-klever-vm:https://github.com/klever-io/mcp-klever-vm": {
+    "ai_decision": "official",
+    "ai_confidence": 0.98,
+    "ai_reason": "GitHub org klever-io matches Klever brand, verified npm scope @klever, remotes on klever.org; all are strong signals of official ownership.",
+    "cached_at": "2026-02-15 03:03:33 UTC",
+    "repository_url": "https://github.com/klever-io/mcp-klever-vm",
+    "server_name": "io.github.klever-io/mcp-klever-vm"
+  },
+  "io.github.korobkov-v/porkbun-mcp:https://github.com/korobkov-v/porkbun-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "Repository is owned by a personal user (korobkov-v), not the Porkbun organization.",
+    "cached_at": "2026-02-15 03:03:35 UTC",
+    "repository_url": "https://github.com/korobkov-v/porkbun-mcp",
+    "server_name": "io.github.korobkov-v/porkbun-mcp"
+  },
+  "io.github.kryptobaseddev/cleo-mcp-server:https://github.com/kryptobaseddev/cleo.git": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "kryptobaseddev is not an identifiable official organization for the CLEO product; no strong signal of official brand ownership.",
+    "cached_at": "2026-02-15 03:03:38 UTC",
+    "repository_url": "https://github.com/kryptobaseddev/cleo.git",
+    "server_name": "io.github.kryptobaseddev/cleo-mcp-server"
+  },
+  "io.github.lawp09/bitbucket-mcp:https://github.com/lawp09/bitbucket-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "The repo is owned by the user 'lawp09' (not Atlassian, the Bitbucket owner); no signs of official brand/publisher.",
+    "cached_at": "2026-02-15 03:03:40 UTC",
+    "repository_url": "https://github.com/lawp09/bitbucket-mcp",
+    "server_name": "io.github.lawp09/bitbucket-mcp"
+  },
+  "io.github.lu-zhengda/mcp-python-exec-sandbox:https://github.com/lu-zhengda/mcp-python-exec-sandbox": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "Repo is owned by a personal user (lu-zhengda) and not the maintainer of Python; no official organization involved.",
+    "cached_at": "2026-02-15 03:03:43 UTC",
+    "repository_url": "https://github.com/lu-zhengda/mcp-python-exec-sandbox",
+    "server_name": "io.github.lu-zhengda/mcp-python-exec-sandbox"
+  },
+  "io.github.lu-zhengda/virtual-fs:https://github.com/lu-zhengda/mcp-virtual-fs": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "Published by personal GitHub user (lu-zhengda) and integrates with PostgreSQL, a generic service only officially maintained by the PostgreSQL organization.",
+    "cached_at": "2026-02-15 03:03:44 UTC",
+    "repository_url": "https://github.com/lu-zhengda/mcp-virtual-fs",
+    "server_name": "io.github.lu-zhengda/virtual-fs"
+  },
+  "io.github.mapdevsaikat/quantaroute-geocoder:https://github.com/mapdevsaikat/quantaroute-geocoder": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "GitHub repo is owned by a user (mapdevsaikat) and not the QuantaRoute org; no strong evidence of official brand ownership.",
+    "cached_at": "2026-02-15 03:03:48 UTC",
+    "repository_url": "https://github.com/mapdevsaikat/quantaroute-geocoder",
+    "server_name": "io.github.mapdevsaikat/quantaroute-geocoder"
+  },
+  "io.github.marcelo-ochoa/qnap:https://github.com/marcelo-ochoa/servers": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "Published under a personal user account (marcelo-ochoa), not QNAP's official organization.",
+    "cached_at": "2026-02-15 03:03:50 UTC",
+    "repository_url": "https://github.com/marcelo-ochoa/servers",
+    "server_name": "io.github.marcelo-ochoa/qnap"
+  },
+  "io.github.martinfrasch/researchtwin:https://github.com/martinfrasch/researchtwin": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "Repository is owned by a personal user (martinfrasch) and not an organization matching ResearchTwin brand.",
+    "cached_at": "2026-02-15 03:03:51 UTC",
+    "repository_url": "https://github.com/martinfrasch/researchtwin",
+    "server_name": "io.github.martinfrasch/researchtwin"
+  },
+  "io.github.mlava/scholar-sidekick-mcp:https://github.com/mlava/scholar-sidekick-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "The GitHub org 'mlava' does not directly match the service or product 'Scholar Sidekick', and the use of RapidAPI further suggests third-party integration.",
+    "cached_at": "2026-02-15 03:03:55 UTC",
+    "repository_url": "https://github.com/mlava/scholar-sidekick-mcp",
+    "server_name": "io.github.mlava/scholar-sidekick-mcp"
+  },
+  "io.github.montanetech/codeix:https://github.com/montanetech/codeix": {
+    "ai_decision": "official",
+    "ai_confidence": 0.92,
+    "ai_reason": "Organization 'montanetech' matches product/brand 'Codeix' in repo and website; publisher is Montane.tech and all signals align with official ownership.",
+    "cached_at": "2026-02-15 03:03:58 UTC",
+    "repository_url": "https://github.com/montanetech/codeix",
+    "server_name": "io.github.montanetech/codeix"
+  },
+  "io.github.nftechie/transition-mcp:https://github.com/nftechie/transition-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.4,
+    "ai_reason": "nftechie is not clearly the brand owner of Transition; 'transition.fun' domain ownership is unclear and github org is not verified.",
+    "cached_at": "2026-02-15 03:04:01 UTC",
+    "repository_url": "https://github.com/nftechie/transition-mcp",
+    "server_name": "io.github.nftechie/transition-mcp"
+  },
+  "io.github.nikicat/mcp-wallet-signer:https://github.com/nikicat/mcp-wallet-signer": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub user 'nikicat' is not an organization and does not match a wallet brand; repo is user-owned and MetaMask or other EVM wallet brands are not the publisher.",
+    "cached_at": "2026-02-15 03:04:03 UTC",
+    "repository_url": "https://github.com/nikicat/mcp-wallet-signer",
+    "server_name": "io.github.nikicat/mcp-wallet-signer"
+  },
+  "io.github.omega-memory/core:https://github.com/omega-memory/core": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "The GitHub org omega-memory matches the server name, but there is no widely recognized underlying product/service called 'omega-memory' outside this repo; so it's a community implementation, not an official integration for a pre-existing external service.",
+    "cached_at": "2026-02-15 03:04:10 UTC",
+    "repository_url": "https://github.com/omega-memory/core",
+    "server_name": "io.github.omega-memory/core"
+  },
+  "io.github.onelogin/onelogin-mcp:https://github.com/onelogin/onelogin-mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 0.98,
+    "ai_reason": "GitHub org is 'onelogin', matches OneLogin brand in server name and npm scope (@onelogin/*), indicating strong official ownership.",
+    "cached_at": "2026-02-15 03:04:11 UTC",
+    "repository_url": "https://github.com/onelogin/onelogin-mcp",
+    "server_name": "io.github.onelogin/onelogin-mcp"
+  },
+  "io.github.pdeloulay/flik-mcp:https://github.com/pdeloulay/flik-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "The GitHub repo is owned by a personal user (pdeloulay), not a Flik/Nomadis org, despite API endpoints referencing flik.nomadis.com.",
+    "cached_at": "2026-02-15 03:04:15 UTC",
+    "repository_url": "https://github.com/pdeloulay/flik-mcp",
+    "server_name": "io.github.pdeloulay/flik-mcp"
+  },
+  "io.github.pdwi2020/mcp-server-colab-exec:https://github.com/pdwi2020/mcp-server-colab-exec": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "The publisher (pdwi2020) is not Google (Colab owner), and there is no official domain or org linkage to Google.",
+    "cached_at": "2026-02-15 03:04:16 UTC",
+    "repository_url": "https://github.com/pdwi2020/mcp-server-colab-exec",
+    "server_name": "io.github.pdwi2020/mcp-server-colab-exec"
+  },
+  "io.github.pramodbhatofficial/databricks-sdk-mcp:https://github.com/pramodbhatofficial/databricks-mcp-server": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "The GitHub repository is owned by a user (pramodbhatofficial), not by Databricks or any official Databricks organization.",
+    "cached_at": "2026-02-15 03:04:19 UTC",
+    "repository_url": "https://github.com/pramodbhatofficial/databricks-mcp-server",
+    "server_name": "io.github.pramodbhatofficial/databricks-sdk-mcp"
+  },
+  "io.github.pretorin-ai/pretorin:https://github.com/pretorin-ai/pretorin-cli.git": {
+    "ai_decision": "official",
+    "ai_confidence": 0.98,
+    "ai_reason": "GitHub org pretorin-ai matches product and package name pretorin, with verified website pretorin.com and organization-controlled endpoints.",
+    "cached_at": "2026-02-15 03:04:21 UTC",
+    "repository_url": "https://github.com/pretorin-ai/pretorin-cli.git",
+    "server_name": "io.github.pretorin-ai/pretorin"
+  },
+  "io.github.quotewise/mcp:https://github.com/quotewise/mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub org quotewise matches product name 'Quotewise' and remote is on quotewise.io domain.",
+    "cached_at": "2026-02-15 03:04:23 UTC",
+    "repository_url": "https://github.com/quotewise/mcp",
+    "server_name": "io.github.quotewise/mcp"
+  },
+  "io.github.rachitkumarrastogi/unity-mcp-server:https://github.com/rachitkumarrastogi/unity-mcp-server": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "Published under a personal GitHub user ('rachitkumarrastogi') and not the official Unity organization, for Unity service.",
+    "cached_at": "2026-02-15 03:04:24 UTC",
+    "repository_url": "https://github.com/rachitkumarrastogi/unity-mcp-server",
+    "server_name": "io.github.rachitkumarrastogi/unity-mcp-server"
+  },
+  "io.github.ramaris-app/mcp-server:https://github.com/ramaris-app/mcp-server": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "Repo is under the ramaris-app GitHub org, npm scope and API domain match 'ramaris', strongly indicating publication by the product owner.",
+    "cached_at": "2026-02-15 03:04:26 UTC",
+    "repository_url": "https://github.com/ramaris-app/mcp-server",
+    "server_name": "io.github.ramaris-app/mcp-server"
+  },
+  "io.github.rclone-ui/rclone:https://github.com/rclone-ui/rclone-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "Repo is under 'rclone-ui' org which differs from the main 'rclone' project/org, indicating third-party community ownership.",
+    "cached_at": "2026-02-15 03:04:28 UTC",
+    "repository_url": "https://github.com/rclone-ui/rclone-mcp",
+    "server_name": "io.github.rclone-ui/rclone"
+  },
+  "io.github.refined-element/lightning-enable-mcp:https://github.com/refined-element/lightning-enable-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "The GitHub organization 'refined-element' does not match any Lightning Network brand or payment platform; remotes reference multiple payment providers, indicating a third-party implementation.",
+    "cached_at": "2026-02-15 03:04:29 UTC",
+    "repository_url": "https://github.com/refined-element/lightning-enable-mcp",
+    "server_name": "io.github.refined-element/lightning-enable-mcp"
+  },
+  "io.github.rsdouglas/janee:https://github.com/rsdouglas/janee": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "GitHub org 'rsdouglas' and npm scope '@true-and-useful' do not match any known product brand; lacks clear evidence of official publisher.",
+    "cached_at": "2026-02-15 03:04:33 UTC",
+    "repository_url": "https://github.com/rsdouglas/janee",
+    "server_name": "io.github.rsdouglas/janee"
+  },
+  "io.github.runbook-ai/browser-agent:https://github.com/runbook-ai/runbook-ai-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "Runbook-AI is not the owner/operator of a specific browser or browser automation product, and the service is generic.",
+    "cached_at": "2026-02-15 03:04:35 UTC",
+    "repository_url": "https://github.com/runbook-ai/runbook-ai-mcp",
+    "server_name": "io.github.runbook-ai/browser-agent"
+  },
+  "io.github.sapiom/mcp:https://github.com/sapiom/sapiom-js": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "The GitHub org 'sapiom' matches the server and package name, npm scope is @sapiom, and repo is not a fork or archived.",
+    "cached_at": "2026-02-15 03:04:37 UTC",
+    "repository_url": "https://github.com/sapiom/sapiom-js",
+    "server_name": "io.github.sapiom/mcp"
+  },
+  "io.github.sarath-451/tomcat:https://github.com/sarath-451/tomcat-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.98,
+    "ai_reason": "The publisher (sarath-451) is a personal GitHub user, not the official Apache org, for a server integrating with Apache Tomcat.",
+    "cached_at": "2026-02-15 03:04:38 UTC",
+    "repository_url": "https://github.com/sarath-451/tomcat-mcp",
+    "server_name": "io.github.sarath-451/tomcat"
+  },
+  "io.github.scottmreed/ChemCP:https://github.com/scottmreed/ChemCP": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "GitHub owner is an individual user (scottmreed), not an official RDKit or chemistry organization.",
+    "cached_at": "2026-02-15 03:04:41 UTC",
+    "repository_url": "https://github.com/scottmreed/ChemCP",
+    "server_name": "io.github.scottmreed/ChemCP"
+  },
+  "io.github.sgx-labs/same:https://github.com/sgx-labs/statelessagent": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "sgx-labs GitHub org and npm scope both match the server name and product 'stateless agent', indicating the publisher owns the product.",
+    "cached_at": "2026-02-15 03:04:43 UTC",
+    "repository_url": "https://github.com/sgx-labs/statelessagent",
+    "server_name": "io.github.sgx-labs/same"
+  },
+  "io.github.sh3ll3x3c/native-devtools:https://github.com/sh3ll3x3c/native-devtools-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.85,
+    "ai_reason": "GitHub owner is a personal username (sh3ll3x3c) not an org, and 'DevTools' is a generic term with no evidence of ownership by an official product organization.",
+    "cached_at": "2026-02-15 03:04:45 UTC",
+    "repository_url": "https://github.com/sh3ll3x3c/native-devtools-mcp",
+    "server_name": "io.github.sh3ll3x3c/native-devtools"
+  },
+  "io.github.sind00/flippa-mcp:https://github.com/sind00/flippa-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.95,
+    "ai_reason": "The repository is published by a personal user (sind00) not the Flippa org, with no verified org or Flippa branding.",
+    "cached_at": "2026-02-15 03:04:49 UTC",
+    "repository_url": "https://github.com/sind00/flippa-mcp",
+    "server_name": "io.github.sind00/flippa-mcp"
+  },
+  "io.github.sns45/dear-claude:https://github.com/sns45/dear-claude": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "Repository is in the sns45 GitHub user account, not any official org for Claude/Anthropic or the connected platforms.",
+    "cached_at": "2026-02-15 03:04:52 UTC",
+    "repository_url": "https://github.com/sns45/dear-claude",
+    "server_name": "io.github.sns45/dear-claude"
+  },
+  "io.github.spectra-g/engram:https://github.com/spectra-g/engram": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub org 'spectra-g' matches the product name 'engram', is not a fork/archived, and controls the npm scope '@spectra-g', strongly indicating official ownership.",
+    "cached_at": "2026-02-15 03:04:53 UTC",
+    "repository_url": "https://github.com/spectra-g/engram",
+    "server_name": "io.github.spectra-g/engram"
+  },
+  "io.github.stefanoshea/rlm-tools:https://github.com/stefanoshea/rlm-tools": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "Repository is owned by an individual user (stefanoshea), not an organization or brand matching 'RLM Tools'.",
+    "cached_at": "2026-02-15 03:04:56 UTC",
+    "repository_url": "https://github.com/stefanoshea/rlm-tools",
+    "server_name": "io.github.stefanoshea/rlm-tools"
+  },
+  "io.github.stobo-app/seo-audit:https://github.com/stobo-app/stobo-mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub org 'stobo-app' matches server and repo names, and remotes reference trystobo.com, the product's domain.",
+    "cached_at": "2026-02-15 03:04:58 UTC",
+    "repository_url": "https://github.com/stobo-app/stobo-mcp",
+    "server_name": "io.github.stobo-app/seo-audit"
+  },
+  "io.github.swadegeiger1/word-mcp:https://github.com/swadegeiger1/word-mcp-server": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "The publisher is a personal user (swadegeiger1), not Microsoft, and there is no evidence of official Microsoft affiliation.",
+    "cached_at": "2026-02-15 03:05:00 UTC",
+    "repository_url": "https://github.com/swadegeiger1/word-mcp-server",
+    "server_name": "io.github.swadegeiger1/word-mcp"
+  },
+  "io.github.telsav/flutter-skill:https://github.com/ai-dashboad/flutter-skill": {
+    "ai_decision": "community",
+    "ai_confidence": 0.7,
+    "ai_reason": "The GitHub org 'ai-dashboad' does not match Flutter's official publisher (Google) nor the product name 'Flutter', indicating this is a third-party integration.",
+    "cached_at": "2026-02-15 03:05:03 UTC",
+    "repository_url": "https://github.com/ai-dashboad/flutter-skill",
+    "server_name": "io.github.telsav/flutter-skill"
+  },
+  "io.github.thehesiod/psquare:https://github.com/thehesiod/psquare-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.9,
+    "ai_reason": "Publisher is a personal GitHub user ('thehesiod'), not the ParentSquare organization.",
+    "cached_at": "2026-02-15 03:05:05 UTC",
+    "repository_url": "https://github.com/thehesiod/psquare-mcp",
+    "server_name": "io.github.thehesiod/psquare"
+  },
+  "io.github.voidmobcom/voidmob-mcp:https://github.com/voidmobcom/voidmob-mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "GitHub org voidmobcom matches product/brand in server name and npm scope @voidmob, strongly indicating official ownership.",
+    "cached_at": "2026-02-15 03:05:13 UTC",
+    "repository_url": "https://github.com/voidmobcom/voidmob-mcp",
+    "server_name": "io.github.voidmobcom/voidmob-mcp"
+  },
+  "io.github.warpmetrics/mcp:https://github.com/warpmetrics/mcp": {
+    "ai_decision": "official",
+    "ai_confidence": 1.0,
+    "ai_reason": "GitHub org, repo, and npm package all use 'warpmetrics', matching the integrated service.",
+    "cached_at": "2026-02-15 03:05:15 UTC",
+    "repository_url": "https://github.com/warpmetrics/mcp",
+    "server_name": "io.github.warpmetrics/mcp"
+  },
+  "io.github.weskerllc/cronicorn-mcp-server:https://github.com/weskerllc/cronicorn": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "The publisher (weskerllc) matches the project (cronicorn), npm scope is @cronicorn, and no signs of third-party or generic service involvement.",
+    "cached_at": "2026-02-15 03:05:17 UTC",
+    "repository_url": "https://github.com/weskerllc/cronicorn",
+    "server_name": "io.github.weskerllc/cronicorn-mcp-server"
+  },
+  "io.github.whistlegraph/aesthetic-computer:https://github.com/whistlegraph/aesthetic-computer": {
+    "ai_decision": "official",
+    "ai_confidence": 0.95,
+    "ai_reason": "The GitHub org (whistlegraph) and npm scope (@aesthetic.computer) both clearly match the product 'aesthetic.computer', indicating brand ownership and direct integration.",
+    "cached_at": "2026-02-15 03:05:18 UTC",
+    "repository_url": "https://github.com/whistlegraph/aesthetic-computer",
+    "server_name": "io.github.whistlegraph/aesthetic-computer"
+  },
+  "io.github.yohasacura/drawio-mcp:https://github.com/yohasacura/drawio-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "GitHub repo is owned by a personal user (yohasacura) and not by the draw.io/diagrams.net organization.",
+    "cached_at": "2026-02-15 03:05:23 UTC",
+    "repository_url": "https://github.com/yohasacura/drawio-mcp",
+    "server_name": "io.github.yohasacura/drawio-mcp"
+  },
+  "io.github.zaeyasa/gwas-mcp:https://github.com/zaeyasa/gwas-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 0.8,
+    "ai_reason": "The repository is owned by a personal user ('zaeyasa') and not a verified organization associated with any specific bioinformatics product or database.",
+    "cached_at": "2026-02-15 03:05:25 UTC",
+    "repository_url": "https://github.com/zaeyasa/gwas-mcp",
+    "server_name": "io.github.zaeyasa/gwas-mcp"
+  },
+  "io.github.zerodustxyz/zerodust:https://github.com/zerodustxyz/zerodust": {
+    "ai_decision": "official",
+    "ai_confidence": 0.98,
+    "ai_reason": "GitHub org 'zerodustxyz' matches server and package name; npm scope '@zerodust' and API endpoint 'api.zerodust.xyz' confirm brand ownership.",
+    "cached_at": "2026-02-15 03:05:27 UTC",
+    "repository_url": "https://github.com/zerodustxyz/zerodust",
+    "server_name": "io.github.zerodustxyz/zerodust"
+  },
+  "io.github.zoharbabin/google-researcher:https://github.com/zoharbabin/google-research-mcp": {
+    "ai_decision": "community",
+    "ai_confidence": 1.0,
+    "ai_reason": "Repository github.com/zoharbabin/google-research-mcp is owned by a personal user, not Google, and targets Google Search, a generic service; no official signals.",
+    "cached_at": "2026-02-15 03:05:29 UTC",
+    "repository_url": "https://github.com/zoharbabin/google-research-mcp",
+    "server_name": "io.github.zoharbabin/google-researcher"
   }
 }
