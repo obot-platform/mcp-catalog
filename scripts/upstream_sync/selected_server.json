@@ -3647,5 +3647,485 @@
     "upstream_source": "modelcontextprotocol.io",
     "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/744",
     "processed_at": "2026-02-15 03:06:10 UTC"
+  },
+  "com.aiqbee/brain": {
+    "name": "com.aiqbee/brain",
+    "description": "AI knowledge graph for architecture, portfolio, and digital strategy management.",
+    "version": "1.0.1",
+    "repository_url": "https://github.com/AIQBee/aiqbee-ai",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/745",
+    "processed_at": "2026-02-22 03:04:39 UTC"
+  },
+  "com.lassare/ask": {
+    "name": "com.lassare/ask",
+    "description": "Human-in-the-loop for AI coding agents — ask questions, get approvals via Slack.",
+    "version": "1.0.1",
+    "repository_url": "https://github.com/lassare-hq/agent-configs",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/746",
+    "processed_at": "2026-02-22 03:04:40 UTC"
+  },
+  "com.mcpmux/mcp-mux": {
+    "name": "com.mcpmux/mcp-mux",
+    "description": "McpMux — configure MCP servers once, connect every AI client through one local gateway.",
+    "version": "0.1.1",
+    "repository_url": "https://github.com/mcpmux/mcp-mux",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/747",
+    "processed_at": "2026-02-22 03:04:42 UTC"
+  },
+  "com.rootly/mcp-server": {
+    "name": "com.rootly/mcp-server",
+    "description": "Incident management, on-call scheduling, and intelligent analysis powered by Rootly.",
+    "version": "2.2.4",
+    "repository_url": "https://github.com/Rootly-AI-Labs/Rootly-MCP-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/748",
+    "processed_at": "2026-02-22 03:04:43 UTC"
+  },
+  "finance.norman/mcp-server": {
+    "name": "finance.norman/mcp-server",
+    "description": "AI-powered bookkeeping and tax filing for entrepreneurs at the heart of the European economy.",
+    "version": "0.1.7",
+    "repository_url": "https://github.com/norman-finance/norman-mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/749",
+    "processed_at": "2026-02-22 03:04:44 UTC"
+  },
+  "io.github.1lystore/mcp-server": {
+    "name": "io.github.1lystore/mcp-server",
+    "description": "MCP server for 1ly.store — buy/sell APIs and launch tokens on Bags.fm with USDC & $1LY.",
+    "version": "0.1.7",
+    "repository_url": "https://github.com/1lystore/1ly-mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/750",
+    "processed_at": "2026-02-22 03:04:45 UTC"
+  },
+  "io.github.Aganium/mcp-server": {
+    "name": "io.github.Aganium/mcp-server",
+    "description": "Bridge MCP servers to the AGENIUM agent:// network with DNS resolution and mTLS",
+    "version": "0.1.5",
+    "repository_url": "https://github.com/Aganium/agenium",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/751",
+    "processed_at": "2026-02-22 03:04:47 UTC"
+  },
+  "io.github.Anthony-Marcovecchio/prodlint": {
+    "name": "io.github.Anthony-Marcovecchio/prodlint",
+    "description": "Static analysis that catches the production bugs AI coding tools write. 52 rules.",
+    "version": "0.7.2",
+    "repository_url": "https://github.com/prodlint/prodlint",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/752",
+    "processed_at": "2026-02-22 03:04:48 UTC"
+  },
+  "io.github.CanopyHQ/phloem": {
+    "name": "io.github.CanopyHQ/phloem",
+    "description": "Local-first AI memory with causal graphs. Fully offline, zero config, your data stays local.",
+    "version": "0.1.3",
+    "repository_url": "https://github.com/CanopyHQ/phloem",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/753",
+    "processed_at": "2026-02-22 03:04:49 UTC"
+  },
+  "io.github.CleanSlice/mcp": {
+    "name": "io.github.CleanSlice/mcp",
+    "description": "Architecture docs and patterns for NestJS + Nuxt full-stack apps",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/CleanSlice/mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/754",
+    "processed_at": "2026-02-22 03:04:50 UTC"
+  },
+  "io.github.FastAlertNow/mcp-server": {
+    "name": "io.github.FastAlertNow/mcp-server",
+    "description": "Official MCP server for FastAlert, providing tools to list channels and send notifications.",
+    "version": "1.3.1",
+    "repository_url": "https://github.com/FastAlertNow/mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/755",
+    "processed_at": "2026-02-22 03:04:51 UTC"
+  },
+  "io.github.FoodXDevelopment/foodblock-mcp": {
+    "name": "io.github.FoodXDevelopment/foodblock-mcp",
+    "description": "Food data tools for any AI agent. Describe food in English, get structured data back.",
+    "version": "0.5.1",
+    "repository_url": "https://github.com/FoodXDevelopment/foodblock",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/756",
+    "processed_at": "2026-02-22 03:04:53 UTC"
+  },
+  "io.github.GetCacheOverflow/cacheoverflow": {
+    "name": "io.github.GetCacheOverflow/cacheoverflow",
+    "description": "MCP server for cache.overflow - AI agents sharing knowledge with AI agents",
+    "version": "0.5.5",
+    "repository_url": "https://github.com/GetCacheOverflow/CacheOverflow",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/757",
+    "processed_at": "2026-02-22 03:04:54 UTC"
+  },
+  "io.github.LarryWalkerDEV/immostage": {
+    "name": "io.github.LarryWalkerDEV/immostage",
+    "description": "AI virtual staging for real estate — stage rooms, beautify floor plans, classify images.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/LarryWalkerDEV/mcp-immostage",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/758",
+    "processed_at": "2026-02-22 03:04:55 UTC"
+  },
+  "io.github.Leximo-AI/leximo-ai-call-assistant-mcp-server": {
+    "name": "io.github.Leximo-AI/leximo-ai-call-assistant-mcp-server",
+    "description": "Schedule AI phone calls, manage assignments, and check credits from Claude.",
+    "version": "1.0.1",
+    "repository_url": "https://github.com/Leximo-AI/leximo-ai-call-assistant-mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/759",
+    "processed_at": "2026-02-22 03:04:56 UTC"
+  },
+  "io.github.Nativ-Technologies/nativ": {
+    "name": "io.github.Nativ-Technologies/nativ",
+    "description": "AI-powered localization — translate, manage translation memory, and access style guides.",
+    "version": "0.1.3",
+    "repository_url": "https://github.com/Nativ-Technologies/nativ-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/760",
+    "processed_at": "2026-02-22 03:04:58 UTC"
+  },
+  "io.github.Perf-AI/perf-mcp": {
+    "name": "io.github.Perf-AI/perf-mcp",
+    "description": "Fact-check and fix AI outputs. Hallucination detection, schema validation, auto-repair.",
+    "version": "0.1.1",
+    "repository_url": "https://github.com/Perf-Technology/perf-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/761",
+    "processed_at": "2026-02-22 03:04:59 UTC"
+  },
+  "io.github.PlanExeOrg/planexe": {
+    "name": "io.github.PlanExeOrg/planexe",
+    "description": "MCP server for generating rough-draft project plans from natural-language prompts.",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/PlanExeOrg/PlanExe",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/762",
+    "processed_at": "2026-02-22 03:05:00 UTC"
+  },
+  "io.github.Retio-ai/pagemap": {
+    "name": "io.github.Retio-ai/pagemap",
+    "description": "Structured web page representation for AI agents — 97% HTML token reduction",
+    "version": "0.1.2",
+    "repository_url": "https://github.com/Retio-ai/Retio-pagemap",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/763",
+    "processed_at": "2026-02-22 03:05:01 UTC"
+  },
+  "io.github.SchematicHQ/schematic-mcp": {
+    "name": "io.github.SchematicHQ/schematic-mcp",
+    "description": "Manage companies, plans, features, and billing through SchematicHQ",
+    "version": "0.3.4",
+    "repository_url": "https://github.com/SchematicHQ/schematic-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/764",
+    "processed_at": "2026-02-22 03:05:03 UTC"
+  },
+  "io.github.SpecLeft/specleft": {
+    "name": "io.github.SpecLeft/specleft",
+    "description": "Python intent tracing MCP: map specs to pytest tests, monitor implementation progress, offline-only.",
+    "version": "0.3.0",
+    "repository_url": "https://github.com/SpecLeft/specleft",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/765",
+    "processed_at": "2026-02-22 03:05:04 UTC"
+  },
+  "io.github.UnMarkdown/mcp-server": {
+    "name": "io.github.UnMarkdown/mcp-server",
+    "description": "The document publishing layer for AI tools. Convert markdown to 6 destinations, 62 templates.",
+    "version": "1.0.3",
+    "repository_url": "https://github.com/UnMarkdown/mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/766",
+    "processed_at": "2026-02-22 03:05:06 UTC"
+  },
+  "io.github.VibeTensor/attestix": {
+    "name": "io.github.VibeTensor/attestix",
+    "description": "AI agent identity, W3C credentials, EU AI Act compliance. 47 MCP tools.",
+    "version": "0.2.2",
+    "repository_url": "https://github.com/VibeTensor/attestix",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/767",
+    "processed_at": "2026-02-22 03:05:07 UTC"
+  },
+  "io.github.agntor/trust": {
+    "name": "io.github.agntor/trust",
+    "description": "Trust layer for AI agents: identity, guard, redact, escrow, and x402 payments.",
+    "version": "0.1.0",
+    "repository_url": "https://github.com/agntor/mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/768",
+    "processed_at": "2026-02-22 03:05:08 UTC"
+  },
+  "io.github.ariekogan/ateam-mcp": {
+    "name": "io.github.ariekogan/ateam-mcp",
+    "description": "Build, validate, and deploy multi-agent AI solutions from any AI environment.",
+    "version": "0.1.2",
+    "repository_url": "https://github.com/ariekogan/ateam-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/769",
+    "processed_at": "2026-02-22 03:05:10 UTC"
+  },
+  "io.github.ashish-nativ/nativ": {
+    "name": "io.github.ashish-nativ/nativ",
+    "description": "AI-powered localization — translate, manage translation memory, and access style guides.",
+    "version": "0.1.1",
+    "repository_url": "https://github.com/Nativ-Technologies/nativ-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/770",
+    "processed_at": "2026-02-22 03:05:11 UTC"
+  },
+  "io.github.cartoonitunes/inlay": {
+    "name": "io.github.cartoonitunes/inlay",
+    "description": "Make any website discoverable by AI agents via MCP, llms.txt, and structured data.",
+    "version": "1.0.1",
+    "repository_url": "https://github.com/cartoonitunes/inlay-skills",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/771",
+    "processed_at": "2026-02-22 03:05:12 UTC"
+  },
+  "io.github.chorghemaruti64-creator/agenium-mcp-server": {
+    "name": "io.github.chorghemaruti64-creator/agenium-mcp-server",
+    "description": "Bridge MCP servers to the AGENIUM agent:// network via DNS discovery",
+    "version": "0.1.3",
+    "repository_url": "https://github.com/Aganium/agenium",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/772",
+    "processed_at": "2026-02-22 03:05:14 UTC"
+  },
+  "io.github.echology-io/decompose": {
+    "name": "io.github.echology-io/decompose",
+    "description": "Decompose text into classified semantic units. Authority, risk, attention. No LLM.",
+    "version": "0.1.1",
+    "repository_url": "https://github.com/echology-io/decompose",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/773",
+    "processed_at": "2026-02-22 03:05:15 UTC"
+  },
+  "io.github.furtherfox/achriom": {
+    "name": "io.github.furtherfox/achriom",
+    "description": "The media memory layer for AI agents and their humans. Books, movies, music, shows, and anime.",
+    "version": "1.0.3",
+    "repository_url": "https://github.com/achriom/achriom-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/774",
+    "processed_at": "2026-02-22 03:05:16 UTC"
+  },
+  "io.github.gosodax/builders-mcp": {
+    "name": "io.github.gosodax/builders-mcp",
+    "description": "Live SODAX API data and SDK docs — chains, tokens, swaps, volume, and more.",
+    "version": "1.0.1",
+    "repository_url": "https://github.com/gosodax/builders-sodax-mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/775",
+    "processed_at": "2026-02-22 03:05:18 UTC"
+  },
+  "io.github.gunning4it/epitome-mcp": {
+    "name": "io.github.gunning4it/epitome-mcp",
+    "description": "Personal AI memory — gives every AI agent shared, persistent memory of you",
+    "version": "1.0.0",
+    "repository_url": "https://github.com/gunning4it/epitome",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/776",
+    "processed_at": "2026-02-22 03:05:19 UTC"
+  },
+  "io.github.human-pages-ai/humanpages": {
+    "name": "io.github.human-pages-ai/humanpages",
+    "description": "Access real-world people who listed themselves to be hired by agents via humanpages.ai",
+    "version": "1.2.2",
+    "repository_url": "https://github.com/human-pages-ai/humanpages.git",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/777",
+    "processed_at": "2026-02-22 03:05:20 UTC"
+  },
+  "io.github.kumarprobeops/probeops-mcp-server": {
+    "name": "io.github.kumarprobeops/probeops-mcp-server",
+    "description": "Network diagnostics from 6 global regions. SSL, DNS, ping, whois, traceroute, port scan, latency.",
+    "version": "1.2.3",
+    "repository_url": "https://github.com/kumarprobeops/probeops-mcp-server",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/778",
+    "processed_at": "2026-02-22 03:05:21 UTC"
+  },
+  "io.github.mcp-protocol/node-runtime": {
+    "name": "io.github.mcp-protocol/node-runtime",
+    "description": "Official Node.js runtime and transport layer for Model Context Protocol (MCP) integrations",
+    "version": "1.0.1",
+    "repository_url": "https://github.com/mcp-protocol/node-runtime",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/779",
+    "processed_at": "2026-02-22 03:05:23 UTC"
+  },
+  "io.github.mcpmux/mcp-mux": {
+    "name": "io.github.mcpmux/mcp-mux",
+    "description": "McpMux — configure MCP servers once, connect every AI client through one local gateway.",
+    "version": "0.1.1",
+    "repository_url": "https://github.com/mcpmux/mcp-mux",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/780",
+    "processed_at": "2026-02-22 03:05:24 UTC"
+  },
+  "io.github.mimersql/mimer-mcp": {
+    "name": "io.github.mimersql/mimer-mcp",
+    "description": "An MCP server with Mimer SQL Database Connectivity",
+    "version": "1.0.5",
+    "repository_url": "https://github.com/mimersql/mimer-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/781",
+    "processed_at": "2026-02-22 03:05:25 UTC"
+  },
+  "io.github.ndl-systems/kevros": {
+    "name": "io.github.ndl-systems/kevros",
+    "description": "Cryptographic governance for AI agents. Verify, attest, and audit every action before execution.",
+    "version": "0.2.1",
+    "repository_url": "https://github.com/ndl-systems/kevros-sdk",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/782",
+    "processed_at": "2026-02-22 03:05:27 UTC"
+  },
+  "io.github.omega-memory/omega-memory": {
+    "name": "io.github.omega-memory/omega-memory",
+    "description": "Persistent memory for AI coding agents. #1 on LongMemEval. Local-first.",
+    "version": "0.10.1",
+    "repository_url": "https://github.com/omega-memory/omega-memory",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/783",
+    "processed_at": "2026-02-22 03:05:28 UTC"
+  },
+  "io.github.pdfcrowd/pdfcrowd-mcp-pdf-export": {
+    "name": "io.github.pdfcrowd/pdfcrowd-mcp-pdf-export",
+    "description": "Create polished, professional PDFs from a single prompt. Documentation, reports, charts, and more.",
+    "version": "1.2.2",
+    "repository_url": "https://github.com/pdfcrowd/pdfcrowd-mcp-pdf-export",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/784",
+    "processed_at": "2026-02-22 03:05:30 UTC"
+  },
+  "io.github.readmigo/shipkit": {
+    "name": "io.github.readmigo/shipkit",
+    "description": "Unified app publishing MCP Server for Google Play, App Store, and 10+ Chinese stores",
+    "version": "0.1.1",
+    "repository_url": "https://github.com/readmigo/shipkit",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/785",
+    "processed_at": "2026-02-22 03:05:31 UTC"
+  },
+  "io.github.serpapi/serpapi-mcp": {
+    "name": "io.github.serpapi/serpapi-mcp",
+    "description": "Official SerpApi MCP server for Google, Bing, and other search engines.",
+    "version": "1.0.1",
+    "repository_url": "https://github.com/serpapi/serpapi-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/786",
+    "processed_at": "2026-02-22 03:05:32 UTC"
+  },
+  "io.github.tolenonetwork/toleno-mcp": {
+    "name": "io.github.tolenonetwork/toleno-mcp",
+    "description": "Toleno Network MCP Server — Manage your Toleno mining account with Claude AI using natural language.",
+    "version": "1.0.1",
+    "repository_url": "https://github.com/tolenonetwork/toleno-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/787",
+    "processed_at": "2026-02-22 03:05:33 UTC"
+  },
+  "io.github.transloadit/mcp-server": {
+    "name": "io.github.transloadit/mcp-server",
+    "description": "Process video, audio, images, and documents with 86+ cloud media processing robots.",
+    "version": "0.3.7",
+    "repository_url": "https://github.com/transloadit/node-sdk",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/788",
+    "processed_at": "2026-02-22 03:05:35 UTC"
+  },
+  "io.github.treza-labs/treza": {
+    "name": "io.github.treza-labs/treza",
+    "description": "Manage secure enclaves (TEEs) with attestation, payments, and signing for AI agents.",
+    "version": "0.1.1",
+    "repository_url": "https://github.com/treza-labs/treza-sdk",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/789",
+    "processed_at": "2026-02-22 03:05:36 UTC"
+  },
+  "io.github.ucmai/ucm": {
+    "name": "io.github.ucmai/ucm",
+    "description": "API marketplace for AI agents — 100 services, 87 free, one API key",
+    "version": "0.3.3",
+    "repository_url": "https://github.com/ucmai/ucm.ai",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/790",
+    "processed_at": "2026-02-22 03:05:37 UTC"
+  },
+  "io.github.vivid-money/vivid-mcp": {
+    "name": "io.github.vivid-money/vivid-mcp",
+    "description": "Open a Vivid Business account from your AI chat via MCP.",
+    "version": "0.1.0",
+    "repository_url": "https://github.com/vivid-money/vivid-mcp",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/791",
+    "processed_at": "2026-02-22 03:05:38 UTC"
+  },
+  "io.sanity.www/mcp": {
+    "name": "io.sanity.www/mcp",
+    "description": "Direct access to your Sanity projects (content, datasets, releases, schemas) and agent rules",
+    "version": "2.13.2",
+    "repository_url": "https://github.com/sanity-io/agent-toolkit",
+    "server_type": "official",
+    "upstream_source": "modelcontextprotocol.io",
+    "issue_url": "https://github.com/obot-platform/mcp-catalog/issues/792",
+    "processed_at": "2026-02-22 03:05:40 UTC"
   }
 }
