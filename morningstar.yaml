@@ -26,7 +26,7 @@ description: |
 metadata:
   categories: Finance & Business
 icon: https://www.morningstar.com/favicon.ico
-repoURL: https://mcp.morningstar.com/mcp
+repoURL: https://developer.morningstar.com/direct-web-services/documentation/morningstar-ai-integrations/morningstar-mcp-server/overview
 runtime: remote
 remoteConfig:
   fixedURL: https://mcp.morningstar.com/mcp

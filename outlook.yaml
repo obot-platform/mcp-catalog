@@ -25,7 +25,7 @@ metadata:
   categories: Business
   allow-multiple: "true"
 icon: https://img.icons8.com/?size=100&id=ut6gQeo5pNqf&format=png&color=000000
-repoURL: https://outlook-mcp.obot.ai/mcp
+repoURL: https://github.com/obot-platform/microsoft-office-365-mcp/tree/main/outlook
 runtime: remote
 remoteConfig:
   fixedURL: https://outlook-mcp.obot.ai/mcp
