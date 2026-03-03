@@ -24,7 +24,7 @@ metadata:
   categories: Business
   allow-multiple: "true"
 icon: https://img.icons8.com/?size=100&id=P7UIlhbpWzZm&format=png&color=000000
-repoURL: https://gmail-mcp.obot.ai/mcp
+repoURL: https://github.com/obot-platform/google-mcp/tree/main/gmail
 runtime: remote
 remoteConfig:
   fixedURL: https://gmail-mcp.obot.ai/mcp

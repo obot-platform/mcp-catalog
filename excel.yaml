@@ -25,7 +25,7 @@ metadata:
   categories: Business
   allow-multiple: "true"
 icon: https://img.icons8.com/?size=100&id=13654&format=png&color=000000
-repoURL: https://github.com/obot-platform/tools/tree/main/microsoft365/excel-mcp-go
+repoURL: https://github.com/obot-platform/microsoft-office-365-mcp/tree/main/excel
 runtime: remote
 remoteConfig:
   fixedURL: https://m365-excel-mcp.obot.ai/mcp

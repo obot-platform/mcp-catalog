@@ -25,7 +25,7 @@ metadata:
   categories: Business
   allow-multiple: "true"
 icon: https://img.icons8.com/?size=100&id=qrAVeBIrsjod&format=png&color=000000
-repoURL: https://google-sheets-mcp.obot.ai/mcp/
+repoURL: https://github.com/obot-platform/google-mcp/tree/main/sheets
 runtime: remote
 remoteConfig:
   fixedURL: https://google-sheets-mcp.obot.ai/mcp/
