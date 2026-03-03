@@ -102,7 +102,7 @@ env:
   description: AWS Region, default to us-east-1
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/aws-api:1.1.4
+  image: ghcr.io/obot-platform/mcp-images/aws-api:1.2.2
   port: 8099
   path: /
   args:
