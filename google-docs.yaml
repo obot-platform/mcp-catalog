@@ -1,0 +1,26 @@
+name: Google Docs
+shortDescription: Create and manage documents in Google Docs
+description: |
+  ![Google Docs MCP Server](https://img.shields.io/badge/Google%20Docs-MCP%20Server-blue?style=for-the-badge&logo=google-docs)
+  ![Python](https://img.shields.io/badge/Python-3.13+-green?style=for-the-badge&logo=python)
+  ![FastMCP](https://img.shields.io/badge/FastMCP-2.11.2+-orange?style=for-the-badge)
+  ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+
+  A Model Context Protocol (MCP) server for Google Docs integration, providing comprehensive docujment document management capabilities.
+
+  ## Features
+  - **OAuth2 Authentication**: Secure Google OAuth integration with automatic token refresh
+  - **Document Management**: Create, read, modify, and delete documents with full lifecycle control
+
+  ## What you'll need to connect
+
+  **No Setup Required**: Authentication is handled automatically through OAuth2 workflow
+
+metadata:
+  categories: Business
+  allow-multiple: "true"
+icon: https://img.icons8.com/color/96/google-docs--v1.png
+repoURL: https://github.com/obot-platform/google-mcp/tree/main/docs
+runtime: remote
+remoteConfig:
+  fixedURL: https://google-docs-mcp.obot.ai/mcp/

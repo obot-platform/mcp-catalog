@@ -85,4 +85,4 @@ toolPreview:
     params:
       spreadsheet_id: The ID of the spreadsheet to clear data from
       cell_range: "Range of cells to clear in A1 notation (e.g., 'A1:C10', 'D2:D100')"
-      worksheet_name: The name of the worksheet to clear data from. If not provided, the first worksheet will be used 
+      worksheet_name: The name of the worksheet to clear data from. If not provided, the first worksheet will be used

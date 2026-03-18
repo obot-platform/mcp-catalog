@@ -1,0 +1,28 @@
+name: Google Search Console
+shortDescription: Use Google Search Console API to get sitemaps, analytics, and more
+description: |
+  ![Google Search Console MCP Server](https://img.shields.io/badge/Google%20Search%20Console-MCP%20Server-blue?style=for-the-badge&logo=google-search-console)
+  ![Python](https://img.shields.io/badge/Python-3.13+-green?style=for-the-badge&logo=python)
+  ![FastMCP](https://img.shields.io/badge/FastMCP-2.11.2+-orange?style=for-the-badge)
+  ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+
+  A Model Context Protocol (MCP) server for Google Search Console integration, providing access to search console data.
+
+  ## Features
+  - **OAuth2 Authentication**: Secure Google OAuth integration with automatic token refresh
+  - **Sitemaps**: get, submit, and delete sitemaps
+  - **Analytics**: get search analytics, compare time periods, and get page queries
+  - **Indexes**: inspect URLs, check indexing issues
+
+  ## What you'll need to connect
+
+  **No Setup Required**: Authentication is handled automatically through OAuth2 workflow
+
+metadata:
+  categories: Business
+  allow-multiple: "true"
+icon: https://img.icons8.com/?size=100&id=V5cGWnc9R4xj&format=png&color=000000
+repoURL: https://github.com/obot-platform/google-mcp/tree/main/search-console
+runtime: remote
+remoteConfig:
+  fixedURL: https://google-search-console-mcp.obot.ai/mcp/
