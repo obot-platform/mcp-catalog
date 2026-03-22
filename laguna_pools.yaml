@@ -1,0 +1,13 @@
+name: Laguna Pools
+shortDescription: AI sales manager for composite swimming pools — recommendations, pricing, BIM/CAD
+description: |
+  MCP server for composite swimming pool sales management. Provides AI-powered recommendations, pricing calculations, and BIM/CAD integration for pool dealers.
+
+  ## Features
+  - Pool recommendations and configuration
+  - Pricing calculations for composite pools
+  - BIM/CAD integration for dealers
+  - Multi-language support (Russian)
+
+  ## What you'll need to connect
+  - API access to Laguna Pools service

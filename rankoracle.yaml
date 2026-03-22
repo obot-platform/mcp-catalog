@@ -1,0 +1,13 @@
+name: RankOracle
+shortDescription: SEO Intelligence — keyword research, SERP analysis, domain audits, competitor tracking
+description: |
+  SEO Intelligence MCP server with 13 tools for keyword research, SERP analysis, domain audits, and competitor tracking.
+
+  ## Available Tools
+  - Keyword research and difficulty scoring
+  - SERP position tracking
+  - Domain authority audits
+  - Competitor analysis
+
+  ## What you'll need to connect
+  - No API key required for basic features

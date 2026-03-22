@@ -1,0 +1,14 @@
+name: Vivesca
+shortDescription: Opinionated MCP server with Pydantic output schemas across 7 domains
+description: |
+  An opinionated MCP server with Pydantic output schemas, supporting 7 domains. Built to evolve with structured output validation.
+
+  ## Features
+  - Pydantic-powered output schemas
+  - Multi-domain support (7 domains)
+  - Structured output validation
+  - Built-in extensibility
+
+  ## What you'll need to connect
+  - Python environment with required dependencies
+  - API credentials for configured domains

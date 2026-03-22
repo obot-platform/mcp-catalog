@@ -1,0 +1,13 @@
+name: MacroOracle
+shortDescription: US Macro Economic Intelligence MCP server
+description: |
+  MacroOracle provides US macro economic intelligence through MCP. Track economic indicators, Fed policy, and market impact analysis.
+
+  ## Features
+  - Economic indicator tracking
+  - Fed policy analysis
+  - Market impact assessment
+  - Historical data comparison
+
+  ## What you'll need to connect
+  - No API key required for basic features

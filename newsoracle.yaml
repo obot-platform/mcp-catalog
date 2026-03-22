@@ -1,0 +1,13 @@
+name: NewsOracle
+shortDescription: News and Trends Intelligence MCP server
+description: |
+  NewsOracle provides real-time news and trends intelligence through MCP. Stay informed with AI-curated news feeds and trend analysis.
+
+  ## Features
+  - Real-time news aggregation
+  - Trend analysis and detection
+  - Topic-based filtering
+  - Multi-source coverage
+
+  ## What you'll need to connect
+  - No API key required for basic features

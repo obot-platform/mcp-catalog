@@ -1,0 +1,13 @@
+name: MemeOracle
+shortDescription: Memecoin Intelligence — rug check, momentum, whale watch across 80+ chains
+description: |
+  Memecoin Intelligence MCP server with 9 tools for rug checks, momentum tracking, and whale watching across 80+ blockchain chains.
+
+  ## Available Tools
+  - Rug pull detection and safety scoring
+  - Momentum and volume analysis
+  - Whale wallet tracking
+  - Cross-chain monitoring (80+ chains)
+
+  ## What you'll need to connect
+  - No API key required for basic features

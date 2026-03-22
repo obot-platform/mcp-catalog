@@ -1,0 +1,13 @@
+name: YieldOracle
+shortDescription: DeFi Yield Intelligence — 19K+ pools, risk-adjusted APY, RWA yields
+description: |
+  DeFi Yield Intelligence MCP server with 8 tools covering 19K+ liquidity pools, risk-adjusted APY calculations, and real-world asset (RWA) yield tracking.
+
+  ## Available Tools
+  - Pool discovery and comparison
+  - Risk-adjusted APY analysis
+  - RWA yield tracking
+  - Yield optimization recommendations
+
+  ## What you'll need to connect
+  - No API key required for basic features

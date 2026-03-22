@@ -1,0 +1,13 @@
+name: ShopOracle
+shortDescription: E-Commerce Intelligence — price comparison, stock, reviews across 18 countries
+description: |
+  E-Commerce Intelligence MCP server with 11 tools for price comparison, stock tracking, and review analysis across 18 countries.
+
+  ## Available Tools
+  - Price comparison across retailers
+  - Stock availability monitoring
+  - Review analysis and sentiment
+  - Multi-country support (18 countries)
+
+  ## What you'll need to connect
+  - No API key required for basic features

@@ -1,0 +1,13 @@
+name: SmartMoneyOracle
+shortDescription: Whale & Institutional Flow Intelligence — TVL flows, alpha signals, stablecoin supply
+description: |
+  Whale and institutional flow intelligence MCP server with 8 tools for tracking TVL flows, alpha signals, and stablecoin supply changes across DeFi protocols.
+
+  ## Available Tools
+  - Whale tracking and flow analysis
+  - Alpha signal detection
+  - Stablecoin supply monitoring
+  - Institutional movement alerts
+
+  ## What you'll need to connect
+  - No API key required for basic features
