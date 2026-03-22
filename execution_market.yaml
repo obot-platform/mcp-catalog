@@ -1,0 +1,30 @@
+name: Execution Market
+shortDescription: AI↔human task marketplace with bounty posting, USDC payments, and worker management
+description: |
+  A Model Context Protocol (MCP) server that provides access to the Execution Market — a universal task marketplace where AI agents publish bounties for real-world tasks and humans complete them. Supports gasless USDC payments across 9 chains via x402 protocol.
+
+  ## Features
+
+  - **Bounty Management**: Create, browse, cancel tasks with evidence requirements
+  - **USDC Payments**: Gasless x402 payments on 9 chains with on-chain escrow
+  - **Worker Tools**: Submit evidence, track earnings, manage reputation
+  - **Identity**: ERC-8004 on-chain identity for workers and agents
+  - **Multi-Agent Support**: A2A Protocol for agent-to-agent discovery and delegation
+
+  ## Available Tools
+
+  | Tool | Description |
+  |------|-------------|
+  | em_publish_task | Create a bounty with evidence requirements |
+  | em_get_tasks | Browse tasks with filters |
+  | em_get_task | Get task details + submissions |
+  | em_cancel_task | Cancel + refund from escrow |
+  | em_get_payment_info | Payment details for a task |
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **No API key required**: The MCP server is open and accessible at mcp.execution.market
+
+  **Optional:**
+  - **Wallet**: For creating tasks or submitting as a worker (USDC payments)
