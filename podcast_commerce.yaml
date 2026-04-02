@@ -1,0 +1,68 @@
+name: Podcast Commerce MCP
+shortDescription: Extract affiliate-ready product entities from podcast transcripts in under 2 seconds
+description: |
+  A Model Context Protocol (MCP) server that turns podcast transcripts into structured, affiliate-ready product data. Built for content creators, affiliate marketers, and commerce automation agents.
+
+  ## Features
+  - **Product Extraction**: Identify product mentions, brands, and recommendations from any podcast transcript or YouTube URL
+  - **Sponsor Analysis**: Detect and classify sponsor segments, estimate CPM rates and ad revenue
+  - **Trend Tracking**: Compare product mention frequency across multiple episodes and shows
+  - **Cross-Show Aggregation**: Aggregate and rank products mentioned across shows with entity resolution
+  - **Show Notes Generation**: Format extracted products into shoppable show notes sections ready to publish
+
+  ## What you'll need to connect
+
+  **No Setup Required**: Free tier provides 200 tool calls/day with no API key needed.
+
+  **Optional Paid Tier**: For more than 200 calls/day, include your API key via the `X-API-Key` header. Pricing: $0.01/call.
+
+  ## Example use cases
+  - "Extract all products mentioned in this Huberman Lab transcript"
+  - "Which sponsors appeared most often in the last 10 episodes?"
+  - "Generate affiliate show notes for episode 42"
+
+metadata:
+  categories: Content & Media,E-Commerce & Shopping,Affiliate Marketing
+icon: https://raw.githubusercontent.com/teamsincetoday/podcast-commerce-mcp/master/assets/logo.png
+repoURL: https://github.com/teamsincetoday/podcast-commerce-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://podcast-commerce-mcp.sincetoday.workers.dev/mcp
+  headers:
+    - name: API Key
+      key: X-API-Key
+      required: false
+      sensitive: true
+      description: Optional. Required for more than 200 calls/day. Omit for free tier.
+toolPreview:
+  - name: extract_podcast_products
+    description: Extract structured product mentions, brands, and recommendations from a podcast transcript or YouTube URL. Returns affiliate-ready JSON with product names, categories, confidence scores, and mention context. Free tier (200 calls/day). Example: transcript='Today we're trying the new Garmin Forerunner 965...' → [{name:'Garmin Forerunner 965',category:'wearables',confidence:0.97}].
+    params:
+      transcript: Raw podcast transcript text
+      podcast_url: Optional YouTube or podcast URL to fetch transcript from
+      category_filter: Optional product category to filter results
+      min_confidence: Minimum confidence threshold (0.0–1.0, default 0.7)
+  - name: analyze_episode_sponsors
+    description: Identify and classify sponsor segments in a podcast episode. Returns sponsor name, product category, estimated CPM, ad type (host-read/baked-in/dynamic), and estimated revenue. Benchmark CPM estimates only — not live ad platform data.
+    params:
+      transcript: Podcast transcript text
+      episode_id: Optional episode identifier for caching
+  - name: track_product_trends
+    description: Compare product mention frequency and brand prominence across multiple episodes. Useful for identifying trending products and sponsor rotation patterns.
+    params:
+      episode_ids: List of episode IDs to compare
+      category: Optional category filter
+  - name: compare_products_across_shows
+    description: Aggregate and rank products mentioned across multiple shows with entity resolution. Collapses 3 separate calls into 1 — handles fuzzy brand matching server-side. Returns products ranked by average confidence × show count.
+    params:
+      show_ids: List of show identifiers or 'all'
+      category: Optional category filter
+      min_confidence: Minimum confidence threshold
+      min_show_count: Minimum number of shows a product must appear in
+  - name: generate_show_notes_section
+    description: Format extracted podcast products into a shoppable show notes section. Outputs markdown or HTML ready to publish. Includes affiliate link placeholders and CTA block.
+    params:
+      episode_id: Episode ID from a prior extract_podcast_products call
+      products: Optional raw product list to format directly
+      format: Output format — markdown or html (default markdown)
+      style: Detail level — minimal or full (default full)

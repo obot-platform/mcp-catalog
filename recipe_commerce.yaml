@@ -1,0 +1,52 @@
+name: Recipe Commerce MCP
+shortDescription: Extract ingredients from recipes and match them to affiliate-ready product data in under 2 seconds
+description: |
+  A Model Context Protocol (MCP) server that turns recipe content into shoppable, affiliate-ready ingredient lists. Built for cooking content creators, affiliate marketers, and commerce automation agents.
+
+  ## Features
+  - **Ingredient Extraction**: Parse structured ingredient lists from recipe transcripts, YouTube cooking videos, or raw text — with quantity, unit, and category
+  - **Product Matching**: Match ingredients to purchasable products on Amazon and specialty retailers with affiliate program details and estimated commission rates
+  - **Affiliate Shopping Lists**: Generate revenue-ranked affiliate shopping lists with substitution alternatives and estimated commissions
+
+  ## What you'll need to connect
+
+  **No Setup Required**: Free tier provides 200 tool calls/day with no API key needed.
+
+  **Optional Paid Tier**: For more than 200 calls/day, include your API key via the `X-API-Key` header. Pricing: $0.01/call.
+
+  ## Example use cases
+  - "Extract all ingredients from this chocolate chip cookie recipe"
+  - "Match these ingredients to Amazon products with affiliate links"
+  - "Generate a ranked affiliate shopping list for this recipe"
+
+metadata:
+  categories: Content & Media,E-Commerce & Shopping,Affiliate Marketing,Food & Nutrition
+icon: https://raw.githubusercontent.com/teamsincetoday/recipe-commerce-mcp/master/assets/logo.png
+repoURL: https://github.com/teamsincetoday/recipe-commerce-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://recipe-commerce-mcp.sincetoday.workers.dev/mcp
+  headers:
+    - name: API Key
+      key: X-API-Key
+      required: false
+      sensitive: true
+      description: Optional. Required for more than 200 calls/day. Omit for free tier.
+toolPreview:
+  - name: extract_recipe_ingredients
+    description: Extract structured ingredient data from a cooking video transcript or YouTube URL. Returns ingredient name, quantity, unit, and category. YouTube URL transcription requires yt-dlp on the server — pass raw transcript text for reliable extraction in all environments. Results are cached by recipe_id for downstream tools. Example: transcript='2 cups all-purpose flour...' → [{name:'flour',quantity:'2',unit:'cups',category:'pantry'}].
+    params:
+      transcript: Recipe transcript text or cooking video description
+      recipe_id: Optional recipe identifier for caching
+      youtube_url: Optional YouTube cooking video URL
+  - name: match_ingredients_to_products
+    description: Match recipe ingredients to purchasable products on Amazon and specialty retailers. Returns affiliate program details (Amazon Associates, ShareASale, Awin), estimated price range, estimated commission rate (2–10%), and substitution alternatives. Commission rates are benchmark estimates — not live affiliate platform data. Accepts ingredient list directly or recipe_id from a prior extract_recipe_ingredients call.
+    params:
+      recipe_id: Recipe ID from a prior extract_recipe_ingredients call
+      ingredients: Optional ingredient list to match directly
+  - name: suggest_affiliate_products
+    description: Generate a ranked affiliate shopping list for a recipe, scoring each ingredient by estimated commission, purchase likelihood, and product availability. Returns top affiliate opportunities sorted by estimated revenue potential. Best called after match_ingredients_to_products for enriched data.
+    params:
+      recipe_id: Recipe ID from a prior extract_recipe_ingredients call
+      max_products: Maximum number of products to return (default 10)
+      min_commission_pct: Minimum estimated commission percentage to include

@@ -1,0 +1,60 @@
+name: Newsletter Commerce MCP
+shortDescription: Extract affiliate-ready product entities from newsletter content in under 2 seconds
+description: |
+  A Model Context Protocol (MCP) server that turns newsletter content into structured, affiliate-ready product data. Built for newsletter operators, affiliate marketers, and commerce automation agents.
+
+  ## Features
+  - **Product Extraction**: Identify affiliate links, product recommendations, and sponsored mentions from newsletter HTML or plain text
+  - **Sponsor Analysis**: Detect and classify sponsored sections, estimate CPM rates and advertising value
+  - **Trend Tracking**: Compare affiliate product mentions and brand frequency across multiple newsletter editions
+  - **Products Section Generation**: Format extracted products into a "Products in This Edition" footer section ready to publish
+
+  ## What you'll need to connect
+
+  **No Setup Required**: Free tier provides 200 tool calls/day with no API key needed.
+
+  **Optional Paid Tier**: For more than 200 calls/day, include your API key via the `X-API-Key` header. Pricing: $0.01/call.
+
+  ## Example use cases
+  - "What products were recommended in this Morning Brew edition?"
+  - "Identify all sponsored sections in this newsletter and estimate ad revenue"
+  - "Generate a 'Products in This Edition' footer for my newsletter"
+
+metadata:
+  categories: Content & Media,E-Commerce & Shopping,Affiliate Marketing
+icon: https://raw.githubusercontent.com/teamsincetoday/newsletter-commerce-mcp/master/assets/logo.png
+repoURL: https://github.com/teamsincetoday/newsletter-commerce-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://newsletter-commerce-mcp.sincetoday.workers.dev/mcp
+  headers:
+    - name: API Key
+      key: X-API-Key
+      required: false
+      sensitive: true
+      description: Optional. Required for more than 200 calls/day. Omit for free tier.
+toolPreview:
+  - name: extract_newsletter_products
+    description: Extract affiliate links, product recommendations, and sponsored mentions from newsletter HTML or plain text. Returns structured product data with names, categories, confidence scores, and mention context. F1 accuracy 100% on benchmark. Free tier (200 calls/day). Example: content='This week's top pick is the Nespresso Vertuo...' → [{name:'Nespresso Vertuo',category:'kitchen',confidence:0.95}].
+    params:
+      content: Newsletter HTML or plain text
+      edition_id: Optional edition identifier for caching
+      category_filter: Optional product category to filter results
+      min_confidence: Minimum confidence threshold (0.0–1.0, default 0.7)
+  - name: analyze_newsletter_sponsors
+    description: Identify and classify sponsored sections in a newsletter edition. Returns sponsor name, product category, estimated CPM, ad type (dedicated/native/banner), and estimated revenue. CPM rates are benchmark estimates — not live ad platform data.
+    params:
+      content: Newsletter HTML or plain text
+      edition_id: Optional edition identifier for caching
+  - name: track_product_trends
+    description: Compare affiliate product mentions and brand frequency across multiple newsletter editions. Useful for identifying trending products and sponsor rotation patterns over time.
+    params:
+      edition_ids: List of edition IDs to compare
+      category: Optional category filter
+  - name: generate_newsletter_products_section
+    description: Format extracted newsletter products into a "Products in This Edition" footer section. Outputs markdown or HTML ready to insert into your newsletter template. Includes affiliate link placeholders and optional CTA.
+    params:
+      edition_id: Edition ID from a prior extract_newsletter_products call
+      products: Optional raw product list to format directly
+      format: Output format — markdown or html (default markdown)
+      style: Detail level — minimal or full (default full)
