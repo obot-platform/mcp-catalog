@@ -54,7 +54,7 @@ env:
   description: Your Gemini API key.
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/browserbase:2.4.0
+  image: ghcr.io/obot-platform/mcp-images/browserbase:2.4.3
   port: 8099
   path: /
   args:
