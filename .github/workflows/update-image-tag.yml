@@ -44,7 +44,7 @@ jobs:
 
       - name: Install mcptools
         run: |
-          go install github.com/f/mcptools/cmd/mcpt@latest
+          go install github.com/f/mcptools/cmd/mcptools@latest
           echo "$HOME/go/bin" >> $GITHUB_PATH
 
       - name: Validate version changes
