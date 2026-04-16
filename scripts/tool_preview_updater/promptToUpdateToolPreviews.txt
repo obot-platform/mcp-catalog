@@ -1,0 +1,30 @@
+Refresh catalog tool previews across this repository.
+
+Work only on root-level `*.yaml` catalog files.
+
+For every YAML file:
+1. If the file does not contain `toolPreview`, skip it without changes.
+2. Inspect the MCP server however necessary to determine whether `toolPreview` is stale.
+3. If the existing `toolPreview` is already accurate enough, leave the file unchanged.
+4. If the `toolPreview` is stale, update only the `toolPreview` block.
+
+Inspection rules:
+- `mcptools` is installed in the runner and available on PATH. Use it when it is a good fit for inspecting MCP servers.
+- Prefer live MCP introspection (`tools/list`, negotiated protocol version, remote endpoint, published container image, or runnable server command) when feasible.
+- If live introspection is blocked by auth, transport limitations, or unavailable infrastructure, fall back to upstream source code, official docs, README tables, published package metadata, or other authoritative repo-linked sources.
+- Use the best available source per server and avoid guessing.
+
+Editing rules:
+- Make the smallest correct changes.
+- Do not edit YAML files that do not have `toolPreview`.
+- Do not change unrelated fields outside `toolPreview` unless absolutely required for preview accuracy.
+- Preserve the repo's existing YAML style as much as possible.
+- Keep tool descriptions concise and practical.
+- Prefer current tool names over deprecated placeholder names.
+
+Repository-level goal:
+- Scan all root-level YAML catalog files in one pass.
+- If no `toolPreview` updates are needed anywhere, make no code changes.
+- If updates are needed, apply them in the working tree.
+
+Before finishing, verify any edited YAML files still parse and that you've inspect every YAML file with tool previews.
