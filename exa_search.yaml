@@ -43,35 +43,35 @@ env:
   description: Your Exa API key.
 toolPreview:
 - name: web_search_exa
-  description: Search the web using Exa AI - performs real-time web searches and can scrape content from specific URLs. Supports configurable result counts and returns the content from the most relevant websites.
+  description: Search the web for any topic and get clean, ready-to-use content
   params:
-    query: The search query string
-    numResults: Optional number of results to return
-- name: company_research_exa
-  description: Research companies using Exa AI - finds comprehensive information about businesses, organizations, and corporations. Provides insights into company operations, news, financial information, and industry analysis.
+    query: Natural language search query. Should be a semantically rich description of the ideal page, not just keywords.
+    numResults: Number of search results to return (must be a number, default 8)
+    type: "Search type - 'auto': balanced search (default), 'fast': quick results"
+    freshness: How recent results should be. Only set when recency matters.
+    includeDomains: List of domains to include in the search. If specified, results will only come from these domains.
+- name: web_search_advanced_exa
+  description: Advanced web search with full control over filters, domains, dates, and content options.
   params:
-    companyName: Name of the company to research
-    numResults: Optional number of results to return
+    query: Search query - can be a question, statement, or keywords
+    numResults: Number of results (must be a number, 1-100, default 10)
+    type: "Search type - 'auto': balanced (default), 'fast': quick results, 'neural': semantic search"
+    category: Filter results to a specific category
+    includeDomains: Only include results from these domains (e.g., ['arxiv.org', 'github.com'])
+    startPublishedDate: "Only include results published after this date (ISO 8601: YYYY-MM-DD)"
+- name: get_code_context_exa
+  description: Find code examples, documentation, and programming solutions from GitHub, Stack Overflow, and docs
+  params:
+    query: Search query to find relevant context for APIs, Libraries, and SDKs. For example, 'React useState hook examples', 'Python pandas dataframe filtering', 'Express.js middleware', 'Next js partial prerendering configuration'
+    numResults: Number of search results to return (must be a number, default 8)
 - name: crawling_exa
-  description: Extract and crawl content from specific URLs using Exa AI - retrieves full text content, metadata, and structured information from web pages. Ideal for extracting detailed content from known URLs.
+  description: Get the full content of a specific webpage from a known URL
   params:
-    url: The URL to crawl and extract content from
-    maxCharacters: Optional maximum number of characters to extract
-- name: linkedin_search_exa
-  description: Search LinkedIn profiles and companies using Exa AI - finds professional profiles, company pages, and business-related content on LinkedIn. Useful for networking, recruitment, and business research.
-  params:
-    query: The LinkedIn search query
-    numResults: Optional number of results to return
-    searchType: Optional search type specification
-- name: deep_researcher_start
-  description: Start a comprehensive AI-powered deep research task for complex queries. This tool initiates an intelligent agent that performs extensive web searches, crawls relevant pages, analyzes information, and synthesizes findings into a detailed research report. The agent thinks critically about the research topic and provides thorough, well-sourced answers. Use this for complex research questions that require in-depth analysis rather than simple searches. After starting a research task, IMMEDIATELY use deep_researcher_check with the returned task ID to monitor progress and retrieve results.
-  params:
-    instructions: Research instructions and topic description
-    model: Optional AI model to use for research
-- name: deep_researcher_check
-  description: Check the status and retrieve results of a deep research task. This tool monitors the progress of an AI agent that performs comprehensive web searches, analyzes multiple sources, and synthesizes findings into detailed research reports. The tool includes a built-in 5-second delay before checking to allow processing time. IMPORTANT - You must call this tool repeatedly (poll) until the status becomes 'completed' to get the final research results. When status is 'running', wait a few seconds and call this tool again with the same task ID.
-  params:
-    taskId: The task ID returned from deep_researcher_start
+    urls: URLs to read. Batch multiple URLs in one call.
+    maxCharacters: Maximum characters to extract per page (must be a number, default 3000)
+    maxAgeHours: Maximum age of cached content in hours. 0 = always fetch fresh content, omit = use cached content with fresh fetch fallback.
+    subpages: Number of subpages to also crawl from each URL.
+    subpageTarget: Keywords to prioritize when selecting subpages
 runtime: containerized
 containerizedConfig:
   image: ghcr.io/obot-platform/mcp-images/exa-search:3.2.0
@@ -79,4 +79,4 @@ containerizedConfig:
   path: /
   args:
   - exa-mcp-server
-  - --tools=web_search_exa,research_paper_search,company_research,crawling,competitor_finder,linkedin_search,wikipedia_search_exa,github_search
+  - --tools=web_search_exa,web_search_advanced_exa,get_code_context_exa,crawling_exa
