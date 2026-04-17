@@ -117,6 +117,11 @@ require_command opencode
 require_command shasum
 require_command awk
 
+if [[ "$#" -gt 1 ]]; then
+  printf 'Usage: %s [top-level-yaml-file]\n' "$0" >&2
+  exit 1
+fi
+
 if [[ ! -f "$PROMPT_FILE" ]]; then
   printf 'Prompt file not found: %s\n' "$PROMPT_FILE" >&2
   exit 1
@@ -140,6 +145,27 @@ shopt -u nullglob
 if [[ "${#yaml_files[@]}" -eq 0 ]]; then
   printf 'No top-level YAML files found.\n'
   exit 0
+fi
+
+if [[ "$#" -eq 1 ]]; then
+  requested_yaml="$1"
+
+  if [[ "$requested_yaml" == */* ]]; then
+    requested_yaml="$(basename "$requested_yaml")"
+  fi
+
+  if ! is_allowed_yaml_path "$requested_yaml"; then
+    printf 'Argument must be a top-level YAML filename: %s\n' "$1" >&2
+    exit 1
+  fi
+
+  requested_yaml_path="$REPO_ROOT/$requested_yaml"
+  if [[ ! -f "$requested_yaml_path" ]]; then
+    printf 'YAML file not found: %s\n' "$requested_yaml" >&2
+    exit 1
+  fi
+
+  yaml_files=("$requested_yaml_path")
 fi
 
 printf 'Top-level YAML files:\n'
