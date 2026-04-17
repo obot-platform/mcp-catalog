@@ -50,64 +50,60 @@ containerizedConfig:
   - mcp-server-supabase
 toolPreview:
 - name: list_projects
-  description: Lists all Supabase projects for the user
+  description: Lists all Supabase projects for the user.
 - name: get_project
-  description: Gets details for a project
+  description: Gets details for a project.
 - name: create_project
-  description: Creates a new Supabase project
+  description: Creates a new Supabase project.
 - name: pause_project
-  description: Pauses a project
+  description: Pauses a project.
 - name: restore_project
-  description: Restores a project
+  description: Restores a project.
 - name: list_organizations
-  description: Lists all organizations that the user is a member of
+  description: Lists all organizations that the user is a member of.
 - name: get_organization
-  description: Gets details for an organization
+  description: Gets details for an organization.
 - name: get_cost
-  description: Gets the cost of a new project or branch for an organization
+  description: Gets the cost of a new project or branch for an organization.
 - name: confirm_cost
-  description: Confirms the user's understanding of new project or branch costs
+  description: Confirms the user's understanding of new project or branch costs. This is required to create a new project or branch.
 - name: search_docs
-  description: Searches the Supabase documentation for up-to-date information
+  description: Searches the Supabase documentation for up-to-date information. LLMs can use this to find answers to questions or learn how to use specific features.
 - name: list_tables
-  description: Lists all tables within the specified schemas
+  description: Lists all tables within the specified schemas.
 - name: list_extensions
-  description: Lists all extensions in the database
+  description: Lists all extensions in the database.
 - name: list_migrations
-  description: Lists all migrations in the database
+  description: Lists all migrations in the database.
 - name: apply_migration
-  description: Applies a SQL migration to the database
+  description: Applies a SQL migration to the database. SQL passed to this tool will be tracked within the database, so LLMs should use this for DDL operations (schema changes).
 - name: execute_sql
-  description: Executes raw SQL in the database
+  description: Executes raw SQL in the database. LLMs should use this for regular queries that don't change the schema.
 - name: get_logs
-  description: Gets logs for a Supabase project by service type (api, postgres, edge functions, auth, storage, realtime)
+  description: Gets logs for a Supabase project by service type (api, postgres, edge functions, auth, storage, realtime). LLMs can use this to help with debugging and monitoring service performance.
 - name: get_advisors
-  description: Gets a list of advisory notices for a Supabase project
+  description: Gets a list of advisory notices for a Supabase project. LLMs can use this to check for security vulnerabilities or performance issues.
 - name: get_project_url
-  description: Gets the API URL for a project
-- name: get_anon_key
-  description: Gets the anonymous API key for a project
+  description: Gets the API URL for a project.
+- name: get_publishable_keys
+  description: Gets the anonymous API keys for a project. Returns an array of client-safe API keys including legacy anon keys and modern publishable keys. Publishable keys are recommended for new applications.
 - name: generate_typescript_types
-  description: Generates TypeScript types based on the database schema
+  description: Generates TypeScript types based on the database schema. LLMs can save this to a file and use it in their code.
 - name: list_edge_functions
-  description: Lists all Edge Functions in a Supabase project
+  description: Lists all Edge Functions in a Supabase project.
+- name: get_edge_function
+  description: Retrieves file contents for an Edge Function in a Supabase project.
 - name: deploy_edge_function
-  description: Deploys a new Edge Function to a Supabase project
+  description: Deploys a new Edge Function to a Supabase project. LLMs can use this to deploy new functions or update existing ones.
 - name: create_branch
-  description: Creates a development branch with migrations from production branch
+  description: Creates a development branch with migrations from production branch.
 - name: list_branches
-  description: Lists all development branches
+  description: Lists all development branches.
 - name: delete_branch
-  description: Deletes a development branch
+  description: Deletes a development branch.
 - name: merge_branch
-  description: Merges migrations and edge functions from a development branch to production
+  description: Merges migrations and edge functions from a development branch to production.
 - name: reset_branch
-  description: Resets migrations of a development branch to a prior version
+  description: Resets migrations of a development branch to a prior version.
 - name: rebase_branch
-  description: Rebases development branch on production to handle migration drift
-- name: list_storage_buckets
-  description: Lists all storage buckets in a Supabase project
-- name: get_storage_config
-  description: Gets the storage config for a Supabase project
-- name: update_storage_config
-  description: Updates the storage config for a Supabase project
+  description: Rebases development branch on production to handle migration drift.
