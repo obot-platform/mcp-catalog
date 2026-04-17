@@ -66,7 +66,7 @@ toolPreview:
   params:
     orgId: Optional organization ID to filter projects
 - name: atlas-inspect-cluster
-  description: Inspect MongoDB Atlas cluster
+  description: Inspect metadata for a MongoDB Atlas cluster
   params:
     clusterName: Name of the cluster to inspect
     projectId: Project ID containing the cluster
@@ -91,7 +91,7 @@ toolPreview:
 - name: atlas-list-db-users
   description: List MongoDB Atlas database users
   params:
-    projectId: Project ID to list users for
+    projectId: Project ID to filter database users
 - name: atlas-create-db-user
   description: Create an MongoDB Atlas database user
   params:
@@ -111,11 +111,68 @@ toolPreview:
   description: Connect to MongoDB Atlas cluster
   params:
     clusterName: Name of the cluster to connect to
+    connectionType: Optional connection type (standard, private, or privateEndpoint)
     projectId: Project ID containing the cluster
 - name: atlas-list-alerts
   description: List MongoDB Atlas alerts
   params:
     projectId: Project ID to list alerts for
+- name: atlas-get-performance-advisor
+  description: Get Atlas performance advisor recommendations and slow query logs
+  params:
+    projectId: Project ID containing the cluster
+    clusterName: Name of the cluster to analyze
+    operations: Optional recommendation types to include
+    namespaces: Optional namespaces for slow query logs
+    since: Optional ISO 8601 start time for slow query logs
+- name: atlas-streams-build
+  description: Create Atlas Stream Processing workspaces, connections, processors, or PrivateLink resources
+  params:
+    projectId: Project ID that owns the stream processing resources
+    resource: Resource to create (workspace, connection, processor, or privatelink)
+    workspaceName: Workspace name to create or update
+    cloudProvider: Cloud provider for a new workspace or PrivateLink resource
+    region: Region for a new workspace or PrivateLink resource
+    tier: Optional processing tier for a new workspace
+    connectionType: Connection type for a new stream connection
+    connectionName: Connection name for a new stream connection
+    processorName: Processor name for a new stream processor
+    pipeline: Pipeline stages for a new or updated stream processor
+    autoStart: Optional flag to start a new processor immediately
+- name: atlas-streams-discover
+  description: Discover Atlas Stream Processing workspaces, connections, processors, and networking
+  params:
+    projectId: Project ID that owns the stream processing resources
+    action: Discovery action to run
+    workspaceName: Workspace name for inspect and list actions
+    resourceName: Connection or processor name for inspect actions
+    responseFormat: Optional response detail level
+- name: atlas-streams-manage
+  description: Start, stop, or update Atlas Stream Processing resources
+  params:
+    projectId: Project ID that owns the stream processing resources
+    workspaceName: Workspace containing the resource to manage
+    action: Management action to perform
+    resourceName: Processor or connection name for the action
+    pipeline: Optional replacement pipeline for a processor
+    newTier: Optional new workspace tier
+    newRegion: Optional new workspace region
+    resumeFromCheckpoint: Optional restart behavior for starting a processor
+- name: atlas-streams-teardown
+  description: Delete Atlas Stream Processing processors, connections, workspaces, or networking resources
+  params:
+    projectId: Project ID that owns the resource
+    resource: Resource type to delete
+    workspaceName: Workspace containing the resource to delete
+    resourceName: Name or ID of the resource to delete
+- name: list-knowledge-sources
+  description: List available MongoDB knowledge base data sources
+- name: search-knowledge
+  description: Search MongoDB documentation and curated knowledge sources
+  params:
+    query: Natural-language search query
+    dataSources: Optional data sources and version filters
+    limit: Optional maximum number of results
 runtime: containerized
 containerizedConfig:
   image: ghcr.io/obot-platform/mcp-images/mongodb-atlas:1.9.0

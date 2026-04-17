@@ -54,6 +54,9 @@ toolPreview:
   - name: getAuthenticatedUser
     description: Gets information about the authenticated user
     params: {}
+  - name: getCodeGenerationInstructions
+    description: Gets guidance for Postman's code generation tools
+    params: {}
   - name: createCollection
     description: Creates a collection using the Postman Collection v2.1.0 schema format
     params:
@@ -143,8 +146,9 @@ toolPreview:
     description: Creates a request response in a collection
     params:
       collectionId: The collection's ID (required)
-      requestId: The parent request's ID (required)
+      request: The parent request's ID (required)
       name: The response's name (optional but recommended)
+      responseCode: HTTP response code information (optional)
   - name: getCollectionResponse
     description: Gets information about a response in a collection
     params:
@@ -202,6 +206,17 @@ toolPreview:
     description: Gets the status of a collection duplication task
     params:
       taskId: The task's unique ID (required)
+  - name: getEnabledTools
+    description: Gets the tools enabled for the current server configuration
+    params: {}
+  - name: runCollection
+    description: Runs a collection and returns run results
+    params:
+      collectionId: The collection ID in <OWNER_ID>-<UUID> format (required)
+      environmentId: Environment ID to use for variable substitution (optional)
+      iterationCount: Number of iterations to run (optional)
+      stopOnError: Gracefully halt on errors (optional)
+      stopOnFailure: Gracefully halt on test failures (optional)
   - name: transferCollectionFolders
     description: Copies or moves folders into a collection or folder
     params:
@@ -500,11 +515,27 @@ toolPreview:
       workspaceId: The workspace's ID (required)
       cursor: Pointer to first record (optional)
       limit: Maximum rows to return (optional)
-  - name: updateSpec
-    description: Updates an API specification
+  - name: getAnalyticsData
+    description: Gets analytics data for Postman users, workspaces, or teams
+    params:
+      resource: Resource type - user, workspace, or team (required)
+      metrics: Comma-separated metrics to return (required)
+      duration: Time window to filter by (optional)
+      workspaceType: Filter by workspace type (optional)
+      view: View type - detailed or summary (optional)
+      limit: Maximum rows to return (optional)
+      offset: Zero-based offset of first item (optional)
+  - name: getAnalyticsMetadata
+    description: Gets available analytics resources and metrics
+    params:
+      resources: Filter by resource types (optional)
+      metrics: Filter by metric names (optional)
+      include: Include metric parameters or response schemas (optional)
+  - name: updateSpecProperties
+    description: Updates an API specification's properties such as its name
     params:
       specId: The spec's ID (required)
-      spec: Specification properties to update (required)
+      name: The specification's name (required)
   - name: deleteSpec
     description: Deletes an API specification
     params:
@@ -534,6 +565,8 @@ toolPreview:
       specId: The spec's ID (required)
       filePath: The path to the file (required)
       content: The updated file contents (required)
+      name: The file's name (optional)
+      type: The file type - ROOT or DEFAULT (optional)
   - name: deleteSpecFile
     description: Deletes a file in an API specification
     params:
@@ -594,55 +627,61 @@ toolPreview:
     description: Unpublishes a collection's documentation
     params:
       collectionId: The collection's unique ID (required)
-  - name: getAllElementsAndFolders
-    description: Gets folders and elements in team's Private API Network
+  - name: listPrivateNetworkWorkspaces
+    description: Gets workspaces in your team's Private API Network
     params:
-      parentFolderId: Return elements in specific folder (optional)
-      type: Filter by element type (optional)
-      name: Filter by name (optional)
-      description: Filter by description (optional)
-      summary: Filter by summary (optional)
+      name: Filter by workspace name (optional)
+      description: Filter by workspace description (optional)
+      summary: Filter by workspace summary (optional)
       createdBy: Filter by creator user ID (optional)
       addedBy: Filter by publisher user ID (optional)
-      since: Created since time (optional)
-      until: Created until time (optional)
-      sort: Sort by field (optional)
+      since: Return results created since this time (optional)
+      until: Return results created until this time (optional)
+      sort: Sort by createdAt or updatedAt (optional)
       direction: Sort direction asc/desc (optional)
       limit: Maximum results (optional)
       offset: Zero-based offset (optional)
-  - name: postPanElementOrFolder
-    description: Publishes element or creates folder in Private API Network
+  - name: addWorkspaceToPrivateNetwork
+    description: Publishes a workspace to your team's Private API Network
     params:
-      body: Element or folder information (required)
-  - name: updatePanElementOrFolder
-    description: Updates element or folder in Private API Network
+      workspace: Workspace info including id and optional parentFolderId (required)
+  - name: removeWorkspaceFromPrivateNetwork
+    description: Removes a workspace from your team's Private API Network
     params:
-      elementId: The element's ID or UUID (required)
-      elementType: The element type (required)
-      body: Updated properties (required)
-  - name: deletePanElementOrFolder
-    description: Removes element or deletes folder from Private API Network
+      workspaceId: The workspace's ID (required)
+  - name: listPrivateNetworkAddRequests
+    description: Gets requests to add workspaces to your team's Private API Network
     params:
-      elementId: The element's ID or UUID (required)
-      elementType: The element type (required)
-  - name: getAllPanAddElementRequests
-    description: Gets list of requests to add elements to Private API Network
-    params:
-      name: Filter by element name (optional)
-      type: Filter by element type (optional)
+      name: Filter by workspace name (optional)
       status: Filter by request status (optional)
       requestedBy: Filter by user ID (optional)
-      since: Created since time (optional)
-      until: Created until time (optional)
-      sort: Sort by field (optional)
+      since: Return results created since this time (optional)
+      until: Return results created until this time (optional)
+      sort: Sort by createdAt or updatedAt (optional)
       direction: Sort direction asc/desc (optional)
       limit: Maximum results (optional)
       offset: Zero-based offset (optional)
-  - name: respondPanElementAddRequest
-    description: Responds to a request to add element to Private API Network
+  - name: respondPrivateNetworkAddRequest
+    description: Responds to a request to add a workspace to your team's Private API Network
     params:
       requestId: The request's ID (required)
-      response: Response with status and optional note (required)
+      status: Approval status - approved or denied (required)
+      response: Optional denial message (optional)
+  - name: searchPostmanElementsInPrivateNetwork
+    description: Searches trusted internal requests or collections in your team's Private API Network
+    params:
+      q: Search query (required)
+      entityType: Search requests or collections (optional)
+      limit: Maximum results to return (optional)
+      nextCursor: Cursor for the next page of results (optional)
+  - name: searchPostmanElementsInPublicNetwork
+    description: Searches public Postman requests or collections
+    params:
+      entityType: Search requests or collections (required)
+      q: Search query (optional)
+      publisherIsVerified: Return only verified publishers (optional)
+      limit: Maximum results to return (optional)
+      nextCursor: Cursor for the next page of results (optional)
   - name: getTaggedEntities
     description: Gets Postman elements by a given tag
     params:
@@ -671,4 +710,3 @@ toolPreview:
       commentId: The comment's ID (required)
       body: The updated comment contents (required)
       tags: Information about tagged users (optional)
-

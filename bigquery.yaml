@@ -163,15 +163,8 @@ containerizedConfig:
 toolPreview:
   - name: query
     description: |
-      Execute SQL queries against BigQuery datasets in the current project.
-      Use standard BigQuery SQL syntax. You can query any dataset in the project.
-
-      Example usage:
-      {
-          "query": "SELECT * FROM `dataset.table` LIMIT 10"
-      }
-
-      The query parameter should contain the full SQL statement using BigQuery syntax.
-      Make sure to use backticks around fully qualified table names like `project.dataset.table`.
+      Execute a GoogleSQL statement against BigQuery in the configured project.
+      Supports optional dry-run validation without running the query.
     params:
-      sql: The SQL query to execute
+      sql: The GoogleSQL statement to execute.
+      dry_run: Optional. Set to true to validate the query without running it.

@@ -79,7 +79,7 @@ containerizedConfig:
   - mcp-server-chart
 toolPreview:
 - name: generate_area_chart
-  description: Generate an area chart to show data trends under continuous independent variables and observe overall data trends, such as velocity over time.
+  description: Generate an area chart to show trends across continuous values, such as change over time.
   params:
     data: Array of data points with group, time, and value fields
     title: Chart title (optional)
@@ -89,9 +89,9 @@ toolPreview:
     height: Chart height (optional)
     stack: Whether to stack areas (optional)
     theme: Chart theme (optional)
-    style: Style configuration including backgroundColor, palette, texture (optional)
+    style: Style configuration including backgroundColor, palette, texture, and lineWidth (optional)
 - name: generate_bar_chart
-  description: Generate a horizontal bar chart for numerical comparisons among different categories and horizontal comparisons.
+  description: Generate a horizontal bar chart for comparing values across categories.
   params:
     data: Array of data points with category, group, and value fields
     title: Chart title (optional)
@@ -104,7 +104,7 @@ toolPreview:
     theme: Chart theme (optional)
     style: Style configuration including backgroundColor, palette, texture (optional)
 - name: generate_column_chart
-  description: Generate a column chart, best for comparing categorical data when values are close, as eyes are better at judging height than other visual elements.
+  description: Generate a column chart for comparing values across categories.
   params:
     data: Array of data points with category, group, and value fields
     title: Chart title (optional)
@@ -117,17 +117,16 @@ toolPreview:
     theme: Chart theme (optional)
     style: Style configuration including backgroundColor, palette, texture (optional)
 - name: generate_line_chart
-  description: Generate a line chart to show trends over time, such as tracking changes in sales or performance metrics over a period.
+  description: Generate a line chart to show trends over time or another continuous variable.
   params:
-    data: Array of data points with time and value fields
+    data: Array of data points with group, time, and value fields
     title: Chart title (optional)
     axisXTitle: X-axis title (optional)
     axisYTitle: Y-axis title (optional)
     width: Chart width (optional)
     height: Chart height (optional)
-    stack: Whether to stack lines (optional)
     theme: Chart theme (optional)
-    style: Style configuration including backgroundColor, palette, texture, lineWidth (optional)
+    style: Style configuration including backgroundColor, palette, texture, lineWidth, and startAtZero (optional)
 - name: generate_pie_chart
   description: Generate a pie chart to show the proportion of parts, such as market share and budget allocation.
   params:
@@ -139,9 +138,9 @@ toolPreview:
     theme: Chart theme (optional)
     style: Style configuration including backgroundColor, palette, texture (optional)
 - name: generate_scatter_chart
-  description: Generate a scatter chart to show the relationship between two variables, helps discover correlations and data distribution patterns.
+  description: Generate a scatter chart to show relationships, correlation, and distribution between variables.
   params:
-    data: Array of data points with x and y coordinate fields
+    data: Array of data points with group, x, and y fields
     title: Chart title (optional)
     axisXTitle: X-axis title (optional)
     axisYTitle: Y-axis title (optional)
@@ -162,7 +161,7 @@ toolPreview:
     theme: Chart theme (optional)
     style: Style configuration including backgroundColor, palette, texture (optional)
 - name: generate_boxplot_chart
-  description: Generate a boxplot chart for statistical summaries among different categories, comparing the distribution of data points across categories.
+  description: Generate a boxplot chart for comparing distributions across categories.
   params:
     data: Array of data points with category, group, and value fields
     title: Chart title (optional)
@@ -171,9 +170,9 @@ toolPreview:
     width: Chart width (optional)
     height: Chart height (optional)
     theme: Chart theme (optional)
-    style: Style configuration including backgroundColor, palette, texture (optional)
+    style: Style configuration including backgroundColor, palette, texture, and startAtZero (optional)
 - name: generate_violin_chart
-  description: Generate a violin chart for statistical summaries among different categories, showing distribution shape and data density.
+  description: Generate a violin chart for comparing distribution shape and density across categories.
   params:
     data: Array of data points with category, group, and value fields
     title: Chart title (optional)
@@ -182,7 +181,18 @@ toolPreview:
     width: Chart width (optional)
     height: Chart height (optional)
     theme: Chart theme (optional)
-    style: Style configuration including backgroundColor, palette, texture (optional)
+    style: Style configuration including backgroundColor, palette, texture, and startAtZero (optional)
+- name: generate_waterfall_chart
+  description: Generate a waterfall chart to show how sequential positive and negative changes lead to a final total.
+  params:
+    data: Array of data points with category, value, isIntermediateTotal, and isTotal fields
+    title: Chart title (optional)
+    axisXTitle: X-axis title (optional)
+    axisYTitle: Y-axis title (optional)
+    width: Chart width (optional)
+    height: Chart height (optional)
+    theme: Chart theme (optional)
+    style: Style configuration including backgroundColor, texture, and positive, negative, or total colors (optional)
 - name: generate_radar_chart
   description: Generate a radar chart to display multidimensional data (four dimensions or more), such as comparing products across multiple criteria.
   params:
@@ -191,7 +201,7 @@ toolPreview:
     width: Chart width (optional)
     height: Chart height (optional)
     theme: Chart theme (optional)
-    style: Style configuration including backgroundColor, palette, texture (optional)
+    style: Style configuration including backgroundColor, palette, texture, and lineWidth (optional)
 - name: generate_funnel_chart
   description: Generate a funnel chart to visualize progressive reduction of data through stages, such as conversion rates in sales processes.
   params:
@@ -230,7 +240,7 @@ toolPreview:
     width: Chart width (optional)
     height: Chart height (optional)
     theme: Chart theme (optional)
-    style: Style configuration including backgroundColor, palette, texture (optional)
+    style: Style configuration including backgroundColor, palette, texture, and startAtZero (optional)
 - name: generate_liquid_chart
   description: Generate a liquid chart to visualize a single value as a percentage, such as reservoir occupancy or project completion rate.
   params:
@@ -250,6 +260,16 @@ toolPreview:
     height: Chart height (optional)
     theme: Chart theme (optional)
     style: Style configuration including backgroundColor, palette, texture (optional)
+- name: generate_spreadsheet
+  description: Generate a spreadsheet or pivot table for structured tabular data and summary views.
+  params:
+    data: Array of row objects
+    columns: Column fields to display or order (optional)
+    rows: Row fields for pivot table grouping (optional)
+    values: Value fields for pivot table aggregation (optional)
+    width: Table width (optional)
+    height: Table height (optional)
+    theme: Table theme, default or dark (optional)
 - name: generate_venn_chart
   description: Generate a Venn diagram to visualize relationships between different sets, showing intersections and overlaps between groups.
   params:
@@ -301,24 +321,24 @@ toolPreview:
     theme: Chart theme (optional)
     style: Style configuration including texture (optional)
 - name: generate_district_map
-  description: Generate regional distribution maps for administrative divisions and coverage datasets, limited to generating data maps within China.
+  description: Generate a district map for administrative regions and coverage data within China.
   params:
-    data: Map data with colors, labels, values, and subdistrictc configuration
+    data: District map configuration with region values, colors, labels, and optional subdistricts
     title: Map title
     width: Map width (optional)
     height: Map height (optional)
 - name: generate_pin_map
-  description: Generate a point map to display location and distribution of point data, such as attractions, hospitals, or supermarkets.
+  description: Generate a point map to display the distribution of POIs or locations.
   params:
-    data: Array of location data
+    data: Array of POI or location values
     title: Map title
     width: Map width (optional)
     height: Map height (optional)
     markerPopup: Popup configuration for markers (optional)
 - name: generate_path_map
-  description: Generate a route map to display planned routes, such as travel guide routes and navigation paths.
+  description: Generate a route map to display planned travel or navigation paths.
   params:
-    data: Array of route data
+    data: Array of route objects containing path data
     title: Map title
     width: Map width (optional)
     height: Map height (optional)

@@ -77,77 +77,81 @@ icon: https://avatars.githubusercontent.com/u/135057108?v=4
 repoURL: https://github.com/firecrawl/firecrawl-mcp-server
 toolPreview:
 - name: firecrawl_scrape
-  description: Scrape content from a single URL with advanced options.
+  description: Scrape a single page into markdown, HTML, JSON, screenshots, or brand data.
   params:
-    actions: List of actions to perform before scraping
-    excludeTags: HTML tags to exclude from extraction
-    extract: Configuration for structured data extraction
-    formats: 'Content formats to extract (default: [''markdown''])'
-    includeTags: HTML tags to specifically include in extraction
-    location: Location settings for scraping
-    maxAge: 'Maximum age in milliseconds for cached content. Use cached data if available and younger than maxAge, otherwise scrape fresh. Enables 500% faster scrapes for recently cached pages. Default: 0 (always scrape fresh)'
-    mobile: Use mobile viewport
-    onlyMainContent: Extract only the main content, filtering out navigation, footers, etc.
-    removeBase64Images: Remove base64 encoded images from output
-    skipTlsVerification: Skip TLS certificate verification
-    timeout: Maximum time in milliseconds to wait for the page to load
     url: The URL to scrape
-    waitFor: Time in milliseconds to wait for dynamic content to load
+    formats: Output formats such as markdown, html, json, screenshot, or branding
+    jsonOptions: Prompt and schema for structured JSON extraction
+    actions: Optional browser actions to run before returning content
+    onlyMainContent: Strip navigation and other boilerplate content
+    includeTags: HTML tags to keep in the result
+    excludeTags: HTML tags to exclude from the result
+    waitFor: Milliseconds to wait for client-side rendering
+    parsers: Optional parsers such as pdf
+    maxAge: Reuse recent cached content when available
+    proxy: Proxy mode for difficult targets
 - name: firecrawl_map
-  description: Map a website to discover all indexed URLs on the site.
+  description: Discover URLs on a site before scraping or crawling.
   params:
-    ignoreSitemap: Skip sitemap.xml discovery and only use HTML links
-    includeSubdomains: Include URLs from subdomains in results
-    limit: Maximum number of URLs to return
-    search: Optional search term to filter URLs
-    sitemapOnly: Only use sitemap.xml for discovery, ignore HTML links
     url: Starting URL for URL discovery
+    search: Filter discovered URLs by a search term
+    sitemap: Whether to include, skip, or only use sitemap discovery
+    includeSubdomains: Include subdomain URLs in results
+    ignoreQueryParameters: Ignore query strings when deduplicating URLs
+    limit: Maximum number of URLs to return
 - name: firecrawl_crawl
-  description: Starts an asynchronous crawl job on a website and extracts content from all pages.
+  description: Start a crawl job and extract content from matching pages.
   params:
-    allowBackwardLinks: Allow crawling links that point to parent directories
     allowExternalLinks: Allow crawling links to external domains
+    allowSubdomains: Allow crawling subdomains of the target site
+    crawlEntireDomain: Expand crawling across the full domain
+    delay: Delay between crawl requests
     deduplicateSimilarURLs: Remove similar URLs during crawl
     excludePaths: URL paths to exclude from crawling
-    ignoreQueryParameters: Ignore query parameters when comparing URLs
-    ignoreSitemap: Skip sitemap.xml discovery
     includePaths: Only crawl these URL paths
     limit: Maximum number of pages to crawl
-    maxDepth: Maximum link depth to crawl
+    maxConcurrency: Maximum concurrent crawl workers
+    maxDiscoveryDepth: Maximum discovery depth for links
+    prompt: Extraction instructions for the crawl
     scrapeOptions: Options for scraping each page
+    sitemap: Whether to include, skip, or only use sitemap discovery
     url: Starting URL for the crawl
-    webhook: ''
+    webhook: Optional webhook URL for crawl completion events
+    ignoreQueryParameters: Ignore query strings when comparing URLs
 - name: firecrawl_check_crawl_status
   description: Check the status of a crawl job.
   params:
     id: Crawl job ID to check
 - name: firecrawl_search
-  description: Search the web and optionally extract content from search results.
+  description: Search the web and optionally scrape matching result pages.
   params:
-    country: 'Country code for search results (default: us)'
-    filter: Search filter
-    lang: 'Language code for search results (default: en)'
-    limit: 'Maximum number of results to return (default: 5)'
-    location: Location settings for search
     query: Search query string
-    scrapeOptions: Options for scraping search results
+    limit: Maximum number of results to return
     tbs: Time-based search filter
+    filter: Search filter expression
+    location: Location hint for search ranking
+    sources: Search sources such as web, images, or news
+    scrapeOptions: Options for scraping search results
+    enterprise: Enterprise search modes such as default, anon, or zdr
 - name: firecrawl_extract
-  description: Extract structured information from web pages using LLM capabilities.
+  description: Extract structured data from one or more pages.
   params:
     allowExternalLinks: Allow extraction from external links
     enableWebSearch: Enable web search for additional context
     includeSubdomains: Include subdomains in extraction
     prompt: Prompt for the LLM extraction
     schema: JSON schema for structured data extraction
-    systemPrompt: System prompt for LLM extraction
     urls: List of URLs to extract information from
-- name: firecrawl_generate_llmstxt
-  description: Generate a standardized llms.txt (and optionally llms-full.txt) file for a given domain. This file defines how large language models should interact with the site
+- name: firecrawl_agent
+  description: Start an asynchronous research agent for multi-step web investigation.
   params:
-    maxUrls: 'Maximum number of URLs to process (1-100, default: 10)'
-    showFullText: Whether to show the full LLMs-full.txt in the response
-    url: The URL to generate LLMs.txt from
+    prompt: Research task for the autonomous agent
+    urls: Optional URLs to focus the agent on specific pages
+    schema: Optional schema for structured results
+- name: firecrawl_agent_status
+  description: Check the status of an agent job and return results when complete.
+  params:
+    id: Agent job ID to check
 env:
 - key: FIRECRAWL_API_KEY
   name: Firecrawl API Key

@@ -28,7 +28,7 @@ icon: https://avatars.githubusercontent.com/u/4792552?v=4
 repoURL: https://github.com/makenotion/notion-mcp-server
 toolPreview:
   - name: search
-    description: Search within the Notion workspace.
+    description: Search Notion and connected sources.
     params:
       data_source_url: |-
         Optionally, provide the URL of a Data source to search. This will perform a semantic search over
@@ -47,9 +47,9 @@ toolPreview:
         Optionally, provide the ID of a teamspace to restrict search results to. This will perform a search
         over content within the specified teamspace only.
   - name: fetch
-    description: Retrieves details about a Notion entity by its URL or ID.
+    description: Retrieve a Notion page, database, or data source by URL or ID.
     params:
-      id: The ID or URL of the Notion page to fetch
+      id: The ID or URL of the Notion page, database, or data source to fetch.
   - name: notion-create-pages
     description: Creates one or more Notion pages with specified properties and content.
     params:
@@ -69,40 +69,38 @@ toolPreview:
     params:
       page_id: The ID of the page to duplicate.
   - name: notion-create-database
-    description: Creates a new Notion database with the specified properties.
+    description: Create a Notion database with its initial data source and view.
     params:
       description: The description of the new database, as a rich text object.
       parent: The parent under which to create the new database. If omitted, the database will be created as a private page at the workspace level.
       properties: The property schema of the new database. Must at least have a title property.
       title: The title of the new database, as a rich text object.
-  - name: notion-update-database
-    description: Update a Notion database's properties, name, description, or other attributes.
+  - name: notion-update-data-source
+    description: Update a Notion data source's schema, title, description, or trash state.
     params:
-      database_id: The ID of the database to update.
-      description: The new description of the database, as a rich text object, if you want to update it.
-      in_trash: Whether to move the database to the trash.
-      is_inline: Whether the database should be displayed inline in the parent page, if you want to change this setting.
-      properties: Updates to make to the database's schema. Use null to remove a property, or provide the `name` only to rename a property.
-      title: The new title of the database, as a rich text object, if you want to update it.
+      data_source_id: The ID of the data source to update.
+      description: The new description of the data source, as rich text.
+      in_trash: Whether to move the data source to or from the trash.
+      parent: Optionally move the data source to a different database parent.
+      properties: Updates to make to the data source schema. Use null to remove a property, or provide only `name` to rename one.
+      title: The new title of the data source, as rich text.
   - name: notion-create-comment
-    description: Add a comment to a page
+    description: Add a comment to a page, block, or existing discussion.
     params:
-      parent: The parent of the comment. This must be a page.
+      parent: The parent for the comment. This can target a page, block, or discussion.
       rich_text: An array of rich text objects that represent the content of the comment.
   - name: notion-get-comments
-    description: Get all comments of a page
+    description: Get comments and discussion threads on a page or block.
     params:
-      page_id: Identifier for a Notion page.
+      block_id: Identifier for a Notion page or block.
   - name: notion-get-users
-    description: List all users
-    params:
-      query: ""
+    description: List workspace users.
   - name: notion-get-self
     description: Retrieve your token's bot user
   - name: notion-get-user
-    description: Retrieve a user
+    description: Retrieve a user by ID.
     params:
-      path: ""
+      user_id: Identifier for a Notion user.
 
 runtime: remote
 remoteConfig:

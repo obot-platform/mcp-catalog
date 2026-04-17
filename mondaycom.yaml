@@ -72,11 +72,15 @@ toolPreview:
       columnValues: "A string containing the new column values for the item"
       groupId: "The id of the group to which the new item will be added"
 
-  - name: get_board_items_by_name
-    description: Search for items by board ID and term/name.
+  - name: get_board_items_page
+    description: List board items with pagination, optional search, filters, and column values.
     params:
-      boardId: "The board ID to search in"
-      term: "The search term to find items"
+      boardId: "The board ID to read items from"
+      searchTerm: "Optional item search term for fuzzy matching within the board"
+      limit: "Number of items to return per page"
+      cursor: "Pagination cursor from a previous response"
+      includeColumns: "Whether to include column values in the response"
+      filters: "Optional structured filters for column-based item queries"
 
   - name: create_update
     description: Create a new update/comment in a monday.com item.
@@ -125,7 +129,9 @@ toolPreview:
   - name: list_workspaces
     description: List all workspaces available to the user.
     params:
-      random_string: "Dummy parameter for no-parameter tools"
+      searchTerm: "Optional workspace name filter"
+      limit: "Number of workspaces to return"
+      page: "Page number to return"
 
   - name: workspace_info
     description: Get boards, docs and folders in a workspace and their folder organization.
@@ -211,17 +217,21 @@ toolPreview:
 
   # Document Operations
   - name: read_docs
-    description: Get a collection of monday.com documents with their content as markdown.
+    description: Read monday.com docs as markdown or fetch a doc's version history.
     params:
-      ids: "ID query object specifying type and array of values"
-      limit: "Number of docs per page (default: 25)"
-      order_by: "The order in which to retrieve docs (created_at, used_at)"
-      page: "The page number to return (starts at 1)"
+      mode: "Use content for doc contents or version_history for edit history"
+      type: "Query type for content mode: ids, object_ids, or workspace_ids"
+      ids: "Array of IDs matching the selected query type or a single doc object_id for version history"
+      include_blocks: "Include doc block metadata needed for follow-up edits"
+      include_comments: "Include doc comments and replies"
 
   - name: create_doc
     description: Create a new monday.com doc either inside a workspace or attached to an item.
     params:
-      location: "Location where the document should be created"
+      location: "Create the document in a workspace or attach it to an item"
+      workspace_id: "Workspace ID when location is workspace"
+      item_id: "Item ID when location is item"
+      column_id: "Optional existing doc column when attaching the doc to an item"
       doc_name: "Name for the new document"
       markdown: "Markdown content for the document"
 

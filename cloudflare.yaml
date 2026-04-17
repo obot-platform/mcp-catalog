@@ -107,6 +107,34 @@ toolPreview:
       database_id: ID of the D1 database
       sql: SQL query to execute
       params: Optional query parameters
+  - name: hyperdrive_configs_list
+    description: List Hyperdrive configurations in your Cloudflare account
+    params:
+      page: Optional page number
+      per_page: Optional items per page
+      order: Optional sort field
+      direction: Optional sort direction
+  - name: hyperdrive_config_get
+    description: Get details of a specific Hyperdrive configuration in your Cloudflare account
+    params:
+      hyperdrive_id: ID of the Hyperdrive configuration
+  - name: hyperdrive_config_edit
+    description: Edit a Hyperdrive configuration in your Cloudflare account
+    params:
+      hyperdrive_id: ID of the Hyperdrive configuration
+      name: Optional configuration name
+      database: Optional origin database name
+      host: Optional origin host
+      port: Optional origin port
+      scheme: Optional origin scheme
+      user: Optional origin user
+      caching_disabled: Optional caching toggle
+      caching_max_age: Optional cache max age
+      caching_stale_while_revalidate: Optional stale-while-revalidate window
+  - name: hyperdrive_config_delete
+    description: Delete a Hyperdrive configuration in your Cloudflare account
+    params:
+      hyperdrive_id: ID of the Hyperdrive configuration
   - name: query_worker_observability
     description: Query the Workers Observability API to analyze logs and metrics from your Cloudflare Workers
     params:
@@ -123,3 +151,6 @@ toolPreview:
     description: Search the Cloudflare documentation for information about products and features
     params:
       query: Search query for Cloudflare documentation
+  - name: migrate_pages_to_workers_guide
+    description: Get the migration guide for moving Pages projects to Workers
+    params: {}

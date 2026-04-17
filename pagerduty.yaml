@@ -24,16 +24,19 @@ description: |
 
 toolPreview:
 - name: list_incidents
-  description: Lists incidents with optional filtering by status, urgency, service, and date range
+  description: Lists incidents with filters for status, teams, services, urgency, and time range
   params:
     status: Filter by incident status (triggered, acknowledged, resolved)
-    urgency: Filter by urgency level (high, low)
     service_ids: Filter by service IDs
-    limit: Maximum number of results (up to 1000)
+    teams_ids: Filter by team IDs
+    urgencies: Filter by urgency level (high, low)
+    request_scope: Scope results to all incidents, your teams, or incidents assigned to you
+    limit: Maximum results (up to 1000)
 - name: get_incident
-  description: Retrieves details for a specific incident
+  description: Retrieves a specific incident with optional related data included
   params:
     incident_id: The ID or number of the incident to retrieve
+    include: Extra related data to include, such as notes, assignments, users, or services
 - name: create_incident
   description: Creates a new incident
   params:
@@ -42,12 +45,23 @@ toolPreview:
     urgency: Incident urgency (high or low)
     body: Additional details about the incident
 - name: manage_incidents
-  description: Bulk update incidents (acknowledge, resolve, change urgency, reassign)
+  description: Bulk updates incident status, urgency, assignment, or escalation level
   params:
-    incident_ids: Array of incident IDs to update
+    incident_ids: Incident IDs to update
     status: New status (acknowledged or resolved)
     urgency: New urgency level
-    assignment: User to assign incidents to
+    assignment: User reference to assign the incident to
+    escalation_level: Escalation level to move the incident to
+- name: list_incident_notes
+  description: Lists all notes attached to an incident
+  params:
+    incident_id: The incident ID
+- name: list_alerts_from_incident
+  description: Lists alerts triggered for a specific incident
+  params:
+    incident_id: The incident ID
+    limit: Maximum results to return
+    offset: Pagination offset
 - name: add_note_to_incident
   description: Adds a note to an existing incident
   params:
@@ -57,7 +71,6 @@ toolPreview:
   description: Request additional responders for an incident
   params:
     incident_id: The incident ID
-    requester_id: User ID of the requester
     message: Message to include with the request
     responder_request_targets: Array of user or escalation policy IDs
 - name: list_services
@@ -93,7 +106,7 @@ toolPreview:
 - name: get_team
   description: Retrieves details for a specific team
   params:
-    team_id: The team ID or name
+    team_id: The team ID
 - name: list_team_members
   description: Lists members of a team
   params:
@@ -142,11 +155,13 @@ toolPreview:
     since: Start of time range
     until: End of time range
 - name: list_schedules
-  description: Lists schedules with optional filtering
+  description: Lists schedules with optional filtering and detail expansion
   params:
     query: Filter by schedule name or description
     team_ids: Filter by team IDs
     user_ids: Filter by user IDs
+    include: Additional details to include, such as schedule layers
+    limit: Maximum results to return
 - name: get_schedule
   description: Retrieves details for a specific schedule
   params:
@@ -159,9 +174,7 @@ toolPreview:
   description: Creates an override for a schedule
   params:
     schedule_id: The schedule ID
-    start: Override start time
-    end: Override end time
-    user: User reference for the override
+    overrides: Array of overrides with start, end, and user_id values
 - name: list_escalation_policies
   description: Lists escalation policies with filtering
   params:
@@ -177,6 +190,11 @@ toolPreview:
   params:
     limit: Maximum results (up to 100)
     sort_by: Sort field and direction
+- name: append_event_orchestration_router_rule
+  description: Appends a routing rule to an event orchestration router
+  params:
+    orchestration_id: The orchestration ID
+    new_rule: Rule definition with conditions and routing actions
 - name: get_event_orchestration
   description: Retrieves details for a specific event orchestration
   params:
@@ -190,11 +208,43 @@ toolPreview:
   params:
     orchestration_id: The orchestration ID
     router_update: Updated router configuration with rules and catch-all actions
-- name: append_event_orchestration_router_rule
-  description: Appends a new routing rule to an event orchestration router
+- name: get_event_orchestration_service
+  description: Retrieves the service orchestration for a specific service
   params:
-    orchestration_id: The orchestration ID
-    new_rule: New rule configuration with conditions and actions
+    service_id: The service ID
+- name: list_change_events
+  description: Lists change events with team, integration, and time filters
+  params:
+    team_ids: Filter by team IDs
+    integration_ids: Filter by integration IDs
+    since: Start of time range
+    until: End of time range
+    limit: Maximum results to return
+- name: list_incident_workflows
+  description: Lists incident workflows with optional name and include filters
+  params:
+    query: Filter by workflow name
+    include: Additional details to include, such as steps or team
+    limit: Maximum results (up to 100)
+- name: start_incident_workflow
+  description: Starts a workflow instance for an incident
+  params:
+    workflow_id: The incident workflow ID
+    incident_workflow_instance: Workflow run payload with the target incident reference
+- name: list_log_entries
+  description: Lists account log entries with time, team, and include filters
+  params:
+    since: Start of time range
+    until: End of time range
+    team_ids: Filter by team IDs
+    include: Related models to include, such as incidents or services
+    is_overview: Return only the most important changes
+    limit: Maximum results to return
+- name: list_status_pages
+  description: Lists status pages with optional type filtering
+  params:
+    status_page_type: Filter by public, private, or audience_specific pages
+    limit: Maximum results to return
 - name: list_alert_grouping_settings
   description: Lists alert grouping settings with optional filtering
   params:

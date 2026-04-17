@@ -32,6 +32,12 @@ toolPreview:
   description: Get a Redis string value
   params:
     key: The key to retrieve
+- name: scan_keys
+  description: Scan matching keys in batches without blocking the database
+  params:
+    pattern: Optional key pattern to match
+    count: Approximate batch size per scan iteration
+    cursor: Cursor from the previous scan call
 - name: hset
   description: Set a field in a hash stored at key with an optional expiration time
   params:
@@ -39,35 +45,11 @@ toolPreview:
     key: The field name inside the hash
     value: The value to set (string, int, or float)
     expire_seconds: Optional time in seconds after which the key should expire
-- name: hget
-  description: Get the value of a field in a Redis hash
-  params:
-    name: The Redis hash key
-    key: The field name inside the hash
-- name: hdel
-  description: Delete a field from a Redis hash
-  params:
-    name: The Redis hash key
-    key: The field name inside the hash
-- name: hgetall
-  description: Get all fields and values from a Redis hash
-  params:
-    name: The Redis hash key
-- name: hexists
-  description: Check if a field exists in a Redis hash
-  params:
-    name: The Redis hash key
-    key: The field name inside the hash
 - name: set_vector_in_hash
-  description: Store a vector as a field in a Redis hash (for embeddings)
+  description: Store an embedding vector in a Redis hash field
   params:
     name: The Redis hash key
     vector: The vector (list of numbers) to store in the hash
-    vector_field: The field name inside the hash (default "vector")
-- name: get_vector_from_hash
-  description: Retrieve a vector from a Redis hash and convert it back from binary blob
-  params:
-    name: The Redis hash key
     vector_field: The field name inside the hash (default "vector")
 - name: lpush
   description: Push a value onto the left of a Redis list with optional expiration
@@ -75,30 +57,79 @@ toolPreview:
     name: The Redis list key
     value: Value to push to the list
     expire: Optional expiration time in seconds
-- name: rpush
-  description: Push a value onto the right of a Redis list with optional expiration
+- name: sadd
+  description: Add a member to a Redis set with an optional expiration
   params:
-    name: The Redis list key
-    value: Value to push to the list
-    expire: Optional expiration time in seconds
-- name: lpop
-  description: Remove and return the first element from a Redis list
+    name: The Redis set key
+    value: The value to add
+    expire_seconds: Optional time in seconds after which the set should expire
+- name: zadd
+  description: Add a member and score to a Redis sorted set
   params:
-    name: The Redis list key
-- name: rpop
-  description: Remove and return the last element from a Redis list
+    key: The sorted set key
+    score: Numeric score for the member
+    member: The member to add
+    expiration: Optional expiration time in seconds
+- name: publish
+  description: Publish a message to a Redis pub/sub channel
   params:
-    name: The Redis list key
-- name: lrange
-  description: Get elements from a Redis list within a specific range
+    channel: The channel to publish to
+    message: The message to send
+- name: xadd
+  description: Add an entry to a Redis stream with optional expiration
   params:
-    name: The Redis list key
-    start: Start index for the range
-    stop: Stop index for the range
-- name: llen
-  description: Get the length of a Redis list
+    key: The stream key
+    fields: Field-value pairs for the stream entry
+    expiration: Optional expiration time in seconds
+- name: xreadgroup
+  description: Read stream entries using a consumer group
   params:
-    name: The Redis list key
+    key: The stream key
+    group_name: The consumer group name
+    consumer_name: The consumer name
+    count: Maximum number of entries to retrieve
+    block_ms: Optional timeout to wait for new entries
+    stream_id: Stream ID to read from
+- name: json_set
+  description: Set a JSON value at a path in a Redis JSON document
+  params:
+    name: The Redis key holding the JSON document
+    path: The JSON path to update
+    value: The JSON value to store
+    expire_seconds: Optional time in seconds after which the key should expire
+- name: create_vector_index_hash
+  description: Create a vector similarity index over Redis hashes
+  params:
+    index_name: Name of the Redis search index
+    prefix: Key prefix to index
+    vector_field: Hash field containing the vector
+    dim: Vector dimensionality
+    distance_metric: Distance metric such as COSINE or L2
+- name: vector_search_hash
+  description: Run a KNN vector search against indexed Redis hashes
+  params:
+    query_vector: Query embedding as a list of floats
+    index_name: Name of the Redis search index
+    vector_field: Indexed vector field name
+    k: Number of nearest matches to return
+    return_fields: Optional fields to include in results
+- name: hybrid_search
+  description: Combine Redis filters with vector similarity search
+  params:
+    query_vector: Query embedding as a list of floats
+    filter_expression: Redis search filter expression
+    index_name: Name of the Redis search index
+    vector_field: Indexed vector field name
+    k: Number of nearest matches to return
+    return_fields: Optional fields to include in results
+- name: info
+  description: Get Redis server information and statistics by section
+  params:
+    section: Info section such as default, memory, or cpu
+- name: search_redis_documents
+  description: Search Redis documentation and best practices with natural language
+  params:
+    question: The Redis question or topic to look up
 
 metadata:
   categories: Databases

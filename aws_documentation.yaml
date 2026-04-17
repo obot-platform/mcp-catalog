@@ -79,17 +79,25 @@ containerizedConfig:
   - awslabs.aws-documentation-mcp-server
 toolPreview:
 - name: read_documentation
-  description: Fetch and convert an AWS documentation page to markdown format. Retrieves content from AWS documentation pages and converts it to markdown format. For long documents, you can make multiple calls with different start_index values to retrieve the entire content in chunks.
+  description: Fetch an AWS documentation page as markdown. Use `start_index` to continue reading long pages in chunks.
   params:
     url: URL of the AWS documentation page to read (must be from docs.aws.amazon.com domain and end with .html)
     max_length: Maximum number of characters to return (optional)
     start_index: Starting character index for pagination of long documents (optional)
+- name: read_sections
+  description: Extract specific sections from an AWS documentation page by section title.
+  params:
+    url: URL of the AWS documentation page to read (must be from docs.aws.amazon.com domain and end with .html)
+    section_titles: List of section titles to extract from the page
 - name: search_documentation
-  description: Search AWS documentation using the official AWS Documentation Search API. Searches across all AWS documentation for pages matching your search phrase. Use specific technical terms and include service names to narrow results. Available for global AWS partition only.
+  description: Search AWS documentation. Supports intent hints plus optional service and guide filters to narrow results.
   params:
     search_phrase: Search phrase to use (use specific technical terms and include service names for better results)
+    search_intent: AWS-related intent behind the search phrase without including PII or customer data (optional)
     limit: Maximum number of results to return (optional)
+    product_types: Filter results by AWS product or service names (optional)
+    guide_types: Filter results by guide types such as User Guide or API Reference (optional)
 - name: recommend
-  description: Get content recommendations for an AWS documentation page. Provides recommendations for related AWS documentation pages including highly rated, new, similar, and journey categories. Available for global AWS partition only.
+  description: Get related AWS documentation recommendations for a page URL, including highly rated, new, similar, and journey content.
   params:
     url: URL of the AWS documentation page to get recommendations for (must be a valid AWS documentation URL)

@@ -31,24 +31,24 @@ remoteConfig:
   fixedURL: https://outlook-mcp.obot.ai/mcp
 toolPreview:
   - name: list_mail_folders
-    description: Lists all available Outlook mail folders.
+    description: List available Outlook mail folders.
     params: {}
   - name: list_emails
-    description: Lists emails in an Outlook folder with filtering options.
+    description: List emails with optional folder, date, and read-status filters.
     params:
-      folder_id: The ID of the folder to list emails in (optional)
+      folder_id: The ID of the folder to list emails in, or omit to list across all folders
       start: RFC3339 formatted start date and time (optional)
       end: RFC3339 formatted end date and time (optional)
-      limit: "Maximum number of emails to return (default: 100)"
-      read_status: Filter by read status (read, unread, or empty for all)
+      limit: "Maximum number of emails to return (default: 10)"
+      read_status: Filter by read status (`read` or `unread`) (optional)
   - name: get_email_details
-    description: Get the details of an Outlook email.
+    description: Get full details for an email or group thread post.
     params:
       email_id: The ID of the email to get details for
-      group_id: Group mailbox ID (optional, for group emails)
-      thread_id: Thread ID (optional, for group emails)
+      group_id: Group mailbox ID when the email is a group thread post (optional)
+      thread_id: Group thread ID when the email is a group thread post (optional)
   - name: search_emails
-    description: Search for emails in Outlook with multiple criteria.
+    description: Search emails by subject, sender, folder, and date range.
     params:
       subject: Search query for email subject (optional)
       from_address: Search query for sender email address (optional)
@@ -58,17 +58,17 @@ toolPreview:
       end: End date and time in RFC 3339 format (optional)
       limit: "Maximum number of emails to return (default: 10)"
   - name: create_draft
-    description: Create (but do not send) a draft individual Outlook email.
+    description: Create a draft email or draft reply without sending it.
     params:
       subject: The subject of the email
       body: The body of the email in markdown format
       recipients: Comma-separated list of email addresses (no spaces)
       cc: Comma-separated list of CC email addresses (optional)
       bcc: Comma-separated list of BCC email addresses (optional)
-      reply_email_id: ID of email to reply to (optional)
+      reply_email_id: ID of the email to reply to (optional)
       reply_all: "Whether to reply to all (default: false)"
   - name: send_draft
-    description: Send an existing draft email in Outlook.
+    description: Send an existing Outlook draft email.
     params:
       draft_id: The ID of the draft to send
   - name: delete_email
@@ -76,19 +76,53 @@ toolPreview:
     params:
       email_id: The ID of the email to delete
   - name: move_email
-    description: Moves an email to a different Outlook folder.
+    description: Move an email to a different Outlook folder.
     params:
       email_id: The ID of the email to move
       destination_folder_id: The ID of the destination folder
   - name: get_my_email_address
-    description: Get the email address of the currently authenticated Outlook user.
+    description: Get the email address of the authenticated Outlook user.
     params: {}
   - name: list_attachments
-    description: List the attachments of an Outlook email.
+    description: List attachments on an Outlook email.
     params:
       email_id: The ID of the email to list attachments for
   - name: read_attachment
-    description: Get the markdown converted contents of an attachment from an Outlook email.
+    description: Read an email attachment's converted content.
     params:
       email_id: The ID of the email containing the attachment
       attachment_id: The ID of the attachment to read
+  - name: list_groups
+    description: List Microsoft 365 groups available to the user.
+    params: {}
+  - name: list_group_threads
+    description: List mailbox threads in a Microsoft 365 group.
+    params:
+      group_id: The ID of the group to list threads in
+      start: RFC3339 formatted start date and time (optional)
+      end: RFC3339 formatted end date and time (optional)
+      limit: "Maximum number of threads to return (default: 100)"
+  - name: create_group_thread_email
+    description: Create a new group thread email or reply in a group mailbox.
+    params:
+      group_id: The ID of the group mailbox
+      subject: The subject of the email
+      body: The body of the email in markdown format
+      reply_to_thread_id: The group thread ID to reply to (optional)
+      recipients: Additional comma-separated recipient email addresses (optional)
+  - name: delete_group_thread
+    description: Delete a group mailbox thread.
+    params:
+      group_id: The ID of the group mailbox
+      thread_id: The ID of the thread to delete
+  - name: list_group_thread_email_attachments
+    description: List attachments on an email within a group thread.
+    params:
+      group_id: The ID of the group mailbox
+      thread_id: The ID of the group thread
+      email_id: The ID of the email in the thread
+  - name: list_group_thread_posts
+    description: List posts in a group mailbox thread.
+    params:
+      group_id: The ID of the group mailbox
+      thread_id: The ID of the group thread

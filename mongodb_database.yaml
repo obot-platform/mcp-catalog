@@ -52,12 +52,19 @@ toolPreview:
       collection: Collection name
       database: Database name
   - name: create-index
-    description: Create an index for a collection
+    description: Create a classic, search, or vector index for a collection
     params:
       collection: Collection name
       database: Database name
-      keys: Index keys specification object
+      definition: Index definition array
       name: Optional index name
+  - name: drop-index
+    description: Drop a classic or search index from a collection
+    params:
+      collection: Collection name
+      database: Database name
+      indexName: Index name
+      type: Index type (`classic` or `search`)
   - name: collection-schema
     description: Describe the schema for a collection
     params:
@@ -105,6 +112,14 @@ toolPreview:
       collection: Collection name
       database: Database name
       pipeline: Array of aggregation pipeline stages
+  - name: export
+    description: Export find or aggregation results as EJSON
+    params:
+      collection: Collection name
+      database: Database name
+      exportTarget: Find or aggregate operation and arguments
+      exportTitle: Short label for the export
+      jsonExportFormat: Optional EJSON format
   - name: update-many
     description: Updates all documents that match the specified filter for a collection
     params:

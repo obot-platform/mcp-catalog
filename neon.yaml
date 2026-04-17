@@ -42,16 +42,26 @@ remoteConfig:
 
 toolPreview:
   - name: list_projects
-    description: Lists the first 10 Neon projects in your account. If you can't find the project, increase the limit by passing a higher value to the limit parameter.
+    description: List Neon projects in your account, with optional search and pagination.
     params:
       cursor: Optional cursor for pagination
-      limit: Maximum number of projects to return (default 10)
+      limit: Maximum number of projects to return
       org_id: Optional organization ID to filter projects
-      search: Optional search string to filter projects
-  - name: create_project
-    description: Create a new Neon project. If someone is trying to create a database, use this tool.
+      search: Optional project name or ID filter
+  - name: list_organizations
+    description: List organizations you can access.
     params:
-      name: Name for the new project
+      search: Optional organization name or ID filter
+  - name: list_shared_projects
+    description: List projects shared with the current user.
+    params:
+      cursor: Optional cursor for pagination
+      limit: Maximum number of shared projects to return
+      search: Optional project name or ID filter
+  - name: create_project
+    description: Create a new Neon project.
+    params:
+      name: Optional project name
       org_id: Optional organization ID
   - name: delete_project
     description: Delete a Neon project
@@ -62,113 +72,154 @@ toolPreview:
     params:
       projectId: ID of the project to describe
   - name: run_sql
-    description: Execute a single SQL statement against a Neon database. If you have a temporary branch from a prior step, you MUST pass the branch ID to this tool unless explicitly told otherwise.
+    description: Execute a single SQL statement against a Neon database.
     params:
-      branchId: Branch ID to execute SQL on
-      databaseName: Name of the database
       projectId: Project ID
+      branchId: Optional branch ID to execute SQL on
+      databaseName: Optional database name
       sql: SQL statement to execute
   - name: run_sql_transaction
-    description: Execute a SQL transaction against a Neon database, should be used for multiple SQL statements. If you have a temporary branch from a prior step, you MUST pass the branch ID to this tool.
+    description: Execute multiple SQL statements in a single transaction.
     params:
-      branchId: Branch ID to execute transaction on
-      databaseName: Name of the database
       projectId: Project ID
+      branchId: Optional branch ID to execute transaction on
+      databaseName: Optional database name
       sqlStatements: Array of SQL statements to execute in transaction
   - name: describe_table_schema
     description: Describe the schema of a table in a Neon database
     params:
-      branchId: Branch ID
-      databaseName: Name of the database
-      projectId: Project ID
       tableName: Name of the table to describe
+      projectId: Project ID
+      branchId: Optional branch ID
+      databaseName: Optional database name
   - name: get_database_tables
     description: Get all tables in a Neon database
     params:
-      branchId: Branch ID
-      databaseName: Name of the database
       projectId: Project ID
+      branchId: Optional branch ID
+      databaseName: Optional database name
   - name: create_branch
     description: Create a branch in a Neon project
     params:
-      branchName: Name for the new branch
       projectId: Project ID
+      branchName: Optional branch name
   - name: prepare_database_migration
-    description: Performs database schema migrations by automatically generating and executing DDL statements. Creates a temporary branch, applies migration SQL, and returns migration details for verification.
+    description: Prepare a schema migration on a temporary branch for review.
     params:
-      databaseName: Name of the database
-      migrationSql: Migration SQL to execute
+      migrationSql: SQL to execute for the migration
       projectId: Project ID
+      databaseName: Optional database name
   - name: complete_database_migration
-    description: Complete a database migration when the user confirms the migration is ready to be applied to the main branch. Also deletes the temporary branch created by prepare_database_migration.
+    description: Apply or discard a prepared migration and clean up the temporary branch.
     params:
       migrationId: Migration ID from prepare_database_migration
+      migrationSql: Exact migration SQL from prepare_database_migration
+      databaseName: Database name from prepare_database_migration
+      projectId: Project ID from prepare_database_migration
+      temporaryBranchId: Temporary branch ID to clean up
+      parentBranchId: Parent branch ID to apply the migration to
+      applyChanges: Whether to apply the migration or just clean up
   - name: describe_branch
     description: Get a tree view of all objects in a branch, including databases, schemas, tables, views, and functions
     params:
-      branchId: Branch ID to describe
-      databaseName: Name of the database
       projectId: Project ID
+      branchId: Branch ID to describe
+      databaseName: Optional database name
   - name: delete_branch
     description: Delete a branch from a Neon project
     params:
-      branchId: Branch ID to delete
       projectId: Project ID
-  - name: get_connection_string
-    description: Get a PostgreSQL connection string for a Neon database with all parameters being optional
+      branchId: Branch ID to delete
+  - name: reset_from_parent
+    description: Reset a branch to match its parent, with optional preservation.
     params:
-      branchId: Optional branch ID
+      projectId: Project ID containing the branch
+      branchIdOrName: Branch name or ID to reset
+      preserveUnderName: Optional backup branch name before reset
+  - name: get_connection_string
+    description: Get a PostgreSQL connection string for a Neon database.
+    params:
+      projectId: Project ID
+      branchId: Optional branch ID or name
       computeId: Optional compute ID
       databaseName: Optional database name
-      projectId: Optional project ID
       roleName: Optional role name
   - name: provision_neon_auth
-    description: Provisions authentication for a Neon project by creating an integration with Stack Auth. Sets up authentication infrastructure including user tables and credentials.
+    description: Provision Neon Auth for a project branch.
     params:
-      database: Optional database name (default neondb or first available)
       projectId: Project ID to provision authentication for
+      branchId: Optional branch ID
+      databaseName: Optional database name
+  - name: provision_neon_data_api
+    description: Provision the Neon Data API for HTTP access to a project branch.
+    params:
+      projectId: Project ID to provision the Data API for
+      branchId: Optional branch ID
+      databaseName: Optional database name
+      authProvider: Optional auth provider (neon_auth, external, or none)
+      jwksUrl: Optional JWKS URL for external auth
+      providerName: Optional external auth provider name
+      jwtAudience: Optional expected JWT audience
+      provisionNeonAuthFirst: Optionally provision Neon Auth first
   - name: explain_sql_statement
-    description: Describe the PostgreSQL query execution plan for a SQL statement by running EXPLAIN (ANALYZE...) in the database
+    description: Explain a SQL statement with PostgreSQL execution plan details.
     params:
-      analyze: Whether to include ANALYZE in the explain
-      branchId: Branch ID
-      databaseName: Name of the database
-      projectId: Project ID
       sql: SQL statement to explain
+      projectId: Project ID
+      branchId: Optional branch ID
+      databaseName: Optional database name
+      analyze: Whether to include ANALYZE
   - name: prepare_query_tuning
-    description: Helps improve PostgreSQL query performance by analyzing execution plans and suggesting optimizations. Creates a temporary branch for testing and provides tuning recommendations.
+    description: Prepare query tuning recommendations on a temporary branch.
     params:
-      databaseName: Name of the database
-      projectId: Project ID
-      roleName: Role name for connection
       sql: SQL query to optimize
+      databaseName: Database name
+      projectId: Project ID
+      roleName: Optional role name for connection
   - name: complete_query_tuning
-    description: Complete a query tuning session by either applying the changes to the main branch or discarding them. Must be called after prepare_query_tuning for proper cleanup.
+    description: Apply or discard query tuning changes and clean up the temporary branch.
     params:
+      suggestedSqlStatements: Suggested SQL statements to apply
       applyChanges: Whether to apply the suggested changes
-      branchId: Main branch ID to apply changes to
-      databaseName: Name of the database
-      projectId: Project ID
-      roleName: Role name for connection
-      shouldDeleteTemporaryBranch: Whether to delete the temporary branch
-      suggestedSqlStatements: Array of suggested SQL statements
-      temporaryBranchId: Temporary branch ID from prepare_query_tuning
       tuningId: Tuning ID from prepare_query_tuning
-  - name: list_slow_queries
-    description: List slow queries from your Neon database using the pg_stat_statements extension. Returns queries sorted by execution time with slowest queries first.
-    params:
-      branchId: Branch ID
-      computeId: Compute ID
       databaseName: Name of the database
+      projectId: Project ID
+      roleName: Optional role name for connection
+      shouldDeleteTemporaryBranch: Whether to delete the temporary branch
+      temporaryBranchId: Temporary branch ID from prepare_query_tuning
+      branchId: Optional target branch ID or name
+  - name: list_slow_queries
+    description: List slow queries from a Neon database.
+    params:
+      projectId: Project ID
+      branchId: Optional branch ID
+      databaseName: Optional database name
+      computeId: Optional compute ID
       limit: Maximum number of queries to return
-      minExecutionTime: Minimum execution time threshold
-      projectId: Project ID
+      minExecutionTime: Minimum execution time threshold in milliseconds
   - name: list_branch_computes
-    description: Lists compute endpoints for a project or specific branch
+    description: List compute endpoints for a project or branch.
     params:
-      branchId: Branch ID
+      projectId: Optional project ID
+      branchId: Optional branch ID
+  - name: compare_database_schema
+    description: Compare a branch schema with its parent.
+    params:
       projectId: Project ID
-  - name: list_organizations
-    description: Lists all organizations that the current user has access to. Optionally filter by organization name or ID using the search parameter.
+      branchId: Branch ID to compare
+      databaseName: Database name
+  - name: search
+    description: Search organizations, projects, and branches.
     params:
-      search: Optional search string to filter organizations
+      query: Search query
+  - name: fetch
+    description: Fetch details for a Neon resource returned by search.
+    params:
+      id: Resource ID from search results
+  - name: list_docs_resources
+    description: List available Neon documentation pages.
+    params: {}
+  - name: get_doc_resource
+    description: Fetch a specific Neon documentation page as markdown.
+    params:
+      slug: Documentation slug from list_docs_resources

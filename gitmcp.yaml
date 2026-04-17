@@ -36,17 +36,28 @@ runtime: remote
 remoteConfig:
   hostname: gitmcp.io
 toolPreview:
-  - name: fetch_<repo>_documentation
-    description: 'Fetch entire documentation file from GitHub repository: <org>/<repo>. Useful for general questions. Always call this tool first if asked about <org>/<repo>.'
-  - name: search_<repo>_documentation
-    description: 'Semantically search within the fetched documentation from GitHub repository: <org>/<repo>. Useful for specific queries.'
+  - name: match_common_libs_owner_repo_mapping
+    description: Match a library name to its GitHub owner and repo before using the generic repository tools.
     params:
+      library: The library name to resolve to a GitHub repository
+  - name: fetch_generic_documentation
+    description: Fetch the primary documentation for any GitHub repository by owner and repo.
+    params:
+      owner: The GitHub repository owner
+      repo: The GitHub repository name
+  - name: search_generic_documentation
+    description: Semantically search a repository's documentation for specific topics.
+    params:
+      owner: The GitHub repository owner
+      repo: The GitHub repository name
       query: The search query to find relevant documentation
-  - name: search_<repo>_code
-    description: 'Search for code within the GitHub repository: "<org>/<repo>" using the GitHub Search API (exact match). Returns matching files for you to query further if relevant.'
+  - name: search_generic_code
+    description: Search repository code for matching files and snippets.
     params:
-      page: Page number to retrieve (starting from 1). Each page contains 30 results.
+      owner: The GitHub repository owner
+      repo: The GitHub repository name
       query: The search query to find relevant code files
+      page: Page number to retrieve (starting from 1). Each page contains 30 results.
   - name: fetch_generic_url_content
     description: Generic tool to fetch content from any absolute URL, respecting robots.txt rules. Use this to retrieve referenced urls (absolute urls) that were mentioned in previously fetched documentation.
     params:

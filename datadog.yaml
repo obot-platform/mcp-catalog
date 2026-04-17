@@ -54,16 +54,16 @@ containerizedConfig:
   - mcp-server-datadog
 toolPreview:
 - name: list_incidents
-  description: Retrieve a list of incidents from Datadog (Read-only - true)
+  description: Get incidents from Datadog (Read-only - true)
   params:
-    filter: Filter parameters for incidents (e.g., status, priority) (optional)
-    pagination: Pagination details like page size/offset (optional)
+    pageSize: Number of incidents to return, up to 100 (optional)
+    pageOffset: Pagination offset for the incident list (optional)
 - name: get_incident
-  description: Retrieve detailed information about a specific Datadog incident (Read-only - true)
+  description: Get an incident from Datadog (Read-only - true)
   params:
-    incident_id: Incident ID to fetch details for
+    incidentId: Incident ID to fetch details for
 - name: get_monitors
-  description: Fetch the status of Datadog monitors (Read-only - true)
+  description: Get monitor status from Datadog (Read-only - true)
   params:
     groupStates: States to filter (e.g., alert, warn, no data, ok) (optional)
     name: Filter by name (optional)
@@ -75,23 +75,30 @@ toolPreview:
     from: Start time in epoch seconds
     to: End time in epoch seconds
     limit: Maximum number of logs to return (defaults to 100) (optional)
+- name: get_all_services
+  description: Extract unique service names from Datadog logs (Read-only - true)
+  params:
+    query: Optional query filter for the log search (optional)
+    from: Start time in epoch seconds
+    to: End time in epoch seconds
+    limit: Maximum number of logs to scan (defaults to 1000) (optional)
 - name: list_dashboards
   description: Get a list of dashboards from Datadog (Read-only - true)
   params:
     name: Filter dashboards by name (optional)
     tags: Filter dashboards by tags (optional)
 - name: get_dashboard
-  description: Retrieve a specific dashboard from Datadog (Read-only - true)
+  description: Get a dashboard from Datadog (Read-only - true)
   params:
-    dashboard_id: ID of the dashboard to fetch
+    dashboardId: ID of the dashboard to fetch
 - name: query_metrics
-  description: Retrieve metrics data from Datadog (Read-only - true)
+  description: Query timeseries points of metrics from Datadog (Read-only - true)
   params:
     query: Metrics query string
     from: Start time in epoch seconds
     to: End time in epoch seconds
 - name: list_traces
-  description: Retrieve a list of APM traces from Datadog (Read-only - true)
+  description: Get APM traces from Datadog (Read-only - true)
   params:
     query: Datadog APM trace query string
     from: Start time in epoch seconds
@@ -130,7 +137,6 @@ toolPreview:
   description: List scheduled downtimes from Datadog (Read-only - true)
   params:
     currentOnly: Return only currently active downtimes when true (optional)
-    monitorId: Filter by monitor ID (optional)
 - name: schedule_downtime
   description: Schedule a downtime in Datadog (Read-only - false)
   params:

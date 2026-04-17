@@ -76,12 +76,12 @@ toolPreview:
   params:
     rule_id: The CDK Nag rule ID (e.g., 'AwsSolutions-IAM4')
 - name: CheckCDKNagSuppressions
-  description: Check if CDK code contains Nag suppressions that require human review. Scans TypeScript/JavaScript code for NagSuppressions usage to ensure security suppressions receive proper human oversight and justification.
+  description: Deprecated. Check whether CDK code contains Nag suppressions that require human review; use the AWS IaC MCP Server instead.
   params:
     code: CDK code to analyze (TypeScript/JavaScript) (optional)
     file_path: Path to a file containing CDK code to analyze (optional)
 - name: GenerateBedrockAgentSchema
-  description: Generate OpenAPI schema for Bedrock Agent Action Groups from a file. This tool converts a Lambda file with BedrockAgentResolver into a Bedrock-compatible OpenAPI schema.
+  description: Deprecated. Generate an OpenAPI schema for Bedrock Agent Action Groups from a Lambda file; use the AWS IaC MCP Server instead.
   params:
     lambda_code_path: Path to Python file containing BedrockAgentResolver app
     output_path: Where to save the generated schema

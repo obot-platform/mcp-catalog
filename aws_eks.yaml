@@ -138,6 +138,7 @@ toolPreview:
     since_seconds: Only return logs newer than this many seconds (optional)
     tail_lines: Number of lines to return from the end of the logs (optional)
     limit_bytes: Maximum number of bytes to return (optional)
+    previous: Whether to return logs from the previous container instance (optional)
 - name: get_k8s_events
   description: Retrieve Kubernetes events related to specific resources for troubleshooting pod failures, deployment issues, and resource modifications.
   params:
@@ -145,6 +146,11 @@ toolPreview:
     kind: Kind of the involved object
     name: Name of the involved object
     namespace: Namespace of the involved object (optional for non-namespaced resources)
+- name: get_eks_vpc_config
+  description: Retrieve EKS VPC configuration details, including subnets, route tables, and hybrid node networking data.
+  params:
+    cluster_name: Name of the EKS cluster
+    vpc_id: VPC ID to inspect (optional)
 - name: get_cloudwatch_logs
   description: Retrieve logs from CloudWatch for Kubernetes resources in an EKS cluster, supporting filtering by resource type, time range, and content.
   params:
@@ -189,3 +195,10 @@ toolPreview:
   description: Search the EKS Troubleshoot Guide knowledge base for troubleshooting information and step-by-step solutions for EKS issues.
   params:
     query: Specific question or issue description related to EKS troubleshooting (less than 300 characters)
+- name: get_eks_insights
+  description: Retrieve EKS Insights for misconfigurations and upgrade readiness issues, with optional filtering or detail lookup.
+  params:
+    cluster_name: Name of the EKS cluster
+    insight_id: Insight ID to inspect in detail (optional)
+    category: Insight category to filter by (optional)
+    next_token: Pagination token for additional results (optional)

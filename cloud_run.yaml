@@ -30,42 +30,48 @@ icon: https://avatars.githubusercontent.com/u/2810941?s=48&v=4
 repoURL: https://github.com/obot-platform/cloud-run-mcp
 
 toolPreview:
-  - name: deploy-file-contents
+  - name: deploy_file_contents
     description: Deploy files to Cloud Run by providing their contents directly. Takes an array of file objects containing filename and content. Use this tool if the files only exist in the current chat context.
     params:
       project: "Google Cloud project ID. Leave unset for the app to be deployed in a new project. If provided, make sure the user confirms the project ID they want to deploy to"
       service: "Name of the Cloud Run service to deploy to"
-      region: "Region to deploy the service to - default: us-central1"
+      region: "Region to deploy the service to - default: europe-west1"
       files: "Array of file objects containing filename and content"
-  - name: deploy-container-image
+  - name: deploy_local_folder
+    description: Deploy a local folder to Cloud Run. Takes an absolute folder path from the local filesystem that will be deployed.
+    params:
+      project: "Google Cloud project ID. Do not select it yourself; make sure the user provides or confirms the project ID"
+      service: "Name of the Cloud Run service to deploy to"
+      region: "Region to deploy the service to - default: europe-west1"
+      folderPath: "Absolute path to the folder to deploy"
+  - name: deploy_container_image
     description: Deploys a container image to Cloud Run. Use this tool if the user provides a container image URL.
     params:
       project: "Google Cloud project ID. Do not select it yourself, make sure the user provides or confirms the project ID"
       service: "Name of the Cloud Run service to deploy to"
-      region: "Region to deploy the service to - default: us-central1"
+      region: "Region to deploy the service to - default: europe-west1"
       imageUrl: "The URL of the container image to deploy (e.g. \"gcr.io/cloudrun/hello\")"
-  - name: list-services
+  - name: list_services
     description: Lists Cloud Run services in a given project and region.
     params:
       project: "Google Cloud project ID"
-      region: "Region where the services are located - default: us-central1"
-  - name: get-service
+      region: "Region where the services are located - default: europe-west1"
+  - name: get_service
     description: Gets details for a specific Cloud Run service.
     params:
       project: "Google Cloud project ID containing the service"
       service: "Name of the Cloud Run service"
-      region: "Region where the service is located - default: us-central1"
-  - name: get-service-log
+      region: "Region where the service is located - default: europe-west1"
+  - name: get_service_log
     description: Gets Logs and Error Messages for a specific Cloud Run service.
     params:
       project: "Google Cloud project ID containing the service"
       service: "Name of the Cloud Run service"
-      region: "Region where the service is located - default: us-central1"
-  - name: list-projects
+      region: "Region where the service is located - default: europe-west1"
+  - name: list_projects
     description: Lists available GCP projects
-    params:
-      random_string: "Dummy parameter for no-parameter tools"
-  - name: create-project
+    params: {}
+  - name: create_project
     description: Creates a new GCP project and attempts to attach it to the first available billing account. A project ID can be optionally specified; otherwise it will be automatically generated.
     params:
       projectId: "Optional. The desired ID for the new GCP project. If not provided, an ID will be auto-generated"

@@ -108,7 +108,7 @@ icon: https://avatars.githubusercontent.com/u/6453780?s=48&v=4
 repoURL: https://github.com/Snowflake-Labs/mcp
 
 toolPreview:
-  - name: list-objects
+  - name: list_objects
     description: List Snowflake objects including databases, schemas, tables, views, warehouses, compute pools, roles, stages, users, and image repositories with optional filtering.
     params:
       object_type: "Type of Snowflake object (database, schema, table, view, warehouse, compute_pool, role, stage, user, image_repository)"
@@ -116,46 +116,46 @@ toolPreview:
       schema_name: "Filter by schema name - default: None"
       like: "Filter objects by keyword in name (case-insensitive pattern matching) - default: None"
       starts_with: "Filter objects by start of name (case sensitive) - default: None"
-  - name: create-object
+  - name: create_object
     description: Create a new Snowflake object with specified properties. Supports creating databases, schemas, tables, views, warehouses, and other Snowflake objects.
     params:
       object_type: "Type of Snowflake object to create"
       target_object: "Object specification with properties like name, columns, query, etc."
       mode: "Creation mode (error_if_exists, replace, if_not_exists) - default: error_if_exists"
-  - name: drop-object
+  - name: drop_object
     description: Drop an existing Snowflake object. Supports dropping databases, schemas, tables, views, warehouses, and other Snowflake objects.
     params:
       object_type: "Type of Snowflake object to drop"
       target_object: "Object specification with name and required properties"
       if_exists: "Only drop if object exists - default: false"
-  - name: create-or-alter-object
+  - name: create_or_alter_object
     description: Create a new Snowflake object or alter an existing one. Provides flexible object management with automatic create/alter logic.
     params:
       object_type: "Type of Snowflake object to create or alter"
       target_object: "Object specification with properties to set"
-  - name: describe-object
+  - name: describe_object
     description: Get detailed information about a Snowflake object including its properties, configuration, and metadata.
     params:
       object_type: "Type of Snowflake object to describe"
       target_object: "Object specification with name and required properties"
-  - name: run-snowflake-query
+  - name: run_snowflake_query
     description: Execute SQL queries in Snowflake with support for DML and DDL operations. Includes safety controls and permission management.
     params:
       statement: "SQL query to execute"
-  - name: list-semantic-views
+  - name: list_semantic_views
     description: List all semantic views in the account, database, or schema with optional filtering capabilities.
     params:
       database_name: "Database name to list semantic views in - default: None (account level)"
       schema_name: "Schema name to list semantic views in - default: None"
       like: "Filter semantic views by keyword in name (case insensitive) - default: None"
       starts_with: "Filter semantic views by start of name (case sensitive) - default: None"
-  - name: describe-semantic-view
+  - name: describe_semantic_view
     description: Get detailed information about a specific semantic view including its structure, dimensions, and metrics.
     params:
       database_name: "Database name containing the semantic view"
       schema_name: "Schema name containing the semantic view"
       view_name: "Name of the semantic view to describe"
-  - name: show-semantic-dimensions
+  - name: show_semantic_dimensions
     description: Show all semantic dimensions available in a specific semantic view for analytics and querying.
     params:
       database_name: "Database name containing the semantic view"
@@ -163,7 +163,7 @@ toolPreview:
       view_name: "Name of the semantic view"
       like: "Filter dimensions by keyword in name (case insensitive) - default: None"
       starts_with: "Filter dimensions by start of name (case sensitive) - default: None"
-  - name: show-semantic-metrics
+  - name: show_semantic_metrics
     description: Show all semantic metrics available in a specific semantic view for analytics and aggregations.
     params:
       database_name: "Database name containing the semantic view"
@@ -171,13 +171,13 @@ toolPreview:
       view_name: "Name of the semantic view"
       like: "Filter metrics by keyword in name (case insensitive) - default: None"
       starts_with: "Filter metrics by start of name (case sensitive) - default: None"
-  - name: get-semantic-view-ddl
+  - name: get_semantic_view_ddl
     description: Retrieve the DDL (Data Definition Language) for a semantic view to understand its structure and definition.
     params:
       database_name: "Database name containing the semantic view"
       schema_name: "Schema name containing the semantic view"
       view_name: "Name of the semantic view to get DDL for"
-  - name: write-semantic-view-query-tool
+  - name: write_semantic_view_query_tool
     description: Generate a query statement to query a semantic view using dimensions, metrics, and/or facts with optional filtering and sorting.
     params:
       database_name: "Database name containing the semantic view"
@@ -189,7 +189,7 @@ toolPreview:
       where_clause: "Optional WHERE clause conditions (without WHERE keyword) - default: None"
       order_by: "Optional ORDER BY clause (without ORDER BY keywords) - default: None"
       limit: "Optional LIMIT for number of rows to return - default: None"
-  - name: query-semantic-view
+  - name: query_semantic_view
     description: Execute a query against a semantic view using dimensions, metrics, and/or facts with optional filtering and sorting.
     params:
       database_name: "Database name containing the semantic view"
@@ -201,6 +201,29 @@ toolPreview:
       where_clause: "Optional WHERE clause conditions (without WHERE keyword) - default: None"
       order_by: "Optional ORDER BY clause (without ORDER BY keywords) - default: None"
       limit: "Optional LIMIT for number of rows to return - default: None"
+  - name: cortex_agent
+    description: Query a configured Cortex Agent service for agentic retrieval across Snowflake data.
+    params:
+      service_name: "Name of the Cortex Agent service"
+      database_name: "Database containing the agent service"
+      schema_name: "Schema containing the agent service"
+      query: "User query to submit"
+  - name: cortex_search
+    description: Query a configured Cortex Search service with optional column selection, filters, and result limits.
+    params:
+      service_name: "Name of the Cortex Search service"
+      database_name: "Database containing the search service"
+      schema_name: "Schema containing the search service"
+      query: "Search query to submit"
+      columns: "Optional list of columns to return - default: []"
+      filter_query: "Optional Cortex Search filter object - default: {}"
+      limit: "Optional number of results to return - default: 10"
+  - name: cortex_analyst
+    description: Query a configured Cortex Analyst semantic model or semantic view using natural language.
+    params:
+      service_name: "Name of the Cortex Analyst service"
+      semantic_model: "Fully qualified semantic YAML path or Semantic View"
+      query: "Natural language query to submit"
 
 env:
   - name: Snowflake Account

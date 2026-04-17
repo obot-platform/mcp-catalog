@@ -26,233 +26,303 @@ icon: https://raw.githubusercontent.com/hashicorp/terraform-mcp-server/5530ac1e1
 repoURL: https://github.com/hashicorp/terraform-mcp-server
 
 toolPreview:
-- name: list_terraform_orgs
-  description: Lists all Terraform organizations you have access to. Use this to discover available organizations before performing other operations.
+- name: action_run
+  description: Apply, discard, or cancel a Terraform run.
   params:
-    page: "Optional. Page number for pagination (min 1)"
-    pageSize: "Optional. Results per page for pagination (min 1, max 100)"
-- name: list_terraform_projects
-  description: Lists all projects within a Terraform organization. Projects help organize workspaces.
+    comment: "Optional. Comment for the action"
+    run_action: "Action to perform: 'apply', 'discard', or 'cancel'"
+    run_id: "Run ID"
+- name: attach_policy_set_to_workspaces
+  description: Attach a policy set to one or more workspaces.
   params:
-    terraform_org_name: "The Terraform organization name to list projects for"
-    page: "Optional. Page number for pagination (min 1)"
-    pageSize: "Optional. Results per page for pagination (min 1, max 100)"
-- name: list_workspaces
-  description: Search and list Terraform workspaces within an organization. Returns all workspaces when no filters are applied, or filters by name patterns, tags, or search queries.
-  params:
-    terraform_org_name: "The Terraform organization name"
-    search_query: "Optional. Search query to filter workspaces by name"
-    wildcard_name: "Optional. Wildcard pattern to match workspace names"
-    tags: "Optional. Comma-separated list of tags to filter workspaces"
-    exclude_tags: "Optional. Comma-separated list of tags to exclude from results"
-    project_id: "Optional. Project ID to filter workspaces"
-    page: "Optional. Page number for pagination (min 1)"
-    pageSize: "Optional. Results per page for pagination (min 1, max 100)"
-- name: create_workspace
-  description: Creates a new Terraform workspace in the specified organization. This is a destructive operation that will create new infrastructure resources when runs are applied.
-  params:
-    terraform_org_name: "The Terraform organization name"
-    workspace_name: "The name of the workspace to create"
-    description: "Optional. Description for the workspace"
-    auto_apply: "Optional. Whether to automatically apply successful plans: 'true' or 'false' (default: 'false')"
-    execution_mode: "Optional. Execution mode: 'remote', 'local', or 'agent' (default: 'remote')"
-    terraform_version: "Optional. Terraform version to use (e.g., '1.5.0')"
-    working_directory: "Optional. Working directory for Terraform operations"
-    project_id: "Optional. Project ID to associate the workspace with"
-    tags: "Optional. Comma-separated list of tags to apply to the workspace"
-    vcs_repo_identifier: "Optional. VCS repository identifier (e.g., 'org/repo')"
-    vcs_repo_branch: "Optional. VCS repository branch (default: main/master)"
-    vcs_repo_oauth_token_id: "Optional. OAuth token ID for VCS integration"
-- name: update_workspace
-  description: Updates an existing Terraform workspace configuration. This is a potentially destructive operation that may affect infrastructure resources.
-  params:
-    terraform_org_name: "The Terraform organization name"
-    workspace_name: "The name of the workspace to update"
-    new_name: "Optional. New name for the workspace"
-    description: "Optional. New description for the workspace"
-    auto_apply: "Optional. Whether to automatically apply successful plans: 'true' or 'false'"
-    execution_mode: "Optional. Execution mode: 'remote', 'local', or 'agent'"
-    terraform_version: "Optional. New Terraform version to use"
-    working_directory: "Optional. New working directory"
-    tags: "Optional. Comma-separated list of tags to replace existing tags"
-    queue_all_runs: "Optional. Whether to queue all runs: 'true' or 'false'"
-    speculative_enabled: "Optional. Whether speculative plans are enabled: 'true' or 'false'"
-    trigger_prefixes: "Optional. Comma-separated list of trigger prefixes"
-    file_triggers_enabled: "Optional. Whether file triggers are enabled: 'true' or 'false'"
-- name: get_workspace_details
-  description: Fetches detailed information about a specific Terraform workspace, including configuration, variables, and current state information.
-  params:
-    terraform_org_name: "The Terraform organization name"
-    workspace_name: "The name of the workspace to get details for"
-- name: list_runs
-  description: List or search Terraform runs in a workspace or organization with optional filtering by status and other criteria.
-  params:
-    terraform_org_name: "The Terraform organization name"
-    workspace_name: "Optional. If specified, lists runs in the given workspace instead of the organization"
-    status: "Optional. Array of run status filters (e.g., ['pending', 'planning', 'applied'])"
-    vcs_username: "Optional. Searches for runs that match the VCS username"
-    page: "Optional. Page number for pagination (min 1)"
-    pageSize: "Optional. Results per page for pagination (min 1, max 100)"
-- name: create_run
-  description: Creates a new Terraform run (plan/apply) in the specified workspace. This initiates infrastructure changes.
-  params:
-    terraform_org_name: "The Terraform organization name"
-    workspace_name: "The name of the workspace to create a run in"
-    message: "Optional. Message for the run"
-    run_type: "Optional. Run type: 'plan_and_apply', 'refresh_state', 'plan_only', or 'allow_empty_apply' (default: 'plan_and_apply')"
-- name: get_run_details
-  description: Fetches detailed information about a specific Terraform run, including status, logs, and resource changes.
-  params:
-    run_id: "The ID of the run to get details for"
-- name: list_workspace_variables
-  description: Lists all variables in a Terraform workspace. Returns all variables if query is empty.
-  params:
-    terraform_org_name: "The Terraform organization name"
-    workspace_name: "The workspace name"
-    page: "Optional. Page number for pagination (min 1)"
-    pageSize: "Optional. Results per page for pagination (min 1, max 100)"
-- name: create_workspace_variable
-  description: Creates a new variable in a Terraform workspace. Variables can be Terraform variables or environment variables.
-  params:
-    terraform_org_name: "The Terraform organization name"
-    workspace_name: "The workspace name"
-    key: "Variable key/name"
-    value: "Variable value"
-    category: "Variable category: 'terraform' or 'env' (default: 'env')"
-    description: "Optional. Variable description"
-    sensitive: "Optional. Whether variable is sensitive: true or false (default: false)"
-    hcl: "Optional. Whether variable is HCL: true or false (default: false)"
-- name: update_workspace_variable
-  description: Updates an existing variable in a Terraform workspace.
-  params:
-    terraform_org_name: "The Terraform organization name"
-    workspace_name: "The workspace name"
-    variable_id: "Variable ID to update"
-    key: "Variable key/name"
-    value: "Variable value"
-    description: "Optional. Variable description"
-    sensitive: "Optional. Whether variable is sensitive: true or false"
-    hcl: "Optional. Whether variable is HCL: true or false"
-- name: list_variable_sets
-  description: Lists all variable sets in an organization. Variable sets allow you to share variables across multiple workspaces.
-  params:
-    terraform_org_name: "The Terraform organization name"
-    query: "Optional. Filter query for variable set names"
-    page: "Optional. Page number for pagination (min 1)"
-    pageSize: "Optional. Results per page for pagination (min 1, max 100)"
-- name: create_variable_set
-  description: Creates a new variable set in an organization. Variable sets can be applied to multiple workspaces.
-  params:
-    terraform_org_name: "The Terraform organization name"
-    name: "Variable set name"
-    description: "Optional. Variable set description"
-    global: "Optional. Whether variable set is global: true or false (default: false)"
-- name: create_variable_in_variable_set
-  description: Creates a new variable in a variable set.
-  params:
-    variable_set_id: "Variable set ID"
-    key: "Variable key/name"
-    value: "Variable value"
-    category: "Optional. Variable category: 'terraform' or 'env' (default: 'terraform')"
-    description: "Optional. Variable description"
-    sensitive: "Optional. Whether variable is sensitive: true or false (default: false)"
-    hcl: "Optional. Whether variable is HCL: true or false (default: false)"
-- name: delete_variable_in_variable_set
-  description: Deletes a variable from a variable set.
-  params:
-    variable_set_id: "Variable set ID"
-    variable_id: "Variable ID to delete"
+    policy_set_id: "Policy set ID (for example, 'polset-3yVQZvHzf5j3WRJ1')"
+    workspace_ids: "Comma-separated list of workspace IDs"
 - name: attach_variable_set_to_workspaces
-  description: Attaches a variable set to one or more workspaces, making the variables available to those workspaces.
+  description: Attach a variable set to one or more workspaces.
   params:
     variable_set_id: "Variable set ID"
     workspace_ids: "Comma-separated list of workspace IDs"
-- name: detach_variable_set_from_workspaces
-  description: Detaches a variable set from one or more workspaces.
+- name: create_no_code_workspace
+  description: Create a Terraform No Code module workspace.
   params:
+    auto_apply: "Optional. Whether to auto-apply changes"
+    no_code_module_id: "No Code module ID"
+    project_id: "Project ID"
+    workspace_name: "Workspace name"
+- name: create_run
+  description: Create a Terraform run in a workspace.
+  params:
+    message: "Optional. Message for the run"
+    run_type: "Optional. Run type: 'plan_and_apply', 'refresh_state', 'plan_only', 'allow_empty_apply', 'auto_approve', or 'is_destroy'"
+    terraform_org_name: "Terraform organization name"
+    workspace_name: "Workspace name"
+- name: create_variable_in_variable_set
+  description: Create a variable in a variable set.
+  params:
+    category: "Optional. Variable category: 'terraform' or 'env'"
+    description: "Optional. Variable description"
+    hcl: "Optional. Whether the value is HCL"
+    key: "Variable key"
+    sensitive: "Optional. Whether the variable is sensitive"
+    value: "Variable value"
     variable_set_id: "Variable set ID"
-    workspace_ids: "Comma-separated list of workspace IDs"
-- name: read_workspace_tags
-  description: Reads all tags from a Terraform workspace. Tags help organize and filter workspaces.
+- name: create_variable_set
+  description: Create a variable set in an organization.
   params:
-    terraform_org_name: "The Terraform organization name"
-    workspace_name: "The workspace name"
+    description: "Optional. Variable set description"
+    global: "Optional. Whether the variable set is global"
+    name: "Variable set name"
+    terraform_org_name: "Terraform organization name"
+- name: create_workspace
+  description: Create a Terraform workspace in an organization.
+  params:
+    auto_apply: "Optional. Whether to auto-apply successful plans"
+    description: "Optional. Workspace description"
+    execution_mode: "Optional. Execution mode: 'remote', 'local', or 'agent'"
+    project_id: "Optional. Project ID"
+    tags: "Optional. Comma-separated workspace tags"
+    terraform_org_name: "Terraform organization name"
+    terraform_version: "Optional. Terraform version to use"
+    vcs_repo_branch: "Optional. VCS branch"
+    vcs_repo_identifier: "Optional. VCS repository identifier like 'org/repo'"
+    vcs_repo_oauth_token_id: "Optional. VCS OAuth token ID"
+    working_directory: "Optional. Working directory"
+    workspace_name: "Workspace name"
 - name: create_workspace_tags
-  description: Adds tags to a Terraform workspace. Use key:value format for key-value tags.
+  description: Add tags to a workspace.
   params:
-    terraform_org_name: "The Terraform organization name"
-    workspace_name: "The workspace name"
-    tags: "Comma-separated list of tag names to add (e.g., 'environment:production,team:platform')"
-- name: search_modules
-  description: Searches for Terraform modules in the public Terraform Registry. Returns a list of matching modules with download counts and verification status.
+    tags: "Comma-separated tags to add; use key:value for key-value tags"
+    terraform_org_name: "Terraform organization name"
+    workspace_name: "Workspace name"
+- name: create_workspace_variable
+  description: Create a variable in a workspace.
   params:
-    module_query: "The query to search for Terraform modules (e.g., 'vpc aws', 'kubernetes')"
-    current_offset: "Optional. Current offset for pagination (default: 0)"
-- name: get_module_details
-  description: Fetches detailed documentation for a specific Terraform module, including inputs, outputs, dependencies, and usage examples. You must call 'search_modules' first to obtain the module_id.
+    category: "Optional. Variable category: 'terraform' or 'env'"
+    description: "Optional. Variable description"
+    hcl: "Optional. Whether the value is HCL"
+    key: "Variable key"
+    sensitive: "Optional. Whether the variable is sensitive"
+    terraform_org_name: "Terraform organization name"
+    value: "Variable value"
+    workspace_name: "Workspace name"
+- name: delete_variable_in_variable_set
+  description: Delete a variable from a variable set.
   params:
-    module_id: "Exact module_id from search_modules (e.g., 'terraform-aws-modules/vpc/aws/6.4.0')"
+    variable_id: "Variable ID"
+    variable_set_id: "Variable set ID"
+- name: delete_workspace_safely
+  description: Delete a workspace only if it has no managed resources.
+  params:
+    workspace_id: "Workspace ID"
+- name: detach_variable_set_from_workspaces
+  description: Detach a variable set from one or more workspaces.
+  params:
+    variable_set_id: "Variable set ID"
+    workspace_ids: "Comma-separated list of workspace IDs"
+- name: get_apply_details
+  description: Get details for a Terraform apply.
+  params:
+    apply_id: "Apply ID"
+- name: get_apply_logs
+  description: Get logs for a Terraform apply.
+  params:
+    apply_id: "Apply ID"
 - name: get_latest_module_version
-  description: Fetches the latest version of a Terraform module from the public registry.
+  description: Get the latest version of a public Terraform module.
   params:
-    module_publisher: "The publisher of the module (e.g., 'hashicorp', 'terraform-aws-modules')"
-    module_name: "The name of the module (e.g., 'vpc', 'eks')"
-    module_provider: "The provider for the module (e.g., 'aws', 'google', 'azurerm')"
-- name: search_providers
-  description: Searches for Terraform provider documentation. Returns a list of matching resources, data sources, or guides. You must call this before 'get_provider_details' to obtain the provider_doc_id.
-  params:
-    provider_namespace: "The namespace of the provider (e.g., 'hashicorp')"
-    provider_name: "The name of the provider (e.g., 'aws', 'google', 'azurerm')"
-    service_slug: "The service slug to search for (e.g., 's3', 'ec2', 'vpc')"
-    provider_version: "Optional. The provider version (e.g., '5.0.0' or 'latest')"
-    provider_data_type: "Optional. Type of documentation: 'resources', 'data-sources', 'functions', 'guides', or 'overview' (default: 'resources')"
-- name: get_provider_details
-  description: Fetches detailed documentation for a specific Terraform provider resource, data source, or guide. You must call 'search_providers' first to obtain the provider_doc_id.
-  params:
-    provider_doc_id: "Exact provider_doc_id from search_providers (e.g., '10177451')"
+    module_name: "Module name"
+    module_provider: "Module provider"
+    module_publisher: "Module publisher"
 - name: get_latest_provider_version
-  description: Fetches the latest version of a Terraform provider from the public registry.
+  description: Get the latest version of a public Terraform provider.
   params:
-    namespace: "The namespace of the provider (e.g., 'hashicorp')"
-    name: "The name of the provider (e.g., 'aws', 'google', 'azurerm')"
-- name: search_policies
-  description: Searches for Terraform Sentinel policies in the public registry. Returns a list of matching policy sets.
+    name: "Provider name"
+    namespace: "Provider namespace"
+- name: get_module_details
+  description: Get detailed documentation for a Terraform module.
   params:
-    policy_query: "The query to search for policies (e.g., 'CIS', 'aws security')"
+    module_id: "Exact module ID returned by 'search_modules'"
+- name: get_plan_details
+  description: Get details for a Terraform plan.
+  params:
+    plan_id: "Plan ID"
+- name: get_plan_json_output
+  description: Get structured JSON output for a Terraform plan.
+  params:
+    plan_id: "Plan ID"
+- name: get_plan_logs
+  description: Get logs for a Terraform plan.
+  params:
+    plan_id: "Plan ID"
 - name: get_policy_details
-  description: Fetches detailed documentation for a specific Terraform Sentinel policy, including policy code and usage instructions. You must call 'search_policies' first to obtain the terraform_policy_id.
+  description: Get detailed documentation for a Terraform policy.
   params:
-    terraform_policy_id: "Exact terraform_policy_id from search_policies (e.g., 'policies/hashicorp/CIS-Policy-Set-for-AWS-Terraform/1.0.1')"
-- name: search_private_modules
-  description: Searches for private modules in your Terraform Cloud/Enterprise organization. Returns modules that match the search criteria.
-  params:
-    terraform_org_name: "The Terraform organization name"
-    search_query: "Optional. Search query to filter modules by name or namespace"
-    page_number: "Optional. Page number for pagination (starts at 1)"
-    page_size: "Optional. Number of results per page (max 100)"
+    terraform_policy_id: "Exact policy ID returned by 'search_policies'"
 - name: get_private_module_details
-  description: Retrieves detailed information about a specific private module in your organization, including inputs, outputs, and usage examples. Call 'search_private_modules' first to obtain the private_module_id.
+  description: Get details for a private module in your organization.
   params:
-    terraform_org_name: "The Terraform organization name"
-    private_module_id: "The private module ID in format 'namespace/name/provider' (e.g., 'my-org/vpc/aws')"
-    private_module_version: "Optional. Specific version to retrieve (uses latest if not provided)"
-    registry_name: "Optional. Registry type: 'private' or 'public' (default: 'private')"
-- name: search_private_providers
-  description: Searches for private providers in your Terraform Cloud/Enterprise organization.
-  params:
-    terraform_org_name: "The Terraform organization name"
-    search_query: "Optional. Search query to filter providers by name or namespace"
-    registry_name: "Optional. Registry type: 'private' or 'public' (default: 'private')"
-    page_number: "Optional. Page number for pagination (starts at 1)"
-    page_size: "Optional. Number of results per page (max 100)"
+    private_module_id: "Private module ID in 'namespace/name/provider' format"
+    private_module_version: "Optional. Specific module version"
+    registry_name: "Optional. Registry type: 'private' or 'public'"
+    terraform_org_name: "Terraform organization name"
 - name: get_private_provider_details
-  description: Retrieves information about a specific private provider in your organization, including available versions and usage documentation.
+  description: Get details for a private provider in your organization.
   params:
-    terraform_org_name: "The Terraform organization name"
-    private_provider_namespace: "The namespace of the private provider"
-    private_provider_name: "The name of the private provider"
-    registry_name: "Optional. Registry type: 'private' or 'public' (default: 'private')"
-    include_versions: "Optional. Whether to include version information (default: true)"
+    include_versions: "Optional. Whether to include version details"
+    private_provider_name: "Private provider name"
+    private_provider_namespace: "Private provider namespace"
+    registry_name: "Optional. Registry type: 'private' or 'public'"
+    terraform_org_name: "Terraform organization name"
+- name: get_provider_capabilities
+  description: Summarize a provider's supported resources, data sources, functions, guides, and more.
+  params:
+    name: "Provider name"
+    namespace: "Provider namespace"
+    version: "Optional. Provider version or 'latest'"
+- name: get_provider_details
+  description: Get detailed documentation for a provider document.
+  params:
+    provider_doc_id: "Exact provider_doc_id returned by 'search_providers'"
+- name: get_run_details
+  description: Get details for a Terraform run.
+  params:
+    run_id: "Run ID"
+- name: get_stack_details
+  description: Get details for a Terraform stack.
+  params:
+    stack_id: "Stack ID"
+    terraform_org_name: "Terraform organization name"
+- name: get_token_permissions
+  description: Check what permissions the configured Terraform token has in an organization.
+  params:
+    terraform_org_name: "Terraform organization name"
+- name: get_workspace_details
+  description: Get detailed information about a Terraform workspace.
+  params:
+    terraform_org_name: "Terraform organization name"
+    workspace_name: "Workspace name"
+- name: list_runs
+  description: List or search Terraform runs in an organization or workspace.
+  params:
+    page: "Optional. Page number for pagination"
+    pageSize: "Optional. Results per page for pagination"
+    status: "Optional. Array of run status filters"
+    terraform_org_name: "Terraform organization name"
+    vcs_username: "Optional. VCS username to filter by"
+    workspace_name: "Optional. Workspace name"
+- name: list_stacks
+  description: List Terraform stacks in an organization.
+  params:
+    page: "Optional. Page number for pagination"
+    pageSize: "Optional. Results per page for pagination"
+    project_id: "Optional. Project ID to filter by"
+    search_query: "Optional. Search query to filter stack names"
+    terraform_org_name: "Terraform organization name"
+- name: list_terraform_orgs
+  description: List accessible Terraform organizations.
+  params:
+    page: "Optional. Page number for pagination"
+    pageSize: "Optional. Results per page for pagination"
+- name: list_terraform_projects
+  description: List projects in a Terraform organization.
+  params:
+    page: "Optional. Page number for pagination"
+    pageSize: "Optional. Results per page for pagination"
+    terraform_org_name: "Terraform organization name"
+- name: list_variable_sets
+  description: List variable sets in an organization.
+  params:
+    page: "Optional. Page number for pagination"
+    pageSize: "Optional. Results per page for pagination"
+    query: "Optional. Filter query for variable set names"
+    terraform_org_name: "Terraform organization name"
+- name: list_workspace_policy_sets
+  description: List policy sets attached to a workspace.
+  params:
+    terraform_org_name: "Terraform organization name"
+    workspace_id: "Workspace ID"
+- name: list_workspace_variables
+  description: List variables in a workspace.
+  params:
+    page: "Optional. Page number for pagination"
+    pageSize: "Optional. Results per page for pagination"
+    terraform_org_name: "Terraform organization name"
+    workspace_name: "Workspace name"
+- name: list_workspaces
+  description: Search and list Terraform workspaces in an organization.
+  params:
+    exclude_tags: "Optional. Comma-separated tags to exclude"
+    page: "Optional. Page number for pagination"
+    pageSize: "Optional. Results per page for pagination"
+    project_id: "Optional. Project ID"
+    search_query: "Optional. Search query"
+    tags: "Optional. Comma-separated tags to include"
+    terraform_org_name: "Terraform organization name"
+    wildcard_name: "Optional. Wildcard pattern for workspace names"
+- name: read_workspace_tags
+  description: Read tags from a workspace.
+  params:
+    terraform_org_name: "Terraform organization name"
+    workspace_name: "Workspace name"
+- name: search_modules
+  description: Search public Terraform modules and return matching module IDs.
+  params:
+    current_offset: "Optional. Pagination offset"
+    module_query: "Query string for modules"
+- name: search_policies
+  description: Search public Terraform Sentinel policies.
+  params:
+    policy_query: "Query string for policies"
+- name: search_private_modules
+  description: Search private modules in your Terraform organization.
+  params:
+    page_number: "Optional. Page number starting at 1"
+    page_size: "Optional. Results per page, max 100"
+    search_query: "Optional. Search query for module name or namespace"
+    terraform_org_name: "Terraform organization name"
+- name: search_private_providers
+  description: Search private providers in your Terraform organization.
+  params:
+    page_number: "Optional. Page number starting at 1"
+    page_size: "Optional. Results per page, max 100"
+    registry_name: "Optional. Registry type: 'private' or 'public'"
+    search_query: "Optional. Search query for provider name or namespace"
+    terraform_org_name: "Terraform organization name"
+- name: search_providers
+  description: Search provider docs and return matching provider document IDs.
+  params:
+    provider_document_type: "Document type: 'resources', 'data-sources', 'functions', 'guides', 'overview', 'actions', or 'list-resources'"
+    provider_name: "Provider name"
+    provider_namespace: "Provider namespace"
+    provider_version: "Optional. Provider version or 'latest'"
+    service_slug: "Service slug to search for"
+- name: update_workspace
+  description: Update Terraform workspace configuration.
+  params:
+    auto_apply: "Optional. Whether to auto-apply successful plans"
+    description: "Optional. New workspace description"
+    execution_mode: "Optional. Execution mode: 'remote', 'local', or 'agent'"
+    file_triggers_enabled: "Optional. Whether file triggers are enabled"
+    new_name: "Optional. New workspace name"
+    queue_all_runs: "Optional. Whether to queue all runs"
+    speculative_enabled: "Optional. Whether speculative plans are enabled"
+    tags: "Optional. Comma-separated tags to replace existing tags"
+    terraform_org_name: "Terraform organization name"
+    terraform_version: "Optional. New Terraform version"
+    trigger_prefixes: "Optional. Comma-separated trigger prefixes"
+    working_directory: "Optional. New working directory"
+    workspace_name: "Workspace name"
+- name: update_workspace_variable
+  description: Update a workspace variable.
+  params:
+    description: "Optional. Variable description"
+    hcl: "Optional. Whether the value is HCL"
+    key: "Variable key"
+    sensitive: "Optional. Whether the variable is sensitive"
+    terraform_org_name: "Terraform organization name"
+    value: "Variable value"
+    variable_id: "Variable ID"
+    workspace_name: "Workspace name"
 
 env:
 - name: Terraform Cloud/Enterprise Token
@@ -278,4 +348,3 @@ containerizedConfig:
   - 8080
   - --transport-host
   - 0.0.0.0
-

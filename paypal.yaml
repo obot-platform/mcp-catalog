@@ -38,100 +38,101 @@ remoteConfig:
   fixedURL: https://mcp.paypal.com/mcp
 toolPreview:
   - name: create_invoice
-    description: Create a new invoice in the PayPal system
+    description: Create a draft invoice in PayPal
     params:
-      recipient_email: Email address of the invoice recipient
-      items: List of items or services to include in the invoice
+      detail: Invoice metadata including currency and invoice date
+      primary_recipients: Recipient billing info and email addresses
+      items: Line items to bill on the invoice
   - name: list_invoices
-    description: List invoices with pagination and filtering options
+    description: List invoices with pagination options
     params:
       page: Page number for pagination (optional)
       page_size: Number of invoices per page (optional)
-      status: Filter invoices by status (optional)
+      total_required: Include total count in the response (optional)
   - name: send_invoice
-    description: Send an existing invoice to the specified recipient
+    description: Send an invoice to its recipients
     params:
-      invoice_id: The unique identifier of the invoice to be sent
+      invoice_id: The PayPal invoice ID to send
   - name: cancel_sent_invoice
-    description: Cancel a sent invoice
+    description: Cancel a sent invoice in PayPal
     params:
-      invoice_id: The unique identifier of the invoice to cancel
+      invoice_id: The PayPal invoice ID to cancel
   - name: generate_invoice_qr_code
     description: Generate a QR code for an invoice
     params:
-      invoice_id: The unique identifier of the invoice
+      invoice_id: The PayPal invoice ID
   - name: create_order
-    description: Create an order in the PayPal system based on provided details
+    description: Create a PayPal order for checkout
     params:
-      items: List of items to include in the order
-      currency: Currency code such as USD or EUR
+      currencyCode: Currency code for the order
+      items: Order line items including cost and quantity
   - name: pay_order
-    description: Capture payment for an authorized order
+    description: Capture payment for an approved order
     params:
-      order_id: The unique identifier of the order to capture
+      id: The PayPal order ID to capture
   - name: create_refund
-    description: Process a refund for a captured payment
+    description: Refund a captured payment
     params:
-      capture_id: The unique identifier of the captured payment to refund
-      amount: The refund amount (optional)
-      currency: Currency code for the refund (optional)
+      capture_id: The captured payment ID to refund
+      amount: Optional object with `currency_code` and `value`
   - name: create_product
-    description: Create a new product in the PayPal catalog
+    description: Create a product in the PayPal catalog
     params:
-      name: The name of the product
-      type: The type of the product (PHYSICAL, DIGITAL, SERVICE)
-  - name: list_product
-    description: List products from the PayPal catalog
+      name: Product name
+      type: Product type such as PHYSICAL, DIGITAL, or SERVICE
+  - name: list_products
+    description: List products in the PayPal catalog
     params:
-      page: The specific page number to retrieve (optional)
-      page_size: Maximum number of products to return per page (optional)
+      page: Page number to retrieve (optional)
+      page_size: Maximum number of products to return (optional)
+      total_required: Include total count in the response (optional)
   - name: create_subscription_plan
-    description: Create a new subscription plan
+    description: Create a subscription plan for a product
     params:
-      product_id: The ID of the product
-      name: The plan name
-      billing_cycles: Array of billing cycles for trial and regular billing
-      payment_preferences: Payment preferences for the subscription
+      product_id: Product ID for the plan
+      name: Plan name
+      billing_cycles: Trial and regular billing cycle definitions
+      payment_preferences: Billing and failure handling preferences
   - name: create_subscription
-    description: Create a new subscription
+    description: Create a subscription from a plan
     params:
-      plan_id: The ID of the subscription plan
-      subscriber: The subscriber information (optional)
+      plan_id: Subscription plan ID
+      quantity: Quantity for the subscription (optional)
+      subscriber: Subscriber details (optional)
   - name: cancel_subscription
     description: Cancel an active subscription
     params:
-      subscription_id: The ID of the subscription to cancel
-      reason: Cancellation reason (optional)
+      subscription_id: Subscription ID to cancel
+      payload: Cancellation payload with an optional reason
   - name: list_disputes
-    description: Retrieve a summary of all disputes with optional filtering
+    description: List disputes with pagination and state filters
     params:
-      status: Filter disputes by status such as OPEN or RESOLVED (optional)
+      dispute_state: Filter by dispute lifecycle state (optional)
+      page: Page number to retrieve (optional)
+      page_size: Number of disputes per page (optional)
   - name: accept_dispute_claim
-    description: Accept a dispute claim, resolving it in favor of the buyer
+    description: Accept a dispute claim in the buyer's favor
     params:
-      dispute_id: The unique identifier of the dispute
-  - name: list_transaction
-    description: List all transactions with pagination and filtering options
+      dispute_id: The PayPal dispute ID
+      note: Seller note explaining the acceptance
+  - name: list_transactions
+    description: List transactions with date and pagination filters
     params:
-      start_date: The start date for filtering transactions (optional)
-      end_date: The end date for filtering transactions (optional)
+      start_date: Start of the reporting window in ISO 8601 (optional)
+      end_date: End of the reporting window in ISO 8601 (optional)
+      transaction_id: Specific transaction ID to look up (optional)
   - name: create_shipment_tracking
-    description: Create shipment tracking information for a PayPal transaction
+    description: Add shipment tracking to a PayPal transaction
     params:
-      tracking_number: The tracking number for the shipment
-      transaction_id: The transaction ID associated with the shipment
-      carrier: The carrier handling the shipment
-      order_id: The order ID for the shipment (optional)
-      status: The current status of the shipment (optional)
-  - name: search_product
-    description: Find gift card products in the PayPal catalog
+      tracking_number: Carrier tracking number
+      transaction_id: Captured transaction ID for the shipment
+      carrier: Shipping carrier name
+      order_id: PayPal order ID for the shipment (optional)
+      status: Shipment status such as SHIPPED or DELIVERED (optional)
+  - name: get_merchant_insights
+    description: Retrieve merchant sales or order insights
     params:
-      criteria: Search criteria for gift cards
-  - name: create_cart
-    description: Open a new shopping cart with specified items and shipping preferences
-    params:
-      items: Selected gift cards for the cart
-  - name: checkout_cart
-    description: Finalize a shopping cart to complete the purchase process
-    params:
-      cart_id: The cart identifier for checkout 
+      start_date: Start date for the insight range
+      end_date: End date for the insight range
+      insight_type: Insight type such as ORDERS or SALES
+      time_interval: Aggregation interval such as DAILY or MONTHLY

@@ -184,7 +184,7 @@ toolPreview:
     draft: Create as draft merge request (optional)
     assignee_ids: Array of user IDs to assign (optional)
 - name: list_merge_requests
-  description: List merge requests in a GitLab project with filtering options
+  description: List merge requests across accessible projects or within a specific project
   params:
     project_id: Project ID or URL-encoded path (optional)
     state: Merge request state - opened, closed, merged, all (optional)
@@ -193,7 +193,7 @@ toolPreview:
     page: Page number for pagination (optional)
     per_page: Number of results per page (optional)
 - name: get_merge_request
-  description: Get details of a merge request (Either mergeRequestIid or branchName must be provided)
+  description: Get a merge request by IID or source branch
   params:
     project_id: Project ID or URL-encoded path (optional)
     merge_request_iid: Internal ID of the merge request (optional)
@@ -207,7 +207,7 @@ toolPreview:
     should_remove_source_branch: Remove source branch after merge (optional)
     squash: Squash commits into a single commit when merging (optional)
 - name: update_merge_request
-  description: Update a merge request (Either mergeRequestIid or branchName must be provided)
+  description: Update a merge request by IID or source branch
   params:
     project_id: Project ID or URL-encoded path (optional)
     merge_request_iid: Internal ID of the merge request (optional)

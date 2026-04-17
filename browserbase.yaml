@@ -60,41 +60,25 @@ containerizedConfig:
   args:
   - mcp-server-browserbase
 toolPreview:
-- name: browserbase_session_create
-  description: Create or reuse a single cloud browser session using Browserbase with fully initialized Stagehand for single browser workflows.
-  params:
-    sessionId: Optional session ID to reuse existing session
-- name: browserbase_stagehand_navigate
-  description: Navigate to a URL in the browser. Use https://google.com as starting point if unsure about URL stability.
-  params:
-    url: URL to navigate to
-- name: browserbase_stagehand_act
-  description: Perform atomic actions on web page elements like clicking buttons or typing in inputs.
-  params:
-    action: Specific action to perform (e.g., "Click the sign in button")
-    variables: Optional variables for the action
-- name: browserbase_stagehand_extract
-  description: Extract structured information and text content from the current web page based on specific instructions.
-  params:
-    instruction: Clear instructions about what to extract
-- name: browserbase_stagehand_observe
-  description: Observe and identify interactive elements on the current web page for subsequent actions.
-  params:
-    instruction: Specific instruction for what elements to find
-    returnAction: Optional boolean to return action capabilities
-- name: browserbase_screenshot
-  description: Take a screenshot of the current page to understand the page state when controlling the browser.
-  params:
-    name: Optional name for the screenshot
-- name: multi_browserbase_stagehand_session_create
-  description: Create parallel browser sessions for multi-session workflows like concurrent automation or A/B testing.
-  params:
-    browserbaseSessionID: Optional Browserbase session ID
-    name: Optional name for the session
-- name: multi_browserbase_stagehand_session_list
-  description: Track all active parallel browser sessions with their IDs, names, and status for multi-session management.
+- name: start
+  description: Create or reuse the current Browserbase session.
   params: {}
-- name: multi_browserbase_stagehand_session_close
-  description: Properly terminate a parallel browser session and free cloud resources.
+- name: end
+  description: Close the current Browserbase session.
+  params: {}
+- name: navigate
+  description: Navigate the active browser session to a URL.
   params:
-    sessionId: ID of the session to close
+    url: URL to open
+- name: act
+  description: Perform an action on the current page using natural language.
+  params:
+    action: Action to perform on the page
+- name: observe
+  description: Identify actionable elements on the current page.
+  params:
+    instruction: What elements or actions to look for
+- name: extract
+  description: Extract structured data from the current page.
+  params:
+    instruction: Optional extraction instructions

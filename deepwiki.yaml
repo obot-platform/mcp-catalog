@@ -34,11 +34,10 @@ toolPreview:
   params:
     repoName: GitHub repository in owner/repo format (e.g. "facebook/react")
 - name: ask_question
-  description: Ask any question about a GitHub repository and get detailed answers.
+  description: Ask a question about one or more GitHub repositories and get a context-grounded answer.
   params:
-    repoName: GitHub repository in owner/repo format (e.g. "facebook/react")
+    repoName: GitHub repository or list of repositories (max 10) in owner/repo format
     question: The question to ask about the repository
 runtime: remote
 remoteConfig:
   fixedURL: https://mcp.deepwiki.com/mcp
-

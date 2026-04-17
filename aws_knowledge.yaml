@@ -48,29 +48,31 @@ runtime: remote
 remoteConfig:
   fixedURL: https://knowledge-mcp.global.api.aws
 toolPreview:
-- name: get_regional_availability
-  description: Retrieve AWS regional availability information for SDK service APIs and CloudFormation resources. Check real-time availability across AWS regions with support for batch queries and filtering.
+- name: aws___get_regional_availability
+  description: Check AWS resource availability across regions for products, API operations, and CloudFormation resource types.
   params:
-    region: Target AWS region code (e.g., us-east-1, eu-west-1, ap-southeast-2)
-    resource_type: Type of AWS resource to check - 'api' for API operations or 'cfn' for CloudFormation resources
-    filters: Optional list of specific resources to check. For APIs use format 'SdkServiceId+APIOperation' (e.g., ['IAM+GetSSHPublicKey']). For CloudFormation use resource type (e.g., ['AWS::EC2::Instance'])
-    next_token: Pagination token for retrieving additional results (only when no filters specified)
-- name: list_regions
-  description: Retrieve a list of all AWS regions including their region codes and human-friendly names. Useful for infrastructure planning and region validation.
+    regions: One or more AWS region codes to check (up to 10 per call)
+    resource_type: Resource kind to query - 'product', 'api', or 'cfn'
+    filters: Optional resource filters. Use product names, 'SdkServiceId+APIOperation' or service IDs for APIs, and CloudFormation type names for 'cfn'
+    next_token: Pagination token for continuing an unfiltered single-region query
+- name: aws___list_regions
+  description: List all AWS regions with their region codes and human-friendly names.
   params: {}
-- name: read_documentation
-  description: Fetch and convert an AWS documentation page to markdown format. Supports pagination for long documents through start_index parameter. Works with docs.aws.amazon.com and aws.amazon.com domains.
+- name: aws___read_documentation
+  description: Fetch AWS documentation pages and convert them to markdown, with batched requests and pagination support for long pages.
   params:
-    url: URL of the AWS documentation page to read
-    max_length: Maximum number of characters to return (optional)
-    start_index: Starting character index for pagination of long documents (optional)
-- name: search_documentation
-  description: Search AWS documentation using the official AWS Documentation Search API. Searches across AWS docs, blogs, solutions library, getting started guides, architecture center, and prescriptive guidance.
+    requests: List of documentation requests containing `url` plus optional `max_length` and `start_index`
+- name: aws___recommend
+  description: Get related AWS documentation recommendations, including highly rated, new, similar, and commonly viewed next pages.
   params:
-    search_phrase: Search phrase to use (use specific technical terms and include service names for better results)
-    limit: Maximum number of results to return (optional)
-- name: recommend
-  description: Get content recommendations for an AWS documentation page. Returns four categories - highly rated (popular pages), new (recently added), similar (related topics), and journey (commonly viewed next).
+    url: AWS documentation URL to get recommendations for
+- name: aws___retrieve_agent_sop
+  description: Retrieve the full AWS agent SOP workflow for an exact SOP name returned by `aws___search_documentation`.
   params:
-    url: URL of the AWS documentation page to get recommendations for (must be from docs.aws.amazon.com domain)
-
+    sop_name: Exact SOP identifier returned in search results
+- name: aws___search_documentation
+  description: Search official AWS documentation and AWS agent SOP content, with optional topic filters for docs, troubleshooting, Amplify, CDK, CloudFormation, and current-awareness content.
+  params:
+    search_phrase: AWS search query to run
+    topics: Optional list of up to 3 topic filters such as `reference_documentation`, `troubleshooting`, `agent_sops`, or `general`
+    limit: Maximum number of results to return

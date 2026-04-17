@@ -34,226 +34,240 @@ description: |
   - **Compass Integration** - "What services depend on the api-gateway component?"
 
 toolPreview:
-  # Authentication & Account
+  # Shared Atlassian
   - name: atlassianUserInfo
-    description: Get current user info from Atlassian
-    params:
+    description: Get the current Atlassian user and account ID.
+    params: {}
   - name: getAccessibleAtlassianResources
-    description: Get cloudid to construct API calls to Atlassian REST APIs
-    params:
+    description: List Atlassian cloud sites (`cloudId`) the user can access.
+    params: {}
 
-  # Search & Discovery
+  # Rovo Search
   - name: search
-    description: Search Jira and Confluence using Rovo Search. Primary method for finding content across both products.
+    description: Search Jira and Confluence with natural-language Rovo Search.
     params:
-      query: The search query to use for Rovo Search
+      query: Search query
   - name: fetch
-    description: Get details of a Jira issue or Confluence page by ARI (Atlassian Resource Identifier)
+    description: Fetch Jira or Confluence content by ARI.
     params:
-      id: "Atlassian Resource Identifier (ARI) from search results, e.g., 'ari:cloud:jira:cloudId:issue/10107' or 'ari:cloud:confluence:cloudId:page/123456789'"
+      id: Atlassian Resource Identifier (ARI)
 
-  # Confluence - Spaces & Pages
-  - name: getConfluenceSpaces
-    description: Get spaces from Confluence. Spaces are containers for pages and content. Use to discover available spaces or get space ID from space key.
-    params:
-      cloudId: "Unique identifier for an Atlassian Cloud instance (UUID, site URL, or extracted from URLs). Use 'getAccessibleAtlassianResources' to find Cloud IDs."
-      keys: Filter by space keys (unique identifiers)
-      ids: Filter by specific numerical space IDs
-      type: "Filter by space type (global, collaboration, knowledge_base, personal)"
-      status: "Filter by space status (current, archived)"
-      limit: "Maximum number of spaces to return (default: 25, max: 250)"
-      cursor: Pagination cursor for retrieving next page of results
-  - name: getConfluencePage
-    description: Get a specific page or live doc data (including body content) from Confluence by its ID. Returns content in Markdown format.
-    params:
-      cloudId: "Unique identifier for an Atlassian Cloud instance (UUID, site URL, or can be extracted from page URLs)"
-      pageId: "The unique identifier of the page (can be extracted from Confluence URLs - the numeric ID in the URL path)"
-  - name: getPagesInConfluenceSpace
-    description: Get all pages within a specific Confluence space. Useful for discovering content structure and finding pages by title or status.
-    params:
-      cloudId: Unique identifier for an Atlassian Cloud instance
-      spaceId: The unique numerical identifier of the space to search within
-      title: Filter pages by title
-      status: "Filter pages by status (current, archived, deleted, trashed)"
-      subtype: "Filter pages by subtype - use 'live' for live docs or 'page' for regular pages"
-      depth: "Filter pages by depth (all, root)"
-      sort: "Sort pages by field(s) (id, -id, created-date, -created-date, modified-date, -modified-date, title, -title)"
-      limit: "Maximum number of pages to return (default: 25, max: 250)"
-      cursor: Opaque cursor for pagination
-  - name: getConfluencePageDescendants
-    description: Get all child pages (descendants) of a specific page in the page hierarchy. Useful for exploring page structure and nested content.
-    params:
-      cloudId: Unique identifier for an Atlassian Cloud instance
-      pageId: The unique identifier of the page whose descendants to retrieve
-      depth: Maximum depth to traverse in the page hierarchy
-      limit: Maximum number of descendants to return
-      cursor: Pagination cursor for retrieving next page of results
-  - name: createConfluencePage
-    description: Create a new page in Confluence. Can create regular pages or live docs.
-    params:
-      cloudId: Unique identifier for an Atlassian Cloud instance
-      spaceId: The unique numerical identifier of the space where the page will be created
-      title: The title of the new page
-      body: "The content of the page in Markdown format (required)"
-      parentId: The unique identifier of the parent page (if creating a child page)
-      subtype: "The subtype of the page. Set to 'live' to create a live doc, or omit to create a regular page"
-      isPrivate: "The page will be private. Only the user who creates this page will have permission to view and edit one"
-  - name: updateConfluencePage
-    description: Update an existing page or Live Doc in Confluence
-    params:
-      cloudId: Unique identifier for an Atlassian Cloud instance
-      pageId: The unique identifier of the existing page to update
-      body: "The content of the page in Markdown format (required)"
-      title: The new title for the page (if not provided, retains the existing title)
-      parentId: The unique identifier of the parent page (if changing hierarchy)
-      spaceId: The unique numerical identifier of the space (if moving the page)
-      status: "The status of the page to update (defaults to current). If draft is specified, the page's draft version will be updated (current, draft)"
-      versionMessage: Optional message describing the changes made in this version
-
-  # Confluence - Comments
-  - name: getConfluencePageFooterComments
-    description: Get footer comments for a Confluence page. Footer comments are general comments at the bottom, not tied to specific content.
-    params:
-      cloudId: Unique identifier for an Atlassian Cloud instance
-      pageId: The unique identifier of the page whose footer comments to retrieve
-      status: "Filter comments by status (current, archived, trashed, deleted, historical, draft)"
-      sort: "Sort order for comments (id, -id, created-date, -created-date)"
-      limit: Maximum number of comments to return
-      cursor: Pagination cursor for retrieving next page of results
-  - name: getConfluencePageInlineComments
-    description: Get inline comments for a Confluence page. Inline comments are attached to specific text selections within the page content.
-    params:
-      cloudId: Unique identifier for an Atlassian Cloud instance
-      pageId: The unique identifier of the page whose inline comments to retrieve
-      status: "Filter comments by status (current, archived, trashed, deleted, historical, draft)"
-      resolutionStatus: "Filter comments by resolution status (resolved, open, dangling, reopened)"
-      sort: "Sort order for comments (id, -id, created-date, -created-date)"
-      limit: Maximum number of comments to return
-      cursor: Pagination cursor for retrieving next page of results
-  - name: createConfluenceFooterComment
-    description: Create a footer comment on a Confluence page or blog post. Footer comments are general comments about the page at the bottom.
-    params:
-      cloudId: Unique identifier for an Atlassian Cloud instance
-      body: The content of the comment in Markdown format
-      pageId: The id of the page to add the comment to
-      parentCommentId: The id of the parent comment to reply to
-      attachmentId: The id of the attachment to add to the comment
-      customContentId: The id of the custom content to add to the comment
-  - name: createConfluenceInlineComment
-    description: Create an inline comment on a page or blog post. Inline comments are attached to specific text selections within the page content.
-    params:
-      cloudId: Unique identifier for an Atlassian Cloud instance
-      body: The content of the comment in Markdown format
-      pageId: The id of the page to add the comment to
-      parentCommentId: The id of the parent comment to reply to
-      inlineCommentProperties: "Object describing the text to highlight (required for top level inline comments): textSelection, textSelectionMatchIndex, textSelectionMatchCount"
-
-  # Confluence - Search
-  - name: searchConfluenceUsingCql
-    description: Search content in Confluence using CQL (Confluence Query Language). Powerful query language for finding pages, spaces, and content based on criteria like title, content, labels, creation date, etc.
-    params:
-      cloudId: Unique identifier for an Atlassian Cloud instance
-      cql: "The CQL query string (e.g., 'title ~ \"meeting\" AND type = page')"
-      limit: "Maximum number of results to return (default: 25, max: 250)"
-      cursor: Pagination cursor for retrieving next page of results
-      expand: Comma-separated list of properties to expand in the response
-      cqlcontext: The context for the CQL query execution
-
-  # Jira - Issues
+  # Jira
   - name: getJiraIssue
-    description: Get the details of a Jira issue by issue id or key
+    description: Get a Jira issue by ID or key.
     params:
-      cloudId: Unique identifier for an Atlassian Cloud instance
-      issueIdOrKey: "Issue id (numerical, e.g., 10000) or key (e.g., ISSUE-1)"
-      fields: Fields to include in response
-      expand: Additional properties to expand
-      properties: Properties to include
-  - name: createJiraIssue
-    description: Create a new Jira issue in a given project with a given issue type
-    params:
-      cloudId: Unique identifier for an Atlassian Cloud instance
-      projectKey: "A unique identifier of a project (string of letters, numbers, underscores). Use 'getVisibleJiraProjects' to look up projects"
-      issueTypeName: "Issue type categorizes work being tracked (e.g., Epic, Story, Task, Bug, Subtask). Use 'getJiraProjectIssueTypesMetadata' to get available types"
-      summary: Issue summary/title
-      description: The content of the issue's description in Markdown format
-      assignee_account_id: "Account id of assignee. Use 'atlassianUserInfo' for current user or 'lookupJiraAccountId' to find users"
-      parent: "The issue key or id of the parent issue for 'Subtask' issue types"
-      additional_fields: Additional custom fields as JSON object
-  - name: editJiraIssue
-    description: Update the details of an existing Jira issue by id or key
-    params:
-      cloudId: Unique identifier for an Atlassian Cloud instance
-      issueIdOrKey: "Issue id (numerical, e.g., 10000) or key (e.g., ISSUE-1)"
-      fields: Fields to update as JSON object
-  - name: addCommentToJiraIssue
-    description: Adds a comment to an existing Jira issue by id or key
-    params:
-      cloudId: Unique identifier for an Atlassian Cloud instance
-      issueIdOrKey: "Issue id (numerical, e.g., 10000) or key (e.g., ISSUE-1)"
-      commentBody: The content of the comment in Markdown format
-      commentVisibility: "Restrict visibility to a group or role with type ('group', 'role') and value (group/role name)"
-  - name: getJiraIssueRemoteIssueLinks
-    description: Get remote issue links (e.g., Confluence links) of an existing Jira issue by id or key
-    params:
-      cloudId: Unique identifier for an Atlassian Cloud instance
-      issueIdOrKey: "Issue id (numerical, e.g., 10000) or key (e.g., ISSUE-1)"
-      globalId: "An identifier for the remote item (e.g., 'appId=456&pageId=123'). When provided, returns only the link with this global ID"
-
-  # Jira - Transitions
-  - name: getTransitionsForJiraIssue
-    description: Get available transitions for an existing Jira issue by id or key
-    params:
-      cloudId: Unique identifier for an Atlassian Cloud instance
-      issueIdOrKey: "Issue id (numerical, e.g., 10000) or key (e.g., ISSUE-1)"
-      expand: Additional properties to expand
-      transitionId: Filter to specific transition
-  - name: transitionJiraIssue
-    description: Transition an existing Jira issue to a new status
-    params:
-      cloudId: Unique identifier for an Atlassian Cloud instance
-      issueIdOrKey: "Issue id (numerical, e.g., 10000) or key (e.g., ISSUE-1)"
-      transition: "Transition object with id (required) - use 'getTransitionsForJiraIssue' to find available transitions"
-      fields: Additional fields to update during transition
-      update: "Operations to perform on issue fields (list of operations per field)"
-
-  # Jira - Projects & Metadata
-  - name: getVisibleJiraProjects
-    description: Get visible Jira projects for which the user has view, browse, edit, or create permission
-    params:
-      cloudId: Unique identifier for an Atlassian Cloud instance
-      action: "Filter by permission type (view, browse, edit, create) - default: create"
-      searchString: Filter using literal string. Projects with matching key or name are returned (case insensitive)
-      expandIssueTypes: Include additional information about issue types (default - true)
-      maxResults: "Maximum items to return per page (max: 50, default: 50)"
-      startAt: Index of first item to return (page offset, default - 0)
-  - name: getJiraProjectIssueTypesMetadata
-    description: Get a page of issue type metadata for a specified project. Used to create issues with proper issue types.
-    params:
-      cloudId: Unique identifier for an Atlassian Cloud instance
-      projectIdOrKey: Project ID or key
-      maxResults: "Maximum items to return per page (max: 200, default: 50)"
-      startAt: Index of first item to return (page offset, default - 0)
-  - name: getJiraIssueTypeMetaWithFields
-    description: Get issue type metadata for a project and issue type. Returns field metadata for creating/updating issues.
-    params:
-      cloudId: Unique identifier for an Atlassian Cloud instance
-      projectIdOrKey: The ID or key of the project
-      issueTypeId: The ID of the issue type
-
-  # Jira - Search & Users
+      cloudId: Atlassian Cloud site identifier
+      issueIdOrKey: Jira issue ID or key
   - name: searchJiraIssuesUsingJql
-    description: Search Jira issues using Jira Query Language (JQL). Powerful query language for complex issue searches.
+    description: Search Jira issues with JQL.
     params:
-      cloudId: Unique identifier for an Atlassian Cloud instance
-      jql: A Jira Query Language (JQL) expression to search Jira issues
-      fields: "Fields to return (default: ['summary', 'description', 'status', 'issuetype', 'priority', 'created'])"
-      maxResults: "Maximum number of issues to search per page (max: 100, default: 50)"
-      nextPageToken: Used for pagination to fetch more data if a JQL search has more issues in next pages
+      cloudId: Atlassian Cloud site identifier
+      jql: Jira Query Language expression
+  - name: createJiraIssue
+    description: Create a Jira issue in a project and issue type.
+    params:
+      cloudId: Atlassian Cloud site identifier
+      projectKey: Project key
+      issueTypeName: Issue type name
+      summary: Issue summary
+  - name: editJiraIssue
+    description: Update fields on an existing Jira issue.
+    params:
+      cloudId: Atlassian Cloud site identifier
+      issueIdOrKey: Jira issue ID or key
+      fields: Fields to update
+  - name: addCommentToJiraIssue
+    description: Add a comment to a Jira issue.
+    params:
+      cloudId: Atlassian Cloud site identifier
+      issueIdOrKey: Jira issue ID or key
+      commentBody: Comment body in Markdown
+  - name: addWorklogToJiraIssue
+    description: Add a time-tracking worklog to a Jira issue.
+    params: {}
+  - name: getTransitionsForJiraIssue
+    description: List available workflow transitions for a Jira issue.
+    params:
+      cloudId: Atlassian Cloud site identifier
+      issueIdOrKey: Jira issue ID or key
+  - name: transitionJiraIssue
+    description: Transition a Jira issue to a new workflow state.
+    params:
+      cloudId: Atlassian Cloud site identifier
+      issueIdOrKey: Jira issue ID or key
+      transition: Transition object with the target ID
+  - name: getJiraIssueRemoteIssueLinks
+    description: List remote links on a Jira issue.
+    params:
+      cloudId: Atlassian Cloud site identifier
+      issueIdOrKey: Jira issue ID or key
+  - name: getVisibleJiraProjects
+    description: List Jira projects the user can view, browse, edit, or create in.
+    params:
+      cloudId: Atlassian Cloud site identifier
+  - name: getJiraProjectIssueTypesMetadata
+    description: List issue types available in a Jira project.
+    params:
+      cloudId: Atlassian Cloud site identifier
+      projectIdOrKey: Project ID or key
+  - name: getJiraIssueTypeMetaWithFields
+    description: Get create-field metadata for a Jira project and issue type.
+    params:
+      cloudId: Atlassian Cloud site identifier
+      projectIdOrKey: Project ID or key
+      issueTypeId: Issue type ID
   - name: lookupJiraAccountId
-    description: Lookup account ids of existing users in Jira based on the user's display name or email address
+    description: Find Jira user account IDs by name or email.
     params:
-      cloudId: Unique identifier for an Atlassian Cloud instance
-      searchString: Display name or email address to search for
+      cloudId: Atlassian Cloud site identifier
+      searchString: User name or email
+
+  # Confluence
+  - name: getConfluenceSpaces
+    description: List Confluence spaces.
+    params:
+      cloudId: Atlassian Cloud site identifier
+  - name: getConfluencePage
+    description: Get a Confluence page or live doc with Markdown body.
+    params:
+      cloudId: Atlassian Cloud site identifier
+      pageId: Confluence page ID
+  - name: getPagesInConfluenceSpace
+    description: List pages in a Confluence space.
+    params:
+      cloudId: Atlassian Cloud site identifier
+      spaceId: Confluence space ID
+  - name: getConfluencePageDescendants
+    description: List descendant pages under a parent page.
+    params:
+      cloudId: Atlassian Cloud site identifier
+      pageId: Confluence page ID
+  - name: searchConfluenceUsingCql
+    description: Search Confluence content with CQL.
+    params:
+      cloudId: Atlassian Cloud site identifier
+      cql: Confluence Query Language expression
+  - name: createConfluencePage
+    description: Create a Confluence page or live doc from Markdown.
+    params:
+      cloudId: Atlassian Cloud site identifier
+      spaceId: Confluence space ID
+      title: Page title
+      body: Page body in Markdown
+  - name: updateConfluencePage
+    description: Update an existing Confluence page or live doc.
+    params:
+      cloudId: Atlassian Cloud site identifier
+      pageId: Confluence page ID
+      body: Updated body in Markdown
+  - name: getConfluencePageFooterComments
+    description: List footer comments on a Confluence page.
+    params:
+      cloudId: Atlassian Cloud site identifier
+      pageId: Confluence page ID
+  - name: getConfluencePageInlineComments
+    description: List inline comments on a Confluence page.
+    params:
+      cloudId: Atlassian Cloud site identifier
+      pageId: Confluence page ID
+  - name: createConfluenceFooterComment
+    description: Create a footer comment or reply on a page.
+    params:
+      cloudId: Atlassian Cloud site identifier
+      pageId: Confluence page ID
+      body: Comment body in Markdown
+  - name: createConfluenceInlineComment
+    description: Create an inline comment or reply tied to selected text.
+    params:
+      cloudId: Atlassian Cloud site identifier
+      pageId: Confluence page ID
+      body: Comment body in Markdown
+
+  # Jira Service Management
+  - name: getJsmOpsAlerts
+    description: Get an ops alert by ID or alias, or search alerts by query and time window.
+    params: {}
+  - name: getJsmOpsScheduleInfo
+    description: List on-call schedules or get current and next responders.
+    params: {}
+  - name: getJsmOpsTeamInfo
+    description: List ops teams and fetch team details.
+    params: {}
+  - name: updateJsmOpsAlert
+    description: Acknowledge, unacknowledge, close, or escalate an ops alert.
+    params: {}
+
+  # Bitbucket Cloud
+  - name: bitbucketWorkspace
+    description: List Bitbucket workspaces or get one workspace.
+    params: {}
+  - name: bitbucketRepository
+    description: List repositories in a workspace or get one repository.
+    params: {}
+  - name: bitbucketRepoContent
+    description: Work with repository branches, commits, and file contents.
+    params: {}
+  - name: bitbucketPullRequest
+    description: Create, inspect, comment on, diff, approve, or merge pull requests.
+    params: {}
+  - name: bitbucketPipeline
+    description: List, inspect, or run pipelines and fetch step logs.
+    params: {}
+  - name: bitbucketEnvironment
+    description: List, get, create, update, or delete deployment environments.
+    params: {}
+  - name: bitbucketDeployment
+    description: List deployments or get a specific deployment.
+    params: {}
+
+  # Teamwork Graph
+  - name: getTeamworkGraphContext
+    description: Fetch linked Jira, Confluence, user, and third-party context.
+    params: {}
+  - name: getTeamworkGraphObject
+    description: Fetch full Teamwork Graph data for one or more ARIs or URLs.
+    params: {}
+
+  # Compass
+  - name: getCompassComponents
+    description: Search or list Compass components.
+    params: {}
+  - name: getCompassComponent
+    description: Get details for a Compass component by ID.
+    params: {}
+  - name: getCompassComponentsOwnedByMyTeams
+    description: List Compass components owned by the user's teams.
+    params: {}
+  - name: getCompassComponentTypes
+    description: List available Compass component types.
+    params: {}
+  - name: getCompassComponentLabels
+    description: Get labels applied to a Compass component.
+    params: {}
+  - name: getCompassComponentActivityEvents
+    description: List recent activity events for a Compass component.
+    params: {}
+  - name: getCompassCustomFieldDefinitions
+    description: List Compass custom field definitions.
+    params: {}
+  - name: createCompassComponent
+    description: Create a Compass component such as a service or library.
+    params: {}
+  - name: createCompassComponentRelationship
+    description: Create a relationship between Compass components.
+    params: {}
+  - name: createCompassCustomFieldDefinition
+    description: Create a Compass custom field definition.
+    params: {}
+  - name: deleteCompassComponent
+    description: Delete a Compass component.
+    params: {}
+  - name: deleteCompassComponentRelationship
+    description: Delete a relationship between Compass components.
+    params: {}
+  - name: deleteCompassCustomFieldDefinition
+    description: Delete a Compass custom field definition.
+    params: {}
 
 metadata:
   categories: Developer Tools
@@ -263,4 +277,3 @@ repoURL: https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-st
 runtime: remote
 remoteConfig:
   fixedURL: https://mcp.atlassian.com/v1/mcp
-

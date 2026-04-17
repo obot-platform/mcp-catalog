@@ -158,6 +158,25 @@ toolPreview:
       subject: The subject of the email
       text_body: The plaintext body of the email
       to_address: The email address of the recipient
+  - name: search_files
+    description: Search for files in Salesforce by title, file extension, or linked record.
+    params:
+      file_extension: Filter by file extension (e.g., 'pdf', 'docx')
+      limit: Maximum number of results to return
+      linked_record_id: Salesforce record ID to find linked files
+      query: Search term to match against file titles
+  - name: get_file_metadata
+    description: Get detailed metadata for a Salesforce file including all versions.
+    params:
+      file_id: The ContentDocument ID of the file
+  - name: list_record_files
+    description: List all files attached to a Salesforce record.
+    params:
+      record_id: Salesforce record ID (Account, Opportunity, Contact, etc.)
+  - name: get_file_content
+    description: Get file binary content as base64. Use for small files or when inline content is needed.
+    params:
+      file_id: ContentDocument or ContentVersion ID
   - name: get_direct_link
     description: Get a direct weblink to a Salesforce object.
     params:

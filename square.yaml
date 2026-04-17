@@ -35,17 +35,17 @@ remoteConfig:
 
 toolPreview:
   - name: make_api_request
-    description: Unified tool for all Square API operations covering 25+ services including customers, orders, payments, inventory, and more
+    description: Execute a Square API method after checking its request type
     params:
-      method: HTTP method for the API request
-      service: Square API service (customers, orders, payments, catalog, inventory, etc.)
-      request: Request object with parameters for the API call (optional)
+      service: Square API service category such as catalog or payments
+      method: Square API method to call such as list, create, or retrieve
+      request: Request object for the API call (optional)
   - name: get_type_info
-    description: Get type information for a Square API method before making requests
+    description: Get request type details for a Square API method before calling make_api_request
     params:
-      method: The API method to get type information for
-      service: The Square API service containing the method
+      service: Square API service category such as catalog or payments
+      method: Square API method to inspect such as list or create
   - name: get_service_info
-    description: Get information about a Square API service and its available methods
+    description: List available methods for a Square API service
     params:
-      service: The Square API service to get information about
+      service: Square API service category such as catalog or payments

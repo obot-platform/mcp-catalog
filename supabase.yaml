@@ -85,14 +85,16 @@ toolPreview:
   description: Gets a list of advisory notices for a Supabase project
 - name: get_project_url
   description: Gets the API URL for a project
-- name: get_anon_key
-  description: Gets the anonymous API key for a project
+- name: get_publishable_keys
+  description: Gets client-safe API keys for a project, including legacy anon and publishable keys
 - name: generate_typescript_types
   description: Generates TypeScript types based on the database schema
 - name: list_edge_functions
   description: Lists all Edge Functions in a Supabase project
+- name: get_edge_function
+  description: Retrieves file contents for an Edge Function in a Supabase project
 - name: deploy_edge_function
-  description: Deploys a new Edge Function to a Supabase project
+  description: Deploys an Edge Function to a Supabase project
 - name: create_branch
   description: Creates a development branch with migrations from production branch
 - name: list_branches
@@ -105,9 +107,3 @@ toolPreview:
   description: Resets migrations of a development branch to a prior version
 - name: rebase_branch
   description: Rebases development branch on production to handle migration drift
-- name: list_storage_buckets
-  description: Lists all storage buckets in a Supabase project
-- name: get_storage_config
-  description: Gets the storage config for a Supabase project
-- name: update_storage_config
-  description: Updates the storage config for a Supabase project

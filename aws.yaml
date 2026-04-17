@@ -109,13 +109,12 @@ containerizedConfig:
   - awslabs.aws-api-mcp-server
 toolPreview:
 - name: call_aws
-  description: Execute AWS CLI commands with validation and proper error handling. Supports any AWS service and operation.
+  description: Execute one or more AWS CLI commands with validation and proper error handling.
   params:
-    cli_command: The complete AWS CLI command to execute (must start with "aws")
+    cli_command: One AWS CLI command or a list of commands to execute (must start with "aws")
     max_results: Optional limit for number of results (useful for pagination)
 - name: suggest_aws_commands
   description: Get AI-powered suggestions for AWS CLI commands based on natural language queries
   params:
     query: A natural language description of what you want to accomplish in AWS
-
 

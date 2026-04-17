@@ -73,23 +73,26 @@ toolPreview:
   - name: assign_copilot_to_issue
     description: Assign Copilot to a specific issue in a GitHub repository
     params:
-      issueNumber: Issue number
       owner: Repository owner
       repo: Repository name
-  - name: cancel_workflow_run
-    description: Cancel a workflow run
+      issue_number: Issue number
+      base_ref: Git reference for the agent to start from (optional)
+      custom_instructions: Extra guidance for the agent (optional)
+  - name: actions_run_trigger
+    description: Cancel a GitHub Actions workflow run
     params:
+      method: Operation to perform, set to cancel_workflow_run
       owner: Repository owner
       repo: Repository name
       run_id: The unique identifier of the workflow run
-  - name: create_and_submit_pull_request_review
-    description: Create and submit a review for a pull request without review comments
+  - name: create_pull_request_review
+    description: Create a pull request review and optionally submit it immediately
     params:
-      body: Review comment text
-      event: Review action to perform
       owner: Repository owner
-      pullNumber: Pull request number
       repo: Repository name
+      pullNumber: Pull request number
+      body: Review comment text (optional)
+      event: Review action to perform; omit to keep the review pending (optional)
       commitID: SHA of commit to review (optional)
   - name: create_branch
     description: Create a new branch in a GitHub repository
@@ -111,10 +114,7 @@ toolPreview:
       owner: Repository owner
       repo: Repository name
       title: Issue title
-      assignees: Usernames to assign to this issue (optional)
       body: Issue body content (optional)
-      labels: Labels to apply to this issue (optional)
-      milestone: Milestone number (optional)
   - name: create_or_update_file
     description: Create or update a single file in a GitHub repository
     params:
@@ -125,13 +125,14 @@ toolPreview:
       path: Path where to create/update the file
       repo: Repository name
       sha: Required if updating an existing file. The blob SHA of the file being replaced (optional)
-  - name: create_pending_pull_request_review
-    description: Create a pending review for a pull request
+  - name: submit_pending_pull_request_review
+    description: Submit an existing pending review for a pull request
     params:
       owner: Repository owner
-      pullNumber: Pull request number
       repo: Repository name
-      commitID: SHA of commit to review (optional)
+      pullNumber: Pull request number
+      event: Review action to perform
+      body: Review comment text (optional)
   - name: create_pull_request
     description: Create a new pull request in a GitHub repository
     params:
@@ -152,12 +153,13 @@ toolPreview:
       title: Title for the pull request that will be created
       base_ref: Git reference (e.g., branch) that the agent will start its work from (optional)
   - name: create_repository
-    description: Create a new GitHub repository in your account
+    description: Create a new GitHub repository in your account or an organization
     params:
       name: Repository name
-      autoInit: Initialize with README (optional)
+      organization: Organization to create the repository in (optional)
       description: Repository description (optional)
       private: Whether repo should be private (optional)
+      autoInit: Initialize with README (optional)
   - name: delete_file
     description: Delete a file from a GitHub repository
     params:
@@ -172,9 +174,10 @@ toolPreview:
       owner: Repository owner
       pullNumber: Pull request number
       repo: Repository name
-  - name: delete_workflow_run_logs
-    description: Delete logs for a workflow run
+  - name: actions_run_trigger
+    description: Delete logs for a GitHub Actions workflow run
     params:
+      method: Operation to perform, set to delete_workflow_run_logs
       owner: Repository owner
       repo: Repository name
       run_id: The unique identifier of the workflow run
@@ -182,13 +185,14 @@ toolPreview:
     description: Dismiss a notification by marking it as read or done
     params:
       threadID: The ID of the notification thread
-      state: The new state of the notification (read/done) (optional)
-  - name: download_workflow_run_artifact
-    description: Get download URL for a workflow run artifact
+      state: The new state of the notification (read/done)
+  - name: actions_get
+    description: Get the download URL for a workflow run artifact
     params:
-      artifact_id: The unique identifier of the artifact
+      method: Operation to perform, set to download_workflow_run_artifact
       owner: Repository owner
       repo: Repository name
+      resource_id: The unique identifier of the artifact
   - name: fork_repository
     description: Fork a GitHub repository to your account or specified organization
     params:

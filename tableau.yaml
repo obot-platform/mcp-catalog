@@ -26,71 +26,100 @@ repoURL: https://github.com/tableau/tableau-mcp
 
 toolPreview:
   - name: list-datasources
-    description: Retrieves a list of published data sources from a specified Tableau site using the Tableau REST API. Supports optional filtering via field:operator:value expressions for precise and flexible data source discovery.
+    description: Lists published Tableau data sources, with optional filtering and pagination controls.
     params:
-      filter: "Optional filtering via field:operator:value expressions (e.g., name:eq:Views) - default: None"
-      limit: "Maximum number of results to return - default: None"
-      pageSize: "Number of items per page - default: None"
-  - name: list-fields
-    description: Fetches rich field metadata (name, description, inherited description, dataType, dataCategory, role, etc.) for the specified datasource via Tableau's Metadata API.
+      filter: "Optional Tableau REST API filter expression, e.g. name:eq:Project Views"
+      pageSize: "Optional page size for paginated datasource retrieval"
+      limit: "Optional maximum number of data sources to return"
+  - name: get-datasource-metadata
+    description: Returns datasource field and parameter metadata for a published Tableau data source.
     params:
-      datasourceLuid: "The LUID of the datasource to get field metadata for"
+      datasourceLuid: "The LUID of the data source to inspect"
   - name: query-datasource
-    description: Executes VizQL queries against Tableau data sources to answer business questions from published data. This tool allows you to retrieve aggregated and filtered data with proper sorting and grouping.
+    description: Runs a VizQL query against a published Tableau data source and returns the result rows.
     params:
-      datasourceLuid: "The LUID of the datasource to query"
-      query: "Query object containing fields array and optional filters array"
-  - name: read-metadata
-    description: Returns basic, high-level metadata for a specified data source including fieldName, fieldCaption, dataType, defaultAggregation, and logicalTableId.
-    params:
-      datasourceLuid: "The LUID of the datasource to read metadata for"
+      datasourceLuid: "The LUID of the data source to query"
+      query: "VizQL query object describing fields, filters, sorting, and grouping"
+      limit: "Optional maximum number of result rows to return"
   - name: list-workbooks
-    description: Retrieves a list of workbooks on a Tableau site including their metadata such as name, description, and information about the views contained in the workbook.
+    description: Lists Tableau workbooks, with optional filtering and pagination controls.
     params:
-      filter: "Optional filtering via field:operator:value expressions (e.g., name:eq:Superstore) - default: None"
-      limit: "Maximum number of results to return - default: None"
-      pageSize: "Number of items per page - default: None"
-  - name: list-views
-    description: Retrieves a list of views on a Tableau site including their metadata such as name, owner, and the workbook they are found in.
-    params:
-      filter: "Optional filtering via field:operator:value expressions (e.g., name:eq:Overview) - default: None"
-      limit: "Maximum number of results to return - default: None"
-      pageSize: "Number of items per page - default: None"
+      filter: "Optional Tableau REST API filter expression, e.g. name:eq:Superstore"
+      pageSize: "Optional page size for paginated workbook retrieval"
+      limit: "Optional maximum number of workbooks to return"
   - name: get-workbook
-    description: Retrieves information about the specified workbook, including information about the views contained in the workbook.
+    description: Returns workbook details, including contained views and their usage statistics.
     params:
       workbookId: "The ID of the workbook to retrieve"
+  - name: list-views
+    description: Lists Tableau views, with optional filtering and pagination controls.
+    params:
+      filter: "Optional Tableau REST API filter expression, e.g. name:eq:Overview"
+      pageSize: "Optional page size for paginated view retrieval"
+      limit: "Optional maximum number of views to return"
+  - name: list-custom-views
+    description: Lists custom views for a workbook, with optional filtering and pagination controls.
+    params:
+      workbookId: "The workbook ID whose custom views should be listed"
+      filter: "Optional custom-view filter, e.g. viewId:eq:<viewId> or ownerId:eq:<ownerId>"
+      pageSize: "Optional page size for paginated custom view retrieval"
+      limit: "Optional maximum number of custom views to return"
   - name: get-view-data
-    description: Retrieves data in comma separated value (CSV) format for the specified view in a Tableau workbook.
+    description: Returns CSV data for a Tableau view.
     params:
-      viewId: "The ID of the view to get data from"
+      viewId: "The ID of the view to read"
+      viewFilters: "Optional map of view filter field names to values"
   - name: get-view-image
-    description: Retrieves an image of the specified view in a Tableau workbook. The width and height in pixels can be provided.
+    description: Returns a rendered image for a Tableau view.
     params:
-      viewId: "The ID of the view to get image from"
-      height: "Height in pixels - default: 800"
-      width: "Width in pixels - default: 800"
+      viewId: "The ID of the view to render"
+      width: "Optional image width in pixels"
+      height: "Optional image height in pixels"
+      format: "Optional image format: PNG or SVG"
+      viewFilters: "Optional map of view filter field names to values"
+  - name: get-custom-view-data
+    description: Returns CSV data for a Tableau custom view.
+    params:
+      customViewId: "The ID of the custom view to read"
+      viewFilters: "Optional map of view filter field names to values"
   - name: list-all-pulse-metric-definitions
-    description: Retrieves a list of all published Pulse Metric Definitions using the Tableau REST API.
+    description: Lists all published Tableau Pulse metric definitions.
     params:
-      view: "The range of metrics to return (DEFINITION_VIEW_BASIC, DEFINITION_VIEW_FULL, DEFINITION_VIEW_DEFAULT) - default: DEFINITION_VIEW_BASIC"
+      view: "Optional definition view: DEFINITION_VIEW_BASIC, DEFINITION_VIEW_FULL, or DEFINITION_VIEW_DEFAULT"
+      limit: "Optional maximum number of metric definitions to return"
+      pageSize: "Optional page size for paginated definition retrieval"
+  - name: list-pulse-metric-definitions-from-definition-ids
+    description: Returns specific Pulse metric definitions for a list of definition IDs.
+    params:
+      metricDefinitionIds: "Array of Pulse metric definition IDs to retrieve"
+      view: "Optional definition view: DEFINITION_VIEW_BASIC, DEFINITION_VIEW_FULL, or DEFINITION_VIEW_DEFAULT"
   - name: list-pulse-metrics-from-metric-definition-id
-    description: Retrieves a list of published Pulse Metrics from a Pulse Metric Definition using the Tableau REST API.
+    description: Lists published Pulse metrics for a specific Pulse metric definition.
     params:
-      pulseMetricDefinitionID: "The ID of the Pulse Metric Definition to list metrics for (36 character UUID)"
+      pulseMetricDefinitionID: "The Pulse metric definition ID to list metrics for"
   - name: list-pulse-metrics-from-metric-ids
-    description: Retrieves a list of published Pulse Metrics from a list of metric IDs using the Tableau REST API.
+    description: Returns published Pulse metrics for a list of metric IDs.
     params:
       metricIds: "Array of Pulse Metric IDs to list metrics for"
   - name: list-pulse-metric-subscriptions
-    description: Retrieves a list of published Pulse Metric Subscriptions for the current user using the Tableau REST API.
-    params:
-      random_string: "Dummy parameter for no-parameter tools - default: None"
+    description: Lists Pulse metric subscriptions for the current user.
+    params: {}
   - name: generate-pulse-metric-value-insight-bundle
-    description: Generate an insight bundle for the current aggregated value for Pulse Metric using Tableau REST API. You need the full information of the Pulse Metric and Pulse Metric Definition to use this tool.
+    description: Generates a Pulse insight bundle for the current value of a metric.
     params:
-      bundleRequest: "The request object to generate a bundle for, containing bundle_request with version, options, and input"
-      bundleType: "The type of bundle to generate (ban, springboard, basic, detail) - default: ban"
+      bundleRequest: "Pulse insight bundle request object with metric metadata, definition, and options"
+      bundleType: "Optional bundle type: ban, basic, springboard, or detail"
+  - name: generate-pulse-insight-brief
+    description: Generates conversational AI insights for Pulse metrics from a natural-language request.
+    params:
+      briefRequest: "Insight brief request object with messages, locale, language, and metric context"
+  - name: search-content
+    description: Searches Tableau site content across supported object types.
+    params:
+      terms: "Optional search text; omit to search broadly within the provided filters"
+      limit: "Optional maximum number of search results to return"
+      orderBy: "Optional array of sort methods and directions"
+      filter: "Optional content, owner, or modified-time filter object"
 
 env:
   - name: Tableau Server URL

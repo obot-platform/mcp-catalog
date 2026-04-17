@@ -110,210 +110,236 @@ containerizedConfig:
   - start
 toolPreview:
 - name: documentation
-  description: Search official Microsoft/Azure documentation to find the most relevant and trustworthy content for a user's query, returning up to 10 high-quality content chunks from Microsoft Learn and other official sources.
+  description: Search official Microsoft and Azure documentation for grounded guidance and source material.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
-- name: bestpractices
-  description: Returns secure, production-grade Azure best practices. Call this before generating Azure SDK code.
+    intent: The Azure task or question to look up
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
+- name: get_bestpractices
+  description: Get Azure best practices for code, deployment, and operations before implementing changes.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
-- name: subscription
-  description: Azure subscription operations - Commands for listing and managing Azure subscriptions accessible to your account.
+    intent: The Azure task or scenario to prepare for
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
+- name: subscription_list
+  description: List Azure subscriptions available to the current account and identify the default one.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
-- name: group
-  description: Resource group operations - Commands for listing and managing Azure resource groups in your subscriptions.
+    auth-method: Authentication method to use (optional)
+    retry-delay: Initial delay in seconds between retry attempts (optional)
+    retry-max-delay: Maximum delay in seconds between retries (optional)
+    retry-max-retries: Maximum number of retry attempts (optional)
+    retry-mode: Retry strategy to use (optional)
+    retry-network-timeout: Network operation timeout in seconds (optional)
+    tenant: The Microsoft Entra ID tenant ID or name (optional)
+- name: group_list
+  description: List Azure resource groups in a subscription.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
+    auth-method: Authentication method to use (optional)
+    retry-delay: Initial delay in seconds between retry attempts (optional)
+    retry-max-delay: Maximum delay in seconds between retries (optional)
+    retry-max-retries: Maximum number of retry attempts (optional)
+    retry-mode: Retry strategy to use (optional)
+    retry-network-timeout: Network operation timeout in seconds (optional)
+    subscription: The Azure subscription ID or display name to use (optional)
+    tenant: The Microsoft Entra ID tenant ID or name (optional)
 - name: aks
-  description: Azure Kubernetes Service operations - Commands for managing and listing Azure Kubernetes Service (AKS) clusters.
+  description: List and manage Azure Kubernetes Service clusters and node pools.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
+    intent: The AKS task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
 - name: storage
-  description: Storage operations - Commands for managing and accessing Azure Storage resources. Includes operations for containers, blobs, and tables.
+  description: Manage Azure Storage accounts, blob containers, blobs, and related storage resources.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
+    intent: The storage task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
 - name: cosmos
-  description: Cosmos DB operations - Commands for managing and querying Azure Cosmos DB resources. Includes operations for databases, containers, and document queries.
+  description: Manage Azure Cosmos DB accounts, databases, containers, and document queries.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
+    intent: The Cosmos DB task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
 - name: postgres
-  description: PostgreSQL operations - Commands for listing and managing Azure Database for PostgreSQL - Flexible server.
+  description: Manage Azure Database for PostgreSQL Flexible Server resources and queries.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
+    intent: The PostgreSQL task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
 - name: redis
-  description: Redis Cache operations - Commands for managing and accessing Azure Redis Cache resources.
+  description: Manage Azure Redis resources, databases, and access policies.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
+    intent: The Redis task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
 - name: sql
-  description: Azure SQL operations - Commands for managing Azure SQL databases and servers.
+  description: Manage Azure SQL databases, servers, firewall rules, and elastic pools.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
+    intent: The Azure SQL task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
 - name: keyvault
-  description: Key Vault operations - Commands for managing and accessing Azure Key Vault resources.
+  description: Manage Azure Key Vault secrets, keys, certificates, and vault settings.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
+    intent: The Key Vault task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
 - name: appconfig
-  description: App Configuration operations - Commands for managing App Configuration stores.
+  description: Manage Azure App Configuration stores and key-value settings.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
+    intent: The App Configuration task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
+- name: applens
+  description: Diagnose Azure resource issues and get root-cause analysis with remediation guidance.
+  params:
+    intent: The troubleshooting task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
+- name: appservice
+  description: Manage Azure App Service web apps, databases, deployments, and settings.
+  params:
+    intent: The App Service task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
 - name: role
-  description: Authorization operations - Commands for managing Azure RBAC resources.
+  description: Manage Azure RBAC roles, assignments, and access control settings.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
+    intent: The RBAC task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
 - name: monitor
-  description: Azure Monitor operations - Commands for querying and analyzing Azure Monitor logs and metrics.
+  description: Query Azure Monitor logs, metrics, workspaces, and related observability data.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
+    intent: The monitoring task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
 - name: grafana
-  description: Grafana workspace operations - Commands for managing and accessing Azure Managed Grafana resources.
+  description: Manage Azure Managed Grafana workspaces and dashboards.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
+    intent: The Grafana task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
 - name: kusto
-  description: Kusto operations - Commands for managing and querying Azure Kusto clusters.
+  description: Manage Azure Data Explorer clusters and databases and run Kusto queries.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
+    intent: The Kusto task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
 - name: workbooks
-  description: Workbooks operations - Commands for managing Azure Workbooks resources.
+  description: Manage Azure Workbooks and workbook content.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
+    intent: The workbook task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
 - name: servicebus
-  description: Service Bus operations - Commands for managing Azure Service Bus resources.
+  description: Manage Azure Service Bus queues, topics, and subscriptions.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
+    intent: The Service Bus task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
 - name: search
-  description: Search operations - Commands for managing and listing Azure AI Search services.
+  description: Manage Azure AI Search services, indexes, and knowledge sources.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
+    intent: The Azure AI Search task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
 - name: bicepschema
-  description: Bicep schema operations - Commands for working with Bicep IaC generation.
+  description: Retrieve Azure Bicep schemas, templates, and resource definitions for IaC work.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
+    intent: The Bicep schema task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
 - name: azureterraformbestpractices
-  description: Returns Terraform best practices for Azure. Call this before generating Terraform code for Azure Providers.
+  description: Get Azure-specific Terraform best practices before generating infrastructure code.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
+    intent: The Terraform scenario to prepare for
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
 - name: loadtesting
-  description: Load Testing operations - Commands for managing Azure Load Testing resources.
+  description: Manage Azure Load Testing resources, configurations, and test runs.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
+    intent: The load testing task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
 - name: foundry
-  description: Foundry service operations - Commands for listing and managing services and resources in AI Foundry.
+  description: Manage Microsoft AI Foundry services, models, deployments, and related resources.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
+    intent: The Foundry task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
 - name: marketplace
-  description: Marketplace operations - Commands for managing and accessing Azure Marketplace products and offers.
+  description: Browse Azure Marketplace products and offers.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
+    intent: The Marketplace task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
 - name: datadog
-  description: Datadog operations - Commands for managing and querying Datadog resources.
+  description: Manage Azure Datadog integrations and monitored resources.
   params:
-    intent: The intent of the azure operation to perform
-    command: The command to execute against the specified tool (optional)
-    learn: To learn about the tool and its supported child tools and parameters (optional)
-    parameters: The parameters to pass to the tool command (optional)
-- name: extension_az
-  description: Execute Azure CLI commands directly for comprehensive Azure resource management. Use the Azure CLI to manage Azure resources and services with proper confirmation for destructive operations.
+    intent: The Datadog task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
+- name: azd
+  description: Use Azure Developer CLI to initialize, provision, deploy, and monitor Azure projects.
   params:
-    command: The Azure CLI command to execute (without the 'az' prefix)
-    auth-method: Authentication method to use (optional)
-    retry-delay: Initial delay in seconds between retry attempts (optional)
-    retry-max-delay: Maximum delay in seconds between retries (optional)
-    retry-max-retries: Maximum number of retry attempts (optional)
-    retry-mode: Retry strategy to use (optional)
-    retry-network-timeout: Network operation timeout in seconds (optional)
-    tenant: The Microsoft Entra ID tenant ID or name (optional)
-- name: extension_azd
-  description: Use Azure Developer CLI for project lifecycle management including initialization, provisioning, deployment, and monitoring. Always run with 'learn' parameter on first use.
-  params:
-    cwd: The current working directory for the command
-    command: The Azure Developer CLI command and arguments to execute (optional)
-    environment: The name of the azd environment to use (optional)
-    learn: Flag to learn best practices and usage patterns (optional)
-    auth-method: Authentication method to use (optional)
-    retry-delay: Initial delay in seconds between retry attempts (optional)
-    retry-max-delay: Maximum delay in seconds between retries (optional)
-    retry-max-retries: Maximum number of retry attempts (optional)
-    retry-mode: Retry strategy to use (optional)
-    retry-network-timeout: Network operation timeout in seconds (optional)
-    tenant: The Microsoft Entra ID tenant ID or name (optional)
+    intent: The Azure Developer CLI task to perform
+    command: The subcommand to run against this tool (optional)
+    learn: Learn supported subcommands and parameters first (optional)
+    parameters: Parameters for the selected subcommand (optional)
 - name: extension_azqr
-  description: Generate compliance and security reports for Azure resources using Azure Quick Review CLI to identify non-compliant configurations and areas for improvement.
+  description: Run Azure Quick Review to generate compliance and security reports for Azure resources.
   params:
-    subscription: Specifies the Azure subscription to use (optional)
-    resource-group: The name of the Azure resource group (optional)
+    auth-method: Authentication method to use (optional)
+    resource-group: The Azure resource group to review (optional)
+    retry-delay: Initial delay in seconds between retry attempts (optional)
+    retry-max-delay: Maximum delay in seconds between retries (optional)
+    retry-max-retries: Maximum number of retry attempts (optional)
+    retry-mode: Retry strategy to use (optional)
+    retry-network-timeout: Network operation timeout in seconds (optional)
+    subscription: The Azure subscription ID or display name to use
+    tenant: The Microsoft Entra ID tenant ID or name (optional)
+- name: extension_cli_generate
+  description: Generate Azure CLI, Azure Developer CLI, or Functions Core Tools commands from user intent.
+  params:
+    cli-type: 'The CLI to generate commands for: az, azd, or func'
+    intent: The task to generate CLI commands for
+    auth-method: Authentication method to use (optional)
+    retry-delay: Initial delay in seconds between retry attempts (optional)
+    retry-max-delay: Maximum delay in seconds between retries (optional)
+    retry-max-retries: Maximum number of retry attempts (optional)
+    retry-mode: Retry strategy to use (optional)
+    retry-network-timeout: Network operation timeout in seconds (optional)
+    tenant: The Microsoft Entra ID tenant ID or name (optional)
+- name: extension_cli_install
+  description: Get installation instructions for Azure CLI, Azure Developer CLI, or Functions Core Tools.
+  params:
+    cli-type: 'The CLI to install: az, azd, or func'
     auth-method: Authentication method to use (optional)
     retry-delay: Initial delay in seconds between retry attempts (optional)
     retry-max-delay: Maximum delay in seconds between retries (optional)

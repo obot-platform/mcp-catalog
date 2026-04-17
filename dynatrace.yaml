@@ -43,95 +43,141 @@ containerizedConfig:
   - mcp-server-dynatrace
 toolPreview:
 - name: get_environment_info
-  description: Get information about the connected Dynatrace Environment (Tenant) and verify the connection and authentication.
-  params:
-    random_string: "Dummy parameter for no-parameter tools"
+  description: Verify the Dynatrace connection and return environment details.
+  params: {}
 
-# Vulnerability Management
+# Observability & Security
 - name: list_vulnerabilities
-  description: List all non-muted vulnerabilities from Dynatrace for the last 30 days. An additional filter can be provided using DQL filter.
+  description: List active vulnerabilities, with optional timeframe and DQL filters.
   params:
-    additionalFilter: "Additional filter for DQL statement for vulnerabilities, e.g., 'vulnerability.stack == \"CODE_LIBRARY\"' or 'vulnerability.risk.level == \"CRITICAL\"'"
-    maxVulnerabilitiesToDisplay: "Maximum number of vulnerabilities to display in the response (default: 25)"
-    riskScore: "Minimum risk score of vulnerabilities to list (default: 8.0)"
+    timeframe: "Timeframe to query, e.g. '30d' or '7d'"
+    riskScore: "Minimum risk score to include (default: 8.0)"
+    additionalFilter: "Optional DQL filter, e.g. 'dt.entity.service == \"SERVICE-123\"' or 'vulnerability.risk.level == \"CRITICAL\"'"
+    maxVulnerabilitiesToDisplay: "Maximum results to return (default: 25)"
 
-# Problem Management
 - name: list_problems
-  description: List all problems (dt.davis.problems) known on Dynatrace, sorted by their recency, for the last 12h. An additional filter can be provided using DQL filter.
+  description: List recent Dynatrace problems, optionally filtered by status and DQL.
   params:
-    additionalFilter: "Additional filter for DQL statement for dt.davis.problems, e.g., 'entity_tags == array(\"dt.owner:team-foobar\", \"tag:tag\")'"
-    maxProblemsToDisplay: "Maximum number of problems to display in the response (default: 10)"
+    timeframe: "Timeframe to query, e.g. '24h' or '7d'"
+    status: "Problem status filter: ACTIVE, CLOSED, or ALL"
+    additionalFilter: "Optional DQL filter, e.g. 'dt.entity.service == \"SERVICE-123\"'"
+    maxProblemsToDisplay: "Maximum results to return (default: 10)"
 
-# Entity Management
+- name: list_exceptions
+  description: List recent exceptions captured in Dynatrace user events.
+  params:
+    timeframe: "Timeframe to query, e.g. '24h' or '30m'"
+    additionalFilter: "Optional DQL filter, e.g. 'error.id == \"...\"' or 'dt.rum.application.entity == \"APPLICATION-123\"'"
+    maxExceptionsToDisplay: "Maximum results to return (default: 10)"
+
+# Entity Discovery
 - name: find_entity_by_name
-  description: Get the entityId of a monitored entity (service, host, process-group, application, kubernetes-node, ...) within the topology based on the name of the entity on Dynatrace.
+  description: Find Dynatrace entities by name before querying logs, metrics, or events.
   params:
-    entityName: "Name of the entity to search for, e.g., \"my-service\" or \"my-host\""
+    entityNames: "Array of entity names or identifiers to search for"
+    maxEntitiesToDisplay: "Maximum matches to return (default: 10)"
+    extendedSearch: "Set to true to search more entity types"
 
-- name: get_entity_details
-  description: Get details of a monitored entity based on the entityId on Dynatrace.
-  params:
-    entityId: "The entity ID to get details for"
-
-- name: get_ownership
-  description: Get detailed Ownership information for one or multiple entities on Dynatrace.
-  params:
-    entityIds: "Comma separated list of entityIds"
-
-# Data Querying (GRAIL)
+# Data Querying
 - name: execute_dql
-  description: Get Logs, Metrics, Spans or Events from Dynatrace GRAIL by executing a Dynatrace Query Language (DQL) statement.
+  description: Run a DQL query against Grail for logs, metrics, spans, events, or entities.
   params:
-    dqlStatement: "DQL Statement (Ex: \"fetch [logs, spans, events] | filter <some-filter> | summarize count(), by:{some-fields}.\", or for metrics: \"timeseries { avg(<metric-name>), value.A = avg(<metric-name>, scalar: true) }\")"
+    dqlStatement: "DQL query to execute"
+    recordLimit: "Maximum number of records to return (default: 100)"
+    recordSizeLimitMB: "Maximum response size in MB (default: 1)"
 
 - name: verify_dql
-  description: Verify a Dynatrace Query Language (DQL) statement on Dynatrace GRAIL before executing it. This step is recommended for DQL statements that have been dynamically created by non-expert tools.
+  description: Check a DQL statement for syntax issues before execution.
   params:
     dqlStatement: "The DQL statement to verify"
 
+- name: generate_dql_from_natural_language
+  description: Turn a natural language request into a Dynatrace DQL query.
+  params:
+    text: "Natural language description of the data you want to query"
+
 - name: explain_dql_in_natural_language
-  description: Explain Dynatrace Query Language (DQL) statements in natural language using Davis CoPilot AI.
+  description: Explain what a Dynatrace DQL statement does in plain language.
   params:
     dql: "The DQL statement to explain"
 
-# AI Assistant
+# AI Assistance
 - name: chat_with_davis_copilot
-  description: "Use this tool in case no specific tool is available. Get an answer to any Dynatrace related question as well as troubleshooting, and guidance. *(Note: Davis CoPilot AI is GA, but the Davis CoPilot APIs are in preview)*"
+  description: Ask a general Dynatrace question when a more specific tool is not a better fit.
   params:
     text: "Your question or request for Davis CoPilot"
     context: "Optional context to provide additional information"
     instruction: "Optional instruction for how to format the response"
 
+- name: list_davis_analyzers
+  description: List available Davis Analyzers such as forecasting and anomaly detection analyzers.
+  params: {}
+
+- name: execute_davis_analyzer
+  description: Run a Davis Analyzer with custom input parameters and time bounds.
+  params:
+    analyzerName: "Analyzer name, e.g. 'dt.statistics.GenericForecastAnalyzer'"
+    input: "JSON object with analyzer input parameters"
+    timeframeStart: "Analysis start time (default: 'now-1h')"
+    timeframeEnd: "Analysis end time (default: 'now')"
+
 # Kubernetes Integration
 - name: get_kubernetes_events
-  description: Get all events from a specific Kubernetes (K8s) cluster.
+  description: Retrieve Kubernetes events for a cluster, entity, timeframe, or event type.
   params:
-    clusterId: "The Kubernetes (K8s) Cluster Id, referred to as k8s.cluster.uid (this is NOT the Dynatrace environment)"
+    timeframe: "Timeframe to query, e.g. '24h' or '7d'"
+    clusterId: "Kubernetes cluster UID (k8s.cluster.uid)"
+    kubernetesEntityId: "Dynatrace Kubernetes entity ID, e.g. 'KUBERNETES_CLUSTER-123'"
+    eventType: "Optional event type filter, e.g. 'ERROR_EVENT'"
 
-# Communication & Notifications
+# Communication & Automation
 - name: send_slack_message
-  description: Sends a Slack message to a dedicated Slack Channel via Slack Connector on Dynatrace.
+  description: Send a Slack message through a Dynatrace Slack connector.
   params:
     channel: "The Slack channel to send the message to"
     message: "The message content to send"
 
 - name: send_email
-  description: Send an email using the Dynatrace Email API. The sender will be no-reply@apps.dynatrace.com. Maximum 10 recipients total across TO, CC, and BCC.
+  description: Send an email through the Dynatrace Email API.
   params:
     toRecipients: "Array of email addresses for TO recipients"
-    subject: "Subject line of the email"
-    body: "Body content of the email (plain text only)"
     ccRecipients: "Array of email addresses for CC recipients"
     bccRecipients: "Array of email addresses for BCC recipients"
+    subject: "Subject line of the email"
+    body: "Plain-text email body"
 
-# Workflow Management
+- name: send_event
+  description: Ingest a custom Dynatrace event for alerts, deployments, or annotations.
+  params:
+    eventType: "Event type, e.g. 'CUSTOM_INFO' or 'CUSTOM_DEPLOYMENT'"
+    title: "Short event title"
+    entitySelector: "Optional Dynatrace entity selector"
+    properties: "Optional key-value properties object"
+    startTime: "Optional start timestamp in UTC milliseconds"
+    endTime: "Optional end timestamp in UTC milliseconds"
+
+- name: create_workflow_for_notification
+  description: Create a Dynatrace workflow that notifies a team about matching problems.
+  params:
+    problemType: "Problem type to notify on"
+    teamName: "Team name for the workflow"
+    channel: "Notification channel, such as a Slack channel"
+    isPrivate: "Set to true to create the workflow as private"
+
 - name: make_workflow_public
-  description: Modify a workflow and make it publicly available to everyone on the Dynatrace Environment.
+  description: Make an existing Dynatrace workflow publicly accessible.
   params:
     workflowId: "The workflow ID to make public"
 
+# Share Results
+- name: create_dynatrace_notebook
+  description: Create a Dynatrace notebook with markdown and DQL content.
+  params:
+    name: "Notebook name"
+    description: "Optional notebook description"
+    content: "Array of notebook blocks, e.g. [{type: 'markdown', text: 'Summary'}, {type: 'dql', text: 'fetch logs | limit 10'}]"
+
 # Budget Management
 - name: reset_grail_budget
-  description: Reset the Grail query budget after it was exhausted, allowing new queries to be executed. This clears all tracked bytes scanned in the current session.
-  params:
-    random_string: "Dummy parameter for no-parameter tools"
+  description: Reset the tracked Grail query budget for the current session.
+  params: {}

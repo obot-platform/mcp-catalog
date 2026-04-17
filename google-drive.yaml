@@ -44,6 +44,10 @@ toolPreview:
     description: Get a Google Drive file from user's Google Drive
     params:
       file_id: ID of the file to get
+  - name: read_file
+    description: Read the content of a file in Google Drive. Files larger than 100MB will not be read.
+    params:
+      file_id: ID of the file to read
   - name: copy_file
     description: Create a copy of a Google Drive file.
     params:

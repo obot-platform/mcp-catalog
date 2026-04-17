@@ -33,6 +33,7 @@ toolPreview:
   params:
     query: The search query string
     max_results: Optional maximum number of results to return (default 10)
+    region: Optional region/language code to override the default region
 - name: fetch_content
   description: Fetch and parse content from a webpage URL.
   params:

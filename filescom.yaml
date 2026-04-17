@@ -127,6 +127,10 @@ toolPreview:
   description: Get details about a specific file or folder by path
   params:
     path: Path to the file or folder
+- name: Zip_List_Contents_File
+  description: List the contents of a ZIP file stored in Files.com
+  params:
+    path: Path to the ZIP file
 - name: Copy_File
   description: Copy a file or folder to a new location
   params:
@@ -137,6 +141,16 @@ toolPreview:
   params:
     path: Source path to move from
     destination: Destination path to move to
+- name: Unzip_File
+  description: Extract a ZIP file to a destination folder
+  params:
+    path: Path to the ZIP file to extract
+    destination: Destination folder path for extracted files
+- name: Zip_File
+  description: Create a ZIP file from one or more Files.com paths
+  params:
+    paths: Array of file or folder paths to include
+    destination: Destination path for the ZIP file
 - name: List_For_Folder
   description: List all files and folders within a specific folder
   params:
@@ -260,4 +274,3 @@ toolPreview:
   description: Get details about a specific remote server by ID
   params:
     id: Remote Server ID to retrieve
-

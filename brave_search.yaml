@@ -77,7 +77,7 @@ toolPreview:
     goggles: Custom Goggle for re-ranking
     extra_snippets: Get additional excerpts (requires Pro plan)
 - name: brave_image_search
-  description: Search for images using Brave's Image Search API. Returns image results with URLs, dimensions, thumbnails, and confidence ratings. Helpful for finding pictures of people, places, things, graphic design ideas, art inspiration, and more. Includes safety filtering options.
+  description: Search for images using Brave's Image Search API. Returns image results with the source page URL, direct image URL, dimensions, fetch timestamp, and confidence level. Helpful for finding photos, illustrations, product images, and other visual references. Includes safety filtering options.
   params:
     query: Search query (max 400 chars, 50 words)
     count: Number of results (1-200, default 50)
@@ -86,7 +86,7 @@ toolPreview:
     safesearch: Adult content filter (off, strict - default strict)
     spellcheck: Enable spellcheck (default true)
 - name: brave_video_search
-  description: Search for videos using Brave's Video Search API. Returns video results with titles, URLs, descriptions, durations, thumbnails, and creator information. Useful for discovering video content, tutorials, entertainment, or videos from specific creators/publishers.
+  description: Search for videos using Brave's Video Search API. Returns video results with titles, URLs, descriptions, durations, and thumbnail URLs. Useful for discovering tutorials, news clips, entertainment, and other video content about a topic.
   params:
     query: Search query (max 400 chars, 50 words)
     count: Number of results (1-50, default 20)
@@ -98,7 +98,7 @@ toolPreview:
     freshness: Time filter (pd, pw, pm, py, or date range)
     spellcheck: Enable spellcheck (default true)
 - name: brave_local_search
-  description: Search for local businesses and places using Brave's Local Search API. Returns detailed information including business names, addresses, ratings, review counts, phone numbers, and opening hours. Best for queries about physical locations, restaurants, services, or searches with 'near me' intent. Requires Brave Search API Pro plan. Falls back to web search if no local results found.
+  description: Search for local businesses and places using Brave's Local Search API. Returns names, addresses, ratings, review counts, phone numbers, opening hours, and AI-generated descriptions when available. Best for physical locations, restaurants, services, or 'near me' queries. Accepts the same search/filter params as `brave_web_search`, requires a Brave Search API Pro plan, and falls back to web results if no local matches are found.
   params:
     query: Search query with location context
     count: Number of results (1-20, default 10)
@@ -113,4 +113,3 @@ toolPreview:
     key: Summary key from search results (required)
     entity_info: Include extra entity information (default false)
     inline_references: Add inline source references (default false)
-

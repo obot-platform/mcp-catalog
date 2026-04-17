@@ -30,22 +30,21 @@ remoteConfig:
   fixedURL: https://gmail-mcp.obot.ai/mcp
 toolPreview:
   - name: list_emails
-    description: List emails in the user's Gmail account with advanced filtering options.
+    description: List emails with Gmail search, label, category, and date filters.
     params:
-      max_results: "Maximum number of emails to return (1-1000, default: 100)"
-      query: Gmail search query for filtering emails
+      max_results: "Maximum number of emails to return (1-1000, default: 50)"
       label_ids: Comma-separated list of label IDs to filter by
       category: Email category filter (primary, social, promotions, updates, forums)
-      after: Date to search for emails after
-      before: Date to search for emails before
+      after: Return emails received after this ISO 8601 timestamp with timezone offset
+      before: Return emails received before this ISO 8601 timestamp with timezone offset
+      query: Gmail search query; do not include `before:` or `after:`
   - name: read_email
-    description: Read a specific email by ID or subject.
+    description: Read an email or draft by ID, or find an email by subject.
     params:
       email_id: Email ID to read
       email_subject: Email subject to search for
-      user_timezone: "User's timezone (default: UTC)"
   - name: send_email
-    description: Send a new email immediately.
+    description: Send an email immediately.
     params:
       to_emails: Comma-separated list of recipient email addresses
       subject: Email subject
@@ -53,12 +52,23 @@ toolPreview:
       cc_emails: Comma-separated list of CC recipients
       bcc_emails: Comma-separated list of BCC recipients
   - name: list_drafts
-    description: List all draft emails in the user's account.
+    description: List draft emails in the user's account.
     params:
-      max_results: "Maximum number of drafts to return (1-1000, default: 100)"
+      max_results: "Maximum number of drafts to return (1-20, default: 10)"
   - name: create_draft
     description: Create a new draft email.
     params:
+      to_emails: Comma-separated list of recipient email addresses
+      subject: Email subject
+      message: Email body content
+      cc_emails: Comma-separated list of CC recipients
+      bcc_emails: Comma-separated list of BCC recipients
+      reply_to_email_id: ID of email to reply to
+      reply_all: Whether to reply to all recipients
+  - name: update_draft
+    description: Update an existing draft email.
+    params:
+      draft_id: ID of the draft to update
       to_emails: Comma-separated list of recipient email addresses
       subject: Email subject
       message: Email body content
@@ -70,8 +80,12 @@ toolPreview:
     description: Send a draft email.
     params:
       draft_id: ID of the draft to send
+  - name: delete_draft
+    description: Delete a draft email.
+    params:
+      draft_id: ID of the draft to delete
   - name: list_labels
-    description: List all custom labels in the user's account.
+    description: List custom labels, or fetch a specific label by ID.
     params:
       label_id: Specific label ID to fetch (optional)
   - name: create_label
@@ -80,12 +94,23 @@ toolPreview:
       label_name: Name of the label to create
       label_list_visibility: Label list visibility (labelShow, labelHide, labelShowIfUnread)
       message_list_visibility: Message list visibility (show, hide)
+  - name: update_label
+    description: Update an existing custom label.
+    params:
+      label_id: ID of the label to update
+      label_name: New label name
+      label_list_visibility: Label list visibility (labelShow, labelHide, labelShowIfUnread)
+      message_list_visibility: Message list visibility (show, hide)
+  - name: delete_label
+    description: Delete a custom label.
+    params:
+      label_id: ID of the label to delete
   - name: modify_message_labels
     description: Modify labels and properties of an email message.
     params:
       email_id: ID of the email message
-      add_label_ids: List of label IDs to add
-      remove_label_ids: List of label IDs to remove
+      add_label_ids: Label IDs to add
+      remove_label_ids: Label IDs to remove
       archive: Whether to archive the message
       mark_as_read: Whether to mark as read
       mark_as_starred: Whether to mark as starred

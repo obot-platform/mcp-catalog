@@ -70,7 +70,6 @@ toolPreview:
       *   **Date Format:** Inputs must be separated into `{year, month, day}` integers.
       *   **Units:** Defaults to `METRIC`. Set `units_system` to `IMPERIAL` for Fahrenheit/Miles if the user implies US standards or explicitly requests it.
     params:
-      DEPRECATEDAddress: "DEPRECATED: Use location instead."
       date: "Optional. The date of the required weather information. Note: This date is relative to the local timezone of the location specified in the location field. The date must be within the next 7 days."
       hour: Optional. The hour of the requested weather information, in 24-hour format (0-23). This value is relative to the local timezone of the location specified in the location field. Hourly forecast is only supported for the next 48 hours from the current time.
       location: Required. The location to get the weather conditions for.

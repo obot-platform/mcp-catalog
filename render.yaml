@@ -67,7 +67,7 @@ toolPreview:
   params:
     serviceId: The ID of the service to retrieve
 - name: mcp_render_create_web_service
-  description: Create a new web service in your Render account. A web service is a public-facing service that can be accessed by users on the internet.
+  description: Create a basic web service from repository, build, and start settings
   params:
     name: A unique name for your service
     runtime: The runtime environment for your service (node, python, go, rust, ruby, elixir, docker)
@@ -75,12 +75,12 @@ toolPreview:
     startCommand: The command used to start your service
     repo: The repository containing the source code for your service (optional)
     branch: The repository branch to deploy (optional)
-    plan: The pricing plan for your service (starter, standard, pro, pro_max, pro_plus, pro_ultra) (optional)
+    plan: The pricing plan for your service (free, starter, standard, pro, pro_plus, pro_max, pro_ultra) (optional)
     region: The geographic region where your service will be deployed (oregon, frankfurt, singapore, ohio, virginia) (optional)
     autoDeploy: Whether to automatically deploy the service when the specified branch is updated (yes, no) (optional)
     envVars: Environment variables to set for your service (optional)
 - name: mcp_render_create_static_site
-  description: Create a new static site in your Render account. Apps that consist entirely of statically served assets (commonly HTML, CSS, and JS).
+  description: Create a static site from a repository and publish path
   params:
     name: A unique name for your service
     buildCommand: Render runs this command to build your app before each deploy
@@ -89,8 +89,34 @@ toolPreview:
     publishPath: The relative path of the directory containing built assets to publish (optional)
     autoDeploy: Whether to automatically deploy the service when the specified branch is updated (yes, no) (optional)
     envVars: Environment variables to set for your service (optional)
+- name: mcp_render_create_cron_job
+  description: Create a scheduled cron job from repository, build, and run settings
+  params:
+    name: A unique name for your cron job
+    schedule: The cron schedule expression to run on
+    runtime: The runtime environment for your cron job (node, python, go, rust, ruby, elixir, docker)
+    buildCommand: The command used to build your cron job
+    startCommand: The command that runs when your cron job executes
+    repo: The repository containing the source code for your cron job (optional)
+    branch: The repository branch to deploy (optional)
+    plan: The pricing plan for your cron job (free, starter, standard, pro, pro_plus, pro_max, pro_ultra) (optional)
+    region: The geographic region where your cron job will be deployed (oregon, frankfurt, singapore, ohio, virginia) (optional)
+    autoDeploy: Whether to automatically deploy the cron job when the specified branch is updated (yes, no) (optional)
+    envVars: Environment variables to set for your cron job (optional)
+- name: mcp_render_update_web_service
+  description: Get the dashboard path for updating a web service; direct updates are not supported via MCP
+  params:
+    serviceId: The ID of the service to update
+- name: mcp_render_update_static_site
+  description: Get the dashboard path for updating a static site; direct updates are not supported via MCP
+  params:
+    serviceId: The ID of the service to update
+- name: mcp_render_update_cron_job
+  description: Get the dashboard path for updating a cron job; direct updates are not supported via MCP
+  params:
+    serviceId: The ID of the service to update
 - name: mcp_render_update_environment_variables
-  description: Update environment variables for a service. By default, environment variables passed in will be merged with the service's existing environment variables.
+  description: Update a service's environment variables and trigger a new deploy
   params:
     serviceId: The ID of the service to update
     envVars: The list of environment variables to update or set for the service
@@ -107,14 +133,14 @@ toolPreview:
     serviceId: The ID of the service to get deployments for
     deployId: The ID of the deployment to retrieve
 - name: mcp_render_list_logs
-  description: List logs matching the provided filters. Logs are paginated by start and end timestamps. You can query for logs across multiple resources, but all resources must be in the same region and belong to the same owner.
+  description: List logs for one or more Render resources with optional filters
   params:
-    resource: Filter logs by their resource. A resource is the id of a server, cronjob, job, postgres, or redis
+    resource: One or more resource IDs (server, cronjob, job, postgres, or redis) in the same workspace and region
     limit: Maximum number of logs to return (optional)
     direction: The direction to query logs for. Backward will return most recent logs first (optional)
     startTime: Start time for log query (RFC3339 format) (optional)
     endTime: End time for log query (RFC3339 format) (optional)
-    type: Filter logs by their type (app, request, build) (optional)
+    type: Filter logs by their type (optional)
     level: Filter logs by their severity level (optional)
     text: Filter by the text of the logs (optional)
     instance: Filter logs by the instance they were emitted from (optional)
@@ -123,23 +149,31 @@ toolPreview:
     path: Filter request logs by their path (optional)
     statusCode: Filter request logs by their status code (optional)
 - name: mcp_render_list_log_label_values
-  description: List all values for a given log label in the logs matching the provided filters. This can be used to discover what values are available for filtering logs.
+  description: List available values for a log label across matching logs
   params:
-    resource: Filter by resource. A resource is the id of a server, cronjob, job, postgres, or redis
     label: The label to list values for (host, instance, level, method, statusCode, type)
+    resource: One or more resource IDs (server, cronjob, job, postgres, or redis) in the same workspace and region
+    level: Filter logs by their severity level (optional)
+    type: Filter logs by their type (optional)
+    text: Filter by the text of the logs (optional)
+    instance: Filter logs by the instance they were emitted from (optional)
+    host: Filter request logs by their host (optional)
+    method: Filter request logs by their requests method (optional)
+    path: Filter request logs by their path (optional)
+    statusCode: Filter request logs by their status code (optional)
     direction: The direction to query logs for (optional)
     startTime: Start time for log query (RFC3339 format) (optional)
     endTime: End time for log query (RFC3339 format) (optional)
 - name: mcp_render_get_metrics
-  description: Get performance metrics for any Render resource (services, Postgres databases, key-value stores). Supports CPU usage/limits/targets, memory usage/limits/targets, service instance counts, HTTP request counts and response time metrics, bandwidth usage metrics, and database active connection counts.
+  description: Get performance metrics for any Render resource (services, Postgres databases, key-value stores). Supports CPU usage, memory, HTTP metrics, bandwidth, and connection data.
   params:
     resourceId: The ID of the resource to get metrics for (service ID, Postgres ID, or key-value store ID)
     metricTypes: Which metrics to fetch (cpu_usage, memory_usage, http_request_count, active_connections, instance_count, http_latency, cpu_limit, cpu_target, memory_limit, memory_target, bandwidth_usage)
     startTime: Start time for metrics query in RFC3339 format (optional)
     endTime: End time for metrics query in RFC3339 format (optional)
     resolution: Time resolution for data points in seconds (optional)
-    cpuUsageAggregationMethod: Method for aggregating metric values over time intervals (AVG, MAX, MIN) (optional)
-    httpLatencyQuantile: The quantile/percentile of HTTP latency to fetch (0.5, 0.95, 0.99) (optional)
+    cpuUsageAggregationMethod: Method for aggregating CPU usage metrics over time intervals (AVG, MAX, MIN) (optional)
+    httpLatencyQuantile: The quantile/percentile of HTTP latency to fetch (0.0-1.0, defaults to 0.95) (optional)
     httpHost: Filter HTTP metrics to specific request hosts (optional)
     httpPath: Filter HTTP metrics to specific request paths (optional)
     aggregateHttpRequestCountsBy: Field to aggregate HTTP request metrics by (host, statusCode) (optional)
@@ -156,7 +190,7 @@ toolPreview:
     name: The name of the database as it will appear in the Render Dashboard
     plan: Pricing plan for the database (free, basic_256mb, basic_1gb, basic_4gb, pro_4gb, etc.)
     region: Region where the database will be deployed (oregon, frankfurt, singapore, ohio, virginia) (optional)
-    version: PostgreSQL version to use (12-16, defaults to 16) (optional)
+    version: PostgreSQL major version to use (13-18, defaults to 18) (optional)
     diskSizeGb: Your database's capacity, in GB (optional)
 - name: mcp_render_query_render_postgres
   description: Run a read-only SQL query against a Render-hosted Postgres database. This tool creates a new connection for each query and closes it after the query completes.
@@ -174,7 +208,6 @@ toolPreview:
   description: Create a new Key Value instance in your Render account
   params:
     name: Name of the Key Value instance
-    plan: Pricing plan for the Key Value instance (free, starter, standard, pro, pro_plus)
+    plan: Pricing plan for the Key Value instance (free, starter, standard, pro, pro_plus) (optional)
     region: Region where the Key Value instance will be deployed (oregon, frankfurt, singapore, ohio, virginia) (optional)
     maxmemoryPolicy: The eviction policy for the Key Value store (noeviction, allkeys_lfu, allkeys_lru, allkeys_random, volatile_lfu, volatile_lru, volatile_random, volatile_ttl) (optional)
-

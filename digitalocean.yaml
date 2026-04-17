@@ -103,98 +103,90 @@ containerizedConfig:
   - ${ENABLED_SERVICES}
 toolPreview:
 - name: apps-create-app-from-spec
-  description: Create a new application on DigitalOcean App Platform from an app specification
+  description: Create an App Platform app from an app spec
   params:
-    spec: The app specification object containing configuration details
-    project_id: Optional UUID of the project to assign the app to (optional)
+    spec: App spec defining the app source and components
 - name: apps-list
-  description: List all applications on DigitalOcean App Platform
+  description: List App Platform apps
   params:
     Page: The page number to retrieve (default is 1) (optional)
-    PerPage: The number of items per page (default is 30) (optional)
+    PerPage: The number of items per page (default is 20) (optional)
 - name: apps-get-info
-  description: Get detailed information about a specific application
+  description: Get an app's current spec and details
   params:
     AppID: The application ID of the app to retrieve information for
 - name: apps-get-deployment-status
-  description: Retrieve the active deployment status for an application
+  description: Get the latest deployment and health for an app
   params:
-    AppID: The application ID of the app to retrieve deployment status for
+    AppID: The application ID of the app to retrieve the active deployment for
 - name: apps-update
-  description: Update an existing application on DigitalOcean App Platform
+  description: Update an app or trigger a redeploy
   params:
-    update: Object containing app_id and request with updated app specification
+    update: Object containing `app_id` and an optional update `request`
 - name: apps-delete
-  description: Delete an existing application on DigitalOcean App Platform
+  description: Delete an App Platform app
   params:
     AppID: The application ID of the app to delete
-- name: region-list
-  description: List all available regions with features and droplet size availability
+- name: size-list
+  description: List available droplet sizes
   params:
     Page: Page number (default is 1) (optional)
     PerPage: Items per page (default is 50) (optional)
 - name: droplet-create
-  description: Create a new droplet (virtual machine)
+  description: Create a new droplet
   params:
-    name: Name for the droplet
-    region: Region slug where to create the droplet
-    size: Size slug for the droplet
-    image: Image slug or ID for the droplet
-    ssh_keys: Array of SSH key IDs or fingerprints (optional)
-    backups: Enable automated backups (optional)
-    ipv6: Enable IPv6 networking (optional)
-    monitoring: Enable monitoring agent (optional)
-    tags: Array of tags to apply (optional)
+    Name: Name of the droplet
+    Size: Droplet size slug
+    ImageID: Image ID to use
+    Region: Region slug
+    Backup: Enable backups (optional)
+    Monitoring: Enable monitoring (optional)
+    SSHKeys: SSH key IDs or fingerprints to add (optional)
+    Tags: Tags to apply (optional)
 - name: droplet-list
   description: List all droplets in your account
   params:
-    page: Page number for pagination (optional)
-    per_page: Number of droplets per page (optional)
-    tag_name: Filter by tag name (optional)
+    Page: Page number for pagination (optional)
+    PerPage: Number of droplets per page (optional)
 - name: droplet-get
-  description: Get information about a specific droplet
+  description: Get a droplet by ID
   params:
-    droplet_id: The ID of the droplet to retrieve
-- name: droplet-delete
-  description: Delete a droplet
+    ID: The ID of the droplet to retrieve
+- name: resize-droplet
+  description: Resize a droplet
   params:
-    droplet_id: The ID of the droplet to delete
-- name: droplet-resize
-  description: Resize a droplet to a different size
-  params:
-    droplet_id: The ID of the droplet to resize
-    size: New size slug for the droplet
-    disk: Whether to resize the disk (optional)
-- name: database-create
-  description: Create a new managed database cluster
+    ID: The ID of the droplet to resize
+    Size: New droplet size slug
+    ResizeDisk: Whether to resize the disk (optional)
+- name: db-cluster-create
+  description: Create a managed database cluster
   params:
     name: Name for the database cluster
-    engine: Database engine (postgres, mysql, redis, etc.)
+    engine: Database engine slug such as `pg`, `mysql`, or `valkey`
     version: Database version
     region: Region slug where to create the cluster
     size: Size slug for the database nodes
     num_nodes: Number of nodes in the cluster
-- name: database-list
-  description: List all database clusters
+    tags: Comma-separated tags to apply (optional)
+- name: db-cluster-list
+  description: List managed database clusters
   params:
-    page: Page number for pagination (optional)
+    page: Page number for pagination as a string (optional)
     per_page: Number of clusters per page (optional)
 - name: domain-create
   description: Create a new domain
   params:
-    name: The domain name
-    ip_address: IP address for the domain's A record (optional)
+    Name: The domain name
+    IPAddress: IP address for the domain
 - name: domain-list
   description: List all domains in your account
-  params: {}
+  params:
+    Page: Page number for pagination (optional)
+    PerPage: Number of domains per page (optional)
 - name: domain-record-create
   description: Create a new DNS record for a domain
   params:
-    domain: The domain name
-    type: Record type (A, AAAA, CNAME, MX, TXT, etc.)
-    name: Record name
-    data: Record data/value
-    priority: Priority for MX records (optional)
-    port: Port for SRV records (optional)
-    ttl: Time to live in seconds (optional)
-    weight: Weight for SRV records (optional)
+    Domain: The domain name
+    Type: Record type such as A, CNAME, or TXT
+    Name: Record name
+    Data: Record value

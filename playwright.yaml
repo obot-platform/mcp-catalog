@@ -33,83 +33,120 @@ icon: https://avatars.githubusercontent.com/u/6154722?v=4
 repoURL: https://github.com/microsoft/playwright-mcp
 env: []
 toolPreview:
-- name: browser_navigate
-  description: Navigate to a URL (Read-only - false)
+- name: browser_close
+  description: Close the current page (Read-only - false)
+- name: browser_resize
+  description: Resize the browser window (Read-only - false)
   params:
-    url: The URL to navigate to
-- name: browser_snapshot
-  description: Capture accessibility snapshot of the current page, this is better than screenshot (Read-only - true)
-- name: browser_click
-  description: Perform click on a web page (Read-only - false)
+    width: Width of the browser window
+    height: Height of the browser window
+- name: browser_console_messages
+  description: Return console messages from the page (Read-only - true)
   params:
-    element: Human-readable element description used to obtain permission to interact with the element
+    level: Minimum console level to include
+    all: Include messages from the full session
+    filename: Save the messages to a file
+- name: browser_handle_dialog
+  description: Accept or dismiss an open browser dialog (Read-only - false)
+  params:
+    accept: Whether to accept the dialog
+    promptText: Text to enter for a prompt dialog
+- name: browser_evaluate
+  description: Run JavaScript on the page or an element (Read-only - false)
+  params:
+    function: JavaScript function to execute
+    element: Human-readable element description
     ref: Exact target element reference from the page snapshot
-    doubleClick: Whether to perform a double click instead of a single click
-    button: Button to click, defaults to left
+    filename: Save the result to a file
+- name: browser_file_upload
+  description: Upload one or more files (Read-only - false)
+  params:
+    paths: Absolute paths of files to upload
+- name: browser_fill_form
+  description: Fill multiple form fields in one call (Read-only - false)
+  params:
+    fields: Array of field definitions to fill
+- name: browser_press_key
+  description: Press a keyboard key (Read-only - false)
+  params:
+    key: Key name or character to press
 - name: browser_type
-  description: Type text into editable element (Read-only -  false)
+  description: Type text into an editable element (Read-only - false)
   params:
     element: Human-readable element description used to obtain permission to interact with the element
     ref: Exact target element reference from the page snapshot
     text: Text to type into the element
-    submit: Whether to submit entered text (press Enter after)
+    submit: Whether to submit entered text after typing
     slowly: Whether to type one character at a time
+- name: browser_navigate
+  description: Navigate to a URL (Read-only - false)
+  params:
+    url: The URL to navigate to
+- name: browser_navigate_back
+  description: Go back to the previous page (Read-only - false)
+- name: browser_network_requests
+  description: Return network requests since the current page loaded (Read-only - true)
+  params:
+    static: Include successful static resources
+    requestBody: Include request bodies
+    requestHeaders: Include request headers
+    filter: Regex used to filter request URLs
+    filename: Save the requests to a file
+- name: browser_run_code
+  description: Run a Playwright code snippet against the page (Read-only - false)
+  params:
+    code: JavaScript function containing Playwright code
+    filename: Load the code from a file
 - name: browser_take_screenshot
-  description: Take a screenshot of the current page (Read-only -  true)
+  description: Take a screenshot of the page or an element (Read-only - true)
   params:
-    raw: Whether to return without compression (in PNG format)
+    element: Human-readable element description for an element screenshot
+    ref: Exact target element reference from the page snapshot
+    type: Image format to save
     filename: File name to save the screenshot to
-    element: Human-readable element description for element screenshot
+    fullPage: Capture the full scrollable page
+- name: browser_snapshot
+  description: Capture an accessibility snapshot of the page (Read-only - true)
+  params:
+    depth: Limit the snapshot tree depth
+    filename: Save the snapshot to a file
+- name: browser_click
+  description: Click an element on the page (Read-only - false)
+  params:
+    element: Human-readable element description used to obtain permission to interact with the element
     ref: Exact target element reference from the page snapshot
-    fullPage: Take screenshot of the full scrollable page
-- name: browser_evaluate
-  description: Evaluate JavaScript expression on page or element (Read-only -  false)
-  params:
-    function: JavaScript function to execute
-    element: Human-readable element description (optional)
-    ref: Exact target element reference (optional)
-- name: browser_wait_for
-  description: Wait for text to appear or disappear or a specified time to pass (Read-only -  true)
-  params:
-    time: The time to wait in seconds
-    text: The text to wait for
-    textGone: The text to wait for to disappear
-- name: browser_select_option
-  description: Select an option in a dropdown (Read-only -  false)
-  params:
-    element: Human-readable element description
-    ref: Exact target element reference from the page snapshot
-    values: Array of values to select in the dropdown
-- name: browser_hover
-  description: Hover over element on page (Read-only -  true)
-  params:
-    element: Human-readable element description
-    ref: Exact target element reference from the page snapshot
+    doubleClick: Whether to perform a double click
+    button: Mouse button to click
+    modifiers: Modifier keys to hold while clicking
 - name: browser_drag
-  description: Perform drag and drop between two elements (Read-only -  false)
+  description: Drag from one element to another (Read-only - false)
   params:
     startElement: Human-readable source element description
     startRef: Exact source element reference from the page snapshot
     endElement: Human-readable target element description
     endRef: Exact target element reference from the page snapshot
-- name: browser_file_upload
-  description: Upload one or multiple files (Read-only -  false)
+- name: browser_hover
+  description: Hover over an element on the page (Read-only - false)
   params:
-    paths: The absolute paths to the files to upload
-- name: browser_tab_new
-  description: Open a new tab (Read-only -  true)
+    element: Human-readable element description used to obtain permission to interact with the element
+    ref: Exact target element reference from the page snapshot
+- name: browser_select_option
+  description: Select one or more options in a dropdown (Read-only - false)
   params:
-    url: The URL to navigate to in the new tab (optional)
-- name: browser_tab_list
-  description: List browser tabs (Read-only -  true)
-- name: browser_tab_select
-  description: Select a tab by index (Read-only -  true)
+    element: Human-readable element description used to obtain permission to interact with the element
+    ref: Exact target element reference from the page snapshot
+    values: Array of option values to select
+- name: browser_tabs
+  description: List, create, close, or select browser tabs (Read-only - false)
   params:
-    index: The index of the tab to select
-- name: browser_network_requests
-  description: Returns all network requests since loading the page (Read-only -  true)
-- name: browser_console_messages
-  description: Returns all console messages (Read-only -  true)
+    action: Tab action to perform
+    index: Tab index for close or select
+- name: browser_wait_for
+  description: Wait for text to appear, disappear, or for time to pass (Read-only - true)
+  params:
+    time: Time to wait in seconds
+    text: Text to wait for
+    textGone: Text to wait for to disappear
 runtime: containerized
 containerizedConfig:
   image: ghcr.io/obot-platform/mcp-images/playwright:0.0.70

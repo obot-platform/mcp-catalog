@@ -77,7 +77,7 @@ toolPreview:
     limit: Maximum number of collections to return (optional)
     offset: Number of collections to skip before returning results (optional)
 - name: chroma_create_collection
-  description: Create a new collection with configurable HNSW parameters and embedding function
+  description: Create a new collection with an embedding function and optional metadata
   params:
     collection_name: Name of the collection to create
     embedding_function_name: Name of the embedding function to use (default, cohere, openai, jina, voyageai, roboflow) (optional)
@@ -149,4 +149,3 @@ toolPreview:
   params:
     collection_name: Name of the collection to delete documents from
     ids: List of document IDs to delete
-
