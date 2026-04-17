@@ -21,6 +21,9 @@ Editing rules:
 - Preserve the repo's existing YAML style as much as possible.
 - Keep tool descriptions concise and practical.
 - Prefer current tool names over deprecated placeholder names.
+- If authoritative inspection shows additional current tools that are not present in `toolPreview`, add them.
+- If `toolPreview` contains tools that no longer exist in the current server surface, delete them.
+- When a preview is stale, refresh the `toolPreview` block against the current tool set rather than only editing already-listed entries.
 - Update tool names, tool descriptions, parameter names, and parameter descriptions to match exactly what the server or authoritative documentation provides.
 - If tool names, descriptions, parameter names, or parameter descriptions cannot be determined exactly from an authoritative source, make no update for that file.
 
