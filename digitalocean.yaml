@@ -103,98 +103,761 @@ containerizedConfig:
   - ${ENABLED_SERVICES}
 toolPreview:
 - name: apps-create-app-from-spec
-  description: Create a new application on DigitalOcean App Platform from an app specification
+  description: Creates an application from a given app spec. Within the app spec,
+    a source has to be provided. The source can be a Git repository, a Dockerfile,
+    or a container image.
   params:
-    spec: The app specification object containing configuration details
-    project_id: Optional UUID of the project to assign the app to (optional)
-- name: apps-list
-  description: List all applications on DigitalOcean App Platform
+    project_id: Optional. The UUID of the project the app should be assigned. (optional)
+    spec: The desired configuration of an application. (optional)
+- name: apps-delete
+  description: Delete an existing app on DigitalOcean App Platform. This is a destructive
+    operation and cannot be undone.
   params:
-    Page: The page number to retrieve (default is 1) (optional)
-    PerPage: The number of items per page (default is 30) (optional)
+    AppID: The application ID of the app we want to delete.
+- name: apps-get-deployment-status
+  description: Retrieves the active deployment for an application on DigitalOcean
+    App Platform. This is useful for getting the current state of an app's latest
+    deployment and it's health status.
+  params:
+    AppID: The application ID of the app to retrieve active deployment for
 - name: apps-get-info
-  description: Get detailed information about a specific application
+  description: Get information about an application on DigitalOcean App Platform
   params:
     AppID: The application ID of the app to retrieve information for
-- name: apps-get-deployment-status
-  description: Retrieve the active deployment status for an application
+- name: apps-get-logs
+  description: Retrieves app logs for a specific app deployment and component on DigitalOcean
+    App Platform. Returns both live and historic log URLs.
   params:
-    AppID: The application ID of the app to retrieve deployment status for
+    AppID: The application ID
+    Component: The component name to get logs for
+    DeploymentID: The deployment ID
+    Follow: 'Whether to follow logs in real-time (default: false) (optional)'
+    LogType: The type of logs to retrieve.
+    TailLines: 'Number of lines to retrieve from the end of logs (default: 100) (optional)'
+- name: apps-list
+  description: List all applications on DigitalOcean App Platform. By default, we
+    only return a summary of the apps. To get detailed information about an app, use
+    the `apps-get-info` with the app id.
+  params:
+    Page: The page number to retrieve (default is 1) (optional)
+    PerPage: The number of items per page (default is 200) (optional)
 - name: apps-update
-  description: Update an existing application on DigitalOcean App Platform
+  description: Updates an existing application on DigitalOcean App Platform. The app
+    ID and the AppSpec must be provided in the request.
   params:
-    update: Object containing app_id and request with updated app specification
-- name: apps-delete
-  description: Delete an existing application on DigitalOcean App Platform
+    update: The request structure for updating an app (optional)
+- name: byoip-prefix-create
+  description: Create a new BYOIP prefix
   params:
-    AppID: The application ID of the app to delete
-- name: region-list
-  description: List all available regions with features and droplet size availability
+    Prefix: The CIDR of the BYOIP prefix
+    Region: The region for the prefix
+    Signature: The signature for the prefix
+- name: byoip-prefix-delete
+  description: Delete a BYOIP prefix
   params:
-    Page: Page number (default is 1) (optional)
-    PerPage: Items per page (default is 50) (optional)
-- name: droplet-create
-  description: Create a new droplet (virtual machine)
+    UUID: The UUID of the BYOIP prefix
+- name: byoip-prefix-get
+  description: Get BYOIP prefix information by UUID
   params:
-    name: Name for the droplet
-    region: Region slug where to create the droplet
-    size: Size slug for the droplet
-    image: Image slug or ID for the droplet
-    ssh_keys: Array of SSH key IDs or fingerprints (optional)
-    backups: Enable automated backups (optional)
-    ipv6: Enable IPv6 networking (optional)
-    monitoring: Enable monitoring agent (optional)
-    tags: Array of tags to apply (optional)
-- name: droplet-list
-  description: List all droplets in your account
+    UUID: The UUID of the BYOIP prefix
+- name: byoip-prefix-list
+  description: List BYOIP prefixes
   params:
-    page: Page number for pagination (optional)
-    per_page: Number of droplets per page (optional)
-    tag_name: Filter by tag name (optional)
-- name: droplet-get
-  description: Get information about a specific droplet
+    Page: Page number (optional)
+    PerPage: Number of items per page (optional)
+- name: byoip-prefix-resources-get
+  description: Get all resources for a BYOIP prefix
   params:
-    droplet_id: The ID of the droplet to retrieve
-- name: droplet-delete
-  description: Delete a droplet
+    Page: Page number (optional)
+    PerPage: Number of items per page (optional)
+    UUID: The UUID of the BYOIP prefix
+- name: certificate-delete
+  description: Delete a certificate
   params:
-    droplet_id: The ID of the droplet to delete
-- name: droplet-resize
-  description: Resize a droplet to a different size
+    ID: ID of the certificate to delete
+- name: certificate-get
+  description: Get certificate information by ID
   params:
-    droplet_id: The ID of the droplet to resize
-    size: New size slug for the droplet
-    disk: Whether to resize the disk (optional)
-- name: database-create
-  description: Create a new managed database cluster
+    ID: ID of the certificate
+- name: certificate-list
+  description: List certificates with pagination
   params:
-    name: Name for the database cluster
-    engine: Database engine (postgres, mysql, redis, etc.)
-    version: Database version
-    region: Region slug where to create the cluster
-    size: Size slug for the database nodes
-    num_nodes: Number of nodes in the cluster
-- name: database-list
-  description: List all database clusters
+    Page: Page number (optional)
+    PerPage: Items per page (optional)
+- name: change-kernel-droplet
+  description: Change a droplet's kernel
   params:
-    page: Page number for pagination (optional)
-    per_page: Number of clusters per page (optional)
+    ID: ID of the droplet
+    KernelID: ID of the kernel to switch to
+- name: custom-certificate-create
+  description: Create a new custom certificate
+  params:
+    CertificateChain: Certificate chain
+    LeafCertificate: Leaf certificate
+    Name: Name of the certificate
+    PrivateKey: Private key for the certificate
+- name: db-cluster-create
+  description: Create a new database cluster
+  params:
+    engine: The engine slug (e.g., valkey, pg, mysql, etc.)
+    name: The name of the cluster
+    num_nodes: The number of nodes
+    region: The region slug (e.g., nyc1)
+    size: The size slug (e.g., db-s-2vcpu-4gb)
+    tags: Comma-separated tags to apply to the cluster (optional)
+    version: The version of the engine
+- name: db-cluster-create-topic
+  description: Create a topic for a Kafka cluster.
+  params:
+    config: Kafka topic configuration (optional) (optional)
+    id: Kafka cluster UUID
+    name: Topic name
+    partition_count: Number of partitions (optional)
+    replication_factor: Replication factor (optional)
+- name: db-cluster-create-user
+  description: Create a new database user for a cluster
+  params:
+    id: The cluster ID
+    mysql_auth_plugin: MySQL auth plugin (optional) (optional)
+    name: The user name
+    settings: Optional user settings object (optional)
+- name: db-cluster-delete
+  description: Delete a database cluster by its id
+  params:
+    id: The id of the cluster to delete
+- name: db-cluster-delete-topic
+  description: Delete a Kafka topic by name.
+  params:
+    id: Kafka cluster UUID
+    name: Topic name
+- name: db-cluster-delete-user
+  description: Delete a database user from a cluster
+  params:
+    id: The cluster ID
+    user: The user name to delete
+- name: db-cluster-get
+  description: Get a cluster by its id
+  params:
+    id: The id of the cluster to retrieve
+- name: db-cluster-get-ca
+  description: Get the CA certificate for a cluster by its id
+  params:
+    id: The id of the cluster to retrieve the CA for
+- name: db-cluster-get-firewall-rules
+  description: Get firewall rules for a database cluster.
+  params:
+    id: The cluster UUID
+- name: db-cluster-get-kafka-config
+  description: Get the Kafka config for a cluster.
+  params:
+    id: Kafka cluster UUID
+- name: db-cluster-get-migration
+  description: Get the online migration status for a database cluster by its id.
+  params:
+    id: The cluster UUID
+- name: db-cluster-get-mongodb-config
+  description: Get the MongoDB config for a cluster by its id
+  params:
+    id: The cluster UUID
+- name: db-cluster-get-mysql-config
+  description: Get the MySQL config for a cluster by its id
+  params:
+    id: The cluster UUID
+- name: db-cluster-get-opensearch-config
+  description: Get the Opensearch config for a cluster by its id
+  params:
+    id: The cluster UUID
+- name: db-cluster-get-postgresql-config
+  description: Get the PostgreSQL config for a cluster by its id
+  params:
+    id: The cluster UUID
+- name: db-cluster-get-redis-config
+  description: Get the Redis config for a cluster by its id.
+  params:
+    id: The cluster UUID
+- name: db-cluster-get-sql-mode
+  description: Get the SQL mode for a cluster by its id
+  params:
+    id: The cluster UUID
+- name: db-cluster-get-topic
+  description: Get a Kafka topic by name.
+  params:
+    id: Kafka cluster UUID
+    name: Topic name
+- name: db-cluster-get-user
+  description: Get a database user by cluster id and user name
+  params:
+    id: The cluster ID
+    user: The user name
+- name: db-cluster-list
+  description: Get list of  Cluster
+  params:
+    page: Page number for pagination (optional, integer as string) (optional)
+    per_page: Number of results per page (optional, integer) (optional)
+- name: db-cluster-list-backups
+  description: List backups for a database cluster by its id
+  params:
+    id: The id of the cluster to list backups for
+    page: Page number for pagination (optional, integer as string) (optional)
+    per_page: Number of results per page (optional, integer) (optional)
+- name: db-cluster-list-options
+  description: List available database options (engines, versions, sizes, regions,
+    etc) for DigitalOcean managed databases.
+  params: {}
+- name: db-cluster-list-topics
+  description: List topics for a Kafka cluster by its ID. Supports pagination and
+    filtering.
+  params:
+    id: The Kafka cluster UUID
+    only_deployed: Only deployed topics (bool as string) (optional)
+    page: Page number (string) (optional)
+    per_page: Number of results per page (integer) (optional)
+    public_only: Only public models (bool as string) (optional)
+    usecases: Comma-separated usecases (optional) (optional)
+    with_projects: Include project field (bool as string) (optional)
+- name: db-cluster-list-users
+  description: List database users for a cluster
+  params:
+    id: The cluster ID
+    page: Page number for pagination (optional) (optional)
+    per_page: Number of results per page (optional) (optional)
+- name: db-cluster-resize
+  description: Resize a database cluster by its id. At least one of size, num_nodes,
+    or storage_size_mib must be provided.
+  params:
+    id: The id of the cluster to resize
+    num_nodes: The new number of nodes (optional)
+    size: The new size slug (e.g., db-s-2vcpu-4gb) (optional)
+    storage_size_mib: The new storage size in MiB (optional)
+- name: db-cluster-set-sql-mode
+  description: Set the SQL mode for a cluster by its id
+  params:
+    id: The cluster UUID
+    modes: Comma-separated SQL modes to set
+- name: db-cluster-start-online-migration
+  description: Start an online migration for a database cluster by its id.
+  params:
+    disable_ssl: Disable SSL on source connection (optional) (optional)
+    id: The cluster UUID
+    ignore_dbs: Comma-separated list of databases to ignore (optional)
+    source: The source database configuration
+- name: db-cluster-stop-online-migration
+  description: Stop an online migration for a database cluster by its id and migration_id.
+  params:
+    id: The cluster UUID
+    migration_id: The migration id to stop
+- name: db-cluster-update-firewall-rules
+  description: Update firewall rules for a cluster using a structured list of rules.
+  params:
+    id: The cluster UUID
+    rules: The list of firewall rules to apply. (optional)
+- name: db-cluster-update-kafka-config
+  description: Update the Kafka cluster configuration.
+  params:
+    config: Kafka configuration object
+    id: Kafka cluster UUID
+- name: db-cluster-update-mongodb-config
+  description: Update the MongoDB config for a cluster by its id. Accepts a structured
+    config object.
+  params:
+    config: Configuration parameters for MongoDB
+    id: The cluster UUID
+- name: db-cluster-update-mysql-config
+  description: Update the MySQL config for a cluster by its id. Accepts a structured
+    'config' object.
+  params:
+    config: Structured configuration for MySQL
+    id: The cluster UUID
+- name: db-cluster-update-os-config
+  description: Update the Opensearch config for a cluster by its id. Accepts a structured
+    config object.
+  params:
+    config: Structured configuration for Opensearch cluster
+    id: The cluster UUID
+- name: db-cluster-update-psql-config
+  description: Update the PostgreSQL config for a cluster by its id. Accepts a structured
+    config object.
+  params:
+    config: Configuration object for PostgreSQL database
+    id: The cluster UUID
+- name: db-cluster-update-redis-config
+  description: Update the Redis config for a cluster by its id. Accepts a structured
+    config object.
+  params:
+    config: Structured configuration for Redis database
+    id: The cluster UUID
+- name: db-cluster-update-topic
+  description: Update a Kafka topic's partition count, replication factor, or config.
+  params:
+    config: Kafka topic configuration (optional) (optional)
+    id: Kafka cluster UUID
+    name: Topic name
+    partition_count: Number of partitions (optional)
+    replication_factor: Replication factor (optional)
+- name: db-cluster-update-user
+  description: Update a database user's settings
+  params:
+    id: The cluster ID
+    settings: Optional user settings object (optional)
+    user: The user name
+- name: db-cluster-upgrade-major-version
+  description: Upgrade the major version of a database cluster by its id. Requires
+    the target version.
+  params:
+    id: The cluster UUID
+    version: The target major version to upgrade to (e.g., 15 for PostgreSQL)
+- name: disable-backups-droplet
+  description: Disable backups on a droplet
+  params:
+    ID: ID of the droplet
+- name: disable-backups-droplets-tag
+  description: Disable backups on droplets by tag
+  params:
+    Tag: Tag of the droplets
 - name: domain-create
   description: Create a new domain
   params:
-    name: The domain name
-    ip_address: IP address for the domain's A record (optional)
-- name: domain-list
-  description: List all domains in your account
-  params: {}
-- name: domain-record-create
-  description: Create a new DNS record for a domain
+    IPAddress: IP address for the domain
+    Name: Name of the domain
+- name: domain-delete
+  description: Delete a domain
   params:
-    domain: The domain name
-    type: Record type (A, AAAA, CNAME, MX, TXT, etc.)
-    name: Record name
-    data: Record data/value
-    priority: Priority for MX records (optional)
-    port: Port for SRV records (optional)
-    ttl: Time to live in seconds (optional)
-    weight: Weight for SRV records (optional)
+    Name: Name of the domain to delete
+- name: domain-get
+  description: Get domain information by name
+  params:
+    Name: Name of the domain
+- name: domain-list
+  description: List domains with pagination
+  params:
+    Page: Page number (optional)
+    PerPage: Items per page (optional)
+- name: domain-record-create
+  description: Create a new domain record
+  params:
+    Data: Record data
+    Domain: Domain name
+    Name: Record name
+    Type: Record type (e.g., A, CNAME, TXT)
+- name: domain-record-delete
+  description: Delete a domain record
+  params:
+    Domain: Domain name
+    RecordID: ID of the record to delete
+- name: domain-record-edit
+  description: Edit a domain record
+  params:
+    Data: Record data
+    Domain: Domain name
+    Name: Record name
+    RecordID: ID of the record to edit
+    Type: Record type (e.g., A, CNAME, TXT)
+- name: domain-record-get
+  description: Get a domain record by domain name and record ID
+  params:
+    Domain: Domain name
+    RecordID: ID of the domain record
+- name: domain-record-list
+  description: List domain records for a domain with pagination
+  params:
+    Domain: Domain name
+    Page: Page number (optional)
+    PerPage: Items per page (optional)
+- name: droplet-action
+  description: Get a droplet action by droplet ID and action ID
+  params:
+    ActionID: Action ID
+    DropletID: Droplet ID
+- name: droplet-backup-policy
+  description: Get a droplet's backup policy
+  params:
+    ID: Droplet ID
+- name: droplet-create
+  description: Create a new droplet
+  params:
+    Backup: Whether to enable backups (optional)
+    ImageID: ID of the image to use
+    Monitoring: Whether to enable monitoring (optional)
+    Name: Name of the droplet
+    Region: Slug of the region (e.g., nyc3)
+    SSHKeys: Array of SSH key IDs (numbers) or fingerprints (strings) to add to the
+      droplet (optional)
+    Size: Slug of the droplet size (e.g., s-1vcpu-1gb)
+    Tags: Array of tag names to apply to the droplet (optional)
+- name: droplet-delete
+  description: Delete a droplet
+  params:
+    ID: ID of the droplet to delete
+- name: droplet-enable-private-net
+  description: Enable private networking on a droplet
+  params:
+    ID: ID of the droplet
+- name: droplet-get
+  description: Get a droplet by its ID
+  params:
+    ID: Droplet ID
+- name: droplet-kernels
+  description: Get available kernels for a droplet
+  params:
+    ID: ID of the droplet
+- name: droplet-list
+  description: List all droplets for the user. Supports pagination.
+  params:
+    Page: Page number (optional)
+    PerPage: Items per page (optional)
+- name: enable-backups-droplet
+  description: Enable backups on a droplet
+  params:
+    ID: ID of the droplet
+- name: enable-backups-droplets-tag
+  description: Enable backups on droplets by tag
+  params:
+    Tag: Tag of the droplets
+- name: enable-ipv6-droplet
+  description: Enable IPv6 on a droplet
+  params:
+    ID: ID of the droplet
+- name: enable-ipv6-droplets-tag
+  description: Enable IPv6 on droplets by tag
+  params:
+    Tag: Tag of the droplets
+- name: enable-private-net-droplets-tag
+  description: Enable private networking on droplets by tag
+  params:
+    Tag: Tag of the droplets
+- name: firewall-add-droplets
+  description: Adds one or more droplets to a firewall
+  params:
+    DropletIDs: Droplet IDs to apply the firewall to
+    ID: ID of the firewall to apply to droplets
+- name: firewall-add-rules
+  description: Add one or more rules to a firewall
+  params:
+    ID: ID of the firewall to add rules to
+    InboundRules: Inbound rules to add (optional)
+    OutboundRules: Outbound rules to add (optional)
+- name: firewall-add-tags
+  description: Adds one or more tags to a firewall
+  params:
+    ID: ID of the firewall to update tags
+    Tags: Tags to apply the firewall to
+- name: firewall-create
+  description: Create a new firewall
+  params:
+    DropletIDs: Droplet IDs to apply the firewall to (optional)
+    InboundPortRange: Port range for inbound rule
+    InboundProtocol: Protocol for inbound rule
+    InboundSource: Source address for inbound rule
+    Name: Name of the firewall
+    OutboundDestination: Destination address for outbound rule
+    OutboundPortRange: Port range for outbound rule
+    OutboundProtocol: Protocol for outbound rule
+    Tags: Tags to apply the firewall to (optional)
+- name: firewall-delete
+  description: Delete a firewall
+  params:
+    ID: ID of the firewall to delete
+- name: firewall-get
+  description: Get firewall information by ID
+  params:
+    ID: ID of the firewall
+- name: firewall-list
+  description: List firewalls with pagination
+  params:
+    Page: Page number (optional)
+    PerPage: Items per page (optional)
+- name: firewall-remove-droplets
+  description: Removes one or more droplets from a firewall
+  params:
+    DropletIDs: Droplet IDs to remove from the firewall
+    ID: ID of the firewall to remove droplets from
+- name: firewall-remove-rules
+  description: Remove one or more rules from a firewall
+  params:
+    ID: ID of the firewall to remove rules from
+    InboundRules: Inbound rules to remove (optional)
+    OutboundRules: Outbound rules to remove (optional)
+- name: firewall-remove-tags
+  description: Removes one or more tags from a firewall
+  params:
+    ID: ID of the firewall to update tags
+    Tags: Tags to remove from the firewall
+- name: image-action-convert
+  description: Convert an image (backup) to a snapshot.
+  params:
+    ID: ID of the image to convert
+- name: image-action-get
+  description: Retrieve the status of an image action.
+  params:
+    ActionID: ID of the action
+    ImageID: ID of the image
+- name: image-action-transfer
+  description: Transfer an image to another region.
+  params:
+    ID: ID of the image to transfer
+    Region: Region slug to transfer to (e.g., nyc3)
+- name: image-create
+  description: Create a custom image from a URL (e.g. QCOW2, ISO).
+  params:
+    Description: Description of the image (optional)
+    Distribution: Distribution name (e.g. Ubuntu) (optional)
+    Name: Name of the new image
+    Region: Region slug (e.g. nyc3)
+    Tags: Tags to apply (optional)
+    Url: URL to import the image from
+- name: image-delete
+  description: Delete an image or snapshot.
+  params:
+    ID: ID of the image to delete
+- name: image-get
+  description: Get a specific image by its numeric ID.
+  params:
+    ID: Image ID
+- name: image-list
+  description: List available images (snapshots, backups, distributions, applications).
+  params:
+    Page: Page number (optional)
+    PerPage: Items per page (optional)
+    Type: 'Filter by type: ''distribution'', ''application'', ''user'' (snapshots/backups).
+      If omitted, lists all. (optional)'
+- name: image-update
+  description: Update an image's name.
+  params:
+    ID: Image ID
+    Name: New name for the image
+- name: lb-add-droplets
+  description: Add Droplets to a Load Balancer
+  params:
+    DropletIDs: IDs of the droplets to add
+    LoadBalancerID: ID of the load balancer
+- name: lb-add-fwd-rules
+  description: Add Forwarding Rules to a Load Balancer
+  params:
+    ForwardingRules: Forwarding rules to add
+    LoadBalancerID: ID of the load balancer
+- name: lb-create
+  description: Create a new Load Balancer
+  params:
+    DropletIDs: IDs of the Droplets assigned to the load balancer (optional)
+    ForwardingRules: Forwarding rules for a load balancer (optional)
+    GLBSettings: Forward configurations for a global load balancer (optional)
+    Name: Name of the load balancer
+    Network: Network type of the load balancer (EXTERNAL, INTERNAL) (optional)
+    NetworkStack: Network stack of the load balancer (IPV4, DUALSTACK) (optional)
+    ProjectID: Project ID to which the load balancer will be assigned (optional)
+    Region: Region slug (e.g., nyc3) (optional)
+    SizeUnit: Size of the load balancer in units appropriate to its type (optional)
+    Tag: Droplet tag corresponding to Droplets assigned to the load balancer (optional)
+    TargetLoadBalancerIDs: IDs of the target regional load balancers for a global
+      load balancer (optional)
+    Type: Type of the load balancer (REGIONAL, REGIONAL_NETWORK, GLOBAL) (optional)
+- name: lb-delete
+  description: Delete a Load Balancer by ID
+  params:
+    LoadBalancerID: ID of the load balancer
+- name: lb-delete-cache
+  description: Delete the CDN cache of a global load balancer by ID
+  params:
+    LoadBalancerID: ID of the load balancer
+- name: lb-get
+  description: Get a Load Balancer by ID
+  params:
+    LoadBalancerID: ID of the load balancer
+- name: lb-list
+  description: List Load Balancers with pagination
+  params:
+    Page: Page number (optional)
+    PerPage: Items per page (optional)
+- name: lb-remove-droplets
+  description: Remove Droplets from a Load Balancer
+  params:
+    DropletIDs: IDs of the droplets to remove
+    LoadBalancerID: ID of the load balancer
+- name: lb-remove-fwd-rules
+  description: Remove Forwarding Rules from a Load Balancer
+  params:
+    ForwardingRules: Forwarding rules to remove
+    LoadBalancerID: ID of the load balancer
+- name: lb-update
+  description: Update a Load Balancer
+  params:
+    DropletIDs: IDs of the Droplets assigned to the load balancer (optional)
+    ForwardingRules: Forwarding rules for a load balancer (optional)
+    GLBSettings: Forward configurations for a global load balancer (optional)
+    LoadBalancerID: ID of the load balancer
+    Name: Name of the load balancer
+    Network: Network type of the load balancer (EXTERNAL, INTERNAL) (optional)
+    NetworkStack: Network stack of the load balancer (IPV4, DUALSTACK) (optional)
+    ProjectID: Project ID to which the load balancer will be assigned (optional)
+    Region: Region slug (e.g., nyc3) (optional)
+    SizeUnit: Size of the load balancer in units appropriate to its type (optional)
+    Tag: Droplet tag corresponding to Droplets assigned to the load balancer (optional)
+    TargetLoadBalancerIDs: IDs of the target regional load balancers for a global
+      load balancer (optional)
+    Type: Type of the load balancer (REGIONAL, REGIONAL_NETWORK, GLOBAL)
+- name: lets-encrypt-certificate-create
+  description: Create a new let's encrypt certificate
+  params:
+    DnsNames: DNS names of the certificate
+    Name: Name of the certificate
+- name: power-cycle-droplet
+  description: Power cycle a droplet
+  params:
+    ID: ID of the droplet to power cycle
+- name: power-cycle-droplets-tag
+  description: Power cycle droplets by tag
+  params:
+    Tag: Tag of the droplets to power cycle
+- name: power-off-droplet
+  description: Power off a droplet
+  params:
+    ID: ID of the droplet to power off
+- name: power-off-droplets-tag
+  description: Power off droplets by tag
+  params:
+    Tag: Tag of the droplets to power off
+- name: power-on-droplet
+  description: Power on a droplet
+  params:
+    ID: ID of the droplet to power on
+- name: power-on-droplets-tag
+  description: Power on droplets by tag
+  params:
+    Tag: Tag of the droplets to power on
+- name: reboot-droplet
+  description: Reboot a droplet
+  params:
+    ID: ID of the droplet to reboot
+- name: rebuild-droplet
+  description: Rebuild a droplet from an image
+  params:
+    ID: ID of the droplet to rebuild
+    ImageID: ID of the image to rebuild from
+- name: rebuild-droplet-by-slug
+  description: Rebuild a droplet using an image slug
+  params:
+    ID: ID of the droplet to rebuild
+    ImageSlug: Slug of the image to rebuild from
+- name: region-list
+  description: List all available regions with features and droplet size availability.
+    Supports pagination.
+  params:
+    Page: Page number (optional)
+    PerPage: Items per page (optional)
+- name: rename-droplet
+  description: Rename a droplet
+  params:
+    ID: ID of the droplet to rename
+    Name: New name for the droplet
+- name: reserved-ip-assign
+  description: Assign a reserved IP to a droplet
+  params:
+    DropletID: The ID of the droplet to assign the IP to
+    IP: The reserved IP to assign
+    Type: Type of IP to assign ('ipv4' or 'ipv6')
+- name: reserved-ip-get
+  description: Get reserved IPv4 or IPv6 information by IP
+  params:
+    IP: The reserved IPv4 or IPv6 address
+- name: reserved-ip-list
+  description: List reserved IPv4 or IPv6 addresses with pagination
+  params:
+    Page: 'Page number (default: 1) (optional)'
+    PerPage: 'Items per page (default: 20) (optional)'
+    Type: Type of IP to list ('ipv4' or 'ipv6')
+- name: reserved-ip-release
+  description: Release a reserved IPv4 or IPv6
+  params:
+    IP: The reserved IP to release
+    Type: Type of IP to release ('ipv4' or 'ipv6')
+- name: reserved-ip-reserve
+  description: Reserve a new IPv4 or IPv6
+  params:
+    Region: Region to reserve the IP in
+    Type: Type of IP to reserve ('ipv4' or 'ipv6')
+- name: reserved-ip-unassign
+  description: Unassign a reserved IP from a droplet
+  params:
+    IP: The reserved IP to unassign
+    Type: Type of IP to unassign ('ipv4' or 'ipv6')
+- name: reset-droplet-password
+  description: Reset password for a droplet
+  params:
+    ID: ID of the droplet
+- name: resize-droplet
+  description: Resize a droplet
+  params:
+    ID: ID of the droplet to resize
+    ResizeDisk: Whether to resize the disk (optional)
+    Size: Slug of the new size (e.g., s-1vcpu-1gb)
+- name: restore-droplet
+  description: Restore a droplet from a backup/snapshot
+  params:
+    ID: ID of the droplet to restore
+    ImageID: ID of the backup/snapshot image
+- name: shutdown-droplet
+  description: Shutdown a droplet
+  params:
+    ID: ID of the droplet to shutdown
+- name: shutdown-droplets-tag
+  description: Shutdown droplets by tag
+  params:
+    Tag: Tag of the droplets to shutdown
+- name: size-list
+  description: List all available droplet sizes. Supports pagination.
+  params:
+    Page: Page number (optional)
+    PerPage: Items per page (optional)
+- name: snapshot-droplet
+  description: Take a snapshot of a droplet
+  params:
+    ID: ID of the droplet
+    Name: Name for the snapshot
+- name: snapshot-droplets-tag
+  description: Take a snapshot of droplets by tag
+  params:
+    Name: Name for the snapshot
+    Tag: Tag of the droplets
+- name: vpc-create
+  description: Create a new VPC
+  params:
+    Description: Optional description for the VPC (optional)
+    Name: Name of the VPC
+    Region: Region slug (e.g., nyc3)
+    Subnet: Optional subnet CIDR block (e.g., 10.10.0.0/20) (optional)
+- name: vpc-delete
+  description: Delete a VPC
+  params:
+    ID: ID of the VPC to delete
+- name: vpc-get
+  description: Get VPC information by ID
+  params:
+    ID: ID of the VPC
+- name: vpc-list
+  description: List VPCs with pagination
+  params:
+    Page: Page number (optional)
+    PerPage: Items per page (optional)
+- name: vpc-list-members
+  description: List members of a VPC
+  params:
+    ID: ID of the VPC
+- name: vpc-peering-create
+  description: Create a new VPC Peering connection between two VPCs
+  params:
+    Name: Name for the Peering connection
+    Vpc1: ID of the first VPC
+    Vpc2: ID of the second VPC
+- name: vpc-peering-delete
+  description: Delete a VPC Peering connection
+  params:
+    ID: ID of the VPC Peering connection to delete
+- name: vpc-peering-get
+  description: Get VPC Peering information by ID
+  params:
+    ID: ID of the VPC Peering connection
+- name: vpc-peering-list
+  description: List VPC Peering connections with pagination
+  params:
+    Page: Page number (optional)
+    PerPage: Items per page (optional)
