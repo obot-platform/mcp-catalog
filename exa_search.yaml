@@ -50,15 +50,6 @@ toolPreview:
     type: "Search type - 'auto': balanced search (default), 'fast': quick results"
     freshness: How recent results should be. Only set when recency matters.
     includeDomains: List of domains to include in the search. If specified, results will only come from these domains.
-- name: web_search_advanced_exa
-  description: Advanced web search with full control over filters, domains, dates, and content options.
-  params:
-    query: Search query - can be a question, statement, or keywords
-    numResults: Number of results (must be a number, 1-100, default 10)
-    type: "Search type - 'auto': balanced (default), 'fast': quick results, 'neural': semantic search"
-    category: Filter results to a specific category
-    includeDomains: Only include results from these domains (e.g., ['arxiv.org', 'github.com'])
-    startPublishedDate: "Only include results published after this date (ISO 8601: YYYY-MM-DD)"
 - name: get_code_context_exa
   description: Find code examples, documentation, and programming solutions from GitHub, Stack Overflow, and docs
   params:
@@ -79,4 +70,4 @@ containerizedConfig:
   path: /
   args:
   - exa-mcp-server
-  - --tools=web_search_exa,web_search_advanced_exa,get_code_context_exa,crawling_exa
+  - --tools=web_search_exa,get_code_context_exa,crawling_exa
