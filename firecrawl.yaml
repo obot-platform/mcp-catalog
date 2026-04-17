@@ -79,44 +79,54 @@ toolPreview:
 - name: firecrawl_scrape
   description: Scrape content from a single URL with advanced options.
   params:
-    actions: List of actions to perform before scraping
-    excludeTags: HTML tags to exclude from extraction
-    extract: Configuration for structured data extraction
-    formats: 'Content formats to extract (default: [''markdown''])'
-    includeTags: HTML tags to specifically include in extraction
-    location: Location settings for scraping
-    maxAge: 'Maximum age in milliseconds for cached content. Use cached data if available and younger than maxAge, otherwise scrape fresh. Enables 500% faster scrapes for recently cached pages. Default: 0 (always scrape fresh)'
-    mobile: Use mobile viewport
-    onlyMainContent: Extract only the main content, filtering out navigation, footers, etc.
-    removeBase64Images: Remove base64 encoded images from output
-    skipTlsVerification: Skip TLS certificate verification
-    timeout: Maximum time in milliseconds to wait for the page to load
     url: The URL to scrape
-    waitFor: Time in milliseconds to wait for dynamic content to load
+    formats: Content formats to extract
+    jsonOptions: JSON extraction options
+    screenshotOptions: Screenshot options
+    parsers: Parsers to apply
+    pdfOptions: PDF parsing options
+    onlyMainContent: Extract only the main content
+    includeTags: HTML tags to specifically include
+    excludeTags: HTML tags to exclude
+    waitFor: Time in milliseconds to wait before scraping
+    actions: Browser actions to perform before scraping
+    mobile: Use mobile viewport
+    skipTlsVerification: Skip TLS certificate verification
+    removeBase64Images: Remove base64 encoded images from output
+    location: Location settings for scraping
+    storeInCache: Store the result in cache
+    zeroDataRetention: Enable zero data retention
+    maxAge: Maximum cache age in milliseconds
+    proxy: Proxy mode
 - name: firecrawl_map
   description: Map a website to discover all indexed URLs on the site.
   params:
-    ignoreSitemap: Skip sitemap.xml discovery and only use HTML links
-    includeSubdomains: Include URLs from subdomains in results
-    limit: Maximum number of URLs to return
-    search: Optional search term to filter URLs
-    sitemapOnly: Only use sitemap.xml for discovery, ignore HTML links
     url: Starting URL for URL discovery
-- name: firecrawl_crawl
-  description: Starts an asynchronous crawl job on a website and extracts content from all pages.
-  params:
-    allowBackwardLinks: Allow crawling links that point to parent directories
-    allowExternalLinks: Allow crawling links to external domains
-    deduplicateSimilarURLs: Remove similar URLs during crawl
-    excludePaths: URL paths to exclude from crawling
+    search: Search term to filter discovered URLs
+    sitemap: Sitemap mode
+    includeSubdomains: Include URLs from subdomains
+    limit: Maximum number of URLs to return
     ignoreQueryParameters: Ignore query parameters when comparing URLs
-    ignoreSitemap: Skip sitemap.xml discovery
-    includePaths: Only crawl these URL paths
-    limit: Maximum number of pages to crawl
-    maxDepth: Maximum link depth to crawl
-    scrapeOptions: Options for scraping each page
+- name: firecrawl_crawl
+  description: Starts a crawl job on a website and extracts content from all pages.
+  params:
     url: Starting URL for the crawl
-    webhook: ''
+    prompt: Prompt to guide the crawl
+    excludePaths: URL paths to exclude from crawling
+    includePaths: Only crawl these URL paths
+    maxDiscoveryDepth: Maximum discovery depth to crawl
+    sitemap: Sitemap mode
+    limit: Maximum number of pages to crawl
+    allowExternalLinks: Allow crawling links to external domains
+    allowSubdomains: Allow crawling links to subdomains
+    crawlEntireDomain: Crawl the entire domain
+    delay: Delay between crawl requests
+    maxConcurrency: Maximum number of concurrent crawl requests
+    webhook: Webhook URL for crawl updates
+    webhookHeaders: Headers to send with the webhook
+    deduplicateSimilarURLs: Remove similar URLs during crawl
+    ignoreQueryParameters: Ignore query parameters when comparing URLs
+    scrapeOptions: Options for scraping each page
 - name: firecrawl_check_crawl_status
   description: Check the status of a crawl job.
   params:
@@ -124,30 +134,54 @@ toolPreview:
 - name: firecrawl_search
   description: Search the web and optionally extract content from search results.
   params:
-    country: 'Country code for search results (default: us)'
-    filter: Search filter
-    lang: 'Language code for search results (default: en)'
-    limit: 'Maximum number of results to return (default: 5)'
-    location: Location settings for search
     query: Search query string
-    scrapeOptions: Options for scraping search results
+    limit: Maximum number of results to return
     tbs: Time-based search filter
+    filter: Search filter
+    location: Search location string
+    sources: Search sources to use
+    scrapeOptions: Options for scraping search results
+    enterprise: Enterprise search modes
 - name: firecrawl_extract
   description: Extract structured information from web pages using LLM capabilities.
   params:
+    urls: Array of URLs to extract information from
+    prompt: Custom prompt for the LLM extraction
+    schema: JSON schema for structured data extraction
     allowExternalLinks: Allow extraction from external links
     enableWebSearch: Enable web search for additional context
     includeSubdomains: Include subdomains in extraction
-    prompt: Prompt for the LLM extraction
-    schema: JSON schema for structured data extraction
-    systemPrompt: System prompt for LLM extraction
-    urls: List of URLs to extract information from
-- name: firecrawl_generate_llmstxt
-  description: Generate a standardized llms.txt (and optionally llms-full.txt) file for a given domain. This file defines how large language models should interact with the site
+- name: firecrawl_agent
+  description: Autonomous web research agent.
   params:
-    maxUrls: 'Maximum number of URLs to process (1-100, default: 10)'
-    showFullText: Whether to show the full LLMs-full.txt in the response
-    url: The URL to generate LLMs.txt from
+    prompt: Natural language description of the data you want (required, max 10,000 characters)
+    urls: Optional array of URLs to focus the agent on specific pages
+    schema: Optional JSON schema for structured output
+- name: firecrawl_agent_status
+  description: Check the status of an agent job and retrieve results when complete.
+  params:
+    id: Agent job ID to check
+- name: firecrawl_browser_create
+  description: Create a browser session for code execution via CDP (Chrome DevTools Protocol).
+  params:
+    ttl: Total session lifetime in seconds (30-3600, optional)
+    activityTtl: Idle timeout in seconds (10-3600, optional)
+    streamWebView: Whether to enable live view streaming (optional)
+    profile: Save and reuse browser state (cookies, localStorage) across sessions (optional)
+- name: firecrawl_browser_execute
+  description: Execute code in a browser session.
+  params:
+    sessionId: The browser session ID (required)
+    code: The code to execute (required)
+    language: '"bash", "python", or "node" (optional, defaults to "bash")'
+- name: firecrawl_browser_delete
+  description: Destroy a browser session.
+  params:
+    sessionId: The browser session ID
+- name: firecrawl_browser_list
+  description: List browser sessions, optionally filtered by status.
+  params:
+    status: Session status filter
 env:
 - key: FIRECRAWL_API_KEY
   name: Firecrawl API Key
