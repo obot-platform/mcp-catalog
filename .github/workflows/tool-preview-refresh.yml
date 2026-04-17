@@ -67,6 +67,7 @@ jobs:
           branch: automated/tool-preview-refresh
           delete-branch: true
           commit-message: "chore: refresh MCP tool previews"
+          reviewers: thedadams,njhale,g-linville,calvinmclean
           title: "chore: refresh MCP tool previews"
           body: |
             This PR refreshes stale `toolPreview` blocks in catalog YAML files.
