@@ -2,6 +2,87 @@ name: Tool Preview Refresh
 
 on:
   workflow_dispatch:
+    inputs:
+      yaml_file:
+        description: Select a YAML file to refresh.
+        required: true
+        default: antv_charts.yaml
+        type: choice
+        options:
+          - antv_charts.yaml
+          - asana.yaml
+          - atlassian.yaml
+          - aws.yaml
+          - aws_cdk.yaml
+          - aws_documentation.yaml
+          - aws_eks.yaml
+          - aws_kendra.yaml
+          - aws_knowledge.yaml
+          - aws_redshift.yaml
+          - azure.yaml
+          - bigquery.yaml
+          - brave_search.yaml
+          - browserbase.yaml
+          - calendar.yaml
+          - chroma.yaml
+          - cloud_run.yaml
+          - cloudflare.yaml
+          - contact.yaml
+          - context7.yaml
+          - datadog.yaml
+          - deepwiki.yaml
+          - digitalocean.yaml
+          - duckduckgo_search.yaml
+          - dynatrace.yaml
+          - elasticsearch.yaml
+          - exa_search.yaml
+          - excel.yaml
+          - filescom.yaml
+          - firecrawl.yaml
+          - github.yaml
+          - github_enterprise.yaml
+          - gitlab.yaml
+          - gitmcp.yaml
+          - gmail.yaml
+          - google-calendar.yaml
+          - google-drive.yaml
+          - google-maps-grounding-lite.yaml
+          - google-sheets.yaml
+          - grafana.yaml
+          - hubspot.yaml
+          - linear.yaml
+          - markitdown.yaml
+          - microsoft-docs.yaml
+          - mondaycom.yaml
+          - mongodb_atlas_management.yaml
+          - mongodb_database.yaml
+          - morningstar.yaml
+          - neon.yaml
+          - notion.yaml
+          - onedrive.yaml
+          - outlook.yaml
+          - pagerduty.yaml
+          - paypal.yaml
+          - playwright.yaml
+          - postgresql.yaml
+          - postman.yaml
+          - redis.yaml
+          - ref.yaml
+          - render.yaml
+          - salesforce.yaml
+          - slack.yaml
+          - snowflake.yaml
+          - square.yaml
+          - stripe.yaml
+          - supabase.yaml
+          - tableau.yaml
+          - tavily_search.yaml
+          - terraform.yaml
+          - todoist.yaml
+          - wix.yaml
+          - word.yaml
+          - wordpress.yaml
+          - zapier.yaml
 
 permissions:
   contents: write
@@ -43,7 +124,8 @@ jobs:
       - name: Run OpenCode refresh
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: bash scripts/tool_preview_updater/update.sh
+          YAML_FILE: ${{ inputs.yaml_file }}
+        run: bash scripts/tool_preview_updater/update.sh "$YAML_FILE"
 
       - name: Detect changes
         id: changes
