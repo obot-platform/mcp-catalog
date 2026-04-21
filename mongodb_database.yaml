@@ -37,9 +37,13 @@ env:
   #   description: Whether to run the MongoDB MCP server in read-only mode, default is false.
 toolPreview:
   - name: connect
-    description: Connect to a MongoDB instance
+    description: Connect to a MongoDB instance. The config resource captures if the server is already connected to a MongoDB cluster. If the user has configured a connection string or has previously called the connect tool, a connection is already established and there's no need to call this tool unless the user has explicitly requested to switch to a new MongoDB cluster.
     params:
-      connectionString: MongoDB connection string
+      connectionString: MongoDB connection string (in the mongodb:// or mongodb+srv:// format)
+  - name: switch-connection
+    description: Switch to a different MongoDB connection. If the user has configured a connection string or has previously called the connect tool, a connection is already established and there's no need to call this tool unless the user has explicitly requested to switch to a new instance.
+    params:
+      connectionString: MongoDB connection string to switch to (in the mongodb:// or mongodb+srv:// format). If a connection string is not provided, the connection string from the config will be used.
   - name: list-collections
     description: List all collections for a given database
     params:
@@ -49,52 +53,55 @@ toolPreview:
   - name: collection-indexes
     description: Describe the indexes for a collection
     params:
-      collection: Collection name
       database: Database name
+      collection: Collection name
   - name: create-index
     description: Create an index for a collection
     params:
-      collection: Collection name
       database: Database name
-      keys: Index keys specification object
-      name: Optional index name
+      collection: Collection name
+      name: The name of the index
+      definition: The index definition. Use 'classic' for standard indexes, 'vectorSearch' for vector search indexes, and 'search' for Atlas Search (lexical) indexes.
   - name: collection-schema
     description: Describe the schema for a collection
     params:
-      collection: Collection name
       database: Database name
+      collection: Collection name
+      sampleSize: Number of documents to sample for schema inference
+      responseBytesLimit: The maximum number of bytes to return in the response. This value is capped by the server's configured maxBytesPerQuery and cannot be exceeded.
   - name: find
     description: Run a find query against a MongoDB collection
     params:
-      collection: Collection name
       database: Database name
-      filter: Optional query filter object
-      limit: Optional maximum number of documents to return
-      projection: Optional projection object
-      sort: Optional sort specification object
+      collection: Collection name
+      filter: The query filter, matching the syntax of the query argument of db.collection.find()
+      projection: The projection, matching the syntax of the projection argument of db.collection.find()
+      limit: The maximum number of documents to return
+      sort: A document, describing the sort order, matching the syntax of the sort argument of cursor.sort(). The keys of the object are the fields to sort on, while the values are the sort directions (1 for ascending, -1 for descending).
+      responseBytesLimit: "The maximum number of bytes to return in the response. This value is capped by the server's configured maxBytesPerQuery and cannot be exceeded. Note to LLM: If the entire query result is required, use the \"export\" tool instead of increasing this limit."
   - name: insert-many
-    description: Insert an array of documents into a MongoDB collection
+    description: Insert an array of documents into a MongoDB collection. If the list of documents is above com.mongodb/maxRequestPayloadBytes, consider inserting them in batches.
     params:
-      collection: Collection name
       database: Database name
-      documents: Array of documents to insert
+      collection: Collection name
+      documents: The array of documents to insert, matching the syntax of the document argument of db.collection.insertMany().
   - name: delete-many
     description: Removes all documents that match the filter from a MongoDB collection
     params:
-      collection: Collection name
       database: Database name
-      filter: Optional filter object
+      collection: Collection name
+      filter: The query filter, specifying the deletion criteria. Matches the syntax of the filter argument of db.collection.deleteMany()
   - name: collection-storage-size
     description: Gets the size of the collection
     params:
-      collection: Collection name
       database: Database name
+      collection: Collection name
   - name: count
     description: Gets the number of documents in a MongoDB collection using db.collection.count() and query as an optional filter parameter
     params:
-      collection: Collection name
       database: Database name
-      query: Optional filter/query object
+      collection: Collection name
+      query: A filter/query parameter. Allows users to filter the documents to count. Matches the syntax of the filter argument of db.collection.count().
   - name: db-stats
     description: Returns statistics that reflect the use state of a single database
     params:
@@ -102,24 +109,25 @@ toolPreview:
   - name: aggregate
     description: Run an aggregation against a MongoDB collection
     params:
-      collection: Collection name
       database: Database name
-      pipeline: Array of aggregation pipeline stages
+      collection: Collection name
+      pipeline: "An array of aggregation stages to execute. If the user has asked for a vector search, `$vectorSearch` MUST be the first stage of the pipeline, or the first stage of a `$unionWith` subpipeline. If the user has asked for lexical/Atlas search, use `$search` instead of `$text`."
+      responseBytesLimit: "The maximum number of bytes to return in the response. This value is capped by the server's configured maxBytesPerQuery and cannot be exceeded. Note to LLM: If the entire aggregation result is required, use the \"export\" tool instead of increasing this limit."
   - name: update-many
-    description: Updates all documents that match the specified filter for a collection
+    description: Updates all documents that match the specified filter for a collection. If the list of documents is above com.mongodb/maxRequestPayloadBytes, consider updating them in batches.
     params:
-      collection: Collection name
       database: Database name
-      update: Update specification object
-      filter: Optional filter object
-      upsert: Optional boolean to insert if no match found
+      collection: Collection name
+      filter: The selection criteria for the update, matching the syntax of the filter argument of db.collection.updateOne()
+      update: An update document describing the modifications to apply using update operator expressions
+      upsert: Controls whether to insert a new document if no documents match the filter
   - name: rename-collection
     description: Renames a collection in a MongoDB database
     params:
-      collection: Collection name
       database: Database name
-      newName: New collection name
-      dropTarget: Optional boolean to drop target collection if it exists
+      collection: Collection name
+      newName: The new name for the collection
+      dropTarget: If true, drops the target collection if it exists
   - name: drop-database
     description: Removes the specified database, deleting the associated data files
     params:
@@ -127,24 +135,40 @@ toolPreview:
   - name: drop-collection
     description: Removes a collection or view from the database. The method also removes any indexes associated with the dropped collection.
     params:
-      collection: Collection name
       database: Database name
+      collection: Collection name
+  - name: drop-index
+    description: Drop an index for the provided database and collection.
+    params:
+      database: Database name
+      collection: Collection name
+      indexName: The name of the index to be dropped.
+      type: The type of index to be deleted. Use 'classic' for standard indexes and 'search' for atlas search and vector search indexes.
   - name: explain
     description: Returns statistics describing the execution of the winning plan chosen by the query optimizer for the evaluated method
     params:
-      collection: Collection name
       database: Database name
-      method: Array specifying the method and arguments to explain
+      collection: Collection name
+      method: The method and its arguments to run
+      verbosity: The verbosity of the explain plan, defaults to queryPlanner. If the user wants to know how fast is a query in execution time, use executionStats. It supports all verbosities as defined in the MongoDB Driver.
   - name: create-collection
     description: Creates a new collection in a database. If the database doesn't exist, it will be created automatically.
     params:
-      collection: Collection name
       database: Database name
+      collection: Collection name
   - name: mongodb-logs
     description: Returns the most recent logged mongod events
     params:
-      limit: Optional maximum number of log entries to return
-      type: Optional log type filter
+      type: The type of logs to return. Global returns all recent log entries, while startupWarnings returns only warnings and errors from when the process started.
+      limit: The maximum number of log entries to return.
+  - name: export
+    description: Export a query or aggregation results in the specified EJSON format.
+    params:
+      database: Database name
+      collection: Collection name
+      exportTitle: A short description to uniquely identify the export.
+      exportTarget: The export target along with its arguments.
+      jsonExportFormat: "The format to be used when exporting collection data as EJSON with default being relaxed. relaxed: A string format that emphasizes readability and interoperability at the expense of type preservation. That is, conversion from relaxed format to BSON can lose type information. canonical: A string format that emphasizes type preservation at the expense of readability and interoperability. That is, conversion from canonical to BSON will generally preserve type information except in certain specific cases."
 
 runtime: containerized
 containerizedConfig:
