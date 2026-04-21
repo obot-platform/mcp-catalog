@@ -88,146 +88,736 @@ containerizedConfig:
   args:
   - mcp-gitlab
 toolPreview:
-- name: search_repositories
-  description: Search for GitLab projects
-  params:
-    search: Search query string (required)
-    page: Page number for pagination (optional)
-    per_page: Number of results per page (optional)
-- name: create_repository
-  description: Create a new GitLab project
-  params:
-    name: Repository name (required)
-    description: Project description (optional)
-    initialize_with_readme: Initialize with README file (optional)
-    visibility: Project visibility - private, internal, or public (optional)
-- name: get_project
-  description: Get details of a specific project
-  params:
-    project_id: Project ID or URL-encoded path (optional)
-- name: list_projects
-  description: List projects accessible by the current user
-  params:
-    page: Page number for pagination (optional)
-    per_page: Number of results per page (optional)
-    search: Search term for projects (optional)
-    visibility: Filter by project visibility (optional)
-    with_issues_enabled: Filter projects with issues feature enabled (optional)
-- name: get_file_contents
-  description: Get the contents of a file or directory from a GitLab project
-  params:
-    file_path: Path to the file or directory (required)
-    project_id: Project ID or URL-encoded path (optional)
-    ref: Branch, tag, or commit to get contents from (optional)
-- name: create_or_update_file
-  description: Create or update a single file in a GitLab project
-  params:
-    branch: Branch to create/update the file in (required)
-    commit_message: Commit message (required)
-    content: Content of the file (required)
-    file_path: Path where to create/update the file (required)
-    project_id: Project ID or URL-encoded path (optional)
-    previous_path: Path of the file to move/rename (optional)
-- name: push_files
-  description: Push multiple files to a GitLab project in a single commit
-  params:
-    branch: Branch to push to (required)
-    commit_message: Commit message (required)
-    files: Array of files with file_path and content (required)
-    project_id: Project ID or URL-encoded path (optional)
-- name: get_repository_tree
-  description: Get the repository tree for a GitLab project (list files and directories)
-  params:
-    project_id: Project ID or URL-encoded path (optional)
-    path: Path inside the repository (optional)
-    ref: Branch, tag, or commit reference (optional)
-    recursive: Get recursive tree structure (optional)
-- name: create_branch
-  description: Create a new branch in a GitLab project
-  params:
-    branch: Name for the new branch (required)
-    project_id: Project ID or URL-encoded path (optional)
-    ref: Source branch or commit for new branch (optional)
-- name: create_issue
-  description: Create a new issue in a GitLab project
-  params:
-    title: Issue title (required)
-    project_id: Project ID or URL-encoded path (optional)
-    description: Issue description (optional)
-    assignee_ids: Array of user IDs to assign (optional)
-    labels: Array of label names (optional)
-- name: list_issues
-  description: List issues (default created by current user only; use scope='all' for all accessible issues)
-  params:
-    project_id: Project ID or URL-encoded path (optional)
-    state: Issue state - opened, closed, all (optional)
-    labels: Array of label names to filter by (optional)
-    assignee_username: Array of assignee usernames (optional)
-    scope: Return issues from specific scope (optional)
-- name: update_issue
-  description: Update an issue in a GitLab project
-  params:
-    issue_type: The type of issue - issue, incident, test_case or task (required)
-    project_id: Project ID or URL-encoded path (optional)
-    issue_iid: Internal ID of the issue (optional)
-    title: Updated issue title (optional)
-    description: Updated issue description (optional)
-    state_event: Update issue state - close/reopen (optional)
-- name: create_merge_request
-  description: Create a new merge request in a GitLab project
-  params:
-    source_branch: Branch containing changes (required)
-    target_branch: Branch to merge into (required)
-    title: Merge request title (required)
-    project_id: Project ID or URL-encoded path (optional)
-    description: Merge request description (optional)
-    draft: Create as draft merge request (optional)
-    assignee_ids: Array of user IDs to assign (optional)
-- name: list_merge_requests
-  description: List merge requests in a GitLab project with filtering options
-  params:
-    project_id: Project ID or URL-encoded path (optional)
-    state: Merge request state - opened, closed, merged, all (optional)
-    source_branch: Filter by source branch (optional)
-    target_branch: Filter by target branch (optional)
-    page: Page number for pagination (optional)
-    per_page: Number of results per page (optional)
-- name: get_merge_request
-  description: Get details of a merge request (Either mergeRequestIid or branchName must be provided)
-  params:
-    project_id: Project ID or URL-encoded path (optional)
-    merge_request_iid: Internal ID of the merge request (optional)
-    source_branch: Source branch name (optional)
 - name: merge_merge_request
-  description: Merge a merge request in a GitLab project
+  description: "Merge a merge request"
   params:
-    project_id: Project ID or URL-encoded path (optional)
-    merge_request_iid: Internal ID of the merge request (optional)
-    merge_commit_message: Custom merge commit message (optional)
-    should_remove_source_branch: Remove source branch after merge (optional)
-    squash: Squash commits into a single commit when merging (optional)
-- name: update_merge_request
-  description: Update a merge request (Either mergeRequestIid or branchName must be provided)
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    auto_merge: "If true, the merge request merges when the pipeline succeeds."
+    merge_commit_message: "Custom merge commit message"
+    merge_when_pipeline_succeeds: "If true, the merge request merges when the pipeline succeeds.in GitLab 17.11. Use"
+    should_remove_source_branch: "Remove source branch after merge"
+    squash_commit_message: "Custom squash commit message"
+    squash: "Squash commits into a single commit when merging"
+- name: approve_merge_request
+  description: "Approve a merge request"
   params:
-    project_id: Project ID or URL-encoded path (optional)
-    merge_request_iid: Internal ID of the merge request (optional)
-    title: Updated merge request title (optional)
-    description: Updated merge request description (optional)
-    state_event: New state - close/reopen for the MR (optional)
-    assignee_ids: Array of user IDs to assign (optional)
-- name: create_merge_request_thread
-  description: Create a new thread on a merge request
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of the merge request to approve"
+    sha: "The HEAD of the merge request. Optional, but used to ensure the merge request hasn't changed since you last reviewed it"
+    approval_password: "Current user's password. Required if 'Require user re-authentication to approve' is enabled in the project settings"
+- name: unapprove_merge_request
+  description: "Unapprove a merge request"
   params:
-    body: The content of the thread (required)
-    merge_request_iid: Internal ID of the merge request (optional)
-    project_id: Project ID or URL-encoded path (optional)
-    position: Position when creating a diff note (optional)
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of the merge request to unapprove"
+- name: get_merge_request_approval_state
+  description: "Get merge request approval details including approvers"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of the merge request"
+- name: get_merge_request_conflicts
+  description: "Get the conflicts of a merge request"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of the merge request"
+- name: create_or_update_file
+  description: "Create or update a file in a GitLab project"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    file_path: "Path where to create/update the file"
+    content: "Content of the file"
+    commit_message: "Commit message"
+    branch: "Branch to create/update the file in"
+    previous_path: "Path of the file to move/rename"
+    last_commit_id: "Last known file commit ID"
+    commit_id: "Current file commit ID (for update operations)"
+- name: search_repositories
+  description: "Search for GitLab projects"
+  params:
+    search: "Search query"
+    query: "Search query (alias for 'search')"
+    page: "Page number for pagination (default: 1)"
+    per_page: "Number of items per page (max: 100, default: 20)"
+- name: create_repository
+  description: "Create a new GitLab project"
+  params:
+    name: "Repository name"
+    description: "Repository description"
+    visibility: "Repository visibility level"
+    initialize_with_readme: "Initialize with README.md"
+- name: get_file_contents
+  description: "Get contents of a file or directory from a GitLab project"
+  params:
+    project_id: "Project ID or URL-encoded path (optional; falls back to env)"
+    file_path: "Path to the file or directory. Takes precedence over 'path' when both are provided"
+    path: "Alias of file_path"
+    ref: "Branch/tag/commit to get contents from"
+- name: push_files
+  description: "Push multiple files in a single commit"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    branch: "Branch to push to"
+    files: "Array of files to push"
+    commit_message: "Commit message"
+- name: create_issue
+  description: "Create a new issue"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    title: "Issue title"
+    description: "Issue description"
+    assignee_ids: "Array of user IDs to assign"
+    labels: "Array of label names"
+    milestone_id: "Milestone ID to assign"
+    issue_type: "The type of issue. One of issue, incident, test_case or task."
+    weight: "Weight of the issue (numeric, typically hours of work)"
+- name: create_merge_request
+  description: "Create a new merge request"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    title: "Merge request title"
+    description: "Merge request description"
+    source_branch: "Branch containing changes"
+    target_branch: "Branch to merge into"
+    target_project_id: "Numeric ID of the target project."
+    assignee_ids: "The ID of the users to assign the MR to"
+    reviewer_ids: "The ID of the users to assign as reviewers of the MR"
+    labels: "Labels for the MR"
+    draft: "Create as draft merge request"
+    allow_collaboration: "Allow commits from upstream members"
+    remove_source_branch: "Flag indicating if a merge request should remove the source branch when merging."
+    squash: "If true, squash all commits into a single commit on merge."
 - name: fork_repository
-  description: Fork a GitLab project to your account or specified namespace
+  description: "Fork a project to your account or specified namespace"
   params:
-    project_id: Project ID or URL-encoded path (optional)
-    namespace: Namespace to fork to (optional)
+    project_id: "Project ID or complete URL-encoded path to project"
+    namespace: "Namespace to fork to (full path)"
+- name: create_branch
+  description: "Create a new branch"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    branch: "Name for the new branch"
+    ref: "Source branch/commit for new branch"
+- name: get_merge_request
+  description: "Get details of a merge request (mergeRequestIid or branchName required)"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    source_branch: "Source branch name"
+- name: get_merge_request_diffs
+  description: "Get the changes/diffs of a merge request (mergeRequestIid or branchName required)"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    source_branch: "Source branch name"
+    view: "Diff view type"
+    excluded_file_patterns: "Array of regex patterns to exclude files from the diff results. Each pattern is a JavaScript-compatible regular expression that matches file paths to ignore. Examples: [\"^vendor/\", \"^test/mocks/\", \"\\.spec\\.ts$\", \"package-lock\\.json\"]"
+- name: list_merge_request_changed_files
+  description: "List changed file paths in a merge request without diff content (mergeRequestIid or branchName required)"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    source_branch: "Source branch name"
+    excluded_file_patterns: "Array of regex patterns to exclude files. Examples: [\"^vendor/\", \"\\.pb\\.go$\"]"
+- name: list_merge_request_diffs
+  description: "List merge request diffs with pagination (mergeRequestIid or branchName required)"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    source_branch: "Source branch name"
+    page: "Page number for pagination (default: 1)"
+    per_page: "Number of items per page (max: 100, default: 20)"
+    unidiff: "Present diffs in the unified diff format. Default is false. Introduced in GitLab 16.5."
+- name: get_merge_request_file_diff
+  description: "Get diffs for specific files from a merge request (mergeRequestIid or branchName required)"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    source_branch: "Source branch name"
+    file_paths: "List of file paths to retrieve diffs for (e.g. ['src/api/users.ts', 'src/repo/user.go']). Call list_merge_request_changed_files first to get the full list of changed paths."
+    unidiff: "Present diff in the unified diff format. Default is false."
+- name: list_merge_request_versions
+  description: "List all versions of a merge request"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The internal ID of the merge request"
+- name: get_merge_request_version
+  description: "Get a specific version of a merge request"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The internal ID of the merge request"
+    version_id: "The ID of the merge request diff version"
+    unidiff: "Present diffs in the unified diff format. Default is false. Introduced in GitLab 16.5."
+- name: get_branch_diffs
+  description: "Get diffs between two branches or commits"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    from: "The base branch or commit SHA to compare from"
+    to: "The target branch or commit SHA to compare to"
+    straight: "Comparison method: false for '...' (default), true for '--'"
+    excluded_file_patterns: "Array of regex patterns to exclude files from the diff results. Each pattern is a JavaScript-compatible regular expression that matches file paths to ignore. Examples: [\"^vendor/\", \"^test/mocks/\", \"\\.spec\\.ts$\", \"package-lock\\.json\"]"
+- name: update_merge_request
+  description: "Update a merge request (mergeRequestIid or branchName required)"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    source_branch: "Source branch name"
+    title: "The title of the merge request"
+    description: "The description of the merge request"
+    target_branch: "The target branch"
+    assignee_ids: "The ID of the users to assign the MR to"
+    reviewer_ids: "The ID of the users to assign as reviewers of the MR"
+    labels: "Labels for the MR"
+    state_event: "New state (close/reopen) for the MR"
+    remove_source_branch: "Flag indicating if the source branch should be removed"
+    squash: "Squash commits into a single commit when merging"
+    draft: "Work in progress merge request"
+- name: create_note
+  description: "Create a new note (comment) to an issue or merge request"
+  params:
+    project_id: "Project ID or namespace/project_path"
+    noteable_type: "Type of noteable (issue or merge_request)"
+    noteable_iid: "IID of the issue or merge request"
+    body: "Note content"
+- name: create_merge_request_thread
+  description: "Create a new thread on a merge request"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    body: "The content of the thread"
+    position: "Position when creating a diff note"
+    created_at: "Date the thread was created at (ISO 8601 format)"
+- name: resolve_merge_request_thread
+  description: "Resolve a thread on a merge request"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    discussion_id: "The ID of a thread"
+    resolved: "Whether to resolve the thread"
+- name: mr_discussions
+  description: "List discussion items for a merge request"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    page: "Page number for pagination (default: 1)"
+    per_page: "Number of items per page (max: 100, default: 20)"
+- name: delete_merge_request_discussion_note
+  description: "Delete a discussion note on a merge request"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    discussion_id: "The ID of a thread"
+    note_id: "The ID of a thread note"
+- name: update_merge_request_discussion_note
+  description: "Update a discussion note on a merge request"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    discussion_id: "The ID of a thread"
+    note_id: "The ID of a thread note"
+    body: "The content of the note or reply"
+    resolved: "Resolve or unresolve the note"
+- name: create_merge_request_discussion_note
+  description: "Add a new discussion note to an existing merge request thread"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    discussion_id: "The ID of a thread"
+    body: "The content of the note or reply"
+    created_at: "Date the note was created at (ISO 8601 format)"
+- name: create_merge_request_note
+  description: "Add a new note to a merge request"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    body: "The content of the note or reply"
+- name: delete_merge_request_note
+  description: "Delete an existing merge request note"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    note_id: "The ID of a thread note"
+- name: get_merge_request_note
+  description: "Get a specific note for a merge request"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    note_id: "The ID of a thread note"
+- name: get_merge_request_notes
+  description: "List notes for a merge request"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    sort: "The sort order of the notes"
+    order_by: "The field to sort the notes by"
+    per_page: "Number of items per page"
+    page: "Page number for pagination"
+- name: update_merge_request_note
+  description: "Modify an existing merge request note"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    note_id: "The ID of a thread note"
+    body: "The content of the note or reply"
+- name: get_draft_note
+  description: "Get a single draft note from a merge request"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    draft_note_id: "The ID of the draft note"
+- name: list_draft_notes
+  description: "List draft notes for a merge request"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+- name: create_draft_note
+  description: "Create a draft note for a merge request"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    body: "The content of the draft note"
+    in_reply_to_discussion_id: "The ID of a discussion the draft note replies to"
+    position: "Position when creating a diff note"
+    resolve_discussion: "Whether to resolve the discussion when publishing"
+- name: update_draft_note
+  description: "Update an existing draft note"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    draft_note_id: "The ID of the draft note"
+    body: "The content of the draft note"
+    position: "Position when creating a diff note"
+    resolve_discussion: "Whether to resolve the discussion when publishing"
+- name: delete_draft_note
+  description: "Delete a draft note"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    draft_note_id: "The ID of the draft note"
+- name: publish_draft_note
+  description: "Publish a single draft note"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    draft_note_id: "The ID of the draft note"
+- name: bulk_publish_draft_notes
+  description: "Publish all draft notes for a merge request"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+- name: list_merge_request_emoji_reactions
+  description: "List all emoji reactions on a merge request"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+- name: list_merge_request_note_emoji_reactions
+  description: "List all emoji reactions on a merge request note. Pass discussion_id for discussion thread replies."
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    note_id: "The ID of a note (comment or thread reply)"
+    discussion_id: "The ID of a discussion thread. Required for notes that are discussion replies; omit for top-level notes."
+- name: create_merge_request_emoji_reaction
+  description: "Add an emoji reaction to a merge request (e.g. thumbsup, rocket, eyes)"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    name: "Name of the emoji without colons (e.g. 'thumbsup', 'rocket', 'eyes')"
+- name: delete_merge_request_emoji_reaction
+  description: "Remove an emoji reaction from a merge request"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    award_id: "The ID of the emoji reaction to delete"
+- name: create_merge_request_note_emoji_reaction
+  description: "Add an emoji reaction to a merge request note. Pass discussion_id for discussion thread replies."
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    note_id: "The ID of a note (comment or thread reply)"
+    discussion_id: "The ID of a discussion thread. Required for notes that are discussion replies; omit for top-level notes."
+    name: "Name of the emoji without colons (e.g. 'thumbsup', 'rocket', 'eyes')"
+- name: delete_merge_request_note_emoji_reaction
+  description: "Remove an emoji reaction from a merge request note. Pass discussion_id for discussion thread replies."
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    merge_request_iid: "The IID of a merge request"
+    note_id: "The ID of a note (comment or thread reply)"
+    discussion_id: "The ID of a discussion thread. Required for notes that are discussion replies; omit for top-level notes."
+    award_id: "The ID of the emoji reaction to delete"
+- name: update_issue_note
+  description: "Modify an existing issue thread note"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    issue_iid: "The IID of an issue"
+    discussion_id: "The ID of a thread"
+    note_id: "The ID of a thread note"
+    body: "The content of the note or reply"
+    resolved: "Resolve or unresolve the note"
+- name: create_issue_note
+  description: "Add a note to an issue, optionally replying to a discussion thread"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    issue_iid: "The IID of an issue"
+    discussion_id: "The ID of a thread. If provided, replies to that thread; otherwise creates a top-level note"
+    body: "The content of the note or reply"
+    created_at: "Date the note was created at (ISO 8601 format)"
+- name: list_issue_emoji_reactions
+  description: "List all emoji reactions on an issue"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    issue_iid: "The IID of an issue"
+- name: list_issue_note_emoji_reactions
+  description: "List all emoji reactions on an issue note. Pass discussion_id for discussion thread replies."
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    issue_iid: "The IID of an issue"
+    note_id: "The ID of a note (comment or thread reply)"
+    discussion_id: "The ID of a discussion thread. Required for notes that are discussion replies; omit for top-level notes."
+- name: create_issue_emoji_reaction
+  description: "Add an emoji reaction to an issue (e.g. thumbsup, rocket, eyes)"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    issue_iid: "The IID of an issue"
+    name: "Name of the emoji without colons (e.g. 'thumbsup', 'rocket', 'eyes')"
+- name: delete_issue_emoji_reaction
+  description: "Remove an emoji reaction from an issue"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    issue_iid: "The IID of an issue"
+    award_id: "The ID of the emoji reaction to delete"
+- name: create_issue_note_emoji_reaction
+  description: "Add an emoji reaction to an issue note. Pass discussion_id for discussion thread replies."
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    issue_iid: "The IID of an issue"
+    note_id: "The ID of a note (comment or thread reply)"
+    discussion_id: "The ID of a discussion thread. Required for notes that are discussion replies; omit for top-level notes."
+    name: "Name of the emoji without colons (e.g. 'thumbsup', 'rocket', 'eyes')"
+- name: delete_issue_note_emoji_reaction
+  description: "Remove an emoji reaction from an issue note. Pass discussion_id for discussion thread replies."
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    issue_iid: "The IID of an issue"
+    note_id: "The ID of a note (comment or thread reply)"
+    discussion_id: "The ID of a discussion thread. Required for notes that are discussion replies; omit for top-level notes."
+    award_id: "The ID of the emoji reaction to delete"
+- name: list_issues
+  description: "List issues (default: created by current user; use scope='all' for all)"
+  params:
+    project_id: "Project ID or URL-encoded path (optional - if not provided, lists issues across all accessible projects)"
+    assignee_id: "Return issues assigned to the given user ID. user id or none or any"
+    assignee_username: "Return issues assigned to the given username"
+    author_id: "Return issues created by the given user ID"
+    author_username: "Return issues created by the given username"
+    confidential: "Filter confidential or public issues"
+    created_after: "Return issues created after the given time"
+    created_before: "Return issues created before the given time"
+    due_date: "Return issues that have the due date"
+    labels: "Array of label names"
+    milestone: "Milestone title"
+    issue_type: "Filter to a given type of issue. One of issue, incident, test_case or task"
+    iteration_id: "Return issues assigned to the given iteration ID. None returns issues that do not belong to an iteration. Any returns issues that belong to an iteration. "
+    scope: "Return issues from a specific scope"
+    search: "Search for specific terms"
+    state: "Return issues with a specific state"
+    updated_after: "Return issues updated after the given time"
+    updated_before: "Return issues updated before the given time"
+    with_labels_details: "Return more details for each label"
+    page: "Page number for pagination (default: 1)"
+    per_page: "Number of items per page (max: 100, default: 20)"
+- name: my_issues
+  description: "List issues assigned to the authenticated user"
+  params:
+    project_id: "Project ID or URL-encoded path (optional when GITLAB_PROJECT_ID is set)"
+    state: "Return issues with a specific state (default: opened)"
+    labels: "Array of label names to filter by"
+    milestone: "Milestone title to filter by"
+    search: "Search for specific terms in title and description"
+    created_after: "Return issues created after the given time (ISO 8601)"
+    created_before: "Return issues created before the given time (ISO 8601)"
+    updated_after: "Return issues updated after the given time (ISO 8601)"
+    updated_before: "Return issues updated before the given time (ISO 8601)"
+    per_page: "Number of items per page (default: 20, max: 100)"
+    page: "Page number for pagination (default: 1)"
+- name: get_issue
+  description: "Get details of a specific issue"
+  params:
+    project_id: "Project ID or URL-encoded path"
+    issue_iid: "The internal ID of the project issue"
+- name: update_issue
+  description: "Update an issue"
+  params:
+    project_id: "Project ID or URL-encoded path"
+    issue_iid: "The internal ID of the project issue"
+    title: "The title of the issue"
+    description: "The description of the issue"
+    assignee_ids: "Array of user IDs to assign issue to"
+    confidential: "Set the issue to be confidential"
+    discussion_locked: "Flag to lock discussions"
+    due_date: "Date the issue is due (YYYY-MM-DD)"
+    labels: "Array of label names"
+    milestone_id: "Milestone ID to assign"
+    state_event: "Update issue state (close/reopen)"
+    weight: "Weight of the issue (numeric, typically hours of work)"
+    issue_type: "The type of issue. One of issue, incident, test_case or task."
+- name: delete_issue
+  description: "Delete an issue"
+  params:
+    project_id: "Project ID or URL-encoded path"
+    issue_iid: "The internal ID of the project issue"
+- name: list_issue_links
+  description: "List all issue links for a specific issue"
+  params:
+    project_id: "Project ID or URL-encoded path"
+    issue_iid: "The internal ID of a project's issue"
+- name: list_issue_discussions
+  description: "List discussions for an issue"
+  params:
+    project_id: "Project ID or URL-encoded path"
+    issue_iid: "The internal ID of the project issue"
+    page: "Page number for pagination (default: 1)"
+    per_page: "Number of items per page (max: 100, default: 20)"
+- name: get_issue_link
+  description: "Get a specific issue link"
+  params:
+    project_id: "Project ID or URL-encoded path"
+    issue_iid: "The internal ID of a project's issue"
+    issue_link_id: "ID of an issue relationship"
+- name: create_issue_link
+  description: "Create an issue link between two issues"
+  params:
+    project_id: "Project ID or URL-encoded path"
+    issue_iid: "The internal ID of a project's issue"
+    target_project_id: "The ID or URL-encoded path of a target project"
+    target_issue_iid: "The internal ID of a target project's issue"
+    link_type: "The type of the relation, defaults to relates_to"
+- name: delete_issue_link
+  description: "Delete an issue link"
+  params:
+    project_id: "Project ID or URL-encoded path"
+    issue_iid: "The internal ID of a project's issue"
+    issue_link_id: "The ID of an issue relationship"
+- name: list_namespaces
+  description: "List all namespaces available to the current user"
+  params:
+    search: "Search term for namespaces"
+    owned: "Filter for namespaces owned by current user"
+    page: "Page number for pagination (default: 1)"
+    per_page: "Number of items per page (max: 100, default: 20)"
+- name: get_namespace
+  description: "Get details of a namespace by ID or path"
+  params:
+    namespace_id: "Namespace ID or full path"
+- name: verify_namespace
+  description: "Verify if a namespace path exists"
+  params:
+    path: "Namespace path to verify"
+- name: get_project
+  description: "Get details of a specific project"
+  params:
+    project_id: "Project ID or URL-encoded path"
+- name: list_projects
+  description: "List projects accessible by the current user"
+  params:
+    search: "Search term for projects"
+    search_namespaces: "Needs to be true if search is full path"
+    owned: "Filter for projects owned by current user"
+    membership: "Filter for projects where current user is a member"
+    simple: "Return only limited fields"
+    archived: "Filter for archived projects"
+    visibility: "Filter by project visibility"
+    order_by: "Return projects ordered by field"
+    sort: "Return projects sorted in ascending or descending order"
+    with_issues_enabled: "Filter projects with issues feature enabled"
+    with_merge_requests_enabled: "Filter projects with merge requests feature enabled"
+    min_access_level: "Filter by minimum access level"
+    topic: "Filter by topic (projects tagged with this topic)"
+    page: "Page number for pagination (default: 1)"
+    per_page: "Number of items per page (max: 100, default: 20)"
+- name: list_project_members
+  description: "List members of a GitLab project"
+  params:
+    project_id: "Project ID or URL-encoded path"
+    query: "Search for members by name or username"
+    user_ids: "Filter by user IDs"
+    skip_users: "User IDs to exclude"
+    include_inheritance: "Include inherited members. Defaults to false."
+    per_page: "Number of items per page (default: 20, max: 100)"
+    page: "Page number for pagination (default: 1)"
+- name: list_labels
+  description: "List labels for a project"
+  params:
+    project_id: "Project ID or URL-encoded path"
+    with_counts: "Whether or not to include issue and merge request counts"
+    include_ancestor_groups: "Include ancestor groups"
+    search: "Keyword to filter labels by"
+- name: get_label
+  description: "Get a single label from a project"
+  params:
+    project_id: "Project ID or URL-encoded path"
+    label_id: "The ID or title of a project's label"
+    include_ancestor_groups: "Include ancestor groups"
+- name: create_label
+  description: "Create a new label in a project"
+  params:
+    project_id: "Project ID or URL-encoded path"
+    name: "The name of the label"
+    color: "The color of the label given in 6-digit hex notation with leading '#' sign"
+    description: "The description of the label"
+    priority: "The priority of the label"
+- name: update_label
+  description: "Update an existing label in a project"
+  params:
+    project_id: "Project ID or URL-encoded path"
+    label_id: "The ID or title of a project's label"
+    new_name: "The new name of the label"
+    color: "The color of the label given in 6-digit hex notation with leading '#' sign"
+    description: "The new description of the label"
+    priority: "The new priority of the label"
+- name: delete_label
+  description: "Delete a label from a project"
+  params:
+    project_id: "Project ID or URL-encoded path"
+    label_id: "The ID or title of a project's label"
+- name: list_group_projects
+  description: "List projects in a group"
+  params:
+    group_id: "Group ID or path"
+    include_subgroups: "Include projects from subgroups"
+    search: "Search term to filter projects"
+    order_by: "Field to sort by"
+    sort: "Sort direction"
+    archived: "Filter for archived projects"
+    visibility: "Filter by project visibility"
+    with_issues_enabled: "Filter projects with issues feature enabled"
+    with_merge_requests_enabled: "Filter projects with merge requests feature enabled"
+    min_access_level: "Filter by minimum access level"
+    with_programming_language: "Filter by programming language"
+    starred: "Filter by starred projects"
+    statistics: "Include project statistics"
+    with_custom_attributes: "Include custom attributes"
+    with_security_reports: "Include security reports"
+    topic: "Filter by topic (projects tagged with this topic)"
+    page: "Page number for pagination (default: 1)"
+    per_page: "Number of items per page (max: 100, default: 20)"
+- name: get_repository_tree
+  description: "List files and directories in a repository"
+  params:
+    project_id: "The ID or URL-encoded path of the project"
+    path: "The path inside the repository"
+    ref: "The name of a repository branch or tag. Defaults to the default branch."
+    recursive: "Boolean value to get a recursive tree"
+    per_page: "Number of results to show per page"
+    page_token: "The tree record ID for pagination"
+    pagination: "Pagination method (keyset)"
+- name: list_merge_requests
+  description: "List merge requests (without project_id: user's MRs; with project_id: project MRs)"
+  params:
+    project_id: "Project ID or URL-encoded path (optional - if not provided, lists all merge requests the user has access to)"
+    assignee_id: "Return MRs assigned to the given user ID (integer), 'none', or 'any'. Mutually exclusive with assignee_username."
+    assignee_username: "Returns merge requests assigned to the given username. Mutually exclusive with assignee_id."
+    author_id: "Returns merge requests created by the given user ID (integer). Mutually exclusive with author_username."
+    author_username: "Returns merge requests created by the given username. Mutually exclusive with author_id."
+    reviewer_id: "Returns merge requests which have the user as a reviewer. Must be an integer, 'none', or 'any'. Mutually exclusive with reviewer_username."
+    reviewer_username: "Returns merge requests which have the user as a reviewer by username. Mutually exclusive with reviewer_id."
+    created_after: "Return merge requests created after the given time"
+    created_before: "Return merge requests created before the given time"
+    updated_after: "Return merge requests updated after the given time"
+    updated_before: "Return merge requests updated before the given time"
+    labels: "Array of label names"
+    milestone: "Milestone title"
+    scope: "Return merge requests from a specific scope"
+    search: "Search for specific terms"
+    state: "Return merge requests with a specific state"
+    order_by: "Return merge requests ordered by the given field"
+    sort: "Return merge requests sorted in ascending or descending order"
+    target_branch: "Return merge requests targeting a specific branch"
+    source_branch: "Return merge requests from a specific source branch"
+    wip: "Filter merge requests against their wip status"
+    with_labels_details: "Return more details for each label"
+    page: "Page number for pagination (default: 1)"
+    per_page: "Number of items per page (max: 100, default: 20)"
 - name: get_users
-  description: Get GitLab user details by usernames
+  description: "Get GitLab user details by usernames"
   params:
-    usernames: Array of usernames to search for (required)
+    usernames: "Array of usernames to search for"
+- name: list_commits
+  description: "List repository commits with filtering options"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    ref_name: "The name of a repository branch, tag or revision range, or if not given the default branch"
+    since: "Only commits after or on this date are returned in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ"
+    until: "Only commits before or on this date are returned in ISO 8601 format YYYY-MM-DDTHH:MM:SSZ"
+    path: "The file path"
+    author: "Search commits by commit author"
+    all: "Retrieve every commit from the repository"
+    with_stats: "Stats about each commit are added to the response"
+    first_parent: "Follow only the first parent commit upon seeing a merge commit"
+    order: "List commits in order"
+    trailers: "Parse and include Git trailers for every commit"
+    page: "Page number for pagination (default: 1)"
+    per_page: "Number of items per page (max: 100, default: 20)"
+- name: get_commit
+  description: "Get details of a specific commit"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    sha: "The commit hash or name of a repository branch or tag"
+    stats: "Include commit stats"
+- name: get_commit_diff
+  description: "Get changes/diffs of a specific commit"
+  params:
+    project_id: "Project ID or complete URL-encoded path to project"
+    sha: "The commit hash or name of a repository branch or tag"
+    full_diff: "Whether to return the full diff or only first page (default: false)"
+- name: list_group_iterations
+  description: "List group iterations with filtering options"
+  params:
+    group_id: "Group ID or URL-encoded path"
+    state: "Return opened, upcoming, current, closed, or all iterations."
+    search: "Return only iterations with a title matching the provided string."
+    search_in: "Fields in which fuzzy search should be performed with the query given in the argument search. The available options are title and cadence_title. Default is [title]."
+    include_ancestors: "Include iterations for group and its ancestors. Defaults to true."
+    include_descendants: "Include iterations for group and its descendants. Defaults to false."
+    updated_before: "Return only iterations updated before the given datetime. Expected in ISO 8601 format (2019-03-15T08:00:00Z)."
+    updated_after: "Return only iterations updated after the given datetime. Expected in ISO 8601 format (2019-03-15T08:00:00Z)."
+    page: "Page number for pagination (default: 1)"
+    per_page: "Number of items per page (max: 100, default: 20)"
+- name: upload_markdown
+  description: "Upload a file for use in markdown content"
+  params:
+    project_id: "Project ID or URL-encoded path of the project"
+    file_path: "Path to the file to upload"
+- name: download_attachment
+  description: "Download an uploaded file from a project (images returned as base64; use local_path to save to disk)"
+  params:
+    project_id: "Project ID or URL-encoded path of the project"
+    secret: "The 32-character secret of the upload"
+    filename: "The filename of the upload"
+    local_path: "Local path to save the file (optional, defaults to current directory)"
+- name: list_events
+  description: "List events for the authenticated user (before/after: YYYY-MM-DD)"
+  params:
+    action: "If defined, returns events with the specified action type"
+    target_type: "If defined, returns events with the specified target type"
+    before: "If defined, Returns events created before the specified date (YYYY-MM-DD format). To include events on 2025-08-29, use before=2025-08-30"
+    after: "If defined, Returns events created after the specified date (YYYY-MM-DD format). To include events on 2025-08-29, use after=2025-08-28"
+    scope: "Include all events across a user's projects"
+    sort: "Direction to sort the results by creation date. Default: desc"
+    page: "Returns the specified results page. Default: 1"
+    per_page: "Number of results per page. Default: 20"
+- name: get_project_events
+  description: "List events for a project (before/after: YYYY-MM-DD)"
+  params:
+    project_id: "Project ID or URL-encoded path"
+    action: "If defined, returns events with the specified action type"
+    target_type: "If defined, returns events with the specified target type"
+    before: "If defined, Returns events created before the specified date (YYYY-MM-DD format). To include events on 2025-08-29, use before=2025-08-30"
+    after: "If defined, Returns events created after the specified date (YYYY-MM-DD format). To include events on 2025-08-29, use after=2025-08-28"
+    sort: "Direction to sort the results by creation date. Default: desc"
+    page: "Returns the specified results page. Default: 1"
+    per_page: "Number of results per page. Default: 20"
+- name: discover_tools
+  description: "Discover and activate additional tool categories for this session. Available categories: merge_requests, issues, repositories, branches, projects, labels, pipelines, milestones, wiki, releases, users, workitems, webhooks, search. Already-active categories are listed in the response."
+  params:
+    category: "Toolset category to activate (e.g. 'pipelines', 'wiki'). Omit to list available categories."
