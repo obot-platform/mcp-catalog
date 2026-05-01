@@ -13,7 +13,6 @@ on:
           - asana.yaml
           - atlassian.yaml
           - aws.yaml
-          - aws_cdk.yaml
           - aws_documentation.yaml
           - aws_eks.yaml
           - aws_kendra.yaml

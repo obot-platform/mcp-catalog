@@ -205,7 +205,6 @@ Then(/^User connects to the "(.*)" MCP server$/, async (mcpServer: string) => {
       break;
 
     case "aws api":
-    case "aws cdk":
     case "aws documentation":
     case "aws eks":
     case "aws kendra":
