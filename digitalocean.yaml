@@ -103,21 +103,16 @@ containerizedConfig:
   - ${ENABLED_SERVICES}
 toolPreview:
 - name: apps-create-app-from-spec
-  description: Creates an application from a given app spec. Within the app spec,
-    a source has to be provided. The source can be a Git repository, a Dockerfile,
-    or a container image.
+  description: Creates an application from a given app spec. Within the app spec, a source has to be provided. The source can be a Git repository, a Dockerfile, or a container image.
   params:
     project_id: Optional. The UUID of the project the app should be assigned. (optional)
     spec: The desired configuration of an application. (optional)
 - name: apps-delete
-  description: Delete an existing app on DigitalOcean App Platform. This is a destructive
-    operation and cannot be undone.
+  description: Delete an existing app on DigitalOcean App Platform. This is a destructive operation and cannot be undone.
   params:
     AppID: The application ID of the app we want to delete.
 - name: apps-get-deployment-status
-  description: Retrieves the active deployment for an application on DigitalOcean
-    App Platform. This is useful for getting the current state of an app's latest
-    deployment and it's health status.
+  description: Retrieves the active deployment for an application on DigitalOcean App Platform. This is useful for getting the current state of an app's latest deployment and it's health status.
   params:
     AppID: The application ID of the app to retrieve active deployment for
 - name: apps-get-info
@@ -125,8 +120,7 @@ toolPreview:
   params:
     AppID: The application ID of the app to retrieve information for
 - name: apps-get-logs
-  description: Retrieves app logs for a specific app deployment and component on DigitalOcean
-    App Platform. Returns both live and historic log URLs.
+  description: Retrieves app logs for a specific app deployment and component on DigitalOcean App Platform. Returns both live and historic log URLs.
   params:
     AppID: The application ID
     Component: The component name to get logs for
@@ -135,15 +129,12 @@ toolPreview:
     LogType: The type of logs to retrieve.
     TailLines: 'Number of lines to retrieve from the end of logs (default: 100) (optional)'
 - name: apps-list
-  description: List all applications on DigitalOcean App Platform. By default, we
-    only return a summary of the apps. To get detailed information about an app, use
-    the `apps-get-info` with the app id.
+  description: List all applications on DigitalOcean App Platform. By default, we only return a summary of the apps. To get detailed information about an app, use the `apps-get-info` with the app id.
   params:
     Page: The page number to retrieve (default is 1) (optional)
     PerPage: The number of items per page (default is 200) (optional)
 - name: apps-update
-  description: Updates an existing application on DigitalOcean App Platform. The app
-    ID and the AppSpec must be provided in the request.
+  description: Updates an existing application on DigitalOcean App Platform. The app ID and the AppSpec must be provided in the request.
   params:
     update: The request structure for updating an app (optional)
 - name: byoip-prefix-create
@@ -301,12 +292,10 @@ toolPreview:
     page: Page number for pagination (optional, integer as string) (optional)
     per_page: Number of results per page (optional, integer) (optional)
 - name: db-cluster-list-options
-  description: List available database options (engines, versions, sizes, regions,
-    etc) for DigitalOcean managed databases.
+  description: List available database options (engines, versions, sizes, regions, etc) for DigitalOcean managed databases.
   params: {}
 - name: db-cluster-list-topics
-  description: List topics for a Kafka cluster by its ID. Supports pagination and
-    filtering.
+  description: List topics for a Kafka cluster by its ID. Supports pagination and filtering.
   params:
     id: The Kafka cluster UUID
     only_deployed: Only deployed topics (bool as string) (optional)
@@ -322,8 +311,7 @@ toolPreview:
     page: Page number for pagination (optional) (optional)
     per_page: Number of results per page (optional) (optional)
 - name: db-cluster-resize
-  description: Resize a database cluster by its id. At least one of size, num_nodes,
-    or storage_size_mib must be provided.
+  description: Resize a database cluster by its id. At least one of size, num_nodes, or storage_size_mib must be provided.
   params:
     id: The id of the cluster to resize
     num_nodes: The new number of nodes (optional)
@@ -357,32 +345,27 @@ toolPreview:
     config: Kafka configuration object
     id: Kafka cluster UUID
 - name: db-cluster-update-mongodb-config
-  description: Update the MongoDB config for a cluster by its id. Accepts a structured
-    config object.
+  description: Update the MongoDB config for a cluster by its id. Accepts a structured config object.
   params:
     config: Configuration parameters for MongoDB
     id: The cluster UUID
 - name: db-cluster-update-mysql-config
-  description: Update the MySQL config for a cluster by its id. Accepts a structured
-    'config' object.
+  description: Update the MySQL config for a cluster by its id. Accepts a structured 'config' object.
   params:
     config: Structured configuration for MySQL
     id: The cluster UUID
 - name: db-cluster-update-os-config
-  description: Update the Opensearch config for a cluster by its id. Accepts a structured
-    config object.
+  description: Update the Opensearch config for a cluster by its id. Accepts a structured config object.
   params:
     config: Structured configuration for Opensearch cluster
     id: The cluster UUID
 - name: db-cluster-update-psql-config
-  description: Update the PostgreSQL config for a cluster by its id. Accepts a structured
-    config object.
+  description: Update the PostgreSQL config for a cluster by its id. Accepts a structured config object.
   params:
     config: Configuration object for PostgreSQL database
     id: The cluster UUID
 - name: db-cluster-update-redis-config
-  description: Update the Redis config for a cluster by its id. Accepts a structured
-    config object.
+  description: Update the Redis config for a cluster by its id. Accepts a structured config object.
   params:
     config: Structured configuration for Redis database
     id: The cluster UUID
@@ -401,8 +384,7 @@ toolPreview:
     settings: Optional user settings object (optional)
     user: The user name
 - name: db-cluster-upgrade-major-version
-  description: Upgrade the major version of a database cluster by its id. Requires
-    the target version.
+  description: Upgrade the major version of a database cluster by its id. Requires the target version.
   params:
     id: The cluster UUID
     version: The target major version to upgrade to (e.g., 15 for PostgreSQL)
@@ -480,8 +462,7 @@ toolPreview:
     Monitoring: Whether to enable monitoring (optional)
     Name: Name of the droplet
     Region: Slug of the region (e.g., nyc3)
-    SSHKeys: Array of SSH key IDs (numbers) or fingerprints (strings) to add to the
-      droplet (optional)
+    SSHKeys: Array of SSH key IDs (numbers) or fingerprints (strings) to add to the droplet (optional)
     Size: Slug of the droplet size (e.g., s-1vcpu-1gb)
     Tags: Array of tag names to apply to the droplet (optional)
 - name: droplet-delete
@@ -618,8 +599,7 @@ toolPreview:
   params:
     Page: Page number (optional)
     PerPage: Items per page (optional)
-    Type: 'Filter by type: ''distribution'', ''application'', ''user'' (snapshots/backups).
-      If omitted, lists all. (optional)'
+    Type: 'Filter by type: ''distribution'', ''application'', ''user'' (snapshots/backups). If omitted, lists all. (optional)'
 - name: image-update
   description: Update an image's name.
   params:
@@ -648,8 +628,7 @@ toolPreview:
     Region: Region slug (e.g., nyc3) (optional)
     SizeUnit: Size of the load balancer in units appropriate to its type (optional)
     Tag: Droplet tag corresponding to Droplets assigned to the load balancer (optional)
-    TargetLoadBalancerIDs: IDs of the target regional load balancers for a global
-      load balancer (optional)
+    TargetLoadBalancerIDs: IDs of the target regional load balancers for a global load balancer (optional)
     Type: Type of the load balancer (REGIONAL, REGIONAL_NETWORK, GLOBAL) (optional)
 - name: lb-delete
   description: Delete a Load Balancer by ID
@@ -692,8 +671,7 @@ toolPreview:
     Region: Region slug (e.g., nyc3) (optional)
     SizeUnit: Size of the load balancer in units appropriate to its type (optional)
     Tag: Droplet tag corresponding to Droplets assigned to the load balancer (optional)
-    TargetLoadBalancerIDs: IDs of the target regional load balancers for a global
-      load balancer (optional)
+    TargetLoadBalancerIDs: IDs of the target regional load balancers for a global load balancer (optional)
     Type: Type of the load balancer (REGIONAL, REGIONAL_NETWORK, GLOBAL)
 - name: lets-encrypt-certificate-create
   description: Create a new let's encrypt certificate
@@ -739,8 +717,7 @@ toolPreview:
     ID: ID of the droplet to rebuild
     ImageSlug: Slug of the image to rebuild from
 - name: region-list
-  description: List all available regions with features and droplet size availability.
-    Supports pagination.
+  description: List all available regions with features and droplet size availability. Supports pagination.
   params:
     Page: Page number (optional)
     PerPage: Items per page (optional)
