@@ -84,48 +84,31 @@ toolPreview:
   description: Manage EKS CloudFormation stacks with both read and write operations.
   params:
     operation: 'Operation to perform: generate, deploy, describe, or delete. Choose "describe" for read-only operations when write access is disabled.'
-    template_file: 'Absolute path for the CloudFormation template (for generate and deploy operations).
-      IMPORTANT: Assistant must provide the full absolute path to the template file, as the MCP client and server might not run from the same location.'
-    cluster_name: 'Name of the EKS cluster (for generate, deploy, describe and delete operations).
-      This name will be used to derive the CloudFormation stack name and will be embedded in the cluster resources.'
+    template_file: 'Absolute path for the CloudFormation template (for generate and deploy operations). IMPORTANT: Assistant must provide the full absolute path to the template file, as the MCP client and server might not run from the same location.'
+    cluster_name: 'Name of the EKS cluster (for generate, deploy, describe and delete operations). This name will be used to derive the CloudFormation stack name and will be embedded in the cluster resources.'
 - name: list_k8s_resources
   description: List Kubernetes resources of a specific kind.
   params:
     cluster_name: Name of the EKS cluster where the resources are located.
-    kind: 'Kind of the Kubernetes resources to list (e.g., ''Pod'', ''Service'', ''Deployment'').
-      Use the list_api_versions tool to find available resource kinds.'
-    api_version: 'API version of the Kubernetes resources (e.g., ''v1'', ''apps/v1'', ''networking.k8s.io/v1'').
-      Use the list_api_versions tool to find available API versions.'
-    namespace: 'Namespace of the Kubernetes resources to list.
-      If not provided, resources will be listed across all namespaces (for namespaced resources).'
-    label_selector: 'Label selector to filter resources (e.g., ''app=nginx,tier=frontend'').
-      Uses the same syntax as kubectl''s --selector flag.'
-    field_selector: 'Field selector to filter resources (e.g., ''metadata.name=my-pod,status.phase=Running'').
-      Uses the same syntax as kubectl''s --field-selector flag.'
+    kind: 'Kind of the Kubernetes resources to list (e.g., ''Pod'', ''Service'', ''Deployment''). Use the list_api_versions tool to find available resource kinds.'
+    api_version: 'API version of the Kubernetes resources (e.g., ''v1'', ''apps/v1'', ''networking.k8s.io/v1''). Use the list_api_versions tool to find available API versions.'
+    namespace: 'Namespace of the Kubernetes resources to list. If not provided, resources will be listed across all namespaces (for namespaced resources).'
+    label_selector: 'Label selector to filter resources (e.g., ''app=nginx,tier=frontend''). Uses the same syntax as kubectl''s --selector flag.'
+    field_selector: 'Field selector to filter resources (e.g., ''metadata.name=my-pod,status.phase=Running''). Uses the same syntax as kubectl''s --field-selector flag.'
 - name: manage_k8s_resource
   description: Manage a single Kubernetes resource with various operations.
   params:
-    operation: 'Operation to perform on the resource. Valid values:
-      - create: Create a new resource
-      - replace: Replace an existing resource
-      - patch: Update specific fields of an existing resource
-      - delete: Delete an existing resource
-      - read: Get details of an existing resource
-      Use list_k8s_resources for listing multiple resources.'
+    operation: 'Operation to perform on the resource. Valid values: - create: Create a new resource - replace: Replace an existing resource - patch: Update specific fields of an existing resource - delete: Delete an existing resource - read: Get details of an existing resource Use list_k8s_resources for listing multiple resources.'
     cluster_name: Name of the EKS cluster where the resource is located or will be created.
     kind: Kind of the Kubernetes resource (e.g., "Pod", "Service", "Deployment").
     api_version: API version of the Kubernetes resource (e.g., "v1", "apps/v1", "networking.k8s.io/v1").
     name: Name of the Kubernetes resource. Required for all operations except create (where it can be specified in the body).
-    namespace: 'Namespace of the Kubernetes resource. Required for namespaced resources.
-      Not required for cluster-scoped resources (like Nodes, PersistentVolumes).'
-    body: 'Resource definition as a dictionary. Required for create, replace, and patch operations.
-      For create and replace, this should be a complete resource definition.
-      For patch, this should contain only the fields to update.'
+    namespace: 'Namespace of the Kubernetes resource. Required for namespaced resources. Not required for cluster-scoped resources (like Nodes, PersistentVolumes).'
+    body: 'Resource definition as a dictionary. Required for create, replace, and patch operations. For create and replace, this should be a complete resource definition. For patch, this should contain only the fields to update.'
 - name: apply_yaml
   description: Apply a Kubernetes YAML from a local file.
   params:
-    yaml_path: 'Absolute path to the YAML file to apply.
-      IMPORTANT: Must be an absolute path (e.g., ''/home/user/manifests/app.yaml'') as the MCP client and server might not run from the same location.'
+    yaml_path: 'Absolute path to the YAML file to apply. IMPORTANT: Must be an absolute path (e.g., ''/home/user/manifests/app.yaml'') as the MCP client and server might not run from the same location.'
     cluster_name: Name of the EKS cluster where the resources will be created or updated.
     namespace: Kubernetes namespace to apply resources to. Will be used for namespaced resources that do not specify a namespace.
     force: Whether to update resources if they already exist (similar to kubectl apply). Set to false to only create new resources.
@@ -137,8 +120,7 @@ toolPreview:
   description: Generate Kubernetes manifest for a deployment and service.
   params:
     app_name: Name of the application. Used for deployment and service names, and for labels.
-    image_uri: 'Full ECR image URI with tag (e.g., 123456789012.dkr.ecr.region.amazonaws.com/repo:tag).
-      Must include the full repository path and tag.'
+    image_uri: 'Full ECR image URI with tag (e.g., 123456789012.dkr.ecr.region.amazonaws.com/repo:tag). Must include the full repository path and tag.'
     output_dir: Absolute path to the directory to save the manifest file
     port: Container port that the application listens on
     replicas: Number of replicas to deploy
@@ -163,19 +145,13 @@ toolPreview:
     cluster_name: Name of the EKS cluster where the resource is located.
     kind: Kind of the involved object (e.g., "Pod", "Deployment", "Service"). Must match the resource kind exactly.
     name: Name of the involved object to get events for.
-    namespace: 'Namespace of the involved object. Required for namespaced resources (like Pods, Deployments).
-      Not required for cluster-scoped resources (like Nodes, PersistentVolumes).'
+    namespace: 'Namespace of the involved object. Required for namespaced resources (like Pods, Deployments). Not required for cluster-scoped resources (like Nodes, PersistentVolumes).'
 - name: get_cloudwatch_logs
   description: Get logs from CloudWatch for a specific resource.
   params:
     resource_type: 'Resource type to search logs for. Valid values: "pod", "node", "container". This determines how logs are filtered.'
     cluster_name: Name of the EKS cluster where the resource is located. Used to construct the CloudWatch log group name.
-    log_type: 'Log type to query. Options:
-      - "application": Container/application logs
-      - "host": Node-level system logs
-      - "performance": Performance metrics logs
-      - "control-plane": EKS control plane logs
-      - Or provide a custom CloudWatch log group name directly'
+    log_type: 'Log type to query. Options: - "application": Container/application logs - "host": Node-level system logs - "performance": Performance metrics logs - "control-plane": EKS control plane logs - Or provide a custom CloudWatch log group name directly'
     resource_name: Resource name to search for in log messages (e.g., pod name, node name, container name). Used to filter logs for the specific resource.
     minutes: 'Number of minutes to look back for logs. Default: 15. Ignored if start_time is provided. Use smaller values for recent issues, larger values for historical analysis.'
     start_time: 'Start time in ISO format (e.g., "2023-01-01T00:00:00Z"). If provided, overrides the minutes parameter. IMPORTANT: Use this for precise time ranges.'
@@ -187,27 +163,15 @@ toolPreview:
   description: Get metrics from CloudWatch for a specific resource.
   params:
     cluster_name: Name of the EKS cluster to get metrics for.
-    metric_name: 'Metric name to retrieve. Common examples:
-      - cpu_usage_total: Total CPU usage
-      - memory_rss: Resident Set Size memory usage
-      - network_rx_bytes: Network bytes received
-      - network_tx_bytes: Network bytes transmitted'
-    namespace: 'CloudWatch namespace where the metric is stored. Common values:
-      - "ContainerInsights": For container metrics
-      - "AWS/EC2": For EC2 instance metrics
-      - "AWS/EKS": For EKS control plane metrics'
+    metric_name: 'Metric name to retrieve. Common examples: - cpu_usage_total: Total CPU usage - memory_rss: Resident Set Size memory usage - network_rx_bytes: Network bytes received - network_tx_bytes: Network bytes transmitted'
+    namespace: 'CloudWatch namespace where the metric is stored. Common values: - "ContainerInsights": For container metrics - "AWS/EC2": For EC2 instance metrics - "AWS/EKS": For EKS control plane metrics'
     dimensions: Dimensions to use for the CloudWatch metric query. Must include appropriate dimensions for the resource type and metric (e.g., ClusterName, PodName, Namespace).
     minutes: 'Number of minutes to look back for metrics. Default: 15. Ignored if start_time is provided. IMPORTANT: Choose a time range appropriate for the metric resolution.'
     start_time: 'Start time in ISO format (e.g., "2023-01-01T00:00:00Z"). If provided, overrides the minutes parameter. IMPORTANT: Use this for precise historical analysis.'
     end_time: 'End time in ISO format (e.g., "2023-01-01T01:00:00Z"). If not provided, defaults to current time. IMPORTANT: Use with start_time for precise time ranges.'
     limit: 'Maximum number of data points to return. Higher values (100-1000) provide more granular data but may impact performance. IMPORTANT: Balance between granularity and performance.'
     period: 'Period in seconds for the metric data points. Default: 60 (1 minute). Lower values (1-60) provide higher resolution but may be less available. IMPORTANT: Match to your monitoring needs.'
-    stat: 'Statistic to use for the metric aggregation:
-      - Average: Mean value during the period
-      - Sum: Total value during the period
-      - Maximum: Highest value during the period
-      - Minimum: Lowest value during the period
-      - SampleCount: Number of samples during the period'
+    stat: 'Statistic to use for the metric aggregation: - Average: Mean value during the period - Sum: Total value during the period - Maximum: Highest value during the period - Minimum: Lowest value during the period - SampleCount: Number of samples during the period'
 - name: get_eks_metrics_guidance
   description: Get CloudWatch metrics guidance for specific resource types in EKS clusters.
   params:
@@ -233,8 +197,7 @@ toolPreview:
   params:
     policy_name: Name of the inline policy to create. Must be unique within the role.
     role_name: Name of the IAM role to add the policy to. The role must exist.
-    permissions: 'Permissions to include in the policy as IAM policy statements in JSON format.
-      Can be either a single statement object or an array of statement objects.'
+    permissions: 'Permissions to include in the policy as IAM policy statements in JSON format. Can be either a single statement object or an array of statement objects.'
 - name: search_eks_troubleshoot_guide
   description: Search the EKS Troubleshoot Guide for troubleshooting information.
   params:
