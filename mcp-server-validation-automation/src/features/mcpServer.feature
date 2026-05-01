@@ -18,7 +18,6 @@ Feature: Connect MCP servers on Obot
             | ServerName                       | ConnectionName                     | PromptName       | ReportName       |
             | test-antv_charts                 | AntV Charts                        | AntV Charts      | AntV Charts      |
             | test-aws                         | AWS API                            | AWS API          | AWS API          |
-            | test-aws_cdk                     | AWS CDK                            | AWS CDK          | AWS CDK          |
             | test-aws_documentation           | AWS Documentation                  | AWS Documentation| AWS Documentation|
             | test-aws_eks                     | AWS EKS                            | AWS EKS          | AWS EKS          |
             | test-aws_kendra                  | AWS Kendra                         | AWS Kendra       | AWS Kendra       |
