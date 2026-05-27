@@ -1,4 +1,5 @@
 name: Google Docs
+serverUserType: singleUser
 shortDescription: Create and manage documents in Google Docs
 description: |
   ![Google Docs MCP Server](https://img.shields.io/badge/Google%20Docs-MCP%20Server-blue?style=for-the-badge&logo=google-docs)

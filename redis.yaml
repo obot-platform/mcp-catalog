@@ -1,4 +1,5 @@
 name: Redis
+serverUserType: singleUser
 shortDescription: Manage Redis data types, vector search, streams, and pub/sub messaging
 description: |
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

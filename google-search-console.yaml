@@ -1,4 +1,5 @@
 name: Google Search Console
+serverUserType: singleUser
 shortDescription: Use Google Search Console API to get sitemaps, analytics, and more
 description: |
   ![Google Search Console MCP Server](https://img.shields.io/badge/Google%20Search%20Console-MCP%20Server-blue?style=for-the-badge&logo=google-search-console)

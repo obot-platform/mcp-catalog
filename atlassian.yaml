@@ -1,4 +1,5 @@
 name: Atlassian
+serverUserType: singleUser
 shortDescription: Manage Jira issues, Confluence pages, and Compass services with AI assistance
 description: |
 
