@@ -1,4 +1,5 @@
 name: Google Maps Grounding Lite
+serverUserType: singleUser
 shortDescription: The server provides tools for developers to build LLM applications on top of Google Maps Platform.
 description: |
   The Google Maps Grounding Lite API offers a suite of tools that enable developers to create applications leveraging the capabilities of Google Maps Platform. This API provides functionalities such as route computation, weather lookup, and place search, allowing for the integration of rich geographical data and services into applications. With these tools, developers can enhance user experiences by providing accurate and contextually relevant information based on location data.
