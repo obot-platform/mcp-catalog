@@ -117,4 +117,4 @@ containerizedConfig:
   port: 8099
   path: /
   args:
-  - mcp-server-playwright
+  - playwright-mcp
