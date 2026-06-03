@@ -273,8 +273,7 @@ containerizedConfig:
   port: 8080
   path: "/mcp"
   args:
-  - /bin/terraform-mcp-server
-  - http
+  - streamable-http
   - --transport-port
   - 8080
   - --transport-host
