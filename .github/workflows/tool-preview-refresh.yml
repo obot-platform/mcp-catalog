@@ -49,6 +49,7 @@ on:
           - google-sheets.yaml
           - grafana.yaml
           - hubspot.yaml
+          - hive_intelligence.yaml
           - linear.yaml
           - markitdown.yaml
           - microsoft-docs.yaml
