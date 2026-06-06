@@ -1,0 +1,48 @@
+name: TWZRD Agent Intel
+serverUserType: singleUser
+shortDescription: Trust + receipt layer for x402 agents on Solana. Score wallets, verify agents, and gate access with signed trust receipts via HTTP 402.
+description: |
+  TWZRD Agent Intel is a trust and receipt layer for x402 agents on the Solana blockchain. It provides AI agents with free preflight tools to score any Solana wallet and paid tools that return signed twzrd.receipt.v5 via HTTP 402 + USDC micropayment.
+
+  ## Features
+  - **Wallet Scoring**: Resolve and score any Solana wallet or agent identity with on-chain signals
+  - **Preflight Checks**: Free preflight tools to assess agent trustworthiness before committing to a transaction
+  - **Trust Receipts**: Paid get_trust_receipt returns a cryptographically signed twzrd.receipt.v5 via HTTP 402
+  - **x402 Native**: Designed for autonomous agent-to-agent payments on Solana using the x402 protocol
+  - **Identity Verification**: Verify trust receipts issued by other agents in the x402 ecosystem
+
+  ## What you'll need to connect
+
+  **Free Tools**: resolve_agent, score_agent, preflight_check, and verify_trust_receipt require no API key — available to any caller.
+
+  **Paid Tool**: get_trust_receipt requires a USDC micropayment via HTTP 402 (x402 protocol on Solana). No API key needed — payment is handled autonomously.
+
+metadata:
+  categories: Blockchain & Web3,AI Agents,Identity & Trust
+icon: https://intel.twzrd.xyz/favicon.ico
+repoURL: https://intel.twzrd.xyz
+toolPreview:
+  - name: resolve_agent
+    description: Resolve a Solana wallet address or agent identity to its canonical TWZRD profile.
+    params:
+      wallet: Solana wallet address or agent identity to resolve
+  - name: score_agent
+    description: Score a Solana wallet's trustworthiness based on on-chain signals and x402 payment history.
+    params:
+      wallet: Solana wallet address to score
+  - name: preflight_check
+    description: Run a free preflight trust check on a Solana wallet before committing to a transaction.
+    params:
+      wallet: Solana wallet address to check
+  - name: verify_trust_receipt
+    description: Verify a previously issued twzrd.receipt.v5 trust receipt signature.
+    params:
+      receipt: The signed twzrd.receipt.v5 receipt to verify
+  - name: get_trust_receipt
+    description: Get a signed twzrd.receipt.v5 trust receipt for a Solana wallet (paid via HTTP 402 + USDC).
+    params:
+      wallet: Solana wallet address for the trust receipt
+
+runtime: remote
+remoteConfig:
+  fixedURL: https://intel.twzrd.xyz/mcp
