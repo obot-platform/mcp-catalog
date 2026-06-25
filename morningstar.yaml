@@ -1,4 +1,5 @@
 name: Morningstar
+entryKey: morningstar
 serverUserType: singleUser
 shortDescription: Access Morningstar financial data, analyst research, and investment screening
 description: |

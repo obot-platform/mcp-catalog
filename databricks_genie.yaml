@@ -1,4 +1,5 @@
 name: Databricks Genie Spaces
+entryKey: databricks-genie-spaces
 serverUserType: singleUser
 shortDescription: Ask natural language questions about your data with AI-powered analytics
 description: |

@@ -1,4 +1,5 @@
 name: Zapier
+entryKey: zapier
 serverUserType: singleUser
 shortDescription: Access 30,000+ actions across 8,000+ apps in Zapier automation platform
 description: |

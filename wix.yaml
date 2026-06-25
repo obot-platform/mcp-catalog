@@ -1,4 +1,5 @@
 name: Wix
+entryKey: wix
 serverUserType: singleUser
 shortDescription: Access Wix APIs to manage sites, bookings, pricing plans, and CMS
 description: |

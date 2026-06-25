@@ -1,4 +1,5 @@
 name: Neon Database
+entryKey: neon
 serverUserType: singleUser
 shortDescription: Manage Neon Postgres databases with natural language, branching, and migrations
 description: |

@@ -1,4 +1,5 @@
 name: Word
+entryKey: word
 serverUserType: singleUser
 shortDescription: Create and manage Microsoft Word documents with markdown content conversion
 description: |

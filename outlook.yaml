@@ -1,4 +1,5 @@
 name: Outlook
+entryKey: outlook
 serverUserType: singleUser
 shortDescription: Manage Outlook emails, folders, drafts, and attachments via Microsoft Graph API
 description: |

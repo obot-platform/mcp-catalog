@@ -1,4 +1,5 @@
 name: Calendar
+entryKey: calendar
 serverUserType: singleUser
 shortDescription: Manage Microsoft 365 calendars, events, meetings, and attendees
 description: |

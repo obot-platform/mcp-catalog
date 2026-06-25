@@ -1,4 +1,5 @@
 name: Redis
+entryKey: redis
 serverUserType: singleUser
 shortDescription: Manage Redis data types, vector search, streams, and pub/sub messaging
 description: |

@@ -1,4 +1,5 @@
 name: Tableau
+entryKey: tableau
 serverUserType: singleUser
 shortDescription: Query Tableau data sources, access Pulse metrics, and explore workbooks
 description: |

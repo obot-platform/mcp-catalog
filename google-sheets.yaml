@@ -1,4 +1,5 @@
 name: Google Sheets
+entryKey: google-sheets
 serverUserType: singleUser
 shortDescription: Create and manage Google Sheets spreadsheets, worksheets, cells, and formulas
 description: |
