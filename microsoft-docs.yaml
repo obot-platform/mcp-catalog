@@ -1,4 +1,5 @@
 name: Microsoft Learn
+entryKey: obot-microsoft-learn
 serverUserType: singleUser
 shortDescription: Search Microsoft Learn documentation and find official code samples
 description: |

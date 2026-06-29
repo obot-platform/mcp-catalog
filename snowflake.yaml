@@ -1,4 +1,5 @@
 name: Snowflake
+entryKey: obot-snowflake
 serverUserType: singleUser
 shortDescription: Query Snowflake data warehouse with Cortex Search, Analyst, and SQL execution
 description: |

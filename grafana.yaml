@@ -1,4 +1,5 @@
 name: Grafana
+entryKey: obot-grafana
 serverUserType: singleUser
 shortDescription: Query metrics, logs, traces, manage dashboards, alerts, and on-call schedules
 description: |

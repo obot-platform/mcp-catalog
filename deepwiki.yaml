@@ -1,4 +1,5 @@
 name: DeepWiki
+entryKey: obot-deepwiki
 serverUserType: singleUser
 shortDescription: Access AI-generated documentation for any public GitHub repository
 description: |

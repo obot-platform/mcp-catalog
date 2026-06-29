@@ -1,4 +1,5 @@
 name: Todoist
+entryKey: obot-todoist
 serverUserType: singleUser
 shortDescription: Manage Todoist tasks, projects, and team collaboration through natural language
 description: |

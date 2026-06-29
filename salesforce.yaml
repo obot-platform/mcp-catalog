@@ -1,4 +1,5 @@
 name: Salesforce
+entryKey: obot-salesforce
 serverUserType: singleUser
 shortDescription: Manage Salesforce CRM records, execute SOQL queries, and access metadata
 description: |

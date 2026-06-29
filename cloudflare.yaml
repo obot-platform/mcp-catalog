@@ -1,4 +1,5 @@
 name: Cloudflare
+entryKey: obot-cloudflare
 serverUserType: singleUser
 shortDescription: Manage Cloudflare Workers, security, performance, AI services, and observability
 description: |

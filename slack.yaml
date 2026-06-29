@@ -1,4 +1,5 @@
 name: Slack
+entryKey: obot-slack
 serverUserType: singleUser
 shortDescription: Send messages, manage channels, search history, and handle threads in Slack workspaces
 description: |

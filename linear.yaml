@@ -1,4 +1,5 @@
 name: Linear
+entryKey: obot-linear
 serverUserType: singleUser
 shortDescription: Manage Linear issues, projects, comments, and team workflows with AI agents
 description: |

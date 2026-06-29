@@ -1,4 +1,5 @@
 name: Asana
+entryKey: obot-asana
 serverUserType: singleUser
 shortDescription: Manage Asana tasks and projects with natural language through AI integration
 description: |

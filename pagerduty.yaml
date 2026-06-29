@@ -1,4 +1,5 @@
 name: PagerDuty
+entryKey: obot-pagerduty
 serverUserType: singleUser
 shortDescription: Manage incidents, services, teams, on-call schedules, and escalation policies
 description: |

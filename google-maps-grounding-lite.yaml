@@ -1,4 +1,5 @@
 name: Google Maps Grounding Lite
+entryKey: obot-google-maps-grounding-lite
 serverUserType: singleUser
 shortDescription: The server provides tools for developers to build LLM applications on top of Google Maps Platform.
 description: |

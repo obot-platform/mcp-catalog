@@ -1,4 +1,5 @@
 name: GitHub
+entryKey: obot-github
 serverUserType: singleUser
 shortDescription: Manage GitHub repositories, issues, PRs, workflows, and CI/CD operations
 description: |
