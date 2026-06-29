@@ -1,5 +1,5 @@
 name: Tableau
-entryKey: tableau
+entryKey: obot-tableau
 serverUserType: singleUser
 shortDescription: Query Tableau data sources, access Pulse metrics, and explore workbooks
 description: |

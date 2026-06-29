@@ -1,5 +1,5 @@
 name: Elasticsearch
-entryKey: elasticsearch
+entryKey: obot-elasticsearch
 serverUserType: singleUser
 shortDescription: Search, query, and manage Elasticsearch indices with vector and full-text search
 description: |

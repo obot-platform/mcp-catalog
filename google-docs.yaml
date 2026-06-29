@@ -1,5 +1,5 @@
 name: Google Docs
-entryKey: google-docs
+entryKey: obot-google-docs
 serverUserType: singleUser
 shortDescription: Create and manage documents in Google Docs
 description: |

@@ -1,5 +1,5 @@
 name: MongoDB Atlas Management
-entryKey: mongodb-atlas-management
+entryKey: obot-mongodb-atlas-management
 serverUserType: singleUser
 shortDescription: Create and manage MongoDB Atlas projects, clusters, and database users
 description: |

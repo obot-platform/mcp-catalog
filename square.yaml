@@ -1,5 +1,5 @@
 name: Square
-entryKey: square
+entryKey: obot-square
 serverUserType: singleUser
 shortDescription: Manage Square payments, customers, orders, catalog, and business operations
 description: |

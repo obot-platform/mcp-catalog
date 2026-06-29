@@ -1,5 +1,5 @@
 name: Postman
-entryKey: postman
+entryKey: obot-postman
 serverUserType: singleUser
 shortDescription: Manage Postman collections, mocks, monitors, environments, and API specs
 description: |

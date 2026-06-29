@@ -1,5 +1,5 @@
 name: MySQL
-entryKey: mysql
+entryKey: obot-mysql
 serverUserType: singleUser
 shortDescription: Execute SQL queries and explore MySQL databases with structured access control
 description: '![Tests](https://github.com/designcomputer/mysql_mcp_server/actions/workflows/test.yml/badge.svg)

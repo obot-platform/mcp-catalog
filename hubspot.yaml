@@ -1,5 +1,5 @@
 name: HubSpot
-entryKey: hubspot
+entryKey: obot-hubspot
 serverUserType: singleUser
 shortDescription: Manage HubSpot CRM objects, schemas, properties, and workflows
 description: |

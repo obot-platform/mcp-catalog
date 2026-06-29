@@ -1,5 +1,5 @@
 name: Dynatrace
-entryKey: dynatrace
+entryKey: obot-dynatrace
 serverUserType: singleUser
 shortDescription: Query logs, metrics, spans, and manage problems with Dynatrace observability
 description: |2

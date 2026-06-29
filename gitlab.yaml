@@ -1,5 +1,5 @@
 name: GitLab
-entryKey: gitlab
+entryKey: obot-gitlab
 serverUserType: singleUser
 shortDescription: Manage GitLab projects, repositories, issues, merge requests, and CI/CD pipelines
 description: 'A Model Context Protocol (MCP) server that provides comprehensive GitLab integration capabilities. Enable LLMs to interact with GitLab projects, manage repositories, handle issues and merge requests, and perform automated GitLab operations with precision.

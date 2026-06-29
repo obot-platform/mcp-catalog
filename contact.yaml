@@ -1,5 +1,5 @@
 name: Contact
-entryKey: contact
+entryKey: obot-contact
 serverUserType: singleUser
 shortDescription: Manage Microsoft 365 contacts with CRUD operations and advanced search
 description: |

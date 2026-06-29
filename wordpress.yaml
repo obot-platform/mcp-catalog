@@ -1,5 +1,5 @@
 name: WordPress
-entryKey: wordpress
+entryKey: obot-wordpress
 serverUserType: singleUser
 shortDescription: Manage WordPress posts, categories, tags, and media on self-hosted sites
 description: |

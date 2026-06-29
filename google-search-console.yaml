@@ -1,5 +1,5 @@
 name: Google Search Console
-entryKey: google-search-console
+entryKey: obot-google-search-console
 serverUserType: singleUser
 shortDescription: Use Google Search Console API to get sitemaps, analytics, and more
 description: |

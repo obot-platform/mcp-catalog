@@ -1,5 +1,5 @@
 name: Google Cloud Run
-entryKey: google-cloud-run
+entryKey: obot-google-cloud-run
 serverUserType: singleUser
 shortDescription: Deploy and manage applications on Google Cloud Run with monitoring and logging
 description: |

@@ -1,5 +1,5 @@
 name: BigQuery Toolbox
-entryKey: bigquery-toolbox
+entryKey: obot-bigquery-toolbox
 serverUserType: singleUser
 shortDescription: Execute SQL queries and explore Google BigQuery datasets with secure access
 description: |

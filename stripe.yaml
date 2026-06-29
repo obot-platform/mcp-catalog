@@ -1,5 +1,5 @@
 name: Stripe
-entryKey: stripe
+entryKey: obot-stripe
 serverUserType: singleUser
 shortDescription: Process payments, manage subscriptions, invoices, customers, and disputes with Stripe
 description: |

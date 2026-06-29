@@ -1,5 +1,5 @@
 name: OneDrive
-entryKey: onedrive
+entryKey: obot-onedrive
 serverUserType: singleUser
 shortDescription: Manage OneDrive files, folders, sharing, and cross-drive operations
 description: |

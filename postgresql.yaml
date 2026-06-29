@@ -1,5 +1,5 @@
 name: PostgreSQL
-entryKey: postgresql
+entryKey: obot-postgresql
 serverUserType: singleUser
 shortDescription: Analyze performance, optimize queries, and tune PostgreSQL databases with health checks
 description: '[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)

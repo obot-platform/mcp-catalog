@@ -1,5 +1,5 @@
 name: PayPal
-entryKey: paypal
+entryKey: obot-paypal
 serverUserType: singleUser
 shortDescription: Create invoices, process payments, manage subscriptions, and handle disputes with PayPal
 description: |

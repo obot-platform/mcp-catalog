@@ -1,5 +1,5 @@
 name: Databricks Vector Search
-entryKey: databricks-vector-search
+entryKey: obot-databricks-vector-search
 serverUserType: singleUser
 shortDescription: Semantic search and similarity queries with Databricks Vector Search indexes
 description: |

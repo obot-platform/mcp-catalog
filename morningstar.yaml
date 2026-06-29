@@ -1,5 +1,5 @@
 name: Morningstar
-entryKey: morningstar
+entryKey: obot-morningstar
 serverUserType: singleUser
 shortDescription: Access Morningstar financial data, analyst research, and investment screening
 description: |

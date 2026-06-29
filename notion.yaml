@@ -1,5 +1,5 @@
 name: Notion
-entryKey: notion
+entryKey: obot-notion
 serverUserType: singleUser
 shortDescription: Manage Notion pages, databases, blocks, comments, and workspace content
 description: |

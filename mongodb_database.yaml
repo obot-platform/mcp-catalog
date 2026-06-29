@@ -1,5 +1,5 @@
 name: MongoDB Database
-entryKey: mongodb-database
+entryKey: obot-mongodb-database
 serverUserType: singleUser
 shortDescription: Manage MongoDB databases, collections, documents, and aggregation pipelines
 description: |

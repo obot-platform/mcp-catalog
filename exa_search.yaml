@@ -1,5 +1,5 @@
 name: Exa Search
-entryKey: exa-search
+entryKey: obot-exa-search
 serverUserType: singleUser
 shortDescription: AI-powered web search for research, company intelligence, and content extraction
 description: '[![npm version](https://badge.fury.io/js/exa-mcp-server.svg)](https://www.npmjs.com/package/exa-mcp-server)

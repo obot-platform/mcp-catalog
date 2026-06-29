@@ -1,5 +1,5 @@
 name: Terraform
-entryKey: terraform
+entryKey: obot-terraform
 serverUserType: singleUser
 shortDescription: Manage Terraform Cloud workspaces, runs, variables, and explore the registry
 description: |

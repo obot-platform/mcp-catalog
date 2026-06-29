@@ -1,5 +1,5 @@
 name: GitMCP
-entryKey: gitmcp
+entryKey: obot-gitmcp
 serverUserType: singleUser
 shortDescription: Access any GitHub project's documentation and code in real-time with AI assistance
 description: |
