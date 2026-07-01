@@ -3,6 +3,9 @@ entryKey: obot-slack
 serverUserType: singleUser
 shortDescription: Send messages, manage channels, search history, and handle threads in Slack workspaces
 description: |
+  **DEPRECATED**: this server is no longer supported, and will be removed from the Obot MCP Catalog in August 2026.
+  Please switch to the Slack Workspace server, which is the replacement
+
   ![Slack MCP Server](https://img.shields.io/badge/Slack-MCP%20Server-blue?style=for-the-badge&logo=slack)
   ![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-green?style=for-the-badge&logo=typescript)
   ![Node.js](https://img.shields.io/badge/Node.js-18+-orange?style=for-the-badge&logo=node.js)
@@ -74,6 +77,7 @@ description: |
 metadata:
   categories: Communication
   allow-multiple: "true"
+  deprecated: "true"
 icon: https://img.icons8.com/?size=100&id=4n94I13nDTyw&format=png&color=000000
 repoURL: https://github.com/obot-platform/slack-mcp
 runtime: containerized

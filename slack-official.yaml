@@ -1,0 +1,31 @@
+name: Slack Workspace
+entryKey: slack
+serverUserType: singleUser
+shortDescription: Connect to Slack and work with messages, files, channels, and more
+description: |
+
+  A Model Context Protocol (MCP) that connects to your Slack workspace.
+  This is the official Slack MCP server.
+
+  ## Features
+  - **Messages**: send messages and read message history across channels and direct messages
+  - **Channels**: manage channels
+  - **Users**: query for information about users in your Slack workspace
+  - **Files**: find and read files from your Slack workspace
+
+  ## What you'll need to connect
+  
+  This server requires you to set up a Slack App for OAuth, with the proper scopes and access to the Slack MCP Server.
+  For instructions, go to https://docs.obot.ai and go to `Configuration and Operations` -> `Tutorials` -> `Slack MCP Server`.
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.slack.com/mcp
+  staticOAuthRequired: true
+
+toolPreview: [] # TODO
+
+metadata:
+  categories: Business, SaaS & API Integrations
+  allow-multiple: "true"
+icon: https://img.icons8.com/?size=100&id=OXVeOEj6qZqX&format=png&color=000000
+repoURL: https://docs.slack.dev/ai/slack-mcp-server
