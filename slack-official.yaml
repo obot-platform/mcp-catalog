@@ -77,23 +77,23 @@ toolPreview:
         # Status
         :large_green_circle: On Track
         # Goal
-        The channel to coordinate the build, testing, and launch of Platypus
+        The channel to coordinate the build, testing, and launch of <project_name>
         # :people_hugging:Stakeholders
-        ![](@U071CCRCVFH)
+        ![](@USER_ID_1)
 
-        ![](@UQSSGHV0Q)
+        ![](@USER_ID_2)
         # :books:Resources
         * Project Plan
         * Google Drive
         # :slack:Related channels
-        * ![](#C073UAJRW4R) - Project Channel
-        * ![](#C084UBTRX4J) - [GTM Channel](https://gtm.wiki.com)
+        * ![](#CHANNEL_ID_1) - Project Channel
+        * ![](#CHANNEL_ID_2) - [Launch Channel](https://example.com/go-to-market)
         </example1>
         <example2>
         |Message|User Author|
         |---|---|
-        |[Here is the python guide](https://team.slack.com/archives/C016VCYCL74/p1727122965001469)|![](@U071CCRCVFH)|
-        |[The Java guide isn\'t ready](https://team.slack.com/archives/C016VCYCL74/p1727122965001469)|![](@UQSSGHV0Q)|\n\n
+        |[Here is the python guide](https://example.slack.com/archives/CHANNEL_ID/pMESSAGE_TS)|![](@USER_ID_1)|
+        |[The Java guide isn\'t ready](https://example.slack.com/archives/CHANNEL_ID/pMESSAGE_TS)|![](@USER_ID_2)|\n\n
         # Python Guide\n
         ## Step 1\n
         ```python
@@ -154,14 +154,14 @@ toolPreview:
         Incorrect usage (has day name and date text):
         <example_date_heading_incorrect>
         ## ![](slack_date:2025-12-16) December 16th - Monday
-        </example_date_heading_incorrect>- User Profile Cards: To display a user's profile card as a standalone section (not inline), use the format ![](@user_id) where user_id is the Slack user ID. CRITICAL: Use parentheses () around @user_id, NOT angle brackets <>. Example: ![](@U0TDAU873). Profile cards should be on their own line and will render as larger cards with user information.
+        </example_date_heading_incorrect>- User Profile Cards: To display a user's profile card as a standalone section (not inline), use the format ![](@user_id) where user_id is the Slack user ID. CRITICAL: Use parentheses () around @user_id, NOT angle brackets <>. Example: ![](@USER_ID). Profile cards should be on their own line and will render as larger cards with user information.
         ## Examples of appropriate usage of user profile cards in your output:
         Correct usage (standalone profile card on its own line):
         <example_user_profile_card_correct>
         # Team Members
-        ![](@U0TDAU873)
+        ![](@USER_ID_1)
 
-        ![](@U12345678)
+        ![](@USER_ID_2)
         </example_user_profile_card_correct>- Slack Files: ONLY for files with URLs matching *.slack.com/files/*, ALWAYS embed using ![](file_reference). For standalone display (card): place on its own line. For inline reference (clickable text): embed directly in paragraph like "The ![](https://example.slack.com/files/U123/F456/doc.pdf) contains...". Do not use this syntax for non-Slack files.
       title: Concise but descriptive name for the canvas. Do not include the title in the content section.
   - name: slack_create_conversation
@@ -202,7 +202,7 @@ toolPreview:
       message_ts: Timestamp of the message to get reactions for
   - name: slack_list_channel_members
     description: |
-      Lists members of a Slack channel, group, or group DM (MPIM). Returns profile details or just user IDs. Your user_id: U04QPT9RCBF. Does not support DMs.
+      Lists members of a Slack channel, group, or group DM (MPIM). Returns profile details or just user IDs. Your user_id: <current_user_id>. Does not support DMs.
 
       Formats: 'detailed' (default) = full profile, 'concise' = @username + display name, 'ids_only' = user IDs only (fastest, skip profile fetch).
       Filters out deleted users and bots by default (use include_deleted/include_bots to include) for 'detailed' and 'concise' formats. 'ids_only' returns all member IDs without filtering (no profile data is fetched). Returns up to 30 members per page (limit is capped at 30). Use cursor from pagination_info to fetch next page.
@@ -303,7 +303,7 @@ toolPreview:
       query: Search emoji names by case-insensitive substring match. Supports comma-separated terms (e.g., "party,wave,rocket").
   - name: slack_search_public
     description: |-
-      Searches for messages, files in public Slack channels ONLY. Current logged in user's user_id is U04QPT9RCBF.
+      Searches for messages, files in public Slack channels ONLY. Current logged in user's user_id is <current_user_id>.
 
       `slack_search_public` does NOT generally require user consent for use, whereas you should request and wait for user consent to use `slack_search_public_and_private`.
 
@@ -324,7 +324,7 @@ toolPreview:
       File search: use `content_types="files"` with `type:` filter (images, documents, pdfs, spreadsheets, presentations, canvases, lists, emails, audio, videos). All standard modifiers work with file searches.
 
       Search types:
-      1. Natural language —  ❌ Semantic search is not available for this user.
+      1. Natural language — availability depends on the connected workspace/user.
       2. Keyword — exact matches, space-separated = AND, no boolean operators (AND/OR/NOT).
 
       Use slack_read_thread for thread details, slack_read_canvas for canvas content, slack_read_channel for surrounding messages.
@@ -360,7 +360,7 @@ toolPreview:
       sort_dir: 'Sort direction (default: ''desc''). Options: ''asc'', ''desc'''
   - name: slack_search_public_and_private
     description: |-
-      Searches for messages, files in ALL Slack channels, including public channels, private channels, DMs, and group DMs. Current logged in user's user_id is U04QPT9RCBF.
+      Searches for messages, files in ALL Slack channels, including public channels, private channels, DMs, and group DMs. Current logged in user's user_id is <current_user_id>.
 
       ---
       `query` should include keywords or natural language question with search modifiers.
@@ -379,7 +379,7 @@ toolPreview:
       File search: use `content_types="files"` with `type:` filter (images, documents, pdfs, spreadsheets, presentations, canvases, lists, emails, audio, videos). All standard modifiers work with file searches.
 
       Search types:
-      1. Natural language —  ❌ Semantic search is not available for this user.
+      1. Natural language — availability depends on the connected workspace/user.
       2. Keyword — exact matches, space-separated = AND, no boolean operators (AND/OR/NOT).
 
       Use slack_read_thread for thread details, slack_read_canvas for canvas content, slack_read_channel for surrounding messages.
@@ -417,7 +417,7 @@ toolPreview:
   - name: slack_search_users
     description: |
       Search for Slack users by name, email, or profile attributes (department, role, title).
-      Current logged in user's Slack user_id is U04QPT9RCBF.
+      Current logged in user's Slack user_id is <current_user_id>.
 
       Query syntax: full names ("John Smith"), partial names ("John"), emails ("john@company.com"), departments/roles ("engineering"), combinations ("John engineering"), exclusions ("engineering -intern"). Space-separated terms = AND.
 
@@ -435,7 +435,7 @@ toolPreview:
       response_format: 'Level of detail (default: ''detailed''). Options: ''detailed'', ''concise'''
   - name: slack_send_message
     description: |
-      Sends a message to a Slack channel or user. To DM a user, use their user_id as channel_id. If the user wants to send a message to themselves, the current logged in user's user_id is U04QPT9RCBF. Return the message link to the user.
+      Sends a message to a Slack channel or user. To DM a user, use their user_id as channel_id. If the user wants to send a message to themselves, the current logged in user's user_id is <current_user_id>. Return the message link to the user.
 
       Message uses standard markdown (**bold**, _italic_, `code`, ~~strikethrough~~, >blockquotes, lists, links, code blocks, tables, headers). Limited to 5000 chars per text element. Tables use standard Markdown syntax with `|` as column delimiters. Do NOT escape the structural `|` characters that form the table borders and column separators. Only escape `|` as `\|` when a literal pipe character appears inside a cell value. Code blocks can include a language specifier (e.g. ```python, ```js, ```bash) for syntax highlighting and copy functionality. Do not include sensitive info in link query params. Cannot post to externally shared (Slack Connect) channels.
 
@@ -593,23 +593,23 @@ toolPreview:
       # Status
       :large_green_circle: On Track
       # Goal
-      The channel to coordinate the build, testing, and launch of Platypus
+      The channel to coordinate the build, testing, and launch of <project_name>
       # :people_hugging:Stakeholders
-      ![](@U071CCRCVFH)
+      ![](@USER_ID_1)
 
-      ![](@UQSSGHV0Q)
+      ![](@USER_ID_2)
       # :books:Resources
       * Project Plan
       * Google Drive
       # :slack:Related channels
-      * ![](#C073UAJRW4R) - Project Channel
-      * ![](#C084UBTRX4J) - [GTM Channel](https://gtm.wiki.com)
+      * ![](#CHANNEL_ID_1) - Project Channel
+      * ![](#CHANNEL_ID_2) - [Launch Channel](https://example.com/go-to-market)
       </example1>
       <example2>
       |Message|User Author|
       |---|---|
-      |[Here is the python guide](https://team.slack.com/archives/C016VCYCL74/p1727122965001469)|![](@U071CCRCVFH)|
-      |[The Java guide isn\'t ready](https://team.slack.com/archives/C016VCYCL74/p1727122965001469)|![](@UQSSGHV0Q)|\n\n
+      |[Here is the python guide](https://example.slack.com/archives/CHANNEL_ID/pMESSAGE_TS)|![](@USER_ID_1)|
+      |[The Java guide isn\'t ready](https://example.slack.com/archives/CHANNEL_ID/pMESSAGE_TS)|![](@USER_ID_2)|\n\n
       # Python Guide\n
       ## Step 1\n
       ```python
@@ -670,14 +670,14 @@ toolPreview:
       Incorrect usage (has day name and date text):
       <example_date_heading_incorrect>
       ## ![](slack_date:2025-12-16) December 16th - Monday
-      </example_date_heading_incorrect>- User Profile Cards: To display a user's profile card as a standalone section (not inline), use the format ![](@user_id) where user_id is the Slack user ID. CRITICAL: Use parentheses () around @user_id, NOT angle brackets <>. Example: ![](@U0TDAU873). Profile cards should be on their own line and will render as larger cards with user information.
+      </example_date_heading_incorrect>- User Profile Cards: To display a user's profile card as a standalone section (not inline), use the format ![](@user_id) where user_id is the Slack user ID. CRITICAL: Use parentheses () around @user_id, NOT angle brackets <>. Example: ![](@USER_ID). Profile cards should be on their own line and will render as larger cards with user information.
       ## Examples of appropriate usage of user profile cards in your output:
       Correct usage (standalone profile card on its own line):
       <example_user_profile_card_correct>
       # Team Members
-      ![](@U0TDAU873)
+      ![](@USER_ID_1)
 
-      ![](@U12345678)
+      ![](@USER_ID_2)
       </example_user_profile_card_correct>- Slack Files: ONLY for files with URLs matching *.slack.com/files/*, ALWAYS embed using ![](file_reference). For standalone display (card): place on its own line. For inline reference (clickable text): embed directly in paragraph like "The ![](https://example.slack.com/files/U123/F456/doc.pdf) contains...". Do not use this syntax for non-Slack files.
 
       ## What NOT to Expect:
