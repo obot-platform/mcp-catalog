@@ -1,0 +1,69 @@
+name: Packrift
+shortDescription: Search ecommerce packaging products, prices, inventory, shipping estimates, and cart URLs
+description: |
+  A remote Model Context Protocol (MCP) server for Packrift's ecommerce packaging catalog. It helps AI assistants find boxes, mailers, labels, tape, and other shipping supplies by product details, dimensions, pricing, inventory, shipping estimate, and buyer handoff path.
+
+  ## Features
+  - **Product Search**: Search Packrift packaging products by keyword, dimensions, category, or use case
+  - **Packaging Recommendations**: Find a packaging option for an item with dimensions and constraints
+  - **Pricing & Inventory**: Retrieve product pricing and availability details from the Packrift catalog
+  - **Shipping Estimates**: Estimate shipping for selected packaging products
+  - **Buyer Handoffs**: Create cart, reorder, and bulk-quote links for Packrift checkout or follow-up
+
+  ## What you'll need to connect
+
+  **No Setup Required**: The public remote MCP endpoint is available over Streamable HTTP.
+
+metadata:
+  categories: Business, SaaS & API Integrations
+icon: https://raw.githubusercontent.com/Packrift/packrift-mcp/main/assets/packrift-logo-400.png
+repoURL: https://github.com/Packrift/packrift-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.packrift.com/mcp
+
+toolPreview:
+  - name: find_packaging_for_item
+    description: Recommend Packrift packaging for an item using dimensions, weight, and fit constraints.
+    params:
+      item: Item description or product type
+      length: Item length
+      width: Item width
+      height: Item height
+      weight: Item weight
+  - name: search_products
+    description: Search Packrift packaging products by query, category, dimensions, or packaging type.
+    params:
+      query: Product search query
+      category: Packaging category filter
+  - name: get_product
+    description: Retrieve details for a specific Packrift product.
+    params:
+      product_id: Packrift product identifier
+  - name: get_pricing
+    description: Retrieve current pricing for a Packrift product.
+    params:
+      product_id: Packrift product identifier
+  - name: check_inventory
+    description: Check inventory availability for a Packrift product.
+    params:
+      product_id: Packrift product identifier
+  - name: get_shipping_estimate
+    description: Estimate shipping for selected Packrift packaging products.
+    params:
+      product_id: Packrift product identifier
+      postal_code: Destination postal code
+      quantity: Quantity to estimate
+  - name: create_cart_url
+    description: Create a Packrift cart URL for selected products and quantities.
+    params:
+      items: Products and quantities to add to cart
+  - name: get_reorder_link
+    description: Create a reorder link for a Packrift product.
+    params:
+      product_id: Packrift product identifier
+  - name: get_bulk_quote_link
+    description: Create a Packrift bulk quote link for larger packaging purchases.
+    params:
+      product_id: Packrift product identifier
+      quantity: Quantity for the quote request
