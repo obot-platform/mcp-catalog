@@ -19,7 +19,6 @@
     "@wdio/cli": "^9.20.0",
     "@wdio/config": "^9.20.0",
     "@wdio/cucumber-framework": "^9.20.0",
-    "@wdio/devtools-service": "^8.38.0",
     "@wdio/globals": "^9.17.0",
     "@wdio/local-runner": "^9.20.0",
     "@wdio/spec-reporter": "^9.20.0",
@@ -30,7 +29,7 @@
     "eslint": "^8.57.1",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-wdio": "^9.16.2",
+    "eslint-plugin-wdio": "9.16.2",
     "http-server": "^14.1.1",
     "npm-run-all2": "^8.0.4",
     "ts-node": "^10.9.2",
@@ -43,9 +42,12 @@
     "glob": "^11.0.3",
     "google-auth-library": "^10.4.2",
     "googleapis": "^164.1.0",
-    "imap-simple": "^5.1.0",
     "mailparser": "^3.7.5",
     "node-fetch": "^3.3.2",
     "openai": "^6.7.0"
+  },
+  "overrides": {
+    "tmp": "0.2.7",
+    "uuid": "11.1.1"
   }
 }

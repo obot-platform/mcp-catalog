@@ -82,7 +82,7 @@ export async function slowInputFilling(locatorString: string, value: any) {
 }
 
 export async function formFill(formElements: IFormActionElements[]) {
-  const setValue = async (element: WebdriverIO.Element, action: string, value: any) => {
+  const setValue = async (element: ReturnType<typeof $>, action: string, value: any) => {
     await element.waitForEnabled();
     switch (action) {
       case 'click':
@@ -182,7 +182,7 @@ export async function isElementDisplayed(locatorString: string, timeout = SHORT_
   }
 }
 
-export async function clearTextUsingBackspace(element: WebdriverIO.Element) {
+export async function clearTextUsingBackspace(element: ReturnType<typeof $>) {
   let text = await element.getText();
   if (text.length === 0) {
     text = await element.getValue();
