@@ -49,7 +49,7 @@ description: 'A Model Context Protocol (MCP) server that provides comprehensive 
   '
 metadata:
   categories: Version Control & DevOps
-icon: https://about.gitlab.com/images/press/logo/png/gitlab-icon-rgb.png
+icon: https://img.icons8.com/?size=100&id=34886&format=png&color=000000
 repoURL: https://github.com/zereight/gitlab-mcp
 env:
 - key: GITLAB_PERSONAL_ACCESS_TOKEN
