@@ -241,6 +241,6 @@ env:
   sensitive: true
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/wordpress-mcp-server:main
+  image: ghcr.io/obot-platform/wordpress-mcp-server:latest
   port: 8099
   path: "/"
