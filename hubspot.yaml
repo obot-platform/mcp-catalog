@@ -170,6 +170,6 @@ env:
     required: true
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/hubspot:main
+  image: ghcr.io/obot-platform/mcp-images/hubspot:latest
   port: 8099
   path: "/"
