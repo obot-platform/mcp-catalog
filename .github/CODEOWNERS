@@ -1,0 +1,4 @@
+
+# Dependabot dependency ownership
+/scripts/mcp_tool_linter/requirements.txt @obot-platform/obot-backend
+/scripts/validation/requirements.txt @obot-platform/obot-backend
