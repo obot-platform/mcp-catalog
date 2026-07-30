@@ -239,6 +239,6 @@ env:
 
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/snowflake:main
+  image: ghcr.io/obot-platform/mcp-images/snowflake:latest
   port: 9000
   path: "/mcp"
