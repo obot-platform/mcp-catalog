@@ -95,6 +95,9 @@ toolPreview:
       bundleType: "The type of bundle to generate (ban, springboard, basic, detail) - default: ban"
 
 env:
+  - key: DANGEROUSLY_DISABLE_OAUTH
+    value: "true"
+    description: Disable OAuth because Obot authenticates clients at its gateway.
   - name: Tableau Server URL
     key: SERVER
     description: Your Tableau Cloud or Server URL (e.g., https://your-site.online.tableau.com)
