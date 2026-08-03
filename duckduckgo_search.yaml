@@ -2,7 +2,9 @@ name: DuckDuckGo Search
 entryKey: obot-duckduckgo-search
 serverUserType: singleUser
 shortDescription: Search the web with DuckDuckGo and retrieve webpage content with parsing
-description: 'A Model Context Protocol (MCP) server that provides web search capabilities through DuckDuckGo, with additional features for content fetching and parsing. Search the web and retrieve webpage content with LLM-friendly formatting.
+description: '**DEPRECATED**: this server is no longer supported by the Obot MCP Catalog. For hosted web search, use Tavily Search; it is not a no-key drop-in replacement.
+
+  A Model Context Protocol (MCP) server that provides web search capabilities through DuckDuckGo, with additional features for content fetching and parsing. Search the web and retrieve webpage content with LLM-friendly formatting.
 
 
   ## Features
@@ -26,6 +28,7 @@ description: 'A Model Context Protocol (MCP) server that provides web search cap
   '
 metadata:
   categories: Search
+  deprecated: "true"
 icon: https://img.icons8.com/?size=100&id=63778&format=png&color=000000
 repoURL: https://github.com/nickclyde/duckduckgo-mcp-server
 env: []
