@@ -2,7 +2,9 @@ name: Playwright
 entryKey: obot-playwright
 serverUserType: singleUser
 shortDescription: Browser automation with accessibility-based interactions using Playwright
-description: 'A Model Context Protocol (MCP) server that provides browser automation capabilities using Playwright. This server enables AI agents to interact with web pages through structured accessibility snapshots, bypassing the need for screenshots or visually-tuned models for fast, deterministic automation.
+description: '**DEPRECATED**: this server is no longer supported by the Obot MCP Catalog. No direct replacement is currently available.
+
+  A Model Context Protocol (MCP) server that provides browser automation capabilities using Playwright. This server enables AI agents to interact with web pages through structured accessibility snapshots, bypassing the need for screenshots or visually-tuned models for fast, deterministic automation.
 
 
   ## Features
@@ -30,6 +32,7 @@ description: 'A Model Context Protocol (MCP) server that provides browser automa
   '
 metadata:
   categories: Automation & Browsers
+  deprecated: "true"
   unsupportedTools: browser_snapshot,browser_take_screenshot,browser_screen_capture,browser_pdf_save,browser_install
 icon: https://avatars.githubusercontent.com/u/6154722?v=4
 repoURL: https://github.com/microsoft/playwright-mcp
