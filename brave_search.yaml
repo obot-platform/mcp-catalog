@@ -2,7 +2,9 @@ name: Brave Search
 entryKey: obot-brave-search
 serverUserType: singleUser
 shortDescription: Search the web, news, images, videos, and local businesses with Brave Search API
-description: 'A Model Context Protocol (MCP) server that provides comprehensive web search capabilities through the Brave Search API. It enables AI assistants to search the web, find news articles, discover videos and images, locate local businesses, and generate AI-powered summaries of search results.
+description: '**DEPRECATED**: this server is no longer supported by the Obot MCP Catalog. No direct replacement is currently available.
+
+  A Model Context Protocol (MCP) server that provides comprehensive web search capabilities through the Brave Search API. It enables AI assistants to search the web, find news articles, discover videos and images, locate local businesses, and generate AI-powered summaries of search results.
 
 
   ## Features
@@ -30,6 +32,7 @@ description: 'A Model Context Protocol (MCP) server that provides comprehensive 
   '
 metadata:
   categories: Retrieval & Search, SaaS & API Integrations
+  deprecated: "true"
 icon: https://brave.com/static-assets/images/brave-logo-sans-text.svg
 repoURL: https://github.com/brave/brave-search-mcp-server
 env:
@@ -115,4 +118,3 @@ toolPreview:
     key: Summary key from search results (required)
     entity_info: Include extra entity information (default false)
     inline_references: Add inline source references (default false)
-
