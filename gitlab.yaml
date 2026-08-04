@@ -2,7 +2,10 @@ name: GitLab
 entryKey: obot-gitlab
 serverUserType: singleUser
 shortDescription: Manage GitLab projects, repositories, issues, merge requests, and CI/CD pipelines
-description: 'A Model Context Protocol (MCP) server that provides comprehensive GitLab integration capabilities. Enable LLMs to interact with GitLab projects, manage repositories, handle issues and merge requests, and perform automated GitLab operations with precision.
+description: '**DEPRECATED**: Use the GitLab Official catalog entry for GitLab''s vendor-operated remote MCP server. This third-party containerized server remains available for existing deployments.
+
+
+  A Model Context Protocol (MCP) server that provides comprehensive GitLab integration capabilities. Enable LLMs to interact with GitLab projects, manage repositories, handle issues and merge requests, and perform automated GitLab operations with precision.
 
 
   ## Features
@@ -49,6 +52,7 @@ description: 'A Model Context Protocol (MCP) server that provides comprehensive 
   '
 metadata:
   categories: Version Control & DevOps
+  deprecated: "true"
 icon: https://img.icons8.com/?size=100&id=34886&format=png&color=000000
 repoURL: https://github.com/zereight/gitlab-mcp
 env:

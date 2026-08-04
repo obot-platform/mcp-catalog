@@ -1,0 +1,237 @@
+name: GitLab Official
+entryKey: obot-gitlab-official
+serverUserType: singleUser
+shortDescription: Use GitLab's official remote server to work with issues, merge requests, pipelines, and more
+description: |
+  GitLab's official remote Model Context Protocol (MCP) server connects AI tools directly to GitLab.com, GitLab Self-Managed, or GitLab Dedicated. Authentication uses GitLab OAuth and respects the permissions of the signed-in user.
+
+  The GitLab MCP server is currently Beta. Available tools depend on the GitLab version, license, add-ons, feature availability, and administrator settings for your instance.
+
+  ## Features
+  - **Issues and Work Items**: Create and inspect issues, comment on work items, and manage work item relationships
+  - **Merge Requests**: Create, search, and inspect merge requests, diffs, commits, notes, and pipelines
+  - **CI/CD Investigation**: Inspect pipelines, jobs, and job logs, and manage pipeline runs
+  - **Search**: Search GitLab resources, labels, and optionally code by meaning
+  - **GitLab-managed Authentication**: Connect through OAuth without creating or copying a personal access token
+
+  ## What you'll need to connect
+  - The base URL of your GitLab instance, such as `https://gitlab.com` or `https://gitlab.example.com`
+  - A GitLab account with access to the projects and resources you want to use
+
+  ## Administrator setup
+  Before users can connect, GitLab Duo and beta and experimental features must be enabled. Access to the MCP server must also be allowed:
+
+  - On GitLab.com, an Owner must allow MCP client access for at least one top-level group the user belongs to.
+  - On GitLab Self-Managed and GitLab Dedicated, an administrator must allow MCP client access for the instance.
+
+  See GitLab's setup documentation for current requirements: https://docs.gitlab.com/user/model_context_protocol/mcp_server/
+metadata:
+  categories: Version Control & DevOps,Developer Tools
+  allow-multiple: "true"
+icon: https://img.icons8.com/?size=100&id=34886&format=png&color=000000
+repoURL: https://docs.gitlab.com/user/model_context_protocol/mcp_server/
+env:
+- key: GITLAB_INSTANCE_URL
+  name: GitLab Instance URL
+  required: true
+  sensitive: false
+  description: Base URL of the GitLab instance, without a trailing slash (for example, https://gitlab.com or https://gitlab.example.com)
+runtime: remote
+remoteConfig:
+  URLTemplate: ${GITLAB_INSTANCE_URL}/api/v4/mcp
+toolPreview:
+- name: get_mcp_server_version
+  description: Returns the current version of the GitLab MCP server.
+  params: {}
+- name: create_issue
+  description: Creates a new issue in a GitLab project.
+  params:
+    id: ID or URL-encoded path of the project.
+    title: Title of the issue.
+    description: Description of the issue.
+    assignee_ids: Array of IDs of assigned users.
+    milestone_id: ID of the milestone.
+    labels: Array of label names.
+    confidential: Whether the issue is confidential.
+    epic_id: ID of the linked epic.
+- name: get_issue
+  description: Retrieves detailed information about a specific GitLab issue.
+  params:
+    id: ID or URL-encoded path of the project.
+    issue_iid: Internal ID of the issue.
+- name: create_merge_request
+  description: Creates a merge request in a GitLab project.
+  params:
+    id: ID or URL-encoded path of the project.
+    title: Title of the merge request.
+    source_branch: Name of the source branch.
+    target_branch: Name of the target branch.
+    target_project_id: ID of the target project.
+    assignee_ids: Array of IDs of merge request assignees.
+    reviewer_ids: Array of IDs of merge request reviewers.
+    description: Description of the merge request.
+    labels: Array of label names.
+    milestone_id: ID of the milestone.
+- name: get_merge_request
+  description: Retrieves detailed information about a specific GitLab merge request.
+  params:
+    id: ID or URL-encoded path of the project.
+    merge_request_iid: Internal ID of the merge request.
+- name: list_merge_requests
+  description: Lists or searches merge requests in a GitLab project and returns compact merge request metadata.
+  params:
+    url: URL of the project. Provide exactly one of url or project_id.
+    project_id: ID or full path of the project. Provide exactly one of url or project_id.
+    author_username: Filter by the merge request author's username.
+    assignee_username: Filter by an assignee's username.
+    reviewer_username: Filter by a reviewer's username.
+    state: Filter by opened, closed, merged, locked, or all.
+    scope: Filter by created_by_me, assigned_to_me, or review_requested.
+    milestone: Filter by milestone title.
+    labels: Comma-separated list of labels that must all be present.
+    search: Search merge request titles and descriptions.
+    after: Cursor for forward pagination.
+    first: Number of merge requests to return, up to 100.
+- name: get_merge_request_commits
+  description: Retrieves the commits in a specific GitLab merge request.
+  params:
+    id: ID or URL-encoded path of the project.
+    merge_request_iid: Internal ID of the merge request.
+    per_page: Number of commits per page.
+    page: Page number.
+- name: get_merge_request_diffs
+  description: Retrieves the diffs for a specific GitLab merge request.
+  params:
+    id: ID or URL-encoded path of the project.
+    merge_request_iid: Internal ID of the merge request.
+    per_page: Number of diffs per page.
+    page: Page number.
+- name: get_merge_request_pipelines
+  description: Retrieves the pipelines for a specific GitLab merge request.
+  params:
+    id: ID or URL-encoded path of the project.
+    merge_request_iid: Internal ID of the merge request.
+- name: create_merge_request_note
+  description: Adds a comment or a reply to a discussion on a GitLab merge request as the authenticated user.
+  params:
+    url: URL of the merge request. Required when project_id and merge_request_iid are omitted.
+    project_id: ID or URL-encoded path of the project. Required when url is omitted.
+    merge_request_iid: Internal ID of the merge request. Required when url is omitted.
+    body: Content of the note. Lines cannot start with a slash.
+    discussion_id: Global ID of the discussion to reply to. Omit to create a top-level note.
+- name: get_merge_request_notes
+  description: Retrieves comments and system notes for a specific GitLab merge request.
+  params:
+    url: URL of the merge request. Required when project_id and merge_request_iid are omitted.
+    project_id: ID or URL-encoded path of the project. Required when url is omitted.
+    merge_request_iid: Internal ID of the merge request. Required when url is omitted.
+    after: Cursor for forward pagination.
+    before: Cursor for backward pagination.
+    first: Number of notes to return when paginating forward.
+    last: Number of notes to return when paginating backward.
+- name: get_pipeline_jobs
+  description: Retrieves the jobs for a specific GitLab CI/CD pipeline.
+  params:
+    id: ID or URL-encoded path of the project.
+    pipeline_id: ID of the pipeline.
+    per_page: Number of jobs per page.
+    page: Page number.
+- name: get_job_log
+  description: Retrieves the trace log for a specific GitLab CI/CD job.
+  params:
+    id: ID or URL-encoded path of the project.
+    job_id: ID of the job.
+- name: manage_pipeline
+  description: Lists, creates, updates, retries, cancels, or deletes CI/CD pipelines in a GitLab project.
+  params:
+    id: ID or URL-encoded path of the project.
+    list: Whether to list pipelines in the project.
+    ref: Branch or tag used to create a pipeline or filter the list.
+    pipeline_id: Pipeline to update, retry, cancel, or delete.
+    retry: Whether to retry failed or canceled jobs.
+    cancel: Whether to cancel jobs in a running pipeline.
+    name: New pipeline name.
+    variables: Pipeline variables as key, value, and variable_type objects.
+    inputs: Pipeline input parameters as key-value pairs.
+    page: Page number.
+    per_page: Number of pipelines per page.
+- name: create_workitem_note
+  description: Creates a comment or discussion reply on a GitLab work item.
+  params:
+    body: Content of the note.
+    url: URL of the work item. Required when namespace and work item fields are omitted.
+    group_id: ID or path of the group.
+    project_id: ID or path of the project.
+    work_item_iid: Internal ID of the work item.
+    internal: Whether the note is visible only to project members with sufficient access.
+    discussion_id: Global ID of the discussion to reply to.
+- name: get_workitem_notes
+  description: Retrieves comments for a specific GitLab work item.
+  params:
+    url: URL of the work item. Required when namespace and work item fields are omitted.
+    group_id: ID or path of the group.
+    project_id: ID or path of the project.
+    work_item_iid: Internal ID of the work item.
+    after: Cursor for forward pagination.
+    before: Cursor for backward pagination.
+    first: Number of notes to return when paginating forward.
+    last: Number of notes to return when paginating backward.
+- name: link_work_items
+  description: Links a work item to up to ten other work items with a relationship type.
+  params:
+    work_items_ids: Global IDs of the work items to link.
+    url: URL of the source work item. Required when namespace and work item fields are omitted.
+    group_id: ID or path of the group.
+    project_id: ID or path of the project.
+    work_item_iid: Internal ID of the source work item.
+    link_type: Relationship type; relates_to, blocks, or blocked_by.
+- name: get_saved_view_work_items
+  description: Retrieves a saved view and its filtered, sorted work items from a namespace.
+  params:
+    saved_view_id: Global ID of the saved view.
+    url: URL of the project or group namespace.
+    group_id: ID or path of the group.
+    project_id: ID or path of the project.
+    after: Cursor for forward pagination.
+    first: Number of work items to return, up to 100.
+- name: search
+  description: Searches for a term across a GitLab instance, group, or project.
+  params:
+    scope: Search scope, such as work_items, merge_requests, or projects.
+    search: Search term.
+    group_id: ID or URL-encoded path of the group.
+    project_id: ID or URL-encoded path of the project.
+    state: State filter for work items and merge requests.
+    confidential: Whether to return confidential work items.
+    fields: Fields to search for work items and merge requests.
+    order_by: Attribute used to order results.
+    sort: Sort direction.
+    per_page: Number of results per page.
+    page: Page number.
+- name: search_labels
+  description: Searches for labels in a GitLab project or group.
+  params:
+    full_path: Full path of the project or group.
+    is_project: Whether full_path identifies a project rather than a group.
+    search: Search term used to filter label titles.
+- name: list_wiki_pages
+  description: Lists wiki pages in a GitLab project or group.
+  params:
+    project_id: Full path or numeric ID of the project. Provide only one namespace ID.
+    group_id: Full path or numeric ID of the group. Provide only one namespace ID.
+    first: Number of pages to return, up to 100.
+    after: Cursor for forward pagination.
+- name: semantic_code_search
+  description: Searches for semantically relevant code snippets in a GitLab project when semantic code search is available.
+  params:
+    semantic_query: Natural-language description of the code to find.
+    project_id: ID or path of the project.
+    directory_path: Directory in which to search.
+    knn: Number of nearest neighbors used by the search.
+    limit: Maximum number of results.
+- name: attach_scan_profile
+  description: Attaches a security scan profile to projects or to all projects under groups.
+  params:
+    security_scan_profile_id: Global ID of the security scan profile.
+    project_ids: Global IDs of projects to which the profile is attached.
+    group_ids: Global IDs of groups whose projects receive the profile.
