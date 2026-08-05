@@ -2,83 +2,84 @@ name: Context7
 entryKey: obot-context7
 serverUserType: singleUser
 shortDescription: Get up-to-date, version-specific code documentation and examples for any library
-description: |
-  The official hosted Context7 Model Context Protocol (MCP) server provides current, version-specific documentation and code examples for libraries and frameworks.
+description: '**DEPRECATED**: this server is no longer supported. Please switch to Context7 Official, which connects directly to Context7 using OAuth.
 
-  This entry connects directly to Context7's vendor-operated remote service and is updated by Context7 without requiring a local container.
+
+  [![Website](https://img.shields.io/badge/Website-context7.com-blue)](https://context7.com) [<img alt="Install in VS Code (npx)" src="https://img.shields.io/badge/VS_Code-VS_Code?style=flat-square&label=Install%20Context7%20MCP&color=0098FF">](https://insiders.vscode.dev/redirect?url=vscode%3Amcp%2Finstall%3F%7B%22name%22%3A%22context7%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40upstash%2Fcontext7-mcp%40latest%22%5D%7D)
+
+
+  A Model Context Protocol (MCP) server that provides up-to-date code documentation for any prompt. Context7 MCP pulls version-specific documentation and code examples straight from the source and places them directly into your LLM''s context, eliminating outdated training data and hallucinated APIs.
+
 
   ## Features
 
-  - **Up-to-date Documentation**: Fetch current, version-specific docs and code examples
-  - **Automatic Library Resolution**: Find the best Context7 library ID for a package or product
-  - **Focused Retrieval**: Query documentation for a specific implementation task or concept
-  - **Optional Account Access**: Use a Context7 API key for higher limits, policies, and private sources
+  - **Up-to-date Documentation**: Fetches current, version-specific docs and code examples
 
-  ## What you'll need to connect
+  - **No More Hallucinated APIs**: Get working code examples that actually exist
 
-  Context7 works anonymously with no setup required.
+  - **Automatic Library Resolution**: Resolves general library names to Context7-compatible IDs
 
-  Optionally, provide a Context7 API key from https://context7.com/dashboard for higher rate limits and access to private sources.
+  - **Topic-focused Retrieval**: Focus documentation on specific topics (routing, hooks, etc.)
+
+  - **Token Control**: Configurable token limits for documentation size
+
+
+  ## What you''ll need to connect
+
+
+  **No Setup Required**: Context7 works out-of-the-box with no API keys or configuration needed.
+
+
+  **Optional Configuration:**
+
+  - **DEFAULT_MINIMUM_TOKENS**: Set minimum token count for documentation retrieval (default: 10000)
+
+
+  ## Examples
+
+  ```txt
+
+  Create a Next.js middleware that checks for a valid JWT in cookies and redirects unauthenticated users to login. use context7
+
+  ```
+
+
+  ```txt
+
+  Configure a Cloudflare Worker script to cache JSON API responses for five minutes. use context7
+
+  ```
+
+
+  ### Usage Tips
+
+  - **Add a Rule**: Create auto-invocation rules in your IDE to automatically use Context7 for code questions
+
+  - **Use Library ID**: If you know the exact library, use the slash syntax: `use library /supabase/supabase`
+
+  - **Simple Workflow**: 1️⃣ Write your prompt naturally → 2️⃣ Tell the LLM to "use context7" → 3️⃣ Get working code answers
+
+  '
 metadata:
-  categories: Developer Tools, Documentation
+  categories: Developer Tools
+  deprecated: "true"
 icon: https://avatars.githubusercontent.com/u/74989412?v=4
 repoURL: https://github.com/upstash/context7
-runtime: remote
-remoteConfig:
-  fixedURL: https://mcp.context7.com/mcp
-  headers:
-  - name: Context7 API Key
-    description: Optional Context7 API key for higher rate limits and access to private sources
-    key: Authorization
-    required: false
-    sensitive: true
-    prefix: "Bearer "
 toolPreview:
 - name: resolve-library-id
-  description: |-
-    Resolves a package/product name to a Context7-compatible library ID and returns matching libraries.
-
-    You MUST call this function before 'Query Documentation' tool to obtain a valid Context7-compatible library ID UNLESS the user explicitly provides a library ID in the format '/org/project' or '/org/project/version' in their query.
-
-    Each result includes:
-    - Library ID: Context7-compatible identifier (format: /org/project)
-    - Name: Library or package name
-    - Description: Short summary
-    - Code Snippets: Number of available code examples
-    - Source Reputation: Authority indicator (High, Medium, Low, or Unknown)
-    - Benchmark Score: Quality indicator (100 is the highest score)
-    - Versions: List of versions if available. Use one of those versions if the user provides a version in their query. The format of the version is /org/project/version.
-
-    For best results, select libraries based on name match, source reputation, snippet coverage, benchmark score, and relevance to your use case.
-
-    Selection Process:
-    1. Analyze the query to understand what library/package the user is looking for
-    2. Return the most relevant match based on:
-    - Name similarity to the query (exact matches prioritized)
-    - Description relevance to the query's intent
-    - Documentation coverage (prioritize libraries with higher Code Snippet counts)
-    - Source reputation (consider libraries with High or Medium reputation more authoritative)
-    - Benchmark Score: Quality indicator (100 is the highest score)
-
-    Response Format:
-    - Return the selected library ID in a clearly marked section
-    - Provide a brief explanation for why this library was chosen
-    - If multiple good matches exist, acknowledge this but proceed with the most relevant one
-    - If no good matches exist, clearly state this and suggest query refinements
-
-    For ambiguous queries, request clarification before proceeding with a best-guess match.
-
-    IMPORTANT: Do not call this tool more than 3 times per question. If you cannot find what you need after 3 calls, use the best result you have.
+  description: "Resolves a package/product name to a Context7-compatible library ID and returns matching libraries.\n\nYou MUST call this function before 'query-docs' to obtain a valid Context7-compatible library ID UNLESS the user explicitly provides a library ID in the format '/org/project' or '/org/project/version' in their query.\n\nSelection Process:\n1. Analyze the query to understand what library/package the user is looking for\n2. Return the most relevant match based on:\n- Name similarity to the query (exact matches prioritized)\n- Description relevance to the query's intent\n- Documentation coverage (prioritize libraries with higher Code Snippet counts)\n- Source reputation (consider libraries with High or Medium reputation more authoritative)\n- Benchmark Score: Quality indicator (100 is the highest score)\n\nResponse Format:\n- Return the selected library ID in a clearly marked section\n- Provide a brief explanation for why this library was chosen\n- If multiple good matches exist, acknowledge this but proceed with the most relevant one\n- If no good matches exist, clearly state this and suggest query refinements\n\nFor ambiguous queries, request clarification before proceeding with a best-guess match.\n\nIMPORTANT: Do not call this tool more than 3 times per question. If you cannot find what you need after 3 calls, use the best result you have."
   params:
-    query: What to look up in the library's documentation. This is used to rank library results by relevance to what the user is trying to accomplish. The query is sent to the Context7 API for processing. Do not include any sensitive or confidential information such as API keys, passwords, credentials, personal data, or proprietary code in your query.
-    libraryName: Library name to search for and retrieve a Context7-compatible library ID. Use the official library name with proper punctuation, for example, 'Next.js' instead of 'nextjs', 'Customer.io' instead of 'customerio', or 'Three.js' instead of 'threejs'.
+    libraryName: Library name to search for and retrieve a Context7-compatible library ID.
+    query: "The user's original question or task. This is used to rank library results by relevance to what the user is trying to accomplish. IMPORTANT: Do not include any sensitive or confidential information such as API keys, passwords, credentials, or personal data in your query."
 - name: query-docs
-  description: |-
-    Retrieves and queries up-to-date documentation and code examples from Context7 for any programming library or framework.
-
-    You must call 'Resolve Context7 Library ID' tool first to obtain the exact Context7-compatible library ID required to use this tool, UNLESS the user explicitly provides a library ID in the format '/org/project' or '/org/project/version' in their query.
-
-    Do not call this tool more than 3 times per question.
+  description: "Retrieves and queries up-to-date documentation and code examples from Context7 for any programming library or framework.\n\nYou must call 'resolve-library-id' first to obtain the exact Context7-compatible library ID required to use this tool, UNLESS the user explicitly provides a library ID in the format '/org/project' or '/org/project/version' in their query.\n\nIMPORTANT: Do not call this tool more than 3 times per question. If you cannot find what you need after 3 calls, use the best information you have."
   params:
-    libraryId: Exact Context7-compatible library ID (e.g., '/mongodb/docs', '/vercel/next.js', '/supabase/supabase', '/vercel/next.js/v14.3.0-canary.87') retrieved from 'resolve-library-id' or directly from user query in the format '/org/project' or '/org/project/version'.
-    query: "What to look up in the library's documentation, scoped to a single concept. Be specific and include relevant details, but keep each query to one topic; if the user's question spans multiple distinct concepts, make a separate call per concept instead of combining them, unless the question is about how the concepts interact. Good: 'How to set up authentication with JWT in Express.js' or 'React useEffect cleanup function examples'. Bad (too vague): 'auth' or 'hooks'. Bad (too broad): 'routing and auth and caching in Next.js'. The query is sent to the Context7 API for processing. Do not include any sensitive or confidential information such as API keys, passwords, credentials, personal data, or proprietary code in your query."
+    libraryId: "Exact Context7-compatible library ID (e.g., '/mongodb/docs', '/vercel/next.js', '/supabase/supabase', '/vercel/next.js/v14.3.0-canary.87') retrieved from 'resolve-library-id' or directly from user query in the format '/org/project' or '/org/project/version'."
+    query: "The question or task you need help with. Be specific and include relevant details. Good: 'How to set up authentication with JWT in Express.js' or 'React useEffect cleanup function examples'. Bad: 'auth' or 'hooks'. IMPORTANT: Do not include any sensitive or confidential information such as API keys, passwords, credentials, or personal data in your query."
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/context7:2.1.7
+  port: 8099
+  path: /
+  args:
+  - context7-mcp
