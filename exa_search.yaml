@@ -4,6 +4,8 @@ serverUserType: singleUser
 shortDescription: AI-powered web search for research, company intelligence, and content extraction
 description: '[![npm version](https://badge.fury.io/js/exa-mcp-server.svg)](https://www.npmjs.com/package/exa-mcp-server)
 
+  **DEPRECATED**: This containerized server is superseded by the Exa Search (Official) remote server. Connect the official remote to use Exa OAuth and the vendor-hosted service.
+
 
   A Model Context Protocol (MCP) server that lets AI assistants use the Exa AI Search API for web searches. Get real-time web information in a safe and controlled way with advanced search capabilities and content extraction.
 
@@ -35,6 +37,7 @@ description: '[![npm version](https://badge.fury.io/js/exa-mcp-server.svg)](http
   '
 metadata:
   categories: Retrieval & Search,Science & Research,Developer Tools
+  deprecated: "true"
 icon: https://avatars.githubusercontent.com/u/77906174?v=4
 repoURL: https://github.com/exa-labs/exa-mcp-server
 env:

@@ -1,0 +1,36 @@
+name: Exa Search (Official)
+entryKey: obot-exa-search-official
+serverUserType: singleUser
+shortDescription: Official Exa web search and page retrieval with per-user OAuth
+description: |
+  The official Exa-hosted Model Context Protocol (MCP) server for AI-powered web search and clean webpage retrieval.
+
+  ## Features
+
+  - **Web Search**: Find current information, news, facts, people, and companies with clean, ready-to-use content.
+  - **Page Retrieval**: Fetch one or more known URLs as clean markdown.
+  - **Per-user Access**: Connect your Exa account with OAuth. Obot registers a client dynamically, so no API key or administrator setup is needed.
+
+  ## What you'll need to connect
+
+  Sign in to an Exa account when prompted. Exa provides a free tier; account usage and plan limits are managed by Exa.
+
+  See the official [Exa MCP setup documentation](https://exa.ai/docs/reference/exa-mcp), [pricing](https://exa.ai/pricing), and [security documentation](https://exa.ai/docs/reference/security).
+metadata:
+  categories: Retrieval & Search,Science & Research,Developer Tools
+icon: https://avatars.githubusercontent.com/u/77906174?v=4
+repoURL: https://github.com/exa-labs/exa-mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.exa.ai/mcp/oauth
+toolPreview:
+- name: web_search_exa
+  description: Search the web for any topic and get clean, ready-to-use content. Use category:people or category:company in the query to focus on LinkedIn profiles or companies.
+  params:
+    query: Natural-language search query describing the ideal page. Optionally include category:company or category:people to focus the search.
+    numResults: Number of search results to return. Defaults to 10.
+- name: web_fetch_exa
+  description: Read one or more webpages as clean markdown. Use after web_search_exa when highlights are insufficient or to read a known URL.
+  params:
+    urls: URLs to read. Multiple URLs can be fetched in one request.
+    maxCharacters: Maximum characters to extract per page. Defaults to 3000.
