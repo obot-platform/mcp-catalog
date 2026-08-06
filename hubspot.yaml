@@ -3,6 +3,10 @@ entryKey: obot-hubspot
 serverUserType: singleUser
 shortDescription: Manage HubSpot CRM objects, schemas, properties, and workflows
 description: |
+  **DEPRECATED**: This legacy private-token server will be removed from the Obot MCP Catalog in a future release. Use **HubSpot CRM** for HubSpot's official hosted MCP server with secure, per-user OAuth.
+
+  Retain this server only if you need features not currently exposed by the official remote server: custom object schemas or property administration, explicit association management, workflow inspection, archived-record access, bulk operations, or HubSpot UI deep links.
+
   A Model Context Protocol (MCP) server that integrates with HubSpot CRM.
 
   This MCP server is currently in beta.
@@ -18,6 +22,7 @@ description: |
 
 metadata:
   categories: Business, SaaS & API Integrations
+  deprecated: "true"
 icon: https://img.icons8.com/?size=100&id=Xq3RA1kWzz3X&format=png&color=000000
 repoURL: https://www.npmjs.com/package/@hubspot/mcp-server
 

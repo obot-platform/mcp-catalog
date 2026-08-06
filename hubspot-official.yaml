@@ -1,0 +1,67 @@
+name: HubSpot Official 
+entryKey: hubspot
+serverUserType: singleUser
+shortDescription: Connect to HubSpot CRM data with secure, per-user OAuth access
+description: |
+  The official HubSpot MCP server connects AI agents to your HubSpot CRM data through HubSpot-hosted OAuth.
+
+  ## Features
+  - **CRM records**: Search, retrieve, create, and update supported CRM records
+  - **Activities**: Work with calls, emails, meetings, notes, and tasks
+  - **Marketing**: Analyze campaigns and marketing emails; create and update marketing email drafts
+  - **Conversations**: Search supported inbox conversations and messages
+  - **Per-user access**: Respects each connected user's HubSpot permissions
+
+  ## What you'll need to connect
+
+  An administrator must create a HubSpot MCP Auth App before users can connect:
+
+  1. In HubSpot, go to **Development > MCP Auth Apps** and create an app.
+  2. Add this redirect URL: `https://<your-obot-host>/oauth/mcp/callback`.
+  3. In Obot, configure the app's Client ID and Client Secret for this server.
+  4. Connect each user through the HubSpot OAuth prompt.
+
+  HubSpot requires OAuth with PKCE and a client secret. It does not support Dynamic Client Registration, so the Client ID and Client Secret must be configured by an administrator. The first user to connect may need HubSpot administrator access; subsequent users authenticate individually and retain their own HubSpot permissions.
+
+  ## Important limitations
+
+  HubSpot's remote MCP server does not expose all features of the legacy HubSpot server. Use the legacy server while you need custom object schemas or property administration, explicit association management, workflow inspection, archived-record access, bulk operations, or HubSpot UI deep links.
+
+  Sensitive Data properties are unavailable. When Sensitive Data is enabled for the HubSpot account, activity and conversation data are unavailable through this server.
+
+metadata:
+  categories: Business, SaaS & API Integrations
+  allow-multiple: "true"
+repoURL: https://developers.hubspot.com/docs/apps/developer-platform/build-apps/integrate-with-the-remote-hubspot-mcp-server
+icon: https://img.icons8.com/?size=100&id=Xq3RA1kWzz3X&format=png&color=000000
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.hubspot.com
+  staticOAuthRequired: true
+toolPreview:
+  - name: get_user_details
+    description: Get the authenticated user's account details and CRM object access.
+  - name: search_crm_objects
+    description: Search and filter HubSpot CRM records with text queries, filters, sorting, and pagination.
+  - name: get_crm_objects
+    description: Retrieve one or more HubSpot CRM records by ID.
+  - name: manage_crm_objects
+    description: Create or update supported HubSpot CRM records and activities.
+  - name: search_properties
+    description: Find CRM property definitions by keyword.
+  - name: get_properties
+    description: Retrieve full CRM property definitions, including data types and allowed values.
+  - name: search_owners
+    description: Find CRM record owners by name, email, or ID.
+  - name: get_campaign_analytics
+    description: Retrieve campaign metrics or revenue attribution data.
+  - name: search_conversations
+    description: Search supported HubSpot conversations and messages by CRM object, time range, or keyword.
+  - name: get_conversation_channel_metadata
+    description: List available HubSpot inboxes, channels, and channel instances.
+  - name: get_marketing_email_analytics
+    description: Retrieve marketing email aggregate, health, or per-contact engagement analytics.
+  - name: manage_marketing_email
+    description: Create, update, clone, preview, and manage draft marketing emails.
+  - name: submit_feedback
+    description: Send feedback about the HubSpot MCP server experience.
