@@ -1,0 +1,49 @@
+name: Files.com Remote
+entryKey: files-com-remote
+serverUserType: singleUser
+shortDescription: Manage files, users, groups, permissions, and secure file sharing through Files.com's hosted MCP server
+description: |
+  The official Files.com hosted Model Context Protocol (MCP) server lets AI agents securely manage resources and perform file operations without running a local server.
+
+  ## Features
+
+  - **File & Folder Operations**: Find, copy, move, delete, list, zip, and unzip files and folders
+  - **User and Group Management**: Create, update, list, and delete users and groups
+  - **Share Link Management**: Create and manage secure file sharing links, recipients, registrations, and notifications
+  - **Permission Management**: Manage folder-level permissions for users and groups
+  - **History & Audit Logging**: Inspect file activity, logins, API requests, transfers, automations, and settings changes
+  - **Automation and Remote Servers**: Inspect automation workflows and remote server connections
+
+  ## What you'll need to connect
+
+  Enter your Files.com site subdomain. For example, enter `acme` if your site is available at `https://acme.files.com`.
+
+  Obot constructs the MCP endpoint as `https://<your-site>.files.com/api/ai/mcp/v1/`.
+
+  Sign in with your Files.com account when prompted. OAuth authentication follows your existing Files.com user permissions and supports SSO. Your site's AI features must be enabled, and a Files.com Site Administrator must enable **MCP Dynamic Client Registration** under **AI Features > Settings** at `https://<your-site>.files.com/ui/aiFeatures/settings`.
+
+  For automated or headless use, you can provide a Files.com API key instead of signing in. The key inherits the permissions of its associated Files.com user.
+
+  Custom domains are not accepted; use the site's corresponding Files.com subdomain instead.
+metadata:
+  categories: Cloud & Infrastructure, File Transfer, Storage, Security & Compliance
+  allow-multiple: "true"
+  unsupportedTools: Download_File_to_Local,Upload_File_from_Local
+icon: https://avatars.githubusercontent.com/u/59619169?s=48&v=4
+repoURL: https://www.files.com/docs/integrations/model-context-protocol-mcp-server
+env:
+- key: FILES_COM_SITE
+  name: Files.com Site
+  required: true
+  sensitive: false
+  description: Your Files.com site subdomain, for example `acme` for `https://acme.files.com`
+runtime: remote
+remoteConfig:
+  URLTemplate: https://${FILES_COM_SITE}.files.com/api/ai/mcp/v1
+  headers:
+  - name: Files.com API Key
+    description: Optional Files.com API key for automated or headless authentication
+    key: X-FilesAPI-Key
+    required: false
+    sensitive: true
+toolPreview: []
