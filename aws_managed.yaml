@@ -1,0 +1,104 @@
+name: AWS Managed MCP
+entryKey: aws-managed-mcp
+serverUserType: singleUser
+shortDescription: Manage AWS resources and access AWS knowledge through AWS's managed MCP server
+description: |
+  AWS's managed Model Context Protocol server provides authenticated AWS API access alongside current AWS documentation, regional availability, and AWS workflow guidance.
+
+  ## Features
+
+  - **AWS API Operations**: Use sandboxed Python with AWS SDK access to manage and inspect AWS resources across services.
+  - **AWS Knowledge**: Search and read AWS documentation, retrieve AWS workflow guidance, and check regional availability.
+  - **Secure Authentication**: Connect through OAuth 2.1 using your AWS identity. Obot dynamically registers its OAuth client; no API key or long-lived AWS access keys are required.
+  - **Auditability**: AWS applies your existing IAM permissions and records downstream API activity in CloudTrail.
+
+  ## What you'll need to connect
+
+  1. Select an AWS MCP endpoint region: `us-east-1` or `eu-central-1`.
+  2. Sign in to AWS in the OAuth browser flow.
+  3. Your IAM identity needs `signin:AuthorizeOAuth2Access` and `signin:CreateOAuth2Token`. Attach the AWS managed `AWSMCPSignInOAuthAccessPolicy` policy or grant equivalent permissions.
+  4. Your identity must also have the normal IAM permissions for the AWS operations you want to perform.
+
+  OAuth access tokens are valid for one hour and refresh automatically for up to twelve hours. OAuth does not support switching AWS accounts within one session; use a separate connection for each account.
+
+  ## Important behavior
+
+  - Use `aws___run_script` for AWS operations. AWS has deprecated `aws___call_aws` and plans to remove it on August 31, 2026.
+  - The managed service runs code in an AWS sandbox. It cannot access your local file system. For file workflows, use `aws___get_presigned_url` to stage content in your S3 bucket.
+  - The endpoint region determines the AWS MCP endpoint, not the target resource region. Specify target resource regions in requests when needed.
+
+  ## Migrating from deprecated AWS MCP servers
+
+  - **AWS API**: Replace `call_aws` with `aws___run_script`, which uses the pre-provided `call_boto3` function to invoke AWS APIs with your IAM permissions. For command guidance, search current AWS documentation or retrieve a relevant AWS skill before running the operation.
+  - **AWS Kendra**: Use `aws___run_script` to call the Kendra `ListIndices` and `Query` APIs. Specify the Kendra index's AWS resource region in the script; it can differ from the selected MCP endpoint region.
+
+  ## Basic usage
+
+  - "List my S3 buckets and report their regions"
+  - "Find the AWS documentation for Lambda event source mappings"
+  - "Check whether AWS::EKS::Cluster is available in eu-west-1"
+  - "Retrieve the AWS guidance for investigating an RDS connection issue"
+metadata:
+  categories: Infrastructure,Cloud Services,DevOps
+icon: https://avatars.githubusercontent.com/u/2232217?s=48&v=4
+repoURL: https://docs.aws.amazon.com/aws-mcp/latest/userguide/what-is-mcp-server.html
+env:
+- key: AWS_MCP_REGION
+  name: AWS MCP Endpoint Region
+  required: true
+  sensitive: false
+  description: AWS MCP endpoint region. Supported values are us-east-1 and eu-central-1.
+  options:
+  - name: US East (N. Virginia)
+    value: us-east-1
+    description: Connect to the AWS MCP endpoint in US East (N. Virginia).
+  - name: Europe (Frankfurt)
+    value: eu-central-1
+    description: Connect to the AWS MCP endpoint in Europe (Frankfurt).
+runtime: remote
+remoteConfig:
+  urlTemplate: https://aws-mcp.${AWS_MCP_REGION}.api.aws/mcp
+toolPreview:
+- name: aws___run_script
+  description: Execute Python code in a sandboxed environment with authenticated AWS API access. Use for AWS operations, multi-step workflows, and analysis.
+  params:
+    code: Python code that uses the pre-provided call_boto3 function for AWS API calls.
+- name: aws___search_documentation
+  description: Search AWS documentation, API references, best practices, service guides, and AWS workflow guidance.
+  params:
+    search_phrase: Keywords for the AWS topic to search.
+    topics: Optional documentation topics to search.
+    limit: Optional maximum number of results.
+- name: aws___read_documentation
+  description: Retrieve AWS documentation pages as markdown.
+  params:
+    requests: Documentation URLs to retrieve, with optional pagination controls.
+- name: aws___retrieve_skill
+  description: Retrieve AWS workflow guidance discovered through documentation search.
+  params:
+    skill_name: Exact AWS skill name returned by documentation search.
+    file: Optional file path within the skill.
+- name: aws___list_regions
+  description: List AWS regions and their human-readable names.
+  params: {}
+- name: aws___get_regional_availability
+  description: Check AWS service, API, and CloudFormation resource availability by region.
+  params:
+    resource_type: "Availability type: product, api, or cfn."
+    regions: Optional AWS regions to check.
+    filters: Optional exact product, API, or CloudFormation resource filters.
+- name: aws___get_presigned_url
+  description: Generate presigned S3 URLs for file upload and download workflows.
+  params:
+    requests: One to twenty-five S3 upload or download requests.
+- name: aws___get_tasks
+  description: Poll long-running AWS MCP tasks.
+  params:
+    task_ids: Task IDs returned by prior AWS MCP calls.
+    poll_iteration: Optional poll attempt number.
+- name: aws___call_aws
+  description: Deprecated AWS CLI operation tool. Prefer aws___run_script; AWS plans to remove this tool on August 31, 2026.
+  params:
+    cli_command: Complete AWS CLI command beginning with aws.
+    max_results: Optional page size for paginated commands.
+    staging_sources: Optional S3-staged local file inputs.
