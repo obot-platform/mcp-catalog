@@ -3,6 +3,8 @@ entryKey: obot-grafana
 serverUserType: singleUser
 shortDescription: Query metrics, logs, traces, manage dashboards, alerts, and on-call schedules
 description: |
+  **DEPRECATED**: Grafana Cloud users should switch to the Grafana Cloud server, which uses the official hosted OAuth integration. Continue using this server for self-hosted Grafana, because Grafana Cloud MCP does not support self-hosted instances.
+
   A Model Context Protocol (MCP) server that provides comprehensive integration with Grafana, enabling seamless interaction with observability data, dashboards, alerts, and incident management. Connect to Grafana Cloud or self-hosted Grafana instances to query metrics, logs, traces, profiles, manage dashboards and alerts, and coordinate on-call schedules.
 
   ## Features
@@ -29,6 +31,7 @@ description: |
   - **Organization ID**: Specify a particular organization ID for multi-org Grafana instances.
 metadata:
   categories: Observability, Monitoring, DevOps, Incident Management
+  deprecated: "true"
 icon: https://avatars.githubusercontent.com/u/7195757?s=48&v=4
 repoURL: https://github.com/grafana/mcp-grafana
 
@@ -390,5 +393,4 @@ containerizedConfig:
   - streamable-http
   - --address
   - 0.0.0.0:8080
-
 

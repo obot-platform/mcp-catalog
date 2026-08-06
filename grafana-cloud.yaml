@@ -1,0 +1,167 @@
+name: Grafana Cloud
+entryKey: obot-grafana-cloud
+serverUserType: singleUser
+shortDescription: Query Grafana Cloud metrics, logs, dashboards, alerts, incidents, and on-call schedules with OAuth
+description: |
+  Grafana Cloud's official hosted Model Context Protocol (MCP) server connects AI agents directly to a Grafana Cloud stack. It uses OAuth 2.1, so each user authorizes access with their own Grafana identity and RBAC permissions instead of providing a service account token.
+
+  ## Features
+
+  - **Observability queries**: Query Prometheus metrics, Loki logs, Pyroscope profiles, Tempo data, and supported datasource types
+  - **Dashboards and alerts**: Search and manage dashboards, folders, alert rules, notification routing, and annotations
+  - **Incident response**: View and manage incidents and Grafana OnCall schedules, teams, users, and alert groups
+  - **Assistant workflows**: Start and inspect Grafana Assistant investigations, retrieve infrastructure summaries, and ask Grafana Assistant
+  - **User-scoped access**: Use the permissions already granted to the user in the selected Grafana Cloud stack
+
+  ## What you'll need to connect
+
+  - A hosted Grafana Cloud stack. This server does not support self-hosted Grafana.
+  - Grafana Assistant enabled for the stack, with any required terms accepted.
+  - The **Assistant Cloud MCP User** role or `grafana-assistant-app.cloud-mcp:access` permission. Editors and administrators have this permission by default.
+
+  Authenticate with Grafana when prompted. Read access is always available; grant write access during consent to create or modify Grafana resources. Grafana Cloud MCP usage contributes to Grafana Assistant active-user and token usage.
+
+  Optionally provide your stack URL to skip the stack-selection step during authorization. For example: `https://my-stack.grafana.net`.
+metadata:
+  categories: Observability, Monitoring, DevOps, Incident Management
+icon: https://avatars.githubusercontent.com/u/7195757?s=48&v=4
+repoURL: https://grafana.com/docs/grafana-cloud/ai-tools/mcp-servers/cloud-mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.grafana.com/mcp
+  headers:
+  - name: Grafana Cloud Stack URL
+    description: Optional Grafana Cloud stack URL used to skip stack selection during OAuth authorization (for example, https://my-stack.grafana.net)
+    key: X-Grafana-URL
+    required: false
+    sensitive: false
+toolPreview:
+- name: search_dashboards
+  description: Search Grafana dashboards by query string.
+  params:
+    query: Query string used to find dashboards.
+- name: get_dashboard_summary
+  description: Get a compact dashboard overview without retrieving the full dashboard JSON.
+  params:
+    uid: Dashboard UID.
+- name: get_dashboard_property
+  description: Extract selected dashboard properties with a JSONPath expression.
+  params:
+    uid: Dashboard UID.
+    jsonPath: JSONPath expression selecting the required dashboard properties.
+- name: get_dashboard_panel_queries
+  description: Retrieve panel queries with template variable substitution.
+  params:
+    uid: Dashboard UID.
+- name: update_dashboard
+  description: Create or update a dashboard using full JSON or targeted patch operations. Requires Grafana write access.
+  params:
+    dashboard: Optional full dashboard JSON when creating or replacing a dashboard.
+    uid: Optional UID of the dashboard to update.
+    operations: Optional targeted patch operations.
+- name: search_folders
+  description: Search Grafana folders by query string.
+  params:
+    query: Query string used to find folders.
+- name: create_folder
+  description: Create a Grafana folder. Requires Grafana write access.
+  params:
+    title: Title of the new folder.
+- name: list_datasources
+  description: List configured Grafana datasources, with optional type filtering and pagination.
+  params:
+    type: Optional datasource type filter.
+    limit: Optional maximum number of datasources to return.
+- name: get_datasource
+  description: Get detailed datasource information by UID or name.
+  params:
+    uid: Optional datasource UID.
+    name: Optional datasource name.
+- name: query_prometheus
+  description: Execute a PromQL instant or range query against a Prometheus datasource.
+  params:
+    datasourceUid: Prometheus datasource UID.
+    expr: PromQL expression.
+    queryType: "Query type: instant or range."
+- name: list_prometheus_metric_names
+  description: Discover metric names from a Prometheus datasource.
+  params:
+    datasourceUid: Prometheus datasource UID.
+    regex: Optional regular expression filter.
+- name: query_loki_logs
+  description: Execute a LogQL query for log entries or metric values.
+  params:
+    datasourceUid: Loki datasource UID.
+    logql: LogQL query.
+- name: query_loki_patterns
+  description: Detect and analyze common log patterns in a Loki datasource.
+  params:
+    datasourceUid: Loki datasource UID.
+    query: LogQL query or selector used for pattern analysis.
+- name: query_pyroscope
+  description: Query Pyroscope profiles or profile metrics.
+  params:
+    datasourceUid: Pyroscope datasource UID.
+    profileType: Profile type to query.
+- name: alerting_manage_rules
+  description: List, filter, and manage alert rules. Mutations require Grafana write access.
+  params:
+    action: Alert-rule operation to perform.
+- name: alerting_manage_routing
+  description: View alerting routing configuration, notification policies, contact points, and time intervals.
+  params:
+    action: Routing operation to perform.
+- name: get_annotations
+  description: Fetch annotations filtered by dashboard UID, time range, or tags.
+  params:
+    dashboardUID: Optional dashboard UID.
+    tags: Optional annotation tags.
+- name: create_annotation
+  description: Create a dashboard or panel annotation. Requires Grafana write access.
+  params:
+    text: Annotation text.
+    time: Annotation timestamp.
+- name: list_incidents
+  description: List Grafana incidents with optional status filtering.
+  params:
+    status: Optional incident status filter.
+- name: create_incident
+  description: Create a Grafana incident. Requires Grafana write access.
+  params:
+    title: Incident title.
+    severity: Incident severity.
+- name: list_oncall_schedules
+  description: List Grafana OnCall schedules, optionally filtered by team.
+  params:
+    teamId: Optional OnCall team ID.
+- name: get_current_oncall_users
+  description: Get users currently on call for a schedule.
+  params:
+    scheduleId: OnCall schedule ID.
+- name: list_alert_groups
+  description: List OnCall alert groups with state, team, time-range, and label filters.
+  params:
+    state: Optional alert-group state filter.
+    teamId: Optional OnCall team ID filter.
+- name: list_investigations
+  description: List Grafana Assistant investigations with optional filtering and pagination.
+  params:
+    limit: Optional maximum number of investigations to return.
+- name: create_investigation
+  description: Start a Grafana Assistant investigation from an external AI agent. Requires Grafana write access.
+  params:
+    title: Investigation title.
+    prompt: Investigation prompt.
+- name: describe_infrastructure
+  description: Retrieve a pre-built service-group summary including topology, metrics, and dependencies.
+  params:
+    serviceName: Service or infrastructure entity name.
+- name: get_panel_image
+  description: Render a dashboard panel as a PNG image.
+  params:
+    dashboardUid: Dashboard UID.
+    panelId: Panel ID.
+- name: generate_deeplink
+  description: Generate a Grafana deeplink for a dashboard, panel, or Explore query.
+  params:
+    resourceType: "Resource type: dashboard, panel, or explore."
