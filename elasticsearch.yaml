@@ -3,6 +3,9 @@ entryKey: obot-elasticsearch
 serverUserType: singleUser
 shortDescription: Search, query, and manage Elasticsearch indices with vector and full-text search
 description: |
+  > [!WARNING]
+  > **DEPRECATED**: Use Elastic Agent Builder Official for Elastic Cloud Serverless projects. This legacy server remains available for direct Query DSL, vector search, and shard inspection during the migration period.
+
   > [!CAUTION]
   > **WARNING: this MCP server is EXPERIMENTAL.**
 
@@ -38,6 +41,7 @@ description: |
 
 metadata:
   categories: Databases
+  deprecated: "true"
 icon: https://avatars.githubusercontent.com/u/6764390?v=4
 repoURL: https://github.com/elastic/mcp-server-elasticsearch
 env:

@@ -1,0 +1,69 @@
+name: Elastic Agent Builder Official
+entryKey: elasticsearch-agent-builder
+serverUserType: singleUser
+shortDescription: Search and analyze Elasticsearch data with Elastic's hosted Agent Builder tools
+description: |
+  Elastic Agent Builder's official Model Context Protocol (MCP) server exposes built-in and custom tools from an Elastic Cloud Serverless project.
+
+  This entry is the recommended replacement for the legacy containerized Elasticsearch entry. Agent Builder provides broader vendor-managed search and analysis capabilities, but it does not expose a shard-inspection tool or the legacy server's direct raw Query DSL interface.
+
+  ## Features
+
+  - **Index Discovery**: List accessible indices, aliases, and data streams
+  - **Mapping Inspection**: Retrieve mappings for an index or index pattern
+  - **Natural Language Search**: Search, count, aggregate, and summarize Elasticsearch data
+  - **ES|QL**: Generate and execute ES|QL queries
+  - **Extensible Tools**: Use built-in tools and custom tools configured in Agent Builder
+  - **Per-user OAuth**: Run tools with the authorizing user's current project permissions
+
+  ## Requirements
+
+  - An Elastic Cloud Serverless Elasticsearch, Observability, or Security project
+  - Access to Elastic Agent Builder and the data the tools will query
+  - A project-scoped OAuth MCP client created in Agent Builder by an administrator
+  - The Kibana URL for the project, without a trailing slash
+
+  OAuth dynamic client registration is not supported by Elastic. Before users connect, an Obot administrator must configure this catalog entry with the OAuth client ID and optional client secret created for the target Serverless project. One OAuth client registration can serve multiple users, and each user authorizes separately with their own project permissions.
+
+  For the default Kibana space, enter a URL such as `https://my-project.kb.us-central1.gcp.elastic.cloud`. For a custom space, include `/s/<space-name>`, for example `https://my-project.kb.us-central1.gcp.elastic.cloud/s/production`.
+
+  Agent Builder OAuth connections expire after 30 days without use and must then be authorized again.
+metadata:
+  categories: Databases, Data Analytics, Retrieval & Search
+icon: https://avatars.githubusercontent.com/u/6764390?v=4
+repoURL: https://www.elastic.co/docs/explore-analyze/ai-features/agent-builder/mcp-server
+
+env:
+  - key: KIBANA_URL
+    name: Kibana URL
+    required: true
+    sensitive: false
+    description: Elastic Cloud Serverless Kibana URL without a trailing slash. Include /s/<space-name> when using a custom Kibana space.
+
+runtime: remote
+remoteConfig:
+  URLTemplate: ${KIBANA_URL}/api/agent_builder/mcp
+  staticOAuthRequired: true
+
+toolPreview:
+  - name: platform_core_list_indices
+    description: Lists the indices, aliases, and data streams in the Elasticsearch cluster that the current user can access.
+    params: {}
+  - name: platform_core_get_index_mapping
+    description: Retrieves mappings for the specified Elasticsearch index or indices.
+    params:
+      index: Name or pattern of the Elasticsearch index whose mapping should be retrieved
+  - name: platform_core_search
+    description: Searches and analyzes Elasticsearch data from a natural language request, automatically selecting Query DSL or ES|QL based on the query intent.
+    params:
+      query: A natural language query expressing the search request
+      index: Optional index to search; when omitted, Agent Builder selects an index based on the query
+  - name: platform_core_get_document_by_id
+    description: Retrieves the full source of an Elasticsearch document by its ID and index name.
+    params:
+      id: ID of the document to retrieve
+      index: Name of the index containing the document
+  - name: platform_core_execute_esql
+    description: Executes a user-provided or generated ES|QL query and returns the results in a tabular format.
+    params:
+      query: The ES|QL query to execute
