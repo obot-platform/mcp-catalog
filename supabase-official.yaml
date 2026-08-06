@@ -1,0 +1,117 @@
+name: Supabase Official
+entryKey: supabase-official
+serverUserType: singleUser
+shortDescription: Connect to Supabase with selectable read-only access and OAuth or a personal access token
+description: |
+  The official hosted Supabase Model Context Protocol (MCP) server connects AI assistants to your Supabase projects.
+
+  ## What you'll need to connect
+
+  Choose whether to restrict the connection to read-only operations. Read-only access is recommended unless you need to apply migrations, deploy functions, or manage projects and branches.
+
+  Authentication uses OAuth with dynamic client registration by default. You can instead provide a Supabase personal access token for non-interactive access. When a token is provided, Supabase authenticates directly with it and does not start OAuth; when omitted, Obot uses OAuth.
+
+  ## Security
+
+  - Use a development project or branch with non-production data. Never connect this server to production data.
+  - Review every tool call before approving it, especially SQL, migrations, deployments, and project or branch operations.
+
+  ## Features
+
+  - **Database**: Inspect schemas and migrations, execute SQL, and optionally apply migrations
+  - **Debugging**: Retrieve logs and security or performance advisors
+  - **Development**: Get project URLs and publishable keys, and generate TypeScript types
+  - **Edge Functions and Branching**: Inspect functions and branches, with optional write operations
+  - **Storage and Docs**: Inspect storage configuration and search Supabase documentation
+metadata:
+  categories: Databases
+icon: https://supabase.com/favicon/favicon-96x96.png
+repoURL: https://github.com/supabase/mcp
+env:
+- name: Read Only
+  key: READ_ONLY
+  description: Choose whether to restrict the connection to read-only operations.
+  required: true
+  sensitive: false
+  options:
+  - name: Read only
+    value: "true"
+    description: Restrict SQL and mutation operations.
+  - name: Read and write
+    value: "false"
+    description: Allow potentially destructive write operations.
+runtime: remote
+remoteConfig:
+  URLTemplate: https://mcp.supabase.com/mcp?read_only=${READ_ONLY}
+  headers:
+  - name: Supabase Personal Access Token
+    description: Optional. Provide a Supabase personal access token for non-interactive authentication. OAuth is used when omitted.
+    key: Authorization
+    required: false
+    sensitive: true
+    prefix: "Bearer "
+toolPreview:
+- name: list_projects
+  description: Lists Supabase projects available to the authenticated user.
+- name: get_project
+  description: Gets details for a Supabase project.
+- name: create_project
+  description: Creates a Supabase project after the user confirms its cost. Requires read and write access.
+- name: pause_project
+  description: Pauses a Supabase project. Requires read and write access.
+- name: restore_project
+  description: Restores a Supabase project. Requires read and write access.
+- name: list_organizations
+  description: Lists organizations available to the authenticated user.
+- name: get_organization
+  description: Gets organization details.
+- name: get_cost
+  description: Gets the cost of creating a project or branch.
+- name: confirm_cost
+  description: Records that the user understands the cost of a project or branch.
+- name: search_docs
+  description: Searches Supabase documentation.
+- name: list_tables
+  description: Lists database tables and optionally their columns, primary keys, and foreign-key constraints.
+- name: list_extensions
+  description: Lists database extensions.
+- name: list_migrations
+  description: Lists database migrations.
+- name: apply_migration
+  description: Applies a SQL migration. Requires read and write access.
+- name: execute_sql
+  description: Executes SQL queries, constrained to a read-only Postgres user when read-only access is selected.
+- name: get_logs
+  description: Retrieves API, Postgres, Edge Function, Auth, Storage, or Realtime logs.
+- name: get_advisors
+  description: Retrieves security and performance advisors.
+- name: get_project_url
+  description: Gets a project's API URL.
+- name: get_publishable_keys
+  description: Gets client-safe publishable and legacy anon API keys for a project.
+- name: generate_typescript_types
+  description: Generates TypeScript types from a project's database schema.
+- name: list_edge_functions
+  description: Lists Edge Functions in a project.
+- name: get_edge_function
+  description: Retrieves an Edge Function's file contents.
+- name: deploy_edge_function
+  description: Deploys an Edge Function. Requires read and write access.
+- name: create_branch
+  description: Creates a development branch. Requires a paid plan and read and write access.
+- name: list_branches
+  description: Lists development branches. Requires a paid plan.
+- name: delete_branch
+  description: Deletes a development branch. Requires a paid plan and read and write access.
+- name: merge_branch
+  description: Merges a development branch into production. Requires a paid plan and read and write access.
+- name: reset_branch
+  description: Resets a development branch to a migration version. Requires a paid plan and read and write access.
+- name: rebase_branch
+  description: Rebases a development branch on production. Requires a paid plan and read and write access.
+- name: list_storage_buckets
+  description: Lists storage buckets. Available only when the storage feature group is enabled.
+- name: get_storage_config
+  description: Gets storage configuration. Available only when the storage feature group is enabled.
+- name: update_storage_config
+  description: Updates storage configuration. Available only when the storage feature group and read and write access are enabled.
