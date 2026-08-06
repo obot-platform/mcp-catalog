@@ -1,29 +1,49 @@
 name: Context7 Official
 entryKey: context7-official
 serverUserType: singleUser
-shortDescription: Get up-to-date, version-specific code documentation and examples for any library with Context7 OAuth
+shortDescription: Get up-to-date, version-specific code documentation and examples for any library
 description: |
   The official hosted Context7 Model Context Protocol (MCP) server provides current, version-specific documentation and code examples for libraries and frameworks.
 
-  This entry connects directly to Context7's vendor-operated remote service using OAuth. Context7 manages sign-in and token refresh without requiring an API key.
+  This entry connects directly to Context7's vendor-operated remote service using OAuth or anonymous access with an optional Context7 API key.
 
   ## Features
 
   - **Up-to-date Documentation**: Fetch current, version-specific docs and code examples
   - **Automatic Library Resolution**: Find the best Context7 library ID for a package or product
   - **Focused Retrieval**: Query documentation for a specific implementation task or concept
-  - **OAuth Access**: Sign in to Context7 without manually managing an API key
+  - **Flexible Authentication**: Sign in with OAuth or connect anonymously with an optional Context7 API key
 
   ## What you'll need to connect
 
-  Authenticate with Context7 when prompted. This entry requires an MCP client that supports OAuth 2.0.
+  Choose OAuth to sign in with Context7 when prompted, or choose Anonymous / API Key to connect without signing in. You can optionally provide a key from https://context7.com/dashboard for higher limits and private sources.
 metadata:
   categories: Developer Tools, Documentation
 icon: https://avatars.githubusercontent.com/u/74989412?v=4
 repoURL: https://github.com/upstash/context7
+env:
+- name: Authentication method
+  key: CONTEXT7_ENDPOINT
+  description: Choose how to authenticate with Context7
+  required: true
+  sensitive: false
+  options:
+  - name: OAuth
+    value: mcp/oauth
+    description: Sign in to Context7 using OAuth
+  - name: Anonymous / API Key
+    value: mcp
+    description: Connect anonymously or authenticate using a Context7 API key
 runtime: remote
 remoteConfig:
-  fixedURL: https://mcp.context7.com/mcp/oauth
+  URLTemplate: https://mcp.context7.com/${CONTEXT7_ENDPOINT}
+  headers:
+  - name: Context7 API Key
+    description: Optional API key for higher limits and private sources; leave blank for anonymous access or OAuth
+    key: Authorization
+    required: false
+    sensitive: true
+    prefix: "Bearer "
 toolPreview:
 - name: resolve-library-id
   description: |-
