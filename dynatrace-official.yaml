@@ -1,0 +1,89 @@
+name: Dynatrace Official
+entryKey: dynatrace-official
+serverUserType: singleUser
+shortDescription: Access Dynatrace observability data and intelligence through the official hosted MCP server
+description: |
+  The official Dynatrace Model Context Protocol (MCP) server provides secure, governed access to Dynatrace observability data and Dynatrace Intelligence. It is hosted and maintained by Dynatrace in your SaaS environment.
+
+  ## Features
+
+  - **Grail Data Analysis**: Generate, explain, and execute DQL for logs, metrics, spans, events, and entity data
+  - **Problem Investigation**: Find problems, view problem details, investigate vulnerabilities, and retrieve Kubernetes events
+  - **Topology Discovery**: Resolve Dynatrace entity names and IDs through Smartscape
+  - **Dynatrace Intelligence**: Analyze time series, find documents and troubleshooting guides, and ask product questions
+
+  ## What you'll need to connect
+
+  - **Dynatrace SaaS Platform environment**: Enter the environment identifier from `https://<environment>.apps.dynatrace.com`. Dynatrace Managed and classic `*.live.dynatrace.com` environments are not supported.
+  - **Dynatrace Platform Token**: Create a token with `mcp-gateway:servers:invoke` and `mcp-gateway:servers:read`, plus permissions for the tools you intend to use. DQL access commonly requires `storage:buckets:read` and the relevant `storage:*:read` permissions. See the [Dynatrace MCP server documentation](https://docs.dynatrace.com/docs/dynatrace-intelligence/dynatrace-mcp).
+  - **Relevant Dynatrace products**: Grail is required for DQL data access. Dynatrace Intelligence permissions are required for DQL generation, explanation, troubleshooting, and analysis tools.
+
+  Dynatrace also supports OAuth with a confidential client, but does not support Dynamic Client Registration. This catalog entry therefore uses a per-user Platform Token rather than shared static OAuth credentials.
+
+  ## Cost and access notes
+
+  DQL queries can incur Grail consumption charges. Use narrow timeframes and filters, and grant only the permissions required for the intended workflows.
+metadata:
+  categories: Monitoring, Developer Tools, DevOps
+  allow-multiple: "true"
+icon: https://avatars.githubusercontent.com/u/58178984?s=48&v=4
+repoURL: https://docs.dynatrace.com/docs/dynatrace-intelligence/dynatrace-mcp
+env:
+- key: DYNATRACE_ENVIRONMENT
+  name: Dynatrace Environment
+  required: true
+  sensitive: false
+  description: Your Dynatrace SaaS environment identifier, for example abc12345 from https://abc12345.apps.dynatrace.com.
+runtime: remote
+remoteConfig:
+  URLTemplate: https://${DYNATRACE_ENVIRONMENT}.apps.dynatrace.com/platform-reserved/mcp-gateway/v0.1/servers/dynatrace-mcp/mcp
+  headers:
+  - key: Authorization
+    name: Dynatrace Platform Token
+    required: true
+    sensitive: true
+    prefix: "Bearer "
+    description: A Dynatrace Platform Token with MCP gateway and tool-specific permissions.
+toolPreview:
+- name: execute-dql
+  description: Execute a Dynatrace Query Language (DQL) query against Grail and return the result.
+  params: {}
+- name: create-dql
+  description: Generate a DQL query from a natural-language request without executing it.
+  params: {}
+- name: explain-dql
+  description: Explain a DQL query in natural language.
+  params: {}
+- name: query-problems
+  description: Retrieve Dynatrace problems for investigation.
+  params: {}
+- name: get-problem-by-id
+  description: Retrieve details for a specific Dynatrace problem.
+  params: {}
+- name: get-vulnerabilities
+  description: List open security vulnerabilities, with risk-score filtering.
+  params: {}
+- name: get-events-for-kubernetes-cluster
+  description: Retrieve events for all Kubernetes clusters or a specified cluster.
+  params: {}
+- name: get-entity-id
+  description: Resolve a Dynatrace entity name to its entity ID.
+  params: {}
+- name: get-entity-name
+  description: Resolve a Dynatrace entity ID to its name.
+  params: {}
+- name: timeseries-forecast
+  description: Predict future timeseries values using a statistical forecasting model.
+  params: {}
+- name: adaptive-anomaly-detector
+  description: Analyze timeseries data for adaptive anomalies.
+  params: {}
+- name: find-documents
+  description: Find Dynatrace dashboards and notebooks by name.
+  params: {}
+- name: find-troubleshooting-guides
+  description: Find available troubleshooting guides using a problem description.
+  params: {}
+- name: ask-dynatrace-docs
+  description: Ask product-related questions about Dynatrace.
+  params: {}

@@ -4,6 +4,8 @@ serverUserType: singleUser
 shortDescription: Query logs, metrics, spans, and manage problems with Dynatrace observability
 description: |2
 
+  **DEPRECATED**: This community-maintained local server is no longer supported by Dynatrace. Use **Dynatrace Official** for the vendor-hosted MCP server. This entry remains available during the migration observation period for workflows that need its local-only notification, event-ingestion, or notebook tools.
+
   A Model Context Protocol (MCP) server for Dynatrace integration, providing comprehensive observability and monitoring capabilities through Dynatrace API.
 
   ## Features
@@ -23,6 +25,7 @@ description: |2
 metadata:
   categories: Monitoring, Developer Tools, DevOps
   allow-multiple: "true"
+  deprecated: "true"
 icon: https://avatars.githubusercontent.com/u/58178984?s=48&v=4
 repoURL: https://github.com/dynatrace-oss/dynatrace-mcp
 env:
