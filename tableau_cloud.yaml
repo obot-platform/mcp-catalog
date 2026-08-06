@@ -1,0 +1,146 @@
+name: Tableau Cloud
+entryKey: obot-tableau-cloud
+serverUserType: singleUser
+shortDescription: Query Tableau Cloud data, explore content, and manage Pulse metrics with OAuth
+description: |
+  The official Tableau-hosted Model Context Protocol (MCP) server for Tableau Cloud. It uses your Tableau Cloud identity, so each tool call respects your existing site role and content permissions.
+
+  ## Features
+  - **Data Q&A**: Discover published data sources, inspect metadata, and query data with VizQL
+  - **Content Exploration**: Search workbooks, views, projects, custom views, and Tableau Prep flows
+  - **Pulse Analytics**: Explore Pulse metrics and generate insight bundles and briefs
+  - **Administration**: Access guarded content, task, user, job, and Admin Insights tools when your site settings and permissions allow them
+
+  ## What you'll need to connect
+
+  A Tableau Cloud account with access to a Tableau site. Authentication is handled automatically through Tableau OAuth when you connect. No Personal Access Token, API key, or client credentials are required.
+
+  ## Limitations
+
+  This server supports Tableau Cloud only. Tableau Server and self-hosted Tableau deployments are not supported by Tableau's hosted endpoint.
+
+metadata:
+  categories: Data Analytics, Business Intelligence, Visualization
+
+icon: https://avatars.githubusercontent.com/u/828667?s=48&v=4
+repoURL: https://github.com/tableau/tableau-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.tableau.com
+
+toolPreview:
+  - name: list-datasources
+    description: List published data sources available on the Tableau Cloud site.
+    params:
+      filter: Optional REST filter in field:operator:value format.
+      limit: Maximum number of results to return.
+      pageNumber: Page number to retrieve.
+  - name: get-datasource-metadata
+    description: Retrieve datasource descriptions, model relationships, fields, and parameters.
+    params:
+      datasourceLuid: LUID of the datasource to inspect.
+  - name: query-datasource
+    description: Query a published datasource through the VizQL Data Service.
+    params:
+      datasourceLuid: LUID of the datasource to query.
+      query: VizQL query with fields, filters, aggregations, sorting, and parameters.
+      limit: Maximum number of rows to return.
+  - name: list-workbooks
+    description: List workbooks available on the Tableau Cloud site.
+    params:
+      filter: Optional REST filter in field:operator:value format.
+      limit: Maximum number of results to return.
+      pageNumber: Page number to retrieve.
+  - name: get-workbook
+    description: Retrieve a workbook and its views.
+    params:
+      workbookId: ID of the workbook to retrieve.
+  - name: list-views
+    description: List views with their workbook and owner metadata.
+    params:
+      filter: Optional REST filter in field:operator:value format.
+      limit: Maximum number of results to return.
+      pageNumber: Page number to retrieve.
+  - name: get-view
+    description: Retrieve metadata for a workbook view.
+    params:
+      viewId: ID of the view to retrieve.
+  - name: get-view-data
+    description: Retrieve CSV data for a workbook view.
+    params:
+      viewId: ID of the view to retrieve.
+      viewFilters: Optional filters to apply to the view.
+  - name: get-view-image
+    description: Retrieve a rendered image for a workbook view.
+    params:
+      viewId: ID of the view to render.
+      width: Image width in pixels.
+      height: Image height in pixels.
+      format: Image format.
+      viewFilters: Optional filters to apply to the view.
+  - name: list-custom-views
+    description: List saved custom views for a workbook.
+    params:
+      workbookId: ID of the workbook.
+      filter: Optional REST filter in field:operator:value format.
+      limit: Maximum number of results to return.
+  - name: get-custom-view-data
+    description: Retrieve CSV data for a saved custom view.
+    params:
+      customViewId: ID of the custom view.
+      viewFilters: Optional filters to apply to the view.
+  - name: get-custom-view-image
+    description: Retrieve a rendered image for a saved custom view.
+    params:
+      customViewId: ID of the custom view.
+      width: Image width in pixels.
+      height: Image height in pixels.
+      format: Image format.
+      viewFilters: Optional filters to apply to the view.
+  - name: list-projects
+    description: List projects available on the Tableau Cloud site.
+    params:
+      filter: Optional REST filter in field:operator:value format.
+      limit: Maximum number of results to return.
+      pageNumber: Page number to retrieve.
+  - name: list-all-pulse-metric-definitions
+    description: List published Pulse metric definitions.
+    params:
+      view: Definition detail level.
+      limit: Maximum number of results to return.
+      pageSize: Number of items per page.
+  - name: list-pulse-metric-definitions-from-definition-ids
+    description: Retrieve Pulse metric definitions by ID.
+    params:
+      metricDefinitionIds: Pulse metric definition IDs.
+      view: Definition detail level.
+  - name: list-pulse-metrics-from-metric-definition-id
+    description: List Pulse metrics for a metric definition.
+    params:
+      pulseMetricDefinitionID: ID of the Pulse metric definition.
+  - name: list-pulse-metrics-from-metric-ids
+    description: Retrieve Pulse metrics by ID.
+    params:
+      metricIds: Pulse metric IDs.
+  - name: list-pulse-metric-subscriptions
+    description: List the current user's Pulse metric subscriptions.
+  - name: generate-pulse-metric-value-insight-bundle
+    description: Generate an insight bundle for a Pulse metric.
+    params:
+      bundleRequest: Request containing the metric and insight context.
+      bundleType: Insight bundle type.
+  - name: generate-pulse-insight-brief
+    description: Generate an AI-powered Pulse Insight Brief. Requires Tableau+.
+    params:
+      briefRequest: Request containing conversation and metric context.
+  - name: search-content
+    description: Search Tableau content, including workbooks, views, data sources, databases, and tables.
+    params:
+      terms: Terms to search for.
+      limit: Maximum number of results to return.
+      orderBy: Sorting configuration.
+      filter: Content type, owner, or modification-time filters.
+  - name: reset-consent
+    description: Reset Tableau MCP consent for the current user.
+  - name: revoke-access-token
+    description: Revoke the current Tableau MCP access token.
