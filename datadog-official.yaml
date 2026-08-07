@@ -1,0 +1,85 @@
+name: Datadog (Official)
+entryKey: datadog-official
+serverUserType: singleUser
+shortDescription: Query Datadog observability data and manage platform features with Datadog's official MCP server
+description: |
+  Datadog's official, vendor-hosted Model Context Protocol (MCP) server connects AI agents to Datadog observability data and platform features. Use it to investigate logs, metrics, traces, monitors, dashboards, incidents, hosts, RUM, and more.
+
+  ## Features
+  - **Core observability**: Search logs, metrics, traces, monitors, dashboards, incidents, hosts, services, events, notebooks, and RUM data.
+  - **Product toolsets**: Enable additional Datadog product-specific toolsets when needed, such as alerting, dashboards, security, synthetics, workflows, and Database Monitoring.
+  - **Datadog authorization**: OAuth authenticates as the Datadog user and respects their Datadog roles and resource permissions.
+
+  ## What you'll need to connect
+  - **Datadog account**: The MCP server is available on supported commercial Datadog sites. It is not supported for Datadog GovCloud.
+  - **OAuth access**: Complete the Datadog OAuth flow when prompted. Your role requires `mcp_read` for read tools, `mcp_write` for write tools, and the underlying Datadog resource permissions.
+  - **Regional endpoint**: This entry uses Datadog's US1 endpoint. For another Datadog site, follow the [official setup guide](https://docs.datadoghq.com/mcp_server/setup/) to use that site's endpoint.
+
+  ## Important considerations
+  - The default core toolset includes read tools and notebook create/edit tools. Enable additional toolsets only when needed to conserve context and limit the available actions.
+  - Datadog documents fair-use limits of 50 tool calls per 10 seconds and 50,000 monthly tool calls, subject to change.
+  - Datadog retains remote-MCP usage, error, identity, and relevant prompt-context data for 120 days. Review the [official service documentation](https://docs.datadoghq.com/mcp_server/) before connecting sensitive workloads.
+
+  See the [official setup documentation](https://docs.datadoghq.com/mcp_server/setup/) and [tool reference](https://docs.datadoghq.com/mcp_server/tools/) for supported clients, authentication alternatives, permissions, and the current tool surface.
+metadata:
+  categories: Monitoring & Observability, SaaS & API Integrations
+  repoURL: https://github.com/datadog-labs/mcp-server
+icon: https://avatars.githubusercontent.com/u/365230?s=200&v=4
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.datadoghq.com/v1/mcp
+toolPreview:
+- name: search_datadog_logs
+  description: Search Datadog logs by query, time range, service, host, and storage tier.
+  params:
+    query: Datadog log search query
+    from: Start of the time range (optional)
+    to: End of the time range (optional)
+- name: analyze_datadog_logs
+  description: Analyze Datadog logs with SQL queries for counts, aggregations, and numerical analysis.
+  params:
+    query: Natural-language or SQL analysis request
+- name: get_datadog_metric
+  description: Query and analyze historical or real-time Datadog metrics.
+  params:
+    query: Datadog metric query
+    from: Start of the time range (optional)
+    to: End of the time range (optional)
+- name: search_datadog_monitors
+  description: Retrieve Datadog monitors, including statuses, thresholds, and alert conditions.
+  params:
+    query: Monitor search query (optional)
+- name: search_datadog_dashboards
+  description: Search Datadog dashboards and return their key details.
+  params:
+    query: Dashboard search query (optional)
+- name: get_datadog_dashboard
+  description: Retrieve a Datadog dashboard and its widget definitions.
+  params:
+    dashboard_id: Datadog dashboard ID
+- name: search_datadog_incidents
+  description: Search Datadog incidents by state, severity, and metadata.
+  params:
+    query: Incident search query (optional)
+- name: get_datadog_incident
+  description: Retrieve detailed information about a Datadog incident.
+  params:
+    incident_id: Datadog incident ID
+- name: search_datadog_hosts
+  description: Search monitored Datadog hosts and retrieve their status and metadata.
+  params:
+    filter: Host search filter (optional)
+- name: search_datadog_spans
+  description: Search Datadog APM spans by service, time range, resource, and other filters.
+  params:
+    query: Datadog span search query
+    from: Start of the time range (optional)
+    to: End of the time range (optional)
+- name: get_datadog_trace
+  description: Retrieve a complete Datadog APM trace by trace ID.
+  params:
+    trace_id: Datadog trace ID
+- name: search_datadog_rum_events
+  description: Search Datadog RUM events with advanced query syntax.
+  params:
+    query: Datadog RUM event query

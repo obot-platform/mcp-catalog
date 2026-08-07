@@ -5,6 +5,9 @@ shortDescription: Monitor incidents, logs, dashboards, metrics, APM traces, and 
 description: 'A Model Context Protocol (MCP) server that provides access to Datadog''s monitoring and observability platform. This server enables AI agents to interact with key Datadog features including incidents, monitors, logs, dashboards, metrics, APM traces, infrastructure monitoring, and RUM analytics through a comprehensive set of tools.
 
 
+  **DEPRECATED**: This containerized server is replaced by the [Datadog (Official)](https://docs.datadoghq.com/mcp_server/) remote MCP server. Use the official entry for new connections. Existing connections remain available with their current API and application key configuration.
+
+
   ## Features
 
   - **Observability Tools**: Leverage key Datadog monitoring features including incidents, monitors, logs, dashboards, and metrics through the MCP server
@@ -29,6 +32,7 @@ description: 'A Model Context Protocol (MCP) server that provides access to Data
   '
 metadata:
   categories: Monitoring & Observability, SaaS & API Integrations
+  deprecated: "true"
 icon: https://avatars.githubusercontent.com/u/365230?s=200&v=4
 repoURL: https://github.com/winor30/mcp-server-datadog
 env:
