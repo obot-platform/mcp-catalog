@@ -3,6 +3,8 @@ entryKey: obot-pagerduty
 serverUserType: singleUser
 shortDescription: Manage incidents, services, teams, on-call schedules, and escalation policies
 description: |
+  **DEPRECATED**: This containerized server is replaced by PagerDuty Official, which connects directly to PagerDuty using OAuth. Use the official entry for new connections.
+
   [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
   [![Python Version](https://img.shields.io/badge/python-3.13%2B-blue)](https://www.python.org/downloads/)
 
@@ -225,6 +227,7 @@ toolPreview:
 
 metadata:
   categories: Monitoring & Observability
+  deprecated: "true"
 icon: https://avatars.githubusercontent.com/u/766800?s=48&v=4
 repoURL: https://github.com/PagerDuty/pagerduty-mcp-server
 env:

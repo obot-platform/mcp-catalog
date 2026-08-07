@@ -1,0 +1,273 @@
+name: PagerDuty Official
+entryKey: pagerduty-official
+serverUserType: singleUser
+shortDescription: Manage PagerDuty incidents, on-call schedules, services, and incident response workflows
+description: |
+  PagerDuty's official hosted Model Context Protocol (MCP) server connects AI agents directly to PagerDuty. Investigate incidents, manage on-call coverage, administer services and teams, and run incident-response workflows without installing a local server.
+
+  ## Features
+  - **Incident response**: Investigate alerts, notes, related incidents, and change events; create, update, and resolve incidents.
+  - **On-call operations**: View schedules and on-call assignments, manage overrides, and coordinate handoffs.
+  - **Service administration**: Manage services, teams, escalation policies, event orchestrations, alert grouping, and status pages.
+  - **Operational intelligence**: Analyze incident and responder metrics, business-service dependencies, log entries, and change events.
+
+  ## What you'll need to connect
+  - **PagerDuty account**: Choose the region where your PagerDuty account is hosted.
+  - **PagerDuty OAuth client**: PagerDuty requires static OAuth client credentials for this server. Create an OAuth client in PagerDuty and enter its client ID and secret when prompted.
+
+  PagerDuty does not support Dynamic Client Registration (DCR). OAuth is required by this catalog entry because it authenticates as the PagerDuty user and permits least-privilege scoped access. Some filters require user-level authentication.
+
+  The existing PagerDuty container entry remains available for API-token connections during its deprecation period.
+metadata:
+  categories: Monitoring & Observability, SaaS & API Integrations
+icon: https://avatars.githubusercontent.com/u/766800?s=48&v=4
+repoURL: https://github.com/PagerDuty/pagerduty-mcp-server
+env:
+- name: PagerDuty region
+  key: PAGERDUTY_MCP_HOST
+  description: Choose the region where your PagerDuty account is hosted
+  required: true
+  sensitive: false
+  options:
+  - name: US
+    value: mcp.pagerduty.com
+    description: PagerDuty US region
+  - name: EU
+    value: mcp.eu.pagerduty.com
+    description: PagerDuty EU region
+runtime: remote
+remoteConfig:
+  URLTemplate: https://${PAGERDUTY_MCP_HOST}/mcp
+  staticOAuthRequired: true
+toolPreview:
+- name: list_incidents
+  description: Lists incidents with optional filtering by status, urgency, service, and date range.
+  params:
+    status: Filter by incident status
+    urgency: Filter by incident urgency
+    service_ids: Filter by service IDs
+- name: get_incident
+  description: Retrieves details for a specific incident.
+  params:
+    incident_id: Incident ID or number
+- name: create_incident
+  description: Creates a new incident.
+  params:
+    title: Incident title
+    service: Service reference with ID
+    urgency: Incident urgency
+- name: manage_incidents
+  description: Bulk updates incident status, urgency, assignment, or escalation level.
+  params:
+    incident_ids: Array of incident IDs
+    status: New incident status
+    urgency: New incident urgency
+- name: add_note_to_incident
+  description: Adds a note to an existing incident.
+  params:
+    incident_id: Incident ID
+    note: Note text
+- name: add_responders
+  description: Requests additional responders for an incident.
+  params:
+    incident_id: Incident ID
+    responder_request_targets: User or escalation policy IDs
+    message: Message for requested responders
+- name: list_alerts_from_incident
+  description: Lists alerts grouped into an incident.
+  params:
+    incident_id: Incident ID
+- name: list_incident_notes
+  description: Lists notes for an incident.
+  params:
+    incident_id: Incident ID
+- name: list_incident_change_events
+  description: Lists change events related to an incident.
+  params:
+    incident_id: Incident ID
+- name: get_past_incidents
+  description: Finds past incidents similar to an incident.
+  params:
+    incident_id: Incident ID
+- name: get_related_incidents
+  description: Finds other incidents related to an incident.
+  params:
+    incident_id: Incident ID
+- name: list_incident_workflows
+  description: Lists available incident workflows.
+  params: {}
+- name: start_incident_workflow
+  description: Starts an incident workflow for an incident.
+  params:
+    incident_id: Incident ID
+    incident_workflow_id: Incident workflow ID
+- name: list_services
+  description: Lists services with optional filtering.
+  params:
+    query: Filter by service name
+    team_ids: Filter by team IDs
+- name: get_service
+  description: Retrieves details for a service.
+  params:
+    service_id: Service ID
+- name: create_service
+  description: Creates a service.
+  params:
+    name: Service name
+    escalation_policy: Escalation policy reference
+- name: update_service
+  description: Updates a service configuration.
+  params:
+    service_id: Service ID
+    name: Updated service name
+- name: list_teams
+  description: Lists PagerDuty teams.
+  params:
+    query: Filter by team name
+- name: get_team
+  description: Retrieves details for a team.
+  params:
+    team_id: Team ID or name
+- name: list_team_members
+  description: Lists members of a team.
+  params:
+    team_id: Team ID
+- name: create_team
+  description: Creates a team.
+  params:
+    name: Team name
+- name: update_team
+  description: Updates team details.
+  params:
+    team_id: Team ID
+    name: Updated team name
+- name: delete_team
+  description: Deletes a team.
+  params:
+    team_id: Team ID
+- name: add_team_member
+  description: Adds a user to a team.
+  params:
+    team_id: Team ID
+    user_id: User ID
+    role: Team member role
+- name: remove_team_member
+  description: Removes a user from a team.
+  params:
+    team_id: Team ID
+    user_id: User ID
+- name: get_user_data
+  description: Gets the current authenticated user's information.
+  params: {}
+- name: list_users
+  description: Lists PagerDuty users.
+  params:
+    query: Filter by user name
+- name: list_oncalls
+  description: Lists on-call assignments with schedule, user, and date filters.
+  params:
+    schedule_ids: Filter by schedule IDs
+    user_ids: Filter by user IDs
+    since: Start of time range
+    until: End of time range
+- name: list_schedules
+  description: Lists on-call schedules.
+  params:
+    query: Filter by schedule name or description
+- name: get_schedule
+  description: Retrieves details for a schedule.
+  params:
+    schedule_id: Schedule ID
+- name: list_schedule_users
+  description: Lists users assigned to a schedule.
+  params:
+    schedule_id: Schedule ID
+- name: create_schedule
+  description: Creates an on-call schedule.
+  params:
+    name: Schedule name
+    time_zone: Schedule time zone
+- name: create_schedule_override
+  description: Creates an override for a schedule.
+  params:
+    schedule_id: Schedule ID
+    start: Override start time
+    end: Override end time
+    user: User reference
+- name: update_schedule
+  description: Updates an on-call schedule.
+  params:
+    schedule_id: Schedule ID
+- name: list_escalation_policies
+  description: Lists escalation policies.
+  params:
+    query: Filter by policy name or description
+- name: get_escalation_policy
+  description: Retrieves details for an escalation policy.
+  params:
+    policy_id: Escalation policy ID
+- name: list_event_orchestrations
+  description: Lists event orchestrations.
+  params: {}
+- name: get_event_orchestration
+  description: Retrieves details for an event orchestration.
+  params:
+    orchestration_id: Event orchestration ID
+- name: get_event_orchestration_router
+  description: Retrieves event-orchestration router configuration.
+  params:
+    orchestration_id: Event orchestration ID
+- name: update_event_orchestration_router
+  description: Updates event-orchestration router configuration.
+  params:
+    orchestration_id: Event orchestration ID
+    router_update: Updated router configuration
+- name: append_event_orchestration_router_rule
+  description: Appends a routing rule to an event orchestration router.
+  params:
+    orchestration_id: Event orchestration ID
+    new_rule: New routing rule configuration
+- name: list_alert_grouping_settings
+  description: Lists alert grouping settings.
+  params:
+    service_ids: Filter by service IDs
+- name: get_alert_grouping_setting
+  description: Retrieves an alert grouping setting.
+  params:
+    setting_id: Alert grouping setting ID
+- name: create_alert_grouping_setting
+  description: Creates an alert grouping setting.
+  params:
+    type: Grouping type
+    services: Service references
+- name: update_alert_grouping_setting
+  description: Updates an alert grouping setting.
+  params:
+    setting_id: Alert grouping setting ID
+- name: delete_alert_grouping_setting
+  description: Deletes an alert grouping setting.
+  params:
+    setting_id: Alert grouping setting ID
+- name: get_incident_metrics_by_service
+  description: Retrieves aggregated incident metrics by service.
+  params: {}
+- name: get_incident_metrics_by_team
+  description: Retrieves aggregated incident metrics by team.
+  params: {}
+- name: get_responder_metrics
+  description: Retrieves responder on-call hours and interruption counts.
+  params: {}
+- name: list_change_events
+  description: Lists change events across services.
+  params: {}
+- name: list_log_entries
+  description: Lists account log entries for the audit trail.
+  params: {}
+- name: list_status_pages
+  description: Lists status pages.
+  params: {}
+- name: create_status_page_post
+  description: Creates an incident or maintenance post on a status page.
+  params:
+    status_page_id: Status page ID
+    title: Post title
