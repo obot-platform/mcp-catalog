@@ -74,6 +74,7 @@ on:
           - square.yaml
           - stripe.yaml
           - supabase.yaml
+          - supabase-official.yaml
           - tableau.yaml
           - tavily_search.yaml
           - terraform.yaml
