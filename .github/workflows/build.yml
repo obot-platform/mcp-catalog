@@ -13,48 +13,17 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - uses: actions/setup-python@v6
+      - name: Checkout Obot validator
+        uses: actions/checkout@v6
         with:
-          python-version: "3.13"
+          repository: obot-platform/obot
+          ref: main
+          path: .obot
 
-      - name: Install YAML parser
-        run: python -m pip install PyYAML
+      - uses: actions/setup-go@v6
+        with:
+          go-version: "1.26.5"
+          cache: false
 
       - name: Validate catalog YAML
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-
-          import yaml
-
-
-          def find_duplicate_keys(node, path):
-              errors = []
-              if isinstance(node, yaml.MappingNode):
-                  keys = set()
-                  for key_node, value_node in node.value:
-                      key = key_node.value
-                      if key in keys:
-                          errors.append(f"{path}:{key_node.start_mark.line + 1}: duplicate key {key!r}")
-                      keys.add(key)
-                      errors.extend(find_duplicate_keys(value_node, path))
-              elif isinstance(node, yaml.SequenceNode):
-                  for value_node in node.value:
-                      errors.extend(find_duplicate_keys(value_node, path))
-              return errors
-
-
-          errors = []
-          for path in sorted(Path(".").glob("*.yaml")):
-              try:
-                  node = yaml.compose(path.read_text())
-              except yaml.YAMLError as error:
-                  errors.append(f"{path}: invalid YAML: {error}")
-              else:
-                  errors.extend(find_duplicate_keys(node, path))
-
-          if errors:
-              raise SystemExit("\n".join(errors))
-
-          print("Catalog YAML is valid.")
-          PY
+        run: go -C .obot run . mcp validate-catalog-yaml --require-entry-key "$GITHUB_WORKSPACE"/*.yaml
