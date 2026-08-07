@@ -2,7 +2,10 @@ name: Firecrawl
 entryKey: obot-firecrawl
 serverUserType: singleUser
 shortDescription: Web scraping, crawling, search, and structured data extraction with Firecrawl
-description: 'A Model Context Protocol (MCP) server that integrates with Firecrawl for web scraping capabilities. Perform web scraping, crawling, search, and content extraction with automatic retries and rate limiting.
+description: '**DEPRECATED**: this server is no longer supported. Please switch to Firecrawl Official, which connects directly to Firecrawl using OAuth.
+
+
+  A Model Context Protocol (MCP) server that integrates with Firecrawl for web scraping capabilities. Perform web scraping, crawling, search, and content extraction with automatic retries and rate limiting.
 
 
   ## Features
@@ -75,6 +78,7 @@ description: 'A Model Context Protocol (MCP) server that integrates with Firecra
 metadata:
   categories: Retrieval & Search,Automation & Browsers,Science & Research
   source: vendor
+  deprecated: "true"
 icon: https://avatars.githubusercontent.com/u/135057108?v=4
 repoURL: https://github.com/firecrawl/firecrawl-mcp-server
 toolPreview:

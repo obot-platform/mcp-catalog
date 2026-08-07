@@ -1,0 +1,273 @@
+name: Firecrawl Official
+entryKey: firecrawl-official
+serverUserType: singleUser
+shortDescription: Search, scrape, crawl, interact with, and monitor the web using Firecrawl's official hosted MCP
+description: |
+  The official hosted Firecrawl Model Context Protocol (MCP) server gives AI assistants current web data without running a local MCP container. Firecrawl operates and updates the server directly.
+
+  ## Features
+
+  - **Search and Scrape**: Find relevant pages and extract clean, structured content
+  - **Site Discovery and Crawling**: Map websites and collect content across multiple pages
+  - **Browser Interaction**: Click, navigate, and interact with dynamic pages
+  - **Document Parsing**: Parse PDFs, documents, spreadsheets, and HTML files
+  - **Structured Extraction**: Extract specific fields using prompts and JSON schemas
+  - **Research**: Run autonomous research and search paper, GitHub, and developer indexes
+  - **Monitoring**: Track pages and sites for meaningful changes over time
+
+  ## What you'll need to connect
+
+  Sign in to Firecrawl when prompted and authorize the team you want to use. Firecrawl offers a free plan with monthly credits; tool availability and usage limits depend on your plan.
+
+  This entry uses Firecrawl's OAuth service. Obot does not receive or store your Firecrawl API key.
+metadata:
+  categories: Retrieval & Search,Automation & Browsers,Science & Research
+  source: vendor
+icon: https://avatars.githubusercontent.com/u/135057108?v=4
+repoURL: https://github.com/firecrawl/firecrawl-mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.firecrawl.dev/v2/mcp-oauth
+toolPreview:
+- name: firecrawl_scrape
+  description: Retrieve and extract content from one supplied URL as markdown, HTML, links, screenshots, branding data, targeted answers, or structured JSON.
+  params:
+    url: URL to scrape
+    formats: Content formats to return
+    jsonOptions: Structured JSON extraction options
+    queryOptions: Targeted question options
+    screenshotOptions: Screenshot capture options
+    parsers: Parsers to apply
+    pdfOptions: PDF parsing options
+    onlyMainContent: Extract only the main page content
+    redactPII: Redact personally identifiable information
+    includeTags: HTML tags to include
+    excludeTags: HTML tags to exclude
+    waitFor: Milliseconds to wait before scraping
+    mobile: Use a mobile viewport
+    skipTlsVerification: Skip TLS certificate verification
+    removeBase64Images: Remove base64-encoded images
+    location: Geographic location and language settings
+    storeInCache: Store the result in Firecrawl's cache
+    zeroDataRetention: Request zero-data-retention processing
+    maxAge: Maximum acceptable cache age
+    lockdown: Only return cached content
+    proxy: Proxy mode
+    profile: Browser profile settings
+- name: firecrawl_map
+  description: Enumerate URLs indexed under a website without fetching every page's content.
+  params:
+    url: Website URL to map
+    search: Optional term used to filter discovered URLs
+    sitemap: Sitemap handling mode
+    includeSubdomains: Include URLs from subdomains
+    limit: Maximum number of URLs to return
+    ignoreQueryParameters: Ignore query parameters when comparing URLs
+- name: firecrawl_search
+  description: Search web, news, image, GitHub, research, PDF, or developer sources and return ranked results.
+  params:
+    query: Search query
+    highlights: Return query-relevant highlights
+    limit: Maximum number of results
+    tbs: Time-based search filter
+    filter: Additional search filter
+    location: Geographic search location
+    includeDomains: Domains to include
+    excludeDomains: Domains to exclude
+    sources: Source types to search
+    categories: Specialized indexes to search
+    enterprise: Enterprise search modes
+    scrapeOptions: Options for scraping search results
+- name: firecrawl_search_feedback
+  description: Submit structured quality feedback for a previous Firecrawl search result.
+  params:
+    searchId: ID returned by firecrawl_search
+    rating: Search-result quality rating
+    valuableSources: Useful sources from the result
+    missingContent: Content expected but not found
+    querySuggestions: Suggested improvements to the query
+- name: firecrawl_feedback
+  description: Submit concise endpoint-level feedback for a completed search, scrape, parse, or map job.
+  params:
+    endpoint: Firecrawl endpoint being rated
+    jobId: Completed job ID
+    rating: Job-result quality rating
+    issues: Machine-readable issue codes
+    tags: Feedback tags
+    note: Short feedback note
+    valuableSources: Useful sources from the result
+    missingContent: Content expected but not found
+    querySuggestions: Suggested improvements to the query
+    url: Related URL
+    pageNumbers: Related page numbers
+    metadata: Small metadata object
+- name: firecrawl_crawl
+  description: Crawl multiple pages from a website and return the final status and collected content.
+  params:
+    url: Starting URL for the crawl
+    prompt: Prompt used to configure the crawl
+    excludePaths: URL paths to exclude
+    includePaths: URL paths to include
+    maxDiscoveryDepth: Maximum link discovery depth
+    sitemap: Sitemap handling mode
+    limit: Maximum number of pages
+    allowExternalLinks: Follow links to external domains
+    allowSubdomains: Follow links to subdomains
+    crawlEntireDomain: Crawl outside the starting path
+    delay: Delay between crawl requests
+    maxConcurrency: Maximum concurrent requests
+    deduplicateSimilarURLs: Remove similar URLs
+    ignoreQueryParameters: Ignore query parameters when comparing URLs
+    scrapeOptions: Options for scraping each page
+- name: firecrawl_check_crawl_status
+  description: Retrieve status, progress, and available results for an existing crawl.
+  params:
+    id: Crawl job ID
+- name: firecrawl_extract
+  description: Extract structured information from one or more URLs using a prompt and optional JSON schema.
+  params:
+    urls: URLs from which to extract information
+    prompt: Extraction instructions
+    schema: JSON schema for the result
+    allowExternalLinks: Follow links to external domains
+    enableWebSearch: Use web search for additional context
+    includeSubdomains: Include subdomains
+- name: firecrawl_agent
+  description: Start an asynchronous autonomous web research job.
+  params:
+    prompt: Research instructions
+    urls: Optional seed URLs
+    schema: Optional JSON schema for the result
+- name: firecrawl_agent_status
+  description: Retrieve progress or final results for an autonomous research job.
+  params:
+    id: Agent job ID
+- name: firecrawl_interact
+  description: Open or reuse a live browser session to navigate, click, fill fields, or run browser code.
+  params:
+    scrapeId: Existing scrape or interaction session ID
+    url: URL for a new interaction session
+    prompt: Natural-language interaction instructions
+    code: Browser code to execute
+    language: Code language
+    timeout: Execution timeout in seconds
+    scrapeOptions: Scrape controls for a new URL session
+- name: firecrawl_interact_stop
+  description: Stop a live interaction session and release its resources.
+  params:
+    scrapeId: Interaction session ID
+- name: firecrawl_parse
+  description: Parse a document into markdown, HTML, links, a summary, targeted answers, or structured JSON.
+  params:
+    formats: Content formats to return
+    jsonOptions: Structured JSON extraction options
+    queryOptions: Targeted question options
+    parsers: Parsers to apply
+    pdfOptions: PDF parsing options
+    onlyMainContent: Extract only the main content
+    redactPII: Redact personally identifiable information
+    includeTags: HTML tags to include
+    excludeTags: HTML tags to exclude
+    removeBase64Images: Remove base64-encoded images
+    skipTlsVerification: Skip TLS certificate verification
+    storeInCache: Store the result in Firecrawl's cache
+    zeroDataRetention: Request zero-data-retention processing
+    maxAge: Maximum acceptable cache age
+    proxy: Proxy mode
+    filePath: Local file path used to begin a hosted upload
+    uploadRef: Hosted upload reference returned by the first call
+    contentType: File MIME type
+    declaredSizeBytes: Expected file size
+- name: firecrawl_monitor_create
+  description: Create a recurring scrape, crawl, or search monitor that reports meaningful changes.
+  params:
+    body: Advanced monitor configuration
+    page: Page URL to monitor
+    pages: Page URLs to monitor
+    queries: Search queries to monitor
+    searchWindow: Search time window
+    maxResults: Maximum search results per check
+    includeDomains: Domains to include
+    excludeDomains: Domains to exclude
+    goal: Plain-language description of meaningful changes
+    name: Monitor name
+    scheduleText: Natural-language schedule
+    timezone: Schedule timezone
+    email: Notification email address
+    includeDiffs: Include content diffs in notifications
+    webhookUrl: Notification webhook URL
+- name: firecrawl_monitor_list
+  description: List monitors for the authenticated Firecrawl account.
+  params:
+    limit: Maximum number of monitors
+    offset: Pagination offset
+- name: firecrawl_monitor_get
+  description: Retrieve one monitor's configuration and current state.
+  params:
+    id: Monitor ID
+- name: firecrawl_monitor_update
+  description: Update an existing monitor's configuration.
+  params:
+    id: Monitor ID
+    body: Monitor fields to update
+- name: firecrawl_monitor_delete
+  description: Permanently delete a monitor and stop future checks.
+  params:
+    id: Monitor ID
+- name: firecrawl_monitor_run
+  description: Queue an immediate check for a monitor outside its normal schedule.
+  params:
+    id: Monitor ID
+- name: firecrawl_monitor_checks
+  description: List historical checks for a monitor.
+  params:
+    id: Monitor ID
+    limit: Maximum number of checks
+    offset: Pagination offset
+    status: Check status filter
+- name: firecrawl_monitor_check
+  description: Retrieve one monitor check and its page-level results and diffs.
+  params:
+    id: Monitor ID
+    checkId: Monitor check ID
+    limit: Maximum number of page results
+    skip: Number of page results to skip
+    pageStatus: Page-result status filter
+- name: firecrawl_research_search_papers
+  description: Search indexed research-paper metadata and abstracts with a natural-language query.
+  params:
+    query: Research query
+    k: Number of results
+    authors: Authors to include
+    categories: Paper categories to include
+    from: Earliest publication date
+    to: Latest publication date
+- name: firecrawl_research_inspect_paper
+  description: Retrieve canonical metadata for one paper identifier.
+  params:
+    paperId: arXiv, PMC, PMID, DOI, or other paper identifier
+- name: firecrawl_research_related_papers
+  description: Find similar, citing, or referenced papers using the citation graph.
+  params:
+    seed_ids: Paper identifiers used as seeds
+    intent: Natural-language ranking intent
+    mode: Relationship mode
+    k: Number of results
+    rerank: Rerank results for relevance
+- name: firecrawl_research_read_paper
+  description: Retrieve passages from a paper that are relevant to a specific question.
+  params:
+    paperId: Paper identifier
+    question: Question to answer from the paper
+    k: Number of passages
+- name: firecrawl_research_search_github
+  description: Search indexed public GitHub issues, pull requests, and README content.
+  params:
+    query: GitHub research query
+    k: Number of results
+- name: firecrawl_developer_search
+  description: Search GitHub history, repository READMEs, documentation, and agent skills for a developer question.
+  params:
+    query: Developer question or search phrase
+    k: Number of results
+    skills: Limit the search to indexed agent-skill files
