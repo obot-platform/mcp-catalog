@@ -4,6 +4,8 @@ serverUserType: singleUser
 shortDescription: Manage DigitalOcean droplets, apps, databases, Kubernetes, and networking
 description: 'A Model Context Protocol (MCP) server that provides comprehensive interface for managing DigitalOcean resources and performing actions using the DigitalOcean API. Built on top of the godo library, this integration enables seamless management of your DigitalOcean infrastructure through AI agents.
 
+  **DEPRECATED**: Use the DigitalOcean (Official Remote) entry for vendor-hosted services and OAuth authentication. This container entry will remain available during the replacement observation period.
+
 
   ## Features
 
@@ -81,6 +83,7 @@ description: 'A Model Context Protocol (MCP) server that provides comprehensive 
   '
 metadata:
   categories: Cloud & Infrastructure, Developer Tools
+  deprecated: "true"
 icon: https://cdn.brandfetch.io/idvF37rNoN/theme/dark/symbol.svg?c=1dxbfHSJFAPEGdCLU4o5B
 repoURL: https://github.com/digitalocean-labs/mcp-digitalocean
 env:
