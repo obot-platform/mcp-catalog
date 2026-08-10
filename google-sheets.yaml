@@ -30,7 +30,7 @@ icon: https://img.icons8.com/?size=100&id=qrAVeBIrsjod&format=png&color=000000
 repoURL: https://github.com/obot-platform/google-mcp/tree/main/sheets
 runtime: remote
 remoteConfig:
-  fixedURL: https://google-sheets-mcp.obot.ai/mcp/
+  fixedURL: https://google-sheets-mcp.obot.ai/mcp
 toolPreview:
   - name: list_spreadsheets
     description: List spreadsheets (both owned and shared) in the user's Google Drive.

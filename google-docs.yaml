@@ -25,4 +25,4 @@ icon: https://img.icons8.com/color/96/google-docs--v1.png
 repoURL: https://github.com/obot-platform/google-mcp/tree/main/docs
 runtime: remote
 remoteConfig:
-  fixedURL: https://google-docs-mcp.obot.ai/mcp/
+  fixedURL: https://google-docs-mcp.obot.ai/mcp

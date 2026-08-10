@@ -33,7 +33,7 @@ icon: https://img.icons8.com/?size=100&id=WKF3bm1munsk&format=png&color=000000
 repoURL: https://github.com/obot-platform/google-mcp/tree/main/calendar
 runtime: remote
 remoteConfig:
-  fixedURL: https://google-calendar-mcp.obot.ai/mcp/
+  fixedURL: https://google-calendar-mcp.obot.ai/mcp
 toolPreview:
   - name: list_calendars
     description: Lists all calendars for the authenticated user.
