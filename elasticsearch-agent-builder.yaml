@@ -46,18 +46,102 @@ remoteConfig:
   staticOAuthRequired: true
 
 toolPreview:
-  - name: platform_core_list_indices
-    description: Lists the indices, aliases, and data streams in the Elasticsearch cluster that the current user can access.
-    params: {}
-  - name: platform_core_get_index_mapping
-    description: Retrieves mappings for the specified Elasticsearch index or indices.
+  - name: custom_content_update_panel
+    description: Updates the project's custom content panel template and ES|QL data source.
     params:
-      index: Name or pattern of the Elasticsearch index whose mapping should be retrieved
+      esqlQuery: New ES|QL query, or null to remove the query
+      template: New LiquidJS HTML and CSS template
+  - name: platform_core_cases
+    description: Searches and retrieves Elastic cases.
+    params:
+      alert_ids: Alert IDs to find related cases
+      assignees: Case assignees to filter by
+      case_id: Case ID for a single-case operation
+      case_ids: Case IDs for a bulk operation
+      category: Case category to filter by
+      customFields: Custom field filters
+      defaultSearchOperator: Default operator for search terms
+      from: Start time for the case search range
+      mode: Case operation to perform
+      owner: Elastic application that owns the cases
+      page: One-indexed result page
+      perPage: Results per page
+      reporters: Case reporters to filter by
+      search: Text to search for
+      searchFields: Case fields to search
+      severity: Case severity to filter by
+      similar_to_case_id: Case ID used to find similar cases
+      sortField: Field used to sort cases
+      sortOrder: Sort order for the results
+      status: Case status to filter by
+      tags: Case tags to filter by
+      to: End time for the case search range
+  - name: platform_core_cases_attachments
+    description: Retrieves and manages case comments, alerts, and event attachments.
+    params:
+      alerts: Alerts to attach to a case
+      case_id: Case ID to operate on
+      comment: Comment content to add or update
+      events: Events to attach to a case
+      mode: Attachment operation to perform
+  - name: platform_core_cases_manage
+    description: Creates, updates, deletes, and manages Elastic cases.
+    params:
+      assignees: Case assignees
+      case_id: Case ID to operate on
+      case_ids: Case IDs for a bulk operation
+      case_template_id: Case template ID
+      cases: Cases used by a bulk operation
+      category: Case category
+      connector_id: Connector ID for the case
+      customFields: Case custom fields
+      description: Case description
+      field_name: Field to update
+      mode: Case management operation to perform
+      overwrites: Existing values to overwrite
+      owner: Elastic application that owns the case
+      settings: Case settings to update
+      severity: Case severity
+      tags: Case tags
+      tags_to_add: Tags to add to cases
+      template: Case template configuration
+      title: Case title
+      updates: Bulk case updates
+      value: Value for the selected field
+      version: Case version for optimistic concurrency
+  - name: platform_core_cases_observables
+    description: Manages observables attached to Elastic cases.
+    params:
+      case_id: Case ID to operate on
+      description: Observable description
+      mode: Observable operation to perform
+      observable_id: Observable ID to operate on
+      observables: Observables for a bulk operation
+      value: Observable value
+  - name: platform_core_create_visualization
+    description: Creates or updates a visualization from search input.
+    params:
+      attachment_id: Attachment containing visualization context
+      chartType: Visualization chart type
+      esql: ES|QL query for the visualization
+      index: Elasticsearch index for the visualization
+      query: Natural language visualization request
+      renderer: Visualization renderer to use
+  - name: platform_core_list_indices
+    description: Lists Elasticsearch indices, aliases, and data streams available to the current user.
+    params:
+      pattern: Optional index, alias, or data stream pattern
+  - name: platform_core_get_index_mapping
+    description: Retrieves mappings for Elasticsearch indices.
+    params:
+      indices: Index names or patterns whose mappings should be retrieved
+      raw: Whether to return raw mappings
   - name: platform_core_search
-    description: Searches and analyzes Elasticsearch data from a natural language request, automatically selecting Query DSL or ES|QL based on the query intent.
+    description: Searches and analyzes Elasticsearch data from a natural language request.
     params:
       query: A natural language query expressing the search request
       index: Optional index to search; when omitted, Agent Builder selects an index based on the query
+      time_range: Time range to apply to the search
   - name: platform_core_get_document_by_id
     description: Retrieves the full source of an Elasticsearch document by its ID and index name.
     params:
@@ -66,4 +150,140 @@ toolPreview:
   - name: platform_core_execute_esql
     description: Executes a user-provided or generated ES|QL query and returns the results in a tabular format.
     params:
+      limit: Maximum number of results to return
+      params: Named parameters for the ES|QL query
       query: The ES|QL query to execute
+      time_range: Time range to apply to the query
+  - name: platform_core_execute_workflow
+    description: Executes an Elastic workflow.
+    params:
+      attachmentId: Attachment containing workflow input
+      inputs: Workflow inputs
+      waitForCompletion: Whether to wait for workflow completion
+      workflowId: Saved workflow ID
+      yaml: Workflow YAML for an inline execution
+  - name: platform_core_generate_esql
+    description: Generates an ES|QL query from a natural language request.
+    params:
+      context: Additional context for query generation
+      disable_named_params: Whether to disable named query parameters
+      execute_query: Whether to execute the generated query
+      index: Index to query
+      query: Natural language query request
+      time_range: Time range to apply to the query
+  - name: platform_core_generate_workflow
+    description: Generates or updates an Elastic workflow from natural language.
+    params:
+      attachmentId: Attachment containing workflow context
+      context: Additional workflow context
+      instructions: Instructions for workflow generation
+      query: Natural language workflow request
+      workflowId: Saved workflow ID to update
+  - name: platform_core_get_workflow_execution_status
+    description: Retrieves the status and output of a workflow execution.
+    params:
+      executionId: Workflow execution ID
+  - name: platform_core_index_explorer
+    description: Finds relevant indices and mappings for a natural language query.
+    params:
+      indexPattern: Index pattern to explore
+      limit: Maximum number of results to return
+      query: Natural language query used to find relevant indices
+  - name: platform_core_list_workflow_executions
+    description: Lists recent Elastic workflow executions.
+    params:
+      limit: Maximum number of executions to return
+      page: One-indexed result page
+      statuses: Execution statuses to include
+      workflowId: Workflow ID to filter by
+  - name: platform_core_product_documentation
+    description: Searches Elastic product documentation.
+    params:
+      max: Maximum number of results to return
+      product: Elastic product to search
+      query: Documentation search query
+  - name: platform_core_resume_workflow_execution
+    description: Resumes a paused Elastic workflow execution.
+    params:
+      executionId: Workflow execution ID
+      input: Input used to resume the workflow
+  - name: platform_streams_create_partition
+    description: Creates a child partition for an Elastic stream.
+    params:
+      child_name: Name of the child stream
+      condition_json: JSON routing condition for the partition
+      confirmation_body: User confirmation for the change
+      parent: Parent stream name
+      status: Initial partition status
+  - name: platform_streams_delete_stream
+    description: Permanently deletes an Elastic stream.
+    params:
+      confirmation_body: User confirmation for deletion
+      name: Stream name to delete
+  - name: platform_streams_design_pipeline
+    description: Designs an Elastic stream processing pipeline from natural language.
+    params:
+      instruction: Pipeline design instruction
+      samples: Sample documents for pipeline design
+      stream_name: Stream to design a pipeline for
+  - name: platform_streams_diagnose_stream
+    description: Diagnoses data quality and health for an Elastic stream.
+    params:
+      name: Stream name to diagnose
+      time_range: Time range to inspect
+  - name: platform_streams_inspect_streams
+    description: Inspects Elastic streams, schemas, quality, lifecycle, processing, or routing.
+    params:
+      aspects: Stream aspects to inspect
+      names: Stream names to inspect
+  - name: platform_streams_list_ilm_policies
+    description: Lists index lifecycle management policies.
+    params: {}
+  - name: platform_streams_query_documents
+    description: Queries or aggregates documents in an Elastic stream from natural language.
+    params:
+      name: Stream name to query
+      query: Natural language query request
+      source: Stream data source to query
+  - name: platform_streams_update_stream
+    description: Updates an Elastic stream configuration.
+    params:
+      changes: Stream configuration changes
+      confirmation_body: User confirmation for the change
+      name: Stream name to update
+  - name: platform_workflows_get_connectors
+    description: Lists configured workflow connectors.
+    params:
+      actionTypeId: Connector action type ID to filter by
+      search: Connector search query
+      stepType: Workflow step type to filter by
+  - name: platform_workflows_get_examples
+    description: Searches workflow YAML examples.
+    params:
+      category: Example category to filter by
+      limit: Maximum number of examples to return
+      search: Example search query
+  - name: platform_workflows_get_step_definitions
+    description: Retrieves workflow step definitions and schemas.
+    params:
+      category: Step category to filter by
+      includeDeprecated: Whether to include deprecated steps
+      includeFullSchema: Whether to include complete step schemas
+      includeOutputSummary: Whether to include output summaries
+      search: Step definition search query
+      stepType: Step type to retrieve
+  - name: platform_workflows_get_trigger_definitions
+    description: Retrieves workflow trigger definitions and schemas.
+    params:
+      triggerType: Trigger type to retrieve
+  - name: platform_workflows_validate_workflow
+    description: Validates an Elastic workflow YAML definition.
+    params:
+      yaml: Workflow YAML to validate
+  - name: platform_workflows_workflow_execute_step
+    description: Executes one workflow step for testing.
+    params:
+      confirmation_body: User confirmation for a side-effecting step
+      contextOverride: Context used when executing the step
+      stepName: Name of the step to execute
+      yaml: Workflow YAML containing the step
