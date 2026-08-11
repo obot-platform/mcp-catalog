@@ -1,0 +1,64 @@
+name: Salesforce Hosted MCP
+entryKey: obot-salesforce-official
+serverUserType: singleUser
+shortDescription: Access Salesforce records through Salesforce's hosted MCP servers
+description: |
+  Salesforce Hosted MCP is Salesforce's vendor-managed remote MCP service. Select the SObject server that provides the protection level your workflow needs. Each server provides governed access to standard and custom Salesforce records using each connected user's Salesforce permissions, sharing rules, and field-level security.
+
+  ## Features
+  - **SObject All**: Create, read, update, and delete records
+  - **SObject Reads**: Read records, inspect schemas, and run SOQL or SOSL without changing data
+  - **SObject Mutations**: Create and update records without delete operations
+  - **SObject Deletes**: Find and delete records for data-hygiene workflows
+
+  ## What you'll need to connect
+
+  A Salesforce administrator must activate the SObject server selected below in **Setup > API Catalog > MCP Servers**. Activation can take up to two minutes.
+
+  Salesforce does not support Dynamic Client Registration. An administrator must create an [External Client App](https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/create-external-client-app.html) for this Obot deployment and configure static OAuth credentials after adding this catalog entry.
+
+  After an administrator completes this one-time setup, users only sign in with Salesforce and select the SObject server for their workflow.
+
+  ### Configure the External Client App
+
+  1. In **Setup > External Client App Manager**, create an External Client App and enable OAuth.
+  2. Register this callback URL: `<your-Obot-server-URL>/oauth/mcp/callback`.
+  3. Add the `mcp_api` and `refresh_token` OAuth scopes.
+  4. Enable PKCE and JWT-based access tokens for named users.
+  5. Configure the app's Client ID and Client Secret in Obot's static OAuth settings for this catalog entry.
+
+  Salesforce recommends one External Client App per MCP client. For production, restrict the app to administrator-approved users through a permission set and configure refresh-token rotation.
+
+  ## Important limitations
+
+  Static OAuth credentials are configured once per Obot catalog scope. Configure this entry for one Salesforce org and its corresponding External Client App. Additional Salesforce orgs require separately scoped catalog configuration.
+
+  Salesforce applies the authenticated user's CRUD, field-level, sharing, profile, and permission-set access. MCP requests consume the org's normal API quota. Select `platform/sobject-reads` unless your workflow requires record changes; select `platform/sobject-deletes` only for deliberate deletion workflows.
+metadata:
+  categories: CRM
+  allow-multiple: "true"
+icon: https://img.icons8.com/?size=100&id=38804&format=png&color=000000
+repoURL: https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/setup-overview.html
+env:
+  - key: SALESFORCE_SOBJECT_SERVER
+    name: Salesforce SObject Server
+    description: Choose the Salesforce SObject server and its corresponding protection level.
+    required: true
+    sensitive: false
+    options:
+      - name: SObject All
+        value: platform/sobject-all
+        description: Create, read, update, and delete Salesforce records.
+      - name: SObject Reads
+        value: platform/sobject-reads
+        description: Read records, inspect schemas, and run queries without changing data.
+      - name: SObject Mutations
+        value: platform/sobject-mutations
+        description: Create and update records without delete operations.
+      - name: SObject Deletes
+        value: platform/sobject-deletes
+        description: Find and delete records for data-hygiene workflows.
+runtime: remote
+remoteConfig:
+  URLTemplate: https://api.salesforce.com/platform/mcp/v1/${SALESFORCE_SOBJECT_SERVER}
+  staticOAuthRequired: true
