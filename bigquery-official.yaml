@@ -1,0 +1,67 @@
+name: Google BigQuery
+entryKey: google-bigquery
+serverUserType: singleUser
+shortDescription: Explore BigQuery data and run SQL through Google's managed MCP server
+description: |
+  Connect to Google's managed BigQuery MCP server to discover datasets and tables, inspect metadata, and run read-only or general SQL queries.
+
+  ## What you'll need to connect
+
+  Ask your Google Cloud administrator to:
+
+  1. Select or create a Google Cloud project and enable the [BigQuery API](https://console.cloud.google.com/apis/enableflow?apiid=bigquery.googleapis.com). BigQuery Sandbox can be used without enabling billing.
+  2. Grant your Google identity the [MCP Tool User](https://cloud.google.com/iam/docs/roles-permissions/mcp#mcp.toolUser), [BigQuery Job User](https://cloud.google.com/iam/docs/roles-permissions/bigquery#bigquery.jobUser), and [BigQuery Data Viewer](https://cloud.google.com/iam/docs/roles-permissions/bigquery#bigquery.dataViewer) roles, or equivalent permissions appropriate for the data you need to access.
+  3. Ensure your Obot administrator has configured a Google Web OAuth client for this catalog entry.
+
+  When you connect, Google asks you to authorize Obot. Tool calls use your Google identity and its IAM permissions.
+
+  See Google's [BigQuery MCP setup guide](https://cloud.google.com/bigquery/docs/use-bigquery-mcp) and [MCP authentication guide](https://cloud.google.com/mcp/authenticate-mcp) for complete instructions.
+
+  ## Important differences
+
+  This managed server provides fixed tools rather than the custom parameterized tools supported by the BigQuery Toolbox catalog entry. Query execution is limited to three minutes and 3,000 result rows, and queries over Google Drive external tables are not supported.
+metadata:
+  categories: Databases,Data & Analytics
+icon: https://www.svgrepo.com/show/375551/bigquery.svg
+repoURL: https://cloud.google.com/bigquery/docs/use-bigquery-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://bigquery.googleapis.com/mcp
+  staticOAuthRequired: true
+toolPreview:
+  - name: list_dataset_ids
+    description: List BigQuery dataset IDs in a Google Cloud project, with optional pagination.
+    params:
+      pageSize: Maximum number of datasets to return
+      pageToken: Token for retrieving the next page
+      projectId: Google Cloud project ID
+  - name: get_dataset_info
+    description: Get metadata for a BigQuery dataset.
+    params:
+      datasetId: BigQuery dataset ID
+      projectId: Google Cloud project ID
+  - name: list_table_ids
+    description: List table IDs in a BigQuery dataset, with optional pagination.
+    params:
+      datasetId: BigQuery dataset ID
+      pageSize: Maximum number of tables to return
+      pageToken: Token for retrieving the next page
+      projectId: Google Cloud project ID
+  - name: get_table_info
+    description: Get metadata for a BigQuery table.
+    params:
+      datasetId: BigQuery dataset ID
+      projectId: Google Cloud project ID
+      tableId: BigQuery table ID
+  - name: execute_sql_readonly
+    description: Run a read-only GoogleSQL query and return its results. Mutating statements and stored procedures are rejected.
+    params:
+      dryRun: Validate the query and return processing statistics without running it
+      projectId: Google Cloud project used for query execution and billing
+      query: GoogleSQL query to execute
+  - name: execute_sql
+    description: Run a GoogleSQL query, including statements that can create, update, or delete data.
+    params:
+      dryRun: Validate the query and return processing statistics without running it
+      projectId: Google Cloud project used for query execution and billing
+      query: GoogleSQL query to execute
