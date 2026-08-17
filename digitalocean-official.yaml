@@ -5,7 +5,7 @@ shortDescription: Connect to an official DigitalOcean service with OAuth
 description: |
   Connect directly to DigitalOcean's vendor-hosted MCP services. Select one service for this connection, then add another instance to access additional services.
 
-  Authentication uses DigitalOcean OAuth. An Obot administrator must first register a DigitalOcean OAuth application and configure its client ID and secret for this catalog entry. Use `https://<obot-host>/oauth/mcp/callback` as the application's callback URL.
+  Authentication uses a DigitalOcean personal access token. Create a token with the least-privilege scopes required for the selected service at https://cloud.digitalocean.com/account/api/tokens.
 
   ## Services
 
@@ -92,7 +92,13 @@ env:
     description: Manage DigitalOcean hosted Weaviate vector database clusters.
 remoteConfig:
   URLTemplate: https://${DIGITALOCEAN_SERVICE}.mcp.digitalocean.com/mcp
-  staticOAuthRequired: true
+  headers:
+  - name: DigitalOcean API Token
+    description: Personal access token with permissions for the selected service
+    key: Authorization
+    required: true
+    sensitive: true
+    prefix: "Bearer "
 toolPreview:
 - name: apps-list
   description: List App Platform applications.
