@@ -3,6 +3,8 @@ entryKey: obot-mongodb-atlas-management
 serverUserType: singleUser
 shortDescription: Create and manage MongoDB Atlas projects, clusters, and database users
 description: |
+  **DEPRECATED**: Use the **MongoDB Atlas** connector instead. It connects to MongoDB's hosted Atlas MCP service and supports Atlas management, database operations, and stream processing through one connector.
+
   A Model Context Protocol (MCP) server for interacting with the MongoDB Atlas Cloud Service. This connector allows you to perform management actions with clusters, projects, databases, collections, and database users.
 
   ## Features
@@ -45,6 +47,7 @@ description: |
 
 metadata:
   categories: Databases,Data & Analytics
+  deprecated: "true"
 icon: https://avatars.githubusercontent.com/u/45120?s=48&v=4
 repoURL: https://github.com/mongodb-js/mongodb-mcp-server
 env:

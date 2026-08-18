@@ -1,0 +1,350 @@
+name: MongoDB Atlas
+entryKey: obot-mongodb-atlas
+serverUserType: singleUser
+shortDescription: Manage MongoDB Atlas infrastructure and databases through MongoDB's hosted MCP server
+description: |
+  Connect to MongoDB's hosted Atlas MCP server through MongoDB's local NPX proxy to manage Atlas resources and work with data in Atlas databases without self-hosting the Atlas MCP service.
+
+  ## Features
+  - **Atlas Management**: Inspect and manage organizations, projects, clusters, access lists, and database users
+  - **Database Operations**: Query and modify databases, collections, documents, indexes, and aggregation pipelines
+  - **Atlas Stream Processing**: Discover, create, manage, and remove stream processing resources
+
+  ## What you'll need to connect
+
+  Create an **MCP configuration** in MongoDB Atlas, then use its Client ID and Client Secret when Obot prompts you to authenticate.
+
+  - Creating an MCP configuration requires the **Project Owner** or **Organization Owner** role.
+  - MCP configuration credentials are specifically issued for the hosted Atlas MCP server. They are different from the Atlas API service-account credentials used by the legacy MongoDB Atlas Management connector.
+  - The permissions assigned to the MCP configuration determine which Atlas resources and operations are available.
+
+  This hosted connector is intended for MongoDB Atlas. For Community Edition, Enterprise Advanced, self-hosted deployments, or databases reachable only on a private network, use the **MongoDB Database** connector instead.
+
+  ## Official documentation
+
+  - [MongoDB MCP Server documentation](https://www.mongodb.com/docs/mcp-server/)
+  - [MongoDB Atlas Remote MCP configurations](https://www.mongodb.com/docs/api/doc/atlas-admin-api-v2/2025-03-12/group/endpoint-remote-mcp-configurations)
+  - [MongoDB Atlas remote MCP proxy setup](https://github.com/mongodb-js/mongodb-mcp-server/blob/main/packages/mongodb-atlas-mcp-remote/README.md)
+metadata:
+  categories: Databases,Data & Analytics
+icon: https://avatars.githubusercontent.com/u/45120?s=48&v=4
+repoURL: https://github.com/mongodb-js/mongodb-mcp-server/blob/main/packages/mongodb-atlas-mcp-remote/README.md
+env:
+- key: MDB_MCP_API_CLIENT_ID
+  name: MongoDB Atlas MCP Client ID
+  required: true
+  sensitive: false
+  description: The Client ID from your MongoDB Atlas MCP configuration.
+- key: MDB_MCP_API_CLIENT_SECRET
+  name: MongoDB Atlas MCP Client Secret
+  required: true
+  sensitive: true
+  description: The Client Secret from your MongoDB Atlas MCP configuration.
+runtime: npx
+npxConfig:
+  package: mongodb-atlas-mcp-remote@0.2.0
+toolPreview:
+- name: aggregate
+  description: Run an aggregation pipeline against a MongoDB collection.
+  params:
+    collection: Collection name
+    connectionId: Connection identifier
+    database: Database name
+    pipeline: Aggregation pipeline stages
+    responseBytesLimit: Maximum response size in bytes
+- name: aggregate-db
+  description: Run a database-level aggregation pipeline.
+  params:
+    connectionId: Connection identifier
+    database: Database name
+    pipeline: Database aggregation pipeline stages
+    responseBytesLimit: Maximum response size in bytes
+- name: atlas-create-access-list
+  description: Add IP addresses or CIDR ranges to an Atlas project access list.
+  params:
+    cidrBlocks: CIDR blocks to allow
+    comment: Access list comment
+    ipAddresses: IP addresses to allow
+    projectId: Atlas project ID
+- name: atlas-create-cluster
+  description: Create a dedicated MongoDB Atlas cluster.
+  params:
+    backup: Backup mode
+    clusterName: Cluster name
+    clusterType: Cluster topology
+    computeAutoScaling: Whether to enable compute autoscaling
+    diskSizeGB: Initial disk size in GB
+    encryptionAtRestProvider: Customer-managed encryption key provider
+    instanceSize: Atlas instance size
+    mongoDBVersion: MongoDB version
+    projectId: Atlas project ID
+    provider: Cloud provider
+    regions: Cloud provider regions
+    terminationProtectionEnabled: Whether to enable termination protection
+- name: atlas-create-db-user
+  description: Create a MongoDB Atlas database user.
+  params:
+    clusters: Clusters assigned to the user
+    password: Password for the user
+    projectId: Atlas project ID
+    roles: Database user roles
+    username: Database username
+- name: atlas-create-free-cluster
+  description: Create a free MongoDB Atlas cluster.
+  params:
+    name: Cluster name
+    projectId: Atlas project ID
+    region: Cloud provider region
+- name: atlas-create-project
+  description: Create a MongoDB Atlas project.
+  params:
+    orgId: Atlas organization ID
+    projectName: Project name
+- name: atlas-get-performance-advisor
+  description: Get Atlas performance recommendations and diagnostics.
+  params:
+    clusterName: Atlas cluster name
+    namespaces: Namespaces for slow query logs
+    operations: Recommendation operations to retrieve
+    projectId: Atlas project ID
+    since: ISO 8601 start date for slow query logs
+- name: atlas-inspect-access-list
+  description: Inspect an Atlas project's IP access list.
+  params:
+    projectId: Atlas project ID
+- name: atlas-inspect-cluster
+  description: Inspect a MongoDB Atlas cluster.
+  params:
+    clusterName: Atlas cluster name
+    projectId: Atlas project ID
+- name: atlas-list-alerts
+  description: List triggered alerts for an Atlas project.
+  params:
+    limit: Maximum results per page
+    pageNum: Page number
+    projectId: Atlas project ID
+    status: Alert status
+- name: atlas-list-clusters
+  description: List MongoDB Atlas clusters.
+  params:
+    projectId: Atlas project ID
+- name: atlas-list-db-users
+  description: List MongoDB Atlas database users.
+  params:
+    projectId: Atlas project ID
+- name: atlas-list-orgs
+  description: List MongoDB Atlas organizations.
+  params:
+    limit: Maximum results per page
+    pageNum: Page number
+- name: atlas-list-projects
+  description: List MongoDB Atlas projects.
+  params:
+    limit: Maximum results per page
+    orgId: Atlas organization ID
+    pageNum: Page number
+- name: atlas-load-sample-dataset
+  description: Load a sample dataset or check a load job's status.
+  params:
+    clusterName: Atlas cluster name
+    jobId: Sample dataset load job ID
+    projectId: Atlas project ID
+- name: atlas-pause-resume-cluster
+  description: Pause or resume a dedicated Atlas cluster.
+  params:
+    action: Pause or resume action
+    clusterName: Atlas cluster name
+    projectId: Atlas project ID
+- name: atlas-streams-build
+  description: Create Atlas Stream Processing resources.
+  params:
+    autoStart: Whether to start a new processor
+    cloudProvider: Cloud provider
+    connectionConfig: Stream connection configuration
+    connectionName: Stream connection name
+    connectionType: Stream connection type
+    dlq: Dead letter queue configuration
+    includeSampleData: Whether to include sample stream data
+    pipeline: Stream processor pipeline
+    privateLinkConfig: PrivateLink configuration
+    processorName: Stream processor name
+    projectId: Atlas project ID
+    region: Cloud provider region
+    resource: Resource type to create
+    tier: Processing tier
+    workspaceName: Stream Processing workspace name
+- name: atlas-streams-discover
+  description: Discover and inspect Atlas Stream Processing resources.
+  params:
+    action: Discovery action
+    cloudProvider: Cloud provider
+    limit: Maximum results per page
+    pageNum: Page number
+    projectId: Atlas project ID
+    region: Cloud provider region
+    resourceName: Connection or processor name
+    responseFormat: Response detail level
+    workspaceName: Stream Processing workspace name
+- name: atlas-streams-manage
+  description: Update and operate Atlas Stream Processing resources.
+  params:
+    action: Management action
+    connectionConfig: Updated connection configuration
+    dlq: Dead letter queue configuration
+    newName: New processor name
+    newRegion: New workspace region
+    newTier: New workspace tier
+    peeringId: VPC peering connection ID
+    pipeline: Updated stream processor pipeline
+    projectId: Atlas project ID
+    requesterAccountId: AWS requester account ID
+    requesterVpcId: AWS requester VPC ID
+    resourceName: Processor or connection name
+    resumeFromCheckpoint: Whether to resume from a checkpoint
+    startAtOperationTime: ISO 8601 resume timestamp
+    tier: Processing tier override
+    workspaceName: Stream Processing workspace name
+- name: atlas-streams-teardown
+  description: Delete Atlas Stream Processing resources.
+  params:
+    projectId: Atlas project ID
+    resource: Resource type to delete
+    resourceName: Resource name or ID
+    workspaceName: Stream Processing workspace name
+- name: atlas-upgrade-cluster
+  description: Upgrade the tier of a MongoDB Atlas cluster.
+  params:
+    clusterName: Atlas cluster name
+    projectId: Atlas project ID
+    provider: Cloud provider
+    region: Cloud provider region
+    targetTier: Target Atlas tier
+- name: collection-indexes
+  description: Describe the indexes for a MongoDB collection.
+  params:
+    collection: Collection name
+    connectionId: Connection identifier
+    database: Database name
+- name: collection-schema
+  description: Describe the schema inferred for a MongoDB collection.
+  params:
+    collection: Collection name
+    connectionId: Connection identifier
+    database: Database name
+    responseBytesLimit: Maximum response size in bytes
+    sampleSize: Number of documents to sample
+- name: collection-storage-size
+  description: Get the storage size of a MongoDB collection.
+  params:
+    collection: Collection name
+    connectionId: Connection identifier
+    database: Database name
+- name: count
+  description: Count documents matching a query in a MongoDB collection.
+  params:
+    collection: Collection name
+    connectionId: Connection identifier
+    database: Database name
+    query: Document filter
+- name: create-collection
+  description: Create a MongoDB collection.
+  params:
+    collection: Collection name
+    connectionId: Connection identifier
+    database: Database name
+- name: create-index
+  description: Create an index for a MongoDB collection.
+  params:
+    collection: Collection name
+    connectionId: Connection identifier
+    database: Database name
+    definition: Index definition
+    name: Index name
+- name: db-stats
+  description: Get usage statistics for a MongoDB database.
+  params:
+    connectionId: Connection identifier
+    database: Database name
+- name: delete-many
+  description: Delete documents matching a filter from a MongoDB collection.
+  params:
+    collection: Collection name
+    connectionId: Connection identifier
+    database: Database name
+    filter: Document filter
+- name: drop-collection
+  description: Drop a MongoDB collection or view.
+  params:
+    collection: Collection name
+    connectionId: Connection identifier
+    database: Database name
+- name: drop-database
+  description: Drop a MongoDB database.
+  params:
+    connectionId: Connection identifier
+    database: Database name
+- name: drop-index
+  description: Drop an index from a MongoDB collection.
+  params:
+    collection: Collection name
+    connectionId: Connection identifier
+    database: Database name
+    indexName: Index name
+    type: Index type
+- name: explain
+  description: Explain a MongoDB query execution plan.
+  params:
+    collection: Collection name
+    connectionId: Connection identifier
+    database: Database name
+    method: Method and arguments to explain
+    verbosity: Explain plan verbosity
+- name: find
+  description: Find documents in a MongoDB collection.
+  params:
+    collection: Collection name
+    connectionId: Connection identifier
+    database: Database name
+    filter: Document filter
+    limit: Maximum documents to return
+    projection: Document projection
+    responseBytesLimit: Maximum response size in bytes
+    sort: Document sort order
+- name: insert-many
+  description: Insert multiple documents into a MongoDB collection.
+  params:
+    collection: Collection name
+    connectionId: Connection identifier
+    database: Database name
+    documents: Documents to insert
+- name: list-collections
+  description: List collections in a MongoDB database.
+  params:
+    connectionId: Connection identifier
+    database: Database name
+- name: list-databases
+  description: List databases for a MongoDB connection.
+  params:
+    connectionId: Connection identifier
+- name: remote-atlas-connect
+  description: Connect to a MongoDB Atlas cluster.
+  params:
+    clusterName: Atlas cluster name
+    projectId: Atlas project ID
+- name: rename-collection
+  description: Rename a MongoDB collection.
+  params:
+    collection: Collection name
+    connectionId: Connection identifier
+    database: Database name
+    dropTarget: Whether to drop an existing target collection
+    newName: New collection name
+- name: update-many
+  description: Update documents matching a filter in a MongoDB collection.
+  params:
+    collection: Collection name
+    connectionId: Connection identifier
+    database: Database name
+    filter: Document filter
+    update: Update document
+    upsert: Whether to insert when no document matches

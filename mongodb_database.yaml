@@ -5,6 +5,8 @@ shortDescription: Manage MongoDB databases, collections, documents, and aggregat
 description: |
   A Model Context Protocol (MCP) server for interacting with MongoDB databases. Provides comprehensive tools for database operations, collection management, and data manipulation with any MongoDB instance (local, cloud, or self-hosted).
 
+  **Using MongoDB Atlas?** Use the **MongoDB Atlas** connector instead. Use this connector for Community Edition, Enterprise Advanced, self-hosted deployments, or databases reachable only on a private network.
+
   ## Features
   - **Database Operations**: Connect, list databases, and get database statistics
   - **Collection Management**: Create, drop, rename collections and manage schemas
