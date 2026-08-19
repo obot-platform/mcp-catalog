@@ -20,7 +20,7 @@ description: |
 
   Obot constructs the MCP endpoint as `https://<your-site>.files.com/api/ai/mcp/v1/`.
 
-  Sign in with your Files.com account when prompted. OAuth authentication follows your existing Files.com user permissions and supports SSO. Your site's AI features must be enabled, and a Files.com Site Administrator must enable **MCP Dynamic Client Registration** under **AI Features > Settings** at `https://<your-site>.files.com/ui/aiFeatures/settings`.
+  Sign in with your Files.com account when prompted. OAuth authentication follows your existing Files.com user permissions and supports SSO. Your site's AI features must be enabled, and a Files.com Site Administrator must enable **MCP Dynamic Client Registration** under **AI > Settings** at `https://<your-site>.files.com/ui/aiFeatures/settings`.
 
   For automated or headless use, you can provide a Files.com API key instead of signing in. The key inherits the permissions of its associated Files.com user.
 
