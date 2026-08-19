@@ -31,8 +31,50 @@ toolPreview:
   params:
     query: Natural-language search query describing the ideal page. Optionally include category:company or category:people to focus the search.
     numResults: Number of search results to return. Defaults to 10.
+- name: web_search_advanced_exa
+  description: Search with control over result categories, domains, dates, content extraction, and subpage crawling.
+  params:
+    additionalQueries: Additional query variations for broader search coverage.
+    category: Category to filter results.
+    contextMaxCharacters: Maximum characters for returned context.
+    enableHighlights: Whether to extract highlights.
+    enableSummary: Whether to generate result summaries.
+    endCrawlDate: Include results crawled before this ISO 8601 date.
+    endPublishedDate: Include results published before this ISO 8601 date.
+    excludeDomains: Domains to exclude.
+    excludeText: Text that excludes matching results.
+    highlightsMaxCharacters: Maximum characters of highlights per URL.
+    highlightsNumSentences: Number of highlight sentences.
+    highlightsPerUrl: Number of highlights per URL.
+    highlightsQuery: Query used to select highlights.
+    includeDomains: Domains to include.
+    includeText: Text required in matching results.
+    livecrawlTimeout: Timeout for fetching fresh content.
+    maxAgeHours: Maximum age of cached content.
+    moderation: Whether to filter unsafe content.
+    numResults: Number of results to return.
+    query: Search query.
+    startCrawlDate: Include results crawled after this ISO 8601 date.
+    startPublishedDate: Include results published after this ISO 8601 date.
+    subpageTarget: Keywords for selecting subpages.
+    subpages: Number of subpages to crawl from each result.
+    summaryQuery: Query used to focus summaries.
+    textMaxCharacters: Maximum characters extracted per result.
+    type: Search type.
+    userLocation: Country code for geo-targeted results.
 - name: web_fetch_exa
   description: Read one or more webpages as clean markdown. Use after web_search_exa when highlights are insufficient or to read a known URL.
   params:
     urls: URLs to read. Multiple URLs can be fetched in one request.
     maxCharacters: Maximum characters to extract per page. Defaults to 3000.
+- name: agent_run
+  description: Start or resume an Exa Agent run for multi-step research and structured output.
+  params:
+    dataSources: Exa Connect providers to enable for the run.
+    effort: Agent effort level.
+    input: Additional input data and exclusions.
+    outputSchema: Schema for structured output.
+    previousRunId: Completed run ID to continue.
+    query: Natural-language research request.
+    runId: Running agent run ID to resume.
+    systemPrompt: Additional instructions for the agent.
