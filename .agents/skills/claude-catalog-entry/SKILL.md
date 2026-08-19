@@ -1,0 +1,67 @@
+---
+name: claude-catalog-entry
+description: Reviews remote Streamable HTTP connectors from the Claude directory and records verified Obot Catalog dispositions. Use when importing, matching, skipping, or continuing review of Claude directory MCP connectors in this repository.
+---
+
+# Claude Catalog Entry
+
+Use the repository CLI for snapshots, selection, and every ledger mutation. Never edit `scripts/claude-directory/reviewed.yaml` directly.
+
+## Start a review session
+
+1. Refresh once at the beginning of the session:
+
+   ```sh
+   go -C scripts/claude-directory run . refresh
+   ```
+
+2. Select the highest-ranked unreviewed connector:
+
+   ```sh
+   go -C scripts/claude-directory run . select
+   ```
+
+3. Inspect `scripts/claude-directory/.state/current.json`. Use `show ID` to revisit another snapshot record. Do not refresh again while evaluating the batch.
+
+## Evaluate the selection
+
+1. Search catalog YAML for product-name, hostname, and endpoint duplicates.
+2. Start with authoritative provider documentation for the remote endpoint, setup, authentication method, scopes, and credential creation.
+3. Confirm the endpoint is portable outside Claude and uses remote Streamable HTTP.
+4. Verify authentication using the read-only public discovery flow below, then map it to supported Obot remote configuration.
+5. If it is a duplicate, record `existing`. If it cannot be supported or ported, record `skipped`. Leave ambiguous cases unreviewed.
+6. Otherwise create the smallest useful catalog entry. Link the authoritative provider documentation in the entry's `description`, even when the same URL is used for `repoURL`. Do not add `toolPreview` during intake.
+7. Validate catalog YAML before recording an imported disposition:
+
+   ```sh
+   obot mcp validate-catalog-yaml --require-entry-key ./*.yaml
+   ```
+
+## Verify and map authentication
+
+Treat provider documentation as the primary source, then use public OAuth endpoints to confirm the live behavior:
+
+1. Make an unauthenticated request to the exact MCP endpoint. Inspect the status and `WWW-Authenticate` header without sending credentials.
+2. If the challenge contains `resource_metadata`, fetch that URL. Otherwise try the RFC 9728 endpoint-path URL (`https://HOST/.well-known/oauth-protected-resource/MCP_PATH`), then the root `https://HOST/.well-known/oauth-protected-resource` fallback.
+3. Confirm protected-resource metadata identifies the MCP resource and lists `authorization_servers`.
+4. For each advertised issuer, fetch its RFC 8414 authorization-server metadata and OIDC discovery fallback. Check the authorization and token endpoints, scopes, PKCE support, and `registration_endpoint`.
+5. Do not POST to a registration endpoint during review. The public metadata is sufficient to confirm DCR support.
+
+Choose the first verified Obot mapping:
+
+- Prefer OAuth with Dynamic Client Registration when metadata advertises a `registration_endpoint`. Use `remoteConfig.fixedURL` or `URLTemplate`; do not add static headers or `staticOAuthRequired`.
+- If OAuth requires a provider-created client ID/secret or allowlisted redirect URI, use static OAuth with `remoteConfig.staticOAuthRequired: true` and document the provider setup and required scopes.
+- If provider docs specify a static token or API key, use `remoteConfig.headers`. Mark the value `required: true` and `sensitive: true`; use the documented header name and add a prefix such as `Bearer ` only when required.
+- If documentation and live discovery conflict, or the auth scheme cannot be represented safely, leave the connector unreviewed. Never infer auth from a Claude-only connect button.
+
+## Record the verified disposition
+
+Run exactly one applicable command after verification:
+
+```sh
+go -C scripts/claude-directory run . ledger add --id ID --status existing --catalog-entry FILE.yaml
+go -C scripts/claude-directory run . ledger add --id ID --status imported --catalog-entry FILE.yaml
+go -C scripts/claude-directory run . ledger add --id ID --status skipped --reason "Specific reason"
+```
+
+Use `ledger update` with the same flags to correct an existing record. Run `ledger check`, then run `select` again and repeat until the batch is done.
