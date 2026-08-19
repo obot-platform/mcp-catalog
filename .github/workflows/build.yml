@@ -31,5 +31,8 @@ jobs:
       - name: Vet Claude directory intake
         run: go -C scripts/claude-directory vet ./...
 
+      - name: Validate Claude directory review ledger
+        run: go -C scripts/claude-directory run . ledger check
+
       - name: Validate catalog YAML
         run: go -C .obot run . mcp validate-catalog-yaml --require-entry-key "$GITHUB_WORKSPACE"
