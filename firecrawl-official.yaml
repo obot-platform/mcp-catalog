@@ -123,15 +123,6 @@ toolPreview:
   description: Retrieve status, progress, and available results for an existing crawl.
   params:
     id: Crawl job ID
-- name: firecrawl_extract
-  description: Extract structured information from one or more URLs using a prompt and optional JSON schema.
-  params:
-    urls: URLs from which to extract information
-    prompt: Extraction instructions
-    schema: JSON schema for the result
-    allowExternalLinks: Follow links to external domains
-    enableWebSearch: Use web search for additional context
-    includeSubdomains: Include subdomains
 - name: firecrawl_agent
   description: Start an asynchronous autonomous web research job.
   params:
