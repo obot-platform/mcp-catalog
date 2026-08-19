@@ -3,6 +3,7 @@ package intake
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -36,7 +37,7 @@ func TestFetchPaginatesFiltersAndRanks(t *testing.T) {
 		case "page-2":
 			_, _ = w.Write([]byte(`{"data":[
                     {"uuid":"partner","display_name":"Partner","verification_tier":"partner","popularity":10,"trending":5,"connection":{"transport_type":"streamable-http","server_url":"https://partner.example/mcp"}},
-                    {"id":"unknown-score","name":"Unknown Score","verified_tier":"anthropic","popularity_score":null,"trending_score":null,"transport":"streamable HTTP","endpoint_url":"http://localhost.test/mcp"}
+                    {"id":"unknown-score","name":"Unknown Score","verified_tier":"anthropic","popularity_score":null,"trending_score":null,"transport":"streamable HTTP","endpoint_url":"https://unknown.example/mcp"}
                 ]}`))
 		default:
 			t.Errorf("unexpected cursor %q", r.URL.Query().Get("cursor"))
@@ -200,5 +201,36 @@ func TestFilteringRequiresTransportAndURLOnSameRemote(t *testing.T) {
 	raw := json.RawMessage(`{"id":"mixed","name":"Mixed","website":"https://example.com","package":{"type":"streamable-http"},"remotes":[{"type":"sse","url":"https://example.com/sse"}]}`)
 	if eligibleRemoteStreamableHTTP(raw) {
 		t.Fatal("unrelated website and transport fields must not make a connector eligible")
+	}
+}
+
+func TestFilteringRequiresPublicHTTPSEndpoint(t *testing.T) {
+	t.Parallel()
+	tests := []struct {
+		name     string
+		endpoint string
+		eligible bool
+	}{
+		{name: "public hostname", endpoint: "https://mcp.example.com/mcp", eligible: true},
+		{name: "public IPv4", endpoint: "https://8.8.8.8/mcp", eligible: true},
+		{name: "relative", endpoint: "/mcp"},
+		{name: "HTTP", endpoint: "http://mcp.example.com/mcp"},
+		{name: "non-HTTP", endpoint: "file:///etc/passwd"},
+		{name: "localhost", endpoint: "https://localhost/mcp"},
+		{name: "localhost subdomain", endpoint: "https://mcp.localhost/mcp"},
+		{name: "loopback IPv4", endpoint: "https://127.0.0.1/mcp"},
+		{name: "private IPv4", endpoint: "https://10.0.0.1/mcp"},
+		{name: "link-local IPv4", endpoint: "https://169.254.169.254/mcp"},
+		{name: "loopback IPv6", endpoint: "https://[::1]/mcp"},
+		{name: "private IPv6", endpoint: "https://[fd00::1]/mcp"},
+		{name: "credentials", endpoint: "https://user@example.com/mcp"},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			raw := json.RawMessage(fmt.Sprintf(`{"id":"test","name":"Test","remote":{"transport":"streamable-http","url":%q}}`, test.endpoint))
+			if got := eligibleRemoteStreamableHTTP(raw); got != test.eligible {
+				t.Fatalf("eligible = %v, want %v", got, test.eligible)
+			}
+		})
 	}
 }

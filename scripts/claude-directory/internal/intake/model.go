@@ -4,6 +4,8 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"net"
+	"net/url"
 	"strconv"
 	"strings"
 	"time"
@@ -114,12 +116,27 @@ func mapHasEndpoint(value map[string]any) bool {
 	for key, child := range value {
 		normalizedKey := normalize(key)
 		if normalizedKey == "url" || normalizedKey == "serverurl" || normalizedKey == "endpointurl" {
-			if text, ok := child.(string); ok && strings.TrimSpace(text) != "" {
+			if text, ok := child.(string); ok && isPublicHTTPSEndpoint(text) {
 				return true
 			}
 		}
 	}
 	return false
+}
+
+func isPublicHTTPSEndpoint(raw string) bool {
+	endpoint, err := url.Parse(strings.TrimSpace(raw))
+	if err != nil || endpoint.Scheme != "https" || endpoint.Host == "" || endpoint.User != nil {
+		return false
+	}
+	host := strings.TrimSuffix(strings.ToLower(endpoint.Hostname()), ".")
+	if host == "" || host == "localhost" || strings.HasSuffix(host, ".localhost") || strings.Contains(host, "%") {
+		return false
+	}
+	if ip := net.ParseIP(host); ip != nil {
+		return ip.IsGlobalUnicast() && !ip.IsPrivate() && !ip.IsLoopback() && !ip.IsLinkLocalUnicast()
+	}
+	return true
 }
 
 func findString(value map[string]any, keys ...string) string {

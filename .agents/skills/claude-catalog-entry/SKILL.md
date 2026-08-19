@@ -41,6 +41,13 @@ Use the repository CLI for snapshots, selection, and every ledger mutation. Neve
 
 Treat provider documentation as the primary source, then use public OAuth endpoints to confirm the live behavior:
 
+Before every request whose URL comes from a connector record or response, including documentation, MCP, metadata, issuer, and redirect URLs, enforce this public-destination policy:
+
+- Require an absolute HTTPS URL without embedded credentials.
+- Resolve the hostname immediately before the request. Reject the URL if any resolved address is loopback, private, link-local, multicast, unspecified, or otherwise non-public. Pin the request to a validated address while preserving the TLS hostname when the client supports it.
+- Disable automatic redirects. Validate and resolve each redirect target with the same policy before following it.
+- Leave the connector unreviewed if the client hides redirects, DNS resolution cannot be checked, or destination safety cannot otherwise be established.
+
 1. Make an unauthenticated request to the exact MCP endpoint. Inspect the status and `WWW-Authenticate` header without sending credentials.
 2. If the challenge contains `resource_metadata`, fetch that URL. Otherwise try the RFC 9728 endpoint-path URL (`https://HOST/.well-known/oauth-protected-resource/MCP_PATH`), then the root `https://HOST/.well-known/oauth-protected-resource` fallback.
 3. Confirm protected-resource metadata identifies the MCP resource and lists `authorization_servers`.
