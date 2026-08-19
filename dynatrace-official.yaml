@@ -45,45 +45,167 @@ remoteConfig:
     prefix: "Bearer "
     description: A Dynatrace Platform Token with MCP gateway and tool-specific permissions.
 toolPreview:
-- name: execute-dql
-  description: Execute a Dynatrace Query Language (DQL) query against Grail and return the result.
-  params: {}
+- name: adaptive-anomaly-detector
+  description: Detect anomalies in time-series data using an adaptive threshold.
+  params:
+    alertCondition: Alert condition for detected anomalies.
+    alertOnMissingData: Whether missing data triggers an alert.
+    dealertingSamples: Samples required to clear an alert.
+    generalParameters: General analyzer parameters.
+    numberOfSignalFluctuations: Expected signal fluctuations.
+    slidingWindow: Analysis window size.
+    timeSeriesData: Time-series data to analyze.
+    violatingSamples: Samples required to trigger an alert.
+- name: ask-dynatrace-docs
+  description: Answer questions about Dynatrace documentation and product capabilities.
+  params:
+    prompt: Question to answer.
 - name: create-dql
-  description: Generate a DQL query from a natural-language request without executing it.
-  params: {}
+  description: Generate a DQL query from a natural-language request.
+  params:
+    request: Natural-language data request.
+- name: execute-dql
+  description: Execute a DQL query against Grail.
+  params:
+    dqlQueryString: DQL query to execute.
+    includeTypes: Types of data to include in the result.
 - name: explain-dql
   description: Explain a DQL query in natural language.
-  params: {}
-- name: query-problems
-  description: Retrieve Dynatrace problems for investigation.
-  params: {}
-- name: get-problem-by-id
-  description: Retrieve details for a specific Dynatrace problem.
-  params: {}
-- name: get-vulnerabilities
-  description: List open security vulnerabilities, with risk-score filtering.
-  params: {}
-- name: get-events-for-kubernetes-cluster
-  description: Retrieve events for all Kubernetes clusters or a specified cluster.
-  params: {}
-- name: get-entity-id
-  description: Resolve a Dynatrace entity name to its entity ID.
-  params: {}
-- name: get-entity-name
-  description: Resolve a Dynatrace entity ID to its name.
-  params: {}
-- name: timeseries-forecast
-  description: Predict future timeseries values using a statistical forecasting model.
-  params: {}
-- name: adaptive-anomaly-detector
-  description: Analyze timeseries data for adaptive anomalies.
-  params: {}
+  params:
+    dql: DQL query to explain.
 - name: find-documents
-  description: Find Dynatrace dashboards and notebooks by name.
-  params: {}
+  description: Search Dynatrace dashboards and notebooks by title.
+  params:
+    searchString: Title text to search for.
 - name: find-troubleshooting-guides
-  description: Find available troubleshooting guides using a problem description.
-  params: {}
-- name: ask-dynatrace-docs
-  description: Ask product-related questions about Dynatrace.
-  params: {}
+  description: Search available troubleshooting guides.
+  params:
+    searchStrings: Terms used to search troubleshooting guides.
+- name: get-dynatrace-compliance-findings
+  description: Retrieve Dynatrace Security Posture Management compliance findings.
+  params:
+    customSummarizationAndFieldsSelection: Result fields and summarization settings.
+    entityIdsOrNames: Entity IDs or names to filter by.
+    includeTypes: Types of data to include in the result.
+    maxResults: Maximum findings to return.
+    resultStatus: Compliance finding statuses to include.
+    riskLevels: Risk levels to include.
+    ruleIds: Compliance rule IDs to include.
+    ruleTitles: Compliance rule titles to include.
+    standards: Compliance standards to include.
+    systems: Systems to include.
+- name: get-dynatrace-vulnerabilities
+  description: Retrieve Dynatrace Runtime Vulnerability Analytics findings.
+  params:
+    components: Affected components to include.
+    customFilters: Additional filters for vulnerabilities.
+    customSummarizationAndFieldsSelection: Result fields and summarization settings.
+    cves: CVEs to include.
+    entityIdsOrNames: Entity IDs or names to filter by.
+    includeTypes: Types of data to include in the result.
+    maxResults: Maximum vulnerabilities to return.
+    muteStatus: Mute statuses to include.
+    resolutionStatus: Resolution statuses to include.
+    riskLevels: Risk levels to include.
+    vulnerabilityIds: Vulnerability IDs to include.
+- name: get-entity-id
+  description: Look up entity IDs by name and type.
+  params:
+    entityNameFilter: Entity name filter.
+    entityType: Dynatrace entity type.
+    includeTypes: Types of data to include in the result.
+- name: get-entity-name
+  description: Resolve an entity ID to its display name.
+  params:
+    entityId: Dynatrace entity ID.
+    entityType: Dynatrace entity type.
+    includeTypes: Types of data to include in the result.
+- name: get-events-for-kubernetes-cluster
+  description: Retrieve Kubernetes cluster events.
+  params:
+    clusterId: Kubernetes cluster ID.
+    findAllK8Events: Whether to return events for all clusters.
+    history: Time range for event history.
+    includeTypes: Types of data to include in the result.
+    kubernetesEntityId: Dynatrace Kubernetes cluster entity ID.
+- name: get-problem-by-id
+  description: Retrieve details for a Dynatrace problem.
+  params:
+    history: Time range for problem history.
+    includeTypes: Types of data to include in the result.
+    problemId: Dynatrace problem display ID.
+- name: get-security-event-details
+  description: Retrieve details for a security event.
+  params:
+    findingID: Security finding ID.
+    includeTypes: Types of data to include in the result.
+    maxResults: Maximum events to return.
+    scanID: Security scan ID.
+    timeRange: Time range for security events.
+    title: Security event title.
+- name: get-security-events-summary
+  description: Summarize Dynatrace and external security events.
+  params:
+    components: Affected components to include.
+    customFilters: Additional security event filters.
+    cves: CVEs to include.
+    entityIdsOrNames: Entity IDs or names to filter by.
+    eventTypes: Security event types to include.
+    includeTypes: Types of data to include in the result.
+    maxResults: Maximum events to return.
+    products: Security products to include.
+    providers: Security providers to include.
+    riskLevels: Risk levels to include.
+    summarizationString: Summary configuration.
+    timeRange: Time range for security events.
+- name: log-pattern-extractor
+  description: Extract recurring patterns from log-query results.
+  params:
+    generalParameters: General analyzer parameters.
+    logQuery: DQL query that returns log lines.
+    numberOfExamples: Number of examples to return.
+- name: query-problems
+  description: Query Dynatrace problems.
+  params:
+    history: Time range for problem history.
+    includeTypes: Types of data to include in the result.
+    status: Problem statuses to include.
+- name: seasonal-baseline-anomaly-detector
+  description: Detect anomalies using seasonal time-series baselines.
+  params:
+    alertCondition: Alert condition for detected anomalies.
+    alertOnMissingData: Whether missing data triggers an alert.
+    dealertingSamples: Samples required to clear an alert.
+    generalParameters: General analyzer parameters.
+    slidingWindow: Analysis window size.
+    timeSeriesData: Time-series data to analyze.
+    tolerance: Seasonal baseline tolerance.
+    violatingSamples: Samples required to trigger an alert.
+- name: static-threshold-analyzer
+  description: Detect time-series values that violate a static threshold.
+  params:
+    alertCondition: Alert condition for threshold violations.
+    alertOnMissingData: Whether missing data triggers an alert.
+    dealertingSamples: Samples required to clear an alert.
+    generalParameters: General analyzer parameters.
+    slidingWindow: Analysis window size.
+    threshold: Static threshold to evaluate.
+    timeSeriesData: Time-series data to analyze.
+    violatingSamples: Samples required to trigger an alert.
+- name: timeseries-forecast
+  description: Forecast future time-series values from a DQL query.
+  params:
+    forecastHorizon: Number of future data points to predict.
+    forecastOffset: Offset before the forecast begins.
+    generalParameters: General analyzer parameters.
+    query: DQL time-series query.
+- name: timeseries-novelty-detection
+  description: Detect time-series changepoints and novelty scores.
+  params:
+    analysisNoveltyType: Type of novelty analysis.
+    detectionMode: Novelty detection mode.
+    filterSpikes: Whether to filter spikes.
+    generalParameters: General analyzer parameters.
+    minNoveltyScore: Minimum novelty score to include.
+    significanceLevel: Statistical significance level.
+    timeSeriesData: Time-series data to analyze.
