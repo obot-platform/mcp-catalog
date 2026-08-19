@@ -5,7 +5,7 @@ shortDescription: Query Amazon Kendra indices for enhanced RAG context in AI app
 description: 'A Model Context Protocol (MCP) server for Amazon Kendra developed by AWS Labs. Use Kendra Indices as additional context for RAG to enhance your existing MCP-enabled ChatBot and coding assistants.
 
 
-  **DEPRECATED**: Use AWS Managed MCP instead. Its authenticated AWS API access supports Amazon Kendra index discovery and queries through your existing IAM permissions, without stored access keys. Use `aws___run_script` to invoke the Kendra `ListIndices` and `Query` APIs in the index''s AWS resource region.
+  **DEPRECATED**: Use AWS Agent Toolkit MCP instead. Its authenticated AWS API access supports Amazon Kendra index discovery and queries through your existing IAM permissions, without stored access keys. Use `aws___run_script` to invoke the Kendra `ListIndices` and `Query` APIs in the index''s AWS resource region.
 
 
   ## Features

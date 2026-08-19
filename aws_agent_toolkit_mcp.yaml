@@ -1,5 +1,5 @@
-name: AWS Managed MCP
-entryKey: aws-managed-mcp
+name: AWS Agent Toolkit MCP
+entryKey: obot-aws-agent-toolkit-mcp
 serverUserType: singleUser
 shortDescription: Manage AWS resources and access AWS knowledge through AWS's managed MCP server
 description: |

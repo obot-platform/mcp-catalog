@@ -5,7 +5,7 @@ shortDescription: Execute AWS CLI commands across all AWS services with intellig
 description: 'A Model Context Protocol (MCP) server for AWS CLI operations. Execute AWS CLI commands and get intelligent command suggestions across all AWS services safely and efficiently.
 
 
-  **DEPRECATED**: Use AWS Managed MCP instead. It is AWS-operated, uses OAuth 2.1 with dynamic client registration rather than stored access keys, and provides managed AWS API access with AWS knowledge tools. Replace the `call_aws` tool with `aws___run_script`, which uses authenticated AWS SDK calls; use documentation search or AWS skills for operation guidance.
+  **DEPRECATED**: Use AWS Agent Toolkit MCP instead. It is AWS-operated, uses OAuth 2.1 with dynamic client registration rather than stored access keys, and provides managed AWS API access with AWS knowledge tools. Replace the `call_aws` tool with `aws___run_script`, which uses authenticated AWS SDK calls; use documentation search or AWS skills for operation guidance.
 
 
   ## Features
@@ -123,4 +123,3 @@ toolPreview:
   description: Get AI-powered suggestions for AWS CLI commands based on natural language queries
   params:
     query: A natural language description of what you want to accomplish in AWS
-
