@@ -37,7 +37,6 @@ on:
           - exa_search.yaml
           - excel.yaml
           - filescom.yaml
-          - filescom-remote.yaml
           - firecrawl.yaml
           - github.yaml
           - github_enterprise.yaml
