@@ -77,26 +77,17 @@ env:
     value: docs
     description: Search and retrieve DigitalOcean documentation.
   - name: Dedicated Inference
-    value: dedicated-inference
+    value: gradient-ai
     description: Manage GPU-accelerated dedicated inference endpoints.
   - name: Model Catalog
     value: inference-modelcatalog
     description: Browse and retrieve DigitalOcean AI model details.
   - name: Batch Inference
-    value: genai-batchinference
+    value: batchinference
     description: Create and monitor asynchronous AI batch inference jobs.
-  - name: Custom Models
-    value: genai-custom-models
-    description: Manage bring-your-own models on DigitalOcean AI Platform.
-  - name: Inference Router
-    value: genai-inferencerouter
-    description: Manage named GenAI model-routing configurations.
   - name: AI Evaluations
     value: genai-evaluation
     description: Manage datasets and evaluation workflows for AI deployments.
-  - name: Vector Databases
-    value: vector-databases
-    description: Manage DigitalOcean hosted Weaviate vector database clusters.
 remoteConfig:
   URLTemplate: https://${DIGITALOCEAN_SERVICE}.mcp.digitalocean.com/mcp
   headers:
