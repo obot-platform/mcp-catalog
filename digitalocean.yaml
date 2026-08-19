@@ -1,19 +1,26 @@
 name: DigitalOcean
 entryKey: obot-digitalocean
 serverUserType: singleUser
-shortDescription: Connect to an official DigitalOcean service with OAuth
+shortDescription: Manage an official DigitalOcean service with a personal access token
 description: |
-  Connect directly to DigitalOcean's vendor-hosted MCP services. Select one service for this connection, then add another instance to access additional services.
+  A Model Context Protocol (MCP) server that provides an interface for managing DigitalOcean resources and performing actions using the DigitalOcean API. Connect directly to DigitalOcean's vendor-hosted MCP services.
 
   Authentication uses a DigitalOcean personal access token. Create a token with the least-privilege scopes required for the selected service at https://cloud.digitalocean.com/account/api/tokens.
 
+  ## Features
+
+  - **App Platform Management**: Deploy, manage, and monitor applications on DigitalOcean App Platform.
+  - **Droplet Operations**: Create, manage, resize, snapshot, and monitor virtual machines.
+  - **Account Management**: Access account information, billing, invoices, and SSH keys.
+  - **Networking Services**: Manage domains, DNS records, firewalls, load balancers, IPs, and VPCs.
+  - **Database Management**: Provision, manage, and monitor managed database clusters.
+  - **Kubernetes (DOKS)**: Manage DigitalOcean Kubernetes clusters and node pools.
+  - **Object Storage (Spaces)**: Manage Spaces access keys and CDN settings.
+  - **Monitoring & Insights**: Manage uptime checks, alert policies, and resource metrics.
+
   ## Services
 
-  Choose App Platform, Droplets, Kubernetes, Databases, Networking, Storage, AI Platform, Documentation, or another supported DigitalOcean service.
-
-  ## Replacement
-
-  This is the official remote replacement for the deprecated containerized DigitalOcean entry. The older entry remains available during the one-month observation period.
+  Choose one DigitalOcean service for this connection. Each service uses a separate remote MCP subdomain, so multiple services require separate connections.
 metadata:
   categories: Cloud & Infrastructure, Developer Tools
   allow-multiple: "true"
