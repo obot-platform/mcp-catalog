@@ -273,7 +273,11 @@ func ledger(locations paths, args []string, stdout, stderr io.Writer) error {
 	if strings.TrimSpace(*id) == "" || strings.TrimSpace(*status) == "" {
 		return errors.New("--id and --status are required")
 	}
-	snapshot, ledgerValue, err := loadState(locations)
+	snapshot, err := intake.ReadSnapshot(locations.snapshot)
+	if err != nil {
+		return err
+	}
+	ledgerValue, err := intake.ReadLedger(locations.ledger)
 	if err != nil {
 		return err
 	}

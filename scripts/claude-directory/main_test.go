@@ -77,3 +77,37 @@ func TestSelectWritesCompleteRecordAndRejectsReviewedID(t *testing.T) {
 		t.Fatalf("error = %v", err)
 	}
 }
+
+func TestLedgerUpdateRepairsInvalidCatalogReference(t *testing.T) {
+	t.Parallel()
+	root := t.TempDir()
+	state := filepath.Join(root, ".state")
+	locations := paths{stateDir: state, snapshot: filepath.Join(state, "directory.json"), ledger: filepath.Join(root, "reviewed.yaml"), catalogRoot: root}
+	snapshot := intake.Snapshot{Version: 1, Connectors: []intake.Connector{{ID: "one", Name: "One"}}}
+	if err := intake.WriteJSONAtomic(locations.snapshot, snapshot); err != nil {
+		t.Fatal(err)
+	}
+	invalid := intake.Ledger{Version: 1, Records: []intake.LedgerRecord{{ID: "one", Name: "One", Status: "imported", CatalogEntry: "missing.yaml"}}}
+	if err := intake.WriteLedgerAtomic(locations.ledger, invalid); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(root, "replacement.yaml"), []byte("name: replacement\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+
+	var output bytes.Buffer
+	args := []string{"update", "--id", "one", "--status", "imported", "--catalog-entry", "replacement.yaml"}
+	if err := ledger(locations, args, &output, &output); err != nil {
+		t.Fatal(err)
+	}
+	updated, err := intake.ReadLedger(locations.ledger)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if got := updated.Records[0].CatalogEntry; got != "replacement.yaml" {
+		t.Fatalf("catalog entry = %q", got)
+	}
+	if err := intake.ValidateLedger(updated, root); err != nil {
+		t.Fatalf("updated ledger is invalid: %v", err)
+	}
+}
