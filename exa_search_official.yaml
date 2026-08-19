@@ -1,7 +1,7 @@
 name: Exa Search (Official)
 entryKey: obot-exa-search-official
 serverUserType: singleUser
-shortDescription: Official Exa web search and page retrieval with per-user OAuth
+shortDescription: Official Exa web search, research, and page retrieval with per-user OAuth
 description: |
   The official Exa-hosted Model Context Protocol (MCP) server for AI-powered web search and clean webpage retrieval.
 
@@ -9,6 +9,8 @@ description: |
 
   - **Web Search**: Find current information, news, facts, people, and companies with clean, ready-to-use content.
   - **Page Retrieval**: Fetch one or more known URLs as clean markdown.
+  - **Advanced Search**: Control categories, domains, dates, content extraction, and subpage crawling.
+  - **Research Agent**: Run Exa Agent for multi-step research, list building, enrichment, and structured output.
   - **Per-user Access**: Connect your Exa account with OAuth. Obot registers a client dynamically, so no API key or administrator setup is needed.
 
   ## What you'll need to connect
@@ -22,7 +24,7 @@ icon: https://avatars.githubusercontent.com/u/77906174?v=4
 repoURL: https://github.com/exa-labs/exa-mcp-server
 runtime: remote
 remoteConfig:
-  fixedURL: https://mcp.exa.ai/mcp/oauth
+  fixedURL: https://mcp.exa.ai/mcp/oauth?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run
 toolPreview:
 - name: web_search_exa
   description: Search the web for any topic and get clean, ready-to-use content. Use category:people or category:company in the query to focus on LinkedIn profiles or companies.
