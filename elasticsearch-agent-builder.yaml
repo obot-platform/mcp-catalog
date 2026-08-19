@@ -1,9 +1,9 @@
 name: Elastic Agent Builder Official
 entryKey: elasticsearch-agent-builder
 serverUserType: singleUser
-shortDescription: Search and analyze Elasticsearch data with Elastic's hosted Agent Builder tools
+shortDescription: Search and analyze Elasticsearch data with Elastic's Agent Builder tools
 description: |
-  Elastic Agent Builder's official Model Context Protocol (MCP) server exposes built-in and custom tools from an Elastic Cloud Serverless project.
+  Elastic Agent Builder's official Model Context Protocol (MCP) server exposes built-in and custom tools from Elastic Cloud Serverless projects and self-managed Elastic Stack deployments.
 
   This entry is the recommended replacement for the legacy containerized Elasticsearch entry. Agent Builder provides broader vendor-managed search and analysis capabilities, but it does not expose a shard-inspection tool or the legacy server's direct raw Query DSL interface.
 
@@ -14,20 +14,18 @@ description: |
   - **Natural Language Search**: Search, count, aggregate, and summarize Elasticsearch data
   - **ES|QL**: Generate and execute ES|QL queries
   - **Extensible Tools**: Use built-in tools and custom tools configured in Agent Builder
-  - **Per-user OAuth**: Run tools with the authorizing user's current project permissions
+  - **Scoped API Key**: Run tools with an Elasticsearch or Serverless project API key restricted to the data the server needs
 
   ## Requirements
 
-  - An Elastic Cloud Serverless Elasticsearch, Observability, or Security project
+  - Elastic Cloud Serverless, or Elastic Stack 9.3 or later with Kibana and Agent Builder
   - Access to Elastic Agent Builder and the data the tools will query
-  - A project-scoped OAuth MCP client created in Agent Builder by an administrator
+  - An Elasticsearch API key or Serverless project API key with Agent Builder and index privileges
   - The Kibana URL for the project, without a trailing slash
 
-  OAuth dynamic client registration is not supported by Elastic. Before users connect, an Obot administrator must configure this catalog entry with the OAuth client ID and optional client secret created for the target Serverless project. One OAuth client registration can serve multiple users, and each user authorizes separately with their own project permissions.
+  Create an API key with `feature_agentBuilder.read` and `feature_actions.read` Kibana application privileges for the target space, and restrict it to the indices the MCP server needs. `read` and `view_index_metadata` are required for query and index exploration; `monitor_inference` is required when the configured tools use the Elasticsearch Inference API.
 
-  For the default Kibana space, enter a URL such as `https://my-project.kb.us-central1.gcp.elastic.cloud`. For a custom space, include `/s/<space-name>`, for example `https://my-project.kb.us-central1.gcp.elastic.cloud/s/production`.
-
-  Agent Builder OAuth connections expire after 30 days without use and must then be authorized again.
+  For the default Kibana space, enter a URL such as `https://my-project.kb.us-central1.gcp.elastic.cloud`. For a custom space, include `/s/<space-name>`, for example `https://my-project.kb.us-central1.gcp.elastic.cloud/s/production`. Set an expiration date and rotate API keys regularly.
 metadata:
   categories: Databases, Data Analytics, Retrieval & Search
 icon: https://avatars.githubusercontent.com/u/6764390?v=4
@@ -38,12 +36,18 @@ env:
     name: Kibana URL
     required: true
     sensitive: false
-    description: Elastic Cloud Serverless Kibana URL without a trailing slash. Include /s/<space-name> when using a custom Kibana space.
+    description: Kibana URL without a trailing slash. Include /s/<space-name> when using a custom Kibana space.
 
 runtime: remote
 remoteConfig:
   URLTemplate: ${KIBANA_URL}/api/agent_builder/mcp
-  staticOAuthRequired: true
+  headers:
+    - name: Elastic API Key
+      description: Elasticsearch or Serverless project API key with Agent Builder and scoped index privileges
+      key: Authorization
+      required: true
+      sensitive: true
+      prefix: "ApiKey "
 
 toolPreview:
   - name: custom_content_update_panel
