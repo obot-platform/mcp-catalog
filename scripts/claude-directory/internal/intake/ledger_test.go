@@ -54,6 +54,19 @@ func TestLedgerAddUpdateAndDeterministicSerialization(t *testing.T) {
 	}
 }
 
+func TestReadLedgerRejectsMultipleDocuments(t *testing.T) {
+	t.Parallel()
+	path := filepath.Join(t.TempDir(), "reviewed.yaml")
+	data := []byte("version: 1\nrecords: []\n---\nversion: 1\nrecords: []\n")
+	if err := os.WriteFile(path, data, 0o644); err != nil {
+		t.Fatal(err)
+	}
+	_, err := ReadLedger(path)
+	if err == nil || !strings.Contains(err.Error(), "multiple YAML documents") {
+		t.Fatalf("error = %v", err)
+	}
+}
+
 func TestLedgerMutationRejectsInvalidRecords(t *testing.T) {
 	t.Parallel()
 	directory := t.TempDir()

@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
 	"sort"
@@ -37,6 +38,12 @@ func ReadLedger(path string) (Ledger, error) {
 	decoder.KnownFields(true)
 	if err := decoder.Decode(&ledger); err != nil {
 		return Ledger{}, fmt.Errorf("decode ledger %s: %w", path, err)
+	}
+	var trailing any
+	if err := decoder.Decode(&trailing); err == nil {
+		return Ledger{}, fmt.Errorf("decode ledger %s: multiple YAML documents are not allowed", path)
+	} else if !errors.Is(err, io.EOF) {
+		return Ledger{}, fmt.Errorf("decode ledger %s trailing content: %w", path, err)
 	}
 	return ledger, nil
 }
