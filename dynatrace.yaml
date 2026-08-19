@@ -1,162 +1,211 @@
 name: Dynatrace
 entryKey: obot-dynatrace
 serverUserType: singleUser
-shortDescription: Query logs, metrics, spans, and manage problems with Dynatrace observability
-description: |2
-
-  **DEPRECATED**: This community-maintained local server is no longer supported by Dynatrace. Use **Dynatrace Official** for the vendor-hosted MCP server. This entry remains available during the migration observation period for workflows that need its local-only notification, event-ingestion, or notebook tools.
-
-  A Model Context Protocol (MCP) server for Dynatrace integration, providing comprehensive observability and monitoring capabilities through Dynatrace API.
+shortDescription: Access Dynatrace observability data and intelligence through the official hosted MCP server
+description: |
+  The official Dynatrace Model Context Protocol (MCP) server provides secure, governed access to Dynatrace observability data and Dynatrace Intelligence. It is hosted and maintained by Dynatrace in your SaaS environment.
 
   ## Features
-  - **Access Dynatrace observability data from compatible AI applications**
-  - **Query logs, metrics, spans, and events using natural language**
-  - **Manage problems, vulnerabilities, and entities through Dynatrace APIs**
-  - **Generate reports and insights based on Dynatrace monitoring data**
-  - **Analyze performance data and get AI-powered troubleshooting suggestions**
 
-  ## What you will need to connect
+  - **Grail Data Analysis**: Generate, explain, and execute DQL for logs, metrics, spans, events, and entity data
+  - **Problem Investigation**: Find problems, view problem details, investigate vulnerabilities, and retrieve Kubernetes events
+  - **Topology Discovery**: Resolve Dynatrace entity names and IDs through Smartscape
+  - **Dynatrace Intelligence**: Analyze time series, find documents and troubleshooting guides, and ask product questions
 
-  **Required Credentials**:
-  - `DT_PLATFORM_TOKEN`: Your Dynatrace Platform Token. To create one, refer to the [Dynatrace documentation](https://www.dynatrace.com/support/help/shortlink/platform-tokens) for more details.
-  - `DT_ENVIRONMENT`: Your Dynatrace environment URL (e.g., https://abc12345.apps.dynatrace.com)
+  ## What you'll need to connect
 
+  - **Dynatrace SaaS Platform environment**: Enter the environment identifier from `https://<environment>.apps.dynatrace.com`. Dynatrace Managed and classic `*.live.dynatrace.com` environments are not supported.
+  - **Dynatrace Platform Token**: Create a token with `mcp-gateway:servers:invoke` and `mcp-gateway:servers:read`, plus permissions for the tools you intend to use. DQL access commonly requires `storage:buckets:read` and the relevant `storage:*:read` permissions. See the [Dynatrace MCP server documentation](https://docs.dynatrace.com/docs/dynatrace-intelligence/dynatrace-mcp).
+  - **Relevant Dynatrace products**: Grail is required for DQL data access. Dynatrace Intelligence permissions are required for DQL generation, explanation, troubleshooting, and analysis tools.
 
+  Dynatrace also supports OAuth with a confidential client, but does not support Dynamic Client Registration. This catalog entry therefore uses a per-user Platform Token rather than shared static OAuth credentials.
+
+  ## Cost and access notes
+
+  DQL queries can incur Grail consumption charges. Use narrow timeframes and filters, and grant only the permissions required for the intended workflows.
 metadata:
   categories: Monitoring, Developer Tools, DevOps
   allow-multiple: "true"
-  deprecated: "true"
 icon: https://avatars.githubusercontent.com/u/58178984?s=48&v=4
-repoURL: https://github.com/dynatrace-oss/dynatrace-mcp
+repoURL: https://docs.dynatrace.com/docs/dynatrace-intelligence/dynatrace-mcp
 env:
-- key: DT_PLATFORM_TOKEN
-  name: Dynatrace Platform Token
-  required: true
-  sensitive: true
-  description: Your Dynatrace Platform Token.
-- key: DT_ENVIRONMENT
+- key: DYNATRACE_ENVIRONMENT
   name: Dynatrace Environment
   required: true
   sensitive: false
-  description: Your Dynatrace environment URL
-runtime: containerized
-containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/dynatrace:1.7.6
-  port: 8099
-  path: /
-  args:
-  - mcp-server-dynatrace
+  description: Your Dynatrace SaaS environment identifier, for example abc12345 from https://abc12345.apps.dynatrace.com.
+runtime: remote
+remoteConfig:
+  URLTemplate: https://${DYNATRACE_ENVIRONMENT}.apps.dynatrace.com/platform-reserved/mcp-gateway/v0.1/servers/dynatrace-mcp/mcp
+  headers:
+  - key: Authorization
+    name: Dynatrace Platform Token
+    required: true
+    sensitive: true
+    prefix: "Bearer "
+    description: A Dynatrace Platform Token with MCP gateway and tool-specific permissions.
 toolPreview:
-- name: get_environment_info
-  description: Get information about the connected Dynatrace Environment (Tenant) and verify the connection and authentication.
-  params: {}
-- name: list_vulnerabilities
-  description: Retrieve all active (non-muted) vulnerabilities from Dynatrace. An additional filter can be provided using DQL filter (filter for a specific entity type and id).
+- name: adaptive-anomaly-detector
+  description: Detect anomalies in time-series data using an adaptive threshold.
   params:
-    timeframe: "Timeframe to query vulnerabilities (e.g., \"12h\", \"24h\", \"7d\", \"30d\", \"90d\"). Default: \"30d\". Supports hours (h) and days (d)."
-    riskScore: "Minimum risk score of vulnerabilities to list (default: 8.0)"
-    additionalFilter: "Additional DQL-based filter for accessing vulnerabilities, e.g., by entity type (preferred), like 'dt.entity.<service|host|application|$type> == \"<entity-id>\"', by entity name (not recommended) 'affected_entity.name contains \"<entity-name>\"' , or by tags 'entity_tags == array(\"dt.owner:team-foobar\", \"tag:tag\")'. You can also filter by vulnerability details like 'vulnerability.stack == \"CODE_LIBRARY\"' or 'vulnerability.risk.level == \"CRITICAL\"' or 'vulnerability.davis_assessment.exposure_status == \"PUBLIC_NETWORK\"'"
-    maxVulnerabilitiesToDisplay: Maximum number of vulnerabilities to display in the response.
-- name: list_problems
-  description: List all problems (based on "fetch dt.davis.problems") known on Dynatrace, sorted by their recency.
+    alertCondition: Alert condition for detected anomalies.
+    alertOnMissingData: Whether missing data triggers an alert.
+    dealertingSamples: Samples required to clear an alert.
+    generalParameters: General analyzer parameters.
+    numberOfSignalFluctuations: Expected signal fluctuations.
+    slidingWindow: Analysis window size.
+    timeSeriesData: Time-series data to analyze.
+    violatingSamples: Samples required to trigger an alert.
+- name: ask-dynatrace-docs
+  description: Answer questions about Dynatrace documentation and product capabilities.
   params:
-    timeframe: "Timeframe to query problems (e.g., \"12h\", \"24h\", \"7d\", \"30d\"). Default: \"24h\". Supports hours (h) and days (d)."
-    status: "Fitler problems by their status. \"ACTIVE\": only active problems (those without an end time set), \"CLOSED\": only closed problems (those with an end time set), \"ALL\": active and closed problems (default)"
-    additionalFilter: "Additional DQL filter for dt.davis.problems - filter by entity type (preferred), like 'dt.entity.<service|host|application|$type> == \"<entity-id>\"', or by entity tags 'entity_tags == array(\"dt.owner:team-foobar\", \"tag:tag\")'"
-    maxProblemsToDisplay: Maximum number of problems to display in the response.
-- name: find_entity_by_name
-  description: Find the entityId and type of a monitored entity (service, host, process-group, application, kubernetes-node, custom-app, ...) within the topology on Dynatrace, based on the name of the entity. Run this before querying data like logs, metrics, problems, events. If no entity name is known, make an educated guess with common identifiers like package.json `id`/`name`, helm chart names, kubernetes manifest names, and alike.
+    prompt: Question to answer.
+- name: create-dql
+  description: Generate a DQL query from a natural-language request.
   params:
-    entityNames: Names of the entities to search for - try with one name at first (identifiers like package.json id), and only try with multiple names if the first search was unsuccessful
-    maxEntitiesToDisplay: Maximum number of entities to display in the response.
-    extendedSearch: Set this to true if you want a comprehensive search over all available entity types.
-- name: send_slack_message
-  description: Sends a Slack message to a dedicated Slack Channel via Slack Connector on Dynatrace
+    request: Natural-language data request.
+- name: execute-dql
+  description: Execute a DQL query against Grail.
   params:
-    channel: ""
-    message: Slack markdown supported. Avoid sending sensitive data like log lines. Focus on context, insights, links, and summaries.
-- name: verify_dql
-  description: Syntactically verify a Dynatrace Query Language (DQL) statement on Dynatrace GRAIL before executing it. Recommended for generated DQL statements. Skip for statements created by `generate_dql_from_natural_language` tool, as well as from documentation.
+    dqlQueryString: DQL query to execute.
+    includeTypes: Types of data to include in the result.
+- name: explain-dql
+  description: Explain a DQL query in natural language.
   params:
-    dqlStatement: ""
-- name: execute_dql
-  description: "Get data like Logs, Metrics, Spans, Events, or Entity Data from Dynatrace Grail by executing a Dynatrace Query Language (DQL) statement. Use the \"generate_dql_from_natural_language\" tool upfront to generate or refine a DQL statement based on your request. To learn about possible fields available for filtering, use the query \"fetch dt.semantic_dictionary.models | filter data_object == \\\"logs\\\"\". IMPORTANT: The MCP App UI will automatically render the query results as an interactive table and chart. Do NOT generate Mermaid diagrams, ASCII charts, markdown tables, or any other visual representation of the data — the MCP App is solely responsible for rendering."
+    dql: DQL query to explain.
+- name: find-documents
+  description: Search Dynatrace dashboards and notebooks by title.
   params:
-    dqlStatement: "DQL Statement (Ex: \"fetch [logs, spans, events, ...], from: now()-4h, to: now() [| filter <some-filter>] [| summarize count(), by:{some-fields}]\", or for metrics: \"metrics [from: now()-4h] [to: now()] [| filter: {<filter>}]\" or \"timeseries { avg(<metric-name>), value.A = avg(<metric-name>, scalar: true) }\", or for entities via smartscape: \"smartscapeNodes \\\"[*, HOST, PROCESS, ...]\\\" [| filter id == \\\"<ENTITY-ID>\\\"]\"). When querying data for a specific entity, call the `find_entity_by_name` tool first to get an appropriate filter like `dt.entity.service == \"SERVICE-1234\"` or `dt.entity.host == \"HOST-1234\"` to be used in the DQL statement. Note: `dt.entity.*` filters only work in `fetch` queries (logs, metrics, spans, etc.). For `smartscapeNodes`, filter by `id == toSmartscapeId(\"<ENTITY-ID>\")` or simply `id == \"<ENTITY-ID>\"` (raw string). For `smartscapeEdges`, use `source_id == toSmartscapeId(\"<ENTITY-ID>\")` or `target_id == toSmartscapeId(\"<ENTITY-ID>\")`. String functions like `contains()` or `startsWith()` do NOT work on smartscape `id` fields. "
-    recordLimit: "Maximum number of records to return (default: 100)"
-    recordSizeLimitMB: "Maximum size of the returned records in MB (default: 1MB)"
-- name: generate_dql_from_natural_language
-  description: Convert natural language queries to Dynatrace Query Language (DQL) using Davis CoPilot AI. You can ask for problem events, security issues, logs, metrics, spans, and custom data.
+    searchString: Title text to search for.
+- name: find-troubleshooting-guides
+  description: Search available troubleshooting guides.
   params:
-    text: Natural language description of what you want to query. Be specific and include time ranges, entities, and metrics of interest.
-- name: explain_dql_in_natural_language
-  description: Explain Dynatrace Query Language (DQL) statements in natural language using Davis CoPilot AI.
+    searchStrings: Terms used to search troubleshooting guides.
+- name: get-dynatrace-compliance-findings
+  description: Retrieve Dynatrace Security Posture Management compliance findings.
   params:
-    dql: The DQL statement to explain
-- name: chat_with_davis_copilot
-  description: Use this tool to ask any Dynatrace related question, in case no other more specific tool is available.
+    customSummarizationAndFieldsSelection: Result fields and summarization settings.
+    entityIdsOrNames: Entity IDs or names to filter by.
+    includeTypes: Types of data to include in the result.
+    maxResults: Maximum findings to return.
+    resultStatus: Compliance finding statuses to include.
+    riskLevels: Risk levels to include.
+    ruleIds: Compliance rule IDs to include.
+    ruleTitles: Compliance rule titles to include.
+    standards: Compliance standards to include.
+    systems: Systems to include.
+- name: get-dynatrace-vulnerabilities
+  description: Retrieve Dynatrace Runtime Vulnerability Analytics findings.
   params:
-    text: Your question or request for Davis CoPilot
-    context: Optional context to provide additional information (like problem details, vulnerability details, entity information)
-    instruction: Optional instruction for how to format the response
-- name: create_workflow_for_notification
-  description: Create a notification for a team based on a problem type within Workflows in Dynatrace
+    components: Affected components to include.
+    customFilters: Additional filters for vulnerabilities.
+    customSummarizationAndFieldsSelection: Result fields and summarization settings.
+    cves: CVEs to include.
+    entityIdsOrNames: Entity IDs or names to filter by.
+    includeTypes: Types of data to include in the result.
+    maxResults: Maximum vulnerabilities to return.
+    muteStatus: Mute statuses to include.
+    resolutionStatus: Resolution statuses to include.
+    riskLevels: Risk levels to include.
+    vulnerabilityIds: Vulnerability IDs to include.
+- name: get-entity-id
+  description: Look up entity IDs by name and type.
   params:
-    problemType: ""
-    teamName: ""
-    channel: ""
-    isPrivate: ""
-- name: make_workflow_public
-  description: Modify a workflow and make it publicly available to everyone on the Dynatrace Environment
+    entityNameFilter: Entity name filter.
+    entityType: Dynatrace entity type.
+    includeTypes: Types of data to include in the result.
+- name: get-entity-name
+  description: Resolve an entity ID to its display name.
   params:
-    workflowId: ""
-- name: get_kubernetes_events
-  description: Get all events from a specific Kubernetes (K8s) cluster
+    entityId: Dynatrace entity ID.
+    entityType: Dynatrace entity type.
+    includeTypes: Types of data to include in the result.
+- name: get-events-for-kubernetes-cluster
+  description: Retrieve Kubernetes cluster events.
   params:
-    timeframe: "Timeframe to query events (e.g., \"12h\", \"24h\", \"7d\", \"30d\"). Default: \"24h\". Supports hours (h) and days (d)."
-    clusterId: The Kubernetes Cluster Id, referred to as k8s.cluster.uid, usually seen when using "kubectl" - this is NOT the Dynatrace environment and not the Dynatrace Kubernetes Entity Id. Leave empty if you don't know the Cluster Id.
-    kubernetesEntityId: The Dynatrace Kubernetes Entity Id, referred to as dt.entity.kubernetes_cluster. Leave empty if you don't know the Entity Id, or use the "find_entity_by_name" tool to find the cluster by name.
-    eventType: ""
-    maxEventsToDisplay: Maximum number of events to display in the response.
-- name: reset_grail_budget
-  description: Reset the Grail query budget after it was exhausted, allowing new queries to be executed. This clears all tracked bytes scanned in the current session.
-  params: {}
-- name: send_email
-  description: Send an email using the Dynatrace Email API. The sender will be no-reply@apps.dynatrace.com. Maximum 10 recipients total across TO, CC, and BCC.
+    clusterId: Kubernetes cluster ID.
+    findAllK8Events: Whether to return events for all clusters.
+    history: Time range for event history.
+    includeTypes: Types of data to include in the result.
+    kubernetesEntityId: Dynatrace Kubernetes cluster entity ID.
+- name: get-problem-by-id
+  description: Retrieve details for a Dynatrace problem.
   params:
-    toRecipients: Array of email addresses for TO recipients
-    ccRecipients: Array of email addresses for CC recipients
-    bccRecipients: Array of email addresses for BCC recipients
-    subject: Subject line of the email
-    body: Body content of the email (plain text only). Avoid sending sensitive data like log lines. Focus on context, insights, links, and summaries.
-- name: send_event
-  description: Send a custom event to Dynatrace using the Events API v2. Use this to ingest custom events for alerting, tracking deployments, configuration changes, or any custom business events.
+    history: Time range for problem history.
+    includeTypes: Types of data to include in the result.
+    problemId: Dynatrace problem display ID.
+- name: get-security-event-details
+  description: Retrieve details for a security event.
   params:
-    eventType: "Type of event to send. Common types: CUSTOM_INFO for general information, CUSTOM_DEPLOYMENT for deployments, CUSTOM_ALERT for alerts, ERROR_EVENT for errors."
-    title: Title of the event (max 500 characters). Should be descriptive and concise.
-    entitySelector: 'Entity selector to associate the event with specific Dynatrace entities. Example: "type(HOST),entityId(HOST-1234567890ABCDEF)" or "type(SERVICE),tag(environment:production)"'
-    properties: 'Custom properties as key-value pairs to include with the event. Example: {"version": "1.2.3", "environment": "production"}'
-    startTime: Start timestamp of the event in UTC milliseconds. If not set, current time is used.
-    endTime: End timestamp of the event in UTC milliseconds. If not set, current time is used.
-- name: list_exceptions
-  description: List all exceptions known on Dynatrace starting with the most recent.
+    findingID: Security finding ID.
+    includeTypes: Types of data to include in the result.
+    maxResults: Maximum events to return.
+    scanID: Security scan ID.
+    timeRange: Time range for security events.
+    title: Security event title.
+- name: get-security-events-summary
+  description: Summarize Dynatrace and external security events.
   params:
-    timeframe: "Timeframe to query problems (e.g., \"12h\", \"24h\", \"7d\", \"30d\", \"30m\"). Default: \"24h\". Supports days (d), hours (h) and minutes (m)."
-    additionalFilter: "Additional DQL filter for user.events - filter by error id like 'error.id == \"<error.id>\"', application id like 'dt.rum.application.id == \"<dt.rum.application.id>\"', application entity like 'dt.rum.application.entity == \"<dt.rum.application.entity>\"' or operating system name like 'os.name == \"<os.name>\"'. Leave empty to get all exceptions within the timeframe."
-    maxExceptionsToDisplay: Maximum number of exceptions to display in the response.
-- name: list_davis_analyzers
-  description: List all available Davis Analyzers in Dynatrace (forecast, anomaly detection, correlation analyzers, and more)
-  params: {}
-- name: execute_davis_analyzer
-  description: Execute a Davis Analyzer with custom input parameters. Use "list_davis_analyzers" first to see available analyzers and their names.
+    components: Affected components to include.
+    customFilters: Additional security event filters.
+    cves: CVEs to include.
+    entityIdsOrNames: Entity IDs or names to filter by.
+    eventTypes: Security event types to include.
+    includeTypes: Types of data to include in the result.
+    maxResults: Maximum events to return.
+    products: Security products to include.
+    providers: Security providers to include.
+    riskLevels: Risk levels to include.
+    summarizationString: Summary configuration.
+    timeRange: Time range for security events.
+- name: log-pattern-extractor
+  description: Extract recurring patterns from log-query results.
   params:
-    analyzerName: The name of the Davis Analyzer to execute (e.g., "dt.statistics.GenericForecastAnalyzer")
-    input: Input parameters for the analyzer as a JSON object
-    timeframeStart: "Start time for the analysis (default: now-1h)"
-    timeframeEnd: "End time for the analysis (default: now)"
-- name: create_dynatrace_notebook
-  description: Create a new notebook in the Dynatrace platform (NOT a Jupyter notebook) to share your analysis and findings with colleagues.
+    generalParameters: General analyzer parameters.
+    logQuery: DQL query that returns log lines.
+    numberOfExamples: Number of examples to return.
+- name: query-problems
+  description: Query Dynatrace problems.
   params:
-    name: 'The name of the notebook (e.g., "Performance Analysis for <entity-name>" or "Error Investigation Dashboard for <problem-name>")'
-    description: Optional description of the Dynatrace notebook (could include the purpose, scope, the original prompt, or just a summary based on the initial prompt)
-    content: The Dynatrace notebook content, containing DQL statements and text (multi-line markdown is possible) relevant for the analysis. Do NOT use Jupyter notebook format.
+    history: Time range for problem history.
+    includeTypes: Types of data to include in the result.
+    status: Problem statuses to include.
+- name: seasonal-baseline-anomaly-detector
+  description: Detect anomalies using seasonal time-series baselines.
+  params:
+    alertCondition: Alert condition for detected anomalies.
+    alertOnMissingData: Whether missing data triggers an alert.
+    dealertingSamples: Samples required to clear an alert.
+    generalParameters: General analyzer parameters.
+    slidingWindow: Analysis window size.
+    timeSeriesData: Time-series data to analyze.
+    tolerance: Seasonal baseline tolerance.
+    violatingSamples: Samples required to trigger an alert.
+- name: static-threshold-analyzer
+  description: Detect time-series values that violate a static threshold.
+  params:
+    alertCondition: Alert condition for threshold violations.
+    alertOnMissingData: Whether missing data triggers an alert.
+    dealertingSamples: Samples required to clear an alert.
+    generalParameters: General analyzer parameters.
+    slidingWindow: Analysis window size.
+    threshold: Static threshold to evaluate.
+    timeSeriesData: Time-series data to analyze.
+    violatingSamples: Samples required to trigger an alert.
+- name: timeseries-forecast
+  description: Forecast future time-series values from a DQL query.
+  params:
+    forecastHorizon: Number of future data points to predict.
+    forecastOffset: Offset before the forecast begins.
+    generalParameters: General analyzer parameters.
+    query: DQL time-series query.
+- name: timeseries-novelty-detection
+  description: Detect time-series changepoints and novelty scores.
+  params:
+    analysisNoveltyType: Type of novelty analysis.
+    detectionMode: Novelty detection mode.
+    filterSpikes: Whether to filter spikes.
+    generalParameters: General analyzer parameters.
+    minNoveltyScore: Minimum novelty score to include.
+    significanceLevel: Statistical significance level.
+    timeSeriesData: Time-series data to analyze.
