@@ -92,6 +92,10 @@ records:
     name: WordPress.com
     status: existing
     catalog_entry: wordpress.yaml
+  - id: eb9240f2-e1c1-43c1-828f-0fda40c22e4c
+    name: Canva
+    status: imported
+    catalog_entry: canva.yaml
   - id: ee49809c-50e1-4b24-bc17-17ce8887bfdf
     name: Snowflake
     status: existing
