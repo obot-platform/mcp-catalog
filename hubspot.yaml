@@ -39,29 +39,193 @@ remoteConfig:
   fixedURL: https://mcp.hubspot.com
   staticOAuthRequired: true
 toolPreview:
-  - name: get_user_details
-    description: Get the authenticated user's account details and CRM object access.
-  - name: search_crm_objects
-    description: Search and filter HubSpot CRM records with text queries, filters, sorting, and pagination.
+  - name: discover_hubspot_schema
+    description: Discover HubSpot CRM object types and schemas.
+    params:
+      query: Schema search query.
+  - name: get_campaign_attribution_reports
+    description: Retrieve campaign attribution reports and metrics.
+    params:
+      attributionModel: Attribution model.
+      campaignCrmObjectIds: Campaign CRM object IDs.
+      dimensions: Report dimensions.
+      endDate: Report end date.
+      filters: Report filters.
+      hasReadToolInstructions: Whether tool instructions were read.
+      limit: Maximum results.
+      metrics: Report metrics.
+      mode: Report mode.
+      responseFormat: Response format.
+      sortByMetric: Metric used to sort results.
+      sortOrder: Result sort order.
+      startDate: Report start date.
+      taskId: Task ID.
+  - name: get_content_analytics_report
+    description: Run content analytics reports for HubSpot pages and blog posts.
+    params:
+      contentIds: Content IDs.
+      end: Reporting window end.
+      excludedIds: Content IDs to exclude.
+      includeMetadata: Include content metadata.
+      limit: Maximum report rows.
+      mode: Report mode.
+      offset: Pagination offset.
+      paginationCursor: Pagination cursor.
+      peopleType: People type for people reports.
+      period: Time-series reporting period.
+      scaleByPercent: Scale totals by percentage.
+      search: Content search query.
+      sortDirection: Result sort direction.
+      sortMetric: Metric used to sort results.
+      start: Reporting window start.
+  - name: get_conversation_channel_metadata
+    description: List HubSpot conversation channels and channel instances.
+    params:
+      activeOnly: Return only active channels.
   - name: get_crm_objects
-    description: Retrieve one or more HubSpot CRM records by ID.
+    description: Retrieve HubSpot CRM records by ID.
+    params:
+      objectIds: CRM record IDs.
+      objectType: CRM object type.
+      properties: Properties to include.
+  - name: get_marketing_email_analytics
+    description: Retrieve marketing email analytics.
+    params:
+      mode: Analytics mode.
+  - name: get_organization_details
+    description: Retrieve organization teams, roles, seats, and account information.
+    params:
+      include: Data sections to include.
+  - name: get_properties
+    description: Retrieve CRM property definitions.
+    params:
+      objectType: CRM object type.
+      propertyNames: Property names.
+  - name: get_user_details
+    description: Retrieve authenticated user details and CRM access.
+    params:
+      include: Data sections to include.
+  - name: manage_campaign_objects
+    description: Create, update, clone, and manage campaign objects.
+    params:
+      assetRequest: Campaign asset operation request.
+      cloneRequest: Campaign clone request.
+      createRequest: Campaign create request.
+      operationType: Campaign operation type.
+      updateRequest: Campaign update request.
   - name: manage_crm_objects
     description: Create or update supported HubSpot CRM records and activities.
-  - name: search_properties
-    description: Find CRM property definitions by keyword.
-  - name: get_properties
-    description: Retrieve full CRM property definitions, including data types and allowed values.
-  - name: search_owners
-    description: Find CRM record owners by name, email, or ID.
-  - name: get_campaign_analytics
-    description: Retrieve campaign metrics or revenue attribution data.
-  - name: search_conversations
-    description: Search supported HubSpot conversations and messages by CRM object, time range, or keyword.
-  - name: get_conversation_channel_metadata
-    description: List available HubSpot inboxes, channels, and channel instances.
-  - name: get_marketing_email_analytics
-    description: Retrieve marketing email aggregate, health, or per-contact engagement analytics.
+    params:
+      confirmationStatus: Confirmation status.
+      createRequest: CRM create request.
+      updateRequest: CRM update request.
+  - name: manage_landing_page
+    description: Create, update, retrieve, and manage HubSpot landing pages.
+    params:
+      action: Landing-page action.
+      anchorModuleId: Module ID used as an anchor.
+      anchorPosition: Position relative to the anchor.
+      availableForNewContent: Whether the page is available for new content.
+      columnStart: Starting column position.
+      columnsSpanned: Number of columns spanned.
+      contentId: Landing-page content ID.
+      featuredImageUrl: Featured image URL.
+      fieldOverridesJson: Module field overrides as JSON.
+      folderName: Landing-page folder name.
+      headHtml: HTML inserted in the page head.
+      htmlTitle: Page HTML title.
+      hublSource: HubL source for the page.
+      language: Page language.
+      limit: Maximum results.
+      metaDescription: Page meta description.
+      moduleId: Module ID.
+      modulePath: Module path.
+      offset: Pagination offset.
+      pageName: Landing-page name.
+      query: Landing-page search query.
+      responseFormat: Response format.
+      revisionId: Landing-page revision ID.
+      rowStart: Starting row position.
+      sectionId: Landing-page section ID.
+      slug: Landing-page URL slug.
+      stylesJson: Landing-page styles as JSON.
+      templatePath: Landing-page template path.
+      textColor: Landing-page text color.
+      themePath: Landing-page theme path.
   - name: manage_marketing_email
     description: Create, update, clone, preview, and manage draft marketing emails.
+    params:
+      confirmationStatus: Confirmation status.
+      operation: Marketing email operation.
+  - name: query_crm_data
+    description: Query HubSpot CRM data with SQL.
+    params:
+      chatInsights: Chat insights for the query.
+      sql: SQL query.
+      verbosityLevel: Response verbosity level.
+  - name: read_campaign_data
+    description: Retrieve campaign analytics, assets, and contacts.
+    params:
+      analyticsRequest: Campaign analytics request.
+      assetMetricsRequest: Campaign asset metrics request.
+      contactsRequest: Campaign contacts request.
+      operation: Campaign data operation.
+  - name: search_conversations
+    description: Search HubSpot conversations and messages.
+    params:
+      after: Pagination cursor.
+      aggregationDimensions: Conversation aggregation dimensions.
+      assignedAgentId: Assigned agent ID filter.
+      channelInstanceId: Channel instance ID filter.
+      conversationChannelId: Conversation channel ID filter.
+      conversationStatus: Conversation status filter.
+      endTime: Time-range end.
+      inboxId: Inbox ID filter.
+      includeAllDialogue: Include system and bot dialogue.
+      includeMessages: Include messages.
+      maxBucketsPerDimension: Maximum aggregation buckets.
+      maxConversations: Maximum conversations.
+      messageDetail: Message detail level.
+      messageLimit: Maximum messages per conversation.
+      objectId: Associated CRM object ID.
+      objectType: Associated CRM object type.
+      query: Conversation search query.
+      searchMethod: Search method.
+      startTime: Time-range start.
+  - name: search_crm_objects
+    description: Search and filter HubSpot CRM records.
+    params:
+      chatInsights: Chat insights for the search.
+      filterGroups: Search filter groups.
+      limit: Maximum results.
+      objectType: CRM object type.
+      offset: Pagination offset.
+      properties: Properties to include.
+      query: CRM record search query.
+      sorts: Result sort rules.
+  - name: search_properties
+    description: Find CRM property definitions by keyword.
+    params:
+      keywords: Property search keywords.
+      objectType: CRM object type.
+      query: Legacy property search query.
+  - name: search_owners
+    description: Find CRM record owners by name, email, or ID.
+    params:
+      limit: Maximum results.
+      offset: Pagination offset.
+      ownerIds: Owner IDs.
+      searchQuery: Owner name or email query.
   - name: submit_feedback
-    description: Send feedback about the HubSpot MCP server experience.
+    description: Submit feedback about the HubSpot MCP server.
+    params:
+      explanationOfSatisfaction: Explanation of satisfaction.
+      feedback: Feedback content.
+      feedbackType: Feedback type.
+      goal: Feedback goal.
+      sourceInterface: Source interface.
+      triggeringToolName: Triggering tool name.
+  - name: tool_guidance
+    description: Retrieve usage guidance for HubSpot tools.
+    params:
+      toolNames: Tool names to retrieve guidance for.
