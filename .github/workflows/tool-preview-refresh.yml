@@ -29,7 +29,6 @@ on:
           - contact.yaml
           - context7.yaml
           - datadog.yaml
-          - datadog-official.yaml
           - deepwiki.yaml
           - digitalocean.yaml
           - duckduckgo_search.yaml

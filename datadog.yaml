@@ -29,57 +29,258 @@ runtime: remote
 remoteConfig:
   fixedURL: https://mcp.datadoghq.com/v1/mcp
 toolPreview:
-- name: search_datadog_logs
-  description: Search Datadog logs by query, time range, service, host, and storage tier.
+- name: aggregate_events
+  description: Aggregate Datadog events.
   params:
-    query: Datadog log search query
-    from: Start of the time range (optional)
-    to: End of the time range (optional)
+    computes: ""
+    from: ""
+    group_by: ""
+    max_tokens: ""
+    query: ""
+    start_at: ""
+    telemetry: ""
+    to: ""
+- name: aggregate_rum_events
+  description: Aggregate Datadog RUM events.
+  params:
+    computes: ""
+    from: ""
+    group_by: ""
+    max_tokens: ""
+    query: ""
+    start_at: ""
+    telemetry: ""
+    to: ""
+- name: aggregate_spans
+  description: Aggregate Datadog APM spans.
+  params:
+    computes: ""
+    from: ""
+    group_by: ""
+    max_tokens: ""
+    query: ""
+    start_at: ""
+    telemetry: ""
+    to: ""
 - name: analyze_datadog_logs
-  description: Analyze Datadog logs with SQL queries for counts, aggregations, and numerical analysis.
+  description: Analyze Datadog logs with SQL.
   params:
-    query: Natural-language or SQL analysis request
-- name: get_datadog_metric
-  description: Query and analyze historical or real-time Datadog metrics.
+    extra_columns: ""
+    filter: ""
+    from: ""
+    indexes: ""
+    max_tokens: ""
+    sql_query: ""
+    start_at: ""
+    storage_tier: ""
+    telemetry: ""
+    to: ""
+- name: get_change_stories
+  description: Retrieve Datadog change stories.
   params:
-    query: Datadog metric query
-    from: Start of the time range (optional)
-    to: End of the time range (optional)
-- name: search_datadog_monitors
-  description: Retrieve Datadog monitors, including statuses, thresholds, and alert conditions.
-  params:
-    query: Monitor search query (optional)
-- name: search_datadog_dashboards
-  description: Search Datadog dashboards and return their key details.
-  params:
-    query: Dashboard search query (optional)
+    context: ""
+    end_ts: ""
+    env: ""
+    filter_tags: ""
+    max_tokens: ""
+    service_name: ""
+    start_ts: ""
+    story_types: ""
+    telemetry: ""
 - name: get_datadog_dashboard
-  description: Retrieve a Datadog dashboard and its widget definitions.
+  description: Retrieve a Datadog dashboard.
   params:
-    dashboard_id: Datadog dashboard ID
-- name: search_datadog_incidents
-  description: Search Datadog incidents by state, severity, and metadata.
-  params:
-    query: Incident search query (optional)
+    dashboard_id: ""
+    include_widgets: ""
+    telemetry: ""
 - name: get_datadog_incident
-  description: Retrieve detailed information about a Datadog incident.
+  description: Retrieve a Datadog incident.
   params:
-    incident_id: Datadog incident ID
-- name: search_datadog_hosts
-  description: Search monitored Datadog hosts and retrieve their status and metadata.
+    incident_id: ""
+    include_attachments: ""
+    include_follow_ups: ""
+    include_timeline: ""
+    max_tokens: ""
+    telemetry: ""
+    timeline_from: ""
+    timeline_to: ""
+- name: get_datadog_metric
+  description: Query Datadog metrics.
   params:
-    filter: Host search filter (optional)
-- name: search_datadog_spans
-  description: Search Datadog APM spans by service, time range, resource, and other filters.
+    formulas: ""
+    from: ""
+    interval: ""
+    max_tokens: ""
+    queries: ""
+    raw_data: ""
+    response_format: ""
+    telemetry: ""
+    to: ""
+    use_cloud_cost: ""
+- name: get_datadog_metric_context
+  description: Retrieve Datadog metric metadata.
   params:
-    query: Datadog span search query
-    from: Start of the time range (optional)
-    to: End of the time range (optional)
+    include_related_assets: ""
+    include_tag_values: ""
+    max_tokens: ""
+    metric_name: ""
+    scope_tags: ""
+    start_at: ""
+    tag_filter: ""
+    telemetry: ""
+    use_cloud_cost: ""
+    window: ""
+- name: get_datadog_notebook
+  description: Retrieve a Datadog notebook.
+  params:
+    include_comments: ""
+    max_tokens: ""
+    notebook_id: ""
+    telemetry: ""
 - name: get_datadog_trace
-  description: Retrieve a complete Datadog APM trace by trace ID.
+  description: Retrieve a Datadog APM trace.
   params:
-    trace_id: Datadog trace ID
+    expand_span_id: ""
+    extra_fields: ""
+    include_path: ""
+    max_tokens: ""
+    only_service_entry_spans: ""
+    telemetry: ""
+    trace_id: ""
+- name: list_datadog_skills
+  description: List Datadog skill guides.
+  params:
+    include_header: ""
+    query: ""
+    telemetry: ""
+- name: load_datadog_skill
+  description: Load a Datadog skill guide.
+  params:
+    header_only: ""
+    resource_path: ""
+    skill_name: ""
+    telemetry: ""
+- name: search_datadog_dashboards
+  description: Search Datadog dashboards.
+  params:
+    include_description: ""
+    include_template_variables: ""
+    max_queries_per_dashboard: ""
+    max_tokens: ""
+    query: ""
+    sort: ""
+    start_at: ""
+    telemetry: ""
+- name: search_datadog_events
+  description: Search Datadog events.
+  params:
+    from: ""
+    max_tokens: ""
+    query: ""
+    sort: ""
+    start_at: ""
+    telemetry: ""
+    to: ""
+- name: search_datadog_hosts
+  description: Search Datadog hosts.
+  params:
+    max_tokens: ""
+    query: ""
+    start_at: ""
+    telemetry: ""
+- name: search_datadog_incidents
+  description: Search Datadog incidents.
+  params:
+    from: ""
+    max_tokens: ""
+    query: ""
+    semantic_query: ""
+    sort: ""
+    start_at: ""
+    telemetry: ""
+    to: ""
+    with_facets: ""
+- name: search_datadog_logs
+  description: Search Datadog logs.
+  params:
+    clustering_pattern_field: ""
+    extra_fields: ""
+    from: ""
+    indexes: ""
+    max_tokens: ""
+    pattern_group_by: ""
+    query: ""
+    sort: ""
+    start_at: ""
+    storage_tier: ""
+    telemetry: ""
+    to: ""
+    use_log_patterns: ""
+- name: search_datadog_metrics
+  description: Search Datadog metrics.
+  params:
+    from: ""
+    max_tokens: ""
+    name_filter: ""
+    percentiles_enabled: ""
+    tag_filter: ""
+    telemetry: ""
+    use_cloud_cost: ""
+- name: search_datadog_monitors
+  description: Search Datadog monitors.
+  params:
+    include_tags: ""
+    max_tokens: ""
+    query: ""
+    sort: ""
+    start_at: ""
+    telemetry: ""
+- name: search_datadog_notebooks
+  description: Search Datadog notebooks.
+  params:
+    count: ""
+    filter: ""
+    include_facets: ""
+    max_tokens: ""
+    query: ""
+    sort: ""
+    start_at: ""
+    telemetry: ""
 - name: search_datadog_rum_events
-  description: Search Datadog RUM events with advanced query syntax.
+  description: Search Datadog RUM events.
   params:
-    query: Datadog RUM event query
+    detailed_output: ""
+    from: ""
+    max_tokens: ""
+    query: ""
+    start_at: ""
+    telemetry: ""
+    to: ""
+- name: search_datadog_service_dependencies
+  description: Search Datadog service dependencies.
+  params:
+    direction: ""
+    max_tokens: ""
+    service: ""
+    start_at: ""
+    team: ""
+    telemetry: ""
+- name: search_datadog_services
+  description: Search Datadog services.
+  params:
+    detailed_output: ""
+    max_tokens: ""
+    query: ""
+    start_at: ""
+    telemetry: ""
+- name: search_datadog_spans
+  description: Search Datadog APM spans.
+  params:
+    custom_attributes: ""
+    from: ""
+    max_tokens: ""
+    query: ""
+    sort: ""
+    start_at: ""
+    telemetry: ""
+    to: ""
