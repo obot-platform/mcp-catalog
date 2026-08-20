@@ -1,78 +1,80 @@
 name: Exa Search
 entryKey: obot-exa-search
 serverUserType: singleUser
-shortDescription: AI-powered web search for research, company intelligence, and content extraction
-description: '[![npm version](https://badge.fury.io/js/exa-mcp-server.svg)](https://www.npmjs.com/package/exa-mcp-server)
-
-  **DEPRECATED**: This containerized server is superseded by the Exa Search (Official) remote server. Connect the official remote to use Exa OAuth and the vendor-hosted service.
-
-
-  A Model Context Protocol (MCP) server that lets AI assistants use the Exa AI Search API for web searches. Get real-time web information in a safe and controlled way with advanced search capabilities and content extraction.
-
+shortDescription: Official Exa web search, research, and page retrieval with per-user OAuth
+description: |
+  The official Exa-hosted Model Context Protocol (MCP) server for AI-powered web search and clean webpage retrieval.
 
   ## Features
 
-  - **Web Search**: Real-time web searches with optimized results and content extraction
+  - **Web Search**: Find current information, news, facts, people, and companies with clean, ready-to-use content.
+  - **Page Retrieval**: Fetch one or more known URLs as clean markdown.
+  - **Advanced Search**: Control categories, domains, dates, content extraction, and subpage crawling.
+  - **Research Agent**: Run Exa Agent for multi-step research, list building, enrichment, and structured output.
+  - **Per-user Access**: Connect your Exa account with OAuth. Obot registers a client dynamically, so no API key or administrator setup is needed.
 
-  - **Research Tools**: Specialized search for academic papers and research content
+  ## What you'll need to connect
 
-  - **Company Research**: Comprehensive business intelligence and company analysis
+  Sign in to an Exa account when prompted. Exa provides a free tier; account usage and plan limits are managed by Exa.
 
-  - **Content Crawling**: Extract content from specific URLs, articles, and PDFs
-
-  - **Platform-Specific Search**: LinkedIn, Wikipedia, and GitHub specialized searches
-
-  - **Deep Research**: AI-powered comprehensive research agent for complex queries
-
-  - **Competitor Analysis**: Identify and analyze business competitors
-
-
-  ## What you''ll need to connect
-
-
-  **Required:**
-
-  - **EXA API Key**: Your Exa API key from [dashboard.exa.ai/api-keys](https://dashboard.exa.ai/api-keys)
-
-  '
+  See the official [Exa MCP setup documentation](https://exa.ai/docs/reference/exa-mcp), [pricing](https://exa.ai/pricing), and [security documentation](https://exa.ai/docs/reference/security).
 metadata:
   categories: Retrieval & Search,Science & Research,Developer Tools
-  deprecated: "true"
 icon: https://avatars.githubusercontent.com/u/77906174?v=4
 repoURL: https://github.com/exa-labs/exa-mcp-server
-env:
-- key: EXA_API_KEY
-  name: Exa API Key
-  required: true
-  sensitive: true
-  description: Your Exa API key.
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.exa.ai/mcp/oauth?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run
 toolPreview:
 - name: web_search_exa
-  description: Search the web for any topic and get clean, ready-to-use content
+  description: Search the web for any topic and get clean, ready-to-use content. Use category:people or category:company in the query to focus on LinkedIn profiles or companies.
   params:
-    query: Natural language search query. Should be a semantically rich description of the ideal page, not just keywords.
-    numResults: Number of search results to return (must be a number, default 8)
-    type: "Search type - 'auto': balanced search (default), 'fast': quick results"
-    freshness: How recent results should be. Only set when recency matters.
-    includeDomains: List of domains to include in the search. If specified, results will only come from these domains.
-- name: get_code_context_exa
-  description: Find code examples, documentation, and programming solutions from GitHub, Stack Overflow, and docs
+    query: Natural-language search query describing the ideal page. Optionally include category:company or category:people to focus the search.
+    numResults: Number of search results to return. Defaults to 10.
+- name: web_search_advanced_exa
+  description: Search with control over result categories, domains, dates, content extraction, and subpage crawling.
   params:
-    query: Search query to find relevant context for APIs, Libraries, and SDKs. For example, 'React useState hook examples', 'Python pandas dataframe filtering', 'Express.js middleware', 'Next js partial prerendering configuration'
-    numResults: Number of search results to return (must be a number, default 8)
-- name: crawling_exa
-  description: Get the full content of a specific webpage from a known URL
+    additionalQueries: Additional query variations for broader search coverage.
+    category: Category to filter results.
+    contextMaxCharacters: Maximum characters for returned context.
+    enableHighlights: Whether to extract highlights.
+    enableSummary: Whether to generate result summaries.
+    endCrawlDate: Include results crawled before this ISO 8601 date.
+    endPublishedDate: Include results published before this ISO 8601 date.
+    excludeDomains: Domains to exclude.
+    excludeText: Text that excludes matching results.
+    highlightsMaxCharacters: Maximum characters of highlights per URL.
+    highlightsNumSentences: Number of highlight sentences.
+    highlightsPerUrl: Number of highlights per URL.
+    highlightsQuery: Query used to select highlights.
+    includeDomains: Domains to include.
+    includeText: Text required in matching results.
+    livecrawlTimeout: Timeout for fetching fresh content.
+    maxAgeHours: Maximum age of cached content.
+    moderation: Whether to filter unsafe content.
+    numResults: Number of results to return.
+    query: Search query.
+    startCrawlDate: Include results crawled after this ISO 8601 date.
+    startPublishedDate: Include results published after this ISO 8601 date.
+    subpageTarget: Keywords for selecting subpages.
+    subpages: Number of subpages to crawl from each result.
+    summaryQuery: Query used to focus summaries.
+    textMaxCharacters: Maximum characters extracted per result.
+    type: Search type.
+    userLocation: Country code for geo-targeted results.
+- name: web_fetch_exa
+  description: Read one or more webpages as clean markdown. Use after web_search_exa when highlights are insufficient or to read a known URL.
   params:
-    urls: URLs to read. Batch multiple URLs in one call.
-    maxCharacters: Maximum characters to extract per page (must be a number, default 3000)
-    maxAgeHours: Maximum age of cached content in hours. 0 = always fetch fresh content, omit = use cached content with fresh fetch fallback.
-    subpages: Number of subpages to also crawl from each URL.
-    subpageTarget: Keywords to prioritize when selecting subpages
-runtime: containerized
-containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/exa-search:3.2.0
-  port: 8099
-  path: /
-  args:
-  - exa-mcp-server
-  - --tools=web_search_exa,get_code_context_exa,crawling_exa
+    urls: URLs to read. Multiple URLs can be fetched in one request.
+    maxCharacters: Maximum characters to extract per page. Defaults to 3000.
+- name: agent_run
+  description: Start or resume an Exa Agent run for multi-step research and structured output.
+  params:
+    dataSources: Exa Connect providers to enable for the run.
+    effort: Agent effort level.
+    input: Additional input data and exclusions.
+    outputSchema: Schema for structured output.
+    previousRunId: Completed run ID to continue.
+    query: Natural-language research request.
+    runId: Running agent run ID to resume.
+    systemPrompt: Additional instructions for the agent.
