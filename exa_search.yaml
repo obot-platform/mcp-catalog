@@ -11,20 +11,39 @@ description: |
   - **Page Retrieval**: Fetch one or more known URLs as clean markdown.
   - **Advanced Search**: Control categories, domains, dates, content extraction, and subpage crawling.
   - **Research Agent**: Run Exa Agent for multi-step research, list building, enrichment, and structured output.
-  - **Per-user Access**: Connect your Exa account with OAuth. Obot registers a client dynamically, so no API key or administrator setup is needed.
+  - **Flexible Authentication**: Connect with OAuth, or use anonymous access with an optional Exa API key.
 
   ## What you'll need to connect
 
-  Sign in to an Exa account when prompted. Exa provides a free tier; account usage and plan limits are managed by Exa.
+  Choose OAuth to sign in to your Exa account, or choose Anonymous / API Key to connect without signing in. You can optionally provide an API key from [the Exa dashboard](https://dashboard.exa.ai/api-keys) for higher limits and Exa Agent access. Exa provides a free tier; account usage and plan limits are managed by Exa.
 
   See the official [Exa MCP setup documentation](https://exa.ai/docs/reference/exa-mcp), [pricing](https://exa.ai/pricing), and [security documentation](https://exa.ai/docs/reference/security).
 metadata:
   categories: Retrieval & Search,Science & Research,Developer Tools
 icon: https://avatars.githubusercontent.com/u/77906174?v=4
 repoURL: https://github.com/exa-labs/exa-mcp-server
+env:
+- name: Authentication method
+  key: EXA_ENDPOINT
+  description: Choose how to authenticate with Exa.
+  required: true
+  sensitive: false
+  options:
+  - name: OAuth
+    value: mcp/oauth?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run
+    description: Sign in to Exa with OAuth.
+  - name: Anonymous / API Key
+    value: mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run
+    description: Connect anonymously or authenticate with an API key.
 runtime: remote
 remoteConfig:
-  fixedURL: https://mcp.exa.ai/mcp/oauth?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run
+  URLTemplate: https://mcp.exa.ai/${EXA_ENDPOINT}
+  headers:
+  - name: Exa API Key
+    description: Optional API key for higher limits and Exa Agent access; leave blank for anonymous access or OAuth.
+    key: x-api-key
+    required: false
+    sensitive: true
 toolPreview:
 - name: web_search_exa
   description: Search the web for any topic and get clean, ready-to-use content. Use category:people or category:company in the query to focus on LinkedIn profiles or companies.
