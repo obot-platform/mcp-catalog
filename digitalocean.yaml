@@ -5,6 +5,8 @@ shortDescription: Manage an official DigitalOcean service with a personal access
 description: |
   A Model Context Protocol (MCP) server that provides an interface for managing DigitalOcean resources and performing actions using the DigitalOcean API. Connect directly to DigitalOcean's vendor-hosted MCP services.
 
+  See the [official DigitalOcean MCP documentation](https://docs.digitalocean.com/products/app-platform/reference/mcp/) for setup guidance and service details.
+
   Authentication uses a DigitalOcean personal access token. Create a token with the least-privilege scopes required for the selected service at https://cloud.digitalocean.com/account/api/tokens.
 
   ## Features
@@ -21,16 +23,35 @@ description: |
   ## Services
 
   Choose one DigitalOcean service for this connection. Each service uses a separate remote MCP subdomain, so multiple services require separate connections.
+
+  - **App Platform (`apps`)**: Deploy and manage applications
+  - **Account (`accounts`)**: Access account, billing, invoice, and SSH-key details
+  - **Databases (`databases`)**: Manage database clusters
+  - **Kubernetes (`doks`)**: Manage Kubernetes clusters and node pools
+  - **Droplets (`droplets`)**: Create and manage virtual machines
+  - **Container Registry (`docr`)**: Manage registries and repositories
+  - **Functions (`functions`)**: Manage serverless functions and triggers
+  - **Insights (`insights`)**: Manage monitoring, alerts, and metrics
+  - **Marketplace (`marketplace`)**: Discover and deploy Marketplace applications
+  - **Networking (`networking`)**: Manage DNS, firewalls, load balancers, IPs, and VPCs
+  - **Spaces (`spaces`)**: Manage object-storage keys and CDN settings
+  - **Volumes (`volumes`)**: Manage block-storage volumes and snapshots
+  - **Network File Storage (`nfs`)**: Manage file shares, snapshots, and access rules
+  - **Documentation (`docs`)**: Search DigitalOcean documentation
+  - **Dedicated Inference (`gradient-ai`)**: Manage dedicated inference endpoints
+  - **Model Catalog (`inference-modelcatalog`)**: Browse AI models
+  - **Batch Inference (`batchinference`)**: Run asynchronous batch inference jobs
+  - **AI Evaluations (`genai-evaluation`)**: Manage evaluation datasets and workflows
 metadata:
   categories: Cloud & Infrastructure, Developer Tools
   allow-multiple: "true"
 icon: https://cdn.brandfetch.io/idvF37rNoN/theme/dark/symbol.svg?c=1dxbfHSJFAPEGdCLU4o5B
-repoURL: https://github.com/digitalocean-labs/mcp-digitalocean
+repoURL: https://docs.digitalocean.com/products/app-platform/reference/mcp/
 runtime: remote
 env:
 - name: DigitalOcean Service
   key: DIGITALOCEAN_SERVICE
-  description: Choose the DigitalOcean service to connect
+  description: Enter one of the DigitalOcean service values listed in the entry description, such as `apps`, `droplets`, or `docs`.
   required: true
   sensitive: false
   options:

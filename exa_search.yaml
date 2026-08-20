@@ -5,6 +5,10 @@ shortDescription: Official Exa web search, research, and page retrieval with per
 description: |
   The official Exa-hosted Model Context Protocol (MCP) server for AI-powered web search and clean webpage retrieval.
 
+  See the [official Exa MCP documentation](https://exa.ai/docs/reference/exa-mcp) for setup, tools, and authentication details.
+
+  **Authentication method:** Enter `mcp/oauth?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run` to sign in with OAuth, or `mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run` to connect anonymously and optionally provide an Exa API key.
+
   ## Features
 
   - **Web Search**: Find current information, news, facts, people, and companies with clean, ready-to-use content.
@@ -21,11 +25,11 @@ description: |
 metadata:
   categories: Retrieval & Search,Science & Research,Developer Tools
 icon: https://avatars.githubusercontent.com/u/77906174?v=4
-repoURL: https://github.com/exa-labs/exa-mcp-server
+repoURL: https://exa.ai/docs/reference/exa-mcp
 env:
 - name: Authentication method
   key: EXA_ENDPOINT
-  description: Choose how to authenticate with Exa.
+  description: Enter `mcp/oauth?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run` for OAuth or `mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run` for anonymous or API-key access.
   required: true
   sensitive: false
   options:

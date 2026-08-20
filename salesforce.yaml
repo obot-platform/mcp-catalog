@@ -5,11 +5,13 @@ shortDescription: Access Salesforce records through Salesforce's hosted MCP serv
 description: |
   Salesforce Hosted MCP is Salesforce's vendor-managed remote MCP service. Select the SObject server that provides the protection level your workflow needs. Each server provides governed access to standard and custom Salesforce records using each connected user's Salesforce permissions, sharing rules, and field-level security.
 
+  See the [official Salesforce Hosted MCP documentation](https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/hosted-mcp-servers-overview.html) for setup, authentication, and server details.
+
   ## Features
-  - **SObject All**: Create, read, update, and delete records
-  - **SObject Reads**: Read records, inspect schemas, and run SOQL or SOSL without changing data
-  - **SObject Mutations**: Create and update records without delete operations
-  - **SObject Deletes**: Find and delete records for data-hygiene workflows
+  - **SObject All (`platform/sobject-all`)**: Create, read, update, and delete records
+  - **SObject Reads (`platform/sobject-reads`)**: Read records, inspect schemas, and run SOQL or SOSL without changing data
+  - **SObject Mutations (`platform/sobject-mutations`)**: Create and update records without delete operations
+  - **SObject Deletes (`platform/sobject-deletes`)**: Find and delete records for data-hygiene workflows
 
   ## What you'll need to connect
 
@@ -38,11 +40,11 @@ metadata:
   categories: CRM
   allow-multiple: "true"
 icon: https://img.icons8.com/?size=100&id=38804&format=png&color=000000
-repoURL: https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/setup-overview.html
+repoURL: https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/hosted-mcp-servers-overview.html
 env:
   - key: SALESFORCE_SOBJECT_SERVER
     name: Salesforce SObject Server
-    description: Choose the Salesforce SObject server and its corresponding protection level.
+    description: Enter one of the `platform/sobject-*` server values listed in the entry description.
     required: true
     sensitive: false
     options:

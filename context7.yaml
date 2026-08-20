@@ -5,7 +5,9 @@ shortDescription: Get up-to-date, version-specific code documentation and exampl
 description: |
   The official hosted Context7 Model Context Protocol (MCP) server provides current, version-specific documentation and code examples for libraries and frameworks.
 
-  This entry connects directly to Context7's vendor-operated remote service using OAuth or anonymous access with an optional Context7 API key.
+  See the [official Context7 documentation](https://context7.com/docs) for setup, authentication, and usage details.
+
+  **Authentication method:** Enter `mcp/oauth` to sign in with OAuth, or `mcp` to connect anonymously and optionally provide a Context7 API key.
 
   ## Features
 
@@ -20,11 +22,11 @@ description: |
 metadata:
   categories: Developer Tools, Documentation
 icon: https://avatars.githubusercontent.com/u/74989412?v=4
-repoURL: https://github.com/upstash/context7
+repoURL: https://context7.com/docs
 env:
 - name: Authentication method
   key: CONTEXT7_ENDPOINT
-  description: Choose how to authenticate with Context7
+  description: Enter `mcp/oauth` for OAuth or `mcp` for anonymous or API-key access. See the entry description for details.
   required: true
   sensitive: false
   options:

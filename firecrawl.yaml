@@ -5,6 +5,10 @@ shortDescription: Search, scrape, crawl, interact with, and monitor the web usin
 description: |
   The official hosted Firecrawl Model Context Protocol (MCP) server gives AI assistants current web data without running a local MCP container. Firecrawl operates and updates the server directly.
 
+  See the [official Firecrawl MCP documentation](https://docs.firecrawl.dev/mcp-server) for setup, tools, limits, and authentication details.
+
+  **Authentication method:** Enter `v2/mcp-oauth` for browser sign-in, or `v2/mcp` to provide an optional API key or use the limited keyless tool set.
+
   ## Features
 
   - **Search and Scrape**: Find relevant pages and extract clean, structured content
@@ -24,11 +28,11 @@ metadata:
   categories: Retrieval & Search,Automation & Browsers,Science & Research
   source: vendor
 icon: https://avatars.githubusercontent.com/u/135057108?v=4
-repoURL: https://github.com/firecrawl/firecrawl-mcp-server
+repoURL: https://docs.firecrawl.dev/mcp-server
 env:
 - name: Authentication method
   key: FIRECRAWL_ENDPOINT
-  description: Choose how to authenticate with Firecrawl
+  description: Enter `v2/mcp-oauth` for OAuth or `v2/mcp` for API-key or keyless access. See the entry description for details.
   required: true
   sensitive: false
   options:

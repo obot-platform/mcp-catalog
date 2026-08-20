@@ -5,6 +5,10 @@ shortDescription: Connect to Supabase with selectable read-only access and OAuth
 description: |
   The official hosted Supabase Model Context Protocol (MCP) server connects AI assistants to your Supabase projects.
 
+  See the [official Supabase MCP documentation](https://supabase.com/docs/guides/ai-tools/mcp) for setup, configuration options, and security guidance.
+
+  **Access mode:** Enter `true` for read-only access or `false` to enable potentially destructive read-and-write operations.
+
   ## What you'll need to connect
 
   Choose whether to restrict the connection to read-only operations. Read-only access is recommended unless you need to apply migrations, deploy functions, or manage projects and branches.
@@ -26,11 +30,11 @@ description: |
 metadata:
   categories: Databases
 icon: https://supabase.com/favicon/favicon-96x96.png
-repoURL: https://github.com/supabase/mcp
+repoURL: https://supabase.com/docs/guides/ai-tools/mcp
 env:
 - name: Read Only
   key: READ_ONLY
-  description: Choose whether to restrict the connection to read-only operations.
+  description: Enter `true` for read-only access or `false` for read-and-write access. See the entry description for details.
   required: true
   sensitive: false
   options:

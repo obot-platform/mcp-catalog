@@ -5,6 +5,10 @@ shortDescription: Manage PagerDuty incidents, on-call schedules, services, and i
 description: |
   PagerDuty's official hosted Model Context Protocol (MCP) server connects AI agents directly to PagerDuty. Investigate incidents, manage on-call coverage, administer services and teams, and run incident-response workflows without installing a local server.
 
+  See the [official PagerDuty MCP documentation](https://support.pagerduty.com/main/docs/pagerduty-mcp-server) for setup, authentication, and regional endpoint details.
+
+  **PagerDuty region:** Enter `mcp.pagerduty.com` for accounts hosted in the United States or `mcp.eu.pagerduty.com` for accounts hosted in Europe.
+
   ## Features
   - **Incident response**: Investigate alerts, notes, related incidents, and change events; create, update, and resolve incidents.
   - **On-call operations**: View schedules and on-call assignments, manage overrides, and coordinate handoffs.
@@ -21,11 +25,11 @@ description: |
 metadata:
   categories: Monitoring & Observability, SaaS & API Integrations
 icon: https://avatars.githubusercontent.com/u/766800?s=48&v=4
-repoURL: https://github.com/PagerDuty/pagerduty-mcp-server
+repoURL: https://support.pagerduty.com/main/docs/pagerduty-mcp-server
 env:
 - name: PagerDuty region
   key: PAGERDUTY_MCP_HOST
-  description: Choose the region where your PagerDuty account is hosted
+  description: Enter `mcp.pagerduty.com` for US or `mcp.eu.pagerduty.com` for EU. See the entry description for details.
   required: true
   sensitive: false
   options:

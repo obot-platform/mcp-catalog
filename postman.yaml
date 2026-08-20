@@ -5,6 +5,12 @@ shortDescription: Connect to Postman collections, workspaces, environments, mock
 description: |
   Postman's official hosted Model Context Protocol (MCP) server connects AI agents directly to Postman resources.
 
+  See the [official Postman MCP documentation](https://www.postman.com/product/mcp-server/) for setup, authentication, regions, and tool sets.
+
+  **Region:** Enter `https://mcp.postman.com` for the United States service or `https://mcp.eu.postman.com` for the Europe service.
+
+  **Tool configuration:** Enter `minimal` for common operations, `code` for API discovery and code generation, or `mcp` for every available Postman tool.
+
   ## Features
   - **Collection Management**: Create, retrieve, and update Postman collections, requests, and responses
   - **Workspace and Environment Management**: Work with Postman workspaces and environments
@@ -22,12 +28,12 @@ description: |
 metadata:
   categories: Developer Tools,API Development,Testing
 icon: https://avatars.githubusercontent.com/u/10251060?s=48&v=4
-repoURL: https://github.com/postmanlabs/postman-mcp-server
+repoURL: https://www.postman.com/product/mcp-server/
 
 env:
   - name: Postman Region
     key: HOST_URL
-    description: Choose the Postman MCP server region
+    description: Enter `https://mcp.postman.com` for United States or `https://mcp.eu.postman.com` for Europe. See the entry description for details.
     required: true
     sensitive: false
     options:
@@ -39,7 +45,7 @@ env:
         description: Requires a Postman API key
   - name: Tool Configuration
     key: TOOL_CONFIGURATION
-    description: Choose which Postman tool set to expose
+    description: Enter `minimal`, `code`, or `mcp`. See the entry description for details.
     required: true
     sensitive: false
     options:
