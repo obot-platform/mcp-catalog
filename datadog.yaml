@@ -5,6 +5,8 @@ shortDescription: Query Datadog observability data and manage platform features 
 description: |
   Datadog's official, vendor-hosted Model Context Protocol (MCP) server connects AI agents to Datadog observability data and platform features. Use it to investigate logs, metrics, traces, monitors, dashboards, incidents, hosts, RUM, and more.
 
+  See Datadog's [official MCP server documentation](https://docs.datadoghq.com/mcp_server/) for setup instructions, authentication options, permissions, and current capabilities.
+
   ## Features
   - **Core observability**: Search logs, metrics, traces, monitors, dashboards, incidents, hosts, services, events, notebooks, and RUM data.
   - **Product toolsets**: Enable additional Datadog product-specific toolsets when needed, such as alerting, dashboards, security, synthetics, workflows, and Database Monitoring.
@@ -20,10 +22,9 @@ description: |
   - Datadog documents fair-use limits of 50 tool calls per 10 seconds and 50,000 monthly tool calls, subject to change.
   - Datadog retains remote-MCP usage, error, identity, and relevant prompt-context data for 120 days. Review the [official service documentation](https://docs.datadoghq.com/mcp_server/) before connecting sensitive workloads.
 
-  See the [official setup documentation](https://docs.datadoghq.com/mcp_server/setup/) and [tool reference](https://docs.datadoghq.com/mcp_server/tools/) for supported clients, authentication alternatives, permissions, and the current tool surface.
 metadata:
   categories: Monitoring & Observability, SaaS & API Integrations
-  repoURL: https://github.com/datadog-labs/mcp-server
+  repoURL: https://docs.datadoghq.com/mcp_server/
 icon: https://avatars.githubusercontent.com/u/365230?s=200&v=4
 runtime: remote
 remoteConfig:

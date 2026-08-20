@@ -5,6 +5,8 @@ shortDescription: Manage files, users, groups, permissions, and secure file shar
 description: |
   The official Files.com hosted Model Context Protocol (MCP) server lets AI agents securely manage resources and perform file operations without running a local server.
 
+  See Files.com's [official MCP server documentation](https://www.files.com/docs/integrations/model-context-protocol-mcp-server) for setup instructions, authentication options, and current capabilities.
+
   ## Features
 
   - **File & Folder Operations**: Find, copy, move, delete, list, zip, and unzip files and folders

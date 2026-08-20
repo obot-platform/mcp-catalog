@@ -5,6 +5,8 @@ shortDescription: Inspect and deploy Cloud Run services through Google's managed
 description: |
   Connect to Google's managed Cloud Run MCP server to list and inspect services or deploy applications from container images, source archives, and inline source files.
 
+  See Google's [official Cloud Run MCP documentation](https://cloud.google.com/run/docs/use-cloud-run-mcp) for setup instructions, authentication requirements, and current capabilities.
+
   ## What you'll need to connect
 
   Ask your Google Cloud administrator to:
@@ -15,7 +17,7 @@ description: |
 
   When you connect, Google asks you to authorize Obot. Tool calls use your Google identity and its IAM permissions.
 
-  See Google's [Cloud Run MCP setup guide](https://cloud.google.com/run/docs/use-cloud-run-mcp) and [MCP authentication guide](https://cloud.google.com/mcp/authenticate-mcp) for complete instructions.
+  See Google's [MCP authentication guide](https://cloud.google.com/mcp/authenticate-mcp) for complete authentication instructions.
 
   ## Important differences
 

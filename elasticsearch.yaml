@@ -5,6 +5,8 @@ shortDescription: Search and analyze Elasticsearch data with Elastic's Agent Bui
 description: |
   Elastic Agent Builder's official Model Context Protocol (MCP) server exposes built-in and custom tools from Elastic Cloud Serverless projects and self-managed Elastic Stack deployments.
 
+  See Elastic's [official Agent Builder MCP server documentation](https://www.elastic.co/docs/explore-analyze/ai-features/agent-builder/mcp-server) for endpoint details, authentication options, permissions, and current capabilities.
+
   This entry is the recommended replacement for the legacy containerized Elasticsearch entry. Agent Builder provides broader vendor-managed search and analysis capabilities, but it does not expose a shard-inspection tool or the legacy server's direct raw Query DSL interface.
 
   ## Features
