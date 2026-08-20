@@ -31,6 +31,7 @@ on:
           - datadog.yaml
           - deepwiki.yaml
           - digitalocean.yaml
+          - digitalocean-official.yaml
           - duckduckgo_search.yaml
           - dynatrace.yaml
           - elasticsearch.yaml
