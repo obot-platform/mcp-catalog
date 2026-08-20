@@ -1,111 +1,191 @@
 name: Supabase
 entryKey: obot-supabase
 serverUserType: singleUser
-shortDescription: Manage Supabase projects, databases, Edge Functions, and storage with AI assistance
-description: '![supabase-mcp-demo](https://github.com/user-attachments/assets/3fce101a-b7d4-482f-9182-0be70ed1ad56)
+shortDescription: Connect to Supabase with selectable read-only access and OAuth or a personal access token
+description: |
+  The official hosted Supabase Model Context Protocol (MCP) server connects AI assistants to your Supabase projects.
 
+  ## What you'll need to connect
 
-  A Model Context Protocol (MCP) server that connects your Supabase projects to AI assistants. This server enables AI assistants to perform comprehensive Supabase operations including managing tables, fetching configurations, querying data, and deploying Edge Functions across your development workflow.
+  Choose whether to restrict the connection to read-only operations. Read-only access is recommended unless you need to apply migrations, deploy functions, or manage projects and branches.
 
+  Authentication uses OAuth with dynamic client registration by default. You can instead provide a Supabase personal access token for non-interactive access. When a token is provided, Supabase authenticates directly with it and does not start OAuth; when omitted, Obot uses OAuth.
+
+  ## Security
+
+  - Use a development project or branch with non-production data. Never connect this server to production data.
+  - Review every tool call before approving it, especially SQL, migrations, deployments, and project or branch operations.
 
   ## Features
 
-  - **Project Management**: Create, pause, restore projects and manage organizations with cost tracking
-
-  - **Database Operations**: Execute SQL queries, apply migrations, manage tables and extensions
-
-  - **Development Tools**: Generate TypeScript types, get API URLs and keys for seamless integration
-
-  - **Edge Functions**: Deploy and manage serverless functions directly from AI assistants
-
-  - **Branching Support**: Create development branches, merge changes, and handle migration drift (paid plans)
-
-  - **Storage Management**: Manage buckets and storage configurations
-
-  - **Documentation Search**: Search Supabase docs for up-to-date information and guidance
-
-
-  ## What you''ll need to connect
-
-
-  **Required:**
-
-  - **Supabase Personal Access Token**: Create at [Supabase settings](https://supabase.com/dashboard/account/tokens)
-
-  '
+  - **Database**: Inspect schemas and migrations, execute SQL, and optionally apply migrations
+  - **Debugging**: Retrieve logs and security or performance advisors
+  - **Development**: Get project URLs and publishable keys, and generate TypeScript types
+  - **Edge Functions and Branching**: Inspect functions and branches, with optional write operations
+  - **Storage and Docs**: Inspect storage configuration and search Supabase documentation
 metadata:
   categories: Databases
-icon: https://avatars.githubusercontent.com/u/87650496?s=48&v=4
-repoURL: https://github.com/supabase-community/supabase-mcp
+icon: https://supabase.com/favicon/favicon-96x96.png
+repoURL: https://github.com/supabase/mcp
 env:
-- key: SUPABASE_ACCESS_TOKEN
-  name: Supabase Personal Access Token
+- name: Read Only
+  key: READ_ONLY
+  description: Choose whether to restrict the connection to read-only operations.
   required: true
-  sensitive: true
-  description: Your Supabase Personal Access Token.
-runtime: containerized
-containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/supabase:0.7.0
-  port: 8099
-  path: /
-  args:
-  - mcp-server-supabase
+  sensitive: false
+  options:
+  - name: Read only
+    value: "true"
+    description: Restrict SQL and mutation operations.
+  - name: Read and write
+    value: "false"
+    description: Allow potentially destructive write operations.
+runtime: remote
+remoteConfig:
+  URLTemplate: https://mcp.supabase.com/mcp?read_only=${READ_ONLY}
+  headers:
+  - name: Supabase Personal Access Token
+    description: Optional. Provide a Supabase personal access token for non-interactive authentication. OAuth is used when omitted.
+    key: Authorization
+    required: false
+    sensitive: true
+    prefix: "Bearer "
 toolPreview:
 - name: list_projects
-  description: Lists all Supabase projects for the user.
+  description: Lists Supabase projects available to the authenticated user.
+  params: {}
 - name: get_project
-  description: Gets details for a project.
+  description: Gets details for a Supabase project.
+  params:
+    id: Project identifier.
 - name: create_project
-  description: Creates a new Supabase project.
+  description: Creates a Supabase project after the user confirms its cost. Requires read and write access.
+  params:
+    confirm_cost_id: Cost confirmation identifier.
+    name: Project name.
+    organization_id: Organization identifier.
+    region: Deployment region.
 - name: pause_project
-  description: Pauses a project.
+  description: Pauses a Supabase project. Requires read and write access.
+  params:
+    project_id: Project identifier.
 - name: restore_project
-  description: Restores a project.
+  description: Restores a Supabase project. Requires read and write access.
+  params:
+    project_id: Project identifier.
 - name: list_organizations
-  description: Lists all organizations that the user is a member of.
+  description: Lists organizations available to the authenticated user.
+  params: {}
 - name: get_organization
-  description: Gets details for an organization.
+  description: Gets organization details.
+  params:
+    id: Organization identifier.
 - name: get_cost
-  description: Gets the cost of a new project or branch for an organization.
+  description: Gets the cost of creating a project or branch.
+  params:
+    organization_id: Organization identifier.
+    type: Resource type.
 - name: confirm_cost
-  description: Confirms the user's understanding of new project or branch costs. This is required to create a new project or branch.
+  description: Records that the user understands the cost of a project or branch.
+  params:
+    amount: Cost amount.
+    recurrence: Cost recurrence.
+    type: Resource type.
 - name: search_docs
-  description: Searches the Supabase documentation for up-to-date information. LLMs can use this to find answers to questions or learn how to use specific features.
+  description: Searches Supabase documentation.
+  params:
+    graphql_query: GraphQL documentation query.
 - name: list_tables
-  description: Lists all tables within the specified schemas.
+  description: Lists database tables and optionally their columns, primary keys, and foreign-key constraints.
+  params:
+    project_id: Project identifier.
+    schemas: Schemas to include.
+    verbose: Include detailed table metadata.
 - name: list_extensions
-  description: Lists all extensions in the database.
+  description: Lists database extensions.
+  params:
+    project_id: Project identifier.
 - name: list_migrations
-  description: Lists all migrations in the database.
+  description: Lists database migrations.
+  params:
+    project_id: Project identifier.
 - name: apply_migration
-  description: Applies a SQL migration to the database. SQL passed to this tool will be tracked within the database, so LLMs should use this for DDL operations (schema changes).
+  description: Applies a SQL migration. Requires read and write access.
+  params:
+    name: Migration name.
+    project_id: Project identifier.
+    query: SQL migration query.
 - name: execute_sql
-  description: Executes raw SQL in the database. LLMs should use this for regular queries that don't change the schema.
-- name: get_logs
-  description: Gets logs for a Supabase project by service type (api, postgres, edge functions, auth, storage, realtime). LLMs can use this to help with debugging and monitoring service performance.
+  description: Executes SQL queries, constrained to a read-only Postgres user when read-only access is selected.
+  params:
+    project_id: Project identifier.
+    query: SQL query.
+- name: query_logs
+  description: Queries project logs.
+  params:
+    iso_timestamp_end: End timestamp in ISO 8601 format.
+    iso_timestamp_start: Start timestamp in ISO 8601 format.
+    project_id: Project identifier.
+    sql: Log query SQL.
 - name: get_advisors
-  description: Gets a list of advisory notices for a Supabase project. LLMs can use this to check for security vulnerabilities or performance issues.
+  description: Retrieves security and performance advisors.
+  params:
+    project_id: Project identifier.
+    type: Advisor type.
 - name: get_project_url
-  description: Gets the API URL for a project.
+  description: Gets a project's API URL.
+  params:
+    project_id: Project identifier.
 - name: get_publishable_keys
-  description: Gets the anonymous API keys for a project. Returns an array of client-safe API keys including legacy anon keys and modern publishable keys. Publishable keys are recommended for new applications.
+  description: Gets client-safe publishable and legacy anon API keys for a project.
+  params:
+    project_id: Project identifier.
 - name: generate_typescript_types
-  description: Generates TypeScript types based on the database schema. LLMs can save this to a file and use it in their code.
+  description: Generates TypeScript types from a project's database schema.
+  params:
+    project_id: Project identifier.
 - name: list_edge_functions
-  description: Lists all Edge Functions in a Supabase project.
+  description: Lists Edge Functions in a project.
+  params:
+    project_id: Project identifier.
 - name: get_edge_function
-  description: Retrieves file contents for an Edge Function in a Supabase project.
+  description: Retrieves an Edge Function's file contents.
+  params:
+    function_slug: Edge Function name.
+    project_id: Project identifier.
 - name: deploy_edge_function
-  description: Deploys a new Edge Function to a Supabase project. LLMs can use this to deploy new functions or update existing ones.
+  description: Deploys an Edge Function. Requires read and write access.
+  params:
+    entrypoint_path: Function entrypoint path.
+    files: Function files.
+    import_map_path: Import map path.
+    name: Function name.
+    project_id: Project identifier.
+    verify_jwt: Require JWT verification.
 - name: create_branch
-  description: Creates a development branch with migrations from production branch.
+  description: Creates a development branch. Requires a paid plan and read and write access.
+  params:
+    confirm_cost_id: Cost confirmation identifier.
+    name: Branch name.
+    project_id: Project identifier.
 - name: list_branches
-  description: Lists all development branches.
+  description: Lists development branches. Requires a paid plan.
+  params:
+    project_id: Project identifier.
 - name: delete_branch
-  description: Deletes a development branch.
+  description: Deletes a development branch. Requires a paid plan and read and write access.
+  params:
+    branch_id: Branch identifier.
 - name: merge_branch
-  description: Merges migrations and edge functions from a development branch to production.
+  description: Merges a development branch into production. Requires a paid plan and read and write access.
+  params:
+    branch_id: Branch identifier.
 - name: reset_branch
-  description: Resets migrations of a development branch to a prior version.
+  description: Resets a development branch to a migration version. Requires a paid plan and read and write access.
+  params:
+    branch_id: Branch identifier.
+    migration_version: Target migration version.
 - name: rebase_branch
-  description: Rebases development branch on production to handle migration drift.
+  description: Rebases a development branch on production. Requires a paid plan and read and write access.
+  params:
+    branch_id: Branch identifier.
