@@ -3,6 +3,14 @@ entryKey: obot-firecrawl
 serverUserType: singleUser
 shortDescription: Search, scrape, crawl, interact with, and monitor the web using Firecrawl's official hosted MCP
 description: |
+  > **⚠️ Upgrade notice**
+  >
+  > This upgrade replaces the Obot-hosted Firecrawl server with Firecrawl's official hosted MCP server.
+  >
+  > - **Reconnect required:** Select OAuth or API-key/keyless access. The previous required API-key configuration is no longer used.
+  > - **Authentication:** OAuth and limited keyless access are now available in addition to API-key access.
+  > - **Tool changes:** Tool names, parameters, and the available scraping, research, interaction, and monitoring capabilities change.
+
   The official hosted Firecrawl Model Context Protocol (MCP) server gives AI assistants current web data without running a local MCP container. Firecrawl operates and updates the server directly.
 
   See the [official Firecrawl MCP documentation](https://docs.firecrawl.dev/mcp-server) for setup, tools, limits, and authentication details.

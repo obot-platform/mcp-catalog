@@ -3,6 +3,14 @@ entryKey: obot-postman
 serverUserType: singleUser
 shortDescription: Connect to Postman collections, workspaces, environments, mocks, and API specs
 description: |
+  > **⚠️ Upgrade notice**
+  >
+  > This upgrade updates the Postman entry to the current official hosted MCP server configuration.
+  >
+  > - **Configuration review required:** Select the US or EU region and a tool configuration when reconnecting.
+  > - **Authentication:** The US service now supports OAuth without an API key; the EU service still requires a Postman API key.
+  > - **New option:** The `code` tool configuration adds API-discovery and code-generation tools alongside `minimal` and `mcp`.
+
   Postman's official hosted Model Context Protocol (MCP) server connects AI agents directly to Postman resources.
 
   See the [official Postman MCP documentation](https://www.postman.com/product/mcp-server/) for setup, authentication, regions, and tool sets.

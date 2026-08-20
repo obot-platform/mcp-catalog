@@ -3,6 +3,14 @@ entryKey: obot-pagerduty
 serverUserType: singleUser
 shortDescription: Manage PagerDuty incidents, on-call schedules, services, and incident response workflows
 description: |
+  > **⚠️ Upgrade notice**
+  >
+  > This upgrade replaces the Obot-hosted PagerDuty server with PagerDuty's official hosted MCP server.
+  >
+  > - **Reconnect required:** Select the PagerDuty US or EU hosted endpoint and provide a PagerDuty User API token.
+  > - **Configuration change:** The previous API-host setting is replaced by a hosted-server region selection.
+  > - **Tool changes:** Tool names, parameters, and the available incident-response and administration operations change.
+
   PagerDuty's official hosted Model Context Protocol (MCP) server connects AI agents directly to PagerDuty. Investigate incidents, manage on-call coverage, administer services and teams, and run incident-response workflows without installing a local server.
 
   See the [official PagerDuty MCP documentation](https://support.pagerduty.com/main/docs/pagerduty-mcp-server) for setup, authentication, and regional endpoint details.

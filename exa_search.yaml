@@ -3,6 +3,14 @@ entryKey: obot-exa-search
 serverUserType: singleUser
 shortDescription: Official Exa web search, research, and page retrieval with per-user OAuth
 description: |
+  > **⚠️ Upgrade notice**
+  >
+  > This upgrade replaces the Obot-hosted Exa Search server with Exa's official hosted MCP server.
+  >
+  > - **Reconnect required:** Select OAuth or anonymous/API-key access. An Exa API key is no longer required for basic access.
+  > - **New capabilities:** Advanced search, webpage fetching, and Exa Agent are enabled.
+  > - **Tool changes:** Legacy code-context and crawling tools are replaced by the hosted server's current tools and parameters.
+
   The official Exa-hosted Model Context Protocol (MCP) server for AI-powered web search and clean webpage retrieval.
 
   See the [official Exa MCP documentation](https://exa.ai/docs/reference/exa-mcp) for setup, tools, and authentication details.
