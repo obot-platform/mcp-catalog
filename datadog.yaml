@@ -12,7 +12,7 @@ description: |
 
   ## What you'll need to connect
   - **Datadog account**: The MCP server is available on supported commercial Datadog sites. It is not supported for Datadog GovCloud.
-  - **OAuth access**: Complete the Datadog OAuth flow when prompted. Your role requires `mcp_read` for read tools, `mcp_write` for write tools, and the underlying Datadog resource permissions.
+  - **OAuth access**: Complete the Datadog OAuth flow when prompted. Your role requires `mcp_read` for read tools, `mcp_write` for write tools, and the underlying Datadog resource permissions. For non-interactive connections, optionally provide a Datadog Personal Access Token (PAT) or Service Access Token (SAT).
   - **Regional endpoint**: This entry uses Datadog's US1 endpoint. For another Datadog site, follow the [official setup guide](https://docs.datadoghq.com/mcp_server/setup/) to use that site's endpoint.
 
   ## Important considerations
@@ -28,6 +28,13 @@ icon: https://avatars.githubusercontent.com/u/365230?s=200&v=4
 runtime: remote
 remoteConfig:
   fixedURL: https://mcp.datadoghq.com/v1/mcp
+  headers:
+  - name: Datadog Personal or Service Access Token
+    description: Optional. Use a Datadog PAT or SAT when OAuth is unavailable.
+    key: Authorization
+    required: false
+    sensitive: true
+    prefix: "Bearer "
 toolPreview:
 - name: aggregate_events
   description: Aggregate Datadog events.
