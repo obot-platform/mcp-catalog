@@ -17,17 +17,37 @@ description: |
 
   ## What you'll need to connect
 
-  Sign in to Firecrawl when prompted and authorize the team you want to use. Firecrawl offers a free plan with monthly credits; tool availability and usage limits depend on your plan.
+  Choose OAuth to sign in to Firecrawl when prompted, or choose API Key / Keyless to connect without a browser. API-key connections use your Firecrawl team's plan. Keyless access is limited to Search, Scrape, and Parse.
 
-  This entry uses Firecrawl's OAuth service. Obot does not receive or store your Firecrawl API key.
+  Provide an API key from https://www.firecrawl.dev/app/api-keys for the full API-key tool surface. Leave the key blank when using OAuth or keyless access.
 metadata:
   categories: Retrieval & Search,Automation & Browsers,Science & Research
   source: vendor
 icon: https://avatars.githubusercontent.com/u/135057108?v=4
 repoURL: https://github.com/firecrawl/firecrawl-mcp-server
+env:
+- name: Authentication method
+  key: FIRECRAWL_ENDPOINT
+  description: Choose how to authenticate with Firecrawl
+  required: true
+  sensitive: false
+  options:
+  - name: OAuth
+    value: v2/mcp-oauth
+    description: Sign in to Firecrawl using OAuth
+  - name: API Key / Keyless
+    value: v2/mcp
+    description: Use an optional Firecrawl API key or limited keyless access
 runtime: remote
 remoteConfig:
-  fixedURL: https://mcp.firecrawl.dev/v2/mcp-oauth
+  URLTemplate: https://mcp.firecrawl.dev/${FIRECRAWL_ENDPOINT}
+  headers:
+  - name: Firecrawl API Key
+    description: Optional API key for the full API-key tool surface; leave blank for OAuth or limited keyless access
+    key: Authorization
+    required: false
+    sensitive: true
+    prefix: "Bearer "
 toolPreview:
 - name: firecrawl_scrape
   description: Retrieve and extract content from one supplied URL as markdown, HTML, links, screenshots, branding data, targeted answers, or structured JSON.
