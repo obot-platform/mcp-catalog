@@ -5,6 +5,8 @@ shortDescription: Query Tableau Cloud data, explore content, and manage Pulse me
 description: |
   The official Tableau-hosted Model Context Protocol (MCP) server for Tableau Cloud. It uses your Tableau Cloud identity, so each tool call respects your existing site role and content permissions.
 
+  [Read the official hosted Tableau MCP documentation](https://tableau.github.io/tableau-mcp/docs/hosted-tableau-mcp).
+
   ## Features
   - **Data Q&A**: Discover published data sources, inspect metadata, and query data with VizQL
   - **Content Exploration**: Search workbooks, views, projects, custom views, and Tableau Prep flows
@@ -23,7 +25,7 @@ metadata:
   categories: Data Analytics, Business Intelligence, Visualization
 
 icon: https://avatars.githubusercontent.com/u/828667?s=48&v=4
-repoURL: https://github.com/tableau/tableau-mcp
+repoURL: https://tableau.github.io/tableau-mcp/docs/hosted-tableau-mcp
 runtime: remote
 remoteConfig:
   fixedURL: https://mcp.tableau.com

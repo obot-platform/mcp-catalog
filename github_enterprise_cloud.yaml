@@ -5,6 +5,8 @@ shortDescription: Connect to a GitHub Enterprise Cloud data-residency tenant wit
 description: |
   Connect AI tools directly to GitHub's hosted Model Context Protocol (MCP) server for a GitHub Enterprise Cloud data-residency tenant (`*.ghe.com`). GitHub operates the server, including updates and remote-only GitHub capabilities.
 
+  [Read the official GitHub Enterprise MCP server documentation](https://docs.github.com/en/enterprise-cloud@latest/copilot/how-tos/provide-context/use-mcp-in-your-ide/enterprise-configuration).
+
   ## Supported configuration
 
   This entry supports GitHub Enterprise Cloud with data residency only. Enter the tenant subdomain from a URL such as `https://octocorp.ghe.com`; for that example, enter `octocorp`. Obot connects to `https://copilot-api.octocorp.ghe.com/mcp`.
@@ -37,7 +39,7 @@ env:
 metadata:
   categories: Developer Tools
 icon: https://avatars.githubusercontent.com/u/9919?v=4
-repoURL: https://github.com/github/github-mcp-server
+repoURL: https://docs.github.com/en/enterprise-cloud@latest/copilot/how-tos/provide-context/use-mcp-in-your-ide/enterprise-configuration
 runtime: remote
 remoteConfig:
   urlTemplate: https://copilot-api.${GITHUB_ENTERPRISE_SUBDOMAIN}.ghe.com/mcp

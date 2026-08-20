@@ -40,6 +40,7 @@ on:
           - firecrawl.yaml
           - github.yaml
           - github_enterprise.yaml
+          - github_enterprise_cloud.yaml
           - gitlab.yaml
           - gitmcp.yaml
           - gmail.yaml
@@ -47,7 +48,7 @@ on:
           - google-drive.yaml
           - google-maps-grounding-lite.yaml
           - google-sheets.yaml
-          - grafana-cloud.yaml
+          - grafana_cloud.yaml
           - grafana.yaml
           - hubspot.yaml
           - linear.yaml
