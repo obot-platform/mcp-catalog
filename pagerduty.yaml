@@ -1,252 +1,333 @@
 name: PagerDuty
 entryKey: obot-pagerduty
 serverUserType: singleUser
-shortDescription: Manage incidents, services, teams, on-call schedules, and escalation policies
+shortDescription: Manage PagerDuty incidents, on-call schedules, services, and incident response workflows
 description: |
-  **DEPRECATED**: This containerized server is replaced by PagerDuty Official, which connects directly to PagerDuty using OAuth. Use the official entry for new connections.
-
-  [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-  [![Python Version](https://img.shields.io/badge/python-3.13%2B-blue)](https://www.python.org/downloads/)
-
-  A Model Context Protocol (MCP) server that provides tools to interact with your PagerDuty account directly from your MCP-enabled client. Manage incidents, services, teams, on-call schedules, and more using natural language commands.
+  PagerDuty's official hosted Model Context Protocol (MCP) server connects AI agents directly to PagerDuty. Investigate incidents, manage on-call coverage, administer services and teams, and run incident-response workflows without installing a local server.
 
   ## Features
-  - **Incident Management**: Create, update, resolve incidents, add notes and responders
-  - **Service Operations**: Manage services and their configurations
-  - **Team Management**: Create and manage teams, add/remove members
-  - **On-Call & Schedules**: View on-call rotations, create schedule overrides
-  - **Alert Grouping**: Configure intelligent alert grouping settings
-  - **Event Orchestrations**: Manage event routing and orchestration rules
-  - **Escalation Policies**: View and manage escalation policies
+  - **Incident response**: Investigate alerts, notes, related incidents, and change events; create, update, and resolve incidents.
+  - **On-call operations**: View schedules and on-call assignments, manage overrides, and coordinate handoffs.
+  - **Service administration**: Manage services, teams, escalation policies, event orchestrations, alert grouping, and status pages.
+  - **Operational intelligence**: Analyze incident and responder metrics, business-service dependencies, log entries, and change events.
 
   ## What you'll need to connect
-  **Required:**
-  - **PagerDuty API Key**: User API token from your PagerDuty account with appropriate permissions
+  - **PagerDuty account**: Choose the region where your PagerDuty account is hosted.
+  - **PagerDuty API key**: Create a PagerDuty User API token in **My Profile > User Settings > API Access**, then enter it when prompted.
 
-  **Optional:**
-  - **API Host**: Custom API host for EU region (`https://api.eu.pagerduty.com`) or use default US region
+  The server authenticates requests with your PagerDuty API key. Use a User API token so the server can act with your PagerDuty permissions; some filters require user-level authentication.
 
-toolPreview:
-- name: list_incidents
-  description: Lists incidents with optional filtering by status, urgency, service, and date range
-  params:
-    status: Filter by incident status (triggered, acknowledged, resolved)
-    urgency: Filter by urgency level (high, low)
-    service_ids: Filter by service IDs
-    limit: Maximum number of results (up to 1000)
-- name: get_incident
-  description: Retrieves details for a specific incident
-  params:
-    incident_id: The ID or number of the incident to retrieve
-- name: create_incident
-  description: Creates a new incident
-  params:
-    title: The incident title
-    service: The service reference with ID
-    urgency: Incident urgency (high or low)
-    body: Additional details about the incident
-- name: manage_incidents
-  description: Bulk update incidents (acknowledge, resolve, change urgency, reassign)
-  params:
-    incident_ids: Array of incident IDs to update
-    status: New status (acknowledged or resolved)
-    urgency: New urgency level
-    assignment: User to assign incidents to
-- name: add_note_to_incident
-  description: Adds a note to an existing incident
-  params:
-    incident_id: The incident ID
-    note: The note text to add
-- name: add_responders
-  description: Request additional responders for an incident
-  params:
-    incident_id: The incident ID
-    requester_id: User ID of the requester
-    message: Message to include with the request
-    responder_request_targets: Array of user or escalation policy IDs
-- name: list_services
-  description: Lists all services with optional filtering
-  params:
-    query: Filter by service name
-    teams_ids: Filter by team IDs
-    limit: Maximum results (up to 100)
-- name: get_service
-  description: Retrieves details for a specific service
-  params:
-    service_id: The service ID
-- name: create_service
-  description: Creates a new service
-  params:
-    name: Service name
-    description: Service description
-    escalation_policy: Escalation policy reference with ID
-    teams: Array of team references
-- name: update_service
-  description: Updates an existing service
-  params:
-    service_id: The service ID
-    name: Updated service name
-    description: Updated description
-    escalation_policy: Updated escalation policy reference
-- name: list_teams
-  description: Lists teams with optional filtering
-  params:
-    query: Filter by team name
-    scope: Scope of query (all or my teams)
-    limit: Maximum results (up to 100)
-- name: get_team
-  description: Retrieves details for a specific team
-  params:
-    team_id: The team ID or name
-- name: list_team_members
-  description: Lists members of a team
-  params:
-    team_id: The team ID
-- name: create_team
-  description: Creates a new team
-  params:
-    name: Team name
-    description: Team description
-    default_role: Default role for new members (manager or none)
-- name: update_team
-  description: Updates an existing team
-  params:
-    team_id: The team ID
-    name: Updated team name
-    description: Updated description
-- name: delete_team
-  description: Deletes a team
-  params:
-    team_id: The team ID to delete
-- name: add_team_member
-  description: Adds a user to a team with a specific role
-  params:
-    team_id: The team ID
-    user_id: The user ID to add
-    role: Member role (observer, responder, or manager)
-- name: remove_team_member
-  description: Removes a user from a team
-  params:
-    team_id: The team ID
-    user_id: The user ID to remove
-- name: get_user_data
-  description: Gets the current authenticated user's information
-  params: {}
-- name: list_users
-  description: Lists users with optional filtering
-  params:
-    query: Filter by user name
-    teams_ids: Filter by team IDs
-    limit: Maximum results (up to 100)
-- name: list_oncalls
-  description: Lists on-call schedules with filtering by schedule, user, or date range
-  params:
-    schedule_ids: Filter by schedule IDs
-    user_ids: Filter by user IDs
-    since: Start of time range
-    until: End of time range
-- name: list_schedules
-  description: Lists schedules with optional filtering
-  params:
-    query: Filter by schedule name or description
-    team_ids: Filter by team IDs
-    user_ids: Filter by user IDs
-- name: get_schedule
-  description: Retrieves details for a specific schedule
-  params:
-    schedule_id: The schedule ID
-- name: list_schedule_users
-  description: Lists users assigned to a schedule
-  params:
-    schedule_id: The schedule ID
-- name: create_schedule_override
-  description: Creates an override for a schedule
-  params:
-    schedule_id: The schedule ID
-    start: Override start time
-    end: Override end time
-    user: User reference for the override
-- name: list_escalation_policies
-  description: Lists escalation policies with filtering
-  params:
-    query: Filter by name or description
-    team_ids: Filter by team IDs
-    user_ids: Filter by user IDs
-- name: get_escalation_policy
-  description: Retrieves details for a specific escalation policy
-  params:
-    policy_id: The escalation policy ID
-- name: list_event_orchestrations
-  description: Lists event orchestrations with optional filtering
-  params:
-    limit: Maximum results (up to 100)
-    sort_by: Sort field and direction
-- name: get_event_orchestration
-  description: Retrieves details for a specific event orchestration
-  params:
-    orchestration_id: The orchestration ID
-- name: get_event_orchestration_router
-  description: Gets the router configuration for an event orchestration
-  params:
-    orchestration_id: The orchestration ID
-- name: update_event_orchestration_router
-  description: Updates the router configuration for an event orchestration
-  params:
-    orchestration_id: The orchestration ID
-    router_update: Updated router configuration with rules and catch-all actions
-- name: append_event_orchestration_router_rule
-  description: Appends a new routing rule to an event orchestration router
-  params:
-    orchestration_id: The orchestration ID
-    new_rule: New rule configuration with conditions and actions
-- name: list_alert_grouping_settings
-  description: Lists alert grouping settings with optional filtering
-  params:
-    service_ids: Filter by service IDs
-    limit: Maximum results (up to 100)
-- name: get_alert_grouping_setting
-  description: Retrieves details for a specific alert grouping setting
-  params:
-    setting_id: The alert grouping setting ID
-- name: create_alert_grouping_setting
-  description: Creates a new alert grouping setting
-  params:
-    type: Grouping type (content_based, intelligent, time)
-    config: Configuration based on the type
-    services: Array of service references
-- name: update_alert_grouping_setting
-  description: Updates an existing alert grouping setting
-  params:
-    setting_id: The setting ID
-    type: Updated grouping type
-    config: Updated configuration
-- name: delete_alert_grouping_setting
-  description: Deletes an alert grouping setting
-  params:
-    setting_id: The alert grouping setting ID to delete
-
+  Store your API key securely and rotate it if it is exposed.
 metadata:
-  categories: Monitoring & Observability
-  deprecated: "true"
+  categories: Monitoring & Observability, SaaS & API Integrations
 icon: https://avatars.githubusercontent.com/u/766800?s=48&v=4
 repoURL: https://github.com/PagerDuty/pagerduty-mcp-server
 env:
-- key: PAGERDUTY_USER_API_KEY
-  name: PagerDuty API Key
+- name: PagerDuty region
+  key: PAGERDUTY_MCP_HOST
+  description: Choose the region where your PagerDuty account is hosted
   required: true
-  sensitive: true
-  description: User API token from your PagerDuty account. Generate this in PagerDuty under User Settings > API Access Keys.
-- key: PAGERDUTY_API_HOST
-  name: PagerDuty API Host
-  required: false
   sensitive: false
-  description: API host URL. Use https://api.eu.pagerduty.com for EU accounts, or leave blank for default US (https://api.pagerduty.com).
-
-runtime: containerized
-containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/pagerduty:0.17.0
-  port: 8099
-  path: /
-  args:
-  - pagerduty-mcp
-  - --enable-write-tools
+  options:
+  - name: US
+    value: mcp.pagerduty.com
+    description: PagerDuty US region
+  - name: EU
+    value: mcp.eu.pagerduty.com
+    description: PagerDuty EU region
+runtime: remote
+remoteConfig:
+  URLTemplate: https://${PAGERDUTY_MCP_HOST}/mcp
+  headers:
+  - name: PagerDuty API Key
+    description: PagerDuty User API token from My Profile > User Settings > API Access
+    key: Authorization
+    required: true
+    sensitive: true
+    prefix: "Token token="
+toolPreview:
+- name: add_note_to_incident
+  description: Adds a note to an incident.
+  params:
+    incident_id: Incident identifier.
+    note: Note content.
+- name: add_responders
+  description: Adds responders to an incident.
+  params:
+    incident_id: Incident identifier.
+    request: Responder request.
+- name: add_team_member
+  description: Adds a member to a team.
+  params:
+    member_data: Team-member data.
+    team_id: Team identifier.
+- name: append_event_orchestration_router_rule
+  description: Adds a rule to an event orchestration router.
+  params:
+    new_rule: Router rule.
+    orchestration_id: Event orchestration identifier.
+- name: create_alert_grouping_setting
+  description: Creates an alert grouping setting.
+  params:
+    create_model: Alert-grouping setting data.
+- name: create_incident
+  description: Creates an incident.
+  params:
+    create_model: Incident data.
+- name: create_schedule
+  description: Creates a schedule.
+  params:
+    create_model: Schedule data.
+- name: create_schedule_override
+  description: Creates a schedule override.
+  params:
+    override_request: Schedule override data.
+    schedule_id: Schedule identifier.
+- name: create_service
+  description: Creates a service.
+  params:
+    service_data: Service data.
+- name: create_status_page_post
+  description: Creates a status-page post.
+  params:
+    create_model: Status-page post data.
+    status_page_id: Status-page identifier.
+- name: create_status_page_post_update
+  description: Creates an update for a status-page post.
+  params:
+    create_model: Status-page post-update data.
+    post_id: Status-page post identifier.
+    status_page_id: Status-page identifier.
+- name: create_team
+  description: Creates a team.
+  params:
+    create_model: Team data.
+- name: delete_alert_grouping_setting
+  description: Deletes an alert grouping setting.
+  params:
+    setting_id: Alert-grouping setting identifier.
+- name: delete_team
+  description: Deletes a team.
+  params:
+    team_id: Team identifier.
+- name: get_alert_from_incident
+  description: Gets an alert from an incident.
+  params:
+    alert_id: Alert identifier.
+    incident_id: Incident identifier.
+- name: get_alert_grouping_setting
+  description: Gets an alert grouping setting.
+  params:
+    setting_id: Alert-grouping setting identifier.
+- name: get_change_event
+  description: Gets a change event.
+  params:
+    change_event_id: Change-event identifier.
+- name: get_escalation_policy
+  description: Gets an escalation policy.
+  params:
+    policy_id: Escalation-policy identifier.
+- name: get_event_orchestration
+  description: Gets an event orchestration.
+  params:
+    orchestration_id: Event orchestration identifier.
+- name: get_event_orchestration_global
+  description: Gets global event-orchestration configuration.
+  params:
+    orchestration_id: Event orchestration identifier.
+- name: get_event_orchestration_router
+  description: Gets event-orchestration router configuration.
+  params:
+    orchestration_id: Event orchestration identifier.
+- name: get_event_orchestration_service
+  description: Gets event-orchestration service configuration.
+  params:
+    service_id: Service identifier.
+- name: get_incident
+  description: Gets an incident.
+  params:
+    incident_id: Incident identifier.
+    query_model: Query options.
+- name: get_incident_workflow
+  description: Gets an incident workflow.
+  params:
+    workflow_id: Incident-workflow identifier.
+- name: get_log_entry
+  description: Gets a log entry.
+  params:
+    log_entry_id: Log-entry identifier.
+- name: get_outlier_incident
+  description: Gets an outlier incident.
+  params:
+    incident_id: Incident identifier.
+    query_model: Query options.
+- name: get_past_incidents
+  description: Gets past incidents related to an incident.
+  params:
+    incident_id: Incident identifier.
+    query_model: Query options.
+- name: get_related_incidents
+  description: Gets incidents related to an incident.
+  params:
+    incident_id: Incident identifier.
+    query_model: Query options.
+- name: get_schedule
+  description: Gets a schedule.
+  params:
+    schedule_id: Schedule identifier.
+- name: get_service
+  description: Gets a service.
+  params:
+    service_id: Service identifier.
+- name: get_status_page_post
+  description: Gets a status-page post.
+  params:
+    post_id: Status-page post identifier.
+    query_model: Query options.
+    status_page_id: Status-page identifier.
+- name: get_team
+  description: Gets a team.
+  params:
+    team_id: Team identifier.
+- name: get_user_data
+  description: Gets the current user's data.
+  params: {}
+- name: list_alert_grouping_settings
+  description: Lists alert grouping settings.
+  params:
+    query_model: Query options.
+- name: list_alerts_from_incident
+  description: Lists alerts for an incident.
+  params:
+    incident_id: Incident identifier.
+    query_model: Query options.
+- name: list_change_events
+  description: Lists change events.
+  params:
+    query_model: Query options.
+- name: list_escalation_policies
+  description: Lists escalation policies.
+  params:
+    query_model: Query options.
+- name: list_event_orchestrations
+  description: Lists event orchestrations.
+  params:
+    query_model: Query options.
+- name: list_incident_change_events
+  description: Lists change events for an incident.
+  params:
+    incident_id: Incident identifier.
+    limit: Result limit.
+- name: list_incident_notes
+  description: Lists notes for an incident.
+  params:
+    incident_id: Incident identifier.
+- name: list_incident_workflows
+  description: Lists incident workflows.
+  params:
+    query_model: Query options.
+- name: list_incidents
+  description: Lists incidents.
+  params:
+    query_model: Query options.
+- name: list_log_entries
+  description: Lists log entries.
+  params:
+    query_model: Query options.
+- name: list_oncalls
+  description: Lists on-call assignments.
+  params:
+    query_model: Query options.
+- name: list_schedule_users
+  description: Lists users assigned to a schedule.
+  params:
+    schedule_id: Schedule identifier.
+- name: list_schedules
+  description: Lists schedules.
+  params:
+    query_model: Query options.
+- name: list_service_change_events
+  description: Lists change events for a service.
+  params:
+    query_model: Query options.
+    service_id: Service identifier.
+- name: list_services
+  description: Lists services.
+  params:
+    query_model: Query options.
+- name: list_status_page_impacts
+  description: Lists status-page impacts.
+  params:
+    query_model: Query options.
+    status_page_id: Status-page identifier.
+- name: list_status_page_post_updates
+  description: Lists updates for a status-page post.
+  params:
+    post_id: Status-page post identifier.
+    query_model: Query options.
+    status_page_id: Status-page identifier.
+- name: list_status_page_severities
+  description: Lists status-page severities.
+  params:
+    query_model: Query options.
+    status_page_id: Status-page identifier.
+- name: list_status_page_statuses
+  description: Lists status-page statuses.
+  params:
+    query_model: Query options.
+    status_page_id: Status-page identifier.
+- name: list_status_pages
+  description: Lists status pages.
+  params:
+    query_model: Query options.
+- name: list_team_members
+  description: Lists team members.
+  params:
+    team_id: Team identifier.
+- name: list_teams
+  description: Lists teams.
+  params:
+    query_model: Query options.
+- name: list_users
+  description: Lists users.
+  params:
+    query_model: Query options.
+- name: manage_incidents
+  description: Manages incidents.
+  params:
+    manage_request: Incident-management request.
+- name: remove_team_member
+  description: Removes a team member.
+  params:
+    team_id: Team identifier.
+    user_id: User identifier.
+- name: start_incident_workflow
+  description: Starts an incident workflow.
+  params:
+    instance_request: Incident-workflow instance request.
+    workflow_id: Incident-workflow identifier.
+- name: update_alert_grouping_setting
+  description: Updates an alert grouping setting.
+  params:
+    setting_id: Alert-grouping setting identifier.
+    update_model: Alert-grouping setting data.
+- name: update_event_orchestration_router
+  description: Updates event-orchestration router configuration.
+  params:
+    orchestration_id: Event orchestration identifier.
+    router_update: Router configuration.
+- name: update_schedule
+  description: Updates a schedule.
+  params:
+    schedule_id: Schedule identifier.
+    update_model: Schedule data.
+- name: update_service
+  description: Updates a service.
+  params:
+    service_data: Service data.
+    service_id: Service identifier.
+- name: update_team
+  description: Updates a team.
+  params:
+    team_id: Team identifier.
+    update_model: Team data.
