@@ -1,0 +1,335 @@
+name: GitHub Enterprise Cloud
+entryKey: obot-github-enterprise-cloud
+serverUserType: singleUser
+shortDescription: Connect to a GitHub Enterprise Cloud data-residency tenant with GitHub-hosted MCP and OAuth
+description: |
+  Connect AI tools directly to GitHub's hosted Model Context Protocol (MCP) server for a GitHub Enterprise Cloud data-residency tenant (`*.ghe.com`). GitHub operates the server, including updates and remote-only GitHub capabilities.
+
+  ## Supported configuration
+
+  This entry supports GitHub Enterprise Cloud with data residency only. Enter the tenant subdomain from a URL such as `https://octocorp.ghe.com`; for that example, enter `octocorp`. Obot connects to `https://copilot-api.octocorp.ghe.com/mcp`.
+
+  Standard GitHub Enterprise Cloud organizations on `github.com`, including enterprises managed at `https://github.com/enterprises/<enterprise>`, should use the regular **GitHub** catalog entry at `https://api.githubcopilot.com/mcp/` instead.
+
+  GitHub Enterprise Server is not supported by this hosted entry. GitHub does not host a remote MCP server for GitHub Enterprise Server.
+
+  ## What you'll need to connect
+
+  An Obot administrator must register an OAuth App or GitHub App on this exact GHE.com tenant and configure its client ID and secret for this catalog entry. GitHub does not support Dynamic Client Registration, so each tenant requires a pre-registered OAuth client. Users then authenticate with OAuth when prompted.
+
+  The configured OAuth client is tenant-specific. Create a separate catalog entry for each unrelated GHE.com tenant rather than sharing one entry across tenants.
+
+  ## Features
+
+  - **Repository and code access**: Search repositories, read files, and inspect commits and branches
+  - **Issues and pull requests**: Triage work, manage issues, review pull requests, and add comments
+  - **Actions and security**: Inspect workflows and, where licensed and permitted, access security capabilities
+  - **Hosted-only capabilities**: Use GitHub's vendor-managed remote service and applicable Copilot features
+  - **Toolset control**: Optionally select the hosted GitHub toolsets appropriate for the tenant
+
+  The default GitHub toolsets are `context`, `repos`, `issues`, `pull_requests`, and `users`. Set GitHub Toolsets to `all` only when the broader tool surface is needed.
+env:
+  - key: GITHUB_ENTERPRISE_SUBDOMAIN
+    name: GitHub Enterprise Cloud Subdomain
+    required: true
+    sensitive: false
+    description: The GHE.com tenant subdomain only, for example octocorp for https://octocorp.ghe.com.
+metadata:
+  categories: Developer Tools
+icon: https://avatars.githubusercontent.com/u/9919?v=4
+repoURL: https://github.com/github/github-mcp-server
+runtime: remote
+remoteConfig:
+  urlTemplate: https://copilot-api.${GITHUB_ENTERPRISE_SUBDOMAIN}.ghe.com/mcp
+  staticOAuthRequired: true
+  headers:
+    - name: GitHub Toolsets
+      description: Optional comma-separated GitHub toolsets, such as repos,issues,pull_requests or all. Defaults to context,repos,issues,pull_requests,users.
+      key: X-MCP-Toolsets
+      required: false
+      sensitive: false
+toolPreview:
+  - name: get_me
+    description: Get the authenticated GitHub user's profile.
+  - name: actions_get
+    description: Get GitHub Actions resources.
+    params: {method: Parameter., owner: Parameter., repo: Parameter., resource_id: Parameter.}
+  - name: actions_list
+    description: List GitHub Actions resources.
+    params: {method: Parameter., owner: Parameter., page: Parameter., per_page: Parameter., repo: Parameter., resource_id: Parameter., workflow_jobs_filter: Parameter., workflow_runs_filter: Parameter.}
+  - name: actions_run_trigger
+    description: Trigger or manage GitHub Actions workflows.
+    params: {inputs: Parameter., method: Parameter., owner: Parameter., ref: Parameter., repo: Parameter., run_id: Parameter., workflow_id: Parameter.}
+  - name: add_comment_to_pending_review
+    description: Add a comment to a pending pull request review.
+    params: {body: Parameter., line: Parameter., owner: Parameter., path: Parameter., pullNumber: Parameter., repo: Parameter., side: Parameter., startLine: Parameter., startSide: Parameter., subjectType: Parameter.}
+  - name: add_issue_comment
+    description: Add a comment or reaction to an issue.
+    params: {body: Parameter., comment_id: Parameter., issue_number: Parameter., owner: Parameter., reaction: Parameter., repo: Parameter.}
+  - name: add_reply_to_pull_request_comment
+    description: Reply to a pull request comment.
+    params: {body: Parameter., commentId: Parameter., owner: Parameter., pullNumber: Parameter., reaction: Parameter., repo: Parameter.}
+  - name: check_dependency_vulnerabilities
+    description: Check repository dependencies for vulnerabilities.
+    params: {dependencies: Parameter., owner: Parameter., repo: Parameter.}
+  - name: create_branch
+    description: Create a repository branch.
+    params: {branch: Parameter., from_branch: Parameter., owner: Parameter., repo: Parameter.}
+  - name: create_gist
+    description: Create a GitHub gist.
+    params: {content: Parameter., description: Parameter., filename: Parameter., public: Parameter.}
+  - name: create_or_update_file
+    description: Create or update a repository file.
+    params: {branch: Parameter., content: Parameter., message: Parameter., owner: Parameter., path: Parameter., repo: Parameter., sha: Parameter.}
+  - name: create_pull_request
+    description: Create a pull request.
+    params: {base: Parameter., body: Parameter., draft: Parameter., head: Parameter., maintainer_can_modify: Parameter., owner: Parameter., repo: Parameter., reviewers: Parameter., title: Parameter.}
+  - name: create_repository
+    description: Create a repository.
+    params: {autoInit: Parameter., description: Parameter., name: Parameter., organization: Parameter., private: Parameter.}
+  - name: delete_file
+    description: Delete a repository file.
+    params: {branch: Parameter., message: Parameter., owner: Parameter., path: Parameter., repo: Parameter.}
+  - name: discussion_comment_write
+    description: Manage GitHub discussion comments.
+    params: {body: Parameter., commentNodeID: Parameter., discussionNumber: Parameter., method: Parameter., owner: Parameter., repo: Parameter.}
+  - name: dismiss_notification
+    description: Dismiss a GitHub notification.
+    params: {state: Parameter., threadID: Parameter.}
+  - name: fork_repository
+    description: Fork a repository.
+    params: {organization: Parameter., owner: Parameter., repo: Parameter.}
+  - name: get_code_quality_finding
+    description: Get a code quality finding.
+    params: {findingNumber: Parameter., owner: Parameter., repo: Parameter.}
+  - name: get_code_scanning_alert
+    description: Get a code scanning alert.
+    params: {alertNumber: Parameter., owner: Parameter., repo: Parameter.}
+  - name: get_commit
+    description: Get commit details.
+    params: {detail: Parameter., owner: Parameter., page: Parameter., perPage: Parameter., repo: Parameter., sha: Parameter.}
+  - name: get_copilot_space
+    description: Get a Copilot Space.
+    params: {name: Parameter., owner: Parameter.}
+  - name: get_dependabot_alert
+    description: Get a Dependabot alert.
+    params: {alertNumber: Parameter., owner: Parameter., repo: Parameter.}
+  - name: get_discussion
+    description: Get a GitHub discussion.
+    params: {discussionNumber: Parameter., owner: Parameter., repo: Parameter.}
+  - name: get_discussion_comments
+    description: Get discussion comments.
+    params: {after: Parameter., discussionNumber: Parameter., includeReplies: Parameter., owner: Parameter., perPage: Parameter., repo: Parameter.}
+  - name: search_repositories
+    description: Search GitHub repositories accessible to the authenticated user.
+    params:
+      minimal_output: Parameter.
+      order: Parameter.
+      page: Parameter.
+      perPage: Parameter.
+      query: Search query for GitHub repositories.
+      sort: Parameter.
+  - name: get_file_contents
+    description: Get the contents of a file or directory in a GitHub repository.
+    params:
+      fields: Parameter.
+      owner: Repository owner.
+      path: File or directory path.
+      ref: Git reference to read from (optional).
+      repo: Repository name.
+      sha: Parameter.
+  - name: get_gist
+    description: Get a GitHub gist.
+    params: {gist_id: Parameter.}
+  - name: get_global_security_advisory
+    description: Get a global security advisory.
+    params: {ghsaId: Parameter.}
+  - name: get_job_logs
+    description: Get GitHub Actions job logs.
+    params: {failed_only: Parameter., job_id: Parameter., owner: Parameter., repo: Parameter., return_content: Parameter., run_id: Parameter., tail_lines: Parameter.}
+  - name: get_label
+    description: Get a repository label.
+    params: {name: Parameter., owner: Parameter., repo: Parameter.}
+  - name: get_latest_release
+    description: Get the latest repository release.
+    params: {owner: Parameter., repo: Parameter.}
+  - name: get_notification_details
+    description: Get notification details.
+    params: {notificationID: Parameter.}
+  - name: get_release_by_tag
+    description: Get a release by tag.
+    params: {owner: Parameter., repo: Parameter., tag: Parameter.}
+  - name: get_repository_tree
+    description: Get a repository tree.
+    params: {owner: Parameter., path_filter: Parameter., recursive: Parameter., repo: Parameter., tree_sha: Parameter.}
+  - name: get_secret_scanning_alert
+    description: Get a secret scanning alert.
+    params: {alertNumber: Parameter., owner: Parameter., repo: Parameter.}
+  - name: get_tag
+    description: Get a repository tag.
+    params: {owner: Parameter., repo: Parameter., tag: Parameter.}
+  - name: get_team_members
+    description: Get organization team members.
+    params: {org: Parameter., team_slug: Parameter.}
+  - name: get_teams
+    description: Get teams for a user.
+    params: {user: Parameter.}
+  - name: issue_read
+    description: Get issue details, comments, labels, or issue hierarchy information.
+    params:
+      owner: Repository owner.
+      repo: Repository name.
+      issue_number: Issue number.
+      method: Read operation to perform, such as get or get_comments.
+      page: Parameter.
+      perPage: Parameter.
+  - name: issue_write
+    description: Manage GitHub issues.
+    params: {assignees: Parameter., body: Parameter., duplicate_of: Parameter., issue_fields: Parameter., issue_number: Parameter., labels: Parameter., method: Parameter., milestone: Parameter., owner: Parameter., repo: Parameter., state: Parameter., state_reason: Parameter., title: Parameter., type: Parameter.}
+  - name: label_write
+    description: Manage repository labels.
+    params: {color: Parameter., description: Parameter., method: Parameter., name: Parameter., new_name: Parameter., owner: Parameter., repo: Parameter.}
+  - name: list_branches
+    description: List repository branches.
+    params: {owner: Parameter., page: Parameter., perPage: Parameter., repo: Parameter.}
+  - name: list_code_scanning_alerts
+    description: List code scanning alerts.
+    params: {owner: Parameter., page: Parameter., perPage: Parameter., ref: Parameter., repo: Parameter., severity: Parameter., state: Parameter., tool_name: Parameter.}
+  - name: list_commits
+    description: List repository commits.
+    params: {author: Parameter., fields: Parameter., owner: Parameter., page: Parameter., path: Parameter., perPage: Parameter., repo: Parameter., sha: Parameter., since: Parameter., until: Parameter.}
+  - name: list_copilot_spaces
+    description: List Copilot Spaces.
+  - name: list_dependabot_alerts
+    description: List Dependabot alerts.
+    params: {after: Parameter., owner: Parameter., perPage: Parameter., repo: Parameter., severity: Parameter., state: Parameter.}
+  - name: list_discussion_categories
+    description: List discussion categories.
+    params: {owner: Parameter., repo: Parameter.}
+  - name: list_discussions
+    description: List GitHub discussions.
+    params: {after: Parameter., category: Parameter., direction: Parameter., orderBy: Parameter., owner: Parameter., perPage: Parameter., repo: Parameter.}
+  - name: list_gists
+    description: List GitHub gists.
+    params: {page: Parameter., perPage: Parameter., since: Parameter., username: Parameter.}
+  - name: list_global_security_advisories
+    description: List global security advisories.
+    params: {affects: Parameter., cveId: Parameter., cwes: Parameter., ecosystem: Parameter., ghsaId: Parameter., isWithdrawn: Parameter., modified: Parameter., published: Parameter., severity: Parameter., type: Parameter., updated: Parameter.}
+  - name: list_issue_fields
+    description: List issue fields.
+    params: {owner: Parameter., repo: Parameter.}
+  - name: list_issue_types
+    description: List issue types.
+    params: {owner: Parameter., repo: Parameter.}
+  - name: list_issues
+    description: List repository issues.
+    params: {after: Parameter., direction: Parameter., field_filters: Parameter., fields: Parameter., labels: Parameter., orderBy: Parameter., owner: Parameter., perPage: Parameter., repo: Parameter., since: Parameter., state: Parameter.}
+  - name: list_label
+    description: List repository labels.
+    params: {owner: Parameter., repo: Parameter.}
+  - name: list_notifications
+    description: List GitHub notifications.
+    params: {before: Parameter., filter: Parameter., owner: Parameter., page: Parameter., perPage: Parameter., repo: Parameter., since: Parameter.}
+  - name: list_org_repository_security_advisories
+    description: List organization repository security advisories.
+    params: {direction: Parameter., org: Parameter., sort: Parameter., state: Parameter.}
+  - name: list_pull_requests
+    description: List pull requests.
+    params: {base: Parameter., direction: Parameter., fields: Parameter., head: Parameter., owner: Parameter., page: Parameter., perPage: Parameter., repo: Parameter., sort: Parameter., state: Parameter.}
+  - name: list_releases
+    description: List repository releases.
+    params: {fields: Parameter., owner: Parameter., page: Parameter., perPage: Parameter., repo: Parameter.}
+  - name: list_repository_collaborators
+    description: List repository collaborators.
+    params: {affiliation: Parameter., owner: Parameter., page: Parameter., perPage: Parameter., repo: Parameter.}
+  - name: list_repository_security_advisories
+    description: List repository security advisories.
+    params: {direction: Parameter., owner: Parameter., repo: Parameter., sort: Parameter., state: Parameter.}
+  - name: list_secret_scanning_alerts
+    description: List secret scanning alerts.
+    params: {owner: Parameter., page: Parameter., perPage: Parameter., repo: Parameter., resolution: Parameter., secret_type: Parameter., state: Parameter.}
+  - name: list_starred_repositories
+    description: List starred repositories.
+    params: {direction: Parameter., page: Parameter., perPage: Parameter., sort: Parameter., username: Parameter.}
+  - name: list_tags
+    description: List repository tags.
+    params: {owner: Parameter., page: Parameter., perPage: Parameter., repo: Parameter.}
+  - name: manage_notification_subscription
+    description: Manage a notification subscription.
+    params: {action: Parameter., notificationID: Parameter.}
+  - name: manage_repository_notification_subscription
+    description: Manage a repository notification subscription.
+    params: {action: Parameter., owner: Parameter., repo: Parameter.}
+  - name: mark_all_notifications_read
+    description: Mark notifications as read.
+    params: {lastReadAt: Parameter., owner: Parameter., repo: Parameter.}
+  - name: merge_pull_request
+    description: Merge a pull request.
+    params: {commit_message: Parameter., commit_title: Parameter., merge_method: Parameter., owner: Parameter., pullNumber: Parameter., repo: Parameter.}
+  - name: projects_get
+    description: Get GitHub Projects resources.
+    params: {field_id: Parameter., field_names: Parameter., fields: Parameter., item_id: Parameter., method: Parameter., owner: Parameter., owner_type: Parameter., project_number: Parameter., status_update_id: Parameter.}
+  - name: projects_list
+    description: List GitHub Projects resources.
+    params: {after: Parameter., before: Parameter., field_names: Parameter., fields: Parameter., method: Parameter., owner: Parameter., owner_type: Parameter., per_page: Parameter., project_number: Parameter., query: Parameter.}
+  - name: projects_write
+    description: Manage GitHub Projects resources.
+    params: {body: Parameter., field_name: Parameter., issue_number: Parameter., item_id: Parameter., item_owner: Parameter., item_repo: Parameter., item_type: Parameter., items: Parameter., iteration_duration: Parameter., iterations: Parameter., method: Parameter., owner: Parameter., owner_type: Parameter., project_number: Parameter., pull_request_number: Parameter., start_date: Parameter., status: Parameter., target_date: Parameter., title: Parameter., updated_field: Parameter.}
+  - name: pull_request_read
+    description: Get pull request details, files, reviews, comments, or status information.
+    params:
+      after: Parameter.
+      method: Read operation to perform.
+      owner: Repository owner.
+      page: Parameter.
+      perPage: Parameter.
+      repo: Repository name.
+      pullNumber: Pull request number.
+  - name: pull_request_review_write
+    description: Manage pull request reviews.
+    params: {body: Parameter., commitID: Parameter., event: Parameter., method: Parameter., owner: Parameter., pullNumber: Parameter., repo: Parameter., threadId: Parameter.}
+  - name: push_files
+    description: Push files to a repository.
+    params: {branch: Parameter., files: Parameter., message: Parameter., owner: Parameter., repo: Parameter.}
+  - name: request_copilot_review
+    description: Request a Copilot pull request review.
+    params: {owner: Parameter., pullNumber: Parameter., repo: Parameter.}
+  - name: search_code
+    description: Search GitHub code.
+    params: {fields: Parameter., order: Parameter., page: Parameter., perPage: Parameter., query: Parameter., sort: Parameter.}
+  - name: search_commits
+    description: Search GitHub commits.
+    params: {order: Parameter., page: Parameter., perPage: Parameter., query: Parameter., sort: Parameter.}
+  - name: search_issues
+    description: Search GitHub issues.
+    params: {fields: Parameter., order: Parameter., owner: Parameter., page: Parameter., perPage: Parameter., query: Parameter., repo: Parameter., sort: Parameter.}
+  - name: search_orgs
+    description: Search GitHub organizations.
+    params: {order: Parameter., page: Parameter., perPage: Parameter., query: Parameter., sort: Parameter.}
+  - name: search_pull_requests
+    description: Search pull requests.
+    params: {fields: Parameter., order: Parameter., owner: Parameter., page: Parameter., perPage: Parameter., query: Parameter., repo: Parameter., sort: Parameter.}
+  - name: search_users
+    description: Search GitHub users.
+    params: {order: Parameter., page: Parameter., perPage: Parameter., query: Parameter., sort: Parameter.}
+  - name: semantic_issue_similarity_search
+    description: Search for semantically similar issues.
+    params: {issue_number: Parameter., owner: Parameter., page: Parameter., per_page: Parameter., repo: Parameter., threshold: Parameter.}
+  - name: star_repository
+    description: Star a repository.
+    params: {owner: Parameter., repo: Parameter.}
+  - name: sub_issue_write
+    description: Manage issue sub-issues.
+    params: {after_id: Parameter., before_id: Parameter., issue_number: Parameter., method: Parameter., owner: Parameter., replace_parent: Parameter., repo: Parameter., sub_issue_id: Parameter.}
+  - name: unstar_repository
+    description: Remove a star from a repository.
+    params: {owner: Parameter., repo: Parameter.}
+  - name: update_gist
+    description: Update a GitHub gist.
+    params: {content: Parameter., description: Parameter., filename: Parameter., gist_id: Parameter.}
+  - name: update_pull_request
+    description: Update a pull request.
+    params: {base: Parameter., body: Parameter., draft: Parameter., maintainer_can_modify: Parameter., owner: Parameter., pullNumber: Parameter., repo: Parameter., reviewers: Parameter., state: Parameter., title: Parameter.}
+  - name: update_pull_request_branch
+    description: Update a pull request branch.
+    params: {expectedHeadSha: Parameter., owner: Parameter., pullNumber: Parameter., repo: Parameter.}
