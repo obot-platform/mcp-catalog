@@ -1,92 +1,54 @@
 name: Google Cloud Run
 entryKey: obot-google-cloud-run
 serverUserType: singleUser
-shortDescription: Deploy and manage applications on Google Cloud Run with monitoring and logging
+shortDescription: Inspect and deploy Cloud Run services through Google's managed MCP server
 description: |
-  A Model Context Protocol (MCP) server that enables AI agents to deploy applications to Google Cloud Run. Provides comprehensive deployment capabilities including file-based deployment, container image deployment, and service management with full monitoring and logging support.
-
-  ## Features
-  - **File-based Deployment**: Deploy applications by providing file contents directly to Cloud Run
-  - **Container Image Deployment**: Deploy pre-built container images to Cloud Run services
-  - **Service Management**: List, get details, and monitor Cloud Run services across projects and regions
-  - **Project Management**: List available GCP projects and create new ones with billing integration
-  - **Logging & Monitoring**: Access service logs and error messages for troubleshooting
+  Connect to Google's managed Cloud Run MCP server to list and inspect services or deploy applications from container images, source archives, and inline source files.
 
   ## What you'll need to connect
 
-  **Required:**
-  - **Google Cloud Application Credentials**: Your Google Cloud Service Account Credentials.
+  Ask your Google Cloud administrator to:
 
-  **Optional:**
-  - **Google Cloud Region**: Default region for Cloud Run deployments (e.g., europe-west1, us-central1) default: europe-west1
+  1. Select or create a billing-enabled Google Cloud project and enable the [Cloud Run Admin API](https://console.cloud.google.com/apis/enableflow?apiid=run.googleapis.com).
+  2. Grant your Google identity the [MCP Tool User](https://cloud.google.com/iam/docs/roles-permissions/mcp#mcp.toolUser), [Cloud Run Developer](https://cloud.google.com/iam/docs/roles-permissions/run#run.developer), [Service Account User](https://cloud.google.com/iam/docs/roles-permissions/iam#iam.serviceAccountUser), and [Artifact Registry Reader](https://cloud.google.com/iam/docs/roles-permissions/artifactregistry#artifactregistry.reader) roles, or equivalent permissions appropriate for the operations you need. Cross-project service accounts also require Service Account Token Creator.
+  3. Ensure your Obot administrator has configured a Google Web OAuth client for this catalog entry.
 
-  ## Important Notes:
-  - **API Enablement**: The Cloud Run Admin API must be enabled in each GCP project where you plan to deploy services
-  - **Deployment Time**: Cloud Run deployments typically take 1-3 minutes depending on container size and complexity
-  - **First Deployment**: Initial deployments may take longer as they need to build and push container images
-  
+  When you connect, Google asks you to authorize Obot. Tool calls use your Google identity and its IAM permissions.
 
+  See Google's [Cloud Run MCP setup guide](https://cloud.google.com/run/docs/use-cloud-run-mcp) and [MCP authentication guide](https://cloud.google.com/mcp/authenticate-mcp) for complete instructions.
+
+  ## Important differences
+
+  This managed server does not provide tools to list or create Google Cloud projects or retrieve service logs. It adds source archive deployment. Inline source requests are limited to 50 MiB, and source archives are limited to 250 MiB.
 metadata:
-  categories: Cloud Infrastructure, Deployment, Container Orchestration
+  categories: Cloud Infrastructure,Deployment,Container Orchestration
 icon: https://avatars.githubusercontent.com/u/2810941?s=48&v=4
-repoURL: https://github.com/obot-platform/cloud-run-mcp
-
+repoURL: https://cloud.google.com/run/docs/use-cloud-run-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://run.googleapis.com/mcp
+  staticOAuthRequired: true
 toolPreview:
-  - name: deploy-file-contents
-    description: Deploy files to Cloud Run by providing their contents directly. Takes an array of file objects containing filename and content. Use this tool if the files only exist in the current chat context.
+  - name: get_service
+    description: Get details about a Cloud Run service, including its URI and deployment status.
     params:
-      project: "Google Cloud project ID. Leave unset for the app to be deployed in a new project. If provided, make sure the user confirms the project ID they want to deploy to"
-      service: "Name of the Cloud Run service to deploy to"
-      region: "Region to deploy the service to - default: us-central1"
-      files: "Array of file objects containing filename and content"
-  - name: deploy-container-image
-    description: Deploys a container image to Cloud Run. Use this tool if the user provides a container image URL.
+      name: Cloud Run service name
+      project: Google Cloud project ID or number
+      region: Google Cloud region containing the service
+  - name: list_services
+    description: List Cloud Run services in a Google Cloud project and region.
     params:
-      project: "Google Cloud project ID. Do not select it yourself, make sure the user provides or confirms the project ID"
-      service: "Name of the Cloud Run service to deploy to"
-      region: "Region to deploy the service to - default: us-central1"
-      imageUrl: "The URL of the container image to deploy (e.g. \"gcr.io/cloudrun/hello\")"
-  - name: list-services
-    description: Lists Cloud Run services in a given project and region.
+      project: Google Cloud project ID or number
+      region: Google Cloud region to search
+  - name: deploy_service_from_image
+    description: Deploy an Artifact Registry or Docker Hub container image as a Cloud Run service.
     params:
-      project: "Google Cloud project ID"
-      region: "Region where the services are located - default: us-central1"
-  - name: get-service
-    description: Gets details for a specific Cloud Run service.
+      service: Cloud Run service configuration and container image definition
+  - name: deploy_service_from_archive
+    description: Deploy a self-contained source archive from Cloud Storage as a Cloud Run service.
     params:
-      project: "Google Cloud project ID containing the service"
-      service: "Name of the Cloud Run service"
-      region: "Region where the service is located - default: us-central1"
-  - name: get-service-log
-    description: Gets Logs and Error Messages for a specific Cloud Run service.
+      service: Cloud Run service configuration and source archive definition
+  - name: deploy_service_from_file_contents
+    description: Deploy inline source files as a Cloud Run service.
     params:
-      project: "Google Cloud project ID containing the service"
-      service: "Name of the Cloud Run service"
-      region: "Region where the service is located - default: us-central1"
-  - name: list-projects
-    description: Lists available GCP projects
-    params:
-      random_string: "Dummy parameter for no-parameter tools"
-  - name: create-project
-    description: Creates a new GCP project and attempts to attach it to the first available billing account. A project ID can be optionally specified; otherwise it will be automatically generated.
-    params:
-      projectId: "Optional. The desired ID for the new GCP project. If not provided, an ID will be auto-generated"
-
-env:
-  - name: Google Application Credentials
-    key: GOOGLE_APPLICATION_CREDENTIALS
-    description: Your Google Cloud Service Account Credentials.(Content copied from a service account JSON file)
-    required: true
-    sensitive: true
-    file: true
-  - name: Google Cloud Region
-    key: GOOGLE_CLOUD_REGION
-    description: Default region for Cloud Run deployments (e.g., europe-west1, us-central1) default -- europe-west1
-    required: false
-    sensitive: false
-
-runtime: containerized
-containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/googlecloudrun:latest
-  port: 3000
-  path: "/mcp"
+      service: Cloud Run service configuration and inline source files
