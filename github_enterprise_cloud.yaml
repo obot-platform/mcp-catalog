@@ -1,5 +1,5 @@
-name: GitHub Enterprise Cloud (Data Residency)
-entryKey: github-enterprise-cloud
+name: GitHub Enterprise Cloud
+entryKey: obot-github-enterprise-cloud
 serverUserType: singleUser
 shortDescription: Connect to a GitHub Enterprise Cloud data-residency tenant with GitHub-hosted MCP and OAuth
 description: |

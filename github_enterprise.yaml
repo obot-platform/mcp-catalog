@@ -1,13 +1,13 @@
 name: GitHub Enterprise
 entryKey: obot-github-enterprise
 serverUserType: singleUser
-shortDescription: Legacy containerized GitHub Enterprise integration; deprecated in favor of GitHub Enterprise Cloud (Data Residency)
+shortDescription: Connect AI tools to GitHub Enterprise Server
 description: |
-  **DEPRECATED**: This containerized integration will be observed for 30 days before removal. For GitHub Enterprise Cloud with data residency (`*.ghe.com`), use **GitHub Enterprise Cloud (Data Residency)**, which connects directly to GitHub's hosted MCP service with OAuth.
+  A containerized Model Context Protocol (MCP) server for GitHub Enterprise Server. GitHub does not provide a hosted remote MCP endpoint for GitHub Enterprise Server.
 
-  This legacy entry remains available during the observation window for existing GitHub Enterprise Server and GitHub Enterprise Cloud with data residency users. Report any required GitHub Enterprise Server use during this period, because GitHub does not provide a hosted MCP endpoint for GitHub Enterprise Server.
+  For GitHub Enterprise Cloud with data residency (`*.ghe.com`), use **GitHub Enterprise Cloud**. For standard GitHub Enterprise Cloud on `github.com`, use the regular **GitHub** catalog entry.
 
-  A Model Context Protocol (MCP) server that connects AI tools directly to GitHub's platform or [GitHub Enterprise](https://github.com/github/github-mcp-server?tab=readme-ov-file#github-enterprise-server-and-enterprise-cloud-with-data-residency-ghecom). This gives AI agents, assistants, and chatbots the ability to read repositories and code files, manage issues and PRs, analyze code, and automate workflows through natural language interactions.
+  This MCP server connects AI tools directly to GitHub Enterprise Server. It gives AI agents, assistants, and chatbots the ability to read repositories and code files, manage issues and PRs, analyze code, and automate workflows through natural language interactions.
 
   ## Features
   - **Repository Management**: Browse and query code, search files, analyze commits, and understand project structure
@@ -205,7 +205,6 @@ toolPreview:
 
 metadata:
   categories: Developer Tools
-  deprecated: "true"
   unsupportedTools: create_or_update_file,push_files
 icon: https://avatars.githubusercontent.com/u/9919?v=4
 repoURL: https://github.com/github/github-mcp-server
