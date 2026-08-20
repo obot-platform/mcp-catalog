@@ -7,7 +7,7 @@ description: |
 
   [Read the official GitHub Enterprise MCP server documentation](https://docs.github.com/en/enterprise-cloud@latest/copilot/how-tos/provide-context/use-mcp-in-your-ide/enterprise-configuration).
 
-  For GitHub Enterprise Cloud with data residency (`*.ghe.com`), use **GitHub Enterprise Cloud**. For standard GitHub Enterprise Cloud on `github.com`, use the regular **GitHub** catalog entry.
+  This server is appropriate for connecting to self-hosted instances of GitHub Enterprise Server. If you're using GitHub Enterprise Cloud with data residency (`*.ghe.com`), we recommend using the **GitHub Enterprise Cloud** MCP server. For standard GitHub Enterprise Cloud on `github.com`, use the regular **GitHub** catalog entry.
 
   This MCP server connects AI tools directly to GitHub Enterprise Server. It gives AI agents, assistants, and chatbots the ability to read repositories and code files, manage issues and PRs, analyze code, and automate workflows through natural language interactions.
 
