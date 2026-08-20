@@ -1,13 +1,6 @@
 name: Mcpwn Fan-out (dispatch one run per YAML)
 run-name: ${{ inputs.workflow_name || 'Mcpwn Scan' }} - Fan-out
-on:
-  workflow_dispatch:
-    inputs:
-      workflow_name:
-        description: "Custom workflow name (optional)"
-        required: false
-        type: string
-        default: "Mcpwn Scan"
+on: []
 
 permissions:
   contents: read

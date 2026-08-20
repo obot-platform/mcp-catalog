@@ -1,34 +1,7 @@
 name: Mcpwn Worker (scan one YAML target)
 run-name: ${{ inputs.workflow_name || 'Mcpwn Scan' }} - ${{ inputs.file }}
 
-on:
-  workflow_dispatch:
-    inputs:
-      file:
-        description: "Repo YAML file path"
-        required: true
-        type: string
-      image:
-        description: "Container image"
-        required: true
-        type: string
-      port:
-        description: "Container port to publish on 8080"
-        required: true
-        type: string
-      args_b64:
-        description: "Base64 JSON array of args"
-        required: true
-        type: string
-      env_b64:
-        description: "Base64 JSON object of env"
-        required: true
-        type: string
-      workflow_name:
-        description: "Custom workflow name"
-        required: false
-        type: string
-        default: "Mcpwn Scan"
+on: []
 
 permissions:
   contents: read
