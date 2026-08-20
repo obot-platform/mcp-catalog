@@ -47,6 +47,7 @@ on:
           - google-drive.yaml
           - google-maps-grounding-lite.yaml
           - google-sheets.yaml
+          - grafana-cloud.yaml
           - grafana.yaml
           - hubspot.yaml
           - linear.yaml

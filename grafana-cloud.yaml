@@ -1,0 +1,344 @@
+name: Grafana Cloud
+entryKey: obot-grafana-cloud
+serverUserType: singleUser
+shortDescription: Query Grafana Cloud metrics, logs, dashboards, alerts, incidents, and on-call schedules with OAuth
+description: |
+  Grafana Cloud's official hosted Model Context Protocol (MCP) server connects AI agents directly to a Grafana Cloud stack. It uses OAuth 2.1, so each user authorizes access with their own Grafana identity and RBAC permissions instead of providing a service account token.
+
+  ## Features
+
+  - **Observability queries**: Query Prometheus metrics, Loki logs, Pyroscope profiles, Tempo data, and supported datasource types
+  - **Dashboards and alerts**: Search and manage dashboards, folders, alert rules, notification routing, and annotations
+  - **Incident response**: View and manage incidents and Grafana OnCall schedules, teams, users, and alert groups
+  - **Assistant workflows**: Start and inspect Grafana Assistant investigations, retrieve infrastructure summaries, and ask Grafana Assistant
+  - **User-scoped access**: Use the permissions already granted to the user in the selected Grafana Cloud stack
+
+  ## What you'll need to connect
+
+  - A hosted Grafana Cloud stack. This server does not support self-hosted Grafana.
+  - Grafana Assistant enabled for the stack, with any required terms accepted.
+  - The **Assistant Cloud MCP User** role or `grafana-assistant-app.cloud-mcp:access` permission. Editors and administrators have this permission by default.
+
+  Authenticate with Grafana when prompted. Read access is always available; grant write access during consent to create or modify Grafana resources. Grafana Cloud MCP usage contributes to Grafana Assistant active-user and token usage.
+
+  Optionally provide your stack URL to skip the stack-selection step during authorization. For example: `https://my-stack.grafana.net`.
+metadata:
+  categories: Observability, Monitoring, DevOps, Incident Management
+icon: https://avatars.githubusercontent.com/u/7195757?s=48&v=4
+repoURL: https://grafana.com/docs/grafana-cloud/ai-tools/mcp-servers/cloud-mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.grafana.com/mcp
+  headers:
+  - name: Grafana Cloud Stack URL
+    description: Optional Grafana Cloud stack URL used to skip stack selection during OAuth authorization (for example, https://my-stack.grafana.net)
+    key: X-Grafana-URL
+    required: false
+    sensitive: false
+toolPreview:
+- name: add_activity_to_incident
+  description: Add activity to an incident.
+  params: {body: Input value., eventTime: Input value., incidentId: Input value.}
+- name: alerting_manage_routing
+  description: Manage alert notification routing.
+  params: {contact_point_title: Input value., datasource_uid: Input value., limit: Input value., name: Input value., operation: Input value., time_interval_name: Input value.}
+- name: alerting_manage_rules
+  description: Manage alert rules.
+  params: {annotations: Input value., condition: Input value., data: Input value., datasource_uid: Input value., disable_provenance: Input value., exec_err_state: Input value., folder_uid: Input value., for: Input value., is_paused: Input value., keep_firing_for: Input value., label_selectors: Input value., labels: Input value., limit_alerts: Input value., matchers: Input value., missing_series_evals_to_resolve: Input value., no_data_state: Input value., notification_settings: Input value., operation: Input value., org_id: Input value., record: Input value., rule_group: Input value., rule_limit: Input value., rule_type: Input value., rule_uid: Input value., search_folder: Input value., search_rule_name: Input value., states: Input value., title: Input value.}
+- name: analyze_loki_labels
+  description: Analyze Loki labels.
+  params: {datasourceUid: Input value., endRfc3339: Input value., expectedBaseLabels: Input value., labels: Input value., maxLabels: Input value., perfMetrics: Input value., selector: Input value., startRfc3339: Input value.}
+- name: ask_assistant
+  description: Ask Grafana Assistant.
+  params: {contextId: Input value., prompt: Input value.}
+- name: check_datasources_health
+  description: Check datasource health.
+  params: {offset: Input value., type: Input value., uids: Input value.}
+- name: create_annotation
+  description: Create an annotation.
+  params: {dashboardUid: Input value., data: Input value., format: Input value., graphiteData: Input value., panelId: Input value., tags: Input value., text: Input value., time: Input value., timeEnd: Input value., what: Input value., when: Input value.}
+- name: create_datasource
+  description: Create a datasource.
+  params: {access: Input value., basicAuth: Input value., database: Input value., fields: Input value., isDefault: Input value., name: Input value., schemaReviewed: Input value., type: Input value., url: Input value., withCredentials: Input value.}
+- name: create_folder
+  description: Create a folder.
+  params: {parentUid: Input value., title: Input value., uid: Input value.}
+- name: create_incident
+  description: Create an incident.
+  params: {attachCaption: Input value., attachUrl: Input value., isDrill: Input value., labels: Input value., roomPrefix: Input value., severity: Input value., status: Input value., title: Input value.}
+- name: create_investigation
+  description: Create an investigation.
+  params: {agentProfileId: Input value., instruction: Input value., teamNames: Input value., title: Input value.}
+- name: describe_athena_table
+  description: Describe an Athena table.
+  params: {catalog: Input value., database: Input value., datasourceUid: Input value., region: Input value., table: Input value.}
+- name: describe_clickhouse_table
+  description: Describe a ClickHouse table.
+  params: {database: Input value., datasourceUid: Input value., table: Input value.}
+- name: describe_infrastructure
+  description: Describe infrastructure.
+  params: {datasourceUID: Input value., queries: Input value.}
+- name: describe_snowflake_table
+  description: Describe a Snowflake table.
+  params: {database: Input value., datasourceUid: Input value., schema: Input value., table: Input value.}
+- name: generate_deeplink
+  description: Generate a Grafana deeplink.
+  params: {dashboardUid: Input value., datasourceUid: Input value., panelId: Input value., provisioningPreview: Input value., queries: Input value., queryParams: Input value., resourceType: Input value., shorten: Input value., timeRange: Input value.}
+- name: get_alert_group
+  description: Get an alert group.
+  params: {alertGroupId: Input value.}
+- name: get_annotation_tags
+  description: Get annotation tags.
+  params: {limit: Input value., tag: Input value.}
+- name: get_annotations
+  description: Get annotations.
+  params: {alertUid: Input value., dashboardUid: Input value., from: Input value., limit: Input value., matchAny: Input value., panelId: Input value., tags: Input value., to: Input value., type: Input value., userId: Input value.}
+- name: get_assertions
+  description: Get assertions.
+  params: {endTime: Input value., entityName: Input value., entityType: Input value., env: Input value., namespace: Input value., site: Input value., startTime: Input value.}
+- name: get_current_oncall_users
+  description: Get current on-call users.
+  params: {scheduleId: Input value.}
+- name: get_dashboard_by_uid
+  description: Get a dashboard.
+  params: {uid: Input value.}
+- name: get_dashboard_panel_queries
+  description: Get dashboard panel queries.
+  params: {panelId: Input value., uid: Input value., variables: Input value.}
+- name: get_dashboard_property
+  description: Get a dashboard property.
+  params: {jsonPath: Input value., uid: Input value.}
+- name: get_dashboard_summary
+  description: Get a dashboard summary.
+  params: {uid: Input value.}
+- name: get_datasource
+  description: Get a datasource.
+  params: {name: Input value., uid: Input value.}
+- name: get_incident
+  description: Get an incident.
+  params: {id: Input value.}
+- name: get_investigation
+  description: Get an investigation.
+  params: {investigationId: Input value.}
+- name: get_investigation_thread
+  description: Get an investigation thread.
+  params: {investigationId: Input value., limit: Input value., offset: Input value.}
+- name: get_oncall_shift
+  description: Get an on-call shift.
+  params: {shiftId: Input value.}
+- name: get_panel_image
+  description: Render a panel image.
+  params: {dashboardUid: Input value., height: Input value., panelId: Input value., provisioningPreview: Input value., scale: Input value., theme: Input value., timeRange: Input value., timeout: Input value., variables: Input value., width: Input value.}
+- name: get_plugin
+  description: Get a plugin.
+  params: {pluginId: Input value.}
+- name: get_query_examples
+  description: Get query examples.
+  params: {datasourceType: Input value.}
+- name: get_resource_description
+  description: Get a resource description.
+  params: {resourceType: Input value.}
+- name: get_resource_permissions
+  description: Get resource permissions.
+  params: {resource: Input value., resourceId: Input value.}
+- name: get_role_assignments
+  description: Get role assignments.
+  params: {roleUID: Input value.}
+- name: get_role_details
+  description: Get role details.
+  params: {roleUID: Input value.}
+- name: grafana_api_request
+  description: Make a Grafana API request.
+  params: {body: Input value., endpoint: Input value., headers: Input value., jq: Input value., method: Input value.}
+- name: install_plugin
+  description: Install a plugin.
+  params: {pluginId: Input value., version: Input value.}
+- name: list_alert_groups
+  description: List alert groups.
+  params: {id: Input value., integrationId: Input value., labels: Input value., name: Input value., page: Input value., routeId: Input value., startedAt: Input value., state: Input value., teamId: Input value.}
+- name: list_all_roles
+  description: List roles.
+  params: {delegatableOnly: Input value.}
+- name: list_athena_catalogs
+  description: List Athena catalogs.
+  params: {datasourceUid: Input value., region: Input value.}
+- name: list_athena_databases
+  description: List Athena databases.
+  params: {catalog: Input value., datasourceUid: Input value., region: Input value.}
+- name: list_athena_tables
+  description: List Athena tables.
+  params: {catalog: Input value., database: Input value., datasourceUid: Input value., region: Input value.}
+- name: list_clickhouse_tables
+  description: List ClickHouse tables.
+  params: {database: Input value., datasourceUid: Input value.}
+- name: list_cloudwatch_dimensions
+  description: List CloudWatch dimensions.
+  params: {accountId: Input value., datasourceUid: Input value., metricName: Input value., namespace: Input value., region: Input value.}
+- name: list_cloudwatch_metrics
+  description: List CloudWatch metrics.
+  params: {accountId: Input value., datasourceUid: Input value., namespace: Input value., region: Input value.}
+- name: list_cloudwatch_namespaces
+  description: List CloudWatch namespaces.
+  params: {accountId: Input value., datasourceUid: Input value., region: Input value.}
+- name: list_datasources
+  description: List datasources.
+  params: {limit: Input value., offset: Input value., type: Input value.}
+- name: list_graphite_metrics
+  description: List Graphite metrics.
+  params: {datasourceUid: Input value., query: Input value.}
+- name: list_graphite_tags
+  description: List Graphite tags.
+  params: {datasourceUid: Input value., prefix: Input value.}
+- name: list_incidents
+  description: List incidents.
+  params: {drill: Input value., limit: Input value., status: Input value.}
+- name: list_investigation_evidence
+  description: List investigation evidence.
+  params: {investigationId: Input value.}
+- name: list_investigation_profiles
+  description: List investigation profiles.
+  params: {}
+- name: list_investigations
+  description: List investigations.
+  params: {archivedOnly: Input value., chatId: Input value., from: Input value., includeArchived: Input value., includeLegacy: Input value., label: Input value., limit: Input value., offset: Input value., order: Input value., q: Input value., scope: Input value., sort: Input value., state: Input value., teamName: Input value., to: Input value., view: Input value.}
+- name: list_loki_label_names
+  description: List Loki label names.
+  params: {datasourceUid: Input value., endRfc3339: Input value., startRfc3339: Input value.}
+- name: list_loki_label_values
+  description: List Loki label values.
+  params: {datasourceUid: Input value., endRfc3339: Input value., labelName: Input value., startRfc3339: Input value.}
+- name: list_oncall_schedules
+  description: List on-call schedules.
+  params: {page: Input value., scheduleId: Input value., teamId: Input value.}
+- name: list_oncall_teams
+  description: List on-call teams.
+  params: {page: Input value.}
+- name: list_oncall_users
+  description: List on-call users.
+  params: {page: Input value., userId: Input value., username: Input value.}
+- name: list_prometheus_label_names
+  description: List Prometheus label names.
+  params: {datasourceUid: Input value., endRfc3339: Input value., limit: Input value., matches: Input value., projectName: Input value., startRfc3339: Input value.}
+- name: list_prometheus_label_values
+  description: List Prometheus label values.
+  params: {datasourceUid: Input value., endRfc3339: Input value., labelName: Input value., limit: Input value., matches: Input value., projectName: Input value., startRfc3339: Input value.}
+- name: list_prometheus_metric_metadata
+  description: List Prometheus metric metadata.
+  params: {datasourceUid: Input value., limit: Input value., limitPerMetric: Input value., metric: Input value., projectName: Input value.}
+- name: list_prometheus_metric_names
+  description: List Prometheus metric names.
+  params: {datasourceUid: Input value., endRfc3339: Input value., limit: Input value., page: Input value., projectName: Input value., regex: Input value., startRfc3339: Input value.}
+- name: list_pyroscope_label_names
+  description: List Pyroscope label names.
+  params: {data_source_uid: Input value., end_rfc_3339: Input value., matchers: Input value., start_rfc_3339: Input value.}
+- name: list_pyroscope_label_values
+  description: List Pyroscope label values.
+  params: {data_source_uid: Input value., end_rfc_3339: Input value., matchers: Input value., name: Input value., start_rfc_3339: Input value.}
+- name: list_pyroscope_profile_types
+  description: List Pyroscope profile types.
+  params: {data_source_uid: Input value., end_rfc_3339: Input value., start_rfc_3339: Input value.}
+- name: list_snowflake_tables
+  description: List Snowflake tables.
+  params: {database: Input value., datasourceUid: Input value., schema: Input value.}
+- name: list_team_roles
+  description: List team roles.
+  params: {teamIds: Input value.}
+- name: list_teams
+  description: List teams.
+  params: {query: Input value.}
+- name: list_user_roles
+  description: List user roles.
+  params: {userIds: Input value.}
+- name: list_users_by_org
+  description: List organization users.
+  params: {}
+- name: query_athena
+  description: Query Athena.
+  params: {catalog: Input value., database: Input value., datasourceUid: Input value., end: Input value., limit: Input value., query: Input value., region: Input value., resultReuseEnabled: Input value., resultReuseMaxAgeInMinutes: Input value., start: Input value., variables: Input value.}
+- name: query_clickhouse
+  description: Query ClickHouse.
+  params: {datasourceUid: Input value., end: Input value., limit: Input value., query: Input value., start: Input value., variables: Input value.}
+- name: query_cloudwatch
+  description: Query CloudWatch.
+  params: {accountId: Input value., datasourceUid: Input value., dimensions: Input value., end: Input value., metricName: Input value., namespace: Input value., period: Input value., region: Input value., start: Input value., statistic: Input value.}
+- name: query_elasticsearch
+  description: Query Elasticsearch.
+  params: {datasourceUid: Input value., endTime: Input value., index: Input value., limit: Input value., query: Input value., startTime: Input value.}
+- name: query_graphite
+  description: Query Graphite.
+  params: {datasourceUid: Input value., from: Input value., maxDataPoints: Input value., target: Input value., until: Input value.}
+- name: query_graphite_density
+  description: Query Graphite density.
+  params: {datasourceUid: Input value., from: Input value., target: Input value., until: Input value.}
+- name: query_influxdb
+  description: Query InfluxDB.
+  params: {datasourceUid: Input value., dialect: Input value., end: Input value., maxDataPoints: Input value., query: Input value., start: Input value.}
+- name: query_loki_logs
+  description: Query Loki logs.
+  params: {datasourceUid: Input value., direction: Input value., endRfc3339: Input value., limit: Input value., logql: Input value., queryType: Input value., startRfc3339: Input value., stepSeconds: Input value.}
+- name: query_loki_patterns
+  description: Query Loki patterns.
+  params: {datasourceUid: Input value., endRfc3339: Input value., logql: Input value., startRfc3339: Input value., step: Input value.}
+- name: query_loki_stats
+  description: Query Loki statistics.
+  params: {datasourceUid: Input value., endRfc3339: Input value., logql: Input value., startRfc3339: Input value.}
+- name: query_prometheus
+  description: Query Prometheus.
+  params: {datasourceUid: Input value., endTime: Input value., expr: Input value., projectName: Input value., queryType: Input value., startTime: Input value., stepSeconds: Input value.}
+- name: query_prometheus_histogram
+  description: Query Prometheus histogram data.
+  params: {datasourceUid: Input value., endTime: Input value., labels: Input value., metric: Input value., percentile: Input value., projectName: Input value., rateInterval: Input value., startTime: Input value., stepSeconds: Input value.}
+- name: query_pyroscope
+  description: Query Pyroscope.
+  params: {data_source_uid: Input value., end_rfc_3339: Input value., format: Input value., group_by: Input value., matchers: Input value., max_node_depth: Input value., profile_type: Input value., query_type: Input value., start_rfc_3339: Input value., step: Input value.}
+- name: query_snowflake
+  description: Query Snowflake.
+  params: {datasourceUid: Input value., end: Input value., limit: Input value., query: Input value., start: Input value., variables: Input value.}
+- name: run_panel_query
+  description: Run a dashboard panel query.
+  params: {dashboardUid: Input value., datasourceType: Input value., datasourceUid: Input value., end: Input value., panelIds: Input value., queryIndex: Input value., start: Input value., variables: Input value.}
+- name: search_dashboards
+  description: Search dashboards.
+  params: {limit: Input value., page: Input value., query: Input value.}
+- name: search_folders
+  description: Search folders.
+  params: {query: Input value.}
+- name: search_plugin_information
+  description: Search plugin information.
+  params: {query: Input value.}
+- name: suggest_loki_alloy_label_config
+  description: Suggest Loki Alloy label configuration.
+  params: {approvedLabels: Input value., componentName: Input value., forwardTo: Input value., normalizeLogLevel: Input value., requiredLabels: Input value.}
+- name: tempo_docs-config
+  description: Get Tempo configuration documentation.
+  params: {datasourceUid: Input value., name: Input value.}
+- name: tempo_docs-traceql
+  description: Get Tempo TraceQL documentation.
+  params: {datasourceUid: Input value., name: Input value.}
+- name: tempo_get-attribute-names
+  description: Get Tempo attribute names.
+  params: {datasourceUid: Input value., scope: Input value.}
+- name: tempo_get-attribute-values
+  description: Get Tempo attribute values.
+  params: {datasourceUid: Input value., filter-query: Input value., name: Input value.}
+- name: tempo_get-trace
+  description: Get a Tempo trace.
+  params: {datasourceUid: Input value., trace_id: Input value.}
+- name: tempo_traceql-metrics-instant
+  description: Query Tempo TraceQL instant metrics.
+  params: {datasourceUid: Input value., end: Input value., query: Input value., start: Input value.}
+- name: tempo_traceql-metrics-range
+  description: Query Tempo TraceQL range metrics.
+  params: {datasourceUid: Input value., end: Input value., query: Input value., start: Input value.}
+- name: tempo_traceql-search
+  description: Search Tempo traces with TraceQL.
+  params: {datasourceUid: Input value., end: Input value., query: Input value., start: Input value.}
+- name: update_annotation
+  description: Update an annotation.
+  params: {data: Input value., id: Input value., tags: Input value., text: Input value., time: Input value., timeEnd: Input value.}
+- name: update_dashboard
+  description: Update a dashboard.
+  params: {dashboard: Input value., folderUid: Input value., message: Input value., operations: Input value., overwrite: Input value., uid: Input value., userId: Input value.}
+- name: update_datasource
+  description: Update a datasource.
+  params: {access: Input value., basicAuth: Input value., database: Input value., fields: Input value., isDefault: Input value., jsonData: Input value., name: Input value., schemaReviewed: Input value., uid: Input value., url: Input value.}
