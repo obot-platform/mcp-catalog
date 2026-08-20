@@ -3,6 +3,14 @@ entryKey: obot-google-cloud-run
 serverUserType: singleUser
 shortDescription: Inspect and deploy Cloud Run services through Google's managed MCP server
 description: |
+  > **⚠️ Upgrade notice**
+  >
+  > This upgrade replaces the Obot-hosted Cloud Run server with Google's managed Cloud Run MCP server.
+  >
+  > - **Reconnect required:** Connect with Google OAuth. The previous service-account credentials and default-region setting are no longer used.
+  > - **Tool changes:** Tool names and parameters change. Project listing, project creation, and service-log retrieval are no longer available.
+  > - **New capability:** Source-archive deployment is now available.
+
   Connect to Google's managed Cloud Run MCP server to list and inspect services or deploy applications from container images, source archives, and inline source files.
 
   See Google's [official Cloud Run MCP documentation](https://cloud.google.com/run/docs/use-cloud-run-mcp) for setup instructions, authentication requirements, and current capabilities.

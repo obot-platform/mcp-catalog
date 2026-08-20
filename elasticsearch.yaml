@@ -3,6 +3,14 @@ entryKey: obot-elasticsearch
 serverUserType: singleUser
 shortDescription: Search and analyze Elasticsearch data with Elastic's Agent Builder tools
 description: |
+  > **⚠️ Upgrade notice**
+  >
+  > This upgrade replaces the direct, Obot-hosted Elasticsearch MCP server with Elastic Agent Builder's MCP server.
+  >
+  > - **Reconnect required:** Provide a Kibana URL and scoped Elastic API key. The previous Elasticsearch URL, username/password, and direct API-key settings are no longer used.
+  > - **New requirement:** Agent Builder requires Elastic Cloud Serverless or Elastic Stack 9.3 or later.
+  > - **Tool changes:** All tool names and parameters change. Direct raw Query DSL and shard inspection are no longer available.
+
   Elastic Agent Builder's official Model Context Protocol (MCP) server exposes built-in and custom tools from Elastic Cloud Serverless projects and self-managed Elastic Stack deployments.
 
   See Elastic's [official Agent Builder MCP server documentation](https://www.elastic.co/docs/explore-analyze/ai-features/agent-builder/mcp-server) for endpoint details, authentication options, permissions, and current capabilities.

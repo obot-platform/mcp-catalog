@@ -3,6 +3,14 @@ entryKey: obot-files-dot-com
 serverUserType: singleUser
 shortDescription: Manage files, users, groups, permissions, and secure file sharing through Files.com's hosted MCP server
 description: |
+  > **⚠️ Upgrade notice**
+  >
+  > This upgrade replaces the Obot-hosted Files.com server with Files.com's official hosted MCP server.
+  >
+  > - **Reconnect required:** Provide your Files.com site subdomain and connect with either OAuth or a Files.com API key.
+  > - **OAuth setup:** A site administrator must enable MCP Dynamic Client Registration.
+  > - **Compatibility:** Custom domains are not accepted, tool parameters may change, and local file upload and download tools remain unavailable.
+
   The official Files.com hosted Model Context Protocol (MCP) server lets AI agents securely manage resources and perform file operations without running a local server.
 
   See Files.com's [official MCP server documentation](https://www.files.com/docs/integrations/model-context-protocol-mcp-server) for setup instructions, authentication options, and current capabilities.
