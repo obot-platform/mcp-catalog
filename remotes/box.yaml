@@ -1,0 +1,27 @@
+name: Box
+entryKey: obot-box
+serverUserType: singleUser
+shortDescription: Search, analyze, create, and update content stored in Box
+description: |
+  [Box's official remote Model Context Protocol (MCP) server](https://developer.box.com/guides/box-mcp/) connects AI agents to content stored in Box while preserving existing Box permissions and security controls.
+
+  ## Features
+  - Search files, folders, metadata, and Box Hubs
+  - Read files and answer questions across one or more documents
+  - Extract structured or free-form information with Box AI
+  - Upload files, create folders, and update content when authorized
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Box Admin Setup**: An administrator must enable MCP in the Box Admin Console
+  - **Box Integration Credentials**: Create OAuth client credentials, register the redirect URI shown by Obot, and enable the scopes required by the tools you plan to use, such as Content Actions
+
+metadata:
+  categories: Storage, Document Processing, Productivity
+icon: https://www.box.com/favicon.ico
+repoURL: https://developer.box.com/guides/box-mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.box.com
+  staticOAuthRequired: true

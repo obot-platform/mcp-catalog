@@ -40,6 +40,10 @@ records:
     name: Asana
     status: existing
     catalog_entry: remotes/asana.yaml
+  - id: 49e0f9ba-7d45-4fb6-b098-55eec956fbc6
+    name: monday.com
+    status: existing
+    catalog_entry: remotes/mondaycom.yaml
   - id: 597f662f-36de-437e-836e-5a81013cbfbe
     name: Slack
     status: existing
@@ -68,6 +72,14 @@ records:
     name: Exa
     status: existing
     catalog_entry: remotes/exa_search.yaml
+  - id: a5380429-c773-4180-b642-301418240c8c
+    name: Box
+    status: imported
+    catalog_entry: remotes/box.yaml
+  - id: b2def8dc-ae47-4d46-877a-19b6a6ebb771
+    name: Intercom
+    status: imported
+    catalog_entry: remotes/intercom.yaml
   - id: b89f7865-a755-4f86-8062-c3bd651740ce
     name: Google Drive
     status: existing
@@ -76,6 +88,14 @@ records:
     name: Postman
     status: existing
     catalog_entry: remotes/postman.yaml
+  - id: c758d038-d8eb-4421-b426-9dd68dc7f84a
+    name: Figma
+    status: imported
+    catalog_entry: remotes/figma.yaml
+  - id: ce0c9cda-5ea5-44c5-9cf2-40810dfa6582
+    name: Microsoft 365
+    status: skipped
+    reason: Anthropic-hosted connector requires Claude-specific Microsoft Entra applications and Claude organization enablement, so it is not portable to Obot.
   - id: d1bac76b-5673-4d98-b275-41451f3dd847
     name: Todoist
     status: existing

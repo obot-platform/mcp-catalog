@@ -1,0 +1,32 @@
+name: Intercom
+entryKey: obot-intercom
+serverUserType: singleUser
+shortDescription: Search Intercom conversations, contacts, tickets, and customer data
+description: |
+  [Intercom's official remote Model Context Protocol (MCP) server](https://developers.intercom.com/docs/guides/mcp) gives AI agents access to customer conversations, contacts, companies, tickets, and Help Center content.
+
+  ## Features
+  - Search and inspect customer conversations and support tickets
+  - Find contacts, companies, and associated customer details
+  - Analyze customer feedback and conversation patterns
+  - Read and manage Help Center articles when permitted by the token
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Intercom Access Token**: Create an Intercom access token with the permissions required for the tools you plan to use, including contact, conversation, and article permissions
+
+metadata:
+  categories: Business, SaaS & API Integrations, Productivity
+icon: https://www.intercom.com/favicon.ico
+repoURL: https://developers.intercom.com/docs/guides/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.intercom.com/mcp
+  headers:
+  - name: Intercom Access Token
+    description: Intercom access token with permissions for the requested customer data
+    key: Authorization
+    required: true
+    sensitive: true
+    prefix: "Bearer "
