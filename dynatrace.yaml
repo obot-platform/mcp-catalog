@@ -5,7 +5,7 @@ shortDescription: Access Dynatrace observability data and intelligence through t
 description: |
   > **⚠️ Upgrade notice**
   >
-  > This upgrade replaces the Obot-hosted Dynatrace server with Dynatrace's official SaaS MCP gateway.
+  > If you're upgrading this server, note that this replaces the Obot-hosted Dynatrace server with Dynatrace's official SaaS MCP gateway.
   >
   > - **Reconnect required:** Provide a Dynatrace SaaS environment identifier and a Platform Token with MCP gateway and tool-specific permissions.
   > - **Compatibility:** Dynatrace Managed and classic environments are no longer supported.

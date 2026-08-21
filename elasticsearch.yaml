@@ -5,7 +5,7 @@ shortDescription: Search and analyze Elasticsearch data with Elastic's Agent Bui
 description: |
   > **⚠️ Upgrade notice**
   >
-  > This upgrade replaces the direct, Obot-hosted Elasticsearch MCP server with Elastic Agent Builder's MCP server.
+  > If you're upgrading this server, note that this replaces the direct, Obot-hosted Elasticsearch MCP server with Elastic Agent Builder's MCP server.
   >
   > - **Reconnect required:** Provide a Kibana URL and scoped Elastic API key. The previous Elasticsearch URL, username/password, and direct API-key settings are no longer used.
   > - **New requirement:** Agent Builder requires Elastic Cloud Serverless or Elastic Stack 9.3 or later.

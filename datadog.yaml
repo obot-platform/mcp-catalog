@@ -5,7 +5,7 @@ shortDescription: Query Datadog observability data and manage platform features 
 description: |
   > **⚠️ Upgrade notice**
   >
-  > This upgrade replaces the Obot-hosted Datadog server with Datadog's official hosted MCP server.
+  > If you're upgrading this server, note that this replaces the Obot-hosted Datadog server with Datadog's official hosted MCP server.
   >
   > - **Reconnect required:** Connect with Datadog OAuth or a Personal or Service Access Token. The previous API key, application key, and site settings are no longer used.
   > - **Region:** This entry connects to Datadog US1.
