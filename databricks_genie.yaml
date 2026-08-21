@@ -16,7 +16,7 @@ description: |
   ### Prerequisites
   - **For admins**: Ensure the workspace has the **Managed MCP Servers** preview enabled. See [Databricks documentation](https://docs.databricks.com/en/admin/workspace-settings/manage-previews.html) for your cloud provider.
   - **For users**: Ensure your account has access to Genie spaces in your workspace.
-  
+
   ### Setup Steps
   1. Navigate to your Databricks workspace
   2. Go to **Genie** → Create or select an existing Genie space
@@ -44,7 +44,7 @@ env:
 
 runtime: remote
 remoteConfig:
-  URLTemplate: ${DATABRICKS_WORKSPACE_URL}/api/2.0/mcp/genie/${DATABRICKS_GENIE_SPACE_ID}
+  urlTemplate: ${DATABRICKS_WORKSPACE_URL}/api/2.0/mcp/genie/${DATABRICKS_GENIE_SPACE_ID}
   headers:
   - name: Personal Access Token
     description: Databricks PAT

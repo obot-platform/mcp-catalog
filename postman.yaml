@@ -43,7 +43,7 @@ env:
 
 runtime: remote
 remoteConfig:
-  URLTemplate: ${HOST_URL}/${TOOL_CONFIGURATION}
+  urlTemplate: ${HOST_URL}/${TOOL_CONFIGURATION}
   headers:
   - name: Postman API Key
     description: Your Postman API key
@@ -673,4 +673,3 @@ toolPreview:
       commentId: The comment's ID (required)
       body: The updated comment contents (required)
       tags: Information about tagged users (optional)
-

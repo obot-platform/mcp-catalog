@@ -50,7 +50,7 @@ env:
 
 runtime: remote
 remoteConfig:
-  URLTemplate: ${KIBANA_URL}/api/agent_builder/mcp
+  urlTemplate: ${KIBANA_URL}/api/agent_builder/mcp
   headers:
     - name: Elastic API Key
       description: Elasticsearch or Serverless project API key with Agent Builder and scoped index privileges

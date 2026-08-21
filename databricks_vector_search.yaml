@@ -16,7 +16,7 @@ description: |
   ### Prerequisites
   - **For admins**: Ensure the workspace has the **Managed MCP Servers** preview enabled. See [Databricks documentation](https://docs.databricks.com/en/admin/workspace-settings/manage-previews.html) for your cloud provider.
   - **For users**: Ensure your account has access to the Unity Catalog resources (catalogs, schemas) and vector search indexes you want to use.
-  
+
   ### Setup Steps
   1. Navigate to your Databricks workspace
   2. Go to **Catalog** → Select your catalog → Select your schema
@@ -37,7 +37,7 @@ env:
     sensitive: false
   - name: Vector search catalog
     key: DATABRICKS_VECTOR_SEARCH_CATALOG
-    description: Vector search catalog, 
+    description: Vector search catalog,
     required: true
     sensitive: false
   - name: Vector search schema
@@ -49,7 +49,7 @@ env:
 
 runtime: remote
 remoteConfig:
-  URLTemplate: ${DATABRICKS_WORKSPACE_URL}/api/2.0/mcp/vector-search/${DATABRICKS_VECTOR_SEARCH_CATALOG}/${DATABRICKS_VECTOR_SEARCH_SCHEMA}
+  urlTemplate: ${DATABRICKS_WORKSPACE_URL}/api/2.0/mcp/vector-search/${DATABRICKS_VECTOR_SEARCH_CATALOG}/${DATABRICKS_VECTOR_SEARCH_SCHEMA}
   headers:
   - name: Personal Access Token
     description: Databricks PAT

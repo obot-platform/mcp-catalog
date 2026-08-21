@@ -49,7 +49,7 @@ env:
   description: Your Files.com site subdomain, for example `acme` for `https://acme.files.com`
 runtime: remote
 remoteConfig:
-  URLTemplate: https://${FILES_COM_SITE}.files.com/api/ai/mcp/v1
+  urlTemplate: https://${FILES_COM_SITE}.files.com/api/ai/mcp/v1
   headers:
   - name: Files.com API Key
     description: Optional Files.com API key for automated or headless authentication

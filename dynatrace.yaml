@@ -46,7 +46,7 @@ env:
   description: Your Dynatrace SaaS environment identifier, for example abc12345 from https://abc12345.apps.dynatrace.com.
 runtime: remote
 remoteConfig:
-  URLTemplate: https://${DYNATRACE_ENVIRONMENT}.apps.dynatrace.com/platform-reserved/mcp-gateway/v0.1/servers/dynatrace-mcp/mcp
+  urlTemplate: https://${DYNATRACE_ENVIRONMENT}.apps.dynatrace.com/platform-reserved/mcp-gateway/v0.1/servers/dynatrace-mcp/mcp
   headers:
   - key: Authorization
     name: Dynatrace Platform Token

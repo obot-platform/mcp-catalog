@@ -16,7 +16,7 @@ description: |
   ### Prerequisites
   - **For admins**: Ensure the workspace has the **Managed MCP Servers** preview enabled. See [Databricks documentation](https://docs.databricks.com/en/admin/workspace-settings/manage-previews.html) for your cloud provider.
   - **For users**: Ensure your account has access to the Unity Catalog resources (catalogs, schemas, functions) you want to use.
-  
+
   ### Setup Steps
   1. Navigate to your Databricks workspace
   2. Go to **Catalog** → Select your catalog → Select your schema
@@ -48,7 +48,7 @@ env:
 
 runtime: remote
 remoteConfig:
-  URLTemplate: ${DATABRICKS_WORKSPACE_URL}/api/2.0/mcp/functions/${DATABRICKS_FUNCTIONS_CATALOG}/${DATABRICKS_FUNCTIONS_SCHEMA}
+  urlTemplate: ${DATABRICKS_WORKSPACE_URL}/api/2.0/mcp/functions/${DATABRICKS_FUNCTIONS_CATALOG}/${DATABRICKS_FUNCTIONS_SCHEMA}
   headers:
   - name: Personal Access Token
     description: Databricks PAT
