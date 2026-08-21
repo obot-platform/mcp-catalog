@@ -5,7 +5,7 @@ shortDescription: Manage monday.com boards, items, workflows, and team collabora
 description: |
   > **⚠️ Upgrade notice**
   >
-  > This entry now uses monday.com's current Streamable HTTP endpoint instead of the legacy SSE endpoint.
+  > If you're upgrading this server, note that this entry now uses monday.com's current Streamable HTTP endpoint instead of the legacy SSE endpoint.
   >
   > - **Reconnect may be required:** Existing connections may need to authenticate again after the transport upgrade.
   > - **Tool changes:** monday.com updates its hosted server automatically, so available tools and parameters may change over time.
