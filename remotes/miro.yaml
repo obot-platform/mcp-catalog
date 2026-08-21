@@ -1,0 +1,26 @@
+name: Miro
+entryKey: obot-miro
+serverUserType: singleUser
+shortDescription: Search, summarize, and create content on Miro boards
+description: |
+  [Miro's official remote Model Context Protocol (MCP) server](https://developers.miro.com/docs/miro-mcp) lets AI agents work directly with Miro boards.
+
+  ## Features
+  - Search and summarize boards, decisions, and open questions
+  - Create boards, diagrams, layouts, documents, tables, and images
+  - Read, reply to, and resolve board comments
+  - Turn research, specifications, and plans into visual board content
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Miro Account**: Each user authenticates through OAuth and selects the Miro team containing the boards they want to use
+  - **Enterprise Approval**: Enterprise administrators may need to enable MCP for the organization and selected teams
+
+metadata:
+  categories: Design, Productivity, Developer Tools
+icon: https://miro.com/favicon.ico
+repoURL: https://developers.miro.com/docs/miro-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.miro.com/

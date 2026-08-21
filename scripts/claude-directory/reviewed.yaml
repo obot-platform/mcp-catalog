@@ -4,6 +4,10 @@ records:
     name: PayPal
     status: existing
     catalog_entry: remotes/paypal.yaml
+  - id: 0cce5c8c-7590-41d0-abbe-aa5c64961ac0
+    name: Lucid
+    status: imported
+    catalog_entry: remotes/lucid.yaml
   - id: 11ba10d9-477b-4988-bd1c-90a7fa680dc1
     name: Atlassian Rovo
     status: existing
@@ -12,10 +16,18 @@ records:
     name: Supabase
     status: existing
     catalog_entry: remotes/supabase.yaml
+  - id: 1ed68a66-c371-4d26-82dc-28e6c260ece8
+    name: Zoom for Claude
+    status: imported
+    catalog_entry: remotes/zoom.yaml
   - id: 1f6f271e-3d29-4241-b35e-8abe6def4891
     name: Zapier
     status: existing
     catalog_entry: remotes/zapier.yaml
+  - id: 22854937-9510-4b57-9230-62c820102d8f
+    name: Adobe for creativity
+    status: skipped
+    reason: Adobe documents this connector only for Claude, and the endpoint does not expose public OAuth discovery metadata needed to map authentication safely to Obot.
   - id: 2701e52f-b826-4aaf-8b25-11f2a97c98b0
     name: Gmail
     status: existing
@@ -40,10 +52,18 @@ records:
     name: Asana
     status: existing
     catalog_entry: remotes/asana.yaml
+  - id: 46d6322a-5f75-4822-b739-f49261805e9c
+    name: Sentry
+    status: imported
+    catalog_entry: remotes/sentry.yaml
   - id: 49e0f9ba-7d45-4fb6-b098-55eec956fbc6
     name: monday.com
     status: existing
     catalog_entry: remotes/mondaycom.yaml
+  - id: 4d608ca4-1664-4ddd-be1c-c88c0ea2ec7e
+    name: Granola
+    status: imported
+    catalog_entry: remotes/granola.yaml
   - id: 597f662f-36de-437e-836e-5a81013cbfbe
     name: Slack
     status: existing
@@ -56,10 +76,30 @@ records:
     name: Notion
     status: existing
     catalog_entry: remotes/notion.yaml
+  - id: 72480fb8-32ed-4075-b1c4-79e09c858b29
+    name: Miro
+    status: imported
+    catalog_entry: remotes/miro.yaml
   - id: 780a3621-8271-4822-bd0b-b9cab309375d
     name: Wix
     status: existing
     catalog_entry: remotes/wix.yaml
+  - id: 78cb9092-b837-4439-845d-fdccd5723e7f
+    name: Indeed
+    status: skipped
+    reason: Indeed's official MCP documentation states that this beta server is available only for the Claude Connector, so it is not currently portable to Obot.
+  - id: 7eb42afe-0087-4493-a105-da2b021d5c03
+    name: Vercel
+    status: skipped
+    reason: Vercel documents that its MCP OAuth server only accepts reviewed and approved clients, and Obot is not currently listed as a supported client.
+  - id: 80917cb7-3071-4fca-b053-a4262d356c60
+    name: Shopify
+    status: skipped
+    reason: Shopify recommends official per-client apps instead of custom connectors, and its MCP OAuth metadata exposes no registration method or Obot-compatible client setup.
+  - id: 81cc5080-a204-4aa1-a694-fa868a3c8721
+    name: PubMed
+    status: skipped
+    reason: This is an Anthropic-hosted Claude service with no authoritative documentation supporting use as a portable MCP endpoint outside Claude.
   - id: 875dee50-9b3f-452b-af8c-fbc839966273
     name: HubSpot
     status: existing
@@ -72,10 +112,22 @@ records:
     name: Exa
     status: existing
     catalog_entry: remotes/exa_search.yaml
+  - id: 934bf25a-e0d1-43ff-a488-b2c5567ec956
+    name: Excalidraw
+    status: imported
+    catalog_entry: remotes/excalidraw.yaml
   - id: a5380429-c773-4180-b642-301418240c8c
     name: Box
     status: imported
     catalog_entry: remotes/box.yaml
+  - id: a876b642-2b05-4808-a565-deeb271802fd
+    name: Docusign
+    status: imported
+    catalog_entry: remotes/docusign.yaml
+  - id: aa5a2bca-4004-49ea-bc2b-978162587a3a
+    name: ClickUp
+    status: imported
+    catalog_entry: remotes/clickup.yaml
   - id: b2def8dc-ae47-4d46-877a-19b6a6ebb771
     name: Intercom
     status: imported
@@ -88,10 +140,18 @@ records:
     name: Postman
     status: existing
     catalog_entry: remotes/postman.yaml
+  - id: ba1eef5a-c510-416e-b5fa-c34d523d81a1
+    name: Gamma
+    status: imported
+    catalog_entry: remotes/gamma.yaml
   - id: c758d038-d8eb-4421-b426-9dd68dc7f84a
     name: Figma
     status: imported
     catalog_entry: remotes/figma.yaml
+  - id: cb504fab-e494-490f-bff8-bb3ab23a2209
+    name: Airtable
+    status: imported
+    catalog_entry: remotes/airtable.yaml
   - id: ce0c9cda-5ea5-44c5-9cf2-40810dfa6582
     name: Microsoft 365
     status: skipped

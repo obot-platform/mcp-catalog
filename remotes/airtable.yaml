@@ -1,0 +1,26 @@
+name: Airtable
+entryKey: obot-airtable
+serverUserType: singleUser
+shortDescription: Search, analyze, create, and update structured Airtable data
+description: |
+  [Airtable's official remote Model Context Protocol (MCP) server](https://support.airtable.com/using-the-airtable-mcp-server) connects AI agents to Airtable bases while respecting each user's existing permissions.
+
+  ## Features
+  - Search bases and inspect tables, fields, and records
+  - Analyze structured operational data
+  - Create and update records, tables, and fields
+  - Control which bases and applications the integration can access
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Airtable Account**: Each user authenticates through OAuth and selects the bases available to the integration
+  - **Integration Permission**: Airtable administrators may need to allow third-party integrations for the organization
+
+metadata:
+  categories: Databases, Productivity, SaaS & API Integrations
+icon: https://airtable.com/favicon.ico
+repoURL: https://support.airtable.com/using-the-airtable-mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.airtable.com/mcp

@@ -1,0 +1,27 @@
+name: Docusign
+entryKey: obot-docusign
+serverUserType: singleUser
+shortDescription: Search agreements and manage Docusign envelopes and workflows
+description: |
+  [Docusign's official remote Model Context Protocol (MCP) server](https://developers.docusign.com/platform/mcp-server/) connects AI agents to agreements, envelopes, templates, users, and Maestro workflows.
+
+  ## Features
+  - Search agreements and retrieve agreement details
+  - Create, inspect, and update envelopes and recipients
+  - List, start, pause, resume, and cancel workflows
+  - Work with Docusign templates, accounts, and users
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Docusign Account**: Access to the Docusign products and agreement data used by the selected tools
+  - **Docusign Integration**: Create OAuth integration credentials, register the redirect URI shown by Obot, and enable the `signature`, `aow_manage`, and `adm_store_unified_repo_read` scopes as needed
+
+metadata:
+  categories: Business, Legal, SaaS & API Integrations
+icon: https://www.docusign.com/favicon.ico
+repoURL: https://developers.docusign.com/platform/mcp-server/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.docusign.com/mcp
+  staticOAuthRequired: true

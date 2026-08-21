@@ -1,0 +1,27 @@
+name: Zoom
+entryKey: obot-zoom
+serverUserType: singleUser
+shortDescription: Search meetings and retrieve Zoom recordings, transcripts, and notes
+description: |
+  [Zoom's official remote Model Context Protocol (MCP) server](https://developers.zoom.us/docs/mcp/zoom/) connects AI agents to Zoom meeting content and Zoom Hub resources.
+
+  ## Features
+  - Search meetings using natural language
+  - Retrieve recordings, transcripts, summaries, and next steps
+  - Access meeting assets and locate where topics were discussed
+  - Create notes and follow-up content in Zoom Hub
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Zoom Account**: A Zoom account with the required meeting and recording access
+  - **Zoom OAuth App**: Create an OAuth app, register the redirect URI shown by Obot, and grant the meeting, recording, notes, and Hub scopes needed by the tools you plan to use
+
+metadata:
+  categories: Communication, Productivity, SaaS & API Integrations
+icon: https://zoom.us/favicon.ico
+repoURL: https://developers.zoom.us/docs/mcp/zoom/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.zoom.us/mcp/zoom/streamable
+  staticOAuthRequired: true

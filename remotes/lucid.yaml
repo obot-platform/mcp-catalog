@@ -1,0 +1,26 @@
+name: Lucid
+entryKey: obot-lucid
+serverUserType: singleUser
+shortDescription: Search, summarize, share, and create Lucid diagrams and documents
+description: |
+  [Lucid's official remote Model Context Protocol (MCP) server](https://help.lucid.co/hc/en-us/articles/42578801807508-Integrate-Lucid-with-AI-tools-using-the-Lucid-MCP-server) connects AI agents to Lucidchart and Lucidspark content.
+
+  ## Features
+  - Search, retrieve, and summarize Lucid documents
+  - Create flowcharts, mind maps, org charts, and sequence diagrams
+  - Export diagrams and create document share links
+  - Share documents with collaborators
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Lucid Account**: Each user authenticates through OAuth and can access documents permitted by their Lucid account
+  - **Admin Approval**: Team and Enterprise administrators must enable MCP access in Lucid AI controls
+
+metadata:
+  categories: Design, Productivity, SaaS & API Integrations
+icon: https://lucid.co/favicon.ico
+repoURL: https://help.lucid.co/hc/en-us/articles/42578801807508-Integrate-Lucid-with-AI-tools-using-the-Lucid-MCP-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.lucid.app/mcp

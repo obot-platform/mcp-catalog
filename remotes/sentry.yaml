@@ -1,0 +1,25 @@
+name: Sentry
+entryKey: obot-sentry
+serverUserType: singleUser
+shortDescription: Search, investigate, and manage Sentry errors, issues, and projects
+description: |
+  [Sentry's official remote Model Context Protocol (MCP) server](https://docs.sentry.io/product/sentry-mcp/) connects AI agents to Sentry errors, issues, projects, releases, and performance data.
+
+  ## Features
+  - Search errors, transactions, issues, releases, tags, and documentation
+  - Retrieve issue details and event attachments
+  - Create and update projects, teams, and DSNs
+  - Run Seer analysis for root causes and suggested fixes
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Sentry Account**: Each user authenticates through OAuth and can access organizations and projects allowed by their Sentry permissions
+
+metadata:
+  categories: Developer Tools, Monitoring & Observability, DevOps
+icon: https://sentry.io/favicon.ico
+repoURL: https://docs.sentry.io/product/sentry-mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.sentry.dev/mcp
