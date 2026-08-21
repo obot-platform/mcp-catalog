@@ -1,10 +1,19 @@
 name: Monday.com
 entryKey: obot-monday-dot-com
 serverUserType: singleUser
-shortDescription: Manage Monday.com boards, items, workflows, and team collaboration
+shortDescription: Manage monday.com boards, items, workflows, and team collaboration
 description: |
+  > **⚠️ Upgrade notice**
+  >
+  > This entry now uses monday.com's current Streamable HTTP endpoint instead of the legacy SSE endpoint.
+  >
+  > - **Reconnect may be required:** Existing connections may need to authenticate again after the transport upgrade.
+  > - **Tool changes:** monday.com updates its hosted server automatically, so available tools and parameters may change over time.
+  > - **Same account access:** Tool calls continue to run as the connected user and cannot exceed that user's monday.com permissions.
 
-  A Model Context Protocol (MCP) server for monday.com integration, providing comprehensive work management capabilities through monday.com's API.
+  Connect to monday.com's hosted Model Context Protocol (MCP) server to work with boards, items, updates, workspaces, documents, dashboards, and other monday.com data.
+
+  See monday.com's [official MCP integration guide](https://developer.monday.com/api-reference/docs/integrate-with-monday-mcp) for current setup, authentication, and tool information.
 
   ## Features
   - **Access monday.com data from compatible AI applications**
@@ -17,16 +26,9 @@ description: |
 
   ## What you'll need to connect
 
-  **Step 1: Install the Monday MCP App**
-  
-  Before using service, you need to install the Monday MCP app from the marketplace:
-  
-  - Visit [monday MCP app in the marketplace](https://monday.com/marketplace/listing/10000806/monday-mcp)
-  - Click "Install" and follow the instructions to add it to your account
-  
-  **Step 2: Authentication**
-  
-  Authentication is handled automatically through OAuth2 workflow.
+  Ask your monday.com administrator to enable the hosted AI Connector for your account if it is not already available. Then connect with monday.com OAuth; public MCP clients use OAuth discovery and dynamic client registration automatically.
+
+  All tool calls use your monday.com identity and respect your account, workspace, board, and app-scope permissions. Organizations that need narrower scopes or client restrictions can configure their own monday.com OAuth app. A personal API token can also be used as a bearer token when OAuth is unavailable, but it should only be used for personal development or testing.
 
   ## Examples
   - "Create a new board for Q2 planning with status columns"
@@ -39,10 +41,10 @@ metadata:
   categories: Business, Project Management, Productivity
   allow-multiple: "true"
 icon: https://avatars.githubusercontent.com/u/61420283?s=48&v=4
-repoURL: https://github.com/mondaycom/mcp
+repoURL: https://developer.monday.com/api-reference/docs/integrate-with-monday-mcp
 runtime: remote
 remoteConfig:
-  fixedURL: https://mcp.monday.com/sse
+  fixedURL: https://mcp.monday.com/mcp
 toolPreview:
   # Board Operations
   - name: create_board
@@ -267,4 +269,4 @@ toolPreview:
   - name: get_type_details
     description: Get detailed information about a specific GraphQL type from monday.com API schema.
     params:
-      typeName: "The name of the GraphQL type to get details for" 
+      typeName: "The name of the GraphQL type to get details for"
