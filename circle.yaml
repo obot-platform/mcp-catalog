@@ -1,5 +1,5 @@
 name: Circle
-entryKey: circle
+entryKey: obot-circle
 serverUserType: singleUser
 shortDescription: Manage and analyze your Circle community through its official MCP server
 description: |

@@ -1,5 +1,7 @@
 # Catalog Validation
 
+New catalog entries must use an `entryKey` prefixed with `obot-`.
+
 After changing catalog YAML files, validate all entries before finishing:
 
 1. Check whether a compatible Obot CLI is installed by running `obot mcp validate-catalog-yaml --help`.
