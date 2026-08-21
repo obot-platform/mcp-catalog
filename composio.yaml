@@ -1,0 +1,80 @@
+name: Composio Connect
+entryKey: composio
+serverUserType: singleUser
+shortDescription: Connect your assistant to more than 1,000 apps through one MCP server
+description: |
+  Composio Connect is a hosted Model Context Protocol (MCP) server that gives your assistant access to more than 1,000 applications through one connection. Its small set of meta-tools discovers app-specific tools, connects accounts on demand, and executes actions without loading every integration into the model context.
+
+  ## Features
+  - Discover relevant tools across Gmail, Notion, Slack, GitHub, Linear, HubSpot, and many other apps
+  - Connect and manage upstream application accounts through user-approved authorization flows
+  - Fetch exact schemas and execute up to 50 independent actions in parallel
+  - Process large results with a persistent remote Python workbench or remote Bash sandbox
+
+  ## What you'll need to connect
+  - A Composio account
+  - A consumer API key from **Composio Dashboard → AI Clients**
+  - Browser access to authorize each upstream application when prompted
+
+  Connected applications persist across sessions and can be disconnected or reauthorized from the Composio dashboard.
+
+  ## Security guidance
+  Composio can act on every connected application's data and may expose destructive upstream operations. Review requested authorizations and require approval before writes, deletions, bulk execution, or connection changes. The remote workbench and Bash tools execute code in a Composio-hosted sandbox and should also require approval. Prefer dedicated vendor entries when you need a narrower, easier-to-audit tool surface.
+
+metadata:
+  categories: SaaS & API Integrations, Productivity, Developer Tools
+icon: https://composio.dev/favicon.ico
+repoURL: https://docs.composio.dev/docs/composio-connect
+runtime: remote
+remoteConfig:
+  fixedURL: https://connect.composio.dev/mcp
+  headers:
+  - name: Composio Consumer API Key
+    description: Consumer API key from the AI Clients page in your Composio dashboard
+    key: x-consumer-api-key
+    required: true
+    sensitive: true
+
+toolPreview:
+  - name: COMPOSIO_SEARCH_TOOLS
+    description: Discover relevant tools across supported apps and return an execution plan, connection status, and workflow session ID.
+    params:
+      queries: Structured natural-language tool searches to process in parallel
+      session: Session context used to start or continue a workflow
+      model: Optional client model name used to optimize search and planning
+  - name: COMPOSIO_GET_TOOL_SCHEMAS
+    description: Fetch complete input or output schemas for tool slugs returned by tool search.
+    params:
+      tool_slugs: Tool slugs whose schemas should be returned
+      include: Schema fields to include, such as input_schema or output_schema
+  - name: COMPOSIO_MULTI_EXECUTE_TOOL
+    description: Execute up to 50 independent discovered tools in parallel across connected applications.
+    params:
+      tools: Independent tools and schema-compliant arguments to execute
+      thought: Brief rationale for the execution
+      sync_response_to_workbench: Whether to save the full response in the remote workbench
+      current_step: Short identifier for the current workflow step
+      current_step_metric: Progress measurement for the current step
+      session_id: Workflow session ID returned by tool search
+  - name: COMPOSIO_MANAGE_CONNECTIONS
+    description: Check, create, reconnect, rename, or remove upstream application connections.
+    params:
+      toolkits: Toolkit slugs whose connection status should be checked or changed
+      reinitiate_all: Whether to replace existing connections with fresh authorization flows
+      session_id: Workflow session ID returned by tool search
+  - name: COMPOSIO_WAIT_FOR_CONNECTIONS
+    description: Wait for the user to finish an upstream application authorization flow.
+    params:
+  - name: COMPOSIO_REMOTE_WORKBENCH
+    description: Run Python in a persistent remote sandbox for bulk operations and processing large responses.
+    params:
+      code_to_execute: Python code to execute in the remote workbench
+      thought: Brief objective for this workbench step
+      current_step: Short identifier for the current workflow step
+      current_step_metric: Progress measurement for the current step
+      session_id: Workflow session ID returned by tool search
+  - name: COMPOSIO_REMOTE_BASH_TOOL
+    description: Run Bash commands in a remote sandbox for file operations and data processing.
+    params:
+      command: Bash command to execute in the remote sandbox
+      session_id: Workflow session ID returned by tool search

@@ -1,0 +1,28 @@
+name: Circle
+entryKey: circle
+serverUserType: singleUser
+shortDescription: Manage and analyze your Circle community through its official MCP server
+description: |
+  The official Circle Model Context Protocol (MCP) server connects your AI assistant to a Circle community through the Admin API v2.
+
+  ## Features
+  - Browse and search members, spaces, posts, events, courses, tags, analytics, and form submissions
+  - Summarize community activity and inspect live-room transcripts
+  - With Full access, manage members, content, events, courses, messages, tags, segments, and access groups
+
+  ## What you'll need to connect
+  - A Circle community on the Business plan or higher
+  - Community administrator access
+  - Browser access to complete OAuth authentication
+
+  Choose **Read only** during authorization unless you specifically need write operations. Full access grants admin-level create, update, messaging, and deletion capabilities; require approval before every write or delete tool call.
+
+  Circle MCP calls count against your Admin API allowance: 5,000 monthly requests on Business, 30,000 on Enterprise/Circle Plus, or 250,000 on Circle Plus Platform, with a rate limit of 2,000 requests per five minutes.
+
+metadata:
+  categories: Business, SaaS & API Integrations
+icon: https://circle.so/favicon.ico
+repoURL: https://api.circle.so/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://app.circle.so/api/mcp
