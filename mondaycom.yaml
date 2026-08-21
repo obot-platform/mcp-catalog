@@ -46,227 +46,660 @@ runtime: remote
 remoteConfig:
   fixedURL: https://mcp.monday.com/mcp
 toolPreview:
-  # Board Operations
-  - name: create_board
-    description: Create a new monday.com board with specified columns and structure.
+  - name: get_board_items_page
+    description: Use monday.com to get board items page.
     params:
-      boardName: "The name of the board to create"
-      boardDescription: "The description of the board to create"
-      boardKind: "The kind of board to create (private, public, share)"
-      workspaceId: "The ID of the workspace to create the board in"
-
-  - name: get_board_info
-    description: Get comprehensive board information including metadata, structure, owners, and configuration.
-    params:
-      boardId: "The id of the board to get information for"
-
-  - name: get_board_activity
-    description: Get board activity logs for a specified time range (defaults to last 30 days).
-    params:
-      boardId: "The id of the board to get activity for"
-      fromDate: "Start date for activity range (ISO8601DateTime format)"
-      toDate: "End date for activity range (ISO8601DateTime format)"
-
-  # Item Operations
+      boardId: Parameter for the get_board_items_page operation
+      columnIds: Parameter for the get_board_items_page operation
+      cursor: Parameter for the get_board_items_page operation
+      filters: Parameter for the get_board_items_page operation
+      filtersOperator: Parameter for the get_board_items_page operation
+      includeColumns: Parameter for the get_board_items_page operation
+      includeGroup: Parameter for the get_board_items_page operation
+      includeItemDescription: Parameter for the get_board_items_page operation
+      includeSubItems: Parameter for the get_board_items_page operation
+      itemIds: Parameter for the get_board_items_page operation
+      limit: Parameter for the get_board_items_page operation
+      orderBy: Parameter for the get_board_items_page operation
+      searchTerm: Parameter for the get_board_items_page operation
+      subItemLimit: Parameter for the get_board_items_page operation
   - name: create_item
-    description: Create a new item in a monday.com board with specified column values.
+    description: Use monday.com to create item.
     params:
-      boardId: "The id of the board to which the new item will be added"
-      name: "The name of the new item to be created"
-      columnValues: "A string containing the new column values for the item"
-      groupId: "The id of the group to which the new item will be added"
-
-  - name: get_board_items_by_name
-    description: Search for items by board ID and term/name.
+      boardId: Parameter for the create_item operation
+      columnValues: Parameter for the create_item operation
+      createLabelsIfMissing: Parameter for the create_item operation
+      duplicateFromItemId: Parameter for the create_item operation
+      groupId: Parameter for the create_item operation
+      name: Parameter for the create_item operation
+      parentItemId: Parameter for the create_item operation
+  - name: create_items
+    description: Use monday.com to create items.
     params:
-      boardId: "The board ID to search in"
-      term: "The search term to find items"
-
+      boardId: Parameter for the create_items operation
+      items: Parameter for the create_items operation
   - name: create_update
-    description: Create a new update/comment in a monday.com item.
+    description: Use monday.com to create update.
     params:
-      itemId: "The id of the item to which the update will be added"
-      body: "The update content to be created"
-
-  # Column Operations
-  - name: create_column
-    description: Create a new column in a monday.com board.
+      body: Parameter for the create_update operation
+      itemId: Parameter for the create_update operation
+      mentionsList: Parameter for the create_update operation
+      parentId: Parameter for the create_update operation
+  - name: get_updates
+    description: Use monday.com to get updates.
     params:
-      boardId: "The id of the board to which the new column will be added"
-      columnType: "The type of the column to be created"
-      columnTitle: "The title of the column to be created"
-      columnDescription: "The description of the column to be created"
-      columnSettings: "Column-specific configuration settings as a JSON string"
-
-  - name: get_column_type_info
-    description: Retrieves comprehensive information about a specific column type.
+      fromDate: Parameter for the get_updates operation
+      includeAssets: Parameter for the get_updates operation
+      includeItemUpdates: Parameter for the get_updates operation
+      includeReplies: Parameter for the get_updates operation
+      limit: Parameter for the get_updates operation
+      objectId: Parameter for the get_updates operation
+      objectType: Parameter for the get_updates operation
+      page: Parameter for the get_updates operation
+      toDate: Parameter for the get_updates operation
+  - name: get_board_activity
+    description: Use monday.com to get board activity.
     params:
-      columnType: "The column type to retrieve information for"
-
-  # Group Operations
-  - name: create_group
-    description: Create a new group in a monday.com board for organizing items.
+      boardId: Parameter for the get_board_activity operation
+      fromDate: Parameter for the get_board_activity operation
+      includeData: Parameter for the get_board_activity operation
+      itemIds: Parameter for the get_board_activity operation
+      toDate: Parameter for the get_board_activity operation
+      userIds: Parameter for the get_board_activity operation
+  - name: get_board_info
+    description: Use monday.com to get board info.
     params:
-      boardId: "The ID of the board to create the group in"
-      groupName: "The name of the new group"
-      groupColor: "The color for the group"
-      positionRelativeMethod: "Whether to position before or after another group"
-      relativeTo: "The ID of the group to position relative to"
-
-  # User & Team Management
+      boardId: Parameter for the get_board_info operation
   - name: list_users_and_teams
-    description: Precision-first user and team retrieval tool for getting user and team information.
+    description: Use monday.com to list users and teams.
     params:
-      getMe: "Get current authenticated user information"
-      name: "Name-based user search (fuzzy matching)"
-      userIds: "Specific user IDs to fetch (max 500)"
-      teamIds: "Specific team IDs to fetch (max 500)"
-      includeTeams: "Include general teams data alongside users"
-      teamsOnly: "Fetch only teams, no users returned"
-      includeTeamMembers: "Control team member data inclusion"
-
-  # Workspace Operations
-  - name: list_workspaces
-    description: List all workspaces available to the user.
+      getMe: Parameter for the list_users_and_teams operation
+      includeTeamMembers: Parameter for the list_users_and_teams operation
+      includeTeams: Parameter for the list_users_and_teams operation
+      name: Parameter for the list_users_and_teams operation
+      teamIds: Parameter for the list_users_and_teams operation
+      teamsOnly: Parameter for the list_users_and_teams operation
+      userIds: Parameter for the list_users_and_teams operation
+  - name: change_item_column_values
+    description: Use monday.com to change item column values.
     params:
-      random_string: "Dummy parameter for no-parameter tools"
-
-  - name: workspace_info
-    description: Get boards, docs and folders in a workspace and their folder organization.
+      boardId: Parameter for the change_item_column_values operation
+      columnValues: Parameter for the change_item_column_values operation
+      createLabelsIfMissing: Parameter for the change_item_column_values operation
+      itemId: Parameter for the change_item_column_values operation
+  - name: update_items
+    description: Use monday.com to update items.
     params:
-      workspace_id: "The ID of the workspace to get information for"
-
-  - name: create_workspace
-    description: Create a new workspace in monday.com.
+      boardId: Parameter for the update_items operation
+      updates: Parameter for the update_items operation
+  - name: create_board
+    description: Use monday.com to create board.
     params:
-      name: "The name of the new workspace to be created"
-      workspaceKind: "The kind of workspace to create (closed, open, template)"
-      description: "The description of the new workspace"
-      accountProductId: "The account product ID associated with the workspace"
-
-  - name: update_workspace
-    description: Update an existing workspace in monday.com.
-    params:
-      id: "The ID of the workspace to update"
-      attributes: "Attributes to update in the workspace"
-
-  # Folder Operations
-  - name: create_folder
-    description: Create a new folder in a monday.com workspace.
-    params:
-      workspaceId: "The ID of the workspace where the folder will be created"
-      name: "The name of the folder to be created"
-      color: "The color of the folder"
-      customIcon: "The custom icon of the folder"
-      fontWeight: "The font weight of the folder"
-      parentFolderId: "The ID of the parent folder"
-
-  - name: update_folder
-    description: Update an existing folder in monday.com.
-    params:
-      folderId: "The ID of the folder to update"
-      name: "The new name of the folder"
-      color: "The new color of the folder"
-      customIcon: "The new custom icon of the folder"
-      fontWeight: "The new font weight of the folder"
-      parentFolderId: "The ID of the new parent folder"
-      workspaceId: "The ID of the workspace containing the folder"
-
-  - name: move_object
-    description: Move a folder, board, or overview in monday.com.
-    params:
-      objectType: "The type of object to move (Board, Folder, Overview)"
-      id: "The ID of the object to move"
-      parentFolderId: "The ID of the new parent folder"
-      workspaceId: "The ID of the workspace containing the object"
-      position: "The new position of the object"
-
-  # Form Operations
+      boardDescription: Parameter for the create_board operation
+      boardKind: Parameter for the create_board operation
+      boardName: Parameter for the create_board operation
+      boardOwnerIds: Parameter for the create_board operation
+      useDatasetTemplate: Parameter for the create_board operation
+      useMlsTemplate: Parameter for the create_board operation
+      workspaceId: Parameter for the create_board operation
   - name: create_form
-    description: Create a monday.com form with a new board for storing responses.
+    description: Use monday.com to create form.
     params:
-      destination_workspace_id: "The workspace in which the form will be created"
-      destination_name: "The name of the board for storing form responses"
-      board_kind: "The board kind for the response board"
-      board_owner_ids: "Array of user IDs who will have owner permissions"
-      board_subscriber_ids: "Array of user IDs who will receive notifications"
-
-  - name: get_form
-    description: Get a monday.com form by its form token.
-    params:
-      formToken: "The unique identifier token for the form"
-
+      board_kind: Parameter for the create_form operation
+      board_owner_ids: Parameter for the create_form operation
+      board_owner_team_ids: Parameter for the create_form operation
+      board_subscriber_ids: Parameter for the create_form operation
+      board_subscriber_teams_ids: Parameter for the create_form operation
+      destination_folder_id: Parameter for the create_form operation
+      destination_folder_name: Parameter for the create_form operation
+      destination_name: Parameter for the create_form operation
+      destination_workspace_id: Parameter for the create_form operation
   - name: update_form
-    description: Update a monday.com form with various settings and configurations.
+    description: Use monday.com to update form.
     params:
-      formToken: "The unique identifier token for the form"
-      action: "The type of update action to perform"
-      form: "The form data to update"
-      formPassword: "Set a password on a form to restrict access"
-      tag: "The tag data to create, update or delete"
-
+      action: Parameter for the update_form operation
+      form: Parameter for the update_form operation
+      formPassword: Parameter for the update_form operation
+      formToken: Parameter for the update_form operation
+      tag: Parameter for the update_form operation
+  - name: get_form
+    description: Use monday.com to get form.
+    params:
+      formToken: Parameter for the get_form operation
   - name: form_questions_editor
-    description: Create, update, or delete a question in a monday.com form.
+    description: Use monday.com to form questions editor.
     params:
-      action: "The type of operation to perform (delete, update, create)"
-      formToken: "The unique identifier token for the form"
-      question: "The question object containing all properties"
-      questionId: "The unique identifier for the question"
-
-  # Document Operations
-  - name: read_docs
-    description: Get a collection of monday.com documents with their content as markdown.
+      action: Parameter for the form_questions_editor operation
+      formToken: Parameter for the form_questions_editor operation
+      question: Parameter for the form_questions_editor operation
+      questionId: Parameter for the form_questions_editor operation
+  - name: create_form_submission
+    description: Use monday.com to create form submission.
     params:
-      ids: "ID query object specifying type and array of values"
-      limit: "Number of docs per page (default: 25)"
-      order_by: "The order in which to retrieve docs (created_at, used_at)"
-      page: "The page number to return (starts at 1)"
-
-  - name: create_doc
-    description: Create a new monday.com doc either inside a workspace or attached to an item.
+      answers: Parameter for the create_form_submission operation
+      form_timezone_offset: Parameter for the create_form_submission operation
+      form_token: Parameter for the create_form_submission operation
+      password: Parameter for the create_form_submission operation
+      tags: Parameter for the create_form_submission operation
+  - name: create_column
+    description: Use monday.com to create column.
     params:
-      location: "Location where the document should be created"
-      doc_name: "Name for the new document"
-      markdown: "Markdown content for the document"
-
-  # Dashboard & Widget Operations
-  - name: create_dashboard
-    description: Create a new monday.com dashboard that aggregates data from boards.
+      boardId: Parameter for the create_column operation
+      columnDescription: Parameter for the create_column operation
+      columnSettings: Parameter for the create_column operation
+      columnTitle: Parameter for the create_column operation
+      columnType: Parameter for the create_column operation
+  - name: update_column
+    description: Use monday.com to update column.
     params:
-      name: "Human-readable dashboard title"
-      workspace_id: "ID of the workspace that will own the dashboard"
-      board_ids: "List of board IDs as strings (min 1 element)"
-      kind: "Visibility level (PUBLIC or PRIVATE)"
-      board_folder_id: "Optional folder ID to place dashboard"
-
-  - name: all_widgets_schema
-    description: Fetch complete JSON Schema 7 definitions for all available widget types.
+      boardId: Parameter for the update_column operation
+      columnDescription: Parameter for the update_column operation
+      columnId: Parameter for the update_column operation
+      columnSettings: Parameter for the update_column operation
+      columnTitle: Parameter for the update_column operation
+      columnType: Parameter for the update_column operation
+      revision: Parameter for the update_column operation
+  - name: create_group
+    description: Use monday.com to create group.
     params:
-      random_string: "Dummy parameter for no-parameter tools"
-
-  - name: create_widget
-    description: Create a new widget in a dashboard or board view with specific configuration.
-    params:
-      parent_container_id: "ID of the parent container (dashboard or board view)"
-      parent_container_type: "Type of parent container (DASHBOARD or BOARD_VIEW)"
-      widget_kind: "Type of widget to create (CHART, NUMBER, BATTERY)"
-      widget_name: "Widget display name"
-      settings: "Widget-specific settings as JSON object"
-
-  # Advanced API Operations
+      boardId: Parameter for the create_group operation
+      groupColor: Parameter for the create_group operation
+      groupName: Parameter for the create_group operation
+      positionRelativeMethod: Parameter for the create_group operation
+      relativeTo: Parameter for the create_group operation
   - name: all_monday_api
-    description: Execute any monday.com API operation by generating GraphQL queries dynamically.
+    description: Use monday.com to all monday api.
     params:
-      query: "Custom GraphQL query/mutation"
-      variables: "JSON string containing variables for the GraphQL operation"
-
+      query: Parameter for the all_monday_api operation
+      variables: Parameter for the all_monday_api operation
+  - name: all_api_read
+    description: Use monday.com to all api read.
+    params:
+      query: Parameter for the all_api_read operation
+      variables: Parameter for the all_api_read operation
+  - name: all_api_write
+    description: Use monday.com to all api write.
+    params:
+      query: Parameter for the all_api_write operation
+      variables: Parameter for the all_api_write operation
   - name: get_graphql_schema
-    description: Fetch the monday.com GraphQL schema structure including queries and mutations.
+    description: Use monday.com to get graphql schema.
     params:
-      operationType: "Type of operation: 'read' for queries, 'write' for mutations"
-      random_string: "Dummy parameter for no-parameter tools"
-
+      operationType: Parameter for the get_graphql_schema operation
+      random_string: Parameter for the get_graphql_schema operation
+  - name: get_column_type_info
+    description: Use monday.com to get column type info.
+    params:
+      columnType: Parameter for the get_column_type_info operation
+      fetchMode: Parameter for the get_column_type_info operation
   - name: get_type_details
-    description: Get detailed information about a specific GraphQL type from monday.com API schema.
+    description: Use monday.com to get type details.
     params:
-      typeName: "The name of the GraphQL type to get details for"
+      typeName: Parameter for the get_type_details operation
+  - name: create_notification
+    description: Use monday.com to create notification.
+    params:
+      target_id: Parameter for the create_notification operation
+      target_type: Parameter for the create_notification operation
+      text: Parameter for the create_notification operation
+      user_id: Parameter for the create_notification operation
+  - name: read_docs
+    description: Use monday.com to read docs.
+    params:
+      blocks_limit: Parameter for the read_docs operation
+      blocks_page: Parameter for the read_docs operation
+      comments_limit: Parameter for the read_docs operation
+      ids: Parameter for the read_docs operation
+      include_blocks: Parameter for the read_docs operation
+      include_comments: Parameter for the read_docs operation
+      include_diff: Parameter for the read_docs operation
+      limit: Parameter for the read_docs operation
+      mode: Parameter for the read_docs operation
+      order_by: Parameter for the read_docs operation
+      page: Parameter for the read_docs operation
+      since: Parameter for the read_docs operation
+      type: Parameter for the read_docs operation
+      until: Parameter for the read_docs operation
+      version_history_limit: Parameter for the read_docs operation
+  - name: workspace_info
+    description: Use monday.com to workspace info.
+    params:
+      workspace_id: Parameter for the workspace_info operation
+  - name: list_workspaces
+    description: Use monday.com to list workspaces.
+    params:
+      limit: Parameter for the list_workspaces operation
+      page: Parameter for the list_workspaces operation
+  - name: create_doc
+    description: Use monday.com to create doc.
+    params:
+      column_id: Parameter for the create_doc operation
+      docOwnerIds: Parameter for the create_doc operation
+      doc_kind: Parameter for the create_doc operation
+      doc_name: Parameter for the create_doc operation
+      folder_id: Parameter for the create_doc operation
+      item_id: Parameter for the create_doc operation
+      location: Parameter for the create_doc operation
+      markdown: Parameter for the create_doc operation
+      workspace_id: Parameter for the create_doc operation
+  - name: update_doc
+    description: Use monday.com to update doc.
+    params:
+      doc_id: Parameter for the update_doc operation
+      object_id: Parameter for the update_doc operation
+      operations: Parameter for the update_doc operation
+  - name: update_workspace
+    description: Use monday.com to update workspace.
+    params:
+      attributeAccountProductId: Parameter for the update_workspace operation
+      attributeDescription: Parameter for the update_workspace operation
+      attributeKind: Parameter for the update_workspace operation
+      attributeName: Parameter for the update_workspace operation
+      id: Parameter for the update_workspace operation
+  - name: update_folder
+    description: Use monday.com to update folder.
+    params:
+      accountProductId: Parameter for the update_folder operation
+      color: Parameter for the update_folder operation
+      customIcon: Parameter for the update_folder operation
+      folderId: Parameter for the update_folder operation
+      fontWeight: Parameter for the update_folder operation
+      name: Parameter for the update_folder operation
+      parentFolderId: Parameter for the update_folder operation
+      position_is_after: Parameter for the update_folder operation
+      position_object_id: Parameter for the update_folder operation
+      position_object_type: Parameter for the update_folder operation
+      workspaceId: Parameter for the update_folder operation
+  - name: create_workspace
+    description: Use monday.com to create workspace.
+    params:
+      accountProductId: Parameter for the create_workspace operation
+      description: Parameter for the create_workspace operation
+      name: Parameter for the create_workspace operation
+      workspaceKind: Parameter for the create_workspace operation
+  - name: create_folder
+    description: Use monday.com to create folder.
+    params:
+      color: Parameter for the create_folder operation
+      customIcon: Parameter for the create_folder operation
+      fontWeight: Parameter for the create_folder operation
+      name: Parameter for the create_folder operation
+      parentFolderId: Parameter for the create_folder operation
+      workspaceId: Parameter for the create_folder operation
+  - name: move_object
+    description: Use monday.com to move object.
+    params:
+      accountProductId: Parameter for the move_object operation
+      id: Parameter for the move_object operation
+      objectType: Parameter for the move_object operation
+      parentFolderId: Parameter for the move_object operation
+      position_is_after: Parameter for the move_object operation
+      position_object_id: Parameter for the move_object operation
+      position_object_type: Parameter for the move_object operation
+      workspaceId: Parameter for the move_object operation
+  - name: create_dashboard
+    description: Use monday.com to create dashboard.
+    params:
+      board_folder_id: Parameter for the create_dashboard operation
+      board_ids: Parameter for the create_dashboard operation
+      kind: Parameter for the create_dashboard operation
+      name: Parameter for the create_dashboard operation
+      workspace_id: Parameter for the create_dashboard operation
+  - name: all_widgets_schema
+    description: Use monday.com to all widgets schema.
+  - name: create_widget
+    description: Use monday.com to create widget.
+    params:
+      parent_container_id: Parameter for the create_widget operation
+      parent_container_type: Parameter for the create_widget operation
+      settings: Parameter for the create_widget operation
+      widget_kind: Parameter for the create_widget operation
+      widget_name: Parameter for the create_widget operation
+  - name: board_insights
+    description: Use monday.com to board insights.
+    params:
+      aggregations: Parameter for the board_insights operation
+      boardId: Parameter for the board_insights operation
+      filters: Parameter for the board_insights operation
+      filtersOperator: Parameter for the board_insights operation
+      groupBy: Parameter for the board_insights operation
+      limit: Parameter for the board_insights operation
+      orderBy: Parameter for the board_insights operation
+  - name: search
+    description: Use monday.com to search.
+    params:
+      boardIds: Parameter for the search operation
+      creatorIds: Parameter for the search operation
+      limit: Parameter for the search operation
+      searchTerm: Parameter for the search operation
+      searchType: Parameter for the search operation
+      workspaceIds: Parameter for the search operation
+  - name: get_user_context
+    description: Use monday.com to get user context.
+  - name: get_assets
+    description: Use monday.com to get assets.
+    params:
+      ids: Parameter for the get_assets operation
+  - name: create_view
+    description: Use monday.com to create view.
+    params:
+      boardId: Parameter for the create_view operation
+      filter: Parameter for the create_view operation
+      name: Parameter for the create_view operation
+      settings: Parameter for the create_view operation
+      sort: Parameter for the create_view operation
+      type: Parameter for the create_view operation
+  - name: update_view
+    description: Use monday.com to update view.
+    params:
+      boardId: Parameter for the update_view operation
+      filter: Parameter for the update_view operation
+      name: Parameter for the update_view operation
+      settings: Parameter for the update_view operation
+      sort: Parameter for the update_view operation
+      type: Parameter for the update_view operation
+      viewId: Parameter for the update_view operation
+  - name: create_view_table
+    description: Use monday.com to create view table.
+    params:
+      boardId: Parameter for the create_view_table operation
+      filter: Parameter for the create_view_table operation
+      name: Parameter for the create_view_table operation
+      settings: Parameter for the create_view_table operation
+      sort: Parameter for the create_view_table operation
+      tags: Parameter for the create_view_table operation
+  - name: update_view_table
+    description: Use monday.com to update view table.
+    params:
+      boardId: Parameter for the update_view_table operation
+      filter: Parameter for the update_view_table operation
+      name: Parameter for the update_view_table operation
+      settings: Parameter for the update_view_table operation
+      sort: Parameter for the update_view_table operation
+      tags: Parameter for the update_view_table operation
+      viewId: Parameter for the update_view_table operation
+  - name: get_asset_upload_url
+    description: Use monday.com to get asset upload url.
+    params:
+      contentType: Parameter for the get_asset_upload_url operation
+      fileName: Parameter for the get_asset_upload_url operation
+      fileSize: Parameter for the get_asset_upload_url operation
+  - name: finalize_asset_upload
+    description: Use monday.com to finalize asset upload.
+    params:
+      boardId: Parameter for the finalize_asset_upload operation
+      columnId: Parameter for the finalize_asset_upload operation
+      etag: Parameter for the finalize_asset_upload operation
+      itemId: Parameter for the finalize_asset_upload operation
+      uploadId: Parameter for the finalize_asset_upload operation
+  - name: manage_agent
+    description: Use monday.com to manage agent.
+    params:
+      action: Parameter for the manage_agent operation
+      agent_id: Parameter for the manage_agent operation
+      agent_model: Parameter for the manage_agent operation
+      avatar_url: Parameter for the manage_agent operation
+      background_color: Parameter for the manage_agent operation
+      gender: Parameter for the manage_agent operation
+      name: Parameter for the manage_agent operation
+      plan: Parameter for the manage_agent operation
+      prompt: Parameter for the manage_agent operation
+      role: Parameter for the manage_agent operation
+      role_description: Parameter for the manage_agent operation
+      user_prompt: Parameter for the manage_agent operation
+  - name: manage_agent_triggers
+    description: Use monday.com to manage agent triggers.
+    params:
+      action: Parameter for the manage_agent_triggers operation
+      agent_id: Parameter for the manage_agent_triggers operation
+      block_reference_id: Parameter for the manage_agent_triggers operation
+      field_values: Parameter for the manage_agent_triggers operation
+      node_id: Parameter for the manage_agent_triggers operation
+  - name: manage_agent_skills
+    description: Use monday.com to manage agent skills.
+    params:
+      action: Parameter for the manage_agent_skills operation
+      agent_id: Parameter for the manage_agent_skills operation
+      content: Parameter for the manage_agent_skills operation
+      description: Parameter for the manage_agent_skills operation
+      name: Parameter for the manage_agent_skills operation
+      skill_id: Parameter for the manage_agent_skills operation
+  - name: manage_agent_knowledge
+    description: Use monday.com to manage agent knowledge.
+    params:
+      action: Parameter for the manage_agent_knowledge operation
+      agent_id: Parameter for the manage_agent_knowledge operation
+      permission_type: Parameter for the manage_agent_knowledge operation
+      resource_id: Parameter for the manage_agent_knowledge operation
+      scope_type: Parameter for the manage_agent_knowledge operation
+  - name: agent_catalog
+    description: Use monday.com to agent catalog.
+    params:
+      action: Parameter for the agent_catalog operation
+      block_reference_ids: Parameter for the agent_catalog operation
+  - name: list_automations
+    description: Use monday.com to list automations.
+    params:
+      boardId: Parameter for the list_automations operation
+      cursor: Parameter for the list_automations operation
+      limit: Parameter for the list_automations operation
+  - name: manage_automations
+    description: Use monday.com to manage automations.
+    params:
+      action: Parameter for the manage_automations operation
+      workflowId: Parameter for the manage_automations operation
+  - name: create_automation
+    description: Use monday.com to create automation.
+    params:
+      boardId: Parameter for the create_automation operation
+      userPrompt: Parameter for the create_automation operation
+  - name: get_automation_runs
+    description: Use monday.com to get automation runs.
+    params:
+      accountWide: Parameter for the get_automation_runs operation
+      blockEventsOffset: Parameter for the get_automation_runs operation
+      boardId: Parameter for the get_automation_runs operation
+      filters: Parameter for the get_automation_runs operation
+      includeToolEvents: Parameter for the get_automation_runs operation
+      mode: Parameter for the get_automation_runs operation
+      nextPageOffset: Parameter for the get_automation_runs operation
+      toolEventsOffset: Parameter for the get_automation_runs operation
+      triggerUuid: Parameter for the get_automation_runs operation
+  - name: get_automation_statistics
+    description: Use monday.com to get automation statistics.
+    params:
+      accountWide: Parameter for the get_automation_statistics operation
+      boardId: Parameter for the get_automation_statistics operation
+      breakdown: Parameter for the get_automation_statistics operation
+      excludeAutomationIds: Parameter for the get_automation_statistics operation
+      runStatus: Parameter for the get_automation_statistics operation
+      userIds: Parameter for the get_automation_statistics operation
+  - name: submit_bug_or_feature_request
+    description: Use monday.com to submit bug or feature request.
+    params:
+      description: Parameter for the submit_bug_or_feature_request operation
+      kind: Parameter for the submit_bug_or_feature_request operation
+      title: Parameter for the submit_bug_or_feature_request operation
+      tool_name: Parameter for the submit_bug_or_feature_request operation
+  - name: get_monday_dev_sprints_boards
+    description: Use monday.com to get monday dev sprints boards.
+  - name: get_sprints_metadata
+    description: Use monday.com to get sprints metadata.
+    params:
+      limit: Parameter for the get_sprints_metadata operation
+      sprintsBoardId: Parameter for the get_sprints_metadata operation
+  - name: get_sprint_summary
+    description: Use monday.com to get sprint summary.
+    params:
+      sprintId: Parameter for the get_sprint_summary operation
+  - name: invoke_process_planner
+    description: Use monday.com to invoke process planner.
+    params:
+      prompt: Parameter for the invoke_process_planner operation
+  - name: invoke_workflow_expert
+    description: Use monday.com to invoke workflow expert.
+    params:
+      prompt: Parameter for the invoke_workflow_expert operation
+      workflowDraftId: Parameter for the invoke_workflow_expert operation
+      workflowObjectId: Parameter for the invoke_workflow_expert operation
+  - name: validate_workflow
+    description: Use monday.com to validate workflow.
+    params:
+      workflowDraftId: Parameter for the validate_workflow operation
+      workflowObjectId: Parameter for the validate_workflow operation
+  - name: create_workflow
+    description: Use monday.com to create workflow.
+    params:
+      description: Parameter for the create_workflow operation
+      folderId: Parameter for the create_workflow operation
+      ownerIds: Parameter for the create_workflow operation
+      privacyKind: Parameter for the create_workflow operation
+      title: Parameter for the create_workflow operation
+      workspaceId: Parameter for the create_workflow operation
+  - name: publish_workflow
+    description: Use monday.com to publish workflow.
+    params:
+      shouldActivate: Parameter for the publish_workflow operation
+      workflowDraftId: Parameter for the publish_workflow operation
+      workflowObjectId: Parameter for the publish_workflow operation
+  - name: explore_meetings
+    description: Use monday.com to explore meetings.
+    params:
+      access: Parameter for the explore_meetings operation
+      limit: Parameter for the explore_meetings operation
+      query: Parameter for the explore_meetings operation
+      start_time_from: Parameter for the explore_meetings operation
+      start_time_to: Parameter for the explore_meetings operation
+  - name: search_meetings_content
+    description: Use monday.com to search meetings content.
+    params:
+      access: Parameter for the search_meetings_content operation
+      limit: Parameter for the search_meetings_content operation
+      query: Parameter for the search_meetings_content operation
+      search_in: Parameter for the search_meetings_content operation
+      start_time_from: Parameter for the search_meetings_content operation
+      start_time_to: Parameter for the search_meetings_content operation
+  - name: get_meetings_content
+    description: Use monday.com to get meetings content.
+    params:
+      access: Parameter for the get_meetings_content operation
+      ids: Parameter for the get_meetings_content operation
+      include_action_items: Parameter for the get_meetings_content operation
+      include_summary: Parameter for the get_meetings_content operation
+      include_topics: Parameter for the get_meetings_content operation
+      include_transcript: Parameter for the get_meetings_content operation
+      search: Parameter for the get_meetings_content operation
+  - name: show-chart
+    description: Use monday.com to show chart.
+    params:
+      data: Parameter for the show-chart operation
+      title: Parameter for the show-chart operation
+      type: Parameter for the show-chart operation
+  - name: show-table
+    description: Use monday.com to show table.
+    params:
+      boardId: Parameter for the show-table operation
+      currentlySelectedItemIdForShowingUpdates: Parameter for the show-table operation
+      filters: Parameter for the show-table operation
+      filtersOperator: Parameter for the show-table operation
+  - name: show-assign
+    description: Use monday.com to show assign.
+    params:
+      assignments: Parameter for the show-assign operation
+      title: Parameter for the show-assign operation
+  - name: show-battery
+    description: Use monday.com to show battery.
+    params:
+      data: Parameter for the show-battery operation
+  - name: execute_code
+    description: Use monday.com to execute code.
+    params:
+      code: Parameter for the execute_code operation
+      description: Parameter for the execute_code operation
+      files: Parameter for the execute_code operation
+      language: Parameter for the execute_code operation
+      output_files: Parameter for the execute_code operation
+      return_outputs: Parameter for the execute_code operation
+      vars: Parameter for the execute_code operation
+  - name: create_action
+    description: Use monday.com to create action.
+    params:
+      code: Parameter for the create_action operation
+      description: Parameter for the create_action operation
+      language: Parameter for the create_action operation
+      name: Parameter for the create_action operation
+      output_description: Parameter for the create_action operation
+      vars_schema: Parameter for the create_action operation
+  - name: get_action
+    description: Use monday.com to get action.
+    params:
+      id: Parameter for the get_action operation
+  - name: list_actions
+    description: Use monday.com to list actions.
+  - name: update_action
+    description: Use monday.com to update action.
+    params:
+      code: Parameter for the update_action operation
+      description: Parameter for the update_action operation
+      id: Parameter for the update_action operation
+      language: Parameter for the update_action operation
+      name: Parameter for the update_action operation
+      output_description: Parameter for the update_action operation
+      vars_schema: Parameter for the update_action operation
+  - name: delete_action
+    description: Use monday.com to delete action.
+    params:
+      id: Parameter for the delete_action operation
+  - name: run_action
+    description: Use monday.com to run action.
+    params:
+      id: Parameter for the run_action operation
+      vars: Parameter for the run_action operation
+  - name: get_monday_knowledge
+    description: Use monday.com to get monday knowledge.
+    params:
+      kind: Parameter for the get_monday_knowledge operation
+      query: Parameter for the get_monday_knowledge operation
+  - name: vibe_create
+    description: Use monday.com to vibe create.
+    params:
+      board_ids: Parameter for the vibe_create operation
+      model: Parameter for the vibe_create operation
+      prompt: Parameter for the vibe_create operation
+      variant: Parameter for the vibe_create operation
+      view_id: Parameter for the vibe_create operation
+  - name: vibe_update
+    description: Use monday.com to vibe update.
+    params:
+      app_id: Parameter for the vibe_update operation
+      model: Parameter for the vibe_update operation
+      prompt: Parameter for the vibe_update operation
+  - name: vibe_get
+    description: Use monday.com to vibe get.
+    params:
+      app_id: Parameter for the vibe_get operation
+      include: Parameter for the vibe_get operation
+  - name: vibe_list
+    description: Use monday.com to vibe list.
+    params:
+      is_published: Parameter for the vibe_list operation
+      limit: Parameter for the vibe_list operation
+      page: Parameter for the vibe_list operation
+      search_term: Parameter for the vibe_list operation
+      status: Parameter for the vibe_list operation
+  - name: vibe_ask
+    description: Use monday.com to vibe ask.
+    params:
+      app_id: Parameter for the vibe_ask operation
+      model: Parameter for the vibe_ask operation
+      prompt: Parameter for the vibe_ask operation
+      timeout_ms: Parameter for the vibe_ask operation
+  - name: vibe_publication
+    description: Use monday.com to vibe publication.
+    params:
+      action: Parameter for the vibe_publication operation
+      app_id: Parameter for the vibe_publication operation
+  - name: vibe_delete
+    description: Use monday.com to vibe delete.
+    params:
+      app_id: Parameter for the vibe_delete operation
