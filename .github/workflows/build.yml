@@ -26,4 +26,4 @@ jobs:
           cache: false
 
       - name: Validate catalog YAML
-        run: go -C .obot run . mcp validate-catalog-yaml --require-entry-key "$GITHUB_WORKSPACE"/*.yaml
+        run: go -C .obot run . mcp validate-catalog-yaml --require-entry-key "$GITHUB_WORKSPACE"
