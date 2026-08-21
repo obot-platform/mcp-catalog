@@ -5,7 +5,7 @@ shortDescription: Get up-to-date, version-specific code documentation and exampl
 description: |
   > **⚠️ Upgrade notice**
   >
-  > This upgrade replaces the Obot-hosted Context7 server with Context7's official hosted MCP server.
+  > If you're upgrading this server, note that this replaces the Obot-hosted Context7 server with Context7's official hosted MCP server.
   >
   > - **Reconnect required:** Select OAuth or anonymous/API-key access. The previous minimum-token setting is no longer used.
   > - **Authentication:** OAuth, anonymous access, and optional API-key access are now supported.

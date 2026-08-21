@@ -5,7 +5,7 @@ shortDescription: Connect to Postman collections, workspaces, environments, mock
 description: |
   > **⚠️ Upgrade notice**
   >
-  > This upgrade updates the Postman entry to the current official hosted MCP server configuration.
+  > If you're upgrading this server, note that this updates the Postman-hosted connection with OAuth support and selectable region and tool configurations.
   >
   > - **Configuration review required:** Select the US or EU region and a tool configuration when reconnecting.
   > - **Authentication:** The US service now supports OAuth without an API key; the EU service still requires a Postman API key.
