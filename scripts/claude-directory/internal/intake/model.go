@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net"
 	"net/url"
+	"slices"
 	"strconv"
 	"strings"
 	"time"
@@ -92,10 +93,8 @@ func hasRemoteStreamableHTTP(value any) bool {
 			}
 		}
 	case []any:
-		for _, child := range current {
-			if hasRemoteStreamableHTTP(child) {
-				return true
-			}
+		if slices.ContainsFunc(current, hasRemoteStreamableHTTP) {
+			return true
 		}
 	}
 	return false
