@@ -54,7 +54,7 @@ env:
     description: Allow potentially destructive write operations.
 runtime: remote
 remoteConfig:
-  URLTemplate: https://mcp.supabase.com/mcp?read_only=${READ_ONLY}
+  urlTemplate: https://mcp.supabase.com/mcp?read_only=${READ_ONLY}
   headers:
   - name: Supabase Personal Access Token
     description: Optional. Provide a Supabase personal access token for non-interactive authentication. OAuth is used when omitted.

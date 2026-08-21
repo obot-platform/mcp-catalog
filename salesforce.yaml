@@ -70,5 +70,5 @@ env:
         description: Find and delete records for data-hygiene workflows.
 runtime: remote
 remoteConfig:
-  URLTemplate: https://api.salesforce.com/platform/mcp/v1/${SALESFORCE_SOBJECT_SERVER}
+  urlTemplate: https://api.salesforce.com/platform/mcp/v1/${SALESFORCE_SOBJECT_SERVER}
   staticOAuthRequired: true

@@ -49,7 +49,7 @@ env:
     description: PagerDuty EU region
 runtime: remote
 remoteConfig:
-  URLTemplate: https://${PAGERDUTY_MCP_HOST}/mcp
+  urlTemplate: https://${PAGERDUTY_MCP_HOST}/mcp
   headers:
   - name: PagerDuty API Key
     description: PagerDuty User API token from My Profile > User Settings > API Access

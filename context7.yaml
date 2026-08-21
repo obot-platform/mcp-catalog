@@ -46,7 +46,7 @@ env:
     description: Connect anonymously or authenticate using a Context7 API key
 runtime: remote
 remoteConfig:
-  URLTemplate: https://mcp.context7.com/${CONTEXT7_ENDPOINT}
+  urlTemplate: https://mcp.context7.com/${CONTEXT7_ENDPOINT}
   headers:
   - name: Context7 API Key
     description: Optional API key for higher limits and private sources; leave blank for anonymous access or OAuth

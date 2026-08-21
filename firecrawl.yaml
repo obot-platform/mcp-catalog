@@ -52,7 +52,7 @@ env:
     description: Use an optional Firecrawl API key or limited keyless access
 runtime: remote
 remoteConfig:
-  URLTemplate: https://mcp.firecrawl.dev/${FIRECRAWL_ENDPOINT}
+  urlTemplate: https://mcp.firecrawl.dev/${FIRECRAWL_ENDPOINT}
   headers:
   - name: Firecrawl API Key
     description: Optional API key for the full API-key tool surface; leave blank for OAuth or limited keyless access

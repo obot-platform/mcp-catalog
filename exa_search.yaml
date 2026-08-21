@@ -49,7 +49,7 @@ env:
     description: Connect anonymously or authenticate with an API key.
 runtime: remote
 remoteConfig:
-  URLTemplate: https://mcp.exa.ai/${EXA_ENDPOINT}
+  urlTemplate: https://mcp.exa.ai/${EXA_ENDPOINT}
   headers:
   - name: Exa API Key
     description: Optional API key for higher limits and Exa Agent access; leave blank for anonymous access or OAuth.

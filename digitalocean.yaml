@@ -118,7 +118,7 @@ env:
     value: genai-evaluation
     description: Manage datasets and evaluation workflows for AI deployments.
 remoteConfig:
-  URLTemplate: https://${DIGITALOCEAN_SERVICE}.mcp.digitalocean.com/mcp
+  urlTemplate: https://${DIGITALOCEAN_SERVICE}.mcp.digitalocean.com/mcp
   headers:
   - name: DigitalOcean API Token
     description: Personal access token with permissions for the selected service
