@@ -43,4 +43,3 @@ toolPreview:
     description: Fetch and convert a Microsoft Learn documentation page to markdown format. Retrieves the latest complete content of Microsoft documentation pages including Azure, .NET, Microsoft 365, and other Microsoft technologies. Use this when search results provide incomplete information or when you need complete step-by-step procedures, tutorials, troubleshooting sections, or detailed explanations.
     params:
       url: "URL of the Microsoft documentation page to read (must be a valid link from the microsoft.com domain)"
-

@@ -63,4 +63,3 @@ toolPreview:
   params:
     investment_ids: List of Morningstar Investment IDs for funds/ETFs (up to 10)
     num_holdings: Number of holdings to retrieve per fund (10-100)
-

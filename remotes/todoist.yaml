@@ -186,4 +186,3 @@ toolPreview:
     description: Fetch the full contents of a task or project by its ID. The ID should be in the format "task:{id}" or "project:{id}". OpenAI MCP compatible.
     params:
       id: "A unique identifier for the document in the format 'task:{id}' or 'project:{id}' (required)"
-

@@ -55,4 +55,3 @@ toolPreview:
   description: Fetch and read content from a URL, converting it to clean markdown format. Use this tool to read the full content from URLs returned by ref_search_documentation. Ref intelligently extracts the most relevant 5k tokens from the page based on your search history, filtering out irrelevant sections. This is more efficient than standard web scraping which can pull in 20k+ tokens of mostly irrelevant content.
   params:
     url: The complete URL of the webpage to read (typically from ref_search_documentation results)
-

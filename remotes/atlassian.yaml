@@ -265,4 +265,3 @@ repoURL: https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-st
 runtime: remote
 remoteConfig:
   fixedURL: https://mcp.atlassian.com/v1/mcp
-

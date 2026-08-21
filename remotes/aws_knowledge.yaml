@@ -75,4 +75,3 @@ toolPreview:
   description: Get content recommendations for an AWS documentation page. Returns four categories - highly rated (popular pages), new (recently added), similar (related topics), and journey (commonly viewed next).
   params:
     url: URL of the AWS documentation page to get recommendations for (must be from docs.aws.amazon.com domain)
-

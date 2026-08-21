@@ -179,4 +179,3 @@ toolPreview:
     plan: Pricing plan for the Key Value instance (free, starter, standard, pro, pro_plus)
     region: Region where the Key Value instance will be deployed (oregon, frankfurt, singapore, ohio, virginia) (optional)
     maxmemoryPolicy: The eviction policy for the Key Value store (noeviction, allkeys_lfu, allkeys_lru, allkeys_random, volatile_lfu, volatile_lru, volatile_random, volatile_ttl) (optional)
-
