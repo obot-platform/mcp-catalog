@@ -92,7 +92,7 @@ func (f Fetcher) Fetch(ctx context.Context, apiURL string) (Snapshot, error) {
 	}
 
 	connectors := make([]Connector, 0, len(records))
-	seenIDs := map[string]bool{}
+	seenIDs := map[string]struct{}{}
 	duplicateCount := 0
 	for _, raw := range records {
 		if !eligibleRemoteStreamableHTTP(raw) {
@@ -102,11 +102,11 @@ func (f Fetcher) Fetch(ctx context.Context, apiURL string) (Snapshot, error) {
 		if err != nil {
 			return Snapshot{}, err
 		}
-		if seenIDs[connector.ID] {
+		if _, seen := seenIDs[connector.ID]; seen {
 			duplicateCount++
 			continue
 		}
-		seenIDs[connector.ID] = true
+		seenIDs[connector.ID] = struct{}{}
 		connectors = append(connectors, connector)
 	}
 	rankConnectors(connectors)
@@ -137,6 +137,9 @@ func cloneValues(source url.Values) url.Values {
 	return result
 }
 
+// decodePage normalizes the response envelopes used by the Claude and Anthropic
+// directory APIs. Connector records remain json.RawMessage so their complete
+// source JSON is preserved without coercing numbers through float64.
 func decodePage(body []byte) ([]json.RawMessage, string, int, error) {
 	var root map[string]json.RawMessage
 	if err := json.Unmarshal(body, &root); err != nil {
