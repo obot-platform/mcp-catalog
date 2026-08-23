@@ -1,0 +1,78 @@
+name: Microsoft Dataverse
+entryKey: obot-dataverse
+serverUserType: singleUser
+shortDescription: Query and manage Microsoft Dataverse tables, rows, and schema
+description: |
+  A Model Context Protocol (MCP) server built and hosted by Microsoft directly on top of
+  Dataverse — the data platform behind Power Apps, Power Automate, and Dynamics 365. Each
+  Dataverse environment exposes its own MCP endpoint.
+
+  ## Features
+  - **Schema discovery**: list tables, describe table/column definitions, relationships, and
+    option sets
+  - **Query data**: query and search rows (metadata search plus, when Dataverse search is
+    enabled, full data search via `search_data`)
+  - **Create & update rows**: create and update records directly
+  - **Security-aware**: every request is scoped to the connected user's Dataverse security roles
+    and row-level security — the agent can only see/change what that user could see/change by hand
+
+  ## What you'll need to connect
+  Microsoft documents two ways to reach the server; this entry uses the **remote endpoint** style
+  (the local-proxy/`npx @microsoft/dataverse` style is meant for a single desktop MCP client, not a
+  hosted platform like Obot).
+
+  A Dataverse admin needs to do a one-time setup, similar to Salesforce's External Client App flow:
+  1. In the **Power Platform admin center**, under *Features > Dataverse Model Context Protocol*,
+     turn the MCP client on for the environment.
+  2. Register an app in **Microsoft Entra ID** and grant it the **`mcp.tools`** permission under
+     the *Dynamics CRM API*.
+  3. Add that app's **Application (client) ID** to the environment's allowed-clients list in the
+     admin center.
+  4. Configure that app's Client ID/Secret in Obot's static OAuth settings for this catalog entry.
+
+  Then, for each connection, you just need your **Dataverse environment URL** (found in Power Apps
+  under the gear icon → *Session details*), e.g. `https://yourorg.crm.dynamics.com`.
+
+  ## Important limitations
+  - Starting December 15, 2025, Microsoft charges for Dataverse MCP tool use by agents built
+    **outside** Copilot Studio — unless the calling user already holds a qualifying Dynamics 365
+    Premium license or a Microsoft 365 Copilot User Subscription License (USL). Confirm licensing
+    before rolling this out broadly.
+  - `search_data` requires Dataverse search to be enabled on the environment.
+  - One catalog connection is scoped to one Dataverse environment URL; a second environment (e.g.
+    a sandbox) needs its own connection.
+
+  ## Examples
+  - "Show me the tables in Dataverse"
+  - "Describe the account table"
+  - "How many accounts do I have?"
+  - "Create a new contact row for Jane Doe"
+
+  ---
+  _Draft catalog entry — before merging:_
+  - _Confirm with a live connection whether Obot's static-OAuth flow (client ID/secret, like
+    Salesforce) is what Dataverse's custom Entra app registration expects, versus a lighter
+    per-user consent — the docs describe an admin-managed allow-list, which reads like the
+    Salesforce pattern, but this hasn't been tested end-to-end here._
+  - _Capture a real `toolPreview` (`describe`, `search`, `search_data`, create/update row tools,
+    etc.) by connecting once and calling `tools/list` — Microsoft's docs name the tools in prose
+    but don't publish the exact MCP tool/parameter schema._
+  - _Double-check the `/api/mcp` vs `/api/mcp_preview` path — preview tools need an extra admin
+    toggle._
+
+metadata:
+  categories: Business, CRM
+  icon: https://logo.clearbit.com/microsoft.com
+  repoURL: https://learn.microsoft.com/en-us/power-apps/maker/data-platform/data-platform-mcp-other-clients
+
+env:
+  - key: DATAVERSE_ENVIRONMENT_URL
+    name: Dataverse Environment URL
+    required: true
+    sensitive: false
+    description: "Your Dataverse environment's base URL, e.g. https://yourorg.crm.dynamics.com (find it in Power Apps under the gear icon > Session details)."
+
+runtime: remote
+remoteConfig:
+  urlTemplate: ${DATAVERSE_ENVIRONMENT_URL}/api/mcp
+  staticOAuthRequired: true
