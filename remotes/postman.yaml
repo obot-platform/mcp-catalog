@@ -9,6 +9,8 @@ upgradeNote: |
   - **Authentication:** The US service now supports OAuth without an API key; the EU service still requires a Postman API key.
   - **New option:** The `code` tool configuration adds API-discovery and code-generation tools alongside `minimal` and `mcp`.
 description: |
+  Postman's official hosted Model Context Protocol (MCP) server connects AI agents directly to Postman resources.
+
   > **⚠️ Upgrade notice**
   >
   > If you're upgrading this server, note that this updates the Postman-hosted connection with OAuth support and selectable region and tool configurations.
@@ -16,8 +18,6 @@ description: |
   > - **Configuration review required:** Select the US or EU region and a tool configuration when reconnecting.
   > - **Authentication:** The US service now supports OAuth without an API key; the EU service still requires a Postman API key.
   > - **New option:** The `code` tool configuration adds API-discovery and code-generation tools alongside `minimal` and `mcp`.
-
-  Postman's official hosted Model Context Protocol (MCP) server connects AI agents directly to Postman resources.
 
   See the [official Postman MCP documentation](https://www.postman.com/product/mcp-server/) for setup, authentication, regions, and tool sets.
 

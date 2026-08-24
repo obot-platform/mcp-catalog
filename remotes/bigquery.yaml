@@ -9,6 +9,8 @@ upgradeNote: |
   - **Tool changes:** Tool names and parameters change, and custom parameterized tools are no longer supported.
   - **New limits:** Managed queries have documented duration and result-size limits.
 description: |
+  Connect to Google's managed BigQuery MCP server to discover datasets and tables, inspect metadata, and run read-only or general SQL queries.
+
   > **⚠️ Upgrade notice**
   >
   > If you're upgrading this server, note that this replaces the Obot-hosted **BigQuery Toolbox** server with Google's managed BigQuery MCP server.
@@ -16,8 +18,6 @@ description: |
   > - **Reconnect required:** Connect with Google OAuth. The previous service-account JSON, project, dataset, and custom tools YAML settings are no longer used.
   > - **Tool changes:** Tool names and parameters change, and custom parameterized tools are no longer supported.
   > - **New limits:** Managed queries have documented duration and result-size limits.
-
-  Connect to Google's managed BigQuery MCP server to discover datasets and tables, inspect metadata, and run read-only or general SQL queries.
 
   See Google's [official BigQuery MCP documentation](https://cloud.google.com/bigquery/docs/use-bigquery-mcp) for setup instructions, authentication requirements, and current capabilities.
 

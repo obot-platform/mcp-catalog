@@ -9,6 +9,8 @@ upgradeNote: |
   - **Tool changes:** Product-specific native tools are replaced by the `docs`, `search`, and `execute` Code Mode tools. Existing tool names and parameters will change.
   - **Specialized workflows:** Cloudflare's product-specific MCP servers remain available for targeted workflows, but are no longer selectable through this catalog entry.
 description: |
+  Cloudflare's official, vendor-hosted API MCP server gives agents access to the full Cloudflare API without loading thousands of endpoint schemas into the model context. It searches Cloudflare documentation and the OpenAPI specification, then runs model-written JavaScript in an isolated Worker to make authorized Cloudflare API requests.
+
   > **⚠️ Upgrade notice**
   >
   > If you're upgrading this server, note that this entry now connects to Cloudflare's consolidated API MCP server instead of letting you choose a product-specific `*.mcp.cloudflare.com` server.
@@ -16,8 +18,6 @@ description: |
   > - **Reconnect required:** Connect with Cloudflare OAuth or provide a scoped Cloudflare API token. The previous custom server URL is no longer used.
   > - **Tool changes:** Product-specific native tools are replaced by the `docs`, `search`, and `execute` Code Mode tools. Existing tool names and parameters will change.
   > - **Specialized workflows:** Cloudflare's product-specific MCP servers remain available for targeted workflows, but are no longer selectable through this catalog entry.
-
-  Cloudflare's official, vendor-hosted API MCP server gives agents access to the full Cloudflare API without loading thousands of endpoint schemas into the model context. It searches Cloudflare documentation and the OpenAPI specification, then runs model-written JavaScript in an isolated Worker to make authorized Cloudflare API requests.
 
   See the [Cloudflare API MCP repository](https://github.com/cloudflare/mcp) and [Cloudflare's MCP server documentation](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/) for current setup instructions and capabilities.
 
