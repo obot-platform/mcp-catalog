@@ -2,6 +2,12 @@ name: Salesforce
 entryKey: obot-salesforce
 serverUserType: singleUser
 shortDescription: Access Salesforce records through Salesforce's hosted MCP servers
+upgradeNote: |
+  This replaces the Obot-hosted Salesforce server with Salesforce's official hosted MCP servers.
+
+  - **Reconnect required:** A Salesforce administrator must activate the selected SObject server and configure an External Client App for Obot's static OAuth connection.
+  - **Authentication change:** The previous per-connection client ID, client secret, and Salesforce domain settings are no longer used.
+  - **Tool changes:** Select a read, mutation, deletion, or full SObject server; tools and parameters differ from the previous server.
 description: |
   > **⚠️ Upgrade notice**
   >

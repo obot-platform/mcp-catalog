@@ -2,6 +2,12 @@ name: Monday.com
 entryKey: obot-monday-dot-com
 serverUserType: singleUser
 shortDescription: Manage monday.com boards, items, workflows, and team collaboration
+upgradeNote: |
+  This entry now uses monday.com's current Streamable HTTP endpoint instead of the legacy SSE endpoint.
+
+  - **Reconnect may be required:** Existing connections may need to authenticate again after the transport upgrade.
+  - **Tool changes:** monday.com updates its hosted server automatically, so available tools and parameters may change over time.
+  - **Same account access:** Tool calls continue to run as the connected user and cannot exceed that user's monday.com permissions.
 description: |
   > **⚠️ Upgrade notice**
   >

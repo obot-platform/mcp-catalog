@@ -2,6 +2,12 @@ name: Google Cloud Run
 entryKey: obot-google-cloud-run
 serverUserType: singleUser
 shortDescription: Inspect and deploy Cloud Run services through Google's managed MCP server
+upgradeNote: |
+  This replaces the Obot-hosted Cloud Run server with Google's managed Cloud Run MCP server.
+
+  - **Reconnect required:** Connect with Google OAuth. The previous service-account credentials and default-region setting are no longer used.
+  - **Tool changes:** Tool names and parameters change. Project listing, project creation, and service-log retrieval are no longer available.
+  - **New capability:** Source-archive deployment is now available.
 description: |
   > **⚠️ Upgrade notice**
   >

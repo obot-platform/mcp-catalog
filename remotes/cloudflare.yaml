@@ -2,6 +2,12 @@ name: Cloudflare
 entryKey: obot-cloudflare
 serverUserType: singleUser
 shortDescription: Search and manage the full Cloudflare API through Cloudflare's Code Mode MCP server
+upgradeNote: |
+  This entry now connects to Cloudflare's consolidated API MCP server instead of letting you choose a product-specific `*.mcp.cloudflare.com` server.
+
+  - **Reconnect required:** Connect with Cloudflare OAuth or provide a scoped Cloudflare API token. The previous custom server URL is no longer used.
+  - **Tool changes:** Product-specific native tools are replaced by the `docs`, `search`, and `execute` Code Mode tools. Existing tool names and parameters will change.
+  - **Specialized workflows:** Cloudflare's product-specific MCP servers remain available for targeted workflows, but are no longer selectable through this catalog entry.
 description: |
   > **⚠️ Upgrade notice**
   >

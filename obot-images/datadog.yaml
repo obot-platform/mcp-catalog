@@ -2,6 +2,12 @@ name: Datadog
 entryKey: obot-datadog
 serverUserType: singleUser
 shortDescription: Query Datadog observability data and manage platform features with Datadog's official MCP server
+upgradeNote: |
+  This replaces the Obot-hosted Datadog server with Datadog's official hosted MCP server.
+
+  - **Reconnect required:** Connect with Datadog OAuth or a Personal or Service Access Token. The previous API key, application key, and site settings are no longer used.
+  - **Region:** This entry connects to Datadog US1.
+  - **Tool changes:** Tool names, parameters, permissions, and available toolsets change.
 description: |
   > **⚠️ Upgrade notice**
   >

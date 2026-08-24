@@ -2,6 +2,12 @@ name: BigQuery Toolbox
 entryKey: obot-bigquery-toolbox
 serverUserType: singleUser
 shortDescription: Explore BigQuery data and run SQL through Google's managed MCP server
+upgradeNote: |
+  This replaces the Obot-hosted **BigQuery Toolbox** server with Google's managed BigQuery MCP server.
+
+  - **Reconnect required:** Connect with Google OAuth. The previous service-account JSON, project, dataset, and custom tools YAML settings are no longer used.
+  - **Tool changes:** Tool names and parameters change, and custom parameterized tools are no longer supported.
+  - **New limits:** Managed queries have documented duration and result-size limits.
 description: |
   > **⚠️ Upgrade notice**
   >

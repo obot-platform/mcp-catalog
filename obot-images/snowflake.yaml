@@ -2,6 +2,12 @@ name: Snowflake
 entryKey: obot-snowflake
 serverUserType: singleUser
 shortDescription: Connect to a Snowflake-managed MCP server with OAuth and native RBAC
+upgradeNote: |
+  This replaces the Obot-hosted Snowflake Labs server with Snowflake's managed MCP server.
+
+  - **Reconnect required:** Configure a Snowflake account URL, database, schema, MCP server name, and OAuth security integration.
+  - **Compatibility:** Username/password authentication and Service Config YAML are no longer supported.
+  - **Tool changes:** Tool names, parameters, and availability are defined by the configured Snowflake MCP server.
 description: |
   > **Upgrade notice**
   >

@@ -2,6 +2,12 @@ name: Context7
 entryKey: obot-context7
 serverUserType: singleUser
 shortDescription: Get up-to-date, version-specific code documentation and examples for any library
+upgradeNote: |
+  This replaces the Obot-hosted Context7 server with Context7's official hosted MCP server.
+
+  - **Reconnect required:** Select OAuth or anonymous/API-key access. The previous minimum-token setting is no longer used.
+  - **Authentication:** OAuth, anonymous access, and optional API-key access are now supported.
+  - **Tool changes:** Tool parameters and documentation-retrieval behavior may change with the hosted service.
 description: |
   > **⚠️ Upgrade notice**
   >

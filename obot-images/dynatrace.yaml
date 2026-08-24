@@ -2,6 +2,12 @@ name: Dynatrace
 entryKey: obot-dynatrace
 serverUserType: singleUser
 shortDescription: Access Dynatrace observability data and intelligence through the official hosted MCP server
+upgradeNote: |
+  This replaces the Obot-hosted Dynatrace server with Dynatrace's official SaaS MCP gateway.
+
+  - **Reconnect required:** Provide a Dynatrace SaaS environment identifier and a Platform Token with MCP gateway and tool-specific permissions.
+  - **Compatibility:** Dynatrace Managed and classic environments are no longer supported.
+  - **Tool changes:** Tool names and parameters change.
 description: |
   > **⚠️ Upgrade notice**
   >

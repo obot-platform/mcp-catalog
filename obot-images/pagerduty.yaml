@@ -2,6 +2,12 @@ name: PagerDuty
 entryKey: obot-pagerduty
 serverUserType: singleUser
 shortDescription: Manage PagerDuty incidents, on-call schedules, services, and incident response workflows
+upgradeNote: |
+  This replaces the Obot-hosted PagerDuty server with PagerDuty's official hosted MCP server.
+
+  - **Reconnect required:** Select the PagerDuty US or EU hosted endpoint and provide a PagerDuty User API token.
+  - **Configuration change:** The previous API-host setting is replaced by a hosted-server region selection.
+  - **Tool changes:** Tool names, parameters, and the available incident-response and administration operations change.
 description: |
   > **⚠️ Upgrade notice**
   >
