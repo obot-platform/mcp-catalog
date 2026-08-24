@@ -2,8 +2,18 @@ name: GitHub
 entryKey: obot-github
 serverUserType: singleUser
 shortDescription: Manage GitHub repositories, issues, PRs, workflows, and CI/CD operations
+upgradeNote: |
+  This entry now requires selecting a GitHub-hosted MCP endpoint path so each connection can use a specific toolset and access mode.
+
+  - **Configuration review required:** Existing connections may need to reconnect and select an endpoint path. Select `/` to preserve the previous default behavior.
+  - **New options:** Choose a focused toolset or all tools, with standard and read-only variants for each endpoint.
+  - **Authentication unchanged:** Continue using a GitHub Personal Access Token with the permissions required by the selected tools.
 description: |
   A Model Context Protocol (MCP) server that provides easy connection to GitHub using the hosted version – no local setup or runtime required. Access comprehensive GitHub functionality through a remote server with additional tools not available in the local version.
+
+  > **⚠️ Upgrade notice**
+  >
+  > This entry now requires selecting a GitHub-hosted MCP endpoint path. Existing connections may need to reconnect and select a path; select `/` to preserve the previous default behavior. Authentication still uses your GitHub Personal Access Token.
 
   ## Features
   - **Repository Management**: Browse and query code, search files, analyze commits, and understand project structure
@@ -18,30 +28,40 @@ description: |
 
   **Required:**
   - **Personal Access Token**: GitHub Personal Access Token with appropriate repository permissions
+  - **GitHub MCP Endpoint Path**: Select the toolset and access mode for this connection
 
-  **Optional:**
-  - **Read-only Mode**: Add `/readonly` to any toolset URL to restrict to read-only operations
+  See the [official remote GitHub MCP server documentation](https://github.com/github/github-mcp-server/blob/main/docs/remote-server.md) for the current toolset reference and configuration details.
 
-  ## Available Toolsets
+  ## GitHub MCP Endpoint Path
 
-  **Base URL:** https://api.githubcopilot.com/mcp/
+  All paths are appended to the fixed base URL `https://api.githubcopilot.com/mcp`. Current Obot versions display the valid paths in a dropdown. On older Obot versions that display a text field instead, enter one of the paths below exactly as shown. Choose a read-only path to prevent the server from offering tools that modify repositories, issues, pull requests, or other GitHub resources.
 
-  | Toolset | Description | URL |
-  |---------|-------------|-----|
-  | **All** | All available GitHub MCP tools | `/` |
-  | **Actions** | GitHub Actions workflows and CI/CD operations | `/x/actions` |
-  | **Code Security** | Code security related tools, such as GitHub Code Scanning | `/x/code_security` |
-  | **Dependabot** | Dependabot tools | `/x/dependabot` |
-  | **Discussions** | GitHub Discussions related tools | `/x/discussions` |
-  | **Experiments** | Experimental features that are not considered stable yet | `/x/experiments` |
-  | **Issues** | GitHub Issues related tools | `/x/issues` |
-  | **Notifications** | GitHub Notifications related tools | `/x/notifications` |
-  | **Organizations** | GitHub Organization related tools | `/x/orgs` |
-  | **Pull Requests** | GitHub Pull Request related tools | `/x/pull_requests` |
-  | **Repositories** | GitHub Repository related tools | `/x/repos` |
-  | **Secret Protection** | Secret protection related tools, such as GitHub Secret Scanning | `/x/secret_protection` |
-  | **Users** | GitHub User related tools | `/x/users` |
-  | **Copilot** | Perform task with GitHub Copilot coding agent (remote only) | `/x/copilot` |
+  | Toolset | Description | Standard path | Read-only path |
+  |---------|-------------|--------------|---------------|
+  | **Default** | GitHub's default `context`, `issues`, `pull_requests`, `repos`, and `users` toolsets | `/` | `/readonly` |
+  | **All** | All available GitHub MCP tools | `/x/all` | `/x/all/readonly` |
+  | **Actions** | GitHub Actions workflows and CI/CD operations | `/x/actions` | `/x/actions/readonly` |
+  | **Code Quality** | GitHub Code Quality findings | `/x/code_quality` | `/x/code_quality/readonly` |
+  | **Code Security** | Code scanning and other code-security tools | `/x/code_security` | `/x/code_security/readonly` |
+  | **Copilot** | GitHub Copilot coding-agent tools | `/x/copilot` | `/x/copilot/readonly` |
+  | **Copilot Issue Intents** | Opt-in Copilot issue-assignment tools with intent metadata | `/x/copilot_issue_intents` | `/x/copilot_issue_intents/readonly` |
+  | **Dependabot** | Dependabot alerts and dependency tools | `/x/dependabot` | `/x/dependabot/readonly` |
+  | **Discussions** | GitHub Discussions | `/x/discussions` | `/x/discussions/readonly` |
+  | **Gists** | GitHub Gists | `/x/gists` | `/x/gists/readonly` |
+  | **Git** | Low-level Git data operations | `/x/git` | `/x/git/readonly` |
+  | **Issues** | GitHub Issues | `/x/issues` | `/x/issues/readonly` |
+  | **Labels** | GitHub Labels | `/x/labels` | `/x/labels/readonly` |
+  | **Notifications** | GitHub Notifications | `/x/notifications` | `/x/notifications/readonly` |
+  | **Organizations** | GitHub Organizations | `/x/orgs` | `/x/orgs/readonly` |
+  | **Projects** | GitHub Projects | `/x/projects` | `/x/projects/readonly` |
+  | **Pull Requests** | GitHub Pull Requests | `/x/pull_requests` | `/x/pull_requests/readonly` |
+  | **Repositories** | Repository and code operations | `/x/repos` | `/x/repos/readonly` |
+  | **Secret Protection** | Secret scanning and protection tools | `/x/secret_protection` | `/x/secret_protection/readonly` |
+  | **Security Advisories** | Repository and global security advisories | `/x/security_advisories` | `/x/security_advisories/readonly` |
+  | **Stargazers** | Repository stargazer information | `/x/stargazers` | `/x/stargazers/readonly` |
+  | **Users** | GitHub user profiles and related operations | `/x/users` | `/x/users/readonly` |
+  | **Copilot Spaces** | Remote-only GitHub Copilot Spaces tools | `/x/copilot_spaces` | `/x/copilot_spaces/readonly` |
+  | **GitHub Support Docs Search** | Remote-only GitHub product and support documentation search | `/x/github_support_docs_search` | `/x/github_support_docs_search/readonly` |
 
 toolPreview:
   - name: add_comment_to_pending_review
@@ -205,9 +225,161 @@ metadata:
 icon: https://avatars.githubusercontent.com/u/9919?v=4
 repoURL: https://github.com/github/github-mcp-server
 
+env:
+- name: GitHub MCP Endpoint Path
+  key: GITHUB_MCP_PATH
+  description: Select an endpoint path from the entry description. On older Obot versions, enter one of those paths exactly as shown.
+  required: true
+  sensitive: false
+  options:
+  - name: Default
+    value: /
+    description: GitHub's default context, issues, pull requests, repositories, and users toolsets.
+  - name: Default (read-only)
+    value: /readonly
+    description: GitHub's default toolsets without tools that modify GitHub resources.
+  - name: All
+    value: /x/all
+    description: All available GitHub MCP tools.
+  - name: All (read-only)
+    value: /x/all/readonly
+    description: All available read-only GitHub MCP tools.
+  - name: Actions
+    value: /x/actions
+    description: GitHub Actions workflows and CI/CD operations.
+  - name: Actions (read-only)
+    value: /x/actions/readonly
+    description: Read GitHub Actions workflows and CI/CD information without modifying them.
+  - name: Code Quality
+    value: /x/code_quality
+    description: GitHub Code Quality findings.
+  - name: Code Quality (read-only)
+    value: /x/code_quality/readonly
+    description: Read GitHub Code Quality findings without modifying GitHub resources.
+  - name: Code Security
+    value: /x/code_security
+    description: Code scanning and other code-security tools.
+  - name: Code Security (read-only)
+    value: /x/code_security/readonly
+    description: Read code-security information without modifying GitHub resources.
+  - name: Copilot
+    value: /x/copilot
+    description: GitHub Copilot coding-agent tools available on the remote server.
+  - name: Copilot (read-only)
+    value: /x/copilot/readonly
+    description: Read-only GitHub Copilot tool access.
+  - name: Copilot Issue Intents
+    value: /x/copilot_issue_intents
+    description: Opt-in Copilot issue-assignment tools with intent metadata.
+  - name: Copilot Issue Intents (read-only)
+    value: /x/copilot_issue_intents/readonly
+    description: Read-only access to Copilot issue-intent tools.
+  - name: Dependabot
+    value: /x/dependabot
+    description: Dependabot alerts and dependency tools.
+  - name: Dependabot (read-only)
+    value: /x/dependabot/readonly
+    description: Read Dependabot alerts and dependency information without modifying them.
+  - name: Discussions
+    value: /x/discussions
+    description: GitHub Discussions tools.
+  - name: Discussions (read-only)
+    value: /x/discussions/readonly
+    description: Read GitHub Discussions without modifying them.
+  - name: Gists
+    value: /x/gists
+    description: GitHub Gist tools.
+  - name: Gists (read-only)
+    value: /x/gists/readonly
+    description: Read GitHub Gists without modifying them.
+  - name: Git
+    value: /x/git
+    description: Low-level Git data operations.
+  - name: Git (read-only)
+    value: /x/git/readonly
+    description: Read low-level Git data without modifying repositories.
+  - name: Issues
+    value: /x/issues
+    description: GitHub Issues tools.
+  - name: Issues (read-only)
+    value: /x/issues/readonly
+    description: Read GitHub Issues without modifying them.
+  - name: Labels
+    value: /x/labels
+    description: GitHub Labels tools.
+  - name: Labels (read-only)
+    value: /x/labels/readonly
+    description: Read GitHub Labels without modifying them.
+  - name: Notifications
+    value: /x/notifications
+    description: GitHub Notifications tools.
+  - name: Notifications (read-only)
+    value: /x/notifications/readonly
+    description: Read GitHub Notifications without changing their state.
+  - name: Organizations
+    value: /x/orgs
+    description: GitHub Organization tools.
+  - name: Organizations (read-only)
+    value: /x/orgs/readonly
+    description: Read GitHub Organization information without modifying it.
+  - name: Projects
+    value: /x/projects
+    description: GitHub Projects tools.
+  - name: Projects (read-only)
+    value: /x/projects/readonly
+    description: Read GitHub Projects without modifying them.
+  - name: Pull Requests
+    value: /x/pull_requests
+    description: GitHub Pull Request tools.
+  - name: Pull Requests (read-only)
+    value: /x/pull_requests/readonly
+    description: Read GitHub Pull Requests without modifying them.
+  - name: Repositories
+    value: /x/repos
+    description: Repository and code operations.
+  - name: Repositories (read-only)
+    value: /x/repos/readonly
+    description: Read repositories and code without modifying them.
+  - name: Secret Protection
+    value: /x/secret_protection
+    description: Secret scanning and protection tools.
+  - name: Secret Protection (read-only)
+    value: /x/secret_protection/readonly
+    description: Read secret-protection information without modifying GitHub resources.
+  - name: Security Advisories
+    value: /x/security_advisories
+    description: Repository and global security-advisory tools.
+  - name: Security Advisories (read-only)
+    value: /x/security_advisories/readonly
+    description: Read security advisories without modifying GitHub resources.
+  - name: Stargazers
+    value: /x/stargazers
+    description: Repository stargazer information.
+  - name: Stargazers (read-only)
+    value: /x/stargazers/readonly
+    description: Read repository stargazer information.
+  - name: Users
+    value: /x/users
+    description: GitHub user profiles and related operations.
+  - name: Users (read-only)
+    value: /x/users/readonly
+    description: Read GitHub user information without modifying it.
+  - name: Copilot Spaces
+    value: /x/copilot_spaces
+    description: Remote-only GitHub Copilot Spaces tools.
+  - name: Copilot Spaces (read-only)
+    value: /x/copilot_spaces/readonly
+    description: Read-only access to GitHub Copilot Spaces tools.
+  - name: GitHub Support Docs Search
+    value: /x/github_support_docs_search
+    description: Search GitHub product and support documentation using the remote-only toolset.
+  - name: GitHub Support Docs Search (read-only)
+    value: /x/github_support_docs_search/readonly
+    description: Read-only GitHub product and support documentation search.
+
 runtime: remote
 remoteConfig:
-  hostname: api.githubcopilot.com
+  urlTemplate: https://api.githubcopilot.com/mcp${GITHUB_MCP_PATH}
   headers:
   - name: Personal Access Token
     description: GitHub PAT
