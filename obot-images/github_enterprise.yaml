@@ -3,7 +3,7 @@ entryKey: obot-github-enterprise
 serverUserType: singleUser
 shortDescription: Connect AI tools to GitHub Enterprise Server
 description: |
-  A containerized Model Context Protocol (MCP) server for GitHub Enterprise Server. GitHub does not provide a hosted remote MCP endpoint for GitHub Enterprise Server.
+  Connect AI tools to GitHub Enterprise Server with a containerized MCP server. GitHub does not provide a hosted remote MCP endpoint for GitHub Enterprise Server.
 
   [Read the official GitHub Enterprise MCP server documentation](https://docs.github.com/en/enterprise-cloud@latest/copilot/how-tos/provide-context/use-mcp-in-your-ide/enterprise-configuration).
 

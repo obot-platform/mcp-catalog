@@ -7,7 +7,7 @@ description: |
   ![Go](https://img.shields.io/badge/Go-1.23+-green?style=for-the-badge&logo=go)
   ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
-  A Model Context Protocol (MCP) server for Microsoft OneDrive integration, providing comprehensive cloud file management capabilities through Microsoft Graph API.
+  Manage OneDrive files, folders, sharing, and cross-drive operations through the Microsoft Graph API.
 
   ## Features
   - **Drive Management**: Access personal and shared organization drives with detailed information

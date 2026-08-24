@@ -12,7 +12,7 @@ description: |
 
   Obot plans to move this catalog entry to Google's official MCP server for Google Sheets once it leaves Developer Preview. To try Google's Developer Preview now, see [Configure the Sheets MCP server](https://developers.google.com/workspace/sheets/api/guides/configure-mcp-server).
 
-  A Model Context Protocol (MCP) server for Google Sheets integration, providing comprehensive spreadsheet management capabilities through a modern API interface.
+  Create and manage Google Sheets spreadsheets, worksheets, cells, and formulas.
 
   ## Features
   - **OAuth2 Authentication**: Secure Google OAuth integration with automatic token refresh

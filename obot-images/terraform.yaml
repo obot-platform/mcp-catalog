@@ -3,7 +3,7 @@ entryKey: obot-terraform
 serverUserType: singleUser
 shortDescription: Manage Terraform Cloud workspaces, runs, variables, and explore the registry
 description: |
-  A Model Context Protocol (MCP) server that provides seamless integration with the Terraform ecosystem, enabling advanced automation and interaction capabilities for Infrastructure as Code (IaC) development. Connect to Terraform Cloud or Terraform Enterprise to manage workspaces, runs, variables, and explore the Terraform Registry.
+  Manage Terraform Cloud or Terraform Enterprise workspaces, runs, and variables, and explore the Terraform Registry for Infrastructure as Code development.
 
   ## Features
   - **Workspace Management**: Create, update, list, and manage Terraform Cloud/Enterprise workspaces

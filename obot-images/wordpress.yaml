@@ -3,7 +3,7 @@ entryKey: obot-wordpress
 serverUserType: singleUser
 shortDescription: Manage WordPress posts, categories, tags, and media on self-hosted sites
 description: |
-  A Model Context Protocol (MCP) server that integrates with a self-hosted WordPress site (wordpress.com not supported).
+  Manage posts, categories, tags, and media on a self-hosted WordPress site (wordpress.com is not supported).
   
   ## Features
   - **Posts**: Manage blog posts

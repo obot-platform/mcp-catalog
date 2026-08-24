@@ -3,7 +3,7 @@ entryKey: obot-grafana
 serverUserType: singleUser
 shortDescription: Query metrics, logs, traces, manage dashboards, alerts, and on-call schedules
 description: |
-  A Model Context Protocol (MCP) server that provides comprehensive integration with Grafana, enabling seamless interaction with observability data, dashboards, alerts, and incident management. Connect to Grafana Cloud or self-hosted Grafana instances to query metrics, logs, traces, profiles, manage dashboards and alerts, and coordinate on-call schedules.
+  Query metrics, logs, traces, and profiles in Grafana Cloud or self-hosted Grafana, manage dashboards and alerts, and coordinate on-call schedules.
 
   This server is appropriate for connecting to self-hosted instances of Grafana. If you're using Grafana Cloud, we recommend using the **Grafana Cloud** MCP server.
 

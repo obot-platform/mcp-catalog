@@ -7,7 +7,7 @@ description: |
   ![Go](https://img.shields.io/badge/Go-1.23+-green?style=for-the-badge&logo=go)
   ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
-  A Model Context Protocol (MCP) server for Microsoft Excel integration, providing comprehensive spreadsheet management capabilities through Microsoft Graph API.
+  Manage Microsoft Excel workbooks, worksheets, tables, and data through the Microsoft Graph API.
 
   ## Features
   - **Workbook Management**: List and access all Excel workbooks in OneDrive with complete metadata

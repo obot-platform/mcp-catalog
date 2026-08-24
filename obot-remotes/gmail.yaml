@@ -12,7 +12,7 @@ description: |
 
   Obot plans to move this catalog entry to Google's official MCP server for Gmail once it leaves Developer Preview. To try Google's Developer Preview now, see [Configure the Gmail MCP server](https://developers.google.com/workspace/gmail/api/guides/configure-mcp-server).
 
-  A Model Context Protocol (MCP) server for Gmail integration, providing comprehensive email management capabilities through a modern API interface.
+  Send, read, draft, search, and organize Gmail messages and labels.
 
   ## Features
   - **OAuth2 Authentication**: Secure Google OAuth integration with automatic token refresh

@@ -4,7 +4,7 @@ serverUserType: singleUser
 shortDescription: Cloud browser automation with web scraping, screenshots, and AI interactions
 description: '**DEPRECATED**: this server is no longer supported by the Obot MCP Catalog. No approved replacement is currently available. Browserbase''s hosted MCP is not approved because it requires API keys in URL query parameters.
 
-  A Model Context Protocol (MCP) server that provides cloud browser automation capabilities using Browserbase and Stagehand. Enable LLMs to interact with web pages, take screenshots, extract information, and perform automated actions with atomic precision.
+  Automate cloud browsers with Browserbase and Stagehand to interact with pages, take screenshots, extract information, and perform precise actions.
 
 
   ## Features

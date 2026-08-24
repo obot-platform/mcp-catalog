@@ -9,7 +9,7 @@ description: '[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg
   [![Contributors](https://img.shields.io/github/contributors/crystaldba/postgres-mcp)](https://github.com/crystaldba/postgres-mcp/graphs/contributors)
 
 
-  A Model Context Protocol (MCP) server designed for deep SQL performance analysis and optimization. It delivers advanced index tuning, workload-aware query insights, safe execution controls, and schema-aware SQL generation—backed by comprehensive database health diagnostics and EXPLAIN plan simulation.
+  Analyze and optimize PostgreSQL performance with index tuning, workload-aware query insights, safe execution controls, schema-aware SQL generation, health diagnostics, and EXPLAIN plan simulation.
 
 
   ## Features

@@ -7,7 +7,7 @@ description: |
   ![Go](https://img.shields.io/badge/Go-1.23+-green?style=for-the-badge&logo=go)
   ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
-  A Model Context Protocol (MCP) server for Microsoft Word integration, providing comprehensive document management capabilities through Microsoft Graph API.
+  Create and manage Microsoft Word documents, including Markdown content conversion, through the Microsoft Graph API.
 
   ## Features
   - **Document Discovery**: List and search all Word documents across OneDrive with detailed metadata

@@ -1,6 +1,6 @@
-# Remote catalog entries
+# Catalog entries
 
-Remote catalog entries must:
+Catalog entries must:
 
 - Use `repoURL` to link to official documentation.
 - Include a link to official documentation or setup instructions in the description before the first feature or setup section.

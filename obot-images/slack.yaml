@@ -11,7 +11,7 @@ description: |
   ![Node.js](https://img.shields.io/badge/Node.js-18+-orange?style=for-the-badge&logo=node.js)
   ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
-  A Model Context Protocol (MCP) server for Slack integration, providing comprehensive workspace management capabilities through a modern API interface.
+  Send messages, manage channels, search history, and work with threads in Slack workspaces.
 
   ## Features
   - **Channel Management**: List, search, and interact with Slack channels

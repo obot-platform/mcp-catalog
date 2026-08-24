@@ -4,7 +4,7 @@ serverUserType: singleUser
 shortDescription: Convert documents, images, audio, and web content to LLM-optimized Markdown
 description: '**DEPRECATED**: this server is no longer supported by the Obot MCP Catalog. No direct replacement is currently available.
 
-  A Model Context Protocol (MCP) server that provides powerful file-to-Markdown conversion capabilities. Convert various document formats and web content to clean, structured Markdown optimized for LLM consumption.
+  Convert documents, images, audio, and web content to clean, structured Markdown optimized for LLM consumption.
 
 
   ## Features

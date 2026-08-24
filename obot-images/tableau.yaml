@@ -3,7 +3,7 @@ entryKey: obot-tableau
 serverUserType: singleUser
 shortDescription: Query Tableau data sources, access Pulse metrics, and explore workbooks
 description: |
-  A Model Context Protocol (MCP) server that provides comprehensive access to Tableau Cloud and Tableau Server through multiple APIs. Connect to published data sources, query data with VizQL, explore Pulse metrics, and access workbooks and views with full metadata support.
+  Query published Tableau data sources with VizQL, explore Pulse metrics, and access workbooks and views with full metadata in Tableau Cloud or Tableau Server.
 
   This server is appropriate for connecting to self-hosted instances of Tableau Server. If you're using Tableau Cloud, we recommend using the **Tableau Cloud** MCP server.
 

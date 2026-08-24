@@ -2,7 +2,7 @@ name: AWS API
 entryKey: obot-aws-api
 serverUserType: singleUser
 shortDescription: Execute AWS CLI commands across all AWS services with intelligent suggestions
-description: 'A Model Context Protocol (MCP) server for AWS CLI operations. Execute AWS CLI commands and get intelligent command suggestions across all AWS services safely and efficiently.
+description: 'Execute AWS CLI commands and get intelligent command suggestions across AWS services safely and efficiently.
 
 
   ## Features
@@ -119,4 +119,3 @@ toolPreview:
   description: Get AI-powered suggestions for AWS CLI commands based on natural language queries
   params:
     query: A natural language description of what you want to accomplish in AWS
-

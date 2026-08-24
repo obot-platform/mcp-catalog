@@ -7,7 +7,7 @@ description: |
   ![Go](https://img.shields.io/badge/Go-1.25+-green?style=for-the-badge&logo=go)
   ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
-  A Model Context Protocol (MCP) server for Microsoft 365 Calendar integration, providing comprehensive calendar and event management capabilities through Microsoft Graph API.
+  Manage Microsoft 365 calendars, events, meetings, and attendees through the Microsoft Graph API.
 
   ## Features
   - **Calendar Management**: Access personal and group calendars with full metadata and permissions

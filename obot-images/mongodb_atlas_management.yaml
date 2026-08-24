@@ -5,7 +5,7 @@ shortDescription: Create and manage MongoDB Atlas projects, clusters, and databa
 description: |
   **DEPRECATED**: Use the **MongoDB Atlas** connector instead. It connects to MongoDB's hosted Atlas MCP service and supports Atlas management, database operations, and stream processing through one connector.
 
-  A Model Context Protocol (MCP) server for interacting with the MongoDB Atlas Cloud Service. This connector allows you to perform management actions with clusters, projects, databases, collections, and database users.
+  Manage MongoDB Atlas projects, clusters, databases, collections, and database users.
 
   ## Features
   - **Atlas Management**: Create and manage MongoDB Atlas projects, clusters, and database users

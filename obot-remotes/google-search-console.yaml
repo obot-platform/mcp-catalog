@@ -10,7 +10,7 @@ description: |
 
   This remote server is a [custom Obot implementation](https://github.com/obot-platform/google-mcp/tree/main/search-console), hosted and managed by Obot so you can connect through a streamlined authentication flow without navigating the usual Google Cloud project and OAuth configuration.
 
-  A Model Context Protocol (MCP) server for Google Search Console integration, providing access to search console data.
+  Inspect sitemaps, search analytics, and other Google Search Console data.
 
   ## Features
   - **OAuth2 Authentication**: Secure Google OAuth integration with automatic token refresh
