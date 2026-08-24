@@ -8,6 +8,8 @@ description: |
   ![FastMCP](https://img.shields.io/badge/FastMCP-2.11.2+-orange?style=for-the-badge)
   ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
+  This remote server is a [custom Obot implementation](https://github.com/obot-platform/google-mcp/tree/main/search-console), hosted and managed by Obot so you can connect through a streamlined authentication flow without navigating the usual Google Cloud project and OAuth configuration.
+
   A Model Context Protocol (MCP) server for Google Search Console integration, providing access to search console data.
 
   ## Features

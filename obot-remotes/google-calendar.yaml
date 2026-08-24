@@ -8,6 +8,10 @@ description: |
   ![FastMCP](https://img.shields.io/badge/FastMCP-2.11.1+-orange?style=for-the-badge)
   ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
+  This remote server is a [custom Obot implementation](https://github.com/obot-platform/google-mcp/tree/main/calendar), hosted and managed by Obot so you can connect through a streamlined authentication flow without navigating the usual Google Cloud project and OAuth configuration.
+
+  Obot plans to move this catalog entry to Google's official MCP server for Google Calendar once it leaves Developer Preview. To try Google's Developer Preview now, see [Configure the Calendar MCP server](https://developers.google.com/workspace/calendar/api/guides/configure-mcp-server).
+
   A Model Context Protocol (MCP) server for Google Calendar integration, providing comprehensive calendar and event management capabilities through a modern API interface.
 
   ## Features
@@ -133,4 +137,4 @@ toolPreview:
       event_id: Event id to list recurring event instances for
       time_min: "Upper bound (exclusive) for an event's start time to filter by. Must be an RFC3339 timestamp with mandatory time zone offset."
       time_max: "Lower bound (exclusive) for an event's end time to filter by. Must be an RFC3339 timestamp with mandatory time zone offset."
-      max_results: "Maximum number of events to return (1-500, default: 250)"  
+      max_results: "Maximum number of events to return (1-500, default: 250)"
