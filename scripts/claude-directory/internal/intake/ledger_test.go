@@ -85,6 +85,7 @@ func TestLedgerMutationRejectsInvalidRecords(t *testing.T) {
 		{name: "duplicate", ledger: Ledger{Version: 1, Records: []LedgerRecord{{ID: "known", Name: "Canonical", Status: "skipped", Reason: "x"}}}, operation: "add", record: LedgerRecord{ID: "known", Status: "skipped", Reason: "x"}, contains: "already reviewed"},
 		{name: "update missing", ledger: Ledger{Version: 1}, operation: "update", record: LedgerRecord{ID: "known", Status: "skipped", Reason: "x"}, contains: "not in the ledger"},
 		{name: "missing catalog", ledger: Ledger{Version: 1}, operation: "add", record: LedgerRecord{ID: "known", Status: "existing", CatalogEntry: "missing.yaml"}, contains: "does not exist"},
+		{name: "catalog traversal", ledger: Ledger{Version: 1}, operation: "add", record: LedgerRecord{ID: "known", Status: "existing", CatalogEntry: "../outside.yaml"}, contains: "relative catalog YAML path"},
 		{name: "existing needs catalog", ledger: Ledger{Version: 1}, operation: "add", record: LedgerRecord{ID: "known", Status: "existing"}, contains: "catalog_entry is required"},
 		{name: "skipped needs reason", ledger: Ledger{Version: 1}, operation: "add", record: LedgerRecord{ID: "known", Status: "skipped"}, contains: "reason is required"},
 		{name: "status field conflict", ledger: Ledger{Version: 1}, operation: "add", record: LedgerRecord{ID: "known", Status: "skipped", Reason: "x", CatalogEntry: "exists.yaml"}, contains: "not allowed"},

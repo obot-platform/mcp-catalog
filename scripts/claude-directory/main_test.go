@@ -91,12 +91,15 @@ func TestLedgerUpdateRepairsInvalidCatalogReference(t *testing.T) {
 	if err := intake.WriteLedgerAtomic(locations.ledger, invalid); err != nil {
 		t.Fatal(err)
 	}
-	if err := os.WriteFile(filepath.Join(root, "replacement.yaml"), []byte("name: replacement\n"), 0o644); err != nil {
+	if err := os.MkdirAll(filepath.Join(root, "remotes"), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(root, "remotes", "replacement.yaml"), []byte("name: replacement\n"), 0o644); err != nil {
 		t.Fatal(err)
 	}
 
 	var output bytes.Buffer
-	args := []string{"update", "--id", "one", "--status", "imported", "--catalog-entry", "replacement.yaml"}
+	args := []string{"update", "--id", "one", "--status", "imported", "--catalog-entry", "remotes/replacement.yaml"}
 	if err := ledger(locations, args, &output, &output); err != nil {
 		t.Fatal(err)
 	}
@@ -104,7 +107,7 @@ func TestLedgerUpdateRepairsInvalidCatalogReference(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if got := updated.Records[0].CatalogEntry; got != "replacement.yaml" {
+	if got := updated.Records[0].CatalogEntry; got != "remotes/replacement.yaml" {
 		t.Fatalf("catalog entry = %q", got)
 	}
 	if err := intake.ValidateLedger(updated, root); err != nil {

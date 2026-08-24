@@ -140,8 +140,8 @@ func ValidateLedger(ledger Ledger, catalogDir string) error {
 }
 
 func validateCatalogEntry(catalogDir, entry string) error {
-	if filepath.Base(entry) != entry || (filepath.Ext(entry) != ".yaml" && filepath.Ext(entry) != ".yml") {
-		return fmt.Errorf("catalog_entry %q must be a catalog YAML filename", entry)
+	if !filepath.IsLocal(entry) || filepath.Clean(entry) != entry || (filepath.Ext(entry) != ".yaml" && filepath.Ext(entry) != ".yml") {
+		return fmt.Errorf("catalog_entry %q must be a relative catalog YAML path", entry)
 	}
 	info, err := os.Stat(filepath.Join(catalogDir, entry))
 	if err != nil {

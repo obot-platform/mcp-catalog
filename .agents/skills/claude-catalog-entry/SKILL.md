@@ -25,16 +25,16 @@ Use the repository CLI for snapshots, selection, and every ledger mutation. Neve
 
 ## Evaluate the selection
 
-1. Search catalog YAML for product-name, hostname, and endpoint duplicates.
+1. Search catalog YAML recursively for product-name, hostname, and endpoint duplicates.
 2. Start with authoritative provider documentation for the remote endpoint, setup, authentication method, scopes, and credential creation.
 3. Confirm the endpoint is portable outside Claude and uses remote Streamable HTTP.
 4. Verify authentication using the read-only public discovery flow below, then map it to supported Obot remote configuration.
 5. If it is a duplicate, record `existing`. If it cannot be supported or ported, record `skipped`. Leave ambiguous cases unreviewed.
-6. Otherwise create the smallest useful catalog entry. Link the authoritative provider documentation in the entry's `description`, even when the same URL is used for `repoURL`. Do not add `toolPreview` during intake.
+6. Otherwise create the smallest useful catalog entry under `remotes/`. Link the authoritative provider documentation in the entry's `description`, even when the same URL is used for `repoURL`. Do not add `toolPreview` during intake.
 7. Validate catalog YAML before recording an imported disposition:
 
    ```sh
-   obot mcp validate-catalog-yaml --require-entry-key ./*.yaml
+   obot mcp validate-catalog-yaml --require-entry-key .
    ```
 
 ## Verify and map authentication
@@ -56,7 +56,7 @@ Before every request whose URL comes from a connector record or response, includ
 
 Choose the first verified Obot mapping:
 
-- Prefer OAuth with Dynamic Client Registration when metadata advertises a `registration_endpoint`. Use `remoteConfig.fixedURL` or `URLTemplate`; do not add static headers or `staticOAuthRequired`.
+- Prefer OAuth with Dynamic Client Registration when metadata advertises a `registration_endpoint`. Use `remoteConfig.fixedURL` or `urlTemplate`; do not add static headers or `staticOAuthRequired`.
 - If OAuth requires a provider-created client ID/secret or allowlisted redirect URI, use static OAuth with `remoteConfig.staticOAuthRequired: true` and document the provider setup and required scopes.
 - If provider docs specify a static token or API key, use `remoteConfig.headers`. Mark the value `required: true` and `sensitive: true`; use the documented header name and add a prefix such as `Bearer ` only when required.
 - If documentation and live discovery conflict, or the auth scheme cannot be represented safely, leave the connector unreviewed. Never infer auth from a Claude-only connect button.
@@ -66,8 +66,8 @@ Choose the first verified Obot mapping:
 Run exactly one applicable command after verification:
 
 ```sh
-go -C scripts/claude-directory run . ledger add --id ID --status existing --catalog-entry FILE.yaml
-go -C scripts/claude-directory run . ledger add --id ID --status imported --catalog-entry FILE.yaml
+go -C scripts/claude-directory run . ledger add --id ID --status existing --catalog-entry remotes/FILE.yaml
+go -C scripts/claude-directory run . ledger add --id ID --status imported --catalog-entry remotes/FILE.yaml
 go -C scripts/claude-directory run . ledger add --id ID --status skipped --reason "Specific reason"
 ```
 

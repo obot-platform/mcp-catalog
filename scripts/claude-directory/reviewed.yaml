@@ -3,108 +3,108 @@ records:
   - id: 001103b7-bcde-4b9c-b5d4-f209c2fed1f3
     name: PayPal
     status: existing
-    catalog_entry: paypal.yaml
+    catalog_entry: remotes/paypal.yaml
   - id: 11ba10d9-477b-4988-bd1c-90a7fa680dc1
     name: Atlassian Rovo
     status: existing
-    catalog_entry: atlassian.yaml
+    catalog_entry: remotes/atlassian.yaml
   - id: 11ca66fc-1e98-49d5-ab9b-7cb4672a8f10
     name: Supabase
     status: existing
-    catalog_entry: supabase.yaml
+    catalog_entry: obot-images/supabase.yaml
   - id: 1f6f271e-3d29-4241-b35e-8abe6def4891
     name: Zapier
     status: existing
-    catalog_entry: zapier.yaml
+    catalog_entry: remotes/zapier.yaml
   - id: 2701e52f-b826-4aaf-8b25-11f2a97c98b0
     name: Gmail
     status: existing
-    catalog_entry: gmail.yaml
+    catalog_entry: obot-remotes/gmail.yaml
   - id: 2a838eaa-f7b4-4bc2-bd47-c326f3c813c5
     name: Google Calendar
     status: existing
-    catalog_entry: google-calendar.yaml
+    catalog_entry: obot-remotes/google-calendar.yaml
   - id: 2d60210c-dd92-4be0-b09c-3662f10445c9
     name: Cloudflare Developer Platform
     status: existing
-    catalog_entry: cloudflare.yaml
+    catalog_entry: remotes/cloudflare.yaml
   - id: 2e98be30-8dba-486e-94a9-9a01d34678e2
     name: Morningstar
     status: existing
-    catalog_entry: morningstar.yaml
+    catalog_entry: remotes/morningstar.yaml
   - id: 37153cd7-b17c-470e-8b46-007e2859e0f3
     name: Context7
     status: existing
-    catalog_entry: context7.yaml
+    catalog_entry: obot-images/context7.yaml
   - id: 41aefcf3-a829-45eb-8cee-d90b93912f57
     name: Asana
     status: existing
-    catalog_entry: asana.yaml
+    catalog_entry: remotes/asana.yaml
   - id: 597f662f-36de-437e-836e-5a81013cbfbe
     name: Slack
     status: existing
-    catalog_entry: slack-official.yaml
+    catalog_entry: remotes/slack-official.yaml
   - id: 68268024-1a91-4316-a9e1-14ecb814cb18
     name: Datadog
     status: existing
-    catalog_entry: datadog.yaml
+    catalog_entry: obot-images/datadog.yaml
   - id: 69f3a300-cc60-48c4-b237-dfac56530dbf
     name: Notion
     status: existing
-    catalog_entry: notion.yaml
+    catalog_entry: remotes/notion.yaml
   - id: 780a3621-8271-4822-bd0b-b9cab309375d
     name: Wix
     status: existing
-    catalog_entry: wix.yaml
+    catalog_entry: remotes/wix.yaml
   - id: 875dee50-9b3f-452b-af8c-fbc839966273
     name: HubSpot
     status: existing
-    catalog_entry: hubspot.yaml
+    catalog_entry: obot-images/hubspot.yaml
   - id: 89a7ddf5-2a6b-410c-be11-aa0e1a1b35a6
     name: Microsoft Learn
     status: existing
-    catalog_entry: microsoft-docs.yaml
+    catalog_entry: remotes/microsoft-docs.yaml
   - id: 91408932-1110-4350-97c7-2d6b3a6d9694
     name: Exa
     status: existing
-    catalog_entry: exa_search.yaml
+    catalog_entry: obot-images/exa_search.yaml
   - id: b89f7865-a755-4f86-8062-c3bd651740ce
     name: Google Drive
     status: existing
-    catalog_entry: google-drive.yaml
+    catalog_entry: obot-remotes/google-drive.yaml
   - id: b9049585-f39b-45e8-8626-6ca78d9d7d22
     name: Postman
     status: existing
-    catalog_entry: postman.yaml
+    catalog_entry: remotes/postman.yaml
   - id: d1bac76b-5673-4d98-b275-41451f3dd847
     name: Todoist
     status: existing
-    catalog_entry: todoist.yaml
+    catalog_entry: remotes/todoist.yaml
   - id: d8a25d2a-e5ea-4860-b990-277244df5417
     name: Tavily
     status: existing
-    catalog_entry: tavily_search.yaml
+    catalog_entry: remotes/tavily_search.yaml
   - id: de127013-63f1-43d0-8dd2-b6cb5b4e5d1b
     name: Stripe
     status: existing
-    catalog_entry: stripe.yaml
+    catalog_entry: remotes/stripe.yaml
   - id: e6fc4c18-ea48-4752-9912-7a13bf9999ed
     name: WordPress.com
     status: existing
-    catalog_entry: wordpress.yaml
+    catalog_entry: obot-images/wordpress.yaml
   - id: eb9240f2-e1c1-43c1-828f-0fda40c22e4c
     name: Canva
     status: imported
-    catalog_entry: canva.yaml
+    catalog_entry: remotes/canva.yaml
   - id: ee49809c-50e1-4b24-bc17-17ce8887bfdf
     name: Snowflake
     status: existing
-    catalog_entry: snowflake.yaml
+    catalog_entry: obot-images/snowflake.yaml
   - id: fa50c30c-9f62-4f94-b851-217868185db6
     name: Linear
     status: existing
-    catalog_entry: linear.yaml
+    catalog_entry: remotes/linear.yaml
   - id: fc41b5e5-97bc-4c80-af18-e3a9442b655b
     name: PagerDuty
     status: existing
-    catalog_entry: pagerduty.yaml
+    catalog_entry: obot-images/pagerduty.yaml

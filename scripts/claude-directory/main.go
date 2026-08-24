@@ -262,7 +262,7 @@ func ledger(locations paths, args []string, stdout, stderr io.Writer) error {
 	flags.SetOutput(stderr)
 	id := flags.String("id", "", "Claude directory connector id")
 	status := flags.String("status", "", "existing, imported, or skipped")
-	catalogEntry := flags.String("catalog-entry", "", "catalog YAML filename")
+	catalogEntry := flags.String("catalog-entry", "", "repository-relative catalog YAML path")
 	reason := flags.String("reason", "", "reason the connector was skipped")
 	if err := flags.Parse(args[1:]); err != nil {
 		return err
