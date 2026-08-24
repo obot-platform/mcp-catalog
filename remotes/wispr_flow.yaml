@@ -18,7 +18,7 @@ description: |
 
 metadata:
   categories: Communication, Productivity, SaaS & API Integrations
-icon: https://wisprflow.ai/favicon.ico
+icon: "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://wisprflow.ai&size=256"
 repoURL: https://docs.wisprflow.ai/articles/4759919286-how-to-connect-wispr-flow-to-claude-chatgpt-and-other-ai-tools-mcp
 runtime: remote
 remoteConfig:

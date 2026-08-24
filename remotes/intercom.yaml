@@ -18,7 +18,7 @@ description: |
 
 metadata:
   categories: Business, SaaS & API Integrations, Productivity
-icon: https://www.intercom.com/favicon.ico
+icon: "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://intercom.com&size=256"
 repoURL: https://developers.intercom.com/docs/guides/mcp
 runtime: remote
 remoteConfig:

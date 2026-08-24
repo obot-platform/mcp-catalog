@@ -18,7 +18,7 @@ description: |
 
 metadata:
   categories: Communication, Productivity, SaaS & API Integrations
-icon: https://fathom.ai/favicon.ico
+icon: "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://fathom.ai&size=256"
 repoURL: https://help.fathom.video/en/articles/11497793
 runtime: remote
 remoteConfig:

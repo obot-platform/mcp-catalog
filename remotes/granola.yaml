@@ -19,7 +19,7 @@ description: |
 
 metadata:
   categories: Productivity, Communication, SaaS & API Integrations
-icon: https://www.granola.ai/favicon.ico
+icon: "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://granola.ai&size=256"
 repoURL: https://help.granola.ai/article/granola-mcp
 runtime: remote
 remoteConfig:

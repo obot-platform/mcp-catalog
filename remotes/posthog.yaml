@@ -18,7 +18,7 @@ description: |
 
 metadata:
   categories: Developer Tools, Data & Analytics, Monitoring & Observability
-icon: https://posthog.com/favicon.ico
+icon: "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://posthog.com&size=256"
 repoURL: https://posthog.com/docs/model-context-protocol
 runtime: remote
 remoteConfig:

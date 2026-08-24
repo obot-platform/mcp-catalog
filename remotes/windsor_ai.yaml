@@ -18,7 +18,7 @@ description: |
 
 metadata:
   categories: Marketing, Data & Analytics, SaaS & API Integrations
-icon: https://windsor.ai/favicon.ico
+icon: "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://windsor.ai&size=256"
 repoURL: https://windsor.ai/documentation/windsor-mcp/
 runtime: remote
 remoteConfig:

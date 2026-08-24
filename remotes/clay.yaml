@@ -18,7 +18,7 @@ description: |
 
 metadata:
   categories: Sales, Marketing, Data & Analytics
-icon: https://clay.com/favicon.ico
+icon: "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://clay.com&size=256"
 repoURL: https://www.notion.so/clayrun/Clay-Claude-MCP-Server-Documentation-2ef7e66eb01480c9820de48041591aeb
 runtime: remote
 remoteConfig:

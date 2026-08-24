@@ -31,7 +31,8 @@ Use the repository CLI for snapshots, selection, and every ledger mutation. Neve
 4. Verify authentication using the read-only public discovery flow below, then map it to supported Obot remote configuration.
 5. If it is a duplicate, record `existing`. If it cannot be supported or ported, record `skipped`. Leave ambiguous cases unreviewed.
 6. Otherwise create the smallest useful catalog entry under `remotes/`. Link the authoritative provider documentation in the entry's `description`, even when the same URL is used for `repoURL`. Do not add `toolPreview` during intake.
-7. Validate catalog YAML before recording an imported disposition:
+7. Verify the entry's icon using the image checks below.
+8. Validate catalog YAML before recording an imported disposition:
 
    ```sh
    obot mcp validate-catalog-yaml --require-entry-key .
@@ -60,6 +61,17 @@ Choose the first verified Obot mapping:
 - If OAuth requires a provider-created client ID/secret or allowlisted redirect URI, use static OAuth with `remoteConfig.staticOAuthRequired: true` and document the provider setup and required scopes.
 - If provider docs specify a static token or API key, use `remoteConfig.headers`. Mark the value `required: true` and `sensitive: true`; use the documented header name and add a prefix such as `Bearer ` only when required.
 - If documentation and live discovery conflict, or the auth scheme cannot be represented safely, leave the connector unreviewed. Never infer auth from a Claude-only connect button.
+
+## Verify the icon
+
+Prefer an official, stable image asset. Do not use a homepage URL or assume that `/favicon.ico` exists.
+
+Apply the same public-destination and manual-redirect policy used for authentication requests, then make a GET request to the exact URL that will be stored in `icon`:
+
+- Require a successful 2xx response without authentication.
+- Require an `image/*` response content type and a non-empty body.
+- If the candidate redirects, validate every redirect target and store the final direct image URL rather than the redirecting URL.
+- Leave the connector unreviewed if no stable image URL can be verified.
 
 ## Record the verified disposition
 

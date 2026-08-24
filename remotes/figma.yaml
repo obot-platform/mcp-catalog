@@ -18,7 +18,7 @@ description: |
 
 metadata:
   categories: Design, Developer Tools, Productivity
-icon: https://www.figma.com/favicon.ico
+icon: "https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://figma.com&size=256"
 repoURL: https://developers.figma.com/docs/figma-mcp-server/
 runtime: remote
 remoteConfig:
