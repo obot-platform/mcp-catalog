@@ -3,7 +3,7 @@ entryKey: obot-sentry
 serverUserType: singleUser
 shortDescription: Search, investigate, and manage Sentry errors, issues, and projects
 description: |
-  [Sentry's official remote Model Context Protocol (MCP) server](https://docs.sentry.io/product/sentry-mcp/) connects AI agents to Sentry errors, issues, projects, releases, and performance data.
+  Search, investigate, and manage Sentry errors, issues, projects, releases, and performance data through [Sentry's official MCP server](https://docs.sentry.io/product/sentry-mcp/).
 
   ## Features
   - Search errors, transactions, issues, releases, tags, and documentation

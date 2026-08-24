@@ -3,7 +3,7 @@ entryKey: obot-square
 serverUserType: singleUser
 shortDescription: Manage Square payments, customers, orders, catalog, and business operations
 description: |
-  A Model Context Protocol (MCP) server for Square that connects AI assistants directly to the full Square API platform, providing programmatic access to customers, orders, items, payments, and commerce operations.
+  Manage customers, orders, items, payments, and commerce operations across the Square API platform through [Square's MCP server](https://github.com/square/square-mcp-server).
 
   ## Features
   - **Payment Ecosystem**: Complete payment processing including Apple Pay, cards, checkouts, refunds, and payouts

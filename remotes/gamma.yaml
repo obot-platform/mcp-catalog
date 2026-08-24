@@ -3,7 +3,7 @@ entryKey: obot-gamma
 serverUserType: singleUser
 shortDescription: Create presentations, documents, webpages, and social posts with AI
 description: |
-  [Gamma's official remote Model Context Protocol (MCP) server](https://developers.gamma.app/mcp) lets AI agents generate polished presentations, documents, webpages, and social posts.
+  Generate polished presentations, documents, webpages, and social posts with [Gamma's official MCP server](https://developers.gamma.app/mcp).
 
   ## Features
   - Generate content from prompts, outlines, or notes

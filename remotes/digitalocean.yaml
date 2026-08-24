@@ -9,7 +9,7 @@ upgradeNote: |
   - **Configuration change:** The previous comma-separated enabled-services setting is no longer used; create separate connections for multiple services.
   - **Tool changes:** Available tools and parameters now follow each DigitalOcean-hosted service.
 description: |
-  A Model Context Protocol (MCP) server that provides an interface for managing DigitalOcean resources and performing actions using the DigitalOcean API. Connect directly to DigitalOcean's vendor-hosted MCP services.
+  Manage DigitalOcean resources and perform API actions through [DigitalOcean's vendor-hosted MCP services](https://docs.digitalocean.com/products/app-platform/reference/mcp/).
 
   > **⚠️ Upgrade notice**
   >

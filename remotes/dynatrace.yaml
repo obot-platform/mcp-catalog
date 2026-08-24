@@ -9,7 +9,7 @@ upgradeNote: |
   - **Compatibility:** Dynatrace Managed and classic environments are no longer supported.
   - **Tool changes:** Tool names and parameters change.
 description: |
-  The official Dynatrace Model Context Protocol (MCP) server provides secure, governed access to Dynatrace observability data and Dynatrace Intelligence. It is hosted and maintained by Dynatrace in your SaaS environment.
+  Investigate observability data and use Dynatrace Intelligence through [Dynatrace's secure, governed MCP server](https://docs.dynatrace.com/docs/dynatrace-intelligence/dynatrace-mcp), hosted and maintained in your SaaS environment.
 
   > **⚠️ Upgrade notice**
   >

@@ -4,6 +4,10 @@ Remote catalog entries must:
 
 - Use `repoURL` to link to official documentation.
 - Include a link to official documentation or setup instructions in the description before the first feature or setup section.
+- Lead the description with concrete, product-specific functionality or outcomes.
+- Avoid opening with protocol, hosting, or "official server" boilerplate.
+- Use `MCP`, not the expanded term "Model Context Protocol".
+- Mention hosting, authentication, or official status only when it adds useful context.
 - Use `urlTemplate`, not `URLTemplate`, when configuring a URL template.
 
 # Catalog Validation

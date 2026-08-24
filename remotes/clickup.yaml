@@ -3,7 +3,7 @@ entryKey: obot-clickup
 serverUserType: singleUser
 shortDescription: Manage ClickUp tasks, documents, chat, lists, and time tracking
 description: |
-  [ClickUp's official remote Model Context Protocol (MCP) server](https://help.clickup.com/hc/en-us/articles/33335772678423-What-is-ClickUp-MCP) connects AI agents to ClickUp workspaces using OAuth.
+  Manage ClickUp tasks, documents, chat, lists, and time tracking through [ClickUp's official MCP server](https://help.clickup.com/hc/en-us/articles/33335772678423-What-is-ClickUp-MCP), with each user connecting through OAuth.
 
   ## Features
   - Search, create, and update tasks individually or in bulk

@@ -4,7 +4,7 @@ serverUserType: singleUser
 shortDescription: Manage Todoist tasks, projects, and team collaboration through natural language
 description: |
 
-  A Model Context Protocol (MCP) server for Todoist integration, providing comprehensive task and project management capabilities through Todoist's API.
+  Manage Todoist tasks and projects through [Todoist's MCP integration](https://github.com/Doist/todoist-ai) and API.
 
   ## Features
   - **Access Todoist data from compatible AI applications**

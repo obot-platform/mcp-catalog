@@ -4,7 +4,7 @@ serverUserType: singleUser
 shortDescription: Access Morningstar financial data, analyst research, and investment screening
 description: |
 
-  A Model Context Protocol (MCP) server that provides comprehensive access to Morningstar's institutional-grade financial data and research. Retrieve real-time and historical market data, access professional analyst research with economic moat ratings, screen investments across stocks/ETFs/funds, analyze fund holdings, and explore 400+ financial datapoints for any publicly traded security.
+  Retrieve market data, analyst research, economic moat ratings, investment screens, fund holdings, and hundreds of financial data points through [Morningstar's MCP server](https://developer.morningstar.com/direct-web-services/documentation/morningstar-ai-integrations/morningstar-mcp-server/overview).
 
   ## Features
 

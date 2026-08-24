@@ -3,7 +3,7 @@ entryKey: obot-calendly
 serverUserType: singleUser
 shortDescription: Manage Calendly event types, availability, links, and bookings
 description: |
-  [Calendly's official remote Model Context Protocol (MCP) server](https://developer.calendly.com/calendly-mcp-server) connects AI agents to Calendly scheduling workflows.
+  Manage event types, availability, scheduling links, and bookings through [Calendly's official MCP server](https://developer.calendly.com/calendly-mcp-server).
 
   ## Features
   - Create and update event types

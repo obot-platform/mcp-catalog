@@ -10,7 +10,7 @@ upgradeNote: |
   - **Tool changes:** Tool names and parameters change. Dedicated goal mutation, time-period lookup, workspace listing, and several granular task helper tools are no longer available; some task operations are consolidated into bulk create and update tools.
   - **New capabilities:** V2 adds bulk task operations, status overviews, comments, and AI Teammate discovery.
 description: |
-  Connect to Asana's official Model Context Protocol (MCP) server to search and manage tasks, projects, portfolios, users, teams, attachments, comments, status updates, and AI Teammates.
+  Search and manage tasks, projects, portfolios, users, teams, attachments, comments, status updates, and AI Teammates through [Asana's official MCP server](https://developers.asana.com/docs/using-asanas-mcp-server).
 
   > **⚠️ Upgrade notice**
   >

@@ -9,7 +9,7 @@ upgradeNote: |
   - **Configuration change:** The previous API-host setting is replaced by a hosted-server region selection.
   - **Tool changes:** Tool names, parameters, and the available incident-response and administration operations change.
 description: |
-  PagerDuty's official hosted Model Context Protocol (MCP) server connects AI agents directly to PagerDuty. Investigate incidents, manage on-call coverage, administer services and teams, and run incident-response workflows without installing a local server.
+  Investigate incidents, manage on-call coverage, administer services and teams, and run incident-response workflows through [PagerDuty's hosted MCP server](https://support.pagerduty.com/main/docs/pagerduty-mcp-server), without installing a local server.
 
   > **⚠️ Upgrade notice**
   >

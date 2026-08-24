@@ -3,7 +3,7 @@ entryKey: obot-webflow
 serverUserType: singleUser
 shortDescription: Manage Webflow sites, CMS content, pages, assets, and styles
 description: |
-  [Webflow's official remote Model Context Protocol (MCP) server](https://developers.webflow.com/mcp/v1.0.0/reference/overview) connects AI agents to Webflow sites and design content.
+  Manage Webflow sites, CMS content, pages, assets, and styles through [Webflow's official MCP server](https://developers.webflow.com/mcp/v1.0.0/reference/overview).
 
   ## Features
   - Browse and update CMS collections and content

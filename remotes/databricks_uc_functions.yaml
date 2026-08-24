@@ -3,7 +3,7 @@ entryKey: obot-databricks-unity-catalog-functions
 serverUserType: singleUser
 shortDescription: Execute and manage Databricks Unity Catalog serverless functions
 description: |
-  A Model Context Protocol (MCP) server that provides easy connection to Databricks Unity Catalog Functions using managed MCP servers. Execute and manage your registered serverless functions with built-in Unity Catalog security and governance.
+  Execute and manage registered Databricks Unity Catalog Functions through [Databricks managed MCP servers](https://docs.databricks.com/aws/en/generative-ai/mcp/), with built-in security and governance.
 
   ## Features
   - **Function Execution**: Execute Unity Catalog functions with proper parameters

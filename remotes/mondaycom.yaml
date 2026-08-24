@@ -9,7 +9,7 @@ upgradeNote: |
   - **Tool changes:** monday.com updates its hosted server automatically, so available tools and parameters may change over time.
   - **Same account access:** Tool calls continue to run as the connected user and cannot exceed that user's monday.com permissions.
 description: |
-  Connect to monday.com's hosted Model Context Protocol (MCP) server to work with boards, items, updates, workspaces, documents, dashboards, and other monday.com data.
+  Work with boards, items, updates, workspaces, documents, dashboards, and other monday.com data through [monday.com's hosted MCP server](https://developer.monday.com/api-reference/docs/integrate-with-monday-mcp).
 
   > **⚠️ Upgrade notice**
   >

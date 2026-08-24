@@ -3,7 +3,7 @@ entryKey: obot-box
 serverUserType: singleUser
 shortDescription: Search, analyze, create, and update content stored in Box
 description: |
-  [Box's official remote Model Context Protocol (MCP) server](https://developer.box.com/guides/box-mcp/) connects AI agents to content stored in Box while preserving existing Box permissions and security controls.
+  Search, analyze, create, and update Box content through [Box's official MCP server](https://developer.box.com/guides/box-mcp/), while preserving existing permissions and security controls.
 
   ## Features
   - Search files, folders, metadata, and Box Hubs

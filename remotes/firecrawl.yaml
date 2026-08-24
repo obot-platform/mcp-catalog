@@ -9,7 +9,7 @@ upgradeNote: |
   - **Authentication:** OAuth and limited keyless access are now available in addition to API-key access.
   - **Tool changes:** Tool names, parameters, and the available scraping, research, interaction, and monitoring capabilities change.
 description: |
-  The official hosted Firecrawl Model Context Protocol (MCP) server gives AI assistants current web data without running a local MCP container. Firecrawl operates and updates the server directly.
+  Search, scrape, and retrieve current web data through [Firecrawl's hosted MCP server](https://docs.firecrawl.dev/mcp-server), without running a local container. Firecrawl operates and updates the server directly.
 
   > **⚠️ Upgrade notice**
   >

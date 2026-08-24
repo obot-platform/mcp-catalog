@@ -3,7 +3,7 @@ entryKey: obot-figma
 serverUserType: singleUser
 shortDescription: Generate diagrams and build code from Figma design context
 description: |
-  [Figma's official remote Model Context Protocol (MCP) server](https://developers.figma.com/docs/figma-mcp-server/) connects AI agents to Figma Design, FigJam, and Figma Make.
+  Turn Figma Design, FigJam, and Figma Make context into diagrams and implementation code with [Figma's official MCP server](https://developers.figma.com/docs/figma-mcp-server/).
 
   ## Features
   - Retrieve design context, variables, components, layouts, and screenshots

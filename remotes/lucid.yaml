@@ -3,7 +3,7 @@ entryKey: obot-lucid
 serverUserType: singleUser
 shortDescription: Search, summarize, share, and create Lucid diagrams and documents
 description: |
-  [Lucid's official remote Model Context Protocol (MCP) server](https://help.lucid.co/hc/en-us/articles/42578801807508-Integrate-Lucid-with-AI-tools-using-the-Lucid-MCP-server) connects AI agents to Lucidchart and Lucidspark content.
+  Search, summarize, share, and create Lucidchart and Lucidspark content through [Lucid's official MCP server](https://help.lucid.co/hc/en-us/articles/42578801807508-Integrate-Lucid-with-AI-tools-using-the-Lucid-MCP-server).
 
   ## Features
   - Search, retrieve, and summarize Lucid documents

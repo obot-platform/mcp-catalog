@@ -3,7 +3,7 @@ entryKey: obot-composio
 serverUserType: singleUser
 shortDescription: Connect your assistant to more than 1,000 apps through one MCP server
 description: |
-  Composio Connect is a hosted Model Context Protocol (MCP) server that gives your assistant access to more than 1,000 applications through one connection. Its small set of meta-tools discovers app-specific tools, connects accounts on demand, and executes actions without loading every integration into the model context.
+  Access more than 1,000 applications through one [Composio Connect](https://docs.composio.dev/docs/composio-connect) MCP connection. Its small set of meta-tools discovers app-specific tools, connects accounts on demand, and executes actions without loading every integration into the model context.
 
   ## Features
   - Discover relevant tools across Gmail, Notion, Slack, GitHub, Linear, HubSpot, and many other apps

@@ -3,7 +3,7 @@ entryKey: obot-databricks-genie-spaces
 serverUserType: singleUser
 shortDescription: Ask natural language questions about your data with AI-powered analytics
 description: |
-  A Model Context Protocol (MCP) server that provides easy connection to Databricks Genie Spaces using managed MCP servers. Ask natural language questions about your data and get insights through AI-powered analytics with built-in Unity Catalog security.
+  Ask natural-language questions and analyze data in Genie Spaces through [Databricks managed MCP servers](https://docs.databricks.com/aws/en/generative-ai/mcp/), with built-in Unity Catalog security.
 
   ## Features
   - **Natural Language Analytics**: Ask questions about your data in plain English

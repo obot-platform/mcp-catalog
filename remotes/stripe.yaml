@@ -3,7 +3,7 @@ entryKey: obot-stripe
 serverUserType: singleUser
 shortDescription: Process payments, manage subscriptions, invoices, customers, and disputes with Stripe
 description: |
-  A Model Context Protocol (MCP) server for the Stripe API that enables AI agents to interact with Stripe payments, billing, and commerce functionality. This server provides comprehensive tools for managing customers, products, payments, subscriptions, invoices, and disputes with full API coverage for building agentic payment workflows.
+  Manage Stripe customers, products, payments, subscriptions, invoices, disputes, and other commerce workflows through [Stripe's MCP server](https://docs.stripe.com/mcp).
 
   ## Features
   - **Customer Management**: Create, list, and manage customers with comprehensive data handling

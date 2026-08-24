@@ -3,7 +3,7 @@ entryKey: obot-excalidraw
 serverUserType: singleUser
 shortDescription: Create and edit interactive hand-drawn diagrams with Excalidraw
 description: |
-  [Excalidraw's official remote Model Context Protocol (MCP) server](https://github.com/excalidraw/excalidraw-mcp) connects AI agents to an interactive Excalidraw canvas.
+  Create and edit interactive hand-drawn diagrams with [Excalidraw's official MCP server](https://github.com/excalidraw/excalidraw-mcp).
 
   ## Features
   - Create hand-drawn diagrams from natural-language descriptions

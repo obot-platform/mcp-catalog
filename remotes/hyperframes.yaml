@@ -3,7 +3,7 @@ entryKey: obot-hyperframes
 serverUserType: singleUser
 shortDescription: Build animated slides, explainer videos, and motion graphics with HTML
 description: |
-  [HeyGen's official HyperFrames Model Context Protocol (MCP) server](https://hyperframes.heygen.com/guides/mcp) connects AI agents to an HTML-based video composition and rendering workflow.
+  Build animated slides, explainer videos, and motion graphics with HTML through [HeyGen's official HyperFrames MCP server](https://hyperframes.heygen.com/guides/mcp).
 
   ## Features
   - Compose animated slides and motion graphics from HTML

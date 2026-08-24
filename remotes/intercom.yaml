@@ -3,7 +3,7 @@ entryKey: obot-intercom
 serverUserType: singleUser
 shortDescription: Search Intercom conversations, contacts, tickets, and customer data
 description: |
-  [Intercom's official remote Model Context Protocol (MCP) server](https://developers.intercom.com/docs/guides/mcp) gives AI agents access to customer conversations, contacts, companies, tickets, and Help Center content.
+  Search customer conversations, contacts, companies, tickets, and Help Center content through [Intercom's official MCP server](https://developers.intercom.com/docs/guides/mcp).
 
   ## Features
   - Search and inspect customer conversations and support tickets

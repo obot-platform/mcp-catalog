@@ -3,7 +3,7 @@ entryKey: obot-canva
 serverUserType: singleUser
 shortDescription: Search, create, edit, and export Canva designs
 description: |
-  [Canva's official remote Model Context Protocol (MCP) server](https://www.canva.dev/docs/mcp/) enables AI agents to work with Canva designs and content.
+  Search, create, and update Canva designs and content through [Canva's official MCP server](https://www.canva.dev/docs/mcp/).
 
   ## Features
   - Search and inspect designs, pages, and folders

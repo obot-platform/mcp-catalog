@@ -9,7 +9,7 @@ upgradeNote: |
   - **Authentication change:** A personal access token is no longer required; OAuth is used when the token is omitted.
   - **Tool changes:** Tool names, parameters, and available project, database, function, branch, storage, and documentation operations change.
 description: |
-  The official hosted Supabase Model Context Protocol (MCP) server connects AI assistants to your Supabase projects.
+  Manage Supabase projects and development workflows through [Supabase's hosted MCP server](https://supabase.com/docs/guides/ai-tools/mcp).
 
   > **⚠️ Upgrade notice**
   >

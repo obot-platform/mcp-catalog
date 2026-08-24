@@ -4,7 +4,7 @@ serverUserType: singleUser
 shortDescription: Manage Jira issues, Confluence pages, and Compass services with AI assistance
 description: |
 
-  A Model Context Protocol (MCP) server that bridges between your Atlassian Cloud site and compatible external tools. Once configured, it enables those tools to interact with Jira, Compass, and Confluence data in real-time.
+  Work with Jira, Compass, and Confluence data in real time through [Atlassian's remote MCP server](https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/), which connects compatible tools to your Atlassian Cloud site.
 
   ## Features
   - **Smart Jira Management**: Create, update, search, and transition issues with AI assistance, manage comments, and track project metadata

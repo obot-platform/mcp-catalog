@@ -3,7 +3,7 @@ entryKey: obot-grafana-cloud
 serverUserType: singleUser
 shortDescription: Query Grafana Cloud metrics, logs, dashboards, alerts, incidents, and on-call schedules with OAuth
 description: |
-  Grafana Cloud's official hosted Model Context Protocol (MCP) server connects AI agents directly to a Grafana Cloud stack. It uses OAuth 2.1, so each user authorizes access with their own Grafana identity and RBAC permissions instead of providing a service account token.
+  Investigate and manage a Grafana Cloud stack through [Grafana Cloud's hosted MCP server](https://grafana.com/docs/grafana-cloud/ai-tools/mcp-servers/cloud-mcp/). OAuth 2.1 gives each user access through their own Grafana identity and RBAC permissions instead of a service account token.
 
   [Read the official Grafana Cloud MCP server documentation](https://grafana.com/docs/grafana-cloud/ai-tools/mcp-servers/cloud-mcp/).
 

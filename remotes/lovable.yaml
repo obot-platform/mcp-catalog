@@ -3,7 +3,7 @@ entryKey: obot-lovable
 serverUserType: singleUser
 shortDescription: Create, inspect, iterate on, and deploy Lovable applications
 description: |
-  [Lovable's official remote Model Context Protocol (MCP) server](https://docs.lovable.dev/integrations/lovable-mcp-server) connects AI agents to Lovable workspaces, projects, files, databases, and deployments.
+  Create, inspect, iterate on, and deploy Lovable applications through [Lovable's official MCP server](https://docs.lovable.dev/integrations/lovable-mcp-server).
 
   ## Features
   - Create, inspect, remix, and deploy Lovable projects

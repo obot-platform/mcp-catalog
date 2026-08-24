@@ -3,7 +3,7 @@ entryKey: obot-fireflies
 serverUserType: singleUser
 shortDescription: Retrieve and analyze Fireflies meeting transcripts and summaries
 description: |
-  [Fireflies' official remote Model Context Protocol (MCP) server](https://guide.fireflies.ai/articles/8272956938-learn-about-the-fireflies-mcp-server-model-context-protocol) connects AI agents to meeting transcripts and summaries captured by Fireflies.ai.
+  Retrieve and analyze meeting transcripts and summaries captured by Fireflies.ai through [Fireflies' official MCP server](https://guide.fireflies.ai/articles/8272956938-learn-about-the-fireflies-mcp-server-model-context-protocol).
 
   ## Features
   - List available meeting transcripts

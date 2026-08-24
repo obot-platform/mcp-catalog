@@ -3,7 +3,7 @@ entryKey: obot-ahrefs
 serverUserType: singleUser
 shortDescription: Research keywords, backlinks, rankings, competitors, and AI visibility
 description: |
-  [Ahrefs' official remote Model Context Protocol (MCP) server](https://docs.ahrefs.com/docs/mcp/reference/introduction) connects AI agents to Ahrefs SEO, competitive-intelligence, site-audit, and brand-visibility data.
+  Research keywords, backlinks, rankings, competitors, and AI visibility with [Ahrefs' official MCP server](https://docs.ahrefs.com/docs/mcp/reference/introduction).
 
   ## Features
   - Research keywords, search results, domains, and competitors

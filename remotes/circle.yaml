@@ -3,7 +3,7 @@ entryKey: obot-circle
 serverUserType: singleUser
 shortDescription: Manage and analyze your Circle community through its official MCP server
 description: |
-  The official Circle Model Context Protocol (MCP) server connects your AI assistant to a Circle community through the Admin API v2.
+  Manage a Circle community through the Admin API v2 with [Circle's official MCP server](https://api.circle.so/mcp).
 
   ## Features
   - Browse and search members, spaces, posts, events, courses, tags, analytics, and form submissions

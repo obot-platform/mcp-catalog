@@ -9,7 +9,7 @@ upgradeNote: |
   - **Authentication:** OAuth, anonymous access, and optional API-key access are now supported.
   - **Tool changes:** Tool parameters and documentation-retrieval behavior may change with the hosted service.
 description: |
-  The official hosted Context7 Model Context Protocol (MCP) server provides current, version-specific documentation and code examples for libraries and frameworks.
+  Retrieve current, version-specific library documentation and code examples through [Context7's hosted MCP server](https://context7.com/docs).
 
   > **⚠️ Upgrade notice**
   >

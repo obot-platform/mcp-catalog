@@ -3,7 +3,7 @@ entryKey: obot-make
 serverUserType: singleUser
 shortDescription: Run and manage Make scenarios, connections, teams, and data stores
 description: |
-  [Make's official remote Model Context Protocol (MCP) server](https://developers.make.com/mcp-server/) connects AI agents to Make scenarios and account resources.
+  Run and manage scenarios, connections, teams, and data stores through [Make's official MCP server](https://developers.make.com/mcp-server/).
 
   ## Features
   - Create, update, activate, and run scenarios

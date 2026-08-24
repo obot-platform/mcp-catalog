@@ -3,7 +3,7 @@ entryKey: obot-tableau-cloud
 serverUserType: singleUser
 shortDescription: Query Tableau Cloud data, explore content, and manage Pulse metrics with OAuth
 description: |
-  The official Tableau-hosted Model Context Protocol (MCP) server for Tableau Cloud. It uses your Tableau Cloud identity, so each tool call respects your existing site role and content permissions.
+  Explore and manage Tableau Cloud content through [Tableau's hosted MCP server](https://tableau.github.io/tableau-mcp/docs/hosted-tableau-mcp). It uses your Tableau Cloud identity, so each tool call respects your existing site role and content permissions.
 
   [Read the official hosted Tableau MCP documentation](https://tableau.github.io/tableau-mcp/docs/hosted-tableau-mcp).
 

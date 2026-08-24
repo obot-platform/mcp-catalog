@@ -9,7 +9,7 @@ upgradeNote: |
   - **OAuth setup:** A site administrator must enable MCP Dynamic Client Registration.
   - **Compatibility:** Custom domains are not accepted, tool parameters may change, and local file upload and download tools remain unavailable.
 description: |
-  The official Files.com hosted Model Context Protocol (MCP) server lets AI agents securely manage resources and perform file operations without running a local server.
+  Securely manage Files.com resources and perform file operations through [Files.com's hosted MCP server](https://www.files.com/docs/integrations/model-context-protocol-mcp-server), without running a local server.
 
   > **⚠️ Upgrade notice**
   >

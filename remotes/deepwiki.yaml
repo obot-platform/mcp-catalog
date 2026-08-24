@@ -4,7 +4,7 @@ serverUserType: singleUser
 shortDescription: Access AI-generated documentation for any public GitHub repository
 description: |
 
-  A Model Context Protocol (MCP) server that provides AI-generated documentation for any public GitHub repository. Search, read, and ask questions about codebases through comprehensive, automatically-generated documentation.
+  Search, read, and ask questions about any public GitHub repository through [DeepWiki's automatically generated documentation](https://github.com/CognitionAI/deepwiki).
 
   ## Features
 

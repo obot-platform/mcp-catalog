@@ -3,7 +3,7 @@ entryKey: obot-miro
 serverUserType: singleUser
 shortDescription: Search, summarize, and create content on Miro boards
 description: |
-  [Miro's official remote Model Context Protocol (MCP) server](https://developers.miro.com/docs/miro-mcp) lets AI agents work directly with Miro boards.
+  Search, summarize, and create content on Miro boards through [Miro's official MCP server](https://developers.miro.com/docs/miro-mcp).
 
   ## Features
   - Search and summarize boards, decisions, and open questions

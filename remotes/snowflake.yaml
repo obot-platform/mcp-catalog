@@ -9,7 +9,7 @@ upgradeNote: |
   - **Compatibility:** Username/password authentication and Service Config YAML are no longer supported.
   - **Tool changes:** Tool names, parameters, and availability are defined by the configured Snowflake MCP server.
 description: |
-  Connect to an official Snowflake-managed Model Context Protocol (MCP) server. Snowflake hosts the endpoint and uses native role-based access control to govern access to the server and each configured tool.
+  Query and manage Snowflake data through [Snowflake's managed MCP server](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp). Snowflake hosts the endpoint and uses native role-based access control for the server and each configured tool.
 
   > **Upgrade notice**
   >

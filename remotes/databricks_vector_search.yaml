@@ -3,7 +3,7 @@ entryKey: obot-databricks-vector-search
 serverUserType: singleUser
 shortDescription: Semantic search and similarity queries with Databricks Vector Search indexes
 description: |
-  A Model Context Protocol (MCP) server that provides easy connection to Databricks Vector Search using managed MCP servers. Access your vector search indexes for semantic search and similarity queries with built-in Unity Catalog security.
+  Run semantic search and similarity queries against Databricks Vector Search indexes through [Databricks managed MCP servers](https://docs.databricks.com/aws/en/generative-ai/mcp/), with built-in Unity Catalog security.
 
   ## Features
   - **Semantic Search**: Query and search through your indexed data using Databricks Vector Search

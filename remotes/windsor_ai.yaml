@@ -3,7 +3,7 @@ entryKey: obot-windsor-ai
 serverUserType: singleUser
 shortDescription: Analyze marketing, sales, analytics, and e-commerce data
 description: |
-  [Windsor.ai's official remote Model Context Protocol (MCP) server](https://windsor.ai/documentation/windsor-mcp/) connects AI agents to marketing, advertising, analytics, CRM, e-commerce, and warehouse data.
+  Analyze marketing, advertising, analytics, CRM, e-commerce, and warehouse data through [Windsor.ai's official MCP server](https://windsor.ai/documentation/windsor-mcp/).
 
   ## Features
   - Query metrics from hundreds of connected data sources

@@ -3,7 +3,7 @@ entryKey: obot-granola
 serverUserType: singleUser
 shortDescription: Search meeting notes, transcripts, decisions, and action items
 description: |
-  [Granola's official remote Model Context Protocol (MCP) server](https://help.granola.ai/article/granola-mcp) lets AI agents search and reason over your Granola meeting history.
+  Search meeting notes, transcripts, decisions, and action items with [Granola's official MCP server](https://help.granola.ai/article/granola-mcp).
 
   ## Features
   - Search meeting notes by topic, attendee, or date

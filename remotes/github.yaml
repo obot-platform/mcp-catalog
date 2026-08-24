@@ -3,7 +3,7 @@ entryKey: obot-github
 serverUserType: singleUser
 shortDescription: Manage GitHub repositories, issues, PRs, workflows, and CI/CD operations
 description: |
-  A Model Context Protocol (MCP) server that provides easy connection to GitHub using the hosted version – no local setup or runtime required. Access comprehensive GitHub functionality through a remote server with additional tools not available in the local version.
+  Manage GitHub repositories, issues, pull requests, workflows, and more through [GitHub's hosted MCP server](https://github.com/github/github-mcp-server), with no local runtime required and additional remote-only tools.
 
   ## Features
   - **Repository Management**: Browse and query code, search files, analyze commits, and understand project structure

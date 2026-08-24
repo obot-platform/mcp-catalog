@@ -3,7 +3,7 @@ entryKey: obot-zapier
 serverUserType: singleUser
 shortDescription: Access 30,000+ actions across 8,000+ apps in Zapier automation platform
 description: |
-  A Model Context Protocol (MCP) server for Zapier, providing access to apps and actions.
+  Access connected apps and run actions through [Zapier's MCP server](https://zapier.com/mcp).
 
   ## Features
 

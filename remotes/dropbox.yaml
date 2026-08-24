@@ -3,7 +3,7 @@ entryKey: obot-dropbox
 serverUserType: singleUser
 shortDescription: Search, organize, create, and share Dropbox files and folders
 description: |
-  [Dropbox's official remote Model Context Protocol (MCP) connector](https://help.dropbox.com/integrations/connect-dropbox-to-claude) connects AI agents to Dropbox content while respecting existing permissions.
+  Search, organize, create, and share Dropbox files and folders through [Dropbox's official MCP connector](https://help.dropbox.com/integrations/connect-dropbox-to-claude), which respects existing permissions.
 
   ## Features
   - Search, browse, preview, and download files

@@ -9,7 +9,7 @@ upgradeNote: |
   - **New requirement:** Agent Builder requires Elastic Cloud Serverless or Elastic Stack 9.3 or later.
   - **Tool changes:** All tool names and parameters change. Direct raw Query DSL and shard inspection are no longer available.
 description: |
-  Elastic Agent Builder's official Model Context Protocol (MCP) server exposes built-in and custom tools from Elastic Cloud Serverless projects and self-managed Elastic Stack deployments.
+  Use built-in and custom Elastic Agent Builder tools from Elastic Cloud Serverless and self-managed Elastic Stack deployments through [Elastic's official MCP server](https://www.elastic.co/docs/explore-analyze/ai-features/agent-builder/mcp-server).
 
   > **⚠️ Upgrade notice**
   >

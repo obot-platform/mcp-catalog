@@ -9,7 +9,7 @@ upgradeNote: |
   - **New capabilities:** Advanced search, webpage fetching, and Exa Agent are enabled.
   - **Tool changes:** Legacy code-context and crawling tools are replaced by the hosted server's current tools and parameters.
 description: |
-  The official Exa-hosted Model Context Protocol (MCP) server for AI-powered web search and clean webpage retrieval.
+  Search the web and retrieve clean webpage content through [Exa's hosted MCP server](https://exa.ai/docs/reference/exa-mcp).
 
   > **⚠️ Upgrade notice**
   >

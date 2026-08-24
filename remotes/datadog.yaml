@@ -9,7 +9,7 @@ upgradeNote: |
   - **Region:** This entry connects to Datadog US1.
   - **Tool changes:** Tool names, parameters, permissions, and available toolsets change.
 description: |
-  Datadog's official, vendor-hosted Model Context Protocol (MCP) server connects AI agents to Datadog observability data and platform features. Use it to investigate logs, metrics, traces, monitors, dashboards, incidents, hosts, RUM, and more.
+  Investigate logs, metrics, traces, monitors, dashboards, incidents, hosts, RUM, and more through [Datadog's vendor-hosted MCP server](https://docs.datadoghq.com/mcp_server/).
 
   > **⚠️ Upgrade notice**
   >

@@ -3,7 +3,7 @@ entryKey: obot-airtable
 serverUserType: singleUser
 shortDescription: Search, analyze, create, and update structured Airtable data
 description: |
-  [Airtable's official remote Model Context Protocol (MCP) server](https://support.airtable.com/using-the-airtable-mcp-server) connects AI agents to Airtable bases while respecting each user's existing permissions.
+  Search, analyze, create, and update structured data with [Airtable's official MCP server](https://support.airtable.com/using-the-airtable-mcp-server), which respects each user's existing base permissions.
 
   ## Features
   - Search bases and inspect tables, fields, and records

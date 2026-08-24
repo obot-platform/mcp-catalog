@@ -4,7 +4,7 @@ serverUserType: singleUser
 shortDescription: Connect to Slack and work with messages, files, channels, and more
 description: |
 
-  A Model Context Protocol (MCP) that connects to your Slack workspace.
+  Search conversations and work with messages and channels through [Slack's official MCP server](https://docs.slack.dev/ai/slack-mcp-server).
   This is the official Slack MCP server.
 
   ## Features
