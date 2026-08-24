@@ -1,0 +1,24 @@
+name: Supermetrics Marketing Analytics
+entryKey: obot-supermetrics-marketing-analytics
+serverUserType: singleUser
+shortDescription: Analyze marketing data and manage campaigns across many platforms
+description: |
+  [Supermetrics' official remote Model Context Protocol (MCP) server](https://mcp.supermetrics.com/docs) connects AI agents to advertising, analytics, CRM, e-commerce, email, and social-media data sources.
+
+  ## Features
+  - Discover data sources, accounts, and available fields
+  - Query and analyze marketing performance data
+  - Create, retrieve, and update supported advertising campaigns
+  - Create and share live marketing dashboards
+
+  ## What you'll need to connect
+
+  Supermetrics uses OAuth and can create an account during authorization if needed.
+
+metadata:
+  categories: Marketing, Data & Analytics, SaaS & API Integrations
+icon: https://supermetrics.com/favicon.ico
+repoURL: https://mcp.supermetrics.com/docs
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.supermetrics.com/mcp

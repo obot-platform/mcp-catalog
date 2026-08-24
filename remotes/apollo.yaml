@@ -1,0 +1,25 @@
+name: Apollo.io
+entryKey: obot-apollo
+serverUserType: singleUser
+shortDescription: Find, enrich, and manage sales prospects and sequences
+description: |
+  [Apollo's official Model Context Protocol (MCP) integration](https://knowledge.apollo.io/hc/en-us/articles/43827318678541-Integrate-Apollo-with-Claude) connects AI agents to Apollo's people, company, contact, and sequence data.
+
+  ## Features
+  - Search for people, companies, contacts, and job postings
+  - Enrich people and organizations with verified sales data
+  - Create and update contacts
+  - Add contacts to or remove them from sales sequences
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Apollo Account**: Each user authenticates through OAuth and receives access according to their Apollo plan and permissions
+
+metadata:
+  categories: Sales, Marketing, SaaS & API Integrations
+icon: https://www.apollo.io/favicon.ico
+repoURL: https://knowledge.apollo.io/hc/en-us/articles/43827318678541-Integrate-Apollo-with-Claude
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.apollo.io/mcp

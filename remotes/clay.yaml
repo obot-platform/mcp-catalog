@@ -1,0 +1,25 @@
+name: Clay
+entryKey: obot-clay
+serverUserType: singleUser
+shortDescription: Find prospects, enrich contacts, and research target companies
+description: |
+  [Clay's official remote Model Context Protocol (MCP) server](https://www.notion.so/clayrun/Clay-Claude-MCP-Server-Documentation-2ef7e66eb01480c9820de48041591aeb) connects AI agents to Clay's prospecting, enrichment, and account-research capabilities.
+
+  ## Features
+  - Find and enrich contacts at target companies
+  - Research and enrich companies
+  - Add contact and company data points
+  - Inspect available credits and previous searches
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Clay Account**: Each user authenticates through OAuth and receives access based on their Clay account and credit balance
+
+metadata:
+  categories: Sales, Marketing, Data & Analytics
+icon: https://clay.com/favicon.ico
+repoURL: https://www.notion.so/clayrun/Clay-Claude-MCP-Server-Documentation-2ef7e66eb01480c9820de48041591aeb
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.clay.com/v3/mcp

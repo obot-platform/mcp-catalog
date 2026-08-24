@@ -1,0 +1,25 @@
+name: Webflow
+entryKey: obot-webflow
+serverUserType: singleUser
+shortDescription: Manage Webflow sites, CMS content, pages, assets, and styles
+description: |
+  [Webflow's official remote Model Context Protocol (MCP) server](https://developers.webflow.com/mcp/v1.0.0/reference/overview) connects AI agents to Webflow sites and design content.
+
+  ## Features
+  - Browse and update CMS collections and content
+  - Create and edit pages, components, layouts, and styles
+  - Manage assets, forms, localization, scripts, and webhooks
+  - Inspect sites and work with the Webflow Designer
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Webflow Account**: Each user authenticates through OAuth and can access sites allowed by their Webflow permissions
+
+metadata:
+  categories: Developer Tools, Design, SaaS & API Integrations
+icon: https://webflow.com/favicon.ico
+repoURL: https://developers.webflow.com/mcp/v1.0.0/reference/overview
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.webflow.com/mcp

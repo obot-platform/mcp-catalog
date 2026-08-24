@@ -1,0 +1,25 @@
+name: Ramp
+entryKey: obot-ramp
+serverUserType: singleUser
+shortDescription: Search and analyze Ramp transactions, bills, cards, and vendors
+description: |
+  [Ramp's official remote Model Context Protocol (MCP) server](https://docs.ramp.com/developer-api/v1/guides/ramp-mcp-remote) connects AI agents to Ramp financial and spend-management data.
+
+  ## Features
+  - Query transactions, reimbursements, and bills
+  - Analyze purchase orders, cards, limits, and spend programs
+  - Inspect vendors, departments, users, entities, and locations
+  - Load Ramp exports for custom analysis
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Ramp Account**: Each user authenticates through OAuth and receives access based on their Ramp role and permissions
+
+metadata:
+  categories: Finance, Business, Data & Analytics
+icon: https://ramp.com/favicon.ico
+repoURL: https://docs.ramp.com/developer-api/v1/guides/ramp-mcp-remote
+runtime: remote
+remoteConfig:
+  fixedURL: https://ramp-mcp-remote.ramp.com/mcp

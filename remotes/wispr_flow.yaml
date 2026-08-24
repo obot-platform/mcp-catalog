@@ -1,0 +1,25 @@
+name: Wispr Flow
+entryKey: obot-wispr-flow
+serverUserType: singleUser
+shortDescription: Search meetings, transcripts, notes, calendars, and tasks
+description: |
+  [Wispr Flow's official Model Context Protocol (MCP) integration](https://docs.wisprflow.ai/articles/4759919286-how-to-connect-wispr-flow-to-claude-chatgpt-and-other-ai-tools-mcp) connects AI agents to captured meetings, transcripts, notes, calendar events, and action items.
+
+  ## Features
+  - Search meetings and retrieve recordings and transcripts
+  - Find decisions, summaries, and action items across meeting history
+  - Search scratchpad notes and calendar events
+  - Create, retrieve, search, and update tasks
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Wispr Flow Account**: Each user authenticates through OAuth and can access content associated with their Wispr Flow account
+
+metadata:
+  categories: Communication, Productivity, SaaS & API Integrations
+icon: https://wisprflow.ai/favicon.ico
+repoURL: https://docs.wisprflow.ai/articles/4759919286-how-to-connect-wispr-flow-to-claude-chatgpt-and-other-ai-tools-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.wisprflow.ai/connect/mcp

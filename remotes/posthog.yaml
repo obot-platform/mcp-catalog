@@ -1,0 +1,25 @@
+name: PostHog
+entryKey: obot-posthog
+serverUserType: singleUser
+shortDescription: Query product analytics and manage PostHog insights and experiments
+description: |
+  [PostHog's official remote Model Context Protocol (MCP) server](https://posthog.com/docs/model-context-protocol) connects AI agents to PostHog analytics, dashboards, flags, experiments, surveys, errors, and logs.
+
+  ## Features
+  - Query product data using natural language, HogQL, or SQL
+  - Create and manage insights and dashboards
+  - Manage feature flags, experiments, and surveys
+  - Explore errors, logs, event definitions, schemas, and LLM costs
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **PostHog Account**: Each user authenticates through OAuth and can access organizations and projects allowed by their permissions
+
+metadata:
+  categories: Developer Tools, Data & Analytics, Monitoring & Observability
+icon: https://posthog.com/favicon.ico
+repoURL: https://posthog.com/docs/model-context-protocol
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.posthog.com/mcp

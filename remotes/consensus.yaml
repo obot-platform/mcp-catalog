@@ -1,0 +1,25 @@
+name: Consensus
+entryKey: obot-consensus
+serverUserType: singleUser
+shortDescription: Search and synthesize evidence from scientific research
+description: |
+  [Consensus' official remote Model Context Protocol (MCP) server](https://docs.consensus.app/docs/mcp) connects AI agents to a large corpus of peer-reviewed scientific literature.
+
+  ## Features
+  - Search scientific papers using natural-language research questions
+  - Build literature reviews and structured evidence summaries
+  - Identify research gaps and relevant studies
+  - Draft cited research outputs and bibliographies
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Consensus Account**: Each user authenticates through OAuth and receives access according to their Consensus plan
+
+metadata:
+  categories: Research, Data & Analytics, Education
+icon: https://consensus.app/favicon.ico
+repoURL: https://docs.consensus.app/docs/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.consensus.app/mcp

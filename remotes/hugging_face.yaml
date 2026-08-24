@@ -1,0 +1,25 @@
+name: Hugging Face
+entryKey: obot-hugging-face
+serverUserType: singleUser
+shortDescription: Search Hugging Face models, datasets, papers, docs, and Spaces
+description: |
+  [Hugging Face's official Model Context Protocol (MCP) server](https://huggingface.co/settings/mcp) connects AI agents to Hugging Face Hub resources and Gradio applications.
+
+  ## Features
+  - Search and inspect models and datasets
+  - Search research papers and Hugging Face documentation
+  - Discover and use compatible Gradio Spaces
+  - Inspect the authenticated Hugging Face account
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Hugging Face Account**: Each user authenticates through OAuth and receives access based on their Hub permissions
+
+metadata:
+  categories: AI & Machine Learning, Developer Tools, Research
+icon: https://huggingface.co/favicon.ico
+repoURL: https://huggingface.co/settings/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: "https://huggingface.co/mcp?login&gradio=none"

@@ -1,0 +1,25 @@
+name: Netlify
+entryKey: obot-netlify
+serverUserType: singleUser
+shortDescription: Create, deploy, manage, and secure websites on Netlify
+description: |
+  [Netlify's official remote Model Context Protocol (MCP) server](https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/) connects AI agents to Netlify sites, projects, teams, deployments, and platform services.
+
+  ## Features
+  - Create and deploy Netlify sites
+  - Manage projects, teams, and environment variables
+  - Configure site services and access controls
+  - Work with forms, extensions, and deployment services
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Netlify Account**: Each user authenticates through OAuth and receives access according to their Netlify team and project permissions
+
+metadata:
+  categories: Developer Tools, Cloud Infrastructure, DevOps
+icon: https://www.netlify.com/favicon.ico
+repoURL: https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/
+runtime: remote
+remoteConfig:
+  fixedURL: https://netlify-mcp.netlify.app/mcp

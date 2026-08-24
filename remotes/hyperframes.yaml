@@ -1,0 +1,25 @@
+name: HyperFrames by HeyGen
+entryKey: obot-hyperframes
+serverUserType: singleUser
+shortDescription: Build animated slides, explainer videos, and motion graphics with HTML
+description: |
+  [HeyGen's official HyperFrames Model Context Protocol (MCP) server](https://hyperframes.heygen.com/guides/mcp) connects AI agents to an HTML-based video composition and rendering workflow.
+
+  ## Features
+  - Compose animated slides and motion graphics from HTML
+  - Build explainer videos from natural-language instructions
+  - Preview and refine generated compositions
+  - Render completed compositions as videos
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **HeyGen Account**: Each user authenticates through OAuth and receives access based on their HeyGen permissions
+
+metadata:
+  categories: Design, Video, AI & Machine Learning
+icon: https://www.heygen.com/favicon.ico
+repoURL: https://hyperframes.heygen.com/guides/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.heygen.com/mcp/hyperframes/

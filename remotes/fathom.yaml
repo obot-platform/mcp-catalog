@@ -1,0 +1,25 @@
+name: Fathom
+entryKey: obot-fathom
+serverUserType: singleUser
+shortDescription: Search meetings and retrieve summaries, transcripts, and action items
+description: |
+  [Fathom's official remote Model Context Protocol (MCP) server](https://help.fathom.video/en/articles/11497793) connects AI agents to meeting intelligence captured by Fathom.
+
+  ## Features
+  - List and search recorded meetings
+  - Retrieve meeting summaries and transcripts
+  - Find people mentioned in meeting content
+  - Build deliverables grounded in meeting discussions and action items
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Fathom Account**: Each user authenticates through OAuth and can access meetings allowed by their Fathom permissions
+
+metadata:
+  categories: Communication, Productivity, SaaS & API Integrations
+icon: https://fathom.ai/favicon.ico
+repoURL: https://help.fathom.video/en/articles/11497793
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.fathom.ai/mcp

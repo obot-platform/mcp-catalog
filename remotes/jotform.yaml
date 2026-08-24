@@ -1,0 +1,25 @@
+name: Jotform
+entryKey: obot-jotform
+serverUserType: singleUser
+shortDescription: Create and edit forms and analyze Jotform submissions
+description: |
+  [Jotform's official remote Model Context Protocol (MCP) server](https://www.jotform.com/developers/mcp/) connects AI agents to forms and submission data.
+
+  ## Features
+  - Create and edit forms using natural language
+  - Search and list existing forms
+  - Retrieve, filter, and analyze submissions
+  - Display and assign forms and create submissions
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Jotform Account**: Each user authenticates through OAuth and can access forms allowed by their Jotform permissions
+
+metadata:
+  categories: Productivity, Data & Analytics, SaaS & API Integrations
+icon: https://www.jotform.com/favicon.ico
+repoURL: https://www.jotform.com/developers/mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.jotform.com/mcp-app

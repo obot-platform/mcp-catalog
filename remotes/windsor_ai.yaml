@@ -1,0 +1,25 @@
+name: Windsor.ai
+entryKey: obot-windsor-ai
+serverUserType: singleUser
+shortDescription: Analyze marketing, sales, analytics, and e-commerce data
+description: |
+  [Windsor.ai's official remote Model Context Protocol (MCP) server](https://windsor.ai/documentation/windsor-mcp/) connects AI agents to marketing, advertising, analytics, CRM, e-commerce, and warehouse data.
+
+  ## Features
+  - Query metrics from hundreds of connected data sources
+  - Blend advertising, analytics, sales, and e-commerce data
+  - Inspect available connectors, accounts, fields, and query options
+  - Manage supported campaigns, budgets, exports, and other write actions
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Windsor.ai Account**: Each user authenticates through OAuth and can access the data sources connected to their Windsor.ai account
+
+metadata:
+  categories: Marketing, Data & Analytics, SaaS & API Integrations
+icon: https://windsor.ai/favicon.ico
+repoURL: https://windsor.ai/documentation/windsor-mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.windsor.ai/
