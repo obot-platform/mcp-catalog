@@ -11,7 +11,7 @@ records:
   - id: 11ca66fc-1e98-49d5-ab9b-7cb4672a8f10
     name: Supabase
     status: existing
-    catalog_entry: obot-images/supabase.yaml
+    catalog_entry: remotes/supabase.yaml
   - id: 1f6f271e-3d29-4241-b35e-8abe6def4891
     name: Zapier
     status: existing
@@ -35,7 +35,7 @@ records:
   - id: 37153cd7-b17c-470e-8b46-007e2859e0f3
     name: Context7
     status: existing
-    catalog_entry: obot-images/context7.yaml
+    catalog_entry: remotes/context7.yaml
   - id: 41aefcf3-a829-45eb-8cee-d90b93912f57
     name: Asana
     status: existing
@@ -47,7 +47,7 @@ records:
   - id: 68268024-1a91-4316-a9e1-14ecb814cb18
     name: Datadog
     status: existing
-    catalog_entry: obot-images/datadog.yaml
+    catalog_entry: remotes/datadog.yaml
   - id: 69f3a300-cc60-48c4-b237-dfac56530dbf
     name: Notion
     status: existing
@@ -59,7 +59,7 @@ records:
   - id: 875dee50-9b3f-452b-af8c-fbc839966273
     name: HubSpot
     status: existing
-    catalog_entry: obot-images/hubspot.yaml
+    catalog_entry: remotes/hubspot.yaml
   - id: 89a7ddf5-2a6b-410c-be11-aa0e1a1b35a6
     name: Microsoft Learn
     status: existing
@@ -67,7 +67,7 @@ records:
   - id: 91408932-1110-4350-97c7-2d6b3a6d9694
     name: Exa
     status: existing
-    catalog_entry: obot-images/exa_search.yaml
+    catalog_entry: remotes/exa_search.yaml
   - id: b89f7865-a755-4f86-8062-c3bd651740ce
     name: Google Drive
     status: existing
@@ -99,7 +99,7 @@ records:
   - id: ee49809c-50e1-4b24-bc17-17ce8887bfdf
     name: Snowflake
     status: existing
-    catalog_entry: obot-images/snowflake.yaml
+    catalog_entry: remotes/snowflake.yaml
   - id: fa50c30c-9f62-4f94-b851-217868185db6
     name: Linear
     status: existing
@@ -107,4 +107,4 @@ records:
   - id: fc41b5e5-97bc-4c80-af18-e3a9442b655b
     name: PagerDuty
     status: existing
-    catalog_entry: obot-images/pagerduty.yaml
+    catalog_entry: remotes/pagerduty.yaml
