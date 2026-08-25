@@ -514,8 +514,8 @@ records:
     catalog_entry: remotes/box.yaml
   - id: a6f1af7d-e85f-4775-bbfb-da7a8eb990db
     name: PDF Viewer
-    status: imported
-    catalog_entry: remotes/pdf_viewer.yaml
+    status: skipped
+    reason: MCP example server, not a provider catalog connector
   - id: a8159026-14b4-403a-933b-bd897a5b36ca
     name: Clay
     status: imported
