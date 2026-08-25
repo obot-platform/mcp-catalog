@@ -31,17 +31,21 @@ repoURL: https://github.com/nickclyde/duckduckgo-mcp-server
 env: []
 toolPreview:
 - name: search
-  description: Search DuckDuckGo and return formatted results.
+  description: Search DuckDuckGo and return web results.
   params:
-    query: The search query string
-    max_results: Optional maximum number of results to return (default 10)
+    max_results: Maximum number of results
+    query: Search query
+    region: Optional search region
 - name: fetch_content
-  description: Fetch and parse content from a webpage URL.
+  description: Fetch and extract readable text from a webpage.
   params:
-    url: The webpage URL to fetch content from
+    backend: Content extraction backend
+    max_length: Maximum content length
+    start_index: Content start index
+    url: Webpage URL
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/duckduckgo-search:0.1.2
+  image: ghcr.io/obot-platform/mcp-images/duckduckgo-search:0.6.1
   port: 8099
   path: /
   args:

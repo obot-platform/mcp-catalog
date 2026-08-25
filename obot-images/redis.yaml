@@ -6,6 +6,9 @@ description: |
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   [![Python Version](https://img.shields.io/badge/python-3.13%2B-blue)](https://www.python.org/downloads/)
   Manage and search structured and unstructured Redis data with natural-language commands for AI-driven workflows.
+
+  [Read the official Redis MCP Server documentation](https://redis.io/docs/latest/integrate/redis-mcp/).
+
   ## Features
   - **Natural Language Queries**: Enable AI agents to query and update Redis using conversational commands
   - **Complete Redis Data Types**: Support for strings, hashes, lists, sets, sorted sets, streams, and JSON documents
@@ -24,98 +27,300 @@ description: |
   - "Index and search this vector embedding"
   - "Create a leaderboard with sorted scores"
 toolPreview:
-- name: set
-  description: Set a Redis string value with an optional expiration time
+- name: client_list
+  description: Get a list of connected clients
+  params: {}
+- name: create_vector_index_hash
+  description: Create an HNSW vector similarity index on Redis hashes
   params:
-    key: The key to set
-    value: The value to store
-    expiration: Optional expiration time in seconds
+    dim: Vector dimensions
+    distance_metric: Distance metric
+    index_name: Index name
+    prefix: Key prefix
+    vector_field: Vector field name
+- name: dbsize
+  description: Get the number of keys in the database
+  params: {}
+- name: delete
+  description: Delete a Redis key
+  params:
+    key: Key to delete
+- name: expire
+  description: Set a key expiration
+  params:
+    expire_seconds: Expiration in seconds
+    name: Redis key
 - name: get
   description: Get a Redis string value
   params:
-    key: The key to retrieve
-- name: hset
-  description: Set a field in a hash stored at key with an optional expiration time
+    key: Key to retrieve
+- name: get_index_info
+  description: Get schema and information for a Redis index
   params:
-    name: The Redis hash key
-    key: The field name inside the hash
-    value: The value to set (string, int, or float)
-    expire_seconds: Optional time in seconds after which the key should expire
-- name: hget
-  description: Get the value of a field in a Redis hash
+    index_name: Index name
+- name: get_indexed_keys_number
+  description: Get the number of keys indexed by an index
   params:
-    name: The Redis hash key
-    key: The field name inside the hash
-- name: hdel
-  description: Delete a field from a Redis hash
-  params:
-    name: The Redis hash key
-    key: The field name inside the hash
-- name: hgetall
-  description: Get all fields and values from a Redis hash
-  params:
-    name: The Redis hash key
-- name: hexists
-  description: Check if a field exists in a Redis hash
-  params:
-    name: The Redis hash key
-    key: The field name inside the hash
-- name: set_vector_in_hash
-  description: Store a vector as a field in a Redis hash (for embeddings)
-  params:
-    name: The Redis hash key
-    vector: The vector (list of numbers) to store in the hash
-    vector_field: The field name inside the hash (default "vector")
+    index_name: Index name
+- name: get_indexes
+  description: List Redis indexes
+  params: {}
 - name: get_vector_from_hash
-  description: Retrieve a vector from a Redis hash and convert it back from binary blob
+  description: Retrieve a vector from a Redis hash
   params:
-    name: The Redis hash key
-    vector_field: The field name inside the hash (default "vector")
-- name: lpush
-  description: Push a value onto the left of a Redis list with optional expiration
+    name: Hash key
+    vector_field: Vector field name
+- name: hdel
+  description: Delete a field from a hash
   params:
-    name: The Redis list key
-    value: Value to push to the list
-    expire: Optional expiration time in seconds
-- name: rpush
-  description: Push a value onto the right of a Redis list with optional expiration
+    key: Hash field
+    name: Hash key
+- name: hexists
+  description: Check whether a hash field exists
   params:
-    name: The Redis list key
-    value: Value to push to the list
-    expire: Optional expiration time in seconds
-- name: lpop
-  description: Remove and return the first element from a Redis list
+    key: Hash field
+    name: Hash key
+- name: hget
+  description: Get a hash field value
   params:
-    name: The Redis list key
-- name: rpop
-  description: Remove and return the last element from a Redis list
+    key: Hash field
+    name: Hash key
+- name: hgetall
+  description: Get all fields and values from a hash
   params:
-    name: The Redis list key
-- name: lrange
-  description: Get elements from a Redis list within a specific range
+    name: Hash key
+- name: hset
+  description: Set a hash field with optional expiration
   params:
-    name: The Redis list key
-    start: Start index for the range
-    stop: Stop index for the range
+    expire_seconds: Optional expiration in seconds
+    key: Hash field
+    name: Hash key
+    value: Value to set
+- name: hybrid_search
+  description: Combine a Redis filter with KNN vector similarity search
+  params:
+    filter_expression: Redis filter expression
+    index_name: Index name
+    k: Number of neighbors
+    query_vector: Query vector
+    return_fields: Fields to return
+    vector_field: Vector field name
+- name: info
+  description: Get Redis server information and statistics
+  params:
+    section: Information section
+- name: json_del
+  description: Delete a JSON value at a path
+  params:
+    name: Redis key
+    path: JSON path
+- name: json_get
+  description: Get a JSON value at a path
+  params:
+    name: Redis key
+    path: JSON path
+- name: json_set
+  description: Set a JSON value at a path with optional expiration
+  params:
+    expire_seconds: Optional expiration in seconds
+    name: Redis key
+    path: JSON path
+    value: JSON value
 - name: llen
-  description: Get the length of a Redis list
+  description: Get the length of a list
   params:
-    name: The Redis list key
+    name: List key
+- name: lpop
+  description: Remove and return the first list element
+  params:
+    name: List key
+- name: lpush
+  description: Push a value onto the left of a list
+  params:
+    expire: Optional expiration in seconds
+    name: List key
+    value: Value to push
+- name: lrange
+  description: Get list elements within a range
+  params:
+    name: List key
+    start: Start index
+    stop: Stop index
+- name: lrem
+  description: Remove matching elements from a list
+  params:
+    count: Number and direction of elements to remove
+    element: Element to remove
+    name: List key
+- name: psubscribe
+  description: Subscribe to channels matching a pattern
+  params:
+    pattern: Channel pattern
+- name: publish
+  description: Publish a message to a channel
+  params:
+    channel: Channel name
+    message: Message to publish
+- name: read_messages
+  description: Read pending messages for an existing subscription
+  params:
+    max_messages: Maximum messages to return
+    subscription_id: Subscription handle
+    timeout_ms: Poll timeout in milliseconds
+- name: rename
+  description: Rename a Redis key
+  params:
+    new_key: New key name
+    old_key: Existing key name
+- name: rpop
+  description: Remove and return the last list element
+  params:
+    name: List key
+- name: rpush
+  description: Push a value onto the right of a list
+  params:
+    expire: Optional expiration in seconds
+    name: List key
+    value: Value to push
+- name: sadd
+  description: Add a value to a set
+  params:
+    expire_seconds: Optional expiration in seconds
+    name: Set key
+    value: Value to add
+- name: scan_all_keys
+  description: Scan and return all keys matching a pattern
+  params:
+    batch_size: Keys to scan per iteration
+    pattern: Key pattern
+- name: scan_keys
+  description: Scan one non-blocking batch of keys
+  params:
+    count: Suggested keys per iteration
+    cursor: Scan cursor
+    pattern: Key pattern
+- name: search_redis_documents
+  description: Search Redis documentation and knowledge
+  params:
+    question: Redis question
+- name: set
+  description: Set a Redis string value
+  params:
+    expiration: Optional expiration in seconds
+    key: Key to set
+    value: Value to store
+- name: set_vector_in_hash
+  description: Store a vector in a Redis hash
+  params:
+    name: Hash key
+    vector: Vector to store
+    vector_field: Vector field name
+- name: smembers
+  description: Get all members of a set
+  params:
+    name: Set key
+- name: srem
+  description: Remove a value from a set
+  params:
+    name: Set key
+    value: Value to remove
+- name: subscribe
+  description: Subscribe to a channel and return a reusable handle
+  params:
+    channel: Channel name
+- name: type
+  description: Get the type of a value
+  params:
+    key: Redis key
+- name: unsubscribe
+  description: Close an existing pub/sub subscription
+  params:
+    subscription_id: Subscription handle
+- name: vector_search_hash
+  description: Run KNN vector similarity search on hashes
+  params:
+    index_name: Index name
+    k: Number of neighbors
+    query_vector: Query vector
+    return_fields: Fields to return
+    vector_field: Vector field name
+- name: xack
+  description: Acknowledge stream entries processed by a consumer group
+  params:
+    entry_ids: Entry IDs
+    group_name: Consumer group name
+    key: Stream key
+- name: xadd
+  description: Add an entry to a stream
+  params:
+    expiration: Optional expiration in seconds
+    fields: Entry fields
+    key: Stream key
+- name: xdel
+  description: Delete an entry from a stream
+  params:
+    entry_id: Entry ID
+    key: Stream key
+- name: xgroup_create
+  description: Create a stream consumer group
+  params:
+    group_name: Consumer group name
+    key: Stream key
+    mkstream: Create the stream if missing
+    start_id: Initial stream ID
+- name: xgroup_destroy
+  description: Destroy a stream consumer group
+  params:
+    group_name: Consumer group name
+    key: Stream key
+- name: xrange
+  description: Read entries from a stream
+  params:
+    count: Number of entries
+    key: Stream key
+- name: xreadgroup
+  description: Read stream entries with a consumer group
+  params:
+    block_ms: Optional blocking timeout
+    consumer_name: Consumer name
+    count: Maximum entries
+    group_name: Consumer group name
+    key: Stream key
+    stream_id: Stream ID
+- name: zadd
+  description: Add a member to a sorted set
+  params:
+    expiration: Optional expiration in seconds
+    key: Sorted set key
+    member: Member to add
+    score: Member score
+- name: zrange
+  description: Get a range of sorted-set members
+  params:
+    end: End index
+    key: Sorted set key
+    start: Start index
+    with_scores: Include scores
+- name: zrem
+  description: Remove a member from a sorted set
+  params:
+    key: Sorted set key
+    member: Member to remove
 
 metadata:
   categories: Databases
 icon: https://avatars.githubusercontent.com/u/1529926?s=48&v=4
-repoURL: https://github.com/redis/mcp-redis
+repoURL: https://redis.io/docs/latest/integrate/redis-mcp/
 env:
 - key: REDIS_URI
   name: Redis URI
   required: true
-  sensitive: false
+  sensitive: true
   description: URL for connecting to the Redis instance (e.g. redis://user:pass@localhost:6379/0).
 
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/redis:0.5.0
+  image: ghcr.io/obot-platform/mcp-images/redis:0.5.1
   port: 8099
   path: /
   args:

@@ -5,6 +5,8 @@ shortDescription: Manage Terraform Cloud workspaces, runs, variables, and explor
 description: |
   Manage Terraform Cloud or Terraform Enterprise workspaces, runs, and variables, and explore the Terraform Registry for Infrastructure as Code development.
 
+  [Read the official Terraform MCP Server documentation](https://developer.hashicorp.com/terraform/mcp-server).
+
   ## Features
   - **Workspace Management**: Create, update, list, and manage Terraform Cloud/Enterprise workspaces
   - **Run Operations**: Create and monitor Terraform runs (plans and applies)
@@ -25,7 +27,7 @@ description: |
 metadata:
   categories: DevOps, Cloud Infrastructure, Automation
 icon: https://raw.githubusercontent.com/hashicorp/terraform-mcp-server/5530ac1e1bc26b0e863fcd55634ea550bea18883/public/images/Terraform-LogoMark_onDark.svg
-repoURL: https://github.com/hashicorp/terraform-mcp-server
+repoURL: https://developer.hashicorp.com/terraform/mcp-server
 
 toolPreview:
 - name: list_terraform_orgs
@@ -207,7 +209,7 @@ toolPreview:
     provider_name: "The name of the provider (e.g., 'aws', 'google', 'azurerm')"
     service_slug: "The service slug to search for (e.g., 's3', 'ec2', 'vpc')"
     provider_version: "Optional. The provider version (e.g., '5.0.0' or 'latest')"
-    provider_data_type: "Optional. Type of documentation: 'resources', 'data-sources', 'functions', 'guides', or 'overview' (default: 'resources')"
+    provider_document_type: "Type of documentation: 'resources', 'data-sources', 'functions', 'guides', 'overview', 'actions', or 'list-resources'"
 - name: get_provider_details
   description: Fetches detailed documentation for a specific Terraform provider resource, data source, or guide. You must call 'search_providers' first to obtain the provider_doc_id.
   params:
@@ -255,6 +257,86 @@ toolPreview:
     private_provider_name: "The name of the private provider"
     registry_name: "Optional. Registry type: 'private' or 'public' (default: 'private')"
     include_versions: "Optional. Whether to include version information (default: true)"
+- name: attach_policy_set_to_workspaces
+  description: Attach a policy set to one or more workspaces
+  params:
+    policy_set_id: Policy set ID
+    workspace_ids: Comma-separated workspace IDs
+- name: create_no_code_workspace
+  description: Create a workspace from a Terraform no-code module
+  params:
+    auto_apply: Whether to apply successful plans automatically
+    no_code_module_id: No-code module ID
+    project_id: Project ID
+    workspace_name: Workspace name
+- name: get_apply_details
+  description: Get details for a Terraform apply
+  params:
+    apply_id: Apply ID
+- name: get_apply_logs
+  description: Get logs for a Terraform apply
+  params:
+    apply_id: Apply ID
+- name: get_plan_details
+  description: Get details for a Terraform plan
+  params:
+    plan_id: Plan ID
+- name: get_plan_json_output
+  description: Get structured JSON output for a Terraform plan
+  params:
+    plan_id: Plan ID
+- name: get_plan_logs
+  description: Get logs for a Terraform plan
+  params:
+    plan_id: Plan ID
+- name: get_provider_capabilities
+  description: Get resource and documentation capabilities for a provider
+  params:
+    name: Provider name
+    namespace: Provider namespace
+    version: Optional provider version
+- name: get_run_comments
+  description: Get user comments for a Terraform run
+  params:
+    run_id: Run ID
+- name: get_sentinel_mock
+  description: Export Sentinel mock bundle data for a Terraform plan
+  params:
+    plan_id: Plan ID
+- name: get_stack_details
+  description: Get details for a Terraform Stack
+  params:
+    stack_id: Stack ID
+    terraform_org_name: Terraform organization name
+- name: get_state_version
+  description: Get a specific or latest Terraform state version
+  params:
+    state_version_id: Optional state version ID
+    workspace_id: Optional workspace ID for the latest version
+- name: get_token_permissions
+  description: Get the current token's organization permissions
+  params:
+    terraform_org_name: Terraform organization name
+- name: list_stacks
+  description: List Terraform Stacks in an organization
+  params:
+    page: Optional page number
+    pageSize: Optional results per page
+    project_id: Optional project ID
+    search_query: Optional name search
+    terraform_org_name: Terraform organization name
+- name: list_state_versions
+  description: List state versions for a workspace
+  params:
+    page: Optional page number
+    pageSize: Optional results per page
+    terraform_org_name: Terraform organization name
+    workspace_name: Workspace name
+- name: list_workspace_policy_sets
+  description: List policy sets attached to a workspace
+  params:
+    terraform_org_name: Terraform organization name
+    workspace_id: Workspace ID
 
 env:
 - name: Terraform Cloud/Enterprise Token
@@ -270,7 +352,7 @@ env:
 
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/terraform:0.5.1
+  image: ghcr.io/obot-platform/mcp-images/terraform:1.2.0
   port: 8080
   path: "/mcp"
   args:
