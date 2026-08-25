@@ -38,6 +38,14 @@ Use the repository CLI for snapshots, selection, and every ledger mutation. Neve
    obot mcp validate-catalog-yaml --require-entry-key .
    ```
 
+## Confirm portability and documentation
+
+A successful unauthenticated `initialize` response proves that an endpoint is reachable and speaks MCP; it does not by itself prove that the provider supports use outside Claude.
+
+Before importing, require authoritative, endpoint-specific documentation that supports connecting from MCP-compatible clients generally or from the intended non-Claude client. A Claude directory listing, a Claude-only tutorial, or a Claude connect button is insufficient evidence of portability, even when Anthropic hosts the endpoint and it accepts standard MCP requests.
+
+If the only available documentation is Claude-specific, do not import the connector. Record `skipped` when the connector is clearly limited to Claude; otherwise leave it unreviewed until portable support can be documented. Do not count it as verified based on live protocol behavior alone.
+
 ## Verify and map authentication
 
 Treat provider documentation as the primary source, then use public OAuth endpoints to confirm the live behavior:
