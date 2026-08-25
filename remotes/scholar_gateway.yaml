@@ -22,7 +22,7 @@ description: |
 
 metadata:
   categories: Research, Education, Search
-icon: https://docs.scholargateway.ai/images/img_1.png
+icon: https://docs.scholargateway.ai/images/apple-touch-icon.png
 repoURL: https://docs.scholargateway.ai/
 runtime: remote
 remoteConfig:
