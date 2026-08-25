@@ -31,7 +31,7 @@ Use the repository CLI for snapshots, selection, and every ledger mutation. Neve
 4. Verify authentication using the read-only public discovery flow below, then map it to supported Obot remote configuration.
 5. If it is a duplicate, record `existing`. If it cannot be supported or ported, record `skipped`. Leave ambiguous cases unreviewed.
 6. Otherwise create the smallest useful catalog entry under `remotes/`. Link the authoritative provider documentation in the entry's `description`, even when the same URL is used for `repoURL`. Do not add `toolPreview` during intake.
-7. Verify the entry's icon using the image checks below.
+7. Before recording an `imported` disposition, verify the exact icon URL to be stored using the required image checks below. Icon verification is an import gate, not a follow-up task.
 8. Validate catalog YAML before recording an imported disposition:
 
    ```sh
@@ -45,6 +45,8 @@ A successful unauthenticated `initialize` response proves that an endpoint is re
 Before importing, require authoritative, endpoint-specific documentation that supports connecting from MCP-compatible clients generally or from the intended non-Claude client. A Claude directory listing, a Claude-only tutorial, or a Claude connect button is insufficient evidence of portability, even when Anthropic hosts the endpoint and it accepts standard MCP requests.
 
 If the only available documentation is Claude-specific, do not import the connector. Record `skipped` when the connector is clearly limited to Claude; otherwise leave it unreviewed until portable support can be documented. Do not count it as verified based on live protocol behavior alone.
+
+Do not catalog examples, demos, samples, or test deployments. A catalog entry must represent a provider-supported connector, not a reference implementation or showcase. Treat an `example`/`demo`/`sample` endpoint or documentation located under an examples directory as disqualifying evidence when it identifies the deployment as non-production; record `skipped` with that reason.
 
 ## Verify and map authentication
 
@@ -70,9 +72,9 @@ Choose the first verified Obot mapping:
 - If provider docs specify a static token or API key, use `remoteConfig.headers`. Mark the value `required: true` and `sensitive: true`; use the documented header name and add a prefix such as `Bearer ` only when required.
 - If documentation and live discovery conflict, or the auth scheme cannot be represented safely, leave the connector unreviewed. Never infer auth from a Claude-only connect button.
 
-## Verify the icon
+## Verify the icon before import
 
-Prefer an official, stable image asset. Do not use a homepage URL or assume that `/favicon.ico` exists.
+This check is required before recording an `imported` disposition. Prefer an official, stable image asset. Do not use a homepage URL or assume that `/favicon.ico` exists.
 
 Apply the same public-destination and manual-redirect policy used for authentication requests, then make a GET request to the exact URL that will be stored in `icon`:
 

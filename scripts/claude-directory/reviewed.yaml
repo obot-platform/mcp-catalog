@@ -222,8 +222,8 @@ records:
     catalog_entry: remotes/sentry.yaml
   - id: 471ca2be-244d-4d9a-955a-3cdbcf76a12b
     name: Three.js 3D Viewer
-    status: imported
-    catalog_entry: remotes/threejs_3d_viewer.yaml
+    status: skipped
+    reason: MCP Apps example server, not a provider catalog connector
   - id: 47b0738c-d713-47a5-8141-ca455a6e1bf2
     name: Motion Creative Analytics
     status: imported
