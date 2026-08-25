@@ -24,7 +24,7 @@ description: |
 
 metadata:
   categories: Marketing, Data & Analytics, Communication
-icon: https://avatars.githubusercontent.com/klaviyo?s=200
+icon: https://developers.klaviyo.com/favicon.ico
 repoURL: https://developers.klaviyo.com/en/docs/klaviyo_mcp_server
 env:
   - name: Access Mode
