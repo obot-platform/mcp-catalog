@@ -1,0 +1,28 @@
+name: Otter.ai
+entryKey: obot-otter-ai
+serverUserType: singleUser
+shortDescription: Search meeting transcripts and retrieve conversations, summaries, insights, and profile context
+description: |
+  Search Otter meeting transcripts and retrieve full conversations so you can summarize discussions, compare themes, prepare briefings, and generate content from meeting history. See the official [Otter MCP Server guide](https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server) for setup across supported clients, authentication, tools, examples, and access boundaries.
+
+  ## Features
+  - Search meetings across time periods, participants, and topics
+  - Retrieve full transcripts and conversation details
+  - Analyze patterns and themes across multiple meetings
+  - Generate summaries, briefings, and documents grounded in meeting content
+  - Retrieve the authenticated user's profile information
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Otter.ai Account**: Sign in through Otter's OAuth flow
+
+  **Read only:** The connector can access conversations you captured or that were shared with you. It does not create or modify Otter conversations.
+
+metadata:
+  categories: Productivity, Meetings, Communication
+icon: https://help.otter.ai/hc/en-us/article_attachments/36000030648855
+repoURL: https://help.otter.ai/hc/en-us/articles/35287607569687-Otter-MCP-Server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.otter.ai/mcp

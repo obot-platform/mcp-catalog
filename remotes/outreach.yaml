@@ -1,0 +1,30 @@
+name: Outreach
+entryKey: obot-outreach
+serverUserType: singleUser
+shortDescription: Research revenue records, meetings, emails, sequences, prospects, accounts, and opportunities
+description: |
+  Research and act on Outreach revenue data, including prospects, accounts, opportunities, sequences, emails, meetings, and conversation intelligence. See the official [Outreach MCP Server overview](https://support.outreach.io/hc/en-us/articles/46370115253403-Outreach-MCP-Server) for setup, licensing, authentication, tools, and security guidance.
+
+  ## Features
+  - Search prospects, accounts, opportunities, users, sequences, and lifecycle stages
+  - Retrieve Kaia meeting recordings, transcripts, emails, and calendar events
+  - Generate account or opportunity insights and AI-assisted meeting preparation
+  - Create prospects, accounts, opportunities, and sequence memberships when enabled
+  - Delete supported records or sequence memberships when enabled by an administrator
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Licensed Outreach User**: Sign in through Outreach's OAuth flow
+  - **Amplify Add-on and Credits**: Your organization must have Amplify enabled with active credits
+  - **MCP Server Enabled**: An Outreach administrator must enable the server for your organization
+
+  **Permissions:** Access follows your Outreach profile and instance permissions. Administrators can separately control create and delete actions; create is enabled by default and delete is disabled by default.
+
+metadata:
+  categories: Sales, CRM, Productivity
+icon: https://cdn.prod.website-files.com/696ea7504e736c595e9a2313/699fa86f95fdd7f81f024bc5_favicon.png
+repoURL: https://support.outreach.io/hc/en-us/articles/46370115253403-Outreach-MCP-Server
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.outreach.io/mcp

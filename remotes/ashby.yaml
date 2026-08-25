@@ -1,0 +1,32 @@
+name: Ashby
+entryKey: obot-ashby
+serverUserType: singleUser
+shortDescription: Search recruiting data, prepare interviews, and update candidate pipelines
+description: |
+  Search live Ashby recruiting data, prepare for interviews, review hiring pipelines, and update candidate records from your AI client. See the official [Ashby MCP Server guide](https://docs.ashbyhq.com/ashby-mcp-server-beta) for beta setup, permissions, supported clients, tools, and rate limits.
+
+  ## Features
+  - Search candidates, applications, jobs, postings, interviews, offers, and other recruiting records
+  - Retrieve candidate profiles, resumes, notes, feedback, emails, referrals, and interview transcripts
+  - Prepare for upcoming interviews and review job pipeline health and pending tasks
+  - Create candidates, add candidate notes, move application stages, and consider candidates for jobs
+  - Search Ashby product documentation and submit MCP feedback
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Ashby Account**: Sign in through Ashby's user-level OAuth flow
+  - **MCP Enabled**: An organization admin must enable MCP Server under Admin → Organization Setup → Opt-in Features
+  - **Elevated Access**: Your Ashby user must have an eligible access level
+
+  The open beta is available on Ashby's Foundations, Legacy, Plus, Plus Enterprise, and ONE plans, but not Analytics-only organizations. Data and actions inherit the connected user's existing permissions.
+
+  **Read and write:** This connector can create candidates, add notes, and change application pipelines. Review proposed recruiting changes before approving them.
+
+metadata:
+  categories: Human Resources, Productivity, Recruiting
+icon: https://www.ashbyhq.com/favicon.png
+repoURL: https://docs.ashbyhq.com/ashby-mcp-server-beta
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.ashbyhq.com/mcp/v1

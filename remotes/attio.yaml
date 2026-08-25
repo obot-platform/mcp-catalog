@@ -1,0 +1,28 @@
+name: Attio
+entryKey: obot-attio
+serverUserType: singleUser
+shortDescription: Search and manage CRM records, pipelines, notes, tasks, meetings, emails, and reports
+description: |
+  Search and manage Attio CRM records, pipelines, notes, tasks, meetings, emails, comments, and reports from an AI workflow. See the official [Attio MCP documentation](https://docs.attio.com/mcp/overview) for setup, supported tools, permissions, rate limits, and security guidance.
+
+  ## Features
+  - Search, create, update, merge, and organize people, companies, deals, and custom records
+  - Manage pipeline lists, list entries, tasks, notes, and comments
+  - Search meeting records, call transcripts, and connected emails
+  - Run aggregate workspace reports and, on eligible plans, read-only SQL queries
+  - Inspect workspace members, teams, attributes, and your current identity
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Active Attio Workspace**: Sign in through Attio's OAuth flow; no API key is needed
+
+  **Permissions:** Access follows your Attio user permissions. Read operations are auto-approved, while write operations request confirmation and are logged in Attio.
+
+metadata:
+  categories: CRM, Sales, Productivity
+icon: https://mcp.attio.com/favicon.ico
+repoURL: https://docs.attio.com/mcp/overview
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.attio.com/mcp

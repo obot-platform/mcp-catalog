@@ -1,0 +1,35 @@
+name: Similarweb
+entryKey: obot-similarweb
+serverUserType: singleUser
+shortDescription: Analyze website traffic, channels, audiences, search, competitors, and mobile apps
+description: |
+  Analyze digital-market performance across websites and mobile apps, including traffic, engagement, acquisition channels, rankings, audiences, referrals, demographics, technologies, and app adoption. See the [Similarweb MCP setup documentation](https://docs.similarweb.com/api-v5/mcp/mcp-setup) for endpoint details, compatible clients, API-key requirements, integrations, and available data.
+
+  ## Features
+  - Compare website traffic, engagement, rankings, and channel mix
+  - Analyze referrals, similar sites, subdomains, pages, and audience overlap
+  - Explore geography, demographics, interests, and deduplicated audiences
+  - Research paid-search spend, ad networks, technologies, and market categories
+  - Inspect mobile-app installs, penetration, engagement, and store rankings
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Similarweb Subscription with API Access**: API-only, Business, or Enterprise access is required
+  - **Similarweb API Key**: An account administrator can create and activate a key in Similarweb account settings
+
+  Queries consume credits from your Similarweb API allocation according to your account limits.
+
+metadata:
+  categories: Competitive Intelligence, Marketing, Data & Analytics
+icon: https://www.similarweb.com/favicon.ico
+repoURL: https://docs.similarweb.com/api-v5/mcp/mcp-setup
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.similarweb.com
+  headers:
+    - name: Similarweb API Key
+      description: Active API key created in Similarweb account settings
+      key: api-key
+      required: true
+      sensitive: true

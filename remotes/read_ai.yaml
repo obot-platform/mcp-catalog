@@ -1,0 +1,31 @@
+name: Read AI
+entryKey: obot-read-ai
+serverUserType: singleUser
+shortDescription: Retrieve meeting transcripts and summaries, dispatch agents, and share reports
+description: |
+  Retrieve Read AI meeting transcripts, summaries, action items, questions, topics, and engagement metrics, or dispatch an agent to an upcoming call. See the official [Read AI MCP guide](https://support.read.ai/hc/en-us/articles/49381158409491-MCP-Server) for beta setup, prerequisites, authentication, and current tools.
+
+  ## Features
+  - Browse recent meetings or retrieve a specific report by ID
+  - Access summaries, chapter notes, action items, key questions, topics, and speaker-attributed transcripts
+  - Review participant attendance, engagement metrics, and recording download links
+  - Send a Read AI meeting agent to a Zoom, Google Meet, or Microsoft Teams call
+  - Share meeting reports with viewer or editor access and optional email notifications
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Read AI Account**: Sign in through Read AI's OAuth flow
+  - **Downloads Enabled**: If you belong to a workspace, an admin must enable Downloads under Reports & Sharing
+
+  The open beta is otherwise available across Read AI plans. Access is limited to meeting reports visible to the connected user.
+
+  **Read and write:** This connector can dispatch meeting agents and grant report access in addition to retrieving meeting data. Review meeting URLs, recipients, access levels, and notifications before approving those actions.
+
+metadata:
+  categories: Productivity, Communication, Meetings
+icon: https://cdn.prod.website-files.com/614e5e239ea0f25fe5b6a797/615f71de842b191ea061fda6_ReadLogomark_256x256.png
+repoURL: https://support.read.ai/hc/en-us/articles/49381158409491-MCP-Server
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.read.ai/mcp

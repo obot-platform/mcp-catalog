@@ -1,0 +1,27 @@
+name: ICD-10 Codes
+entryKey: obot-icd-10-codes
+serverUserType: singleUser
+shortDescription: Search, validate, and navigate ICD-10-CM diagnosis and ICD-10-PCS procedure codes
+description: |
+  Search, validate, and navigate ICD-10-CM diagnosis codes and ICD-10-PCS inpatient procedure codes, including descriptions, hierarchies, effective dates, and billing-validity indicators. See Anthropic's [ICD-10 connector guide](https://claude.com/resources/tutorials/using-the-icd-10-connector-in-claude) for capabilities, setup, and example workflows.
+
+  ## Features
+  - Search diagnosis and procedure codes by code, prefix, or description
+  - Look up complete details for a known ICD-10 code
+  - Validate whether a code exists and is billable for HIPAA-covered transactions
+  - Navigate diagnosis chapters, categories, and related code families
+  - Explore ICD-10-PCS procedures by body system and effective date
+
+  ## What you'll need to connect
+
+  No account or API key is required.
+
+  **Reference use:** Code-set results support coding research and validation but do not replace official coding guidance, payer rules, or qualified clinical and coding judgment.
+
+metadata:
+  categories: Healthcare, Reference, Search
+icon: https://storage.googleapis.com/media-assets-299d7136-cb52-d546-ee02-34bc1307c35f/mcp-directory/icons/icd-10-codes.svg
+repoURL: https://claude.com/resources/tutorials/using-the-icd-10-connector-in-claude
+runtime: remote
+remoteConfig:
+  fixedURL: https://hcls.mcp.claude.com/icd10_codes/mcp

@@ -1,0 +1,28 @@
+name: Strava
+entryKey: obot-strava
+serverUserType: singleUser
+shortDescription: Analyze your activities, fitness trends, training load, goals, and gear
+description: |
+  Analyze your Strava activity history, fitness trends, training load, goals, and gear using live read-only account data. See the [Strava MCP Connector guide](https://support.strava.com/en-us/articles/15401531-strava-mcp-connector) for setup, capabilities, and availability.
+
+  ## Features
+  - Explore running, cycling, strength, and other activity history
+  - Compare volume, pace, and performance trends over time
+  - Analyze fitness, readiness, training load, and cross-training patterns
+  - Review athlete profile, heart-rate or power zones, gear, and clubs
+  - Plan goals and ask follow-up questions using current Strava data
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Strava Subscription**: MCP access is included with eligible Strava subscription plans and is being rolled out gradually
+
+  **Read Only:** This connector cannot upload, edit, or delete Strava activities.
+
+metadata:
+  categories: Health & Fitness, Data & Analytics
+icon: https://d3nn82uaxijpm6.cloudfront.net/favicon-96x96.png?v=dLlWydWlG8
+repoURL: https://support.strava.com/en-us/articles/15401531-strava-mcp-connector
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.strava.com/mcp

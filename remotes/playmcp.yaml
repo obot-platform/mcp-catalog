@@ -1,0 +1,29 @@
+name: PlayMCP
+entryKey: obot-playmcp
+serverUserType: singleUser
+shortDescription: Use selected Kakao and third-party tools through one shared toolbox
+description: |
+  Use Kakao services and third-party tools selected in your PlayMCP toolbox through one connection. See Kakao's official [PlayMCP Toolbox announcement](https://www.kakaocorp.com/page/detail/11865?lang=ENG) for setup and examples of supported service workflows.
+
+  ## Features
+  - Access tools that you add to your PlayMCP toolbox from a compatible AI client
+  - Send content to your KakaoTalk self-chat with supported Kakao tools
+  - Read and manage Talk Calendar data when its tools are enabled
+  - Use KakaoMap, Gifts, Melon, and participating third-party MCP services
+  - Authenticate the toolbox once with your Kakao account instead of reconnecting each selected service
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Kakao Account**: Sign in through PlayMCP's OAuth flow
+  - **PlayMCP Toolbox**: Add the services and tools you want to expose before connecting
+
+  **Read and write:** Available actions depend on the tools selected in your toolbox and can include sending messages or changing service data. Review proposed actions before approving them.
+
+metadata:
+  categories: Productivity, Communication, Entertainment
+icon: https://t1.kakaocdn.net/komi/assets/playmcp/maintenance/PlayMCP_favicon_32x32.png
+repoURL: https://www.kakaocorp.com/page/detail/11865?lang=ENG
+runtime: remote
+remoteConfig:
+  fixedURL: https://playmcp.kakao.com/mcp

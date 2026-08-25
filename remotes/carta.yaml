@@ -1,0 +1,31 @@
+name: Carta
+entryKey: obot-carta
+serverUserType: singleUser
+shortDescription: Analyze cap tables and funds or manage private-market CRM records
+description: |
+  Analyze Carta cap tables, fund performance, portfolio financials, and private-market CRM records from a compatible AI client. See the official [Carta plugin setup guide](https://docs.carta.com/api-platform/docs/claude-plugins-setup) for connection steps, product-specific capabilities, permissions, and troubleshooting.
+
+  ## Features
+  - Query ownership, share classes, SAFEs, convertibles, grants, valuations, and financing history
+  - Model pro-forma financing rounds, option-pool changes, waterfalls, and exit scenarios
+  - Review fund metrics, NAV, partner data, contributions, distributions, and portfolio financials
+  - Generate tearsheets, benchmark comparisons, and regulatory reporting inputs
+  - Search, create, and update CRM investors, companies, contacts, deals, notes, and fundraisings
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Carta Account**: Sign in through Carta's OAuth flow
+  - **Product Access**: Your Carta account must be entitled to the Cap Table, Investors, or CRM data you want to use
+
+  Investor firms may need a Carta administrator to enable data sharing. All data and actions are restricted to the connected user's existing Carta permissions.
+
+  **Read and write:** Cap-table and investor workflows primarily retrieve and model data, while Carta CRM tools can create and update records. Review proposed CRM changes before approving them.
+
+metadata:
+  categories: Financial Services, Finance, CRM
+icon: https://d2kxkmjle793l.cloudfront.net/static/lib/eshares/img/favicon.ico
+repoURL: https://docs.carta.com/api-platform/docs/claude-plugins-setup
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.app.carta.com/mcp

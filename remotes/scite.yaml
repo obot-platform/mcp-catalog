@@ -1,0 +1,30 @@
+name: Scite
+entryKey: obot-scite
+serverUserType: singleUser
+shortDescription: Search scientific literature and verify claims with Smart Citation evidence
+description: |
+  Search scientific literature and verify claims with full-text evidence and Smart Citations that show whether later studies support, dispute, or contextualize cited work. See the official [Scite MCP page](https://scite.ai/mcp) for setup, authentication, supported clients, and data coverage.
+
+  ## Features
+  - Search peer-reviewed literature using keywords, titles, authors, or DOIs
+  - Retrieve targeted full-text excerpts from methods, results, and discussion sections
+  - Check whether later citations support, contrast with, or mention a scientific claim
+  - Review editorial notices such as retractions and corrections before citing a paper
+  - Return verifiable bibliographic details, DOI links, and access options
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Scite Account**: Sign in through Scite's OAuth flow; new users can begin with a free trial
+
+  Access to some full text depends on open availability, your institutional access, publisher subscriptions, or purchase options.
+
+  **Read only:** This connector searches and retrieves research evidence. It does not change your Scite account or source publications.
+
+metadata:
+  categories: Research, Education, Life Sciences
+icon: https://cdn.scite.ai/assets/images/favicon.ico
+repoURL: https://scite.ai/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.scite.ai/mcp

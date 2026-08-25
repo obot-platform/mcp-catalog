@@ -1,0 +1,27 @@
+name: trivago
+entryKey: obot-trivago
+serverUserType: singleUser
+shortDescription: Search accommodations and compare live hotel prices across booking providers
+description: |
+  Search accommodations and compare live hotel prices from multiple booking providers by destination, dates, guest count, or nearby coordinates. See the official [trivago MCP documentation](https://mcp.trivago.com/docs) for setup, supported clients, available tools, and example searches.
+
+  ## Features
+  - Search hotels and other accommodations by city, country, dates, rooms, and guests
+  - Find lodging near landmarks, venues, or exact geographic coordinates
+  - Compare current prices across hundreds of booking sites
+  - Review accommodation photos, ratings, amenities, and provider offers
+  - Explore forecast monthly nightly-rate trends by destination and star rating
+
+  ## What you'll need to connect
+
+  No account, API key, or other credentials are required.
+
+  **Read only:** This connector searches and compares accommodation offers. It returns deep links to booking providers but does not make reservations or purchases.
+
+metadata:
+  categories: Travel, Search, Shopping
+icon: https://mcp.trivago.com/favicon.ico
+repoURL: https://mcp.trivago.com/docs
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.trivago.com/mcp

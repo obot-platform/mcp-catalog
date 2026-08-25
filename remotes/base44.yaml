@@ -1,0 +1,29 @@
+name: Base44
+entryKey: obot-base44
+serverUserType: singleUser
+shortDescription: Create, inspect, edit, and operate Base44 backend projects and app sandboxes
+description: |
+  Create and manage Base44 backend projects, query app data, and inspect or modify project sandboxes from an AI development workflow. See the official [Base44 MCP server documentation](https://docs.base44.com/developers/backend/overview/mcp-server) for setup, plan requirements, workspace access, tools, and permissions.
+
+  ## Features
+  - Create new Base44 projects from natural-language descriptions
+  - Edit existing projects and monitor background builds
+  - List projects, inspect entity schemas, and query entity records
+  - Read, search, create, and modify files in an app sandbox
+  - Run sandbox commands and create restore-point checkpoints
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Base44 Builder Plan or Higher**: MCP access requires an eligible subscription
+  - **Base44 Workspace Access**: Sign in with OAuth and select the workspace for the connection
+
+  **Permissions:** The connector inherits your role in the selected workspace. It can modify project code, run sandbox commands, and create or edit apps when your role permits, so review write and command actions carefully.
+
+metadata:
+  categories: Developer Tools, App Development, Productivity
+icon: https://app.base44.com/favicon.ico
+repoURL: https://docs.base44.com/developers/backend/overview/mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://app.base44.com/mcp

@@ -1,0 +1,31 @@
+name: Adobe Workfront
+entryKey: obot-adobe-workfront
+serverUserType: singleUser
+shortDescription: Find, create, update, and manage Workfront projects, tasks, planning records, and approvals
+description: |
+  Find, create, update, and manage Adobe Workfront projects, tasks, planning records, and approvals through natural-language requests. See Adobe's [Workfront MCP setup guide](https://experienceleague.adobe.com/en/docs/workfront/using/basics/workfront-mcp-server/configure-workfront-mcp-server) for connection steps, prerequisites, permissions, and supported clients.
+
+  ## Features
+  - Search and summarize Workfront projects, tasks, workspaces, and other items
+  - Create and update projects, tasks, fields, and planning records
+  - Review and manage approval workflows
+  - Work within the access level and object permissions of your Workfront account
+  - Select the Workfront instance associated with your Adobe profile during sign-in
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Adobe Workfront Account**: Sign in with an Adobe ID that can access the Workfront data you need
+  - **Adobe Identity Management System**: Your Workfront instance must be enabled on Adobe IMS
+  - **MCP Server Access**: A Workfront administrator must enable read access; write actions require the separate write-tools setting
+  - **Workfront Planning Entitlement**: Required only for Workfront Planning tools
+
+  **Permissions:** The connector acts with your Workfront access level and object permissions. Read tools are enabled by default at the organization level; write tools are disabled by default.
+
+metadata:
+  categories: Project Management, Productivity, SaaS & API Integrations
+icon: https://developer.adobe.com/internals/mcp-registry-web-app/v1.11.0/default_card_icon.6bb9c3a2.svg
+repoURL: https://experienceleague.adobe.com/en/docs/workfront/using/basics/workfront-mcp-server/configure-workfront-mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.workfront.adobe.com/mcp/v1/workfront

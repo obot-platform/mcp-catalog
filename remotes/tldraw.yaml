@@ -1,0 +1,29 @@
+name: tldraw
+entryKey: obot-tldraw
+serverUserType: singleUser
+shortDescription: Draw and iteratively edit diagrams, wireframes, mind maps, and illustrations
+description: |
+  Draw and iteratively edit diagrams, wireframes, mind maps, and illustrations on an interactive tldraw canvas. See the official [tldraw MCP App announcement](https://tldraw.dev/blog/tldraw-mcp-app) for setup, supported workflows, and how the embedded canvas works.
+
+  ## Features
+  - Create architecture diagrams, flowcharts, state machines, wireframes, and freeform drawings
+  - Add, update, and delete canvas shapes, bindings, text, and assets
+  - Read edits made by the user and continue refining the same visual
+  - Search the tldraw Editor API and execute targeted canvas operations
+  - Save and restore checkpoints while iterating on a design
+
+  ## What you'll need to connect
+
+  No account, API key, or other credentials are required.
+
+  Clients that support MCP Apps can render the interactive canvas directly in chat. Other MCP-compatible clients can still connect to the remote server, though their visual presentation may differ.
+
+  **Read and write:** This connector reads and modifies the active tldraw canvas. Review broad deletion or replacement requests before approving them.
+
+metadata:
+  categories: Design, Productivity, Developer Tools
+icon: https://www.tldraw.com/favicon.svg
+repoURL: https://tldraw.dev/blog/tldraw-mcp-app
+runtime: remote
+remoteConfig:
+  fixedURL: https://tldraw-mcp-app.tldraw.workers.dev/mcp

@@ -1,0 +1,30 @@
+name: incident.io
+entryKey: obot-incident-io
+serverUserType: singleUser
+shortDescription: Manage incidents, pages, follow-ups, on-call schedules, and operational analysis
+description: |
+  Manage incidents, pages, follow-ups, on-call schedules, and operational analysis across your incident.io workspace. See the official [incident.io remote MCP guide](https://docs.incident.io/ai/remote-mcp) for setup, authentication, permissions, and the complete tool list.
+
+  ## Features
+  - Search, create, update, and analyze incidents and their follow-up work
+  - Browse alerts and measure alert noise, workload, and escalation response rates
+  - Check on-call schedules and acknowledge or decline escalations
+  - Query catalog ownership, teams, observability telemetry, and investigation findings
+  - Run structured operational reviews using incident.io playbooks and report templates
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **incident.io Account**: Sign in through incident.io's OAuth flow
+  - **Remote MCP Enabled**: Enable the server under Settings → MCP in incident.io
+  - **Redirect Domain Approval**: An incident.io admin may need to allow your client's redirect domain under Settings → MCP server
+
+  **Read and write:** This connector can declare and update incidents, create follow-ups, respond to pages, and submit feedback. It acts with the permissions of the connected incident.io user, so review proposed actions before approving them.
+
+metadata:
+  categories: Incident Management, Developer Tools, Monitoring
+icon: https://mintcdn.com/incidentio-18bb4170/wAjjotZaBNBJxKDy/incident-icon-alarmalade-light.svg
+repoURL: https://docs.incident.io/ai/remote-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.incident.io/mcp

@@ -1,0 +1,30 @@
+name: Motion Creative Analytics
+entryKey: obot-motion-creative-analytics
+serverUserType: singleUser
+shortDescription: Analyze ad creative performance, competitor campaigns, and brand patterns
+description: |
+  Analyze your ad creative performance, research competitor campaigns, and turn current market patterns into briefs and testing ideas. See the official [Motion MCP guide](https://help.motionapp.com/en/articles/14315735-motion-mcp) for setup, access requirements, supported clients, and example workflows.
+
+  ## Features
+  - Rank your creatives by spend, ROAS, CPA, CTR, purchases, and other performance metrics
+  - Summarize individual ads, retrieve video transcripts, and compare demographic performance
+  - Research competitor ad libraries, positioning, messaging angles, and launch cadence
+  - Access workspace brand context, saved reports, and creative-tag taxonomies
+  - Generate briefs, concepts, and testing plans grounded in your account data
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Motion Account**: Sign in through Motion's OAuth flow
+  - **Eligible Role**: Owner, Admin, or Collaborator access in a Motion workspace
+  - **Eligible Plan**: Legacy or custom plans may require an upgrade for MCP access
+
+  **Read only:** Motion's analytics and research tools retrieve data without changing your account, creatives, or settings. The feedback tool can send issue or feature-request context to Motion when you ask it to.
+
+metadata:
+  categories: Marketing, Advertising, Data & Analytics
+icon: https://downloads.intercomcdn.com/i/o/298767/9b436e5a3fa2d9bac0bf6fc3/55f4c3a1f6b7abc9800e3285f53798fb.png
+repoURL: https://help.motionapp.com/en/articles/14315735-motion-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://projects.motionapp.com/mcp

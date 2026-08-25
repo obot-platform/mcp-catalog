@@ -1,0 +1,29 @@
+name: Replit
+entryKey: obot-replit
+serverUserType: singleUser
+shortDescription: Create, inspect, update, and publish Replit apps through Replit Agent
+description: |
+  Create, find, inspect, update, and publish Replit apps through Replit Agent, including websites, mobile apps, designs, presentations, and data projects. See the official [Replit MCP server documentation](https://docs.replit.com/platforms/mcp-server) for setup, authentication, tools, and supported app types.
+
+  ## Features
+  - Create a new Replit app from a natural-language description
+  - Search, list, and resolve apps you can edit
+  - Ask Replit Agent questions about an app without changing it
+  - Update an existing app through an Agent prompt
+  - Publish apps and check their deployment status and public URL
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Replit Account**: Sign in through Replit's OAuth flow
+  - **Editable App Access**: Existing apps must belong to you or be shared with edit permission
+
+  **Permissions:** The connector can create apps and modify or publish apps you can edit. Review write and publish actions before approving them.
+
+metadata:
+  categories: Developer Tools, Productivity, App Development
+icon: https://avatars.githubusercontent.com/u/983194?v=4
+repoURL: https://docs.replit.com/platforms/mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://replit-mcp.com/server/mcp

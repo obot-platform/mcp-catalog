@@ -1,0 +1,30 @@
+name: Daloopa
+entryKey: obot-daloopa
+serverUserType: singleUser
+shortDescription: Retrieve sourced company fundamentals, KPIs, filings, and stock-price data
+description: |
+  Retrieve company fundamentals, operating KPIs, filing text, and stock-price data with links back to source documents. See the official [Daloopa MCP documentation](https://docs.daloopa.com/docs/daloopa-mcp) for setup, authentication options, supported clients, and tool details.
+
+  ## Features
+  - Discover covered public companies by ticker symbol or company name
+  - Find financial metrics, operating KPIs, and company-specific data series
+  - Retrieve historical fundamentals for selected periods with source citations
+  - Search filings, earnings transcripts, investor presentations, and management guidance
+  - Retrieve document text and daily stock prices for financial analysis
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Daloopa Account**: Sign in through Daloopa's OAuth flow
+
+  Daloopa also supports bearer tokens and direct API-key authentication for customers who already have those credentials.
+
+  **Read only:** This connector retrieves Daloopa financial data and source documents. It cannot write, upload, or modify Daloopa data.
+
+metadata:
+  categories: Financial Services, Data & Analytics, Research
+icon: https://files.readme.io/6508faf2043972e99abbd21f82d5a0f01f0ca937b01370d7bbd7546be4c6e5f1-symbol_Inverse_1.png
+repoURL: https://docs.daloopa.com/docs/daloopa-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.daloopa.com/server/mcp

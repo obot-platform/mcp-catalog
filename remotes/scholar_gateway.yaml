@@ -1,0 +1,29 @@
+name: Scholar Gateway
+entryKey: obot-scholar-gateway
+serverUserType: singleUser
+shortDescription: Search peer-reviewed Wiley research with verifiable citations and DOI links
+description: |
+  Search peer-reviewed research from Wiley journals and return evidence-backed passages with complete citation metadata and DOI links. See the [Scholar Gateway connection guide](https://docs.scholargateway.ai/) for endpoint setup, OAuth authentication, access requirements, content coverage, and troubleshooting.
+
+  ## Features
+  - Run semantic searches across more than 8 million articles from over 2,000 Wiley journals
+  - Ground literature reviews, academic writing, and grant proposals in peer-reviewed sources
+  - Retrieve source metadata and DOI links for claim verification
+  - Search across science, healthcare, business, law, humanities, and other disciplines
+  - Discover conceptually related research using semantic similarity
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Scholar Gateway Access**: Access is available through eligible institutional subscriptions or supported trial programs
+  - **CONNECT Account**: Sign in with CONNECT OAuth credentials and verify your research affiliation
+
+  Search results currently contain text and citation metadata; images, charts, and other multimedia are not included.
+
+metadata:
+  categories: Research, Education, Search
+icon: https://docs.scholargateway.ai/images/img_1.png
+repoURL: https://docs.scholargateway.ai/
+runtime: remote
+remoteConfig:
+  fixedURL: https://connector.scholargateway.ai/mcp

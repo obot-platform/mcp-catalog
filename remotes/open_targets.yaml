@@ -1,0 +1,27 @@
+name: Open Targets
+entryKey: obot-open-targets
+serverUserType: singleUser
+shortDescription: Research drug targets, diseases, drugs, variants, studies, and target-disease associations
+description: |
+  Research therapeutic targets, diseases, drugs, variants, studies, and target-disease associations using the Open Targets Platform GraphQL API. See the official [Open Targets Platform MCP repository](https://github.com/opentargets/platform-mcp) for the hosted endpoint, tools, query strategy, deployment options, and current experimental status.
+
+  ## Features
+  - Search targets, diseases, drugs, variants, and studies by common name
+  - Resolve entities to standardized identifiers such as Ensembl, EFO, MONDO, and ChEMBL IDs
+  - Explore focused GraphQL schema categories and type dependencies
+  - Run custom Open Targets Platform GraphQL queries
+  - Batch the same query across multiple variable sets
+
+  ## What you'll need to connect
+
+  No account or API key is required.
+
+  **Experimental:** The official server is under active development, so its tools, APIs, and documentation may change without notice.
+
+metadata:
+  categories: Healthcare, Research, Data & Analytics
+icon: https://avatars.githubusercontent.com/u/8728108?v=4
+repoURL: https://github.com/opentargets/platform-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.platform.opentargets.org/mcp

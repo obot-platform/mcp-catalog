@@ -1,0 +1,28 @@
+name: CourtListener
+entryKey: obot-courtlistener
+serverUserType: singleUser
+shortDescription: Search U.S. case law, court records, judges, oral arguments, citations, and docket alerts
+description: |
+  Search U.S. case law, PACER dockets, judges, oral arguments, and citation data, then create search or docket alerts in CourtListener. See Free Law Project's [CourtListener MCP documentation](https://github.com/freelawproject/courtlistener-api-client/blob/main/MCP_README.md) for setup, authentication, tools, and usage limits.
+
+  ## Features
+  - Search federal and state opinions, dockets, judges, and oral arguments
+  - Retrieve individual records and page through large result sets
+  - Extract citations from legal text and verify them against CourtListener
+  - Access additional CourtListener REST API resources through generic endpoint tools
+  - Create and delete search alerts or subscribe to docket updates
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **CourtListener Account**: Sign in through CourtListener's OAuth flow; individual accounts are free
+
+  **Permissions:** Search and retrieval tools read legal data. Alert and subscription tools modify your CourtListener account preferences.
+
+metadata:
+  categories: Legal, Search, Research
+icon: https://mcp.courtlistener.com/favicon.svg
+repoURL: https://github.com/freelawproject/courtlistener-api-client/blob/main/MCP_README.md
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.courtlistener.com/

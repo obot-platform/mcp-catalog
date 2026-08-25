@@ -1,0 +1,29 @@
+name: Descript
+entryKey: obot-descript
+serverUserType: singleUser
+shortDescription: Import, edit, organize, and publish video and audio projects with Descript
+description: |
+  Import media, transcribe recordings, edit projects with Underlord, organize projects and compositions, publish Descript web links, and monitor long-running jobs. See the [Descript custom MCP setup guide](https://help.descript.com/api-and-mcp/mcp-custom) for connection requirements, authentication, setup steps, and limitations.
+
+  ## Features
+  - Import audio and video media and create transcripts
+  - Apply Underlord edits such as Studio Sound, filler-word removal, and captions
+  - Find, create, organize, and edit projects, folders, and compositions
+  - Publish projects to Descript web links and export transcripts
+  - Track, list, and cancel background jobs
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Descript Account**: Sign in with OAuth and choose the Drive the connector may access
+  - **MCP-Compatible Client**: The client must support remote custom MCP connections and OAuth
+
+  The connection is scoped to one Descript Drive. Imports consume media minutes, and Underlord edits may consume AI credits.
+
+metadata:
+  categories: Video & Audio, Content Creation, Productivity
+icon: https://static-cdn.descript.com/web/icons/favicon.svg
+repoURL: https://help.descript.com/api-and-mcp/mcp-custom
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.descript.com/v2/mcp

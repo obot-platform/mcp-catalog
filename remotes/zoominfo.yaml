@@ -1,0 +1,26 @@
+name: ZoomInfo
+entryKey: obot-zoominfo
+serverUserType: singleUser
+shortDescription: Search and enrich companies, contacts, buying signals, and go-to-market research
+description: |
+  Search and enrich companies and contacts, identify buying signals, and build targeted account lists with ZoomInfo's go-to-market intelligence. See the [official ZoomInfo MCP plugin documentation](https://github.com/Zoominfo/zoominfo-mcp-plugin) for capabilities, requirements, and connection details.
+
+  ## Features
+  - Search and enrich company and professional contact records
+  - Research accounts, contacts, competitors, markets, and technology stacks
+  - Find intent signals, company news, scoops, and engagement context
+  - Identify similar or recommended companies and contacts
+  - Build targeted account lists and map buying committees
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **ZoomInfo Account**: Your account must include the API access and product entitlements required by the tools you use
+
+metadata:
+  categories: Sales, Marketing, Data & Analytics
+icon: https://raw.githubusercontent.com/Zoominfo/zoominfo-mcp-plugin/main/assets/zoominfo-logomark-red.svg
+repoURL: https://github.com/Zoominfo/zoominfo-mcp-plugin
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.zoominfo.com/mcp

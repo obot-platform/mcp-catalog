@@ -1,0 +1,26 @@
+name: GoDaddy
+entryKey: obot-godaddy
+serverUserType: singleUser
+shortDescription: Search domain ideas and check current registration availability with GoDaddy
+description: |
+  Search for domain names from keywords, product ideas, or business concepts and check whether a specific domain is currently available to register. See the [GoDaddy MCP server documentation](https://developer.godaddy.com/en/docs/api-users/mcp) for custom-client setup, capabilities, limitations, privacy, rate limits, and support.
+
+  ## Features
+  - Check whether a specific domain name is currently available
+  - Generate available domain suggestions from keywords and business ideas
+  - Find alternatives related to an unavailable or preferred name
+  - Use public GoDaddy domain data without linking an account
+
+  ## What you'll need to connect
+
+  No GoDaddy account or API credential is required. The connector is read-only and cannot register domains, manage DNS, transfer domains, change account settings, or make purchases.
+
+  Domain availability and pricing can change quickly; re-check on GoDaddy before purchasing.
+
+metadata:
+  categories: Domains & DNS, Search, Business
+icon: https://developer.godaddy.com/images/brand/icon.png
+repoURL: https://developer.godaddy.com/en/docs/api-users/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.godaddy.com/v1/domains/mcp

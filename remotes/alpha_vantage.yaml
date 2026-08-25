@@ -1,0 +1,31 @@
+name: Alpha Vantage
+entryKey: obot-alpha-vantage
+serverUserType: singleUser
+shortDescription: Query market prices, fundamentals, options, indicators, and economic data
+description: |
+  Query real-time and historical market prices, company fundamentals, options, technical indicators, commodities, currencies, and economic data. See the official [Alpha Vantage MCP guide](https://mcp.alphavantage.co/) for setup, API-key creation, supported clients, and connection examples.
+
+  ## Features
+  - Retrieve stock, ETF, mutual-fund, index, forex, cryptocurrency, and commodity prices
+  - Analyze company fundamentals, financial statements, earnings, dividends, and holdings
+  - Inspect real-time and historical options chains, put-call ratios, volume, and open interest
+  - Calculate technical indicators such as RSI, MACD, moving averages, Bollinger Bands, and VWAP
+  - Query economic indicators including GDP, CPI, inflation, unemployment, and treasury yields
+  - Search market news and measure sentiment by ticker
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Alpha Vantage API Key**: Obtain a free or premium key from Alpha Vantage, then enter it in the OAuth authorization page when connecting
+
+  Data availability, rate limits, and premium endpoints depend on your Alpha Vantage plan.
+
+  **Read only:** This connector retrieves financial and market data. It cannot place trades or modify financial accounts.
+
+metadata:
+  categories: Financial Services, Data & Analytics, Research
+icon: https://cdn.alphavantage.co/logo.png
+repoURL: https://mcp.alphavantage.co/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.alphavantage.co/mcp

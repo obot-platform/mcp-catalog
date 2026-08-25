@@ -1,0 +1,27 @@
+name: NPI Registry
+entryKey: obot-npi-registry
+serverUserType: singleUser
+shortDescription: Validate NPI numbers and search U.S. healthcare provider registry records
+description: |
+  Validate National Provider Identifier numbers and search or retrieve U.S. healthcare provider records from the CMS NPPES registry. See Anthropic's [NPI Registry connector guide](https://claude.com/resources/tutorials/using-the-npi-registry-connector-in-claude) for capabilities, setup, limitations, and example workflows.
+
+  ## Features
+  - Validate NPI format and Luhn check digits
+  - Retrieve individual or organization provider records by NPI
+  - Search providers by name, organization, specialty, location, or taxonomy
+  - Review self-reported credentials, practice addresses, phone numbers, taxonomy codes, and enumeration status
+  - Page through provider search results for directory and network research
+
+  ## What you'll need to connect
+
+  No account or API key is required.
+
+  **Registry limitations:** NPI issuance does not establish that a provider is currently licensed or credentialed. NPPES records are self-reported, cover U.S. providers, and may lag recent changes.
+
+metadata:
+  categories: Healthcare, Search, Reference
+icon: https://storage.googleapis.com/media-assets-299d7136-cb52-d546-ee02-34bc1307c35f/mcp-directory/icons/npi-registry.svg
+repoURL: https://claude.com/resources/tutorials/using-the-npi-registry-connector-in-claude
+runtime: remote
+remoteConfig:
+  fixedURL: https://hcls.mcp.claude.com/npi_registry/mcp

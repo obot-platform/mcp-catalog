@@ -1,0 +1,29 @@
+name: Goodnotes
+entryKey: obot-goodnotes
+serverUserType: singleUser
+shortDescription: Generate editable notes, whiteboards, illustrations, and structured diagrams
+description: |
+  Generate editable Goodnotes text documents, whiteboards, vector illustrations, and structured diagrams from conversational prompts. See the official [Goodnotes integration guide](https://support.goodnotes.com/hc/en-us/articles/15790373823887-Use-Goodnotes-in-ChatGPT-and-Claude) for supported content, importing instructions, availability, and limitations.
+
+  ## Features
+  - Create formatted text documents from Markdown content
+  - Draw freeform illustrations, icons, and layouts from SVG
+  - Generate flowcharts, mind maps, and timelines from Mermaid syntax
+  - Choose white, black, or yellow backgrounds with blank, dotted, or squared patterns
+  - Open generated content in Goodnotes for further editing, annotation, and sharing
+
+  ## What you'll need to connect
+
+  No credentials are required to generate content. The integration is available on every Goodnotes plan, including the Free plan.
+
+  To import generated content, sign in to your Goodnotes account and open the Goodnotes app on your device.
+
+  **Content creation:** The connector generates new documents and diagrams but cannot inspect or edit existing Goodnotes documents. Importing a result creates a separate document in your library.
+
+metadata:
+  categories: Productivity, Design, Education
+icon: https://cdn.prod.website-files.com/6978a92a56d24460cdf7442e/69ddf4810777de072d94b23f_68dff59f6dde021933bb00b3_Goodnotes-icon-256.png
+repoURL: https://support.goodnotes.com/hc/en-us/articles/15790373823887-Use-Goodnotes-in-ChatGPT-and-Claude
+runtime: remote
+remoteConfig:
+  fixedURL: https://claude-mcp-api.ml.goodnotes.com/mcp

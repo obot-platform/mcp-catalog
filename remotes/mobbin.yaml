@@ -1,0 +1,29 @@
+name: Mobbin
+entryKey: obot-mobbin
+serverUserType: singleUser
+shortDescription: Search real product screens, user flows, and website sections for UI and UX reference
+description: |
+  Search Mobbin's library of shipped product screens, user flows, and website sections to ground UI and UX research in real design patterns. See the official [Mobbin MCP page](https://mobbin.com/mcp) for setup, plan requirements, supported clients, and example design workflows.
+
+  ## Features
+  - Search mobile and web app screens by product, pattern, or design problem
+  - Find complete user flows such as onboarding, checkout, pricing, and permissions
+  - Search website sections and compare implementations across products
+  - Return reference images, metadata, and links back to Mobbin
+  - Research current patterns across finance, healthcare, e-commerce, and other categories
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Paid Mobbin Plan**: MCP access requires an eligible paid subscription
+  - **Mobbin Account**: Sign in through Mobbin's OAuth flow
+
+  **Read only:** The connector searches Mobbin's reference library and checks your workspace entitlements and AI credits. It cannot create, change, or delete account content.
+
+metadata:
+  categories: Design, Research, Developer Tools
+icon: https://storage.googleapis.com/assets.mobbin.com/claude.ai/logo.svg
+repoURL: https://mobbin.com/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.mobbin.com/mcp

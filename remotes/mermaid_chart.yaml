@@ -1,0 +1,32 @@
+name: Mermaid Chart
+entryKey: obot-mermaid-chart
+serverUserType: singleUser
+shortDescription: Validate, render, summarize, and manage Mermaid diagrams and projects
+description: |
+  Validate Mermaid syntax, render diagrams as PNG and SVG, create interactive playground links, and manage diagrams in Mermaid Chart projects. See the [Mermaid MCP Server documentation](https://mermaid.ai/docs/ai/mcp-server) for setup, tools, and token creation.
+
+  ## Features
+  - Validate Mermaid syntax and render diagrams as PNG and SVG
+  - Generate descriptive diagram titles and summaries
+  - Create interactive Mermaid Chart playground links
+  - List Mermaid Chart projects and their diagrams with authentication
+  - Create, retrieve, and update diagrams in Mermaid Chart projects
+
+  ## What you'll need to connect
+
+  **Optional:**
+  - **Mermaid Chart API Token**: Generate a token in your Mermaid Chart account settings to use project and diagram-management tools; anonymous access supports core validation and rendering
+
+metadata:
+  categories: Visualization, Developer Tools, Productivity
+icon: https://raw.githubusercontent.com/Mermaid-Chart/vscode-mermaid-chart/main/images/mermaid-chart.png
+repoURL: https://mermaid.ai/docs/ai/mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.mermaid.ai/mcp
+  headers:
+    - name: Mermaid Chart API Token
+      description: Optional token for project and diagram-management tools; leave blank for anonymous validation and rendering
+      key: Authorization
+      required: false
+      sensitive: true

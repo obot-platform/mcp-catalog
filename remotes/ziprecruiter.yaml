@@ -1,0 +1,26 @@
+name: ZipRecruiter
+entryKey: obot-ziprecruiter
+serverUserType: singleUser
+shortDescription: Search live US and Canadian jobs by role, location, salary, work style, and experience
+description: |
+  Search live ZipRecruiter listings and filter jobs by title, company, location, distance, salary, recency, work style, employment type, and seniority. See the [ZipRecruiter MCP documentation](https://api.ziprecruiter.com/mcp/docs) for supported filters, setup, authentication behavior, examples, and support details.
+
+  ## Features
+  - Search live job listings in the United States and Canada
+  - Filter by location and search radius
+  - Narrow results by minimum and maximum salary
+  - Select remote, hybrid, or on-site work and employment type
+  - Filter by posting age and experience or seniority level
+  - Open matching listings on ZipRecruiter to review and apply
+
+  ## What you'll need to connect
+
+  No ZipRecruiter account, OAuth flow, or API credential is required to search public job listings.
+
+metadata:
+  categories: Jobs, Search, Recruiting
+icon: https://www.ziprecruiter.com/favicon-144x144.png
+repoURL: https://api.ziprecruiter.com/mcp/docs
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.ziprecruiter.com/mcp

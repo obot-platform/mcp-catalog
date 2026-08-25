@@ -1,0 +1,29 @@
+name: AdisInsight
+entryKey: obot-adisinsight
+serverUserType: singleUser
+shortDescription: Search pharmaceutical drug pipelines and clinical trials
+description: |
+  Search AdisInsight pharmaceutical intelligence for drug pipelines, clinical trials, development histories, adverse events, and regulatory milestones. See the official [AdisInsight MCP page](https://adisinsight-mcp.springer.com/) for setup, authentication, available tools, and usage guidance.
+
+  ## Features
+  - Search drugs by developer, therapeutic area, mechanism, target, development phase, and other pipeline criteria
+  - Retrieve detailed drug profiles with development history, organizations, brand names, and adverse events
+  - Search clinical trials by compound, sponsor, indication, phase, status, location, demographics, and dates
+  - Retrieve trial profiles with investigators, study centers, endpoints, compounds, and eligibility criteria
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **AdisInsight Account**: Sign in through the OAuth flow with credentials that have access to AdisInsight
+
+  **Read only:** This connector searches and retrieves pharmaceutical and clinical-trial intelligence. It does not modify AdisInsight records.
+
+  AdisInsight states that its data is for research use and not for treatment or clinical decision-making. Do not submit personal or protected health information.
+
+metadata:
+  categories: Research, Life Sciences
+icon: https://adisinsight-mcp.springer.com/favicon.ico
+repoURL: https://adisinsight-mcp.springer.com/
+runtime: remote
+remoteConfig:
+  fixedURL: https://adisinsight-mcp.springer.com/mcp

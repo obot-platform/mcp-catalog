@@ -1,0 +1,28 @@
+name: Spotify
+entryKey: obot-spotify
+serverUserType: singleUser
+shortDescription: Discover music and podcasts, manage your library, and create personalized playlists
+description: |
+  Search Spotify's music and podcast catalog, manage saved content, inspect playback, and create personalized playlists through Spotify's remote MCP server. See [Spotify's Web API documentation](https://developer.spotify.com/documentation/web-api) for supported Spotify data and capabilities.
+
+  ## Features
+  - Search for songs, artists, albums, playlists, and podcasts
+  - Get personalized music and podcast recommendations
+  - Create playlists based on a prompt, activity, or mood
+  - Add and remove tracks in your Spotify library
+  - Inspect current playback and available Spotify devices
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Spotify Account**: Some playback and personalized features require Spotify Premium
+  - **Spotify OAuth App**: Create an app in the Spotify developer dashboard, register the redirect URI shown by Obot, and provide its client ID and secret
+
+metadata:
+  categories: Entertainment, Productivity
+icon: https://developer-assets.spotifycdn.com/images/favicon.ico
+repoURL: https://developer.spotify.com/documentation/web-api
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp-gateway-external-pilot.spotify.net/mcp
+  staticOAuthRequired: true

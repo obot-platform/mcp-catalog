@@ -1,0 +1,32 @@
+name: Adobe Journey Optimizer
+entryKey: obot-adobe-journey-optimizer
+serverUserType: singleUser
+shortDescription: Inspect and troubleshoot journeys, campaigns, offers, and channel configurations
+description: |
+  Inspect and troubleshoot Adobe Journey Optimizer journeys, campaigns, offers, and channel configurations using plain-language requests. See Adobe's official [Journey Optimizer MCP guide](https://experienceleague.adobe.com/en/docs/journey-optimizer/using/content-management/combine/ajo-mcp) for beta availability, setup, prerequisites, and supported tools.
+
+  ## Features
+  - Browse campaigns and filter them by draft, live, stopped, or completed status
+  - Inspect campaign audiences, schedules, channels, and content configuration
+  - Summarize journey branching, conditions, and actions
+  - Audit channel configurations, sender domains, unsubscribe settings, and IP pools
+  - Review configuration resources, marketing actions, and governance policies
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Adobe Journey Optimizer License**: An active Journey Optimizer entitlement
+  - **Adobe Account**: Sign in through Adobe's OAuth flow
+  - **View Permissions**: Access to the campaigns, journeys, offers, and configurations you want to query
+
+  **Beta:** This connector is currently a beta feature and its availability or behavior may change.
+
+  **Read only:** All current tools retrieve Journey Optimizer data. They cannot create, update, or delete Journey Optimizer objects.
+
+metadata:
+  categories: Marketing, Data & Analytics, Customer Experience
+icon: https://developer.adobe.com/internals/mcp-registry-web-app/v1.11.0/default_card_icon.6bb9c3a2.svg
+repoURL: https://experienceleague.adobe.com/en/docs/journey-optimizer/using/content-management/combine/ajo-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://ajo-mcp.adobe.io/mcp

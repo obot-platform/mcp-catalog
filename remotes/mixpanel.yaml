@@ -1,0 +1,57 @@
+name: Mixpanel
+entryKey: obot-mixpanel
+serverUserType: singleUser
+shortDescription: Analyze events, funnels, retention, experiments, replays, dashboards, and data quality
+description: |
+  Analyze events, funnels, flows, retention, experiments, feature flags, and session replays, then manage dashboards, cohorts, Lexicon metadata, and data-quality issues. See the [Mixpanel MCP server documentation](https://docs.mixpanel.com/docs/mcp) for regional endpoints, tools, authentication, permissions, and security guidance.
+
+  ## Features
+  - Run insights, funnel, flow, segmentation, and retention queries
+  - Discover projects, events, properties, reports, and business context
+  - Create and manage dashboards, cohorts, metrics, experiments, and feature flags
+  - Edit Lexicon metadata and triage data-quality or duplicate-name issues
+  - Investigate user journeys with event data and session replays
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Mixpanel Account**: Your existing organization, project, and role permissions apply
+  - **MCP Access**: An organization administrator may need to enable MCP in organization settings
+
+  **Optional:**
+  - **Service Account Credential**: For headless access, base64-encode the Mixpanel service-account username and secret as `username:secret`, then provide that encoded value below
+
+  ## Security
+
+  Mixpanel's MCP server is not covered by Mixpanel's HIPAA BAA. Review applicable privacy and compliance requirements before connecting projects containing personal or regulated data.
+
+metadata:
+  categories: Data & Analytics, Product Analytics, SaaS & API Integrations
+icon: https://mixpanel.com/favicon.ico
+repoURL: https://docs.mixpanel.com/docs/mcp
+env:
+  - name: Data Region
+    key: MIXPANEL_HOST
+    description: Select the Mixpanel region that stores your organization data.
+    required: true
+    sensitive: false
+    options:
+      - name: United States
+        value: mcp.mixpanel.com
+        description: Connect to the US Mixpanel endpoint.
+      - name: European Union
+        value: mcp-eu.mixpanel.com
+        description: Connect to the EU Mixpanel endpoint.
+      - name: India
+        value: mcp-in.mixpanel.com
+        description: Connect to the India Mixpanel endpoint.
+runtime: remote
+remoteConfig:
+  urlTemplate: https://${MIXPANEL_HOST}/mcp
+  headers:
+    - name: Mixpanel Service Account Credential
+      description: Optional base64-encoded username:secret credential for non-interactive service-account authentication; leave blank to use OAuth
+      key: Authorization
+      required: false
+      sensitive: true
+      prefix: "Bearer Basic "

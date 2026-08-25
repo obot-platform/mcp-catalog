@@ -1,0 +1,27 @@
+name: SlidesGPT
+entryKey: obot-slidesgpt
+serverUserType: singleUser
+shortDescription: Generate presentation decks, apply themes, create images, and export PowerPoint files
+description: |
+  Generate complete presentation decks, apply visual themes, create slide imagery, and download PowerPoint files from an AI workflow. See the official [SlidesGPT MCP product guide](https://slidesgpt.com/products/mcp) for the generic endpoint, setup, available tools, supported clients, and data handling.
+
+  ## Features
+  - Generate a presentation from a topic, outline, or uploaded source documents
+  - Choose layouts and imagery suited to each slide's content
+  - Apply built-in themes to an existing presentation without changing its content
+  - Generate custom images for use in slides
+  - Preview decks interactively and download them as PowerPoint files
+
+  ## What you'll need to connect
+
+  No account, OAuth flow, or API key is required.
+
+  **Data handling:** The connector is anonymous and keyless, but generated decks are retained under shareable SlidesGPT URLs. Prompts and source material used to build slides are processed by SlidesGPT and its generation providers.
+
+metadata:
+  categories: Productivity, Presentations, Creative Tools
+icon: https://slidesgpt.com/favicon-48x48.png
+repoURL: https://slidesgpt.com/products/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.slidesgpt.com/mcp

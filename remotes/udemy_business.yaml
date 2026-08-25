@@ -1,0 +1,32 @@
+name: Udemy Business
+entryKey: obot-udemy-business
+serverUserType: singleUser
+shortDescription: Discover enterprise learning content and create structured learning experiences
+description: |
+  Discover courses, lectures, labs, assessments, and learning paths from your organization's Udemy Business catalog, or create structured learning experiences. See the official [Udemy Business AI Connectors guide](https://business-support.udemy.com/hc/en-us/articles/34213384429335-How-to-integrate-the-Udemy-Business-AI-Connectors-with-your-AI-tool) for prerequisites, setup, authentication, tools, and subscription requirements.
+
+  ## Features
+  - Search public and custom courses and inspect complete course curricula
+  - Find specific lectures, skill assessments, hands-on labs, and curated learning paths
+  - Build private multi-course learning paths for a target audience and proficiency level
+  - Create unpublished AI Role Play scenarios for practicing workplace skills
+  - Ground learning recommendations in current content from your organization's tenant
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Udemy Business Enterprise Plan**: An active Enterprise subscription
+  - **AI Connectors Add-on**: Purchased for the users who will connect
+  - **Udemy Business Account**: Sign in through your organization's OAuth or SSO flow
+
+  Labs and curated paths require Udemy Business Pro. Creating role plays additionally requires the AI Role Play SKU.
+
+  **Read and write:** Search tools retrieve learning content. Creation tools can save private learning paths and unpublished role-play scenarios to your tenant; review generated content before approving and publishing it.
+
+metadata:
+  categories: Education, Human Resources, Productivity
+icon: https://frontends.udemycdn.com/frontends-homepage/staticx/udemy/images/v7/apple-touch-icon.png
+repoURL: https://business-support.udemy.com/hc/en-us/articles/34213384429335-How-to-integrate-the-Udemy-Business-AI-Connectors-with-your-AI-tool
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.udemy.com/mcp

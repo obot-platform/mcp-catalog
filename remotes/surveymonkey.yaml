@@ -1,0 +1,31 @@
+name: SurveyMonkey
+entryKey: obot-surveymonkey
+serverUserType: singleUser
+shortDescription: Build and edit surveys, publish collection links, and analyze responses
+description: |
+  Build and edit surveys, publish web-link collectors, and analyze response data with conversational requests. See the official [SurveyMonkey MCP Server listing](https://www.surveymonkey.com/apps/BKcduxPnkCN4NFCRokUYCw_3D_3D/details/) for setup, availability, permissions, and limitations.
+
+  ## Features
+  - Search surveys and inspect their pages, questions, and response counts
+  - Generate survey plans and create surveys with structured pages and questions
+  - Add, edit, delete, and reorder survey questions
+  - Create shareable web-link collectors for publishing surveys
+  - Retrieve detailed responses and summarize response trends
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **SurveyMonkey Account**: Sign in through SurveyMonkey's OAuth flow
+  - **United States Data Residency**: MCP access currently supports accounts with data stored in the United States
+
+  Basic accounts can connect but have limited responses. HIPAA and Enhanced Sensitive Data Protection Enterprise accounts are disabled by default and require coordination with SurveyMonkey support.
+
+  **Read and write:** This connector can create and edit surveys, questions, and collectors. Review proposed changes before approving them.
+
+metadata:
+  categories: Productivity, Forms, Data & Analytics
+icon: https://prod.smassets.net/us/uploads/prod/developerweb/pie/developerweb/33033ee2-4dee-406e-b8aa-cada65157026.png
+repoURL: https://www.surveymonkey.com/apps/BKcduxPnkCN4NFCRokUYCw_3D_3D/details/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.surveymonkey.com/mcp

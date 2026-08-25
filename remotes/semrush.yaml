@@ -1,0 +1,29 @@
+name: Semrush
+entryKey: obot-semrush
+serverUserType: singleUser
+shortDescription: Research SEO, keywords, competitors, traffic, backlinks, paid search, and site health
+description: |
+  Research keywords, domains, competitors, traffic, backlinks, paid search, and site health with live Semrush data. See the [Semrush MCP documentation](https://developer.semrush.com/api/v4/introduction/semrush-mcp/) for setup, supported data, plans, and API-unit usage.
+
+  ## Features
+  - Research keywords, organic rankings, domains, and competitors
+  - Analyze backlinks, referral domains, and backlink gaps
+  - Compare website traffic, audiences, markets, and paid search activity
+  - Inspect position tracking, shopping research, and site audit results
+  - Retrieve read-only data from Semrush projects
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Eligible Semrush Subscription**: Available data depends on your Standard API, Trends API, and Projects API access
+  - **API Units**: Connector requests consume units from your Semrush subscription
+
+  **Read Only:** Project data can be retrieved, but projects and settings cannot be created or modified.
+
+metadata:
+  categories: Marketing, Data & Analytics, SaaS & API Integrations
+icon: https://oauth.semrush.com/favicon-light.svg
+repoURL: https://developer.semrush.com/api/v4/introduction/semrush-mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.semrush.com/v2/mcp

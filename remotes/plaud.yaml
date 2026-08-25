@@ -1,0 +1,28 @@
+name: Plaud
+entryKey: obot-plaud
+serverUserType: singleUser
+shortDescription: Search Plaud recordings and retrieve transcripts, summaries, notes, and action items
+description: |
+  Browse and search your Plaud recording library, retrieve timestamped transcripts and speaker labels, and use AI-generated summaries, key topics, and action items in follow-up workflows. See the [Plaud MCP documentation](https://docs.plaud.ai/plaud-mcp-cli/mcp) for supported clients, connection steps, OAuth authorization, tools, data fields, and troubleshooting.
+
+  ## Features
+  - List and search recordings by name or date range
+  - Retrieve recording details and temporary audio download links
+  - Read full transcripts with timestamps and speaker labels
+  - Access AI-generated notes, summaries, action items, and key topics
+  - Use recording context to draft follow-up emails and meeting digests
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Plaud Account**: Sign in through the browser OAuth flow and authorize access to your recordings
+
+  For HTTP clients, recording data is processed in transit through Plaud's US-hosted MCP server. Review Plaud's privacy policy and your organization's data-handling requirements before connecting sensitive recordings.
+
+metadata:
+  categories: Video & Audio, Productivity, Meetings
+icon: https://mintcdn.com/plaud/NcIGXAbuUj5XMDGP/assets/logo/light.svg
+repoURL: https://docs.plaud.ai/plaud-mcp-cli/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.plaud.ai/mcp

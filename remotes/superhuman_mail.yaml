@@ -1,0 +1,29 @@
+name: Superhuman Mail
+entryKey: obot-superhuman-mail
+serverUserType: singleUser
+shortDescription: Search email, draft and send replies, and manage calendars across Gmail and Outlook
+description: |
+  Search email and calendars, draft replies in your voice, schedule meetings, and send or organize messages across connected Gmail and Outlook accounts. See the [Superhuman Mail MCP Server guide](https://help.superhuman.com/hc/en-us/articles/46005696690317-Superhuman-Mail-MCP-Server) for setup, tools, security considerations, and account requirements.
+
+  ## Features
+  - Search messages, threads, attachments, and calendar events
+  - Draft, schedule, send, and undo email messages
+  - Create and update calendar events and find attendee availability
+  - Manage labels, split inboxes, read state, reminders, spam, and trash
+  - Connect and search across multiple Gmail and Outlook accounts on your seat
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Superhuman Mail Business Plan or Higher**: The MCP server is not available on the Starter plan
+  - **Ask AI**: Ask AI must be enabled for your Superhuman Mail account
+  - **Superhuman Mail Chrome Extension**: Required to complete authentication
+  - **Administrator Approval**: Enterprise or managed accounts may require an administrator to enable MCP access
+
+metadata:
+  categories: Communication, Productivity, SaaS & API Integrations
+icon: https://mcp.mail.superhuman.com/favicon.ico
+repoURL: https://help.superhuman.com/hc/en-us/articles/46005696690317-Superhuman-Mail-MCP-Server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.mail.superhuman.com/mcp

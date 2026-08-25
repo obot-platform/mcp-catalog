@@ -1,0 +1,28 @@
+name: Adobe Marketing Agent
+entryKey: obot-adobe-marketing-agent
+serverUserType: singleUser
+shortDescription: Explore Adobe marketing audiences, journeys, campaigns, and customer insights conversationally
+description: |
+  Ask questions about Adobe marketing data, explore campaign and audience insights, and work with enabled Real-Time CDP, Journey Optimizer, and Customer Journey Analytics capabilities. Review Adobe's [Marketing Agent setup guide](https://acrobat.adobe.com/id/urn:aaid:sc:AP:5799e952-be87-4829-b0c4-6f82ca8e8b8b) and [AI Registry](https://developer.adobe.com/internals/mcp-registry-web-app) for availability and connection information.
+
+  ## Features
+  - Ask natural-language questions about marketing campaigns and audiences
+  - Work with entitled Adobe Real-Time CDP capabilities
+  - Explore Adobe Journey Optimizer campaign and journey context
+  - Retrieve Customer Journey Analytics insights through configured data views
+  - Switch Adobe organizations, sandboxes, and data views during a session
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Adobe Experience Cloud Account**: Sign in through Adobe's OAuth authorization flow
+  - **Organization Entitlement**: Your Adobe organization must have Marketing Agent access enabled
+  - **Product Permissions**: Available capabilities follow your Adobe product licenses, organization, sandbox, data view, and user permissions
+
+metadata:
+  categories: Marketing, Data & Analytics, Customer Experience
+icon: https://developer.adobe.com/internals/mcp-registry-web-app/v1.11.0/default_card_icon.6bb9c3a2.svg
+repoURL: https://acrobat.adobe.com/id/urn:aaid:sc:AP:5799e952-be87-4829-b0c4-6f82ca8e8b8b
+runtime: remote
+remoteConfig:
+  fixedURL: https://aep-ai-ama.adobe.io/mcp

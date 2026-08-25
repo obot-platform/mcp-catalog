@@ -1,0 +1,29 @@
+name: Anthropic Economic Index
+entryKey: obot-anthropic-economic-index
+serverUserType: singleUser
+shortDescription: Explore public Claude usage patterns across countries, regions, occupations, and tasks
+description: |
+  Explore public data about observed Claude conversation usage across countries, subregions, occupation-related tasks, and work activities. See the [Anthropic Economic Index](https://www.anthropic.com/economic-index) for the underlying research, methodology, and updates.
+
+  ## Features
+  - Review worldwide Claude usage patterns and dataset coverage
+  - Compare usage across countries and supported subregions
+  - Explore conversation content matched to occupation categories and tasks
+  - List the most common work tasks represented in the dataset
+  - Compare several geographic regions side by side
+
+  ## Interpreting the data
+
+  The dataset describes observed Claude usage. Occupation statistics match conversation content to job tasks; they do not identify users' occupations or measure job risk, displacement, or the labor market as a whole.
+
+  ## What you'll need to connect
+
+  **No Setup Required:** The connector provides read-only public access without authentication.
+
+metadata:
+  categories: Data & Analytics, Research, Economics
+icon: https://storage.googleapis.com/media-assets-299d7136-cb52-d546-ee02-34bc1307c35f/mcp-directory/icons/economic-index.svg
+repoURL: https://www.anthropic.com/economic-index
+runtime: remote
+remoteConfig:
+  fixedURL: https://econ-index.mcp.claude.com/mcp

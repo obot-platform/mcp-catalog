@@ -1,0 +1,29 @@
+name: Trello
+entryKey: obot-trello
+serverUserType: singleUser
+shortDescription: Search and manage Trello workspaces, boards, lists, cards, checklists, Inbox, and Planner
+description: |
+  Search Trello and create, organize, update, move, complete, or archive work across boards, lists, cards, checklists, Inbox, and Planner. See the [Trello MCP documentation](https://support.atlassian.com/trello/docs/connect-trello-to-ai-assistants-with-trello-mcp/) for setup, supported clients, permissions, capabilities, admin controls, and security details.
+
+  ## Features
+  - Search for cards and boards by keyword
+  - Create boards, cards, lists, and checklist items
+  - Update, move, complete, label, and archive cards
+  - Capture and triage work through Trello Inbox
+  - Read Planner events and create focus-time events when supported by your plan
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Trello Account**: Trello MCP is available on every Trello plan
+  - **Workspace Access**: Choose one workspace and approve the requested OAuth permissions during connection
+
+  Your existing Trello permissions and Atlassian organization controls apply. The connector does not support permanently deleting Trello content.
+
+metadata:
+  categories: Project Management, Productivity, Collaboration
+icon: https://images.ctfassets.net/zsv3d0ugroxu/1j6nvsJ8txgcxgy3Vmk4aO/e3b6d56c299ae744c2f4b8109cf1a482/logo-light_Trello_mark_brand_RGB.svg
+repoURL: https://support.atlassian.com/trello/docs/connect-trello-to-ai-assistants-with-trello-mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.trello.com/v1

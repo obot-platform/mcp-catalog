@@ -4,6 +4,10 @@ records:
     name: PayPal
     status: existing
     catalog_entry: remotes/paypal.yaml
+  - id: 02795770-2c02-42fe-888f-26769ca324a0
+    name: tldraw
+    status: imported
+    catalog_entry: remotes/tldraw.yaml
   - id: 038318ff-ed0d-45f8-a453-b01de0071561
     name: Make
     status: imported
@@ -12,6 +16,10 @@ records:
     name: Webflow
     status: imported
     catalog_entry: remotes/webflow.yaml
+  - id: 097ab77c-338a-421c-8ba7-3960c928a540
+    name: Open Targets
+    status: imported
+    catalog_entry: remotes/open_targets.yaml
   - id: 098cb32a-ba21-4770-97dd-78bb54655419
     name: Ahrefs
     status: imported
@@ -20,6 +28,10 @@ records:
     name: Lucid
     status: imported
     catalog_entry: remotes/lucid.yaml
+  - id: 0f1d77a7-9e03-438a-824d-d66c6dd0f0d5
+    name: Alpha Vantage MCP Server
+    status: imported
+    catalog_entry: remotes/alpha_vantage.yaml
   - id: 11ba10d9-477b-4988-bd1c-90a7fa680dc1
     name: Atlassian Rovo
     status: existing
@@ -28,10 +40,22 @@ records:
     name: Supabase
     status: existing
     catalog_entry: remotes/supabase.yaml
+  - id: 135cc9eb-d5aa-4e24-81b0-6e78a3cff862
+    name: Strava
+    status: imported
+    catalog_entry: remotes/strava.yaml
+  - id: 16ebc92d-b1db-473a-82ef-015426940c4c
+    name: Base44
+    status: imported
+    catalog_entry: remotes/base44.yaml
   - id: 1d9dadfe-0a7d-4a47-af18-101ae0ae0efd
     name: Lovable
     status: imported
     catalog_entry: remotes/lovable.yaml
+  - id: 1ddc28c1-c1f8-4894-9a85-f6dc8add9c89
+    name: Tripadvisor
+    status: imported
+    catalog_entry: remotes/tripadvisor.yaml
   - id: 1e4280cc-037c-47f0-9873-56bea1871bdb
     name: Dropbox
     status: imported
@@ -44,6 +68,10 @@ records:
     name: Zapier
     status: existing
     catalog_entry: remotes/zapier.yaml
+  - id: 1f80285c-87b3-496f-91b3-07ea8fc86488
+    name: incident.io
+    status: imported
+    catalog_entry: remotes/incident_io.yaml
   - id: 22854937-9510-4b57-9230-62c820102d8f
     name: Adobe for creativity
     status: skipped
@@ -56,6 +84,10 @@ records:
     name: HyperFrames by HeyGen
     status: imported
     catalog_entry: remotes/hyperframes.yaml
+  - id: 29d60a67-6f16-489b-8a1e-efdcece8d1f6
+    name: Mixpanel
+    status: imported
+    catalog_entry: remotes/mixpanel.yaml
   - id: 2a838eaa-f7b4-4bc2-bd47-c326f3c813c5
     name: Google Calendar
     status: existing
@@ -68,6 +100,14 @@ records:
     name: Morningstar
     status: existing
     catalog_entry: remotes/morningstar.yaml
+  - id: 33b42d5b-de4e-43c6-ae45-135b15ec1791
+    name: Plaud
+    status: imported
+    catalog_entry: remotes/plaud.yaml
+  - id: 34269403-d1cc-468f-8c0d-4bd01e8042c8
+    name: PlayMCP
+    status: imported
+    catalog_entry: remotes/playmcp.yaml
   - id: 360c0c31-4bb6-42ca-8e50-5da0a100a68e
     name: Windsor.ai
     status: imported
@@ -80,6 +120,10 @@ records:
     name: Hugging Face
     status: imported
     catalog_entry: remotes/hugging_face.yaml
+  - id: 39d085c5-0b24-4a3f-aca1-5ec9d1726714
+    name: Adobe Marketing Agent
+    status: imported
+    catalog_entry: remotes/adobe_marketing_agent.yaml
   - id: 41aefcf3-a829-45eb-8cee-d90b93912f57
     name: Asana
     status: existing
@@ -88,22 +132,58 @@ records:
     name: Sentry
     status: imported
     catalog_entry: remotes/sentry.yaml
+  - id: 47b0738c-d713-47a5-8141-ca455a6e1bf2
+    name: Motion Creative Analytics
+    status: imported
+    catalog_entry: remotes/motion_creative_analytics.yaml
+  - id: 487a895f-84d3-4c21-925f-c6c3552b94cc
+    name: Booking.com
+    status: skipped
+    reason: Exact MCP endpoint returned CloudFront 403 for both GET and MCP initialize, so portability could not be verified
   - id: 49e0f9ba-7d45-4fb6-b098-55eec956fbc6
     name: monday.com
     status: existing
     catalog_entry: remotes/mondaycom.yaml
+  - id: 4b463f8b-6db0-4d0e-9693-8b39f37e4447
+    name: Carta
+    status: imported
+    catalog_entry: remotes/carta.yaml
+  - id: 4c1fcb68-c482-46c5-a677-659eaf2f2c85
+    name: Xero
+    status: imported
+    catalog_entry: remotes/xero.yaml
   - id: 4d608ca4-1664-4ddd-be1c-c88c0ea2ec7e
     name: Granola
     status: imported
     catalog_entry: remotes/granola.yaml
+  - id: 4eb1485d-c3c6-4282-a72c-5bfc084cad27
+    name: Adobe Journey Optimizer
+    status: imported
+    catalog_entry: remotes/adobe_journey_optimizer.yaml
   - id: 50688846-553c-4a12-bc21-df94d2173734
     name: PostHog
     status: imported
     catalog_entry: remotes/posthog.yaml
+  - id: 58d5cff1-20b3-4bb8-9c51-9ac3e6bd0dac
+    name: CourtListener
+    status: imported
+    catalog_entry: remotes/courtlistener.yaml
+  - id: 58ff478e-b9b7-47c9-8253-78fb9364513a
+    name: SurveyMonkey
+    status: imported
+    catalog_entry: remotes/surveymonkey.yaml
   - id: 597f662f-36de-437e-836e-5a81013cbfbe
     name: Slack
     status: existing
     catalog_entry: remotes/slack-official.yaml
+  - id: 59eafa91-020f-435e-b8a4-1bfcd7a957d8
+    name: SlidesGPT
+    status: imported
+    catalog_entry: remotes/slidesgpt.yaml
+  - id: 5e90e841-ba8a-433e-9303-cd41820de915
+    name: Anthropic Economic Index
+    status: imported
+    catalog_entry: remotes/anthropic_economic_index.yaml
   - id: 61bac03c-3f98-4b3c-affb-1b99533fa82c
     name: Ramp
     status: imported
@@ -112,6 +192,10 @@ records:
     name: Consensus
     status: imported
     catalog_entry: remotes/consensus.yaml
+  - id: 67e0ebd7-f7c3-4917-b8f9-dc8c8cdcce13
+    name: Daloopa
+    status: imported
+    catalog_entry: remotes/daloopa.yaml
   - id: 68268024-1a91-4316-a9e1-14ecb814cb18
     name: Datadog
     status: existing
@@ -120,6 +204,14 @@ records:
     name: Notion
     status: existing
     catalog_entry: remotes/notion.yaml
+  - id: 705ad993-53e3-4be6-b32c-cc9cff5225f6
+    name: Mobbin
+    status: imported
+    catalog_entry: remotes/mobbin.yaml
+  - id: 711ccc94-754b-4659-903d-d61b29dd781e
+    name: ChEMBL
+    status: imported
+    catalog_entry: remotes/chembl.yaml
   - id: 72480fb8-32ed-4075-b1c4-79e09c858b29
     name: Miro
     status: imported
@@ -132,10 +224,22 @@ records:
     name: Indeed
     status: skipped
     reason: Indeed's official MCP documentation states that this beta server is available only for the Claude Connector, so it is not currently portable to Obot.
+  - id: 7b2bdb34-e318-4d50-893f-330a8e41d78c
+    name: Outreach
+    status: imported
+    catalog_entry: remotes/outreach.yaml
+  - id: 7bc869f4-0f64-4dd6-9c19-bee47499508c
+    name: Trello
+    status: imported
+    catalog_entry: remotes/trello.yaml
   - id: 7eb42afe-0087-4493-a105-da2b021d5c03
     name: Vercel
     status: skipped
     reason: Vercel documents that its MCP OAuth server only accepts reviewed and approved clients, and Obot is not currently listed as a supported client.
+  - id: 80862d08-1022-4d86-816d-ee9b500d6b90
+    name: Similarweb
+    status: imported
+    catalog_entry: remotes/similarweb.yaml
   - id: 80917cb7-3071-4fca-b053-a4262d356c60
     name: Shopify
     status: skipped
@@ -144,22 +248,50 @@ records:
     name: Netlify
     status: imported
     catalog_entry: remotes/netlify.yaml
+  - id: 8194f7ea-e733-4e80-bd77-e504fd4ed5e5
+    name: Semrush
+    status: imported
+    catalog_entry: remotes/semrush.yaml
+  - id: 81cc5080-a204-4aa1-a694-fa868a3c8718
+    name: Trivago
+    status: imported
+    catalog_entry: remotes/trivago.yaml
   - id: 81cc5080-a204-4aa1-a694-fa868a3c8721
     name: PubMed
     status: skipped
     reason: This is an Anthropic-hosted Claude service with no authoritative documentation supporting use as a portable MCP endpoint outside Claude.
+  - id: 81d7db7c-e329-41ee-bc8e-48beceac2d68
+    name: Adobe Workfront
+    status: imported
+    catalog_entry: remotes/adobe_workfront.yaml
   - id: 839a0ae2-0c0f-4c27-9f85-726ed6515536
     name: Fireflies
     status: imported
     catalog_entry: remotes/fireflies.yaml
+  - id: 86925244-b3bb-415b-b7e8-6e3cd1392247
+    name: Spotify
+    status: imported
+    catalog_entry: remotes/spotify.yaml
   - id: 875dee50-9b3f-452b-af8c-fbc839966273
     name: HubSpot
     status: existing
     catalog_entry: remotes/hubspot.yaml
+  - id: 887934eb-b7e7-429a-b5e3-3523b9c3d45d
+    name: FMP
+    status: imported
+    catalog_entry: remotes/fmp.yaml
   - id: 89a7ddf5-2a6b-410c-be11-aa0e1a1b35a6
     name: Microsoft Learn
     status: existing
     catalog_entry: remotes/microsoft-docs.yaml
+  - id: 8bedbd43-e074-4a82-8bc3-53ef89afc032
+    name: Firecrawl
+    status: existing
+    catalog_entry: remotes/firecrawl.yaml
+  - id: 8f48727e-897b-4012-8427-147b4ce5719a
+    name: ZipRecruiter
+    status: imported
+    catalog_entry: remotes/ziprecruiter.yaml
   - id: 8fd555a4-ea5f-49cf-9335-582dd6760597
     name: Apollo.io
     status: imported
@@ -180,10 +312,22 @@ records:
     name: Wispr Flow
     status: imported
     catalog_entry: remotes/wispr_flow.yaml
+  - id: a1d0551d-c567-4975-91fc-7ced9e819421
+    name: GoDaddy
+    status: imported
+    catalog_entry: remotes/godaddy.yaml
+  - id: a428b976-7973-467f-9588-6b72643af755
+    name: Harvey
+    status: imported
+    catalog_entry: remotes/harvey.yaml
   - id: a5380429-c773-4180-b642-301418240c8c
     name: Box
     status: imported
     catalog_entry: remotes/box.yaml
+  - id: a6f1af7d-e85f-4775-bbfb-da7a8eb990db
+    name: PDF Viewer
+    status: imported
+    catalog_entry: remotes/pdf_viewer.yaml
   - id: a8159026-14b4-403a-933b-bd897a5b36ca
     name: Clay
     status: imported
@@ -196,10 +340,22 @@ records:
     name: ClickUp
     status: imported
     catalog_entry: remotes/clickup.yaml
+  - id: adcb61d5-8738-4724-a8e9-9cca7d525c3c
+    name: Descript
+    status: imported
+    catalog_entry: remotes/descript.yaml
+  - id: ae5afdb9-e3c6-4b64-a13a-420e7a8d8124
+    name: Attio
+    status: imported
+    catalog_entry: remotes/attio.yaml
   - id: aed7e2be-868e-4046-9e12-5c917b4e6b97
     name: Jotform
     status: imported
     catalog_entry: remotes/jotform.yaml
+  - id: b1a89151-dc5f-4d75-baa7-9da291b81a0c
+    name: Klaviyo
+    status: imported
+    catalog_entry: remotes/klaviyo.yaml
   - id: b2def8dc-ae47-4d46-877a-19b6a6ebb771
     name: Intercom
     status: imported
@@ -212,14 +368,38 @@ records:
     name: Postman
     status: existing
     catalog_entry: remotes/postman.yaml
+  - id: b952bcd7-554a-460e-9c8a-a81074f9d430
+    name: Replit
+    status: imported
+    catalog_entry: remotes/replit.yaml
+  - id: b982ecd1-ee51-45f0-99d9-9330a0dd8b0c
+    name: Trimble SketchUp
+    status: skipped
+    reason: Provider documentation states Claude is the only supported AI provider, so the endpoint is not verified as portable to Obot or other generic MCP clients.
   - id: ba1eef5a-c510-416e-b5fa-c34d523d81a1
     name: Gamma
     status: imported
     catalog_entry: remotes/gamma.yaml
+  - id: bb74915f-d284-4590-a208-ae06447b37af
+    name: Otter.ai
+    status: imported
+    catalog_entry: remotes/otter_ai.yaml
+  - id: bd8c051d-df35-44c0-a8b8-084b700e1f21
+    name: ICD-10 Codes
+    status: imported
+    catalog_entry: remotes/icd_10_codes.yaml
+  - id: c0449015-4acb-47b6-b9ac-e6e98e884328
+    name: Superhuman Mail
+    status: imported
+    catalog_entry: remotes/superhuman_mail.yaml
   - id: c758d038-d8eb-4421-b426-9dd68dc7f84a
     name: Figma
     status: skipped
     reason: currently not compatible with Obot 
+  - id: cb3b7f71-456f-4f8e-8a31-e77194d396ab
+    name: Lusha
+    status: imported
+    catalog_entry: remotes/lusha.yaml
   - id: cb504fab-e494-490f-bff8-bb3ab23a2209
     name: Airtable
     status: imported
@@ -236,6 +416,10 @@ records:
     name: Todoist
     status: existing
     catalog_entry: remotes/todoist.yaml
+  - id: d4ba36c1-89dd-49ee-aea3-2317efccc424
+    name: Udemy Business
+    status: imported
+    catalog_entry: remotes/udemy_business.yaml
   - id: d778b2f9-25f4-42a2-87ab-dbaa896deb1b
     name: Calendly
     status: imported
@@ -244,10 +428,26 @@ records:
     name: Tavily
     status: existing
     catalog_entry: remotes/tavily_search.yaml
+  - id: dc1671e0-b14c-47b8-a625-e835ae4067ba
+    name: Ashby
+    status: imported
+    catalog_entry: remotes/ashby.yaml
   - id: de127013-63f1-43d0-8dd2-b6cb5b4e5d1b
     name: Stripe
     status: existing
     catalog_entry: remotes/stripe.yaml
+  - id: de1df83d-e8f5-4498-a1e7-246cb9df999f
+    name: Mermaid Chart
+    status: imported
+    catalog_entry: remotes/mermaid_chart.yaml
+  - id: e261228f-7eed-410a-b7b7-f4474dc592ba
+    name: Goodnotes
+    status: imported
+    catalog_entry: remotes/goodnotes.yaml
+  - id: e3b3e96f-6b4d-468d-a4b6-89f484b7e21c
+    name: NPI Registry
+    status: imported
+    catalog_entry: remotes/npi_registry.yaml
   - id: e6fc4c18-ea48-4752-9912-7a13bf9999ed
     name: WordPress.com
     status: existing
@@ -260,6 +460,22 @@ records:
     name: Snowflake
     status: existing
     catalog_entry: remotes/snowflake.yaml
+  - id: f232e067-e927-4095-927a-e0db5bc00ca6
+    name: Read AI
+    status: imported
+    catalog_entry: remotes/read_ai.yaml
+  - id: f2cdf1b8-2f75-48a4-8d8c-8d9cce1b8643
+    name: ZoomInfo
+    status: imported
+    catalog_entry: remotes/zoominfo.yaml
+  - id: f65118b4-06cb-468a-b2c7-f203ae7b54ea
+    name: Scite
+    status: imported
+    catalog_entry: remotes/scite.yaml
+  - id: f73a5ee3-2b26-451d-8cb3-93bc451ac0fd
+    name: AdisInsight
+    status: imported
+    catalog_entry: remotes/adisinsight.yaml
   - id: fa50c30c-9f62-4f94-b851-217868185db6
     name: Linear
     status: existing
@@ -268,3 +484,7 @@ records:
     name: PagerDuty
     status: existing
     catalog_entry: remotes/pagerduty.yaml
+  - id: ff091334-0f12-4d0e-a973-c00467dd3818
+    name: Scholar Gateway
+    status: imported
+    catalog_entry: remotes/scholar_gateway.yaml

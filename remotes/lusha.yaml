@@ -1,0 +1,36 @@
+name: Lusha
+entryKey: obot-lusha
+serverUserType: singleUser
+shortDescription: Find, enrich, and prospect B2B contacts and companies with verified sales data
+description: |
+  Find and enrich B2B contacts and companies, build prospect lists, inspect buyer signals, discover lookalikes, and monitor usage and recommendations. See the [Lusha MCP documentation](https://docs.lusha.com/mcp-docs) for API-key setup, supported clients, available tools, credit usage, troubleshooting, and security guidance.
+
+  ## Features
+  - Find contacts by email, LinkedIn URL, name, company, title, seniority, department, and location
+  - Enrich contacts with verified business emails and phone numbers
+  - Search and enrich companies with firmographic and technographic filters
+  - Discover lookalike contacts and companies
+  - Search buyer and company activity signals
+  - Retrieve account usage, rate-limit, and recommendation information
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Lusha Account**: Tool availability and data access depend on your Lusha plan
+  - **Lusha API Key**: Create a key in Lusha's API Hub and provide it below
+
+  Enrichment and prospecting operations may consume Lusha credits. Store and rotate API keys according to your organization's credential policies.
+
+metadata:
+  categories: Sales, CRM, Data Enrichment
+icon: https://www.lusha.com/favicon.ico
+repoURL: https://docs.lusha.com/mcp-docs
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.lusha.com
+  headers:
+    - name: Lusha API Key
+      description: API key created in Lusha's API Hub
+      key: x-api-key
+      required: true
+      sensitive: true

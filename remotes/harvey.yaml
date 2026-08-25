@@ -1,0 +1,31 @@
+name: Harvey
+entryKey: obot-harvey
+serverUserType: singleUser
+shortDescription: Answer legal questions, analyze Vault documents, and research enabled knowledge sources
+description: |
+  Ask legal research questions, analyze documents in Harvey Vault projects with citations, and query specialized knowledge sources enabled for your account. See the [Harvey MCP documentation](https://developers.harvey.ai/guides/harvey_mcp) for client requirements, OAuth setup, available tools, permissions, and troubleshooting.
+
+  ## Features
+  - Ask general legal questions using Harvey's legal knowledge
+  - Analyze documents in accessible Vault projects with source citations
+  - List available Vault projects and research knowledge sources
+  - Query specialized legal, regulatory, and tax research databases
+  - Enforce the authenticated user's Harvey permissions and feature access
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Harvey Account**: An active account in a Harvey organization
+  - **MCP Feature Access**: Your Harvey administrator or representative must enable the hosted MCP server
+  - **Harvey OAuth App**: Obtain client credentials from Harvey for the redirect URI shown by Obot
+
+  Access to Vault projects and knowledge sources follows your existing Harvey permissions. Information returned by Harvey should be reviewed by qualified legal professionals before use.
+
+metadata:
+  categories: Legal, Research, Document Management
+icon: https://mintcdn.com/counselai/MseNlCOSIs-6XLeD/Harvey_Glyph.svg
+repoURL: https://developers.harvey.ai/guides/harvey_mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.harvey.ai/hosted_mcp/mcp
+  staticOAuthRequired: true
