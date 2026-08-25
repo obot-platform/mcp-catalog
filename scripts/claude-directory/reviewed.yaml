@@ -218,8 +218,8 @@ records:
     catalog_entry: remotes/gamma.yaml
   - id: c758d038-d8eb-4421-b426-9dd68dc7f84a
     name: Figma
-    status: imported
-    catalog_entry: remotes/figma.yaml
+    status: skipped
+    reason: currently not compatible with Obot 
   - id: cb504fab-e494-490f-bff8-bb3ab23a2209
     name: Airtable
     status: imported
