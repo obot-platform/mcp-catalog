@@ -1,0 +1,23 @@
+name: Mercury
+entryKey: obot-mercury
+serverUserType: singleUser
+shortDescription: Search, analyze, and understand Mercury account and transaction data
+description: |
+  Search, analyze, and understand Mercury balances, transactions, statements, cards, and recipients from an AI client. See [Mercury's MCP connection guide](https://docs.mercury.com/docs/connecting-mercury-mcp) for ChatGPT and Codex CLI setup, OAuth authentication, and troubleshooting.
+
+  ## Features
+  - Load account, transaction, recipient, and statement information
+  - Retrieve account card details
+  - Analyze Mercury financial data in a connected AI workflow
+
+  ## What you'll need to connect
+
+  A Mercury account with access to the financial data you want to query. Mercury uses OAuth 2.0 with dynamic client registration; access follows your account permissions.
+
+metadata:
+  categories: Financial Services, Data Analytics, Business Intelligence
+icon: https://files.readme.io/4749828dab8a6dce1829b637cab9a78abe30e0e0015b514806097c60501caf15-Mercury_Logo_-_Horizontal_-_Dark.png
+repoURL: https://docs.mercury.com/docs/connecting-mercury-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.mercury.com/mcp

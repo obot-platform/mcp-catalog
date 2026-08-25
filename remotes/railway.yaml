@@ -1,0 +1,24 @@
+name: Railway
+entryKey: obot-railway
+serverUserType: singleUser
+shortDescription: Deploy, manage, and debug Railway projects and services
+description: |
+  Deploy, manage, and debug Railway projects, services, deployments, feature flags, logs, and public artifacts from an AI coding workflow. See [Railway's MCP server documentation](https://docs.railway.com/ai/mcp-server) for remote MCP configuration and editor integrations.
+
+  ## Features
+  - Create projects and deploy or redeploy services
+  - Inspect project, service, deployment, and environment status
+  - Retrieve logs and manage feature flags
+  - Publish artifacts and use Railway's infrastructure agent for guided changes
+
+  ## What you'll need to connect
+
+  A Railway account with access to the projects and workspaces you manage. Railway uses OAuth 2.0 and scopes every action to your account permissions.
+
+metadata:
+  categories: Developer Tools, Cloud Infrastructure, DevOps
+icon: https://og.railway.com/api/image?fileType=png&layoutName=Docs&Theme=Night&URL=&Page=Documentation&Eyebrow=Railway%20MCP%20Server
+repoURL: https://docs.railway.com/ai/mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.railway.com/

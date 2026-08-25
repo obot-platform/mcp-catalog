@@ -1,0 +1,27 @@
+name: Egnyte
+entryKey: obot-egnyte
+serverUserType: singleUser
+shortDescription: Search, retrieve, and analyze permissioned Egnyte content
+description: |
+  Search and retrieve files and content in your Egnyte domain, ask questions about documents, inspect projects and workflows, and access shared-link and folder details. See the official [Egnyte Remote MCP Server guide](https://developers.egnyte.com/docs/Remote_MCP_Server) for connection setup and current capabilities.
+
+  ## Features
+  - Search and advanced-search accessible content
+  - Retrieve, download, summarize, and ask questions about documents
+  - Browse files and folders by path or ID
+  - Query Egnyte Copilot and knowledge bases
+  - Inspect projects, workflows, tasks, folder statistics, comments, and shared links
+
+  ## What you'll need to connect
+
+  **Required:**
+  - An Egnyte account with access to the domain content you want to use
+
+  Sign in through Egnyte's domain-selection OAuth flow. Available files and responses remain limited by your Egnyte permissions and compliance controls.
+metadata:
+  categories: Document Management,Knowledge Management,Collaboration
+icon: https://www.egnyte.com/sites/default/files/2020-03/favicon-96x96.png
+repoURL: https://developers.egnyte.com/docs/Remote_MCP_Server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp-server.egnyte.com/mcp

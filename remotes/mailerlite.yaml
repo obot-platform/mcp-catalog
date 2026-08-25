@@ -1,0 +1,26 @@
+name: MailerLite
+entryKey: obot-mailerlite
+serverUserType: singleUser
+shortDescription: Manage MailerLite subscribers, campaigns, automations, and forms
+description: |
+  Manage MailerLite subscribers, email campaigns, groups, segments, automations, forms, and webhooks through MCP. MailerLite documents connection steps for Gemini CLI, VS Code, Cursor, ChatGPT, and any compatible MCP client in its official [MCP Server guide](https://developers.mailerlite.com/mcp).
+
+  ## Features
+  - Create, update, search, and manage subscribers and subscriber groups
+  - Build, schedule, cancel, and analyze email campaigns
+  - Manage segments, automations, forms, and webhooks
+  - Import subscribers and review subscriber activity
+
+  ## What you'll need to connect
+
+  **Required:**
+  - A MailerLite account with permission to manage the resources you want to use
+
+  Sign in with MailerLite when connecting. Available data and actions follow your account and user permissions.
+metadata:
+  categories: Marketing,Email,CRM
+icon: https://assets.mailerlite.com/images/favicon-32x32.png
+repoURL: https://developers.mailerlite.com/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.mailerlite.com/mcp

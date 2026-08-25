@@ -1,0 +1,26 @@
+name: Interactive Brokers (IBKR)
+entryKey: obot-interactive-brokers
+serverUserType: singleUser
+shortDescription: Analyze IBKR portfolio data, market data, and trade instructions
+description: |
+  Review your Interactive Brokers portfolio, balances, positions, orders, and market data, and draft trade instructions for account review. See the official [IBKR MCP connector FAQ](https://www.interactivebrokers.com/lib/cstools/faq/#/content/1442566213) for setup and current capabilities.
+
+  ## Features
+  - Review account balances, summaries, positions, allocations, trades, and open orders
+  - Get current price snapshots and historical price data
+  - Search tradable financial contracts
+  - View order instructions and prepare trade instructions for review in IBKR
+
+  ## What you'll need to connect
+
+  **Required:**
+  - An Interactive Brokers account with access to the account data and market data you want to use
+
+  Sign in with Interactive Brokers when connecting. Any account and market data returned remains subject to your account permissions and market-data subscriptions.
+metadata:
+  categories: Finance,Investing,Market Data
+icon: https://www.interactivebrokers.com/images/web/favicons/home-screen-icon-192x192.png
+repoURL: https://www.interactivebrokers.com/lib/cstools/faq/#/content/1442566213
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.ibkr.com/v1/api/mcp

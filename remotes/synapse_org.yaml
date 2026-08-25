@@ -1,0 +1,26 @@
+name: Synapse.org
+entryKey: obot-synapse-org
+serverUserType: singleUser
+shortDescription: Search scientific datasets and inspect Synapse metadata and provenance
+description: |
+  Discover collaborative scientific datasets, search research projects, and inspect entity metadata, annotations, hierarchies, and provenance in Synapse. See Sage Bionetworks' official [Synapse MCP guide](https://python-docs.synapse.org/en/v4.13.1-develop.1/guides/synapse_mcp/) for connection instructions, tool behavior, and data-use considerations.
+
+  ## Features
+  - Search public and accessible Synapse projects and datasets
+  - Retrieve entity metadata and custom annotations
+  - Explore project and folder hierarchies
+  - Inspect activity history and provenance for dataset entities
+
+  ## What you'll need to connect
+
+  **Required:**
+  - A Synapse account with access to the scientific data you want to inspect
+
+  Sign in through Synapse's OAuth flow. Results remain limited by your Synapse permissions and any dataset-specific access or data-use restrictions.
+metadata:
+  categories: Life Sciences,Scientific Research,Data Discovery
+icon: https://python-docs.synapse.org/en/v4.13.1-develop.1/assets/favicon.png
+repoURL: https://python-docs.synapse.org/en/v4.13.1-develop.1/guides/synapse_mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.synapse.org/mcp

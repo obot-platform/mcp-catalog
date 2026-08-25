@@ -1,0 +1,23 @@
+name: Quartr
+entryKey: obot-quartr
+serverUserType: singleUser
+shortDescription: Research public companies with first-party investor-relations data
+description: |
+  Research public companies with live and recorded earnings calls, transcripts, presentations, filings, reports, and event summaries from Quartr. See [Quartr's MCP documentation](https://mcp.quartr.com/docs) for Codex, ChatGPT, and other compatible-client setup plus OAuth requirements.
+
+  ## Features
+  - Search public companies and related company data
+  - Read earnings events, transcripts, financials, filings, and reports
+  - Create and organize watchlists, keywords, folders, workspaces, and search filters
+
+  ## What you'll need to connect
+
+  An individual Quartr subscription. Connect with OAuth 2.0; access is limited to the data and subscription permissions available to your Quartr account.
+
+metadata:
+  categories: Financial Services, Research, Data Analytics
+icon: https://mcp.quartr.com/favicon.svg
+repoURL: https://mcp.quartr.com/docs
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.quartr.com/mcp

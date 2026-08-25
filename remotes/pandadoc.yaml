@@ -1,0 +1,26 @@
+name: PandaDoc
+entryKey: obot-pandadoc
+serverUserType: singleUser
+shortDescription: Create, send, track, and manage PandaDoc documents
+description: |
+  Create, update, send, search, and track PandaDoc documents and signatures through MCP. See PandaDoc's official [MCP Server guide](https://developers.pandadoc.com/docs/how-to-use-the-pandadoc-mcp-server) for connection details and available document workflows.
+
+  ## Features
+  - Create documents from templates or Markdown
+  - Update, send, search, and list documents
+  - Check document status, details, content, summaries, and audit trails
+  - Change document status and follow signature progress
+
+  ## What you'll need to connect
+
+  **Required:**
+  - A PandaDoc account with permission to manage the documents you want to use
+
+  Sign in with PandaDoc when connecting. Document access and actions follow your PandaDoc workspace permissions.
+metadata:
+  categories: Document Management,Sales,Electronic Signatures
+icon: https://files.readme.io/6ffa2ec-small-icon-192-e5478bae7f.png
+repoURL: https://developers.pandadoc.com/docs/how-to-use-the-pandadoc-mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.pandadoc.com/v1/mcp

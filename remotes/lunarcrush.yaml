@@ -1,0 +1,30 @@
+name: LunarCrush
+entryKey: obot-lunarcrush
+serverUserType: singleUser
+shortDescription: Analyze social sentiment, market intelligence, and real-time trends
+description: |
+  Analyze real-time social metrics, sentiment, trending topics, and market data for companies, brands, stocks, and cryptocurrencies. See [LunarCrush's MCP documentation](https://lunarcrush.com/en/developers/mcp) for client setup, tools, API limits, and API-key authentication.
+
+  ## Features
+  - Retrieve social intelligence for cryptocurrencies, stocks, and brands
+  - Explore trending topics, creators, and social posts
+  - Search and fetch market and sentiment data for AI-assisted analysis
+
+  ## What you'll need to connect
+
+  A LunarCrush API key and a plan with the API capacity needed for your queries. The connector sends the key as a bearer token and each request counts toward your plan's API limits.
+
+metadata:
+  categories: Financial Services, Data Analytics, Social Media
+icon: https://lunarcrush.com/api/og/en/developers/mcp
+repoURL: https://lunarcrush.com/en/developers/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://lunarcrush.ai/mcp
+  headers:
+  - name: LunarCrush API Key
+    description: API key for LunarCrush social intelligence and market data
+    key: Authorization
+    required: true
+    sensitive: true
+    prefix: "Bearer "

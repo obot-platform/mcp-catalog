@@ -1,0 +1,26 @@
+name: Brevo
+entryKey: obot-brevo
+serverUserType: singleUser
+shortDescription: Analyze Brevo campaigns, contacts, and audience segments
+description: |
+  Analyze email and SMS campaign performance, look up contacts and segments, and create drafts for campaigns and templates in Brevo. See the official [Brevo connector guide](https://help.brevo.com/hc/en-us/articles/35030032898194-Brevo-connector-for-Claude-Use-your-Brevo-data-and-campaigns-in-Claude) for setup and supported capabilities.
+
+  ## Features
+  - Review account, sender, contact, list, attribute, and segment data
+  - Inspect email and SMS campaigns, including A/B-test results
+  - Create draft email and SMS campaigns for review in Brevo
+  - Browse, create, and send test email templates
+
+  ## What you'll need to connect
+
+  **Required:**
+  - A Brevo account with access to the campaigns and contacts you want to use
+
+  Sign in with Brevo when connecting. The connector requests only the permissions needed for the actions you approve in your Brevo account.
+metadata:
+  categories: Marketing,Email,CRM
+icon: https://corp-backend.brevo.com/wp-content/uploads/2025/07/Brevo_logo.svg
+repoURL: https://help.brevo.com/hc/en-us/articles/35030032898194-Brevo-connector-for-Claude-Use-your-Brevo-data-and-campaigns-in-Claude
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.brevo.com/v1/anthropic/mcp

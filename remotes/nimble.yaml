@@ -1,0 +1,27 @@
+name: Nimble
+entryKey: obot-nimble
+serverUserType: singleUser
+shortDescription: Search, extract, map, and crawl live web data
+description: |
+  Search the live web, extract structured data from pages, map websites, and run managed crawls with Nimble. See the official [Nimble MCP Server documentation](https://docs.nimbleway.com/integrations/mcp-server/mcp-server) for connection setup and current capabilities.
+
+  ## Features
+  - Run web searches tuned for general, shopping, social, news, and geographic queries
+  - Extract structured data from individual web pages
+  - Discover site pages with map operations and launch managed crawls
+  - Check crawl status, retrieve task results, and stop running crawls
+  - Build, publish, run, and update Nimble agents
+
+  ## What you'll need to connect
+
+  **Required:**
+  - A Nimble account with access to the web-data capabilities you want to use
+
+  Sign in with Nimble when connecting. The connector requests read or write access according to the actions you approve.
+metadata:
+  categories: Web Search,Data Extraction,Web Scraping
+icon: https://mintlify.s3.us-west-1.amazonaws.com/nimble-f5a8283f/images/icons/ogx.svg
+repoURL: https://docs.nimbleway.com/integrations/mcp-server/mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.nimbleway.com/mcp

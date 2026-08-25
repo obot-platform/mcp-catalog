@@ -1,0 +1,23 @@
+name: Kiwi.com
+entryKey: obot-kiwi-com
+serverUserType: singleUser
+shortDescription: Search flights with flexible routes, dates, passengers, and cabins
+description: |
+  Search Kiwi.com flights for one-way and round trips, flexible dates, passenger counts, and cabin preferences. See the official [Kiwi.com MCP page](https://www.kiwi.com/en/pages/mcp/) for connection details and current capabilities.
+
+  ## Features
+  - Search one-way and round-trip flights
+  - Explore flexible travel dates and budget destinations
+  - Specify passenger counts and cabin classes
+  - Share product feedback with the Kiwi.com team
+
+  ## What you'll need to connect
+
+  No account or credentials are required to search flights. Search results include availability and pricing information from Kiwi.com.
+metadata:
+  categories: Travel,Flight Search,Productivity
+icon: https://images.kiwi.com/favicons/icons/kiwicom/android-icon-192x192.png
+repoURL: https://www.kiwi.com/en/pages/mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.kiwi.com/

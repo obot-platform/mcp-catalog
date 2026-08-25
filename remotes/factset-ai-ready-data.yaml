@@ -1,0 +1,27 @@
+name: FactSet AI-Ready Data
+entryKey: obot-factset-ai-ready-data
+serverUserType: singleUser
+shortDescription: Analyze FactSet market, company, and investment research data
+description: |
+  Access FactSet financial data and analytics for global prices, company fundamentals, estimates, ownership, funds, and research workflows. See the official [FactSet AI-Ready Data MCP documentation](https://developer.factset.com/mcp/factset-ai-ready-data-mcp) for setup and available datasets.
+
+  ## Features
+  - Retrieve global prices, fundamentals, metrics, estimates, and corporate events
+  - Research companies, people, ownership, funds, ETFs, and private markets
+  - Screen companies and funds using FactSet data
+  - Analyze mergers and acquisitions, supply chains, debt structures, and geographic revenue
+  - Access structured and unstructured research content
+
+  ## What you'll need to connect
+
+  **Required:**
+  - A FactSet account with entitlements for the datasets you want to use
+
+  Sign in with FactSet when connecting. Results and available tools depend on your organization’s FactSet subscriptions and data permissions.
+metadata:
+  categories: Finance,Market Data,Research
+icon: https://www.factset.com/favicon.ico
+repoURL: https://developer.factset.com/mcp/factset-ai-ready-data-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.factset.com/content/v1

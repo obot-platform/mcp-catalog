@@ -1,0 +1,28 @@
+name: Adobe Customer Journey Analytics
+entryKey: obot-adobe-customer-journey-analytics
+serverUserType: singleUser
+shortDescription: Run journey analytics reports and manage CJA analysis components
+description: |
+  Query Adobe Customer Journey Analytics metrics and dimensions, run reports, and manage analysis components such as segments, calculated metrics, audiences, projects, and date ranges. See Adobe's official [Analytics MCP documentation](https://developer.adobe.com/analytics-mcp/docs/) for setup, supported tools, and current behavior.
+
+  ## Features
+  - Find and describe data views, metrics, dimensions, segments, audiences, and projects
+  - Run reports and search dimension values
+  - Inspect component usage and related analysis components
+  - Create or update segments, calculated metrics, audiences, projects, and date ranges
+  - Set a default session data view for analysis
+
+  ## What you'll need to connect
+
+  **Required:**
+  - An Adobe account with access to Customer Journey Analytics
+  - Permissions for the data views and analysis components you want to use
+
+  Sign in through Adobe's OAuth flow. Report access and any component changes remain limited by your Adobe organization permissions.
+metadata:
+  categories: Analytics,Customer Data,Marketing
+icon: https://developer.adobe.com/analytics-mcp/docs/media_159286763908121791f6dd8285c6873c881a77f03.png?width=1200&format=pjpg&optimize=medium
+repoURL: https://developer.adobe.com/analytics-mcp/docs/
+runtime: remote
+remoteConfig:
+  fixedURL: https://cja-mcp.adobe.io/mcp

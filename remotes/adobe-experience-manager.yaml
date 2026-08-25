@@ -1,0 +1,27 @@
+name: Adobe Experience Manager
+entryKey: obot-adobe-experience-manager
+serverUserType: singleUser
+shortDescription: Manage Adobe Experience Manager content and assets from MCP clients
+description: |
+  Search, create, edit, publish, and manage Adobe Experience Manager pages, content fragments, and assets using AEM's unified MCP server. Adobe documents setup for ChatGPT, Codex, Cursor, Copilot, Windsurf, and other supported MCP clients in its official [AEM MCP guide](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/ai-in-aem/mcp-support/using-mcp-with-aem-as-a-cloud-service).
+
+  ## Features
+  - Discover AEM environments and available capabilities
+  - Search, read, create, update, publish, and delete permitted AEM content
+  - Work with pages, content fragments, and assets through your existing AEM permissions
+  - Configure read-only or read-write behavior by capability category
+
+  ## What you'll need to connect
+
+  **Required:**
+  - An Adobe ID with access to an Adobe Experience Manager Cloud Service organization
+  - An organization that permits your MCP client application
+
+  Sign in with Adobe when connecting. AEM applies the same permissions and governance controls as its user interface.
+metadata:
+  categories: Content Management,Digital Asset Management,Collaboration
+icon: https://developer.adobe.com/internals/mcp-registry-web-app/v1.11.0/default_card_icon.6bb9c3a2.svg
+repoURL: https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/ai-in-aem/mcp-support/using-mcp-with-aem-as-a-cloud-service
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.adobeaemcloud.com/adobe/mcp/aem

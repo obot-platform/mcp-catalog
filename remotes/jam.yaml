@@ -1,0 +1,23 @@
+name: Jam
+entryKey: obot-jam
+serverUserType: singleUser
+shortDescription: Bring Jam bug recordings, logs, and network context into coding tools
+description: |
+  Bring Jam recording context—including video, console logs, network requests, and user events—into an AI coding workflow to investigate and fix bugs. See [Jam's MCP guide](https://jam.dev/docs/jam-mcp) for Cursor, VS Code, Windsurf, and Claude Code setup plus OAuth connection details.
+
+  ## Features
+  - Retrieve Jam recordings and their debugging context
+  - Inspect console logs, network requests, screenshots, and user events
+  - Analyze recorded videos alongside development work
+
+  ## What you'll need to connect
+
+  A Jam account with access to the recordings you need. Jam connects through OAuth 2.0 and requests read and write scopes for its MCP tools.
+
+metadata:
+  categories: Developer Tools, Debugging, Productivity
+icon: https://mintcdn.com/jam-1eb4fd26/oTOrSrW8kcUbGST-/images/jam-wordmark-full-color-for-light-background-520x224.png?fit=max&auto=format&n=oTOrSrW8kcUbGST-&q=85&s=93d56e5d2dc005443fea58cb94ff71ae
+repoURL: https://jam.dev/docs/jam-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.jam.dev/mcp

@@ -1,0 +1,23 @@
+name: Gusto
+entryKey: obot-gusto
+serverUserType: singleUser
+shortDescription: Query payroll and people data, then build custom reports and charts
+description: |
+  Query Gusto payroll and people data in natural language, build custom reports, and create charts for workforce insights. See [Gusto's MCP server documentation](https://docs.gusto.com/app-integrations/docs/mcp) for supported clients, connection steps, OAuth scopes, and security guidance.
+
+  ## Features
+  - Query company, employee, payroll, contractor, department, and time data
+  - Build reports and charts from payroll and people information
+  - Choose the data categories available to your connected AI client during OAuth authorization
+
+  ## What you'll need to connect
+
+  A Gusto account and a trusted MCP client. Gusto uses OAuth 2.0 with PKCE; authentication and permissions are selected during connection.
+
+metadata:
+  categories: Human Resources, Financial Services, Data Analytics
+icon: https://files.readme.io/1708f28-gusto-logo.svg
+repoURL: https://docs.gusto.com/app-integrations/docs/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.api.gusto.com/

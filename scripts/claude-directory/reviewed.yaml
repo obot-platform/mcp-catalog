@@ -4,10 +4,22 @@ records:
     name: PayPal
     status: existing
     catalog_entry: remotes/paypal.yaml
+  - id: 01a9fda6-bd91-4f02-af05-d8e4c3f4f556
+    name: Brevo
+    status: imported
+    catalog_entry: remotes/brevo.yaml
+  - id: 01c311c4-53cb-452a-90a8-1d524c9b97d6
+    name: Kiwi.com
+    status: imported
+    catalog_entry: remotes/kiwi-com.yaml
   - id: 01fef5a3-baea-4490-8a31-39b119d1d238
     name: Cortellis Regulatory Intelligence
     status: imported
     catalog_entry: remotes/cortellis_regulatory_intelligence.yaml
+  - id: 024923b0-b122-4eb0-bb25-c3887bdaa9b9
+    name: BrightHire
+    status: imported
+    catalog_entry: remotes/brighthire.yaml
   - id: 02795770-2c02-42fe-888f-26769ca324a0
     name: tldraw
     status: imported
@@ -20,6 +32,10 @@ records:
     name: Fellow.ai
     status: imported
     catalog_entry: remotes/fellow_ai.yaml
+  - id: 07ca4be9-1ada-48ff-a591-49737b152f45
+    name: Files.com
+    status: existing
+    catalog_entry: remotes/filescom.yaml
   - id: 092d0ef3-9fc6-4101-8f7e-c2b80e58a065
     name: Webflow
     status: imported
@@ -96,10 +112,18 @@ records:
     name: incident.io
     status: imported
     catalog_entry: remotes/incident_io.yaml
+  - id: 21506a18-96ae-40d0-9a9d-1433e08a8bc4
+    name: Expedia
+    status: skipped
+    reason: Exact public MCP endpoint returned HTTP 403 to repeated unauthenticated Streamable HTTP initialization requests; official documentation was also unavailable due rate limiting.
   - id: 22854937-9510-4b57-9230-62c820102d8f
     name: Adobe for creativity
     status: skipped
     reason: Adobe documents this connector only for Claude, and the endpoint does not expose public OAuth discovery metadata needed to map authentication safely to Obot.
+  - id: 240b8712-17ed-4233-858a-9a872dec63b2
+    name: Pylon
+    status: imported
+    catalog_entry: remotes/pylon.yaml
   - id: 25d61b20-3ba1-4477-b51a-a743d1ca65fb
     name: Square
     status: existing
@@ -172,14 +196,26 @@ records:
     name: Adobe Marketing Agent
     status: imported
     catalog_entry: remotes/adobe_marketing_agent.yaml
+  - id: 3a7fa2ac-d655-4479-bce3-8e10fcc26f96
+    name: Intuit Mailchimp
+    status: skipped
+    reason: Endpoint and only provider setup documentation are explicitly Claude-specific; no portable MCP client support is documented.
   - id: 3afecfe4-46be-4f31-9050-9b8a67909028
     name: Google Compute Engine
     status: imported
     catalog_entry: remotes/google_compute_engine.yaml
+  - id: 41105597-badd-4563-aba3-88fe45348857
+    name: Nimble
+    status: imported
+    catalog_entry: remotes/nimble.yaml
   - id: 41aefcf3-a829-45eb-8cee-d90b93912f57
     name: Asana
     status: existing
     catalog_entry: remotes/asana.yaml
+  - id: 4286fd44-6541-4f89-9c1d-33a63a9dded6
+    name: Uber Eats
+    status: skipped
+    reason: Endpoint is explicitly Claude-namespaced and no authoritative non-Claude MCP client setup documentation is available.
   - id: 46d6322a-5f75-4822-b739-f49261805e9c
     name: Sentry
     status: imported
@@ -228,10 +264,18 @@ records:
     name: Monte Carlo
     status: imported
     catalog_entry: remotes/monte_carlo.yaml
+  - id: 56998cd4-9a3a-4f40-8aa9-5019da8bf96e
+    name: PandaDoc
+    status: imported
+    catalog_entry: remotes/pandadoc.yaml
   - id: 57dd8e8a-f030-4bb7-a9ed-4098933bd70b
     name: CMS Coverage
     status: imported
     catalog_entry: remotes/cms_coverage.yaml
+  - id: 5807a545-cd93-4e71-bb21-f3727bf34df1
+    name: MailerLite
+    status: imported
+    catalog_entry: remotes/mailerlite.yaml
   - id: 58d5cff1-20b3-4bb8-9c51-9ac3e6bd0dac
     name: CourtListener
     status: imported
@@ -248,6 +292,10 @@ records:
     name: SlidesGPT
     status: imported
     catalog_entry: remotes/slidesgpt.yaml
+  - id: 5b938bac-8286-4844-bc51-d303f7c6cbde
+    name: Egnyte
+    status: imported
+    catalog_entry: remotes/egnyte.yaml
   - id: 5c0aab87-9f11-478f-b7ed-03774fa6169c
     name: Affinity
     status: imported
@@ -256,6 +304,10 @@ records:
     name: Anthropic Economic Index
     status: imported
     catalog_entry: remotes/anthropic_economic_index.yaml
+  - id: 5f26bc32-8582-4df7-ab88-19c507f8505b
+    name: LSEG
+    status: skipped
+    reason: Only supplied authoritative connector documentation is specific to Anthropic; non-Claude MCP client support is not documented.
   - id: 61bac03c-3f98-4b3c-affb-1b99533fa82c
     name: Ramp
     status: imported
@@ -316,10 +368,18 @@ records:
     name: Trello
     status: imported
     catalog_entry: remotes/trello.yaml
+  - id: 7c316b77-98a0-4dbb-8b54-a96ae26a884f
+    name: Google Cloud BigQuery
+    status: existing
+    catalog_entry: remotes/bigquery.yaml
   - id: 7eb42afe-0087-4493-a105-da2b021d5c03
     name: Vercel
     status: skipped
     reason: Vercel documents that its MCP OAuth server only accepts reviewed and approved clients, and Obot is not currently listed as a supported client.
+  - id: 7f750eb6-c3cb-47d7-9269-d35c43fe9925
+    name: bioRxiv
+    status: skipped
+    reason: Only available connector guidance is an Anthropic Claude-specific tutorial; no provider documentation establishes support for non-Claude MCP clients.
   - id: 80862d08-1022-4d86-816d-ee9b500d6b90
     name: Similarweb
     status: imported
@@ -340,6 +400,14 @@ records:
     name: Trivago
     status: imported
     catalog_entry: remotes/trivago.yaml
+  - id: 81cc5080-a204-4aa1-a694-fa868a3c8719
+    name: Synapse.org
+    status: imported
+    catalog_entry: remotes/synapse_org.yaml
+  - id: 81cc5080-a204-4aa1-a694-fa868a3c8720
+    name: BioRender
+    status: skipped
+    reason: Only authoritative connector documentation is Claude-specific; non-Claude MCP client support is not documented.
   - id: 81cc5080-a204-4aa1-a694-fa868a3c8721
     name: PubMed
     status: skipped
@@ -348,6 +416,10 @@ records:
     name: Adobe Workfront
     status: imported
     catalog_entry: remotes/adobe_workfront.yaml
+  - id: 837cceff-9820-4510-823f-9bdc5ef21f3a
+    name: LunarCrush
+    status: imported
+    catalog_entry: remotes/lunarcrush.yaml
   - id: 839a0ae2-0c0f-4c27-9f85-726ed6515536
     name: Fireflies
     status: imported
@@ -392,6 +464,10 @@ records:
     name: Exa
     status: existing
     catalog_entry: remotes/exa_search.yaml
+  - id: 923fb14b-ed65-4e41-8dd5-4c2c38c00457
+    name: Jam
+    status: imported
+    catalog_entry: remotes/jam.yaml
   - id: 934bf25a-e0d1-43ff-a488-b2c5567ec956
     name: Excalidraw
     status: imported
@@ -404,10 +480,30 @@ records:
     name: Wispr Flow
     status: imported
     catalog_entry: remotes/wispr_flow.yaml
+  - id: 9c04294a-d69c-47e9-9fa6-6a0e780caf3a
+    name: Mercury
+    status: imported
+    catalog_entry: remotes/mercury.yaml
+  - id: 9ed5afff-a8dc-4f68-b97b-61dae12de3a5
+    name: Railway
+    status: imported
+    catalog_entry: remotes/railway.yaml
+  - id: 9feecd5e-241d-4ea1-8caa-289839a3ac04
+    name: Seismic
+    status: skipped
+    reason: Endpoint and official connector description are explicitly Claude-specific; no non-Claude MCP client support is documented.
+  - id: a1b63edd-c598-4b04-b7b0-22dd02c328a3
+    name: Adobe Customer Journey Analytics
+    status: imported
+    catalog_entry: remotes/adobe_customer_journey_analytics.yaml
   - id: a1d0551d-c567-4975-91fc-7ced9e819421
     name: GoDaddy
     status: imported
     catalog_entry: remotes/godaddy.yaml
+  - id: a38cc6ae-c7fb-4136-b50e-cf49a4ded4b3
+    name: Legal Data Hunter
+    status: imported
+    catalog_entry: remotes/legal_data_hunter.yaml
   - id: a428b976-7973-467f-9588-6b72643af755
     name: Harvey
     status: imported
@@ -436,6 +532,10 @@ records:
     name: ClickUp
     status: imported
     catalog_entry: remotes/clickup.yaml
+  - id: ac8e4b2a-1618-4b6f-8756-660eb7583ebe
+    name: Quartr
+    status: imported
+    catalog_entry: remotes/quartr.yaml
   - id: adcb61d5-8738-4724-a8e9-9cca7d525c3c
     name: Descript
     status: imported
@@ -500,6 +600,10 @@ records:
     name: Superhuman Mail
     status: imported
     catalog_entry: remotes/superhuman_mail.yaml
+  - id: c1754944-3ad1-49ab-bec5-9aeae3a6a9a3
+    name: Clinical Trials
+    status: skipped
+    reason: Only available connector guidance is an Anthropic Claude-specific tutorial; no provider documentation establishes support for non-Claude MCP clients.
   - id: c758d038-d8eb-4421-b426-9dd68dc7f84a
     name: Figma
     status: skipped
@@ -520,10 +624,18 @@ records:
     name: Supermetrics Marketing Analytics
     status: imported
     catalog_entry: remotes/supermetrics.yaml
+  - id: cdecef4b-4a15-404c-b912-005ca366a898
+    name: Uber
+    status: skipped
+    reason: Endpoint is explicitly Claude-namespaced and no authoritative non-Claude MCP client setup documentation is available.
   - id: ce0c9cda-5ea5-44c5-9cf2-40810dfa6582
     name: Microsoft 365
     status: skipped
     reason: Anthropic-hosted connector requires Claude-specific Microsoft Entra applications and Claude organization enablement, so it is not portable to Obot.
+  - id: cf2b53a4-45ef-4541-9425-0116d42286ca
+    name: Gusto
+    status: imported
+    catalog_entry: remotes/gusto.yaml
   - id: d1bac76b-5673-4d98-b275-41451f3dd847
     name: Todoist
     status: existing
@@ -532,6 +644,10 @@ records:
     name: Tableau Cloud
     status: existing
     catalog_entry: remotes/tableau_cloud.yaml
+  - id: d445461d-2337-4e00-b285-b43d111d2912
+    name: Interactive Brokers (IBKR)
+    status: imported
+    catalog_entry: remotes/interactive-brokers.yaml
   - id: d4ba36c1-89dd-49ee-aea3-2317efccc424
     name: Udemy Business
     status: imported
@@ -576,10 +692,18 @@ records:
     name: WordPress.com
     status: existing
     catalog_entry: obot-images/wordpress.yaml
+  - id: e9f93fb8-37d6-4727-a129-956e5263ac3e
+    name: Adobe Experience Manager
+    status: imported
+    catalog_entry: remotes/adobe-experience-manager.yaml
   - id: eb9240f2-e1c1-43c1-828f-0fda40c22e4c
     name: Canva
     status: imported
     catalog_entry: remotes/canva.yaml
+  - id: ed56abc7-38aa-4ac9-a1a5-fbbb03a95855
+    name: Peec AI
+    status: imported
+    catalog_entry: remotes/peec-ai.yaml
   - id: ee49809c-50e1-4b24-bc17-17ce8887bfdf
     name: Snowflake
     status: existing
@@ -596,6 +720,10 @@ records:
     name: ZoomInfo
     status: imported
     catalog_entry: remotes/zoominfo.yaml
+  - id: f2da5b67-41bc-4ce9-8eb8-f18ab09bde5a
+    name: FactSet AI-Ready Data
+    status: imported
+    catalog_entry: remotes/factset-ai-ready-data.yaml
   - id: f65118b4-06cb-468a-b2c7-f203ae7b54ea
     name: Scite
     status: imported

@@ -1,0 +1,23 @@
+name: Pylon
+entryKey: obot-pylon
+serverUserType: singleUser
+shortDescription: Search, manage, and resolve customer support issues
+description: |
+  Search and manage Pylon customer-support issues, accounts, contacts, and conversations from an AI client. See [Pylon's MCP connection guide](https://support.usepylon.com/articles/2407390554-connecting-to-the-pylon-mcp-server) for supported-client setup, OAuth authentication, and access behavior.
+
+  ## Features
+  - Search customer-support issues and accounts
+  - Read issue details, messages, contacts, and account records
+  - Create and update support issues and account information
+
+  ## What you'll need to connect
+
+  A Pylon account with the access needed for the records you manage. Pylon uses OAuth; the connected client acts with your existing Pylon permissions.
+
+metadata:
+  categories: Customer Support, Communication, CRM
+icon: https://d3vl36l12sfx26.cloudfront.net/6e227170-1068-46ce-9820-5286999d3672%2F1719558753406-Group1727.png?Expires=253370764800&Signature=LLArv-oXnlgH4X-mBYyQPk5P~caYaQPJTRNC8QEA8szf3elSKEUlxf~jJjimocPXl8OlaretdOnFdpIXUsGIWRUf~ShV6dZojuXsz0kRwlppSoSpiAoNNIs3fkGdZxjwbQ~1m3ks6L3sjui9otkJjbfKk1P0WI8vh5d7h2VAEFZ1Y-3W8SIraJWsarqdd9cHmFs8QvVoSQE~mtKM5HUN5sR~Mwzn~u~Ox6Do5d6umC9X8RPqYVIdK0uZBzSR7EvtK1himWa6ao9D9uQXzzDBQWdZ-yodh7krI1KELS8kdxBXmTLIZfs52SYP9J0LJW~yiVOQF10nRXE54zEH54jsPw__&Key-Pair-Id=K3NV4LZ47N8M46
+repoURL: https://support.usepylon.com/articles/2407390554-connecting-to-the-pylon-mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.usepylon.com/

@@ -1,0 +1,27 @@
+name: Legal Data Hunter
+entryKey: obot-legal-data-hunter
+serverUserType: singleUser
+shortDescription: Search official legal documents across jurisdictions and resolve citations
+description: |
+  Search official legal sources across jurisdictions, resolve citations, and retrieve full legal-document text and source metadata through Legal Data Hunter. See the official [Legal Data Hunter documentation](https://legaldatahunter.com/docs) for source coverage, search behavior, and setup instructions.
+
+  ## Features
+  - Search legal documents with semantic and keyword filters
+  - Resolve ECLI, CELEX, case-number, and other legal citations
+  - Retrieve full document text and metadata
+  - Discover countries, sources, and available filters
+  - Report source data issues
+
+  ## What you'll need to connect
+
+  **Required:**
+  - A Legal Data Hunter account
+
+  Sign in through Legal Data Hunter's OAuth flow. This read-only connector returns legal source material; verify applicability and currency before relying on it for legal decisions.
+metadata:
+  categories: Legal Research,Documentation,Search
+icon: https://legaldatahunter.com/static/favicon.svg
+repoURL: https://legaldatahunter.com/docs
+runtime: remote
+remoteConfig:
+  fixedURL: https://legaldatahunter.com/mcp

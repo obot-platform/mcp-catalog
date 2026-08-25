@@ -1,0 +1,23 @@
+name: Peec AI
+entryKey: obot-peec-ai
+serverUserType: singleUser
+shortDescription: Analyze brand visibility, sentiment, and share of voice across AI search
+description: |
+  Analyze your brand's visibility across AI search engines, compare it with competitors, and retrieve the underlying Peec AI reports in natural language. See [Peec AI's MCP documentation](https://docs.peec.ai/mcp/introduction) for supported clients, OAuth and personal-access-token setup, and available tools.
+
+  ## Features
+  - List available projects, brands, prompts, topics, and tags
+  - Retrieve brand, domain, and URL reports
+  - Examine visibility, sentiment, and share of voice across AI search engines
+
+  ## What you'll need to connect
+
+  A Peec AI account with access to the relevant projects. Connect with OAuth 2.0, or use a personal access token when your MCP client cannot complete OAuth.
+
+metadata:
+  categories: Data Analytics, Marketing, Business Intelligence
+icon: https://mintcdn.com/peecai-b61a1960/BVQQX1wLWNjFOa_V/images/logo-white.svg?fit=max&auto=format&n=BVQQX1wLWNjFOa_V&q=85&s=5d3f30a498a2c71a875226adc1a9de52
+repoURL: https://docs.peec.ai/mcp/introduction
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.peec.ai/mcp

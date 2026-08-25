@@ -1,0 +1,23 @@
+name: BrightHire
+entryKey: obot-brighthire
+serverUserType: singleUser
+shortDescription: Search and analyze interview context, notes, scorecards, and hiring data
+description: |
+  Search and analyze BrightHire hiring data including interview context, summaries, notes, transcripts, scorecards, guides, and job descriptions. See [BrightHire's MCP guide](https://help.brighthire.ai/en/articles/14808753-brighthire-mcp) for ChatGPT, Codex, Cursor, and OAuth setup.
+
+  ## Features
+  - Search interview and candidate data
+  - Retrieve scheduled interview context, summaries, transcripts, and AI notes
+  - Review scorecards, job descriptions, interview guides, and coaching reports
+
+  ## What you'll need to connect
+
+  A BrightHire account with MCP access enabled by an administrator. Connect through OAuth 2.0; data access follows your BrightHire permissions.
+
+metadata:
+  categories: Human Resources, Recruiting, Productivity
+icon: https://brighthire.com/wp-content/uploads/2026/02/BrightHire-favicon.png
+repoURL: https://help.brighthire.ai/en/articles/14808753-brighthire-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://app.brighthire.ai/mcp/v1
