@@ -11,14 +11,6 @@ upgradeNote: |
 description: |
   Search the web and retrieve clean webpage content through [Exa's hosted MCP server](https://exa.ai/docs/reference/exa-mcp).
 
-  > **⚠️ Upgrade notice**
-  >
-  > If you're upgrading this server, note that this replaces the Obot-hosted Exa Search server with Exa's official hosted MCP server.
-  >
-  > - **Reconnect required:** Select OAuth or anonymous/API-key access. An Exa API key is no longer required for basic access.
-  > - **New capabilities:** Advanced search, webpage fetching, and Exa Agent are enabled.
-  > - **Tool changes:** Legacy code-context and crawling tools are replaced by the hosted server's current tools and parameters.
-
   See the [official Exa MCP documentation](https://exa.ai/docs/reference/exa-mcp) for setup, tools, and authentication details.
 
   **Authentication method:** Enter `mcp/oauth?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run` to sign in with OAuth, or `mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run` to connect anonymously and optionally provide an Exa API key.
@@ -36,6 +28,14 @@ description: |
   Choose OAuth to sign in to your Exa account, or choose Anonymous / API Key to connect without signing in. You can optionally provide an API key from [the Exa dashboard](https://dashboard.exa.ai/api-keys) for higher limits and Exa Agent access. Exa provides a free tier; account usage and plan limits are managed by Exa.
 
   See the official [Exa MCP setup documentation](https://exa.ai/docs/reference/exa-mcp), [pricing](https://exa.ai/pricing), and [security documentation](https://exa.ai/docs/reference/security).
+
+  > **⚠️ Upgrade notice**
+  >
+  > If you're upgrading this server, note that this replaces the Obot-hosted Exa Search server with Exa's official hosted MCP server.
+  >
+  > - **Reconnect required:** Select OAuth or anonymous/API-key access. An Exa API key is no longer required for basic access.
+  > - **New capabilities:** Advanced search, webpage fetching, and Exa Agent are enabled.
+  > - **Tool changes:** Legacy code-context and crawling tools are replaced by the hosted server's current tools and parameters.
 metadata:
   categories: Retrieval & Search,Science & Research,Developer Tools
 icon: https://avatars.githubusercontent.com/u/77906174?v=4

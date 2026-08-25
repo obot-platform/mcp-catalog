@@ -11,14 +11,6 @@ upgradeNote: |
 description: |
   Connect to Google's managed Cloud Run MCP server to list and inspect services or deploy applications from container images, source archives, and inline source files.
 
-  > **⚠️ Upgrade notice**
-  >
-  > If you're upgrading this server, note that this replaces the Obot-hosted Cloud Run server with Google's managed Cloud Run MCP server.
-  >
-  > - **Reconnect required:** Connect with Google OAuth. The previous service-account credentials and default-region setting are no longer used.
-  > - **Tool changes:** Tool names and parameters change. Project listing, project creation, and service-log retrieval are no longer available.
-  > - **New capability:** Source-archive deployment is now available.
-
   See Google's [official Cloud Run MCP documentation](https://cloud.google.com/run/docs/use-cloud-run-mcp) for setup instructions, authentication requirements, and current capabilities.
 
   ## What you'll need to connect
@@ -36,6 +28,14 @@ description: |
   ## Important differences
 
   This managed server does not provide tools to list or create Google Cloud projects or retrieve service logs. It adds source archive deployment. Inline source requests are limited to 50 MiB, and source archives are limited to 250 MiB.
+
+  > **⚠️ Upgrade notice**
+  >
+  > If you're upgrading this server, note that this replaces the Obot-hosted Cloud Run server with Google's managed Cloud Run MCP server.
+  >
+  > - **Reconnect required:** Connect with Google OAuth. The previous service-account credentials and default-region setting are no longer used.
+  > - **Tool changes:** Tool names and parameters change. Project listing, project creation, and service-log retrieval are no longer available.
+  > - **New capability:** Source-archive deployment is now available.
 metadata:
   categories: Cloud Infrastructure,Deployment,Container Orchestration
 icon: https://avatars.githubusercontent.com/u/2810941?s=48&v=4

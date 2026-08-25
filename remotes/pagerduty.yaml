@@ -11,14 +11,6 @@ upgradeNote: |
 description: |
   Investigate incidents, manage on-call coverage, administer services and teams, and run incident-response workflows through [PagerDuty's hosted MCP server](https://support.pagerduty.com/main/docs/pagerduty-mcp-server), without installing a local server.
 
-  > **⚠️ Upgrade notice**
-  >
-  > If you're upgrading this server, note that this replaces the Obot-hosted PagerDuty server with PagerDuty's official hosted MCP server.
-  >
-  > - **Reconnect required:** Select the PagerDuty US or EU hosted endpoint and provide a PagerDuty User API token.
-  > - **Configuration change:** The previous API-host setting is replaced by a hosted-server region selection.
-  > - **Tool changes:** Tool names, parameters, and the available incident-response and administration operations change.
-
   See the [official PagerDuty MCP documentation](https://support.pagerduty.com/main/docs/pagerduty-mcp-server) for setup, authentication, and regional endpoint details.
 
   **PagerDuty region:** Enter `mcp.pagerduty.com` for accounts hosted in the United States or `mcp.eu.pagerduty.com` for accounts hosted in Europe.
@@ -36,6 +28,14 @@ description: |
   The server authenticates requests with your PagerDuty API key. Use a User API token so the server can act with your PagerDuty permissions; some filters require user-level authentication.
 
   Store your API key securely and rotate it if it is exposed.
+
+  > **⚠️ Upgrade notice**
+  >
+  > If you're upgrading this server, note that this replaces the Obot-hosted PagerDuty server with PagerDuty's official hosted MCP server.
+  >
+  > - **Reconnect required:** Select the PagerDuty US or EU hosted endpoint and provide a PagerDuty User API token.
+  > - **Configuration change:** The previous API-host setting is replaced by a hosted-server region selection.
+  > - **Tool changes:** Tool names, parameters, and the available incident-response and administration operations change.
 metadata:
   categories: Monitoring & Observability, SaaS & API Integrations
 icon: https://avatars.githubusercontent.com/u/766800?s=48&v=4

@@ -12,15 +12,6 @@ upgradeNote: |
 description: |
   Search and manage tasks, projects, portfolios, users, teams, attachments, comments, status updates, and AI Teammates through [Asana's official MCP server](https://developers.asana.com/docs/using-asanas-mcp-server).
 
-  > **⚠️ Upgrade notice**
-  >
-  > If you're upgrading this server, note that this replaces Asana's deprecated V1 beta server with the generally available Asana V2 MCP server.
-  >
-  > - **Reconnect required:** An Obot administrator must configure a statically registered Asana MCP OAuth client. Existing V1 connections and tokens cannot be reused.
-  > - **Workspace selection:** Each connection is authorized for one workspace. Connect the server separately to work with additional workspaces.
-  > - **Tool changes:** Tool names and parameters change. Dedicated goal mutation, time-period lookup, workspace listing, and several granular task helper tools are no longer available; some task operations are consolidated into bulk create and update tools.
-  > - **New capabilities:** V2 adds bulk task operations, status overviews, comments, and AI Teammate discovery.
-
   See Asana's [MCP server guide](https://developers.asana.com/docs/using-asanas-mcp-server), [integration guide](https://developers.asana.com/docs/integrating-with-asanas-mcp-server), and [tool reference](https://developers.asana.com/docs/mcp-tools-reference) for current setup requirements and capabilities.
 
   ## What you'll need to connect
@@ -39,6 +30,15 @@ description: |
   V2 uses Streamable HTTP at `https://mcp.asana.com/v2/mcp`. Its OAuth tokens are workspace-scoped and valid only for the MCP server, not Asana's REST API. MCP apps do not request individual OAuth scopes; an authorization can use all MCP tools made available by Asana, subject to the user's existing permissions.
 
   V2 preserves the main task, project, user, team, portfolio, attachment, comment, and project-status workflows. It does not provide direct replacements for V1's goal creation and update tools, time-period tools, workspace enumeration, task follower helpers, or standalone dependency and parent helpers. Bulk task updates cover many follower, dependency, parent, and project-membership changes.
+
+  > **⚠️ Upgrade notice**
+  >
+  > If you're upgrading this server, note that this replaces Asana's deprecated V1 beta server with the generally available Asana V2 MCP server.
+  >
+  > - **Reconnect required:** An Obot administrator must configure a statically registered Asana MCP OAuth client. Existing V1 connections and tokens cannot be reused.
+  > - **Workspace selection:** Each connection is authorized for one workspace. Connect the server separately to work with additional workspaces.
+  > - **Tool changes:** Tool names and parameters change. Dedicated goal mutation, time-period lookup, workspace listing, and several granular task helper tools are no longer available; some task operations are consolidated into bulk create and update tools.
+  > - **New capabilities:** V2 adds bulk task operations, status overviews, comments, and AI Teammate discovery.
 metadata:
   categories: Business, Developer Tools
   allow-multiple: "true"

@@ -11,14 +11,6 @@ upgradeNote: |
 description: |
   Use built-in and custom Elastic Agent Builder tools from Elastic Cloud Serverless and self-managed Elastic Stack deployments through [Elastic's official MCP server](https://www.elastic.co/docs/explore-analyze/ai-features/agent-builder/mcp-server).
 
-  > **⚠️ Upgrade notice**
-  >
-  > If you're upgrading this server, note that this replaces the direct, Obot-hosted Elasticsearch MCP server with Elastic Agent Builder's MCP server.
-  >
-  > - **Reconnect required:** Provide a Kibana URL and scoped Elastic API key. The previous Elasticsearch URL, username/password, and direct API-key settings are no longer used.
-  > - **New requirement:** Agent Builder requires Elastic Cloud Serverless or Elastic Stack 9.3 or later.
-  > - **Tool changes:** All tool names and parameters change. Direct raw Query DSL and shard inspection are no longer available.
-
   See Elastic's [official Agent Builder MCP server documentation](https://www.elastic.co/docs/explore-analyze/ai-features/agent-builder/mcp-server) for endpoint details, authentication options, permissions, and current capabilities.
 
   This entry is the recommended replacement for the legacy containerized Elasticsearch entry. Agent Builder provides broader vendor-managed search and analysis capabilities, but it does not expose a shard-inspection tool or the legacy server's direct raw Query DSL interface.
@@ -42,6 +34,14 @@ description: |
   Create an API key with `feature_agentBuilder.read` and `feature_actions.read` Kibana application privileges for the target space, and restrict it to the indices the MCP server needs. `read` and `view_index_metadata` are required for query and index exploration; `monitor_inference` is required when the configured tools use the Elasticsearch Inference API.
 
   For the default Kibana space, enter a URL such as `https://my-project.kb.us-central1.gcp.elastic.cloud`. For a custom space, include `/s/<space-name>`, for example `https://my-project.kb.us-central1.gcp.elastic.cloud/s/production`. Set an expiration date and rotate API keys regularly.
+
+  > **⚠️ Upgrade notice**
+  >
+  > If you're upgrading this server, note that this replaces the direct, Obot-hosted Elasticsearch MCP server with Elastic Agent Builder's MCP server.
+  >
+  > - **Reconnect required:** Provide a Kibana URL and scoped Elastic API key. The previous Elasticsearch URL, username/password, and direct API-key settings are no longer used.
+  > - **New requirement:** Agent Builder requires Elastic Cloud Serverless or Elastic Stack 9.3 or later.
+  > - **Tool changes:** All tool names and parameters change. Direct raw Query DSL and shard inspection are no longer available.
 metadata:
   categories: Databases, Data Analytics, Retrieval & Search
 icon: https://avatars.githubusercontent.com/u/6764390?v=4

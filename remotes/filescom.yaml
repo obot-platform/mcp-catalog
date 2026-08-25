@@ -11,14 +11,6 @@ upgradeNote: |
 description: |
   Securely manage Files.com resources and perform file operations through [Files.com's hosted MCP server](https://www.files.com/docs/integrations/model-context-protocol-mcp-server), without running a local server.
 
-  > **⚠️ Upgrade notice**
-  >
-  > If you're upgrading this server, note that this replaces the Obot-hosted Files.com server with Files.com's official hosted MCP server.
-  >
-  > - **Reconnect required:** Provide your Files.com site subdomain and connect with either OAuth or a Files.com API key.
-  > - **OAuth setup:** A site administrator must enable MCP Dynamic Client Registration.
-  > - **Compatibility:** Custom domains are not accepted, tool parameters may change, and local file upload and download tools remain unavailable.
-
   See Files.com's [official MCP server documentation](https://www.files.com/docs/integrations/model-context-protocol-mcp-server) for setup instructions, authentication options, and current capabilities.
 
   ## Features
@@ -41,6 +33,14 @@ description: |
   For automated or headless use, you can provide a Files.com API key instead of signing in. The key inherits the permissions of its associated Files.com user.
 
   Custom domains are not accepted; use the site's corresponding Files.com subdomain instead.
+
+  > **⚠️ Upgrade notice**
+  >
+  > If you're upgrading this server, note that this replaces the Obot-hosted Files.com server with Files.com's official hosted MCP server.
+  >
+  > - **Reconnect required:** Provide your Files.com site subdomain and connect with either OAuth or a Files.com API key.
+  > - **OAuth setup:** A site administrator must enable MCP Dynamic Client Registration.
+  > - **Compatibility:** Custom domains are not accepted, tool parameters may change, and local file upload and download tools remain unavailable.
 metadata:
   categories: Cloud & Infrastructure, File Transfer, Storage, Security & Compliance
   allow-multiple: "true"

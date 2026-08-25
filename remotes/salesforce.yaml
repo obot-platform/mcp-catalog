@@ -11,14 +11,6 @@ upgradeNote: |
 description: |
   Salesforce Hosted MCP is Salesforce's vendor-managed remote MCP service. Select the SObject server that provides the protection level your workflow needs. Each server provides governed access to standard and custom Salesforce records using each connected user's Salesforce permissions, sharing rules, and field-level security.
 
-  > **⚠️ Upgrade notice**
-  >
-  > If you're upgrading this server, note that this replaces the Obot-hosted Salesforce server with Salesforce's official hosted MCP servers.
-  >
-  > - **Reconnect required:** A Salesforce administrator must activate the selected SObject server and configure an External Client App for Obot's static OAuth connection.
-  > - **Authentication change:** The previous per-connection client ID, client secret, and Salesforce domain settings are no longer used.
-  > - **Tool changes:** Select a read, mutation, deletion, or full SObject server; tools and parameters differ from the previous server.
-
   See the [official Salesforce Hosted MCP documentation](https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/hosted-mcp-servers-overview.html) for setup, authentication, and server details.
 
   ## Features
@@ -50,6 +42,14 @@ description: |
   Static OAuth credentials are configured once per Obot catalog scope. Configure this entry for one Salesforce org and its corresponding External Client App. Additional Salesforce orgs require separately scoped catalog configuration.
 
   Salesforce applies the authenticated user's CRUD, field-level, sharing, profile, and permission-set access. MCP requests consume the org's normal API quota. Select `platform/sobject-reads` unless your workflow requires record changes; select `platform/sobject-deletes` only for deliberate deletion workflows.
+
+  > **⚠️ Upgrade notice**
+  >
+  > If you're upgrading this server, note that this replaces the Obot-hosted Salesforce server with Salesforce's official hosted MCP servers.
+  >
+  > - **Reconnect required:** A Salesforce administrator must activate the selected SObject server and configure an External Client App for Obot's static OAuth connection.
+  > - **Authentication change:** The previous per-connection client ID, client secret, and Salesforce domain settings are no longer used.
+  > - **Tool changes:** Select a read, mutation, deletion, or full SObject server; tools and parameters differ from the previous server.
 metadata:
   categories: CRM
   allow-multiple: "true"

@@ -11,14 +11,6 @@ upgradeNote: |
 description: |
   Query and manage Snowflake data through [Snowflake's managed MCP server](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp). Snowflake hosts the endpoint and uses native role-based access control for the server and each configured tool.
 
-  > **Upgrade notice**
-  >
-  > If you're upgrading this server, note that this replaces the Obot-hosted Snowflake Labs server with Snowflake's managed MCP server.
-  >
-  > - **Reconnect required:** Configure a Snowflake account URL, database, schema, MCP server name, and OAuth security integration.
-  > - **Compatibility:** Username/password authentication and Service Config YAML are no longer supported.
-  > - **Tool changes:** Tool names, parameters, and availability are defined by the configured Snowflake MCP server.
-
   ## Features
   - **Cortex Agents**: Expose governed Cortex Agents as tools
   - **Cortex Search and Analyst**: Query unstructured data and semantic views
@@ -35,6 +27,14 @@ description: |
   Follow [Snowflake's managed MCP server setup instructions](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp) before connecting this catalog entry.
 
   After setup, provide the Snowflake account URL, database, schema, and MCP server name shown in your server endpoint.
+
+  > **Upgrade notice**
+  >
+  > If you're upgrading this server, note that this replaces the Obot-hosted Snowflake Labs server with Snowflake's managed MCP server.
+  >
+  > - **Reconnect required:** Configure a Snowflake account URL, database, schema, MCP server name, and OAuth security integration.
+  > - **Compatibility:** Username/password authentication and Service Config YAML are no longer supported.
+  > - **Tool changes:** Tool names, parameters, and availability are defined by the configured Snowflake MCP server.
 
 metadata:
   categories: Data Warehouse, SQL, Analytics, Database Management

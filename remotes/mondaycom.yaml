@@ -11,14 +11,6 @@ upgradeNote: |
 description: |
   Work with boards, items, updates, workspaces, documents, dashboards, and other monday.com data through [monday.com's hosted MCP server](https://developer.monday.com/api-reference/docs/integrate-with-monday-mcp).
 
-  > **⚠️ Upgrade notice**
-  >
-  > If you're upgrading this server, note that this entry now uses monday.com's current Streamable HTTP endpoint instead of the legacy SSE endpoint.
-  >
-  > - **Reconnect may be required:** Existing connections may need to authenticate again after the transport upgrade.
-  > - **Tool changes:** monday.com updates its hosted server automatically, so available tools and parameters may change over time.
-  > - **Same account access:** Tool calls continue to run as the connected user and cannot exceed that user's monday.com permissions.
-
   See monday.com's [official MCP integration guide](https://developer.monday.com/api-reference/docs/integrate-with-monday-mcp) for current setup, authentication, and tool information.
 
   ## Features
@@ -42,6 +34,14 @@ description: |
   - "Add a new team member to the project and assign them tasks"
   - "Create a dashboard showing project progress across all boards"
   - "Generate a report of completed tasks this week"
+
+  > **⚠️ Upgrade notice**
+  >
+  > If you're upgrading this server, note that this entry now uses monday.com's current Streamable HTTP endpoint instead of the legacy SSE endpoint.
+  >
+  > - **Reconnect may be required:** Existing connections may need to authenticate again after the transport upgrade.
+  > - **Tool changes:** monday.com updates its hosted server automatically, so available tools and parameters may change over time.
+  > - **Same account access:** Tool calls continue to run as the connected user and cannot exceed that user's monday.com permissions.
 
 metadata:
   categories: Business, Project Management, Productivity

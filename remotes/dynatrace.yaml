@@ -11,14 +11,6 @@ upgradeNote: |
 description: |
   Investigate observability data and use Dynatrace Intelligence through [Dynatrace's secure, governed MCP server](https://docs.dynatrace.com/docs/dynatrace-intelligence/dynatrace-mcp), hosted and maintained in your SaaS environment.
 
-  > **⚠️ Upgrade notice**
-  >
-  > If you're upgrading this server, note that this replaces the Obot-hosted Dynatrace server with Dynatrace's official SaaS MCP gateway.
-  >
-  > - **Reconnect required:** Provide a Dynatrace SaaS environment identifier and a Platform Token with MCP gateway and tool-specific permissions.
-  > - **Compatibility:** Dynatrace Managed and classic environments are no longer supported.
-  > - **Tool changes:** Tool names and parameters change.
-
   See Dynatrace's [official MCP server documentation](https://docs.dynatrace.com/docs/dynatrace-intelligence/dynatrace-mcp) for setup instructions, authentication requirements, permissions, and current capabilities.
 
   ## Features
@@ -39,6 +31,14 @@ description: |
   ## Cost and access notes
 
   DQL queries can incur Grail consumption charges. Use narrow timeframes and filters, and grant only the permissions required for the intended workflows.
+
+  > **⚠️ Upgrade notice**
+  >
+  > If you're upgrading this server, note that this replaces the Obot-hosted Dynatrace server with Dynatrace's official SaaS MCP gateway.
+  >
+  > - **Reconnect required:** Provide a Dynatrace SaaS environment identifier and a Platform Token with MCP gateway and tool-specific permissions.
+  > - **Compatibility:** Dynatrace Managed and classic environments are no longer supported.
+  > - **Tool changes:** Tool names and parameters change.
 metadata:
   categories: Monitoring, Developer Tools, DevOps
   allow-multiple: "true"

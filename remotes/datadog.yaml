@@ -11,14 +11,6 @@ upgradeNote: |
 description: |
   Investigate logs, metrics, traces, monitors, dashboards, incidents, hosts, RUM, and more through [Datadog's vendor-hosted MCP server](https://docs.datadoghq.com/mcp_server/).
 
-  > **⚠️ Upgrade notice**
-  >
-  > If you're upgrading this server, note that this replaces the Obot-hosted Datadog server with Datadog's official hosted MCP server.
-  >
-  > - **Reconnect required:** Connect with Datadog OAuth or a Personal or Service Access Token. The previous API key, application key, and site settings are no longer used.
-  > - **Region:** This entry connects to Datadog US1.
-  > - **Tool changes:** Tool names, parameters, permissions, and available toolsets change.
-
   See Datadog's [official MCP server documentation](https://docs.datadoghq.com/mcp_server/) for setup instructions, authentication options, permissions, and current capabilities.
 
   ## Features
@@ -35,6 +27,14 @@ description: |
   - The default core toolset includes read tools and notebook create/edit tools. Enable additional toolsets only when needed to conserve context and limit the available actions.
   - Datadog documents fair-use limits of 50 tool calls per 10 seconds and 50,000 monthly tool calls, subject to change.
   - Datadog retains remote-MCP usage, error, identity, and relevant prompt-context data for 120 days. Review the [official service documentation](https://docs.datadoghq.com/mcp_server/) before connecting sensitive workloads.
+
+  > **⚠️ Upgrade notice**
+  >
+  > If you're upgrading this server, note that this replaces the Obot-hosted Datadog server with Datadog's official hosted MCP server.
+  >
+  > - **Reconnect required:** Connect with Datadog OAuth or a Personal or Service Access Token. The previous API key, application key, and site settings are no longer used.
+  > - **Region:** This entry connects to Datadog US1.
+  > - **Tool changes:** Tool names, parameters, permissions, and available toolsets change.
 
 metadata:
   categories: Monitoring & Observability, SaaS & API Integrations

@@ -11,14 +11,6 @@ upgradeNote: |
 description: |
   Manage Supabase projects and development workflows through [Supabase's hosted MCP server](https://supabase.com/docs/guides/ai-tools/mcp).
 
-  > **⚠️ Upgrade notice**
-  >
-  > If you're upgrading this server, note that this replaces the Obot-hosted Supabase server with Supabase's official hosted MCP server.
-  >
-  > - **Reconnect required:** Select read-only or read-and-write access, then connect with OAuth or optionally provide a Supabase personal access token.
-  > - **Authentication change:** A personal access token is no longer required; OAuth is used when the token is omitted.
-  > - **Tool changes:** Tool names, parameters, and available project, database, function, branch, storage, and documentation operations change.
-
   See the [official Supabase MCP documentation](https://supabase.com/docs/guides/ai-tools/mcp) for setup, configuration options, and security guidance.
 
   **Access mode:** Enter `true` for read-only access or `false` to enable potentially destructive read-and-write operations.
@@ -41,6 +33,14 @@ description: |
   - **Development**: Get project URLs and publishable keys, and generate TypeScript types
   - **Edge Functions and Branching**: Inspect functions and branches, with optional write operations
   - **Storage and Docs**: Inspect storage configuration and search Supabase documentation
+
+  > **⚠️ Upgrade notice**
+  >
+  > If you're upgrading this server, note that this replaces the Obot-hosted Supabase server with Supabase's official hosted MCP server.
+  >
+  > - **Reconnect required:** Select read-only or read-and-write access, then connect with OAuth or optionally provide a Supabase personal access token.
+  > - **Authentication change:** A personal access token is no longer required; OAuth is used when the token is omitted.
+  > - **Tool changes:** Tool names, parameters, and available project, database, function, branch, storage, and documentation operations change.
 metadata:
   categories: Databases
 icon: https://supabase.com/favicon/favicon-96x96.png

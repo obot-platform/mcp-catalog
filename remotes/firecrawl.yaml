@@ -11,14 +11,6 @@ upgradeNote: |
 description: |
   Search, scrape, and retrieve current web data through [Firecrawl's hosted MCP server](https://docs.firecrawl.dev/mcp-server), without running a local container. Firecrawl operates and updates the server directly.
 
-  > **⚠️ Upgrade notice**
-  >
-  > If you're upgrading this server, note that this replaces the Obot-hosted Firecrawl server with Firecrawl's official hosted MCP server.
-  >
-  > - **Reconnect required:** Select OAuth or API-key/keyless access. The previous required API-key configuration is no longer used.
-  > - **Authentication:** OAuth and limited keyless access are now available in addition to API-key access.
-  > - **Tool changes:** Tool names, parameters, and the available scraping, research, interaction, and monitoring capabilities change.
-
   See the [official Firecrawl MCP documentation](https://docs.firecrawl.dev/mcp-server) for setup, tools, limits, and authentication details.
 
   **Authentication method:** Enter `v2/mcp-oauth` for browser sign-in, or `v2/mcp` to provide an optional API key or use the limited keyless tool set.
@@ -38,6 +30,14 @@ description: |
   Choose OAuth to sign in to Firecrawl when prompted, or choose API Key / Keyless to connect without a browser. API-key connections use your Firecrawl team's plan. Keyless access is limited to Search, Scrape, and Parse.
 
   Provide an API key from https://www.firecrawl.dev/app/api-keys for the full API-key tool surface. Leave the key blank when using OAuth or keyless access.
+
+  > **⚠️ Upgrade notice**
+  >
+  > If you're upgrading this server, note that this replaces the Obot-hosted Firecrawl server with Firecrawl's official hosted MCP server.
+  >
+  > - **Reconnect required:** Select OAuth or API-key/keyless access. The previous required API-key configuration is no longer used.
+  > - **Authentication:** OAuth and limited keyless access are now available in addition to API-key access.
+  > - **Tool changes:** Tool names, parameters, and the available scraping, research, interaction, and monitoring capabilities change.
 metadata:
   categories: Retrieval & Search,Automation & Browsers,Science & Research
   source: vendor

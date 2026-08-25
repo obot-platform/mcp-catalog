@@ -11,14 +11,6 @@ upgradeNote: |
 description: |
   Manage DigitalOcean resources and perform API actions through [DigitalOcean's vendor-hosted MCP services](https://docs.digitalocean.com/products/app-platform/reference/mcp/).
 
-  > **⚠️ Upgrade notice**
-  >
-  > If you're upgrading this server, note that this replaces the Obot-hosted DigitalOcean server with DigitalOcean's official hosted MCP servers.
-  >
-  > - **Reconnect required:** Provide a DigitalOcean personal access token and select one service for each connection.
-  > - **Configuration change:** The previous comma-separated enabled-services setting is no longer used; create separate connections for multiple services.
-  > - **Tool changes:** Available tools and parameters now follow each DigitalOcean-hosted service.
-
   See the [official DigitalOcean MCP documentation](https://docs.digitalocean.com/products/app-platform/reference/mcp/) for setup guidance and service details.
 
   Authentication uses a DigitalOcean personal access token. Create a token with the least-privilege scopes required for the selected service at https://cloud.digitalocean.com/account/api/tokens.
@@ -56,6 +48,14 @@ description: |
   - **Model Catalog (`inference-modelcatalog`)**: Browse AI models
   - **Batch Inference (`batchinference`)**: Run asynchronous batch inference jobs
   - **AI Evaluations (`genai-evaluation`)**: Manage evaluation datasets and workflows
+
+  > **⚠️ Upgrade notice**
+  >
+  > If you're upgrading this server, note that this replaces the Obot-hosted DigitalOcean server with DigitalOcean's official hosted MCP servers.
+  >
+  > - **Reconnect required:** Provide a DigitalOcean personal access token and select one service for each connection.
+  > - **Configuration change:** The previous comma-separated enabled-services setting is no longer used; create separate connections for multiple services.
+  > - **Tool changes:** Available tools and parameters now follow each DigitalOcean-hosted service.
 metadata:
   categories: Cloud & Infrastructure, Developer Tools
   allow-multiple: "true"

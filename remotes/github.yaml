@@ -11,10 +11,6 @@ upgradeNote: |
 description: |
   Manage GitHub repositories, issues, pull requests, workflows, and more through [GitHub's hosted MCP server](https://github.com/github/github-mcp-server), with no local runtime required and additional remote-only tools.
 
-  > **⚠️ Upgrade notice**
-  >
-  > This entry now requires selecting a GitHub-hosted MCP endpoint path. Existing connections may need to reconnect and select a path; select `/` to preserve the previous default behavior. Authentication still uses your GitHub Personal Access Token.
-
   ## Features
   - **Repository Management**: Browse and query code, search files, analyze commits, and understand project structure
   - **Issue & PR Automation**: Create, update, and manage issues and pull requests with AI assistance
@@ -62,6 +58,10 @@ description: |
   | **Users** | GitHub user profiles and related operations | `/x/users` | `/x/users/readonly` |
   | **Copilot Spaces** | Remote-only GitHub Copilot Spaces tools | `/x/copilot_spaces` | `/x/copilot_spaces/readonly` |
   | **GitHub Support Docs Search** | Remote-only GitHub product and support documentation search | `/x/github_support_docs_search` | `/x/github_support_docs_search/readonly` |
+
+  > **⚠️ Upgrade notice**
+  >
+  > This entry now requires selecting a GitHub-hosted MCP endpoint path. Existing connections may need to reconnect and select a path; select `/` to preserve the previous default behavior. Authentication still uses your GitHub Personal Access Token.
 
 toolPreview:
   - name: add_comment_to_pending_review
