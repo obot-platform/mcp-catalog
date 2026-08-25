@@ -434,8 +434,8 @@ records:
     catalog_entry: remotes/hubspot.yaml
   - id: 887934eb-b7e7-429a-b5e3-3523b9c3d45d
     name: FMP
-    status: imported
-    catalog_entry: remotes/fmp.yaml
+    status: skipped
+    reason: Official MCP setup requires the API key in the URL query string, which catalog policy prohibits.
   - id: 8998ee3e-3ade-49db-b4b1-bd888240c8d0
     name: TickTick
     status: imported
