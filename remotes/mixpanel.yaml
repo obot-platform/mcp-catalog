@@ -18,9 +18,6 @@ description: |
   - **Mixpanel Account**: Your existing organization, project, and role permissions apply
   - **MCP Access**: An organization administrator may need to enable MCP in organization settings
 
-  **Optional:**
-  - **Service Account Credential**: For headless access, base64-encode the Mixpanel service-account username and secret as `username:secret`, then provide that encoded value below
-
   ## Security
 
   Mixpanel's MCP server is not covered by Mixpanel's HIPAA BAA. Review applicable privacy and compliance requirements before connecting projects containing personal or regulated data.
@@ -48,10 +45,3 @@ env:
 runtime: remote
 remoteConfig:
   urlTemplate: https://${MIXPANEL_HOST}/mcp
-  headers:
-    - name: Mixpanel Service Account Credential
-      description: Optional base64-encoded username:secret credential for non-interactive service-account authentication; leave blank to use OAuth
-      key: Authorization
-      required: false
-      sensitive: true
-      prefix: "Bearer Basic "
