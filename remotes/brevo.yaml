@@ -3,7 +3,7 @@ entryKey: obot-brevo
 serverUserType: singleUser
 shortDescription: Analyze Brevo campaigns, contacts, and audience segments
 description: |
-  Analyze email and SMS campaign performance, look up contacts and segments, and create drafts for campaigns and templates in Brevo. See the official [Brevo connector guide](https://help.brevo.com/hc/en-us/articles/35030032898194-Brevo-connector-for-Claude-Use-your-Brevo-data-and-campaigns-in-Claude) for setup and supported capabilities.
+  Analyze email and SMS campaign performance, look up contacts and segments, and create drafts for campaigns and templates in Brevo. See the official [Brevo MCP Server documentation](https://developers.brevo.com/docs/mcp-protocol) for supported clients, token creation, available servers, and setup.
 
   ## Features
   - Review account, sender, contact, list, attribute, and segment data
@@ -16,11 +16,18 @@ description: |
   **Required:**
   - A Brevo account with access to the campaigns and contacts you want to use
 
-  Sign in with Brevo when connecting. The connector requests only the permissions needed for the actions you approve in your Brevo account.
+  Create an MCP token in **Account > SMTP & API > API Keys**, then provide it below. This token grants access to your Brevo account; store and rotate it securely.
 metadata:
   categories: Marketing,Email,CRM
 icon: https://corp-backend.brevo.com/wp-content/uploads/2025/07/Brevo_logo.svg
-repoURL: https://help.brevo.com/hc/en-us/articles/35030032898194-Brevo-connector-for-Claude-Use-your-Brevo-data-and-campaigns-in-Claude
+repoURL: https://developers.brevo.com/docs/mcp-protocol
 runtime: remote
 remoteConfig:
-  fixedURL: https://mcp.brevo.com/v1/anthropic/mcp
+  fixedURL: https://mcp.brevo.com/v1/brevo/mcp
+  headers:
+    - name: Brevo MCP Token
+      description: MCP token created in Brevo under Account > SMTP & API > API Keys
+      key: Authorization
+      required: true
+      sensitive: true
+      prefix: "Bearer "

@@ -150,8 +150,8 @@ records:
     catalog_entry: remotes/alltrails.yaml
   - id: 2cc10749-99cb-4853-a9d7-b2292ec589fc
     name: MSCI Connector
-    status: imported
-    catalog_entry: remotes/msci_connector.yaml
+    status: skipped
+    reason: Official non-Claude documentation names a different MSCI endpoint, so this endpoint's portability cannot be verified.
   - id: 2d60210c-dd92-4be0-b09c-3662f10445c9
     name: Cloudflare Developer Platform
     status: existing
@@ -242,8 +242,8 @@ records:
     catalog_entry: remotes/carta.yaml
   - id: 4c1fcb68-c482-46c5-a677-659eaf2f2c85
     name: Xero
-    status: imported
-    catalog_entry: remotes/xero.yaml
+    status: skipped
+    reason: Hosted endpoint lacks official documentation establishing third-party OAuth client support outside Claude.
   - id: 4d608ca4-1664-4ddd-be1c-c88c0ea2ec7e
     name: Granola
     status: imported
@@ -270,8 +270,8 @@ records:
     catalog_entry: remotes/pandadoc.yaml
   - id: 57dd8e8a-f030-4bb7-a9ed-4098933bd70b
     name: CMS Coverage
-    status: imported
-    catalog_entry: remotes/cms_coverage.yaml
+    status: skipped
+    reason: Anthropic-hosted endpoint has no authoritative documentation supporting portable use outside Claude.
   - id: 5807a545-cd93-4e71-bb21-f3727bf34df1
     name: MailerLite
     status: imported
@@ -302,8 +302,8 @@ records:
     catalog_entry: remotes/affinity.yaml
   - id: 5e90e841-ba8a-433e-9303-cd41820de915
     name: Anthropic Economic Index
-    status: imported
-    catalog_entry: remotes/anthropic_economic_index.yaml
+    status: skipped
+    reason: Anthropic-hosted endpoint has no authoritative documentation supporting portable use outside Claude.
   - id: 5f26bc32-8582-4df7-ab88-19c507f8505b
     name: LSEG
     status: skipped
@@ -338,8 +338,8 @@ records:
     catalog_entry: remotes/mobbin.yaml
   - id: 711ccc94-754b-4659-903d-d61b29dd781e
     name: ChEMBL
-    status: imported
-    catalog_entry: remotes/chembl.yaml
+    status: skipped
+    reason: Anthropic-hosted endpoint has no authoritative documentation supporting portable use outside Claude.
   - id: 72480fb8-32ed-4075-b1c4-79e09c858b29
     name: Miro
     status: imported
@@ -590,8 +590,8 @@ records:
     catalog_entry: remotes/otter_ai.yaml
   - id: bd8c051d-df35-44c0-a8b8-084b700e1f21
     name: ICD-10 Codes
-    status: imported
-    catalog_entry: remotes/icd_10_codes.yaml
+    status: skipped
+    reason: Anthropic-hosted endpoint has no authoritative documentation supporting portable use outside Claude.
   - id: bfe1a594-962f-45db-9113-f5e9b6d1f070
     name: Era Context
     status: imported
@@ -607,7 +607,7 @@ records:
   - id: c758d038-d8eb-4421-b426-9dd68dc7f84a
     name: Figma
     status: skipped
-    reason: currently not compatible with Obot 
+    reason: currently not compatible with Obot
   - id: ca8bc23f-101c-4ff2-9f03-26a43302e2d0
     name: Audible
     status: skipped
@@ -682,8 +682,8 @@ records:
     catalog_entry: remotes/goodnotes.yaml
   - id: e3b3e96f-6b4d-468d-a4b6-89f484b7e21c
     name: NPI Registry
-    status: imported
-    catalog_entry: remotes/npi_registry.yaml
+    status: skipped
+    reason: Anthropic-hosted endpoint has no authoritative documentation supporting portable use outside Claude.
   - id: e463df16-b3d7-4bb9-953d-b652a073c764
     name: Bigdata.com
     status: imported
