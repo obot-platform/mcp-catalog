@@ -663,7 +663,7 @@ records:
   - id: d965405c-3467-4046-b5b3-e8fb8ed235eb
     name: S&P - Deterministic Retrieval
     status: imported
-    catalog_entry: remotes/sp_global_deterministic_retrieval.yaml
+    catalog_entry: remotes/kensho_by_sp_global.yaml
   - id: dc1671e0-b14c-47b8-a625-e835ae4067ba
     name: Ashby
     status: imported
