@@ -1,11 +1,11 @@
 name: Exa Search
 entryKey: obot-exa-search
 serverUserType: singleUser
-shortDescription: Official Exa web search, research, and page retrieval with per-user OAuth
+shortDescription: Exa web search, research, and page retrieval with optional API-key access
 upgradeNote: |
   This replaces the Obot-hosted Exa Search server with Exa's official hosted MCP server.
 
-  - **Reconnect required:** Select OAuth or anonymous/API-key access. An Exa API key is no longer required for basic access.
+  - **Reconnect required:** An Exa API key is no longer required for basic access.
   - **New capabilities:** Advanced search, webpage fetching, and Exa Agent are enabled.
   - **Tool changes:** Legacy code-context and crawling tools are replaced by the hosted server's current tools and parameters.
 description: |
@@ -13,7 +13,7 @@ description: |
 
   See the [official Exa MCP documentation](https://exa.ai/docs/reference/exa-mcp) for setup, tools, and authentication details.
 
-  **Authentication method:** Enter `mcp/oauth?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run` to sign in with OAuth, or `mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run` to connect anonymously and optionally provide an Exa API key.
+  **Authentication method:** Connect anonymously and optionally provide an Exa API key for higher limits and Exa Agent access.
 
   ## Features
 
@@ -21,11 +21,11 @@ description: |
   - **Page Retrieval**: Fetch one or more known URLs as clean markdown.
   - **Advanced Search**: Control categories, domains, dates, content extraction, and subpage crawling.
   - **Research Agent**: Run Exa Agent for multi-step research, list building, enrichment, and structured output.
-  - **Flexible Authentication**: Connect with OAuth, or use anonymous access with an optional Exa API key.
+  - **Flexible Authentication**: Use anonymous access or optionally provide an Exa API key.
 
   ## What you'll need to connect
 
-  Choose OAuth to sign in to your Exa account, or choose Anonymous / API Key to connect without signing in. You can optionally provide an API key from [the Exa dashboard](https://dashboard.exa.ai/api-keys) for higher limits and Exa Agent access. Exa provides a free tier; account usage and plan limits are managed by Exa.
+  No credentials are required for basic access. You can optionally provide an API key from [the Exa dashboard](https://dashboard.exa.ai/api-keys) for higher limits and Exa Agent access. Exa provides a free tier; account usage and plan limits are managed by Exa.
 
   See the official [Exa MCP setup documentation](https://exa.ai/docs/reference/exa-mcp), [pricing](https://exa.ai/pricing), and [security documentation](https://exa.ai/docs/reference/security).
 
@@ -33,32 +33,19 @@ description: |
   >
   > If you're upgrading this server, note that this replaces the Obot-hosted Exa Search server with Exa's official hosted MCP server.
   >
-  > - **Reconnect required:** Select OAuth or anonymous/API-key access. An Exa API key is no longer required for basic access.
+  > - **Reconnect required:** An Exa API key is no longer required for basic access.
   > - **New capabilities:** Advanced search, webpage fetching, and Exa Agent are enabled.
   > - **Tool changes:** Legacy code-context and crawling tools are replaced by the hosted server's current tools and parameters.
 metadata:
   categories: Retrieval & Search,Science & Research,Developer Tools
 icon: https://avatars.githubusercontent.com/u/77906174?v=4
 repoURL: https://exa.ai/docs/reference/exa-mcp
-env:
-- name: Authentication method
-  key: EXA_ENDPOINT
-  description: Enter `mcp/oauth?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run` for OAuth or `mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run` for anonymous or API-key access.
-  required: true
-  sensitive: false
-  options:
-  - name: OAuth
-    value: mcp/oauth?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run
-    description: Sign in to Exa with OAuth.
-  - name: Anonymous / API Key
-    value: mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run
-    description: Connect anonymously or authenticate with an API key.
 runtime: remote
 remoteConfig:
-  urlTemplate: https://mcp.exa.ai/${EXA_ENDPOINT}
+  fixedURL: https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run
   headers:
   - name: Exa API Key
-    description: Optional API key for higher limits and Exa Agent access; leave blank for anonymous access or OAuth.
+    description: Optional API key for higher limits and Exa Agent access; leave blank for anonymous access.
     key: x-api-key
     required: false
     sensitive: true
