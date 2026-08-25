@@ -94,8 +94,8 @@ records:
     catalog_entry: remotes/lovable.yaml
   - id: 1ddc28c1-c1f8-4894-9a85-f6dc8add9c89
     name: Tripadvisor
-    status: imported
-    catalog_entry: remotes/tripadvisor.yaml
+    status: skipped
+    reason: No official documentation establishes portability or setup for this exact hotel-search MCP endpoint.
   - id: 1e4280cc-037c-47f0-9873-56bea1871bdb
     name: Dropbox
     status: imported
