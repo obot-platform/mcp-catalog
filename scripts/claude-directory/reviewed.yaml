@@ -426,8 +426,8 @@ records:
     catalog_entry: remotes/fireflies.yaml
   - id: 86925244-b3bb-415b-b7e8-6e3cd1392247
     name: Spotify
-    status: imported
-    catalog_entry: remotes/spotify.yaml
+    status: skipped
+    reason: No official documentation establishes portability or setup for this exact remote MCP endpoint.
   - id: 875dee50-9b3f-452b-af8c-fbc839966273
     name: HubSpot
     status: existing
