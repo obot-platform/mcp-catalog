@@ -1,0 +1,28 @@
+name: Cortellis Regulatory Intelligence
+entryKey: obot-cortellis-regulatory-intelligence
+serverUserType: singleUser
+shortDescription: Research global life-sciences regulatory requirements
+description: |
+  Search Clarivate's curated Cortellis Regulatory Intelligence content and receive referenced summaries of regulatory requirements across countries and organizations. See the official [Cortellis Regulatory Intelligence MCP documentation](https://api.clarivate.com/lifesciences/mcp-regulatory/documentation) for setup, subscription requirements, and supported capabilities.
+
+  ## Features
+  - Ask natural-language questions about global life-sciences regulations
+  - Search licensed, human-curated regulatory content
+  - Summarize requirements across countries and regulatory organizations
+  - Navigate complex guidance and monitor regulatory changes
+  - Return referenced answers for follow-up in authoritative sources
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Cortellis Regulatory Intelligence Subscription**: Sign in through Clarivate's OAuth flow with a valid subscription
+
+  **Read only:** This connector searches and summarizes licensed regulatory intelligence. It does not modify Cortellis content.
+
+metadata:
+  categories: Life Sciences, Research
+icon: https://api.clarivate.com/lifesciences/mcp-regulatory/static/favicon.ico
+repoURL: https://api.clarivate.com/lifesciences/mcp-regulatory/documentation
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.clarivate.com/lifesciences/mcp-regulatory/mcp

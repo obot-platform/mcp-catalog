@@ -1,0 +1,28 @@
+name: Resend
+entryKey: obot-resend
+serverUserType: singleUser
+shortDescription: Manage email delivery, audiences, domains, and automations in Resend
+description: |
+  Send and manage email, maintain templates and audiences, configure domains and webhooks, and inspect delivery activity across the Resend platform. See Resend's official [MCP server documentation](https://resend.com/docs/mcp-server) for connection instructions and the current tool catalog.
+
+  ## Features
+  - Send, schedule, update, cancel, and batch-send email
+  - Read inbound messages and download sent or received attachments
+  - Create and maintain templates, broadcasts, automations, and events
+  - Manage contacts, segments, topics, imports, and custom properties
+  - Configure domains, API keys, webhooks, and domain claims
+  - Inspect API logs and collaborate through Resend's visual editor
+
+  ## What you'll need to connect
+
+  **Required:**
+  - A Resend account with access to the email resources you want to manage
+
+  Sign in through Resend's OAuth flow. This connector can send email and modify or remove Resend resources, so review requested actions and account permissions carefully.
+metadata:
+  categories: Email,Developer Tools,Marketing
+icon: https://mcp.resend.com/icon.svg
+repoURL: https://resend.com/docs/mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.resend.com/

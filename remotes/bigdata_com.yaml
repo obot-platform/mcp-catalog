@@ -1,0 +1,34 @@
+name: Bigdata.com
+entryKey: obot-bigdata-com
+serverUserType: singleUser
+shortDescription: Research cited financial documents, markets, companies, and portfolios
+description: |
+  Search cited financial news, filings, earnings transcripts, research, and private documents, and retrieve structured company, country, market, ETF, sentiment, and portfolio tear sheets. See the official [Bigdata.com MCP documentation](https://docs.bigdata.com/mcp-reference/introduction) and [API-key integration guide](https://docs.bigdata.com/mcp-reference/api-integrations/mcp-api-integration) for capabilities, credential creation, and generic-client setup.
+
+  ## Features
+  - Search news, regulatory filings, earnings calls, podcasts, expert interviews, research, and uploaded documents
+  - Resolve companies, ETFs, funds, and securities by name, ticker, ISIN, CUSIP, SEDOL, or listing code
+  - Retrieve company, country, cross-asset market, ETF, sentiment, and portfolio tear sheets
+  - Review earnings calendars, market benchmarks, fundamentals, holdings, risk metrics, and cited sentiment drivers
+  - List, fetch, tag, and upload private research documents and connected content
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Bigdata.com API Key**: Create an API key in the Bigdata.com Developer Platform
+
+  Access depends on your Bigdata.com subscription and licensed datasets. Uploading a document writes it to your private Bigdata.com corpus; other tools primarily retrieve and analyze content.
+
+metadata:
+  categories: Finance, Research, Data Analytics
+icon: "https://mintcdn.com/ravenpackinternational/O1z6qnY-XMCwjEFX/logo/bigdata_logo_v3c_dark.svg?fit=max&auto=format&n=O1z6qnY-XMCwjEFX&q=85&s=946489fc058b9cc72700f20c4a07234d"
+repoURL: https://docs.bigdata.com/mcp-reference/introduction
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.bigdata.com/
+  headers:
+    - name: Bigdata.com API Key
+      description: API key created in the Bigdata.com Developer Platform
+      key: x-api-key
+      required: true
+      sensitive: true

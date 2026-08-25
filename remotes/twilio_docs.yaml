@@ -1,0 +1,21 @@
+name: Twilio Docs
+entryKey: obot-twilio-docs
+serverUserType: singleUser
+shortDescription: Search Twilio API documentation and retrieve implementation guidance
+description: |
+  Search Twilio's API catalog and retrieve relevant specifications, endpoint details, and implementation examples for communications and customer-engagement projects. See Twilio's official [MCP documentation](https://www.twilio.com/docs/ai/mcp) for connection instructions and current capabilities.
+
+  ## Features
+  - Search documentation across Twilio APIs and products
+  - Retrieve focused API specifications and implementation guidance
+  - Find code patterns for messaging, voice, email, identity, customer data, contact centers, and conversational AI
+  - Use the documentation tools without connecting a Twilio account
+
+  This read-only connector searches Twilio's public developer documentation; it does not send messages or modify Twilio resources.
+metadata:
+  categories: Developer Tools,Documentation,Communication
+icon: https://avatars.githubusercontent.com/u/109142?s=48&v=4
+repoURL: https://www.twilio.com/docs/ai/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.twilio.com/docs

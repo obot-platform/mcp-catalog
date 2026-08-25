@@ -1,0 +1,26 @@
+name: Dovetail
+entryKey: obot-dovetail
+serverUserType: singleUser
+shortDescription: Search customer research and retrieve evidence from Dovetail
+description: |
+  Search customer intelligence across your Dovetail workspace and retrieve projects, research data, highlights, and insights for evidence-grounded analysis. See the official [Dovetail MCP server guide](https://developers.dovetail.com/docs/mcp) for setup details and current capabilities.
+
+  ## Features
+  - Search across accessible Dovetail workspace content
+  - List projects and retrieve their research data
+  - List and inspect project insights and highlights
+  - Fetch the full content behind data points and insights
+
+  ## What you'll need to connect
+
+  **Required:**
+  - A Dovetail account with access to the customer research you want to use
+
+  Sign in through Dovetail's OAuth flow. Search results and retrieved content remain limited by your workspace permissions.
+metadata:
+  categories: Customer Research,Knowledge Management,Productivity
+icon: https://files.readme.io/1de29ed6dd08440231b8155c4071c6939625ffa5952f8b41b6094d518a5a4de9-favicon.svg
+repoURL: https://developers.dovetail.com/docs/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://dovetail.com/api/mcp

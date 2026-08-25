@@ -1,0 +1,26 @@
+name: Pipedrive
+entryKey: obot-pipedrive
+serverUserType: singleUser
+shortDescription: Search and update deals, contacts, leads, activities, and notes
+description: |
+  Work with live Pipedrive CRM data by finding sales records, updating pipeline details, adding notes, and scheduling follow-up activities. See Pipedrive's official [MCP server page](https://www.pipedrive.com/en/features/mcp-server) for availability, security, and supported workflows.
+
+  ## Features
+  - Search and retrieve deals, leads, people, and organizations
+  - Create and update CRM records and convert leads into deals
+  - Review pipeline stages and deal progress
+  - Create and update activities, notes, and follow-up work
+
+  ## What you'll need to connect
+
+  **Required:**
+  - A paid Pipedrive account with access to the CRM data you want to use
+
+  Sign in through Pipedrive's OAuth flow. Reads and changes remain limited by your existing Pipedrive user permissions.
+metadata:
+  categories: CRM,Sales,Productivity
+icon: https://cdn.cmh-1.pipedriveassets.com/www-main-renderer/_next/static/media/favicon-96x96.9c93b075.png
+repoURL: https://www.pipedrive.com/en/features/mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.pipedrive.ai/mcp

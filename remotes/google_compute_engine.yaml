@@ -1,0 +1,29 @@
+name: Google Compute Engine
+entryKey: obot-google-compute-engine
+serverUserType: singleUser
+shortDescription: Create, inspect, and operate Google Compute Engine resources
+description: |
+  Create and operate Compute Engine virtual machines, inspect disks and templates, and manage instance lifecycle actions through Google's managed MCP server. See Google's official [Compute Engine MCP reference](https://docs.cloud.google.com/compute/docs/reference/mcp) for the current endpoint and tool specifications, and the [MCP application setup guide](https://docs.cloud.google.com/mcp/configure-mcp-ai-application) for OAuth configuration.
+
+  ## Features
+  - Create, start, stop, reset, resize, and delete virtual machine instances
+  - List and inspect instances, managed instance groups, and instance templates
+  - Review disks, snapshots, reservations, commitments, machine types, images, and accelerators
+  - Check zonal operations after infrastructure changes
+
+  ## What you'll need to connect
+
+  **Required:**
+  - A Google Cloud project with the Compute Engine API enabled
+  - Google Cloud IAM permissions for the Compute Engine resources and actions you plan to use
+  - A Google Web OAuth client configured by your Obot administrator with Obot's redirect URI allowlisted
+
+  When you connect, Google asks you to authorize Obot. Tool calls use your Google identity and remain limited by its IAM permissions.
+metadata:
+  categories: Cloud Infrastructure,Compute,Developer Tools
+icon: https://avatars.githubusercontent.com/u/2810941?s=48&v=4
+repoURL: https://docs.cloud.google.com/compute/docs/reference/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://compute.googleapis.com/mcp
+  staticOAuthRequired: true

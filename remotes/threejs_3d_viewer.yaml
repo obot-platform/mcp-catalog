@@ -1,0 +1,24 @@
+name: Three.js 3D Viewer
+entryKey: obot-threejs-3d-viewer
+serverUserType: singleUser
+shortDescription: Render interactive Three.js scenes from JavaScript code
+description: |
+  Render interactive Three.js scenes and animations from JavaScript code, with streaming previews and on-demand Three.js documentation. See the official [Three.js MCP App example](https://github.com/modelcontextprotocol/ext-apps/blob/main/examples/threejs-server/README.md) for tools, transports, available globals, sample scenes, and host requirements.
+
+  ## Features
+  - Execute JavaScript that creates and animates Three.js scenes
+  - Stream scene previews while code is being generated
+  - Use preconfigured canvas, camera controls, post-processing, render passes, and bloom effects
+  - Retrieve Three.js API documentation and code examples through the `learn_threejs` tool
+  - Pause animation automatically when the rendered view is outside the viewport
+  - Support transparent scene backgrounds for host UI integration
+
+  Rendering the interactive view requires an MCP Apps-compatible host. No authentication is required.
+
+metadata:
+  categories: Developer Tools, Design
+icon: https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/refs/heads/main/blog/static/favicon.svg
+repoURL: https://github.com/modelcontextprotocol/ext-apps/blob/main/examples/threejs-server/README.md
+runtime: remote
+remoteConfig:
+  fixedURL: https://example-server.modelcontextprotocol.io/threejs/mcp

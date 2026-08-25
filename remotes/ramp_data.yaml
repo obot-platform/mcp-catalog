@@ -1,0 +1,21 @@
+name: Ramp Data
+entryKey: obot-ramp-data
+serverUserType: singleUser
+shortDescription: Analyze vendor trends and business AI adoption from Ramp Data
+description: |
+  Explore aggregated corporate-spend trends through Ramp Rate and analyze business AI adoption through the Ramp AI Index. See the official [Ramp Data developer guide](https://docs.ramp.com/developer-api/v1/ramp-data) for dataset definitions, available operations, and usage guidance.
+
+  ## Features
+  - List Ramp Rate categories and retrieve category summaries
+  - Find vendors and inspect adoption, pricing, and switching trends
+  - Resolve vendor names and compare vendors within spend categories
+  - Analyze AI adoption overall and by business sector or company size
+
+  This read-only connector uses Ramp's aggregated data and does not require access to a Ramp business account.
+metadata:
+  categories: Financial Data,Data & Analytics,Market Research
+icon: https://docs.ramp.com/favicon-32x32.png
+repoURL: https://docs.ramp.com/developer-api/v1/ramp-data
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.ramp.com/ramp-data/anthropic/mcp

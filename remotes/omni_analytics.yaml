@@ -1,0 +1,26 @@
+name: Omni Analytics
+entryKey: obot-omni-analytics
+serverUserType: singleUser
+shortDescription: Query governed business data through Omni's semantic model
+description: |
+  Ask business questions against Omni's governed semantic layer, select the appropriate model and topic, and retrieve consistent results using your organization's existing metrics and permissions. See Omni's official [MCP documentation](https://docs.omni.co/ai/mcp) for setup details and supported query behavior.
+
+  ## Features
+  - Select an accessible Omni semantic model
+  - Choose the relevant topic for a business question
+  - Retrieve governed data using definitions maintained by your data team
+  - Preserve Omni's existing model logic and user permissions
+
+  ## What you'll need to connect
+
+  **Required:**
+  - An Omni account with access to the models and topics you want to query
+
+  Sign in through Omni's OAuth flow. Queryable data remains limited by your Omni role and content permissions.
+metadata:
+  categories: Business Intelligence,Data & Analytics,Databases
+icon: https://omni.co/favicon.ico
+repoURL: https://docs.omni.co/ai/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://callbacks.omniapp.co/callback/mcp

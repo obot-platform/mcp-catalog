@@ -1,0 +1,23 @@
+name: AWS Marketplace
+entryKey: obot-aws-marketplace
+serverUserType: singleUser
+shortDescription: Discover and compare software and services in AWS Marketplace
+description: |
+  Search AWS Marketplace solutions, retrieve product details, research vendors, and build recommendation, comparison, or evaluation reports. See the official [AWS Marketplace MCP server guide](https://docs.aws.amazon.com/marketplace/latest/developerguide/marketplace-mcp-server.html) for the endpoint, integration examples, canonical tool schemas, and workflows.
+
+  ## Features
+  - Search the AWS Marketplace catalog with one or more natural-language queries
+  - Retrieve detailed metadata for specific solutions and discover related products
+  - Research solution features, integrations, reviews, limitations, and case studies
+  - Generate structured recommendations, comparisons, and evaluations using AWS workflow guidance
+  - Submit user feedback about completed Marketplace research
+
+  No AWS credentials are required. The tools are stateless and each request is handled independently.
+
+metadata:
+  categories: Cloud, Research, Productivity
+icon: https://docs.aws.amazon.com/assets/images/favicon.ico
+repoURL: https://docs.aws.amazon.com/marketplace/latest/developerguide/marketplace-mcp-server.html
+runtime: remote
+remoteConfig:
+  fixedURL: https://marketplace-mcp.us-east-1.api.aws/mcp

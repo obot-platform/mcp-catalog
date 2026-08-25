@@ -1,0 +1,28 @@
+name: S&P Global Deterministic Retrieval
+entryKey: obot-sp-global-deterministic-retrieval
+serverUserType: singleUser
+shortDescription: Retrieve structured S&P Global company and financial data
+description: |
+  Retrieve structured S&P Global company information, financial statements, market data, earnings transcripts, securities, and transaction data through deterministic queries. See the official [Kensho MCP documentation](https://docs.kensho.com/llmreadyapi/mcp) for deployment, platform, and authentication guidance.
+
+  ## Features
+  - Look up company descriptions, identifiers, competitors, capitalization, and business relationships
+  - Retrieve financial statements, line items, historical prices, and segment data
+  - Find earnings events and cited earnings-call transcripts
+  - Research mergers, transaction participants, and company advisers
+  - Compare structured results across companies and securities
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **S&P Global Data Access**: Sign in through Kensho's OAuth flow with an account licensed for the relevant S&P Global datasets
+
+  **Read only:** This connector retrieves licensed financial intelligence and does not modify source records.
+
+metadata:
+  categories: Finance, Research
+icon: "https://images.squarespace-cdn.com/content/v1/6970e57a847a982ccab43554/a2fbb6b0-b249-49c4-a6e8-b4a348c748a7/favicon.ico?format=300w"
+repoURL: https://docs.kensho.com/llmreadyapi/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://kfinance.kensho.com/integrations/mcp

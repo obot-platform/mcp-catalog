@@ -1,0 +1,24 @@
+name: Crypto.com Market Data
+entryKey: obot-crypto-com-market-data
+serverUserType: singleUser
+shortDescription: Retrieve real-time cryptocurrency order books, trades, and candles
+description: |
+  Retrieve real-time Crypto.com Exchange market data, including order-book snapshots, recent trades, and OHLCV candles, with optional interactive widgets. See the official [Crypto.com Market Data MCP documentation](https://mcp.crypto.com/docs) for setup guides, examples, and current capabilities.
+
+  ## Features
+  - Retrieve bid and ask order-book snapshots for cryptocurrency trading pairs
+  - Get recent trade history with configurable result limits
+  - Retrieve OHLCV candles across supported time intervals
+  - Generate embeddable order-book, trades, and candle widgets
+
+  No authentication is required.
+
+  **Read only:** This connector provides public market data and does not place orders or access a Crypto.com account. Market data can be delayed or incomplete and should not be treated as financial advice.
+
+metadata:
+  categories: Finance, Cryptocurrency
+icon: https://mcp.crypto.com/docs/favicon.ico
+repoURL: https://mcp.crypto.com/docs
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.crypto.com/market-data/mcp

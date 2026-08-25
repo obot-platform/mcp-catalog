@@ -1,0 +1,27 @@
+name: Monte Carlo
+entryKey: obot-monte-carlo
+serverUserType: singleUser
+shortDescription: Investigate data incidents, lineage, monitors, and observability assets
+description: |
+  Investigate data-quality alerts, trace asset lineage, inspect queries and monitors, and create observability checks in Monte Carlo. See the official [Monte Carlo MCP server guide](https://docs.getmontecarlo.com/docs/mcp-server) for authentication, tool behavior, and current availability.
+
+  ## Features
+  - Retrieve, update, assign, and comment on data alerts
+  - Search data assets and inspect tables, queries, and lineage
+  - Review monitors, audiences, domains, and use cases
+  - Create validation, metric, comparison, and custom SQL monitors
+  - Create dashboard widgets and inspect observability context
+
+  ## What you'll need to connect
+
+  **Required:**
+  - A Monte Carlo account with access to the observability resources you want to use
+
+  Sign in through Monte Carlo's OAuth flow. This connector can update incidents and create monitors, so available actions remain limited by your account permissions.
+metadata:
+  categories: Data Observability,Data & Analytics,Developer Tools
+icon: https://files.readme.io/5ae79ed-small-apple-touch-icon.png
+repoURL: https://docs.getmontecarlo.com/docs/mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.getmontecarlo.com/mcp

@@ -1,0 +1,27 @@
+name: Superhuman Docs
+entryKey: obot-superhuman-docs
+serverUserType: singleUser
+shortDescription: Create, search, and update Superhuman docs, pages, and tables
+description: |
+  Create and organize documents, edit pages and structured tables, search workspace content, and manage comments through Superhuman Docs. See the official [Superhuman Docs MCP setup guide](https://help.superhuman.com/hc/en-us/articles/46210076980365-Connect-to-the-Superhuman-Docs-MCP) for connection instructions and current availability.
+
+  ## Features
+  - Create, search, outline, duplicate, and delete documents and pages
+  - Read and modify page content, including uploaded images
+  - Create tables and manage their columns, rows, views, formulas, and controls
+  - Add, resolve, and delete comments
+  - Match names and convert workspace URLs for use with other tools
+
+  ## What you'll need to connect
+
+  **Required:**
+  - A Superhuman Docs account with access to the workspace content you want to use
+
+  Sign in through Superhuman's OAuth flow. Available documents and actions remain limited by your account and workspace permissions.
+metadata:
+  categories: Productivity,Document Management,Collaboration
+icon: https://cdn.coda.io/icons/png/color/superhuman-docs-128.png
+repoURL: https://help.superhuman.com/hc/en-us/articles/46210076980365-Connect-to-the-Superhuman-Docs-MCP
+runtime: remote
+remoteConfig:
+  fixedURL: https://docs.superhuman.com/apis/mcp

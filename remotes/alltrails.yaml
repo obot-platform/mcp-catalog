@@ -1,0 +1,21 @@
+name: AllTrails
+entryKey: obot-alltrails
+serverUserType: singleUser
+shortDescription: Find trails and inspect routes, conditions, and weather
+description: |
+  Discover hiking and outdoor trails by location, map bounds, or name, then retrieve trail details and weather overviews from AllTrails. See the official [AllTrails AI integrations guide](https://support.alltrails.com/hc/en-us/articles/47343827423764-AllTrails-integrations-with-AI-services) for current availability and usage information.
+
+  ## Features
+  - Find trails near a named location
+  - Search for trails within geographic map bounds
+  - Search trails by name and retrieve detailed trail information
+  - Review weather conditions for a selected trail
+
+  This read-only connector does not require an AllTrails account.
+metadata:
+  categories: Outdoors,Travel,Maps
+icon: https://www.alltrails.com/app-icon-96.png
+repoURL: https://support.alltrails.com/hc/en-us/articles/47343827423764-AllTrails-integrations-with-AI-services
+runtime: remote
+remoteConfig:
+  fixedURL: https://www.alltrails.com/mcp

@@ -1,0 +1,29 @@
+name: Era Context
+entryKey: obot-era-context
+serverUserType: singleUser
+shortDescription: Analyze spending and manage connected personal-finance context
+description: |
+  Review connected financial accounts and transactions, analyze spending and cash flow, maintain personal finance context, and manage transaction automations in Era. See Era's official [MCP server guide](https://era.app/help/mcp-server-era-context/) for setup, security, and current capabilities.
+
+  ## Features
+  - List financial accounts and inspect account balances
+  - Search transactions, recurring charges, and spending categories
+  - Analyze, compare, and forecast spending and cash flow
+  - Manage transaction tags, transfer links, and automation rules
+  - Store and revise personal financial context and answer pending questions
+  - Review plans, connect bank accounts, and initiate billing upgrades
+
+  ## What you'll need to connect
+
+  **Required:**
+  - An Era account
+  - Any bank or brokerage connections needed for the financial data you want to use
+
+  Sign in through Era's OAuth flow. This connector can modify financial context, transaction organization, connections, automations, and billing; carefully review consequential actions before confirming them.
+metadata:
+  categories: Personal Finance,Financial Data,Productivity
+icon: https://era.app/favicon.ico
+repoURL: https://era.app/help/mcp-server-era-context/
+runtime: remote
+remoteConfig:
+  fixedURL: https://context.era.app/mcp

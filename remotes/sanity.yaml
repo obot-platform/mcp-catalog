@@ -1,0 +1,27 @@
+name: Sanity
+entryKey: obot-sanity
+serverUserType: singleUser
+shortDescription: Create, query, publish, and manage structured content in Sanity
+description: |
+  Build and maintain Sanity projects, datasets, schemas, and structured content, while also searching Sanity documentation and workspace data. See Sanity's official [MCP server guide](https://www.sanity.io/docs/ai/mcp-server) for setup, permissions, and the current tool catalog.
+
+  ## Features
+  - Create projects and datasets and deploy content schemas
+  - Query, create, patch, publish, unpublish, and discard content documents
+  - Create and manage content releases and document versions
+  - Search project content semantically and inspect schemas and studios
+  - Read Sanity documentation and migration guidance
+
+  ## What you'll need to connect
+
+  **Required:**
+  - A Sanity account with access to the organizations and projects you want to manage
+
+  Sign in through Sanity's OAuth flow. This connector can create and modify projects and content, so available actions remain limited by your Sanity roles and project permissions.
+metadata:
+  categories: Content Management,Developer Tools,Productivity
+icon: https://www.sanity.io/docs/static/images/favicons/favicon-96x96.png
+repoURL: https://www.sanity.io/docs/ai/mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.sanity.io

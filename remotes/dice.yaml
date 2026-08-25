@@ -1,0 +1,26 @@
+name: Dice
+entryKey: obot-dice
+serverUserType: singleUser
+shortDescription: Search active technology jobs with detailed filters
+description: |
+  Search Dice's active technology job listings by keyword, location, workplace arrangement, employment type, posting age, sponsorship, and application options. See the official [Dice MCP documentation](https://www.dice.com/about/mcp) for setup, search parameters, response fields, examples, and troubleshooting.
+
+  ## Features
+  - Search technology jobs by title, skill, or natural-language keyword
+  - Filter by location, radius, remote, hybrid, or on-site work
+  - Narrow results by full-time, part-time, contract, or third-party employment
+  - Filter for recent postings, visa sponsorship, and Easy Apply availability
+  - Retrieve job summaries, company details, salary data when available, and links to full listings
+  - Page through large result sets with configurable page sizes
+
+  No authentication is required.
+
+  **Read only:** This connector searches job listings and does not submit applications or modify a Dice account.
+
+metadata:
+  categories: Jobs, Productivity
+icon: https://www.dice.com/webfiles/1770241131432/favicon/dice/favicon-194x194.png
+repoURL: https://www.dice.com/about/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.dice.com/mcp

@@ -1,0 +1,26 @@
+name: Guru
+entryKey: obot-guru
+serverUserType: singleUser
+shortDescription: Search and maintain verified company knowledge in Guru
+description: |
+  Search permission-aware company knowledge, retrieve Guru cards, generate grounded answers, and draft or update content in your workspace. See Guru's official [MCP server guide](https://help.getguru.com/docs/connecting-gurus-mcp-server) for setup, authentication, and supported workflows.
+
+  ## Features
+  - Search documents and retrieve cards by ID
+  - Generate answers grounded in governed Guru knowledge
+  - List available Knowledge Agents
+  - Create draft content and update existing cards
+
+  ## What you'll need to connect
+
+  **Required:**
+  - A Guru account with access to the workspace knowledge you want to use
+
+  Sign in through Guru's OAuth flow. Searches, answers, and content changes remain limited by your Guru permissions.
+metadata:
+  categories: Knowledge Management,Productivity,Collaboration
+icon: https://files.readme.io/98745dc-small-1_Guru_G-Logo.png
+repoURL: https://help.getguru.com/docs/connecting-gurus-mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.api.getguru.com/mcp

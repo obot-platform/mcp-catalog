@@ -1,0 +1,28 @@
+name: Elicit
+entryKey: obot-elicit
+serverUserType: singleUser
+shortDescription: Search papers and build structured literature-review reports
+description: |
+  Search academic papers and clinical trials, then create structured Elicit reports that extract and synthesize evidence across studies. See the official [Elicit MCP integration guide](https://github.com/elicit/api-examples/blob/main/integrations/mcp/README.md) for setup, authentication, tools, and example client configurations.
+
+  ## Features
+  - Search scientific papers with natural-language research questions
+  - Search clinical-trial records relevant to a topic or intervention
+  - Create structured literature-review reports in Elicit
+  - List existing reports and retrieve completed report results
+  - Compare findings and extracted data across multiple studies
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Elicit Account**: Sign in through Elicit's OAuth flow
+
+  Creating a report writes a new report to your Elicit workspace; paper, trial, and report retrieval are read operations.
+
+metadata:
+  categories: Research, Life Sciences, Education
+icon: "https://avatars.githubusercontent.com/u/143827874?v=4"
+repoURL: https://github.com/elicit/api-examples/blob/main/integrations/mcp/README.md
+runtime: remote
+remoteConfig:
+  fixedURL: https://elicit.com/api/mcp

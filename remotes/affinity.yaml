@@ -1,0 +1,37 @@
+name: Affinity
+entryKey: obot-affinity
+serverUserType: singleUser
+shortDescription: Search and update Affinity relationships, pipelines, meetings, and notes
+description: |
+  Search Affinity companies, people, opportunities, meetings, notes, and relationship history, and update pipeline records directly from your AI workflow. See the official [Affinity MCP introduction](https://developer.affinity.co/pages/mcp/introduction) and [generic-client setup guide](https://developer.affinity.co/pages/mcp/other-clients) for capabilities, plan requirements, API-key authentication, and configuration.
+
+  ## Features
+  - Search companies, people, opportunities, notes, meetings, and workspace lists
+  - Review relationship strength, interaction history, transcripts, and upcoming meetings
+  - Create list entries, notes, reminders, opportunities, and other pipeline records
+  - Update entity and list-entry field values as deals progress
+  - Retrieve custom fields, workflows, dropdown options, and saved list information
+  - Perform semantic searches across Affinity relationship intelligence
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Affinity Scale, Advanced, or Enterprise Plan**
+  - **Affinity API Key**: Generate an API key for the user whose permissions the connector should inherit
+
+  This connector can read and modify Affinity data within the issuing user's permissions.
+
+metadata:
+  categories: CRM, Sales, Finance
+icon: https://developer.affinity.co/mintlify-assets/_mintlify/favicons/affinityco/CXvLshWNfONUoQ_Z/_generated/favicon/android-chrome-192x192.png
+repoURL: https://developer.affinity.co/pages/mcp/introduction
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.affinity.co/mcp
+  headers:
+    - name: Affinity API Key
+      description: API key generated for an Affinity user
+      key: Authorization
+      required: true
+      sensitive: true
+      prefix: "Bearer "

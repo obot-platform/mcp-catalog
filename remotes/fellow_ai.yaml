@@ -1,0 +1,26 @@
+name: Fellow.ai
+entryKey: obot-fellow-ai
+serverUserType: singleUser
+shortDescription: Search meetings and retrieve transcripts, summaries, and action items
+description: |
+  Search your meeting history and retrieve transcripts, summaries, participants, and assigned action items from Fellow. See Fellow's official [MCP server guide](https://help.fellow.ai/en/articles/12622641-fellow-s-mcp-server) for setup instructions and supported meeting workflows.
+
+  ## Features
+  - Search past meetings using natural-language criteria
+  - Retrieve meeting transcripts and generated summaries
+  - List participants for a selected meeting
+  - Find action items captured across meetings
+
+  ## What you'll need to connect
+
+  **Required:**
+  - A Fellow account with access to the meetings you want to search
+
+  Sign in through Fellow's OAuth flow. Meeting content remains limited by your Fellow workspace and meeting permissions.
+metadata:
+  categories: Meetings,Productivity,Collaboration
+icon: https://cdn.fellow.app/static/images/favicon/favicon.6ab6c0047b33.svg?v=Omr4b3q9Op
+repoURL: https://help.fellow.ai/en/articles/12622641-fellow-s-mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://fellow.app/mcp

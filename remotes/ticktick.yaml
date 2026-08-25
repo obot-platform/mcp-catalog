@@ -1,0 +1,27 @@
+name: TickTick
+entryKey: obot-ticktick
+serverUserType: singleUser
+shortDescription: Search and manage TickTick tasks, projects, habits, and focus sessions
+description: |
+  Organize personal work in TickTick by searching and updating tasks, projects, folders, tags, habits, comments, and focus sessions. See TickTick's official [MCP help article](https://help.ticktick.com/articles/7438129581631995904) for setup instructions and current availability.
+
+  ## Features
+  - Search, create, update, move, complete, and delete tasks
+  - Create and organize projects, columns, sections, and folders
+  - Add and remove task comments and manage tags
+  - Create habits and record habit check-ins
+  - Review and create focus sessions and inspect countdowns
+
+  ## What you'll need to connect
+
+  **Required:**
+  - A TickTick account
+
+  Sign in through TickTick's OAuth flow. This connector can modify and delete productivity data, so review requested changes carefully.
+metadata:
+  categories: Task Management,Productivity,Personal Organization
+icon: https://d107mjio2rjf74.cloudfront.net/web/static/img/apple-touch-icon-120x120.png
+repoURL: https://help.ticktick.com/articles/7438129581631995904
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.ticktick.com
