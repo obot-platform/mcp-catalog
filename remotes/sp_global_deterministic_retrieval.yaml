@@ -1,4 +1,4 @@
-name: S&P Global Deterministic Retrieval
+name: Kensho LLM-ready API
 entryKey: obot-sp-global-deterministic-retrieval
 serverUserType: singleUser
 shortDescription: Retrieve structured S&P Global company and financial data
