@@ -1,11 +1,11 @@
 name: Exa Search
 entryKey: obot-exa-search
 serverUserType: singleUser
-shortDescription: Exa web search, research, and page retrieval with optional API-key access
+shortDescription: Exa web search, advanced retrieval, and API-key research
 upgradeNote: |
   This replaces the Obot-hosted Exa Search server with Exa's official hosted MCP server.
 
-  - **Reconnect required:** An Exa API key is no longer required for basic access.
+  - **Reconnect required:** Select a tool profile. Basic and advanced search work without credentials; Exa Agent requires an API key.
   - **New capabilities:** Advanced search, webpage fetching, and Exa Agent are enabled.
   - **Tool changes:** Legacy code-context and crawling tools are replaced by the hosted server's current tools and parameters.
 description: |
@@ -13,7 +13,15 @@ description: |
 
   See the [official Exa MCP documentation](https://exa.ai/docs/reference/exa-mcp) for setup, tools, and authentication details.
 
-  **Authentication method:** Connect anonymously and optionally provide an Exa API key for higher limits and Exa Agent access.
+  Choose a tool profile when connecting:
+
+  Current Obot versions display the profiles in a dropdown. On older Obot versions that display a text field instead, enter one of the values below exactly as shown.
+
+  | Profile | Value | Authentication |
+  | --- | --- | --- |
+  | **Basic Search** | `web_search_exa,web_fetch_exa` | None required |
+  | **Advanced Search** | `web_search_exa,web_fetch_exa,web_search_advanced_exa` | None required |
+  | **Search + Research Agent (auth required)** | `web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run` | Exa API key required |
 
   ## Features
 
@@ -21,11 +29,11 @@ description: |
   - **Page Retrieval**: Fetch one or more known URLs as clean markdown.
   - **Advanced Search**: Control categories, domains, dates, content extraction, and subpage crawling.
   - **Research Agent**: Run Exa Agent for multi-step research, list building, enrichment, and structured output.
-  - **Flexible Authentication**: Use anonymous access or optionally provide an Exa API key.
+  - **Flexible Access**: Use anonymous search or provide an API key for higher limits and Exa Agent.
 
   ## What you'll need to connect
 
-  No credentials are required for basic access. You can optionally provide an API key from [the Exa dashboard](https://dashboard.exa.ai/api-keys) for higher limits and Exa Agent access. Exa provides a free tier; account usage and plan limits are managed by Exa.
+  No credentials are required for Basic Search or Advanced Search. The Search + Research Agent profile requires an API key from [the Exa dashboard](https://dashboard.exa.ai/api-keys). You can also provide a key to the search-only profiles for higher limits. Exa provides a free tier; account usage and plan limits are managed by Exa.
 
   See the official [Exa MCP setup documentation](https://exa.ai/docs/reference/exa-mcp), [pricing](https://exa.ai/pricing), and [security documentation](https://exa.ai/docs/reference/security).
 
@@ -33,19 +41,35 @@ description: |
   >
   > If you're upgrading this server, note that this replaces the Obot-hosted Exa Search server with Exa's official hosted MCP server.
   >
-  > - **Reconnect required:** An Exa API key is no longer required for basic access.
+  > - **Reconnect required:** Select a tool profile. Basic and advanced search work without credentials; Exa Agent requires an API key.
   > - **New capabilities:** Advanced search, webpage fetching, and Exa Agent are enabled.
   > - **Tool changes:** Legacy code-context and crawling tools are replaced by the hosted server's current tools and parameters.
 metadata:
   categories: Retrieval & Search,Science & Research,Developer Tools
 icon: https://avatars.githubusercontent.com/u/77906174?v=4
 repoURL: https://exa.ai/docs/reference/exa-mcp
+env:
+- name: Tool profile
+  key: EXA_TOOLS
+  description: Select a tool profile from the entry description. On older Obot versions, enter one of the listed comma-separated values exactly as shown. Exa Agent requires an API key.
+  required: true
+  sensitive: false
+  options:
+  - name: Basic Search
+    value: web_search_exa,web_fetch_exa
+    description: Search the web and retrieve pages without credentials.
+  - name: Advanced Search
+    value: web_search_exa,web_fetch_exa,web_search_advanced_exa
+    description: Add advanced search controls without requiring credentials.
+  - name: Search + Research Agent (auth required)
+    value: web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run
+    description: Add Exa Agent for multi-step research. Requires an Exa API key.
 runtime: remote
 remoteConfig:
-  fixedURL: https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run
+  urlTemplate: https://mcp.exa.ai/mcp?tools=${EXA_TOOLS}
   headers:
   - name: Exa API Key
-    description: Optional API key for higher limits and Exa Agent access; leave blank for anonymous access.
+    description: Optional for higher search limits; required when using the Search + Research Agent profile.
     key: x-api-key
     required: false
     sensitive: true
@@ -92,7 +116,7 @@ toolPreview:
     urls: URLs to read. Multiple URLs can be fetched in one request.
     maxCharacters: Maximum characters to extract per page. Defaults to 3000.
 - name: agent_run
-  description: Start or resume an Exa Agent run for multi-step research and structured output.
+  description: Start or resume an Exa Agent run for multi-step research and structured output. Requires an Exa API key.
   params:
     dataSources: Exa Connect providers to enable for the run.
     effort: Agent effort level.
