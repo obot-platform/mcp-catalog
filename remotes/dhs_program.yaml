@@ -1,0 +1,16 @@
+name: DHS Program
+entryKey: obot-dhs-program
+serverUserType: singleUser
+shortDescription: Query global demographic and health survey indicators
+description: |
+  Explore Demographic and Health Surveys datasets, countries, surveys, indicators, and statistics for public-health research. See the [official MCP documentation](https://api.dhsprogram.com/#/mcp-overview.html) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Public Health, Research, Data & Analytics
+icon: https://dhsprogram.com/favicon.ico
+repoURL: https://api.dhsprogram.com/#/mcp-overview.html
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.dhsprogram.com/mcp

@@ -1,0 +1,16 @@
+name: Boltz API
+entryKey: obot-boltz-api
+serverUserType: singleUser
+shortDescription: Predict molecular structures and screen binding candidates
+description: |
+  Run Boltz molecular structure and binding predictions, screen protein and small-molecule libraries, and retrieve structured results. See the [official MCP documentation](https://api.boltz.bio/docs) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Life Sciences, Research, Data & Analytics
+icon: https://boltz.bio/favicon.ico
+repoURL: https://api.boltz.bio/docs
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.boltz.bio/mcp

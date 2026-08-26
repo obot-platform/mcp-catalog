@@ -1,0 +1,16 @@
+name: Webex Meetings
+entryKey: obot-webex-meetings
+serverUserType: singleUser
+shortDescription: Schedule meetings and analyze recordings, summaries, and transcripts
+description: |
+  Create and update Webex meetings, inspect participants and status, and retrieve recordings, summaries, action items, and transcripts. See the [official MCP documentation](https://developer.webex.com/mcp/docs/meetings-mcp-server) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Communication, Productivity, SaaS & API Integrations
+icon: https://developer.webex.com/favicon.ico
+repoURL: https://developer.webex.com/mcp/docs/meetings-mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.webexapis.com/mcp/webex-meeting

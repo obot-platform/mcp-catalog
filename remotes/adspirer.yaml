@@ -1,0 +1,16 @@
+name: Adspirer
+entryKey: obot-adspirer
+serverUserType: singleUser
+shortDescription: Manage advertising campaigns and analyze paid performance
+description: |
+  Inspect advertising accounts and campaign performance and create or update paid-media campaigns through Adspirer. See the [official MCP documentation](https://www.adspirer.com/docs/introduction) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Advertising, Marketing, Data & Analytics
+icon: https://storage.googleapis.com/adspirer-images-v1/brand/adspirer-logo-square.png
+repoURL: https://www.adspirer.com/docs/introduction
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.adspirer.com/mcp

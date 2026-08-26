@@ -1,0 +1,16 @@
+name: WorkOS
+entryKey: obot-workos
+serverUserType: singleUser
+shortDescription: Inspect and manage enterprise identity resources
+description: |
+  Work with WorkOS organizations, users, directories, authentication, and enterprise identity configuration from development agents. See the [official MCP documentation](https://workos.com/docs/mcp) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Developer Tools, Security, SaaS & API Integrations
+icon: https://workos.com/favicon.ico
+repoURL: https://workos.com/docs/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.workos.com/mcp

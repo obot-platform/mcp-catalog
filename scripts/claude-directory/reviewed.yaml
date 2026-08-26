@@ -36,6 +36,10 @@ records:
     name: Coursera
     status: skipped
     reason: Live OAuth explicitly does not support dynamic client registration, and the provider-referenced setup article has been removed, leaving no documented portable OAuth client setup.
+  - id: 045e9791-ed0d-4dfb-8271-a2f1ff62f9f0
+    name: Render
+    status: existing
+    catalog_entry: remotes/render.yaml
   - id: 05526761-6c29-4d99-8eab-6b4fbd71a67b
     name: lemlist
     status: imported
@@ -48,6 +52,14 @@ records:
     name: Files.com
     status: existing
     catalog_entry: remotes/filescom.yaml
+  - id: 088e0355-cb01-44fa-ba0b-23525fde8d5a
+    name: Magic Patterns
+    status: imported
+    catalog_entry: remotes/magic_patterns.yaml
+  - id: 0929a5c7-38ce-40ab-8aad-af9ce34553c7
+    name: MotherDuck
+    status: imported
+    catalog_entry: remotes/motherduck.yaml
   - id: 092d0ef3-9fc6-4101-8f7e-c2b80e58a065
     name: Webflow
     status: imported
@@ -136,6 +148,10 @@ records:
     name: incident.io
     status: imported
     catalog_entry: remotes/incident_io.yaml
+  - id: 208548e2-6412-4813-8364-9f21982ad62a
+    name: LogRocket
+    status: imported
+    catalog_entry: remotes/logrocket.yaml
   - id: 21506a18-96ae-40d0-9a9d-1433e08a8bc4
     name: Expedia
     status: skipped
@@ -196,6 +212,10 @@ records:
     name: Turkish Airlines
     status: skipped
     reason: Provider setup documentation specifies a different MCP hostname than the exact Claude directory endpoint, so portability of the directory endpoint cannot be established.
+  - id: 30b72fda-c127-4a95-b7a3-f18476e0a06f
+    name: Local Falcon
+    status: imported
+    catalog_entry: remotes/local_falcon.yaml
   - id: 30f3f2c8-e6e4-4bf9-845f-46f5afeea73a
     name: Pipedrive
     status: imported
@@ -208,6 +228,14 @@ records:
     name: PlayMCP
     status: imported
     catalog_entry: remotes/playmcp.yaml
+  - id: 3455d00e-518f-425f-9e0d-6a9eac2f54ef
+    name: LetsBot
+    status: imported
+    catalog_entry: remotes/letsbot.yaml
+  - id: 34583a0a-767a-440b-bb82-7f067afe058f
+    name: GitBook MCP
+    status: imported
+    catalog_entry: remotes/gitbook.yaml
   - id: 360c0c31-4bb6-42ca-8e50-5da0a100a68e
     name: Windsor.ai
     status: imported
@@ -248,6 +276,14 @@ records:
     name: CoinDesk
     status: imported
     catalog_entry: remotes/coindesk.yaml
+  - id: 3e12bb5c-11e5-409c-8e73-64d4b625b498
+    name: Close
+    status: imported
+    catalog_entry: remotes/close.yaml
+  - id: 3ec0d2b6-b96f-4314-bb2c-ccf6f644946d
+    name: Cognito Forms
+    status: imported
+    catalog_entry: remotes/cognito_forms.yaml
   - id: 41105597-badd-4563-aba3-88fe45348857
     name: Nimble
     status: imported
@@ -284,14 +320,26 @@ records:
     name: Booking.com
     status: skipped
     reason: Exact MCP endpoint returned CloudFront 403 for both GET and MCP initialize, so portability could not be verified
+  - id: 48a3eb31-a881-4d52-b179-1af31624356a
+    name: Clerk
+    status: imported
+    catalog_entry: remotes/clerk.yaml
   - id: 49e0f9ba-7d45-4fb6-b098-55eec956fbc6
     name: monday.com
     status: existing
     catalog_entry: remotes/mondaycom.yaml
+  - id: 4a42060f-e997-4b2c-bc4b-60c0f417a9e4
+    name: v0
+    status: imported
+    catalog_entry: remotes/v0.yaml
   - id: 4b463f8b-6db0-4d0e-9693-8b39f37e4447
     name: Carta
     status: imported
     catalog_entry: remotes/carta.yaml
+  - id: 4bf06559-36bf-4aab-b7f7-360af4e2db86
+    name: SignNow
+    status: imported
+    catalog_entry: remotes/signnow.yaml
   - id: 4c1fcb68-c482-46c5-a677-659eaf2f2c85
     name: Xero
     status: skipped
@@ -324,6 +372,10 @@ records:
     name: PandaDoc
     status: imported
     catalog_entry: remotes/pandadoc.yaml
+  - id: 5775e1f2-124a-4f56-be6c-105a5cb33acc
+    name: TomTom Maps
+    status: imported
+    catalog_entry: remotes/tomtom_maps.yaml
   - id: 57dd8e8a-f030-4bb7-a9ed-4098933bd70b
     name: CMS Coverage
     status: skipped
@@ -348,6 +400,10 @@ records:
     name: SlidesGPT
     status: imported
     catalog_entry: remotes/slidesgpt.yaml
+  - id: 5b1d1665-4793-4a8c-98cf-909e00e97a29
+    name: Quo
+    status: imported
+    catalog_entry: remotes/quo.yaml
   - id: 5b938bac-8286-4844-bc51-d303f7c6cbde
     name: Egnyte
     status: imported
@@ -356,6 +412,10 @@ records:
     name: Affinity
     status: imported
     catalog_entry: remotes/affinity.yaml
+  - id: 5ccb820e-419d-4683-9646-90ea294ada71
+    name: DataHub
+    status: imported
+    catalog_entry: remotes/datahub.yaml
   - id: 5e90e841-ba8a-433e-9303-cd41820de915
     name: Anthropic Economic Index
     status: skipped
@@ -368,6 +428,10 @@ records:
     name: Ramp
     status: imported
     catalog_entry: remotes/ramp.yaml
+  - id: 6281926c-b9be-42d6-80eb-1d38c8c766ae
+    name: DeepL
+    status: imported
+    catalog_entry: remotes/deepl.yaml
   - id: 63125588-06e1-4567-8130-f5a26ed1d20f
     name: Honeycomb
     status: imported
@@ -416,6 +480,14 @@ records:
     name: Resy
     status: skipped
     reason: OAuth metadata has no dynamic registration endpoint and only supports client_secret_jwt token authentication, which cannot be represented by supported Obot remote OAuth configuration
+  - id: 7643fc71-6be5-4bc1-8001-10d45239078d
+    name: Eraser
+    status: imported
+    catalog_entry: remotes/eraser.yaml
+  - id: 7805d669-c0f7-4ac0-ad69-ff15524ab8f1
+    name: Unsplash
+    status: imported
+    catalog_entry: remotes/unsplash.yaml
   - id: 780a3621-8271-4822-bd0b-b9cab309375d
     name: Wix
     status: existing
@@ -428,6 +500,10 @@ records:
     name: PitchBook Premium
     status: skipped
     reason: Provider documentation is explicitly limited to PitchBook Premium for Claude and does not establish portable MCP client support.
+  - id: 7a28094f-541d-4ef8-89e2-6abc653d77a2
+    name: Ticket Tailor
+    status: imported
+    catalog_entry: remotes/ticket_tailor.yaml
   - id: 7b2bdb34-e318-4d50-893f-330a8e41d78c
     name: Outreach
     status: imported
@@ -524,6 +600,10 @@ records:
     name: Firecrawl
     status: existing
     catalog_entry: remotes/firecrawl.yaml
+  - id: 8c1da671-b40e-465b-9bc4-bff40398221f
+    name: Boltz API
+    status: imported
+    catalog_entry: remotes/boltz_api.yaml
   - id: 8e7324aa-2671-46bf-9447-5bba8ccf8c2f
     name: Omni Analytics
     status: imported
@@ -536,6 +616,10 @@ records:
     name: Apollo.io
     status: imported
     catalog_entry: remotes/apollo.yaml
+  - id: 905f3354-e2b1-4fd1-a3ea-070fa81354a6
+    name: Typeform
+    status: imported
+    catalog_entry: remotes/typeform.yaml
   - id: 91408932-1110-4350-97c7-2d6b3a6d9694
     name: Exa
     status: existing
@@ -580,6 +664,10 @@ records:
     name: Buffer
     status: imported
     catalog_entry: remotes/buffer.yaml
+  - id: 9e5b81c6-d26f-43bb-9425-2d132ccdea40
+    name: Demographic and Health Surveys
+    status: imported
+    catalog_entry: remotes/dhs_program.yaml
   - id: 9ed5afff-a8dc-4f68-b97b-61dae12de3a5
     name: Railway
     status: imported
@@ -592,6 +680,10 @@ records:
     name: Seismic
     status: skipped
     reason: Endpoint and official connector description are explicitly Claude-specific; no non-Claude MCP client support is documented.
+  - id: a00dcc51-4d67-4d8d-a411-2ab9f78244fd
+    name: LatchBio
+    status: imported
+    catalog_entry: remotes/latchbio.yaml
   - id: a0ea0811-dabc-4b51-903a-d762fec4afcb
     name: IFTTT
     status: imported
@@ -636,10 +728,18 @@ records:
     name: Intuit QuickBooks
     status: skipped
     reason: Exact MCP endpoint returned Akamai 403 Access Denied for both GET and MCP initialize, so portability could not be verified
+  - id: a99a3b09-26fc-4251-a412-fa2593123267
+    name: AgentMail
+    status: imported
+    catalog_entry: remotes/agentmail.yaml
   - id: aa5a2bca-4004-49ea-bc2b-978162587a3a
     name: ClickUp
     status: imported
     catalog_entry: remotes/clickup.yaml
+  - id: ac5b0818-68e4-4dca-bf60-06e54cf5f136
+    name: Canny
+    status: imported
+    catalog_entry: remotes/canny.yaml
   - id: ac8e4b2a-1618-4b6f-8756-660eb7583ebe
     name: Quartr
     status: imported
@@ -664,6 +764,10 @@ records:
     name: Klaviyo
     status: imported
     catalog_entry: remotes/klaviyo.yaml
+  - id: b2742b5d-157b-4b61-9978-1c92f6e85300
+    name: Jobs and Careers
+    status: imported
+    catalog_entry: remotes/jobs_and_careers.yaml
   - id: b2def8dc-ae47-4d46-877a-19b6a6ebb771
     name: Intercom
     status: imported
@@ -760,6 +864,10 @@ records:
     name: Supermetrics Marketing Analytics
     status: imported
     catalog_entry: remotes/supermetrics.yaml
+  - id: cd33c38a-66e7-41a4-8777-bec24d4bba3a
+    name: Adspirer Ads & Performance Marketing Agent
+    status: imported
+    catalog_entry: remotes/adspirer.yaml
   - id: cdecef4b-4a15-404c-b912-005ca366a898
     name: Uber
     status: skipped
@@ -780,6 +888,10 @@ records:
     name: Tableau Cloud
     status: existing
     catalog_entry: remotes/tableau_cloud.yaml
+  - id: d3b03e81-aeaa-42bf-9c52-5270d5273b2d
+    name: WorkOS
+    status: imported
+    catalog_entry: remotes/workos.yaml
   - id: d445461d-2337-4e00-b285-b43d111d2912
     name: Interactive Brokers (IBKR)
     status: imported
@@ -800,6 +912,10 @@ records:
     name: S&P - Deterministic Retrieval
     status: imported
     catalog_entry: remotes/kensho_by_sp_global.yaml
+  - id: da758d89-9c8b-4f6c-a5bf-65eb14b9fc21
+    name: Have I Been Pwned
+    status: imported
+    catalog_entry: remotes/have_i_been_pwned.yaml
   - id: dc1671e0-b14c-47b8-a625-e835ae4067ba
     name: Ashby
     status: imported
@@ -820,6 +936,10 @@ records:
     name: G2
     status: imported
     catalog_entry: remotes/g2.yaml
+  - id: dfd27e26-02d5-4435-b775-28b0474067ff
+    name: Webex Meetings
+    status: imported
+    catalog_entry: remotes/webex_meetings.yaml
   - id: e261228f-7eed-410a-b7b7-f4474dc592ba
     name: Goodnotes
     status: imported
@@ -836,6 +956,10 @@ records:
     name: Bigdata.com
     status: imported
     catalog_entry: remotes/bigdata_com.yaml
+  - id: e4bed2f4-9f30-4e0f-a157-32fd49838b0c
+    name: Deel
+    status: imported
+    catalog_entry: remotes/deel.yaml
   - id: e6fc4c18-ea48-4752-9912-7a13bf9999ed
     name: WordPress.com
     status: existing

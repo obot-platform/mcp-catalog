@@ -1,0 +1,16 @@
+name: AgentMail
+entryKey: obot-agentmail
+serverUserType: singleUser
+shortDescription: Create inboxes and send, receive, and manage agent email
+description: |
+  Provision AgentMail inboxes and let agents send, receive, search, and manage email messages and threads. See the [official MCP documentation](https://docs.agentmail.to/) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Communication, Developer Tools, SaaS & API Integrations
+icon: https://docs.agentmail.to/favicon.ico
+repoURL: https://docs.agentmail.to/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.agentmail.to/mcp

@@ -1,0 +1,16 @@
+name: SignNow
+entryKey: obot-signnow
+serverUserType: singleUser
+shortDescription: Create, send, and manage documents and e-signature workflows
+description: |
+  Manage SignNow documents, templates, invites, signatures, and e-signature workflow status from compatible AI clients. See the [official MCP documentation](https://docs.signnow.com/docs/signnow/mcp-server) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Documents, Productivity, SaaS & API Integrations
+icon: https://marketing-static.signnow.com/853/favicons/favicon.ico
+repoURL: https://docs.signnow.com/docs/signnow/mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp-server.signnow.com/mcp

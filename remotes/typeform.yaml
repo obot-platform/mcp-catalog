@@ -1,0 +1,16 @@
+name: Typeform
+entryKey: obot-typeform
+serverUserType: singleUser
+shortDescription: Create forms and manage responses, contacts, and workflows
+description: |
+  Build and update Typeform forms, inspect responses and insights, and manage contacts, webhooks, workspaces, and automations. See the [official MCP documentation](https://www.typeform.com/developers/mcp/) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Forms, Productivity, SaaS & API Integrations
+icon: https://public-assets.typeform.com/public/favicon/typeform-mcp-512x512.png
+repoURL: https://www.typeform.com/developers/mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.typeform.com/mcp

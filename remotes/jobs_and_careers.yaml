@@ -1,0 +1,16 @@
+name: Jobs and Careers
+entryKey: obot-jobs-and-careers
+serverUserType: singleUser
+shortDescription: Search current job listings and career opportunities
+description: |
+  Search and filter current job and career listings by role, location, employer, and other criteria using SonicJobs data. See the [official MCP documentation](https://www.sonicjobs.com/us/jobs-and-careers-mcpapp-help-article) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Jobs, Search, Productivity
+icon: https://sonicjobs-public-usw2.s3.us-west-2.amazonaws.com/GPTAPPS/jobs-and-careers/favicon.svg
+repoURL: https://www.sonicjobs.com/us/jobs-and-careers-mcpapp-help-article
+runtime: remote
+remoteConfig:
+  fixedURL: https://jobs-and-careers-gpt-app.sonicapply.com/mcp

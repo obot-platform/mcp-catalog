@@ -1,0 +1,16 @@
+name: Ticket Tailor
+entryKey: obot-ticket-tailor
+serverUserType: singleUser
+shortDescription: Manage events, tickets, orders, and attendees
+description: |
+  Inspect and manage Ticket Tailor events, ticket types, orders, attendees, and event-sales information. See the [official MCP documentation](https://help.tickettailor.com/en/articles/11892797-how-to-connect-ticket-tailor-to-your-favourite-ai-agent) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Events, Commerce, SaaS & API Integrations
+icon: https://www.tickettailor.com/favicon.ico
+repoURL: https://help.tickettailor.com/en/articles/11892797-how-to-connect-ticket-tailor-to-your-favourite-ai-agent
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.tickettailor.ai/mcp

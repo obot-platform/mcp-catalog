@@ -1,0 +1,16 @@
+name: Close
+entryKey: obot-close
+serverUserType: singleUser
+shortDescription: Manage CRM leads, contacts, opportunities, and communications
+description: |
+  Search and update Close CRM records, manage sales opportunities, and work with calls, emails, SMS, tasks, and activities. See the [official MCP documentation](https://help.close.com/v1/docs/en/mcp-server) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Sales, CRM, SaaS & API Integrations
+icon: https://help.close.com/api/fern-docs/favicon.ico
+repoURL: https://help.close.com/v1/docs/en/mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.close.com/mcp

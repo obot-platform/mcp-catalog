@@ -1,0 +1,16 @@
+name: LatchBio
+entryKey: obot-latchbio
+serverUserType: singleUser
+shortDescription: Run bioinformatics workflows and manage scientific data
+description: |
+  Launch LatchBio workflows, inspect executions, and work with biological datasets and files from research-oriented agent workflows. See the [official MCP documentation](https://wiki.latch.bio/agent/latch-mcp) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Life Sciences, Research, Data & Analytics
+icon: https://latch.bio/favicon.ico
+repoURL: https://wiki.latch.bio/agent/latch-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.latch.bio/mcp

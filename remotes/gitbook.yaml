@@ -1,0 +1,16 @@
+name: GitBook
+entryKey: obot-gitbook
+serverUserType: singleUser
+shortDescription: Search and retrieve GitBook documentation content
+description: |
+  Search published GitBook spaces and retrieve documentation pages as grounded context for development and support workflows. See the [official MCP documentation](https://gitbook.com/docs/getting-started/ai-documentation/gitbook-mcp) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Documentation, Knowledge & Memory, Developer Tools
+icon: https://raw.githubusercontent.com/GitbookIO/community/refs/heads/main/assets/gitbook_icon_dark.svg
+repoURL: https://gitbook.com/docs/getting-started/ai-documentation/gitbook-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.gitbook.com/mcp

@@ -1,0 +1,16 @@
+name: Have I Been Pwned
+entryKey: obot-have-i-been-pwned
+serverUserType: singleUser
+shortDescription: Check breach, paste, stealer-log, and password exposure data
+description: |
+  Query Have I Been Pwned breach intelligence to check exposed accounts, domains, passwords, pastes, and stealer-log records. See the [official MCP documentation](https://haveibeenpwned.com/Docs/MCP) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Security, Data & Analytics, Research
+icon: https://raw.githubusercontent.com/HaveIBeenPwned/Branding/refs/heads/main/Logos/Icon/Blue%20on%20Black/Icon.svg
+repoURL: https://haveibeenpwned.com/Docs/MCP
+runtime: remote
+remoteConfig:
+  fixedURL: https://haveibeenpwned.com/mcp

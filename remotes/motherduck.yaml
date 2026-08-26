@@ -1,0 +1,16 @@
+name: MotherDuck
+entryKey: obot-motherduck
+serverUserType: singleUser
+shortDescription: Query and analyze MotherDuck databases with SQL
+description: |
+  Explore MotherDuck databases and schemas and run analytical SQL queries against cloud-hosted DuckDB data. See the [official MCP documentation](https://motherduck.com/docs/sql-reference/mcp/) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Databases, Data & Analytics, Developer Tools
+icon: https://motherduck.com/favicon.ico
+repoURL: https://motherduck.com/docs/sql-reference/mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.motherduck.com/mcp

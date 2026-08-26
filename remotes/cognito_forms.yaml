@@ -1,0 +1,16 @@
+name: Cognito Forms
+entryKey: obot-cognito-forms
+serverUserType: singleUser
+shortDescription: Create forms and work with entries, organizations, and datasets
+description: |
+  Build and manage Cognito Forms resources, query form entries, and connect structured submission data to agent workflows. See the [official MCP documentation](https://www.cognitoforms.com/support/1038/data-integration/mcp-connector) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Forms, Productivity, SaaS & API Integrations
+icon: https://static.cognitoforms.com/website/assets/favicons/favicon.ico
+repoURL: https://www.cognitoforms.com/support/1038/data-integration/mcp-connector
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.cognitoforms.com/mcp

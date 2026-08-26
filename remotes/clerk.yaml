@@ -1,0 +1,16 @@
+name: Clerk
+entryKey: obot-clerk
+serverUserType: singleUser
+shortDescription: Search Clerk documentation and inspect authentication resources
+description: |
+  Give coding agents current Clerk documentation and project context for implementing and troubleshooting authentication and user management. See the [official MCP documentation](https://clerk.com/docs/guides/ai/mcp/clerk-mcp-server) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Developer Tools, Security, Documentation
+icon: https://clerk.com/v2/favicon.ico
+repoURL: https://clerk.com/docs/guides/ai/mcp/clerk-mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.clerk.com/mcp

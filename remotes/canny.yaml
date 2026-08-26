@@ -1,0 +1,16 @@
+name: Canny
+entryKey: obot-canny
+serverUserType: singleUser
+shortDescription: Analyze feedback and manage product requests and roadmaps
+description: |
+  Search customer feedback, inspect posts and comments, and manage product request and roadmap workflows in Canny. See the [official MCP documentation](https://help.canny.io/) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Product Management, Customer Support, SaaS & API Integrations
+icon: https://assets.canny.io/canny-avatar-512.png
+repoURL: https://help.canny.io/
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.canny.io/api/mcp/v1

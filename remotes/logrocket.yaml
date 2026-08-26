@@ -1,0 +1,16 @@
+name: LogRocket
+entryKey: obot-logrocket
+serverUserType: singleUser
+shortDescription: Investigate sessions, errors, and product behavior in LogRocket
+description: |
+  Search LogRocket sessions and issues, inspect user behavior and errors, and bring product debugging evidence into engineering workflows. See the [official MCP documentation](https://docs.logrocket.com/mcp) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Developer Tools, Observability, Data & Analytics
+icon: https://logrocket.com/images/rocket.svg
+repoURL: https://docs.logrocket.com/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.logrocket.com/mcp

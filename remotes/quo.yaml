@@ -1,0 +1,16 @@
+name: Quo
+entryKey: obot-quo
+serverUserType: singleUser
+shortDescription: Manage business calls, messages, contacts, and workflows
+description: |
+  Access Quo business communications to inspect calls and messages, work with contacts, and support phone-based customer workflows. See the [official MCP documentation](https://support.quo.com/core-concepts/integrations/mcp) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Communication, Customer Support, SaaS & API Integrations
+icon: https://mintcdn.com/resource-center/811pe6NQitOpPbcf/logo/charcoal.svg
+repoURL: https://support.quo.com/core-concepts/integrations/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.quo.com/mcp

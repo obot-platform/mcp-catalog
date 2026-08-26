@@ -1,0 +1,16 @@
+name: Eraser
+entryKey: obot-eraser
+serverUserType: singleUser
+shortDescription: Generate and manage architecture diagrams and technical documents
+description: |
+  Create, edit, search, and organize Eraser diagrams, files, folders, and presets from coding-agent workflows. See the [official MCP documentation](https://docs.eraser.io/mcp) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Developer Tools, Design, Documentation
+icon: https://app.eraser.io/favicon.ico
+repoURL: https://docs.eraser.io/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://app.eraser.io/api/mcp

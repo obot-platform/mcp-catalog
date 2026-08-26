@@ -1,0 +1,16 @@
+name: DeepL
+entryKey: obot-deepl
+serverUserType: singleUser
+shortDescription: Translate and improve multilingual text with DeepL
+description: |
+  Translate text and documents and apply DeepL language and writing capabilities from compatible AI tools. See the [official MCP documentation](https://developers.deepl.com/docs/mcp) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Translation, Productivity, SaaS & API Integrations
+icon: https://mintcdn.com/deepl-c950b784/QiF37QSCmRj62dXZ/_assets/logo/light_with_text.svg
+repoURL: https://developers.deepl.com/docs/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.deepl.com/v1/mcp

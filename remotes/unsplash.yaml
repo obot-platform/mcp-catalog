@@ -1,0 +1,16 @@
+name: Unsplash
+entryKey: obot-unsplash
+serverUserType: singleUser
+shortDescription: Search and retrieve freely usable photography
+description: |
+  Search Unsplash photography, inspect image and creator metadata, and retrieve suitable visual assets for creative workflows. See the [official MCP documentation](https://unsplash.com/developers) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Images, Design, Search
+icon: https://unsplash.com/favicon-32x32.png
+repoURL: https://unsplash.com/developers
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.unsplash.com/mcp

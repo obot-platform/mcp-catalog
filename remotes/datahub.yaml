@@ -1,0 +1,16 @@
+name: DataHub
+entryKey: obot-datahub
+serverUserType: singleUser
+shortDescription: Discover and understand governed enterprise data assets
+description: |
+  Search DataHub metadata, inspect datasets and lineage, and retrieve governed context about enterprise data assets. See the [official MCP documentation](https://docs.datahub.com/docs/features/feature-guides/mcp) for setup, authentication, and available capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Data & Analytics, Databases, Developer Tools
+icon: https://docs.datahub.com/img/datahub-logo-color-mark.svg
+repoURL: https://docs.datahub.com/docs/features/feature-guides/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.datahub.com/mcp
