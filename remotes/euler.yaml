@@ -1,0 +1,22 @@
+name: EULER
+entryKey: obot-euler
+serverUserType: singleUser
+shortDescription: Manage partner programs, deals, commissions, and performance
+description: |
+  Manage partner relationships and query EULER Partner Data Lake records for deals, referrals, commissions, onboarding, and performance. See the [EULER MCP documentation](https://mcp.eulerapp.com/public/docs) for setup, authentication, and tools.
+
+  ## Features
+  - Search partner records, content, referrals, and deals
+  - Submit referrals and inspect program workflows
+  - Review commissions, invoices, incentives, and performance
+
+  ## What you'll need to connect
+  **Required:**
+  - **EULER Account**: Available partner data follows your account access
+metadata:
+  categories: Partner Management, Sales, SaaS & API Integrations
+icon: https://mcp.eulerapp.com/icon.png
+repoURL: https://mcp.eulerapp.com/public/docs
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.eulerapp.com/mcp

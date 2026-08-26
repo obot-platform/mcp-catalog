@@ -1,0 +1,26 @@
+name: CData Connect AI
+entryKey: obot-cdata-connect-ai
+serverUserType: singleUser
+shortDescription: Query and act on data from hundreds of SaaS, database, and API sources
+description: |
+  Query, analyze, and act on live data from hundreds of SaaS applications, databases, and APIs through one governed connection layer. See the [CData Connect AI documentation](https://docs.cloud.cdata.com/en) for data-source setup, security, supported clients, and MCP integrations.
+
+  ## Features
+  - Discover connected catalogs, schemas, tables, and available actions
+  - Query live business data using natural-language agent workflows
+  - Connect more than 300 SaaS, database, and API sources
+  - Apply workspace, identity, and source-level governance centrally
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **CData Connect AI Account**: Connect at least one data source before using the MCP tools
+  - **Source Permissions**: Available data and actions follow your configured workspace and source access
+
+metadata:
+  categories: Data & Analytics, Databases, SaaS & API Integrations
+icon: https://docs.cloud.cdata.com/favicon.ico
+repoURL: https://docs.cloud.cdata.com/en
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.cloud.cdata.com/mcp

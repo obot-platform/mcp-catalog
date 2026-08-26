@@ -1,0 +1,26 @@
+name: Metaview
+entryKey: obot-metaview
+serverUserType: singleUser
+shortDescription: Search interview transcripts, notes, reports, and recruiting activity
+description: |
+  Search conversations, retrieve interview transcripts and notes, review reports, and analyze sourcing activity from your Metaview workspace. See the [Metaview MCP integration guide](https://support.metaview.ai/integrations/mcp-integration/mcp-overview) for OAuth setup, supported clients, permissions, and example workflows.
+
+  ## Features
+  - Search past recruiting conversations and their metadata
+  - Retrieve transcripts, AI-generated notes, and summaries
+  - Review conversation activity and reports across roles or time periods
+  - Analyze sourcing searches, candidates, feedback, and activity metrics
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Metaview Account**: Sign in through Metaview when the OAuth connection opens
+  - **Workspace Access**: Your Metaview role and conversation permissions determine which data is available
+
+metadata:
+  categories: Recruiting, Productivity, Analytics
+icon: https://www.metaview.ai/favicon-32x32.png
+repoURL: https://support.metaview.ai/integrations/mcp-integration/mcp-overview
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.metaview.ai/mcp

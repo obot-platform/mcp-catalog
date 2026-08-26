@@ -1,0 +1,24 @@
+name: Wolfram Cloud
+entryKey: obot-wolfram-cloud
+serverUserType: singleUser
+shortDescription: Compute precise results with Wolfram Language and curated Wolfram knowledge
+description: |
+  Compute mathematical, scientific, technical, and factual results using Wolfram Language and the curated Wolfram knowledgebase. See the [Wolfram Cloud MCP documentation](https://www.wolfram.com/artificial-intelligence/mcp/cloud/wolfram-mcp-cloud/) for the endpoint, supported clients, setup, and usage guidance.
+
+  ## Features
+  - Evaluate Wolfram Language expressions for symbolic and numeric computation
+  - Answer factual questions using curated Wolfram|Alpha data
+  - Produce verifiable computations instead of relying on model recall
+  - Use a remote, stateless service without local Wolfram installation
+
+  ## Availability
+
+  Wolfram Cloud MCP is free for limited personal use. It is designed for one-shot remote requests and does not support persistent sessions, custom servers, or file transfer.
+
+metadata:
+  categories: Research, Developer Tools, Data & Analytics
+icon: https://www.wolfram.com/favicon.ico
+repoURL: https://www.wolfram.com/artificial-intelligence/mcp/cloud/wolfram-mcp-cloud/
+runtime: remote
+remoteConfig:
+  fixedURL: https://agenttools.wolfram.com/mcp

@@ -1,0 +1,22 @@
+name: Fullstory
+entryKey: obot-fullstory
+serverUserType: singleUser
+shortDescription: Analyze product behavior, friction signals, metrics, and sessions
+description: |
+  Query Fullstory product analytics to investigate user behavior, friction, errors, funnels, and session activity. See the [Fullstory MCP guide](https://developer.fullstory.com/mcp/introduction/) for setup, authentication, supported clients, and prerequisites.
+
+  ## Features
+  - Find rage clicks, errors, crashes, and form abandonment
+  - Analyze behavioral metrics, trends, funnels, and segments
+  - Inspect relevant sessions and event transcripts
+
+  ## What you'll need to connect
+  **Required:**
+  - **Fullstory Account**: StoryAI and MCP must be enabled for your organization
+metadata:
+  categories: Data & Analytics, Developer Tools, SaaS & API Integrations
+icon: https://developer.fullstory.com/img/favicon.svg
+repoURL: https://developer.fullstory.com/mcp/introduction/
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.fullstory.com/mcp/fullstory

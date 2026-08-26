@@ -1,0 +1,22 @@
+name: Mintlify
+entryKey: obot-mintlify
+serverUserType: singleUser
+shortDescription: Search, edit, organize, and publish Mintlify documentation
+description: |
+  Search and read Mintlify documentation, edit pages, reorganize navigation, and publish documentation changes. See the [Mintlify MCP guide](https://www.mintlify.com/docs/ai/mintlify-mcp) for setup, authentication, and supported workflows.
+
+  ## Features
+  - Search and read documentation content
+  - Create and edit pages and navigation nodes
+  - Review diffs and publish or discard changes
+
+  ## What you'll need to connect
+  **Required:**
+  - **Mintlify Account**: Write access follows your project permissions
+metadata:
+  categories: Documentation, Developer Tools, Productivity
+icon: https://www.mintlify.com/favicon.ico
+repoURL: https://www.mintlify.com/docs/ai/mintlify-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.mintlify.com

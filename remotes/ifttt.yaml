@@ -1,0 +1,22 @@
+name: IFTTT
+entryKey: obot-ifttt
+serverUserType: singleUser
+shortDescription: Build and run automations across more than 1,000 services
+description: |
+  Search, create, enable, and run IFTTT Applets across connected apps and devices. See the [IFTTT AI assistants guide](https://help.ifttt.com/hc/en-us/articles/47690989390619-Using-IFTTT-with-AI-Assistants) for setup, OAuth, supported clients, and plan capabilities.
+
+  ## Features
+  - Discover services and existing Applets
+  - Create persistent cross-service automations
+  - Run actions and queries in connected services
+
+  ## What you'll need to connect
+  **Required:**
+  - **IFTTT Account**: Available actions depend on your plan and connected services
+metadata:
+  categories: Automation, Productivity, SaaS & API Integrations
+icon: https://ifttt.com/favicon.ico
+repoURL: https://help.ifttt.com/hc/en-us/articles/47690989390619-Using-IFTTT-with-AI-Assistants
+runtime: remote
+remoteConfig:
+  fixedURL: https://ifttt.com/mcp

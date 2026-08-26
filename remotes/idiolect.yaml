@@ -1,0 +1,27 @@
+name: Idiolect
+entryKey: obot-idiolect
+serverUserType: singleUser
+shortDescription: Draft, rewrite, and score text against your personal writing voice
+description: |
+  Build and load a personal Voice Profile, draft or rewrite text in that voice, and score how closely writing matches it. See the [Idiolect MCP connector guide](https://idiolect.app/developers/mcp) for OAuth setup, supported clients, available tools, and troubleshooting.
+
+  ## Features
+  - Create and retrieve your personal Voice Profile
+  - Draft new writing from a brief in your voice
+  - Rewrite supplied prose while preserving your style
+  - Score voice similarity and report supporting measurement details
+  - Record explicit feedback to improve future voice-matched output
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Idiolect Account**: Sign in through Idiolect when the OAuth connection opens
+  - **Voice Profile**: Save or create a profile before using voice-based drafting and rewriting
+
+metadata:
+  categories: Writing, Productivity, AI
+icon: https://idiolect.app/logo-icon.svg
+repoURL: https://idiolect.app/developers/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://idiolect.app/api/mcp

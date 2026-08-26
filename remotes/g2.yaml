@@ -1,0 +1,27 @@
+name: G2
+entryKey: obot-g2
+serverUserType: singleUser
+shortDescription: Analyze buyer intent, products, reviews, competitors, and research boards
+description: |
+  Analyze G2 buyer intent, product and category data, reviews, competitive evaluations, and research boards. See the [G2 MCP Server documentation](https://documentation.g2.com/docs/g2-mcp-server) for subscriptions, OAuth setup, scopes, direct-client examples, and available tools.
+
+  ## Features
+  - Identify companies researching your products and prioritize buyer-intent accounts
+  - Explore products, categories, vendors, reviews, and competitive evaluations
+  - Analyze review themes and switching patterns
+  - Read and manage research boards when granted the corresponding scopes
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Eligible G2 Subscription**: Data access depends on your G2 products and entitlements
+  - **G2 OAuth Application**: Register an application in the G2 Developer Dashboard, add the redirect URI shown by Obot, and grant only the required scopes
+
+metadata:
+  categories: Sales, Marketing, Data & Analytics
+icon: https://company.g2.com/hs-fs/hubfs/brand-guide/g2-logo.png?width=300&name=g2-logo.png
+repoURL: https://documentation.g2.com/docs/g2-mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.g2.com/mcp
+  staticOAuthRequired: true

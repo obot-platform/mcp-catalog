@@ -1,0 +1,22 @@
+name: Workable
+entryKey: obot-workable
+serverUserType: singleUser
+shortDescription: Manage recruiting, candidates, offers, and HR operations
+description: |
+  Manage jobs, candidates, offers, requisitions, employees, time off, and performance reviews in Workable. See the [Workable MCP Server reference](https://workable.readme.io/reference/workable-mcp-server) for setup, OAuth discovery, and available tools.
+
+  ## Features
+  - Search and manage jobs, candidates, pipelines, and offers
+  - Work with requisitions, departments, members, and employees
+  - Review time off, time tracking, and performance cycles
+
+  ## What you'll need to connect
+  **Required:**
+  - **Workable Account**: Access follows your account roles and permissions
+metadata:
+  categories: Human Resources, Productivity, SaaS & API Integrations
+icon: https://www.workable.com/favicon.ico
+repoURL: https://workable.readme.io/reference/workable-mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.workable.com/mcp

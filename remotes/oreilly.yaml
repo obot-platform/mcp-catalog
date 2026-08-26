@@ -1,0 +1,26 @@
+name: O'Reilly
+entryKey: obot-oreilly
+serverUserType: singleUser
+shortDescription: Search O'Reilly books, videos, courses, and live learning content
+description: |
+  Search the O'Reilly learning platform by keyword, author, publisher, language, content type, publication date, and other metadata. See the [O'Reilly MCP server documentation](https://learning.oreilly.com/apidocs/mcp/content/) for OAuth and token setup, supported clients, filters, and response details.
+
+  ## Features
+  - Search books, videos, audiobooks, courses, articles, and live events
+  - Filter results by author, publisher, language, and content type
+  - Sort learning content by relevance, popularity, rating, or date
+  - Return titles, authors, formats, cover images, and O'Reilly content links
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **O'Reilly Account**: Sign in through O'Reilly when the OAuth connection opens
+  - **Content Access**: Search results follow the learning content permissions on your account
+
+metadata:
+  categories: Education, Search, Research
+icon: https://cdn.oreillystatic.com/oreilly/logos/oreilly_odot_square.svg
+repoURL: https://learning.oreilly.com/apidocs/mcp/content/
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.oreilly.com/api/content-discovery/v1/mcp/

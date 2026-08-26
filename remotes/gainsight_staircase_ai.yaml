@@ -1,0 +1,26 @@
+name: Gainsight Staircase AI
+entryKey: obot-gainsight-staircase-ai
+serverUserType: singleUser
+shortDescription: Query customer health, feedback, activity, risks, and relationship context
+description: |
+  Query customer health, feedback, activity, relationship context, risks, and opportunities from Staircase AI. See the [Gainsight Staircase AI MCP guide](https://support.gainsight.com/Staircase_AI/Staircase_AI_Features/Connect_Staircase_AI_to_LLMs_Using_MCP) for enablement, authentication, supported clients, and setup.
+
+  ## Features
+  - Prepare customer briefs using current account and relationship context
+  - Surface customer feedback, feature requests, and recent activity
+  - Review health signals, risks, and opportunities across accounts
+  - Bring Staircase AI customer intelligence into agent workflows
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Staircase AI Account**: Sign in with a Google, Microsoft, Okta, or Gainsight SSO identity that has Staircase access
+  - **MCP Access Enabled**: An administrator must enable MCP Server Access under Privacy & Security
+
+metadata:
+  categories: Customer Support, Sales, Data & Analytics
+icon: https://www.gainsight.com/icon.svg
+repoURL: https://support.gainsight.com/Staircase_AI/Staircase_AI_Features/Connect_Staircase_AI_to_LLMs_Using_MCP
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.staircase.ai/mcp

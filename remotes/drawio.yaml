@@ -1,0 +1,24 @@
+name: draw.io
+entryKey: obot-drawio
+serverUserType: singleUser
+shortDescription: Create interactive draw.io diagrams from XML or Mermaid definitions
+description: |
+  Create draw.io diagrams from draw.io XML or Mermaid definitions and open them for further editing. See the [official draw.io MCP App server documentation](https://github.com/jgraph/drawio-mcp/tree/main/mcp-app-server) for the hosted endpoint, supported clients, capabilities, and self-hosting.
+
+  ## Features
+  - Generate draw.io diagrams from XML or Mermaid syntax
+  - Render interactive diagrams with zoom, pan, layers, and fullscreen controls
+  - Open generated diagrams in the full draw.io editor
+  - Apply optional ELK layered layout to XML diagrams
+
+  ## Client compatibility
+
+  Clients supporting MCP Apps can render the interactive diagram directly in chat. Other MCP clients can connect and receive diagram XML, but may not render the embedded interface.
+
+metadata:
+  categories: Design, Productivity, Developer Tools
+icon: https://draw.io/images/drawio.svg
+repoURL: https://github.com/jgraph/drawio-mcp/tree/main/mcp-app-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.draw.io/mcp

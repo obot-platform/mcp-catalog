@@ -1,0 +1,22 @@
+name: Buffer
+entryKey: obot-buffer
+serverUserType: singleUser
+shortDescription: Draft, schedule, and analyze social media posts
+description: |
+  Create drafts, schedule posts, manage publishing queues, save ideas, and inspect social performance in Buffer. See the [Buffer MCP guide](https://developers.buffer.com/guides/integrations/mcp.html/) for the endpoint, authentication, and setup with compatible clients.
+
+  ## Features
+  - Draft and schedule posts across connected channels
+  - Manage queues, posts, channels, and saved ideas
+  - Review post metrics and publishing performance
+
+  ## What you'll need to connect
+  **Required:**
+  - **Buffer Account**: Access follows your channels, plan, and permissions
+metadata:
+  categories: Social Media, Marketing, SaaS & API Integrations
+icon: https://buffer.com/favicon.ico
+repoURL: https://developers.buffer.com/guides/integrations/mcp.html/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.buffer.com/mcp

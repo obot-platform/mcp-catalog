@@ -1,0 +1,27 @@
+name: tl;dv
+entryKey: obot-tldv
+serverUserType: singleUser
+shortDescription: Search meetings and retrieve transcripts, notes, metadata, and profile details
+description: |
+  Search your tl;dv meeting library and retrieve speaker-labeled transcripts, AI-generated notes, meeting metadata, and account details. See the [tl;dv MCP setup guide](https://tldv.io/blog/how-to-connect-meeting-notes-to-claude-with-mcp/) for hosted-server access, permissions, supported clients, and available tools.
+
+  ## Features
+  - Search meetings by keyword, date, or participant
+  - Retrieve complete speaker-labeled meeting transcripts
+  - Read AI-generated notes organized by topic
+  - Inspect meeting dates, duration, attendees, and other metadata
+  - Retrieve your tl;dv user profile
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **tl;dv Account**: Sign in through tl;dv when the OAuth connection opens
+  - **tl;dv Pro Plan or Higher**: The hosted connector requires an eligible subscription
+
+metadata:
+  categories: Meetings, Productivity, Collaboration
+icon: https://tldv.io/wp-content/uploads/2024/11/tldv.png
+repoURL: https://tldv.io/blog/how-to-connect-meeting-notes-to-claude-with-mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.tldv.io/mcp

@@ -1,0 +1,25 @@
+name: Bitly
+entryKey: obot-bitly
+serverUserType: singleUser
+shortDescription: Create and manage short links and QR codes, then analyze engagement
+description: |
+  Create branded short links and QR codes, manage Bitly account resources, and analyze link and scan engagement. See the [Bitly MCP Server guide](https://dev.bitly.com/bitly-mcp/overview/quickstart/) for setup, authentication options, supported clients, and tools.
+
+  ## Features
+  - Create, update, expand, and organize short links
+  - Generate and customize QR codes
+  - Review clicks, engagement, geographic, referrer, and device analytics
+  - Work with organizations, groups, tags, webhooks, and custom domains
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Bitly Account**: Available tools and data follow your account permissions and plan
+
+metadata:
+  categories: Marketing, Data & Analytics, SaaS & API Integrations
+icon: https://dev.bitly.com/static/graphics/bitly_logo_red.svg
+repoURL: https://dev.bitly.com/bitly-mcp/overview/quickstart/
+runtime: remote
+remoteConfig:
+  fixedURL: https://api-ssl.bitly.com/v4/mcp

@@ -1,0 +1,22 @@
+name: CoinDesk Data & Indices
+entryKey: obot-coindesk
+serverUserType: singleUser
+shortDescription: Query live and historical digital-asset market data
+description: |
+  Access CoinDesk digital-asset spot, futures, options, index, order-book, trade, and news data. See the [CoinDesk MCP documentation](https://mcp.coindesk.com/) for connection, authentication, and available datasets.
+
+  ## Features
+  - Query spot, futures, options, and index ticks and OHLCV history
+  - Inspect order books, trades, open interest, and funding rates
+  - Retrieve digital-asset news and instrument metadata
+
+  ## What you'll need to connect
+  **Required:**
+  - **CoinDesk Data Account**: Dataset access follows your subscription
+metadata:
+  categories: Financial Services, Data & Analytics, Research
+icon: https://mcp.coindesk.com/favicon.svg
+repoURL: https://mcp.coindesk.com/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.coindesk.com/mcp

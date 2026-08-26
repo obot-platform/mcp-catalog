@@ -1,0 +1,22 @@
+name: Autodesk Product Help
+entryKey: obot-autodesk-product-help
+serverUserType: singleUser
+shortDescription: Search trusted help content for more than 110 Autodesk products
+description: |
+  Discover Autodesk products and releases, then search and retrieve current Autodesk Help and Support content in multiple languages. See the [Autodesk Product Help MCP Server guide](https://help.autodesk.com/view/ADSKMCP/ENU/?guid=ADSKMCP_KnowledgeMcp_autodesk_product_help_mcp_server_html) for the production endpoint, supported clients, tools, and examples.
+
+  ## Features
+  - Discover supported Autodesk products, releases, and locales
+  - Search trusted help content by product, version, language, and keywords
+  - Troubleshoot installation, licensing, compatibility, and error messages
+  - Retrieve canonical feature and workflow guidance from live Autodesk documentation
+
+  **Public Access:** The Autodesk-hosted public endpoint does not require authentication.
+
+metadata:
+  categories: Documentation, Developer Tools, Productivity
+icon: https://up1.autodesk.com/prd/2027/FSND/0DD9B647-5DC0-53C7-AAEE-49FC06FF66F0/server_logo_black.svg
+repoURL: https://help.autodesk.com/view/ADSKMCP/ENU/?guid=ADSKMCP_KnowledgeMcp_autodesk_product_help_mcp_server_html
+runtime: remote
+remoteConfig:
+  fixedURL: https://developer.api.autodesk.com/knowledge/public/v1/mcp

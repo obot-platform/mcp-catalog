@@ -1,0 +1,22 @@
+name: ClickHouse Cloud
+entryKey: obot-clickhouse-cloud
+serverUserType: singleUser
+shortDescription: Query ClickHouse Cloud data and inspect services and costs
+description: |
+  Browse ClickHouse Cloud organizations, services, databases, schemas, backups, and ClickPipes, and run read-only SQL queries. See the [ClickHouse remote MCP guide](https://clickhouse.com/docs/cloud/features/ai-ml/remote-mcp) for setup and authentication.
+
+  ## Features
+  - Explore organizations, services, databases, tables, and schemas
+  - Run read-only analytical SQL queries
+  - Review backups, billing costs, and ClickPipe configurations
+
+  ## What you'll need to connect
+  **Required:**
+  - **ClickHouse Cloud Account**: Results follow your organization permissions
+metadata:
+  categories: Databases, Data & Analytics, Developer Tools
+icon: https://raw.githubusercontent.com/ClickHouse/ClickHouse/28d984fc85e6899b805bc16beb8b21ca0f687fa6/docker/server/README.src/logo.svg
+repoURL: https://clickhouse.com/docs/cloud/features/ai-ml/remote-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.clickhouse.cloud/mcp

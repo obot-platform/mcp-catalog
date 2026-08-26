@@ -1,0 +1,22 @@
+name: lemlist
+entryKey: obot-lemlist
+serverUserType: singleUser
+shortDescription: Manage outreach campaigns, leads, enrichment, and performance
+description: |
+  Create and manage lemlist campaigns, leads, sequences, enrichment, and outreach analytics. See the [lemlist MCP setup guide](https://developer.lemlist.com/mcp/setup) for OAuth, API-key authentication, supported clients, and tools.
+
+  ## Features
+  - Create, update, start, and pause campaigns and sequences
+  - Source, enrich, search, and manage leads
+  - Review team and campaign performance and manage webhooks
+
+  ## What you'll need to connect
+  **Required:**
+  - **lemlist Account**: Features and credits follow your team plan
+metadata:
+  categories: Sales, Marketing, SaaS & API Integrations
+icon: https://a.storyblok.com/f/343876/31x31/aedd9ac987/lemlist-logo-svg.svg
+repoURL: https://developer.lemlist.com/mcp/setup
+runtime: remote
+remoteConfig:
+  fixedURL: https://app.lemlist.com/mcp

@@ -1,0 +1,22 @@
+name: Honeycomb
+entryKey: obot-honeycomb
+serverUserType: singleUser
+shortDescription: Investigate observability data, traces, SLOs, and triggers
+description: |
+  Query Honeycomb observability data to troubleshoot performance, inspect traces, analyze SLOs, and explore datasets. See the [Honeycomb MCP documentation](https://docs.honeycomb.io/troubleshoot/product-lifecycle/beta/mcp/) for setup, authentication, and current beta capabilities.
+
+  ## Features
+  - Run exploratory queries across datasets and environments
+  - Analyze SLO performance, traces, and query history
+  - Inspect columns, triggers, and team information
+
+  ## What you'll need to connect
+  **Required:**
+  - **Honeycomb Account**: Data access follows your team permissions
+metadata:
+  categories: Observability, Developer Tools, Data & Analytics
+icon: https://www.honeycomb.io/favicon.ico
+repoURL: https://docs.honeycomb.io/troubleshoot/product-lifecycle/beta/mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.honeycomb.io/mcp

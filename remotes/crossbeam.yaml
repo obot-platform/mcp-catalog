@@ -1,0 +1,26 @@
+name: Crossbeam
+entryKey: obot-crossbeam
+serverUserType: singleUser
+shortDescription: Analyze partner overlaps, ecosystem activity, account context, and recommendations
+description: |
+  Analyze partner overlaps, account context, ecosystem activity, partner performance, and co-sell recommendations using live Crossbeam data. See the [Crossbeam MCP Server guide](https://help.crossbeam.com/en/articles/12601327-crossbeam-mcp-server-limited-availability) for availability, authentication, supported clients, and tools.
+
+  ## Features
+  - Find account overlaps across individual partners or your full ecosystem
+  - Retrieve account and partner context for pipeline planning
+  - Surface ecosystem activity and partner recommendations
+  - Generate shareable overlap lists and discover potential partners
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Eligible Crossbeam Plan**: MCP access is currently limited to Supernode and Enterprise customers
+  - **MCP Access Enabled**: Contact your Crossbeam representative if the feature is unavailable
+
+metadata:
+  categories: Sales, Marketing, Data & Analytics
+icon: https://cdn.prod.website-files.com/66955639e4d4a6eebd7168b9/669c18d1da1ae90bdf183976_crossbeam_icon256.png
+repoURL: https://help.crossbeam.com/en/articles/12601327-crossbeam-mcp-server-limited-availability
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.crossbeam.com/mcp

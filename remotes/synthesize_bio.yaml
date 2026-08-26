@@ -1,0 +1,22 @@
+name: Synthesize Bio
+entryKey: obot-synthesize-bio
+serverUserType: singleUser
+shortDescription: Generate and analyze virtual gene-expression experiments
+description: |
+  Generate realistic human gene-expression profiles from natural-language experiment designs and analyze the resulting data. See the [Synthesize Bio MCP documentation](https://app.synthesize.bio/mcp/docs) for setup, authentication, and analysis workflows.
+
+  ## Features
+  - Design virtual case-control and perturbation experiments
+  - Generate bulk and single-cell RNA-seq expression data
+  - Analyze results, annotate genes, and retrieve reports
+
+  ## What you'll need to connect
+  **Required:**
+  - **Synthesize Bio Account**: Sign in to run and retrieve analyses
+metadata:
+  categories: Life Sciences, Research, Data & Analytics
+icon: https://app.synthesize.bio/favicon.ico
+repoURL: https://app.synthesize.bio/mcp/docs
+runtime: remote
+remoteConfig:
+  fixedURL: https://app.synthesize.bio/api/mcp

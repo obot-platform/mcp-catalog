@@ -1,0 +1,26 @@
+name: Profound
+entryKey: obot-profound
+serverUserType: singleUser
+shortDescription: Analyze AI visibility, citations, prompts, and bot traffic
+description: |
+  Analyze answer-engine visibility, citations, prompt performance, and AI bot traffic using live Profound data. See the [Profound Remote MCP Server guide](https://mcp.tryprofound.com/) for the endpoint, OAuth setup, supported clients, and troubleshooting.
+
+  ## Features
+  - Review visibility trends across answer engines and tracked categories
+  - Analyze citations, source domains, and prompt-level performance
+  - Query AI crawler and bot-traffic analytics
+  - Bring Profound reports into custom agent and analysis workflows
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Profound Account**: Sign in through Profound when the OAuth connection opens
+  - **Eligible Data Access**: Available reports and analytics follow your organization's Profound subscription and permissions
+
+metadata:
+  categories: Marketing, Data & Analytics, SEO
+icon: https://www.tryprofound.com/favicons/favicon-light.svg
+repoURL: https://mcp.tryprofound.com/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.tryprofound.com/mcp

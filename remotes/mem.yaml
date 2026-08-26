@@ -1,0 +1,22 @@
+name: Mem
+entryKey: obot-mem
+serverUserType: singleUser
+shortDescription: Capture, search, organize, and update Mem knowledge
+description: |
+  Search, create, edit, and organize notes, attachments, recordings, and collections in Mem. See the [Mem MCP setup guide](https://docs.mem.ai/mcp/setup) for OAuth instructions for Codex, ChatGPT, Gemini, and other supported clients.
+
+  ## Features
+  - Capture and semantically search notes
+  - Organize knowledge with collections
+  - Update, trash, and restore notes
+
+  ## What you'll need to connect
+  **Required:**
+  - **Mem Account**: Sign in through Mem when OAuth opens
+metadata:
+  categories: Knowledge & Memory, Productivity, SaaS & API Integrations
+icon: https://docs.mem.ai/mintlify-assets/_mintlify/favicons/mem/YlDIdVjHL79F2fo4/_generated/favicon/android-chrome-192x192.png
+repoURL: https://docs.mem.ai/mcp/overview
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.mem.ai/mcp

@@ -1,0 +1,26 @@
+name: Craft
+entryKey: obot-craft
+serverUserType: singleUser
+shortDescription: Read, search, create, and update documents in your Craft workspace
+description: |
+  Read and search Craft documents, then create or update workspace content from your connected AI tools. See the [Craft MCP guide](https://www.craft.do/imagine/guide/mcp) for generic-client setup, OAuth authorization, and example workflows.
+
+  ## Features
+  - Read and summarize documents from an authorized Craft space
+  - Search workspace notes and structured content
+  - Create new documents and add content to existing documents
+  - Update notes and write research or generated content back to Craft
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Craft Account**: Sign in through Craft when the OAuth connection opens
+  - **Craft Space**: Select and approve the workspace the connector may access
+
+metadata:
+  categories: Productivity, Notes, Collaboration
+icon: https://www.craft.do/share/static/favicon-32x32-light.png
+repoURL: https://www.craft.do/imagine/guide/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.craft.do/my/mcp

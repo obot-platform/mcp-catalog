@@ -1,0 +1,26 @@
+name: iManage Work
+entryKey: obot-imanage-work
+serverUserType: singleUser
+shortDescription: Search, retrieve, organize, and update governed legal work product
+description: |
+  Search, retrieve, organize, and update governed documents, folders, and workspaces in iManage Work. See the [iManage Work MCP client guide](https://docs.imanage.com/ai/mcpserver-user-help/en-US/Adding_MCP_connectors_for_ChatGPT.html) for endpoint setup, OAuth, custom subdomains, and permissions.
+
+  ## Features
+  - Search workspaces, folders, documents, profiles, and recent content
+  - Download document text, inspect versions, and read CSV rows
+  - Create workspaces, folders, and document relationships when permitted
+  - Upload or move documents and update workspace or document profiles
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **iManage Work Account**: Available libraries, documents, and actions follow your account permissions
+  - **MCP Client Access**: Your administrator controls enabled clients, scopes, and tools
+
+metadata:
+  categories: Legal, Document Management, Productivity
+icon: https://imanage.com/favicon.ico
+repoURL: https://docs.imanage.com/ai/mcpserver-user-help/en-US/Adding_MCP_connectors_for_ChatGPT.html
+runtime: remote
+remoteConfig:
+  fixedURL: https://cloudimanage.com/mcp/work

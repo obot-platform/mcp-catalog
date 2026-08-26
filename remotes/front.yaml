@@ -1,0 +1,27 @@
+name: Front
+entryKey: obot-front
+serverUserType: singleUser
+shortDescription: Triage conversations, draft replies, manage contacts, and coordinate inbox work
+description: |
+  Search and triage omnichannel conversations, draft or send replies, post internal comments, and manage contacts, tags, assignments, and status in Front. See the [Front MCP server guide](https://help.front.com/en/articles/4883136) for beta availability, supported clients, permissions, and setup.
+
+  ## Features
+  - Search and read email, SMS, chat, and custom-channel conversations
+  - Draft and send replies using full conversation context
+  - Read and post internal comments for team coordination
+  - Tag, assign, update status, and search or update contacts
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Front Account**: Your Front role and inbox permissions remain enforced
+  - **Front Developer App**: A workspace administrator must create a private OAuth app, register the redirect URI shown by Obot, and select the allowed MCP permissions
+
+metadata:
+  categories: Communication, Customer Support, Productivity
+icon: https://front.com/favicon-32x32.png
+repoURL: https://help.front.com/en/articles/4883136
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.frontapp.com/mcp
+  staticOAuthRequired: true

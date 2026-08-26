@@ -1,0 +1,25 @@
+name: Whimsical
+entryKey: obot-whimsical
+serverUserType: singleUser
+shortDescription: Create diagrams and wireframes, then search and reference workspace files
+description: |
+  Create flowcharts, sequence diagrams, mind maps, and wireframe outlines, then search and reference files in your Whimsical workspace. See the [Whimsical MCP guide](https://whimsical.com/learn/integrations/mcp) for setup, OAuth, supported clients, and example workflows.
+
+  ## Features
+  - Generate process and sequence diagrams from prompts or code
+  - Create mind maps, wireframes, and visual planning documents
+  - Search and read existing Whimsical workspace files
+  - Return links and supported interactive previews for generated content
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Whimsical Account**: Sign in through Whimsical when the OAuth connection opens
+
+metadata:
+  categories: Design, Productivity, Collaboration
+icon: https://whimsical.com/_next_public/favicon-32.png
+repoURL: https://whimsical.com/learn/integrations/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.whimsical.com/mcp
