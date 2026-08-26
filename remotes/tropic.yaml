@@ -1,0 +1,16 @@
+name: Tropic
+entryKey: obot-tropic
+serverUserType: singleUser
+shortDescription: Analyze suppliers, contracts, spending, and procurement activity
+description: |
+  Query Tropic supplier, contract, spend, and procurement records to support sourcing and vendor-management workflows. See the [official MCP documentation](https://help.tropicapp.io/hc/en-us/articles/45502083594267-Using-Model-Context-Protocol-MCP-with-Tropic) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Procurement, Finance, SaaS & API Integrations
+icon: https://cdn.prod.website-files.com/6676e796800e7ce0354cf8cb/6695c8d4c7c2e4608545d9ab_Tropic%20Logo.svg
+repoURL: https://help.tropicapp.io/hc/en-us/articles/45502083594267-Using-Model-Context-Protocol-MCP-with-Tropic
+runtime: remote
+remoteConfig:
+  fixedURL: https://app.tropicapp.io/mcp

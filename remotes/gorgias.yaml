@@ -1,0 +1,16 @@
+name: Gorgias
+entryKey: obot-gorgias
+serverUserType: singleUser
+shortDescription: Work with customer tickets, messages, customers, and support data
+description: |
+  Search and manage Gorgias customer-support tickets, messages, customers, and related ecommerce service context. See the [official MCP documentation](https://docs.gorgias.com/en-US/connect-your-ai-assistant-to-the-gorgias-mcp-6310546) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Customer Support, Commerce, SaaS & API Integrations
+icon: https://mcp.gorgias.com/assets/logo.svg
+repoURL: https://docs.gorgias.com/en-US/connect-your-ai-assistant-to-the-gorgias-mcp-6310546
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.gorgias.com/mcp

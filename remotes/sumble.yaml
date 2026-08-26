@@ -1,0 +1,16 @@
+name: Sumble
+entryKey: obot-sumble
+serverUserType: singleUser
+shortDescription: Research companies, technologies, competitors, and buying signals
+description: |
+  Deep-research accounts with Sumble company, technology, competitive, and market-signal data for sales and strategy workflows. See the [official MCP documentation](https://sumble.com/mcp) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Sales, Research, Data & Analytics
+icon: https://sumble.com/logo512.png
+repoURL: https://sumble.com/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.sumble.com

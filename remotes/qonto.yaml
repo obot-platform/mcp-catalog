@@ -1,0 +1,16 @@
+name: Qonto
+entryKey: obot-qonto
+serverUserType: singleUser
+shortDescription: Access business banking balances, transactions, and finance data
+description: |
+  Query Qonto business-finance information, including accounts, balances, transactions, and related operational records. See the [official MCP documentation](https://mcp.qonto.com/explorer) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Finance, Banking, SaaS & API Integrations
+icon: https://qonto.com/blog/assets/logo-7d4cecd23c516a73d28522b73227cb8bdc80cbbe1d7c83d9228a7e0ab84a0852.svg
+repoURL: https://mcp.qonto.com/explorer
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.qonto.com/mcp

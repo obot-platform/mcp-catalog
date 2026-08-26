@@ -1,0 +1,16 @@
+name: Enterpret
+entryKey: obot-enterpret
+serverUserType: singleUser
+shortDescription: Analyze customer feedback, themes, and product insights
+description: |
+  Query Enterpret customer feedback, themes, trends, and supporting records to investigate product experience and customer needs. See the [official MCP documentation](https://helpcenter.enterpret.com/en/articles/12665166-enterpret-mcp-server) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Customer Support, Product Management, Data & Analytics
+icon: https://static.intercomassets.com/assets/educate/educate-favicon-64x64-at-2x-927537d8befbba4d43f480bd5281dfe502b9153f2a430582f3f92daa34b916f7.png
+repoURL: https://helpcenter.enterpret.com/en/articles/12665166-enterpret-mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://wisdom-api.enterpret.com/server/mcp

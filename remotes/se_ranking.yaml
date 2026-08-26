@@ -1,0 +1,16 @@
+name: SE Ranking
+entryKey: obot-se-ranking
+serverUserType: singleUser
+shortDescription: Analyze rankings, keywords, competitors, and SEO performance
+description: |
+  Query SE Ranking keyword, ranking, competitor, backlink, and site-performance data for search-optimization workflows. See the [official MCP documentation](https://seranking.com/api/integrations/mcp/) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SEO, Marketing, Data & Analytics
+icon: https://seranking.com/wp-content/themes/se_theme/images/favicons/favicon_48x48.svg?v=2
+repoURL: https://seranking.com/api/integrations/mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.seranking.com/mcp

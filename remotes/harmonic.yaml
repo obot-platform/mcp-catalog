@@ -1,0 +1,16 @@
+name: Harmonic
+entryKey: obot-harmonic
+serverUserType: singleUser
+shortDescription: Research companies, people, funding, and startup-market signals
+description: |
+  Search Harmonic company and people data, inspect funding and growth signals, and build startup and market research workflows. See the [official MCP documentation](https://support.harmonic.ai/en/articles/12785899-harmonic-mcp-server-getting-started-guide) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Sales, Research, Data & Analytics
+icon: https://intercom.help/harmonic/assets/favicon
+repoURL: https://support.harmonic.ai/en/articles/12785899-harmonic-mcp-server-getting-started-guide
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.api.harmonic.ai

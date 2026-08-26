@@ -44,6 +44,10 @@ records:
     name: lemlist
     status: imported
     catalog_entry: remotes/lemlist.yaml
+  - id: 064e137e-4712-4a68-abc8-c42e077f5e78
+    name: Solve Intelligence
+    status: imported
+    catalog_entry: remotes/solve_intelligence.yaml
   - id: 069b18da-5c89-4a66-941f-0cb6eae49a8d
     name: Fellow.ai
     status: imported
@@ -72,6 +76,10 @@ records:
     name: Ahrefs
     status: imported
     catalog_entry: remotes/ahrefs.yaml
+  - id: 0c501c77-e4a2-40a6-8fe9-f386595a7976
+    name: Splice
+    status: imported
+    catalog_entry: remotes/splice.yaml
   - id: 0cce5c8c-7590-41d0-abbe-aa5c64961ac0
     name: Lucid
     status: imported
@@ -104,6 +112,10 @@ records:
     name: Strava
     status: imported
     catalog_entry: remotes/strava.yaml
+  - id: 1561bc95-0862-4c90-8720-6ac8d683340e
+    name: Tropic
+    status: imported
+    catalog_entry: remotes/tropic.yaml
   - id: 165b06c0-1959-451d-a8d0-c413295b84a2
     name: Ramp Data
     status: imported
@@ -112,6 +124,10 @@ records:
     name: Base44
     status: imported
     catalog_entry: remotes/base44.yaml
+  - id: 1bdc2099-1cf5-4b5e-bf03-76ca9c6c6248
+    name: Readwise
+    status: imported
+    catalog_entry: remotes/readwise.yaml
   - id: 1bdcb159-b6f0-4f13-bc08-fdb40b007828
     name: Vibe Prospecting
     status: skipped
@@ -176,6 +192,10 @@ records:
     name: HyperFrames by HeyGen
     status: imported
     catalog_entry: remotes/hyperframes.yaml
+  - id: 27e16103-e402-4223-b8b2-a7324bfdebab
+    name: Harmonic
+    status: imported
+    catalog_entry: remotes/harmonic.yaml
   - id: 29d60a67-6f16-489b-8a1e-efdcece8d1f6
     name: Mixpanel
     status: imported
@@ -224,6 +244,10 @@ records:
     name: Plaud
     status: imported
     catalog_entry: remotes/plaud.yaml
+  - id: 33e1b084-f45e-4fa3-951a-b08ad61101c9
+    name: Neon
+    status: existing
+    catalog_entry: remotes/neon.yaml
   - id: 34269403-d1cc-468f-8c0d-4bd01e8042c8
     name: PlayMCP
     status: imported
@@ -316,6 +340,10 @@ records:
     name: Motion Creative Analytics
     status: imported
     catalog_entry: remotes/motion_creative_analytics.yaml
+  - id: 48425fdb-37c1-408d-9606-30e16847b6a8
+    name: Blockscout
+    status: imported
+    catalog_entry: remotes/blockscout.yaml
   - id: 487a895f-84d3-4c21-925f-c6c3552b94cc
     name: Booking.com
     status: skipped
@@ -344,6 +372,10 @@ records:
     name: Xero
     status: skipped
     reason: Hosted endpoint lacks official documentation establishing third-party OAuth client support outside Claude.
+  - id: 4c33089c-a82b-4e4d-bfa3-b6cdde6f7e90
+    name: Gorgias MCP
+    status: imported
+    catalog_entry: remotes/gorgias.yaml
   - id: 4d608ca4-1664-4ddd-be1c-c88c0ea2ec7e
     name: Granola
     status: imported
@@ -372,6 +404,10 @@ records:
     name: PandaDoc
     status: imported
     catalog_entry: remotes/pandadoc.yaml
+  - id: 56de4854-49c8-4f8f-a53a-4badef6a472f
+    name: Qonto
+    status: imported
+    catalog_entry: remotes/qonto.yaml
   - id: 5775e1f2-124a-4f56-be6c-105a5cb33acc
     name: TomTom Maps
     status: imported
@@ -416,6 +452,14 @@ records:
     name: DataHub
     status: imported
     catalog_entry: remotes/datahub.yaml
+  - id: 5e24272b-98c0-4d42-9ff8-0c86a65cf00d
+    name: Numeric
+    status: imported
+    catalog_entry: remotes/numeric.yaml
+  - id: 5e72079c-eae5-494c-87a4-d5af7361b7d7
+    name: Teamtailor
+    status: imported
+    catalog_entry: remotes/teamtailor.yaml
   - id: 5e90e841-ba8a-433e-9303-cd41820de915
     name: Anthropic Economic Index
     status: skipped
@@ -684,6 +728,10 @@ records:
     name: LatchBio
     status: imported
     catalog_entry: remotes/latchbio.yaml
+  - id: a034aa1a-a6b5-418e-9fa3-43cf80e2a611
+    name: Grain
+    status: imported
+    catalog_entry: remotes/grain.yaml
   - id: a0ea0811-dabc-4b51-903a-d762fec4afcb
     name: IFTTT
     status: imported
@@ -772,6 +820,10 @@ records:
     name: Intercom
     status: imported
     catalog_entry: remotes/intercom.yaml
+  - id: b3dd180f-5722-4194-af20-b253347d4f7b
+    name: Inductive Bio
+    status: imported
+    catalog_entry: remotes/inductive_bio.yaml
   - id: b66b1fcc-a173-4cc4-8060-a7cf0e971a9c
     name: Mintlify
     status: imported
@@ -876,6 +928,14 @@ records:
     name: Microsoft 365
     status: skipped
     reason: Anthropic-hosted connector requires Claude-specific Microsoft Entra applications and Claude organization enablement, so it is not portable to Obot.
+  - id: ce5cb342-4965-4ab1-b725-48ba06b72bbc
+    name: Enterpret
+    status: imported
+    catalog_entry: remotes/enterpret.yaml
+  - id: cec39b4a-ee57-40e4-be4e-0e9ceddcb4a0
+    name: Sumble
+    status: imported
+    catalog_entry: remotes/sumble.yaml
   - id: cf2b53a4-45ef-4541-9425-0116d42286ca
     name: Gusto
     status: imported
@@ -888,6 +948,10 @@ records:
     name: Tableau Cloud
     status: existing
     catalog_entry: remotes/tableau_cloud.yaml
+  - id: d3465044-2411-44d2-9272-9da38ad56cba
+    name: SE Ranking
+    status: imported
+    catalog_entry: remotes/se_ranking.yaml
   - id: d3b03e81-aeaa-42bf-9c52-5270d5273b2d
     name: WorkOS
     status: imported

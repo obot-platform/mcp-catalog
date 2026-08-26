@@ -1,0 +1,16 @@
+name: Splice
+entryKey: obot-splice
+serverUserType: singleUser
+shortDescription: Search sounds and explore music-production resources
+description: |
+  Search the Splice sound catalog and retrieve music-production context and assets for creative agent workflows. See the [official MCP documentation](https://support.splice.com/en/articles/14442749-getting-started-with-the-splice-mcp-server-beta) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Music, Search, Creative Tools
+icon: https://static.intercomassets.com/assets/educate/educate-favicon-64x64-at-2x-927537d8befbba4d43f480bd5281dfe502b9153f2a430582f3f92daa34b916f7.png
+repoURL: https://support.splice.com/en/articles/14442749-getting-started-with-the-splice-mcp-server-beta
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.splice.com/mcp

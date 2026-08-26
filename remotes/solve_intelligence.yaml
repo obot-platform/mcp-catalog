@@ -1,0 +1,16 @@
+name: Solve Intelligence
+entryKey: obot-solve-intelligence
+serverUserType: singleUser
+shortDescription: Research patents and support intellectual-property analysis
+description: |
+  Use Solve Intelligence patent research and analysis capabilities to investigate prior art, claims, and intellectual-property questions. See the [official MCP documentation](https://api.solveintelligence.com/guide/mcp/intro/) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Legal, Research, Search
+icon: https://cdn.prod.website-files.com/6a3bc5ce3cbfe3ee9f91aa1c/6a422d014032a1df5dda0bf9_SolveAI-Logo.svg
+repoURL: https://api.solveintelligence.com/guide/mcp/intro/
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.solveintelligence.com/mcp/

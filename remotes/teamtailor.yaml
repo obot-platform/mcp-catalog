@@ -1,0 +1,16 @@
+name: Teamtailor
+entryKey: obot-teamtailor
+serverUserType: singleUser
+shortDescription: Manage recruiting candidates, jobs, interviews, and hiring workflows
+description: |
+  Query and manage Teamtailor recruiting information across candidates, jobs, interviews, and hiring-team workflows. See the [official MCP documentation](https://support.teamtailor.com/en/articles/15842409-connect-an-ai-assistant-to-teamtailor-using-mcp) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Human Resources, Productivity, SaaS & API Integrations
+icon: https://intercom.help/teamtailor/assets/favicon
+repoURL: https://support.teamtailor.com/en/articles/15842409-connect-an-ai-assistant-to-teamtailor-using-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.teamtailor.com/mcp

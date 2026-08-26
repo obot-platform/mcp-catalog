@@ -1,0 +1,16 @@
+name: Blockscout
+entryKey: obot-blockscout
+serverUserType: singleUser
+shortDescription: Explore blockchain addresses, transactions, tokens, and contracts
+description: |
+  Query Blockscout blockchain explorer data for addresses, transactions, tokens, smart contracts, and supported networks. See the [official MCP documentation](https://github.com/blockscout/mcp-server) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Blockchain, Developer Tools, Data & Analytics
+icon: https://avatars.githubusercontent.com/u/45625840?s=280&v=4
+repoURL: https://github.com/blockscout/mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.blockscout.com/mcp

@@ -1,0 +1,16 @@
+name: Readwise
+entryKey: obot-readwise
+serverUserType: singleUser
+shortDescription: Search highlights, books, articles, and reading knowledge
+description: |
+  Search and retrieve Readwise highlights and reading-library content so agents can use accumulated books, articles, and notes. See the [official MCP documentation](https://readwise.io/mcp) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Knowledge & Memory, Productivity, Search
+icon: https://d34adp677peecb.cloudfront.net/static/images/new_icons/logo-standalone-dark.3c96569ac523.svg
+repoURL: https://readwise.io/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp2.readwise.io/mcp

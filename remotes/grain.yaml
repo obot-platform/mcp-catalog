@@ -1,0 +1,16 @@
+name: Grain
+entryKey: obot-grain
+serverUserType: singleUser
+shortDescription: Search meeting transcripts, notes, accounts, and deal intelligence
+description: |
+  Search Grain meetings, transcripts, notes, participants, accounts, coaching feedback, and connected deal information. See the [official MCP documentation](https://developers.grain.com/mcp) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Communication, Sales, Data & Analytics
+icon: https://media.grain.com/public/developer-docs/Screenshot_2025-06-16_at_3.14.59_PM.png
+repoURL: https://developers.grain.com/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.grain.com/_/mcp

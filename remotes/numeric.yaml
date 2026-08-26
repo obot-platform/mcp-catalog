@@ -1,0 +1,16 @@
+name: Numeric
+entryKey: obot-numeric
+serverUserType: singleUser
+shortDescription: Investigate accounting data and automate close workflows
+description: |
+  Access Numeric accounting context, reconciliations, close tasks, and financial reporting data from compatible AI assistants. See the [official MCP documentation](https://help.numeric.io/articles/7292808089-numeric-mcp-server) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: Finance, Accounting, Productivity
+icon: https://avatars.slack-edge.com/2022-09-17/4109623488609_d62c3a07948cfbc9398b_88.png
+repoURL: https://help.numeric.io/articles/7292808089-numeric-mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.numeric.io/mcp
