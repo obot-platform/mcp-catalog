@@ -114,8 +114,15 @@ jobs:
 
           updated_files = []
 
-          # Find all YAML files in the repository
-          yaml_files = list(Path('.').glob('*.yaml')) + list(Path('.').glob('*.yml'))
+          # Catalog entries live at the repository root and under obot-images.
+          # Keep discovery scoped to those locations so workflow/configuration YAML
+          # elsewhere in the repository can never be modified by this dispatch.
+          yaml_files = sorted({
+              *Path('.').glob('*.yaml'),
+              *Path('.').glob('*.yml'),
+              *Path('obot-images').rglob('*.yaml'),
+              *Path('obot-images').rglob('*.yml'),
+          })
 
           for yaml_file in yaml_files:
               try:
