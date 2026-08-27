@@ -1,0 +1,39 @@
+name: Xquik
+shortDescription: Search, extract, monitor, and automate X data through a remote MCP server
+description: |
+  A remote Model Context Protocol (MCP) server for Xquik, an X data platform with REST endpoints, extraction jobs, webhooks, monitors, compose workflows, and write actions.
+
+  ## Features
+  - **API Discovery**: Search the Xquik API specification before making live calls
+  - **X Data Access**: Search tweets, look up users, fetch timelines, inspect articles, and download media
+  - **Bulk Extraction**: Run 23 extraction tools for followers, following, replies, quotes, retweets, mentions, communities, lists, spaces, likes, and media
+  - **Automation**: Manage monitors, webhooks, drafts, draws, and compose workflows
+  - **Write Workflows**: Post tweets, manage likes, retweets, follows, DMs, profile media, and connected accounts through authenticated requests
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Xquik API Key**: Create an API key from the Xquik dashboard and send it with each MCP request
+
+metadata:
+  categories: Developer Tools, SaaS & API Integrations, Data & Analytics
+icon: https://xquik.com/icon.svg
+repoURL: https://docs.xquik.com/mcp/overview
+runtime: remote
+remoteConfig:
+  fixedURL: https://xquik.com/mcp
+  headers:
+  - name: Xquik API Key
+    description: Xquik API key
+    key: X-API-Key
+    required: true
+    sensitive: true
+toolPreview:
+- name: explore
+  description: Search and browse Xquik API endpoints before making live API calls.
+  params:
+    code: Async arrow function that filters spec.endpoints and returns matching endpoint details
+- name: xquik
+  description: Execute authenticated Xquik API calls with xquik.request(path, options).
+  params:
+    code: Async arrow function that calls xquik.request with method, query, or body options
