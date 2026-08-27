@@ -1,0 +1,16 @@
+name: "pg-aiguide"
+entryKey: obot-pg-aiguide
+serverUserType: singleUser
+shortDescription: "Search pg and Tiger docs, learn database skills"
+description: |
+  Search pg and Tiger docs, learn database skills. See the [official MCP documentation](https://github.com/timescale/pg-aiguide) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://assets.tigerdata.com/timescale-web/brand/tiger-data/flat-logos/logo-badge-yellow.svg
+repoURL: https://github.com/timescale/pg-aiguide
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.tigerdata.com/docs

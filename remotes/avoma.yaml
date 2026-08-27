@@ -1,0 +1,16 @@
+name: "Avoma"
+entryKey: obot-avoma
+serverUserType: singleUser
+shortDescription: "Get meeting insights from your Avoma workspace and power workflows."
+description: |
+  Get meeting insights from your Avoma workspace and power workflows. See the [official MCP documentation](https://help.avoma.com/getting-started-with-avoma-mcp-connector) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://cdn.prod.website-files.com/5de236b4d41434460ade73ac/5de60e3eb8a0ed66a1aed92b_Avoma-Icon-Color-32.png
+repoURL: https://help.avoma.com/getting-started-with-avoma-mcp-connector
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.avoma.com/mcp

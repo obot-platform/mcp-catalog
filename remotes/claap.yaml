@@ -1,0 +1,22 @@
+name: "Claap"
+entryKey: obot-claap
+serverUserType: singleUser
+shortDescription: "Your sales context, inside Claude. Ask about any deal, call or objection and get a sourced answer in seconds."
+description: |
+  Search sales calls, transcripts, emails, contacts, companies, and deals, and publish generated slides. See the [official MCP documentation](https://help.claap.io/en/articles/11786373-use-claap-mcp-server-for-advanced-workflows) for endpoint and API-key setup.
+
+  ## What you'll need to connect
+  - **Claap API Key**: Create an API key using Claap's API settings
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://docs.claap.io/mintlify-assets/_mintlify/favicons/claap/AwYA9NJAGBBKxk5c/_generated/favicon/apple-touch-icon.png
+repoURL: https://help.claap.io/en/articles/11786373-use-claap-mcp-server-for-advanced-workflows
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.claap.io/mcp
+  headers:
+    - name: Claap Authorization
+      description: Enter Bearer followed by a space and your Claap API key.
+      key: Authorization
+      required: true
+      sensitive: true

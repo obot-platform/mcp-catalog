@@ -1,0 +1,16 @@
+name: "Modjo"
+entryKey: obot-modjo
+serverUserType: singleUser
+shortDescription: "Give your team instant answers from every sales conversation and win more deals"
+description: |
+  Give your team instant answers from every sales conversation and win more deals. See the [official MCP documentation](https://help.modjo.ai/en/articles/15459539-set-up-and-use-the-modjo-mcp) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://d391wg3w2nw0ox.cloudfront.net/modjoexternalreview.png
+repoURL: https://help.modjo.ai/en/articles/15459539-set-up-and-use-the-modjo-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.mcp.modjo.ai/v1/mcp

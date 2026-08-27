@@ -1,0 +1,16 @@
+name: "Coverbase"
+entryKey: obot-coverbase
+serverUserType: singleUser
+shortDescription: "Query and manage your third-party risk, security, and procurement program: vendors, assessments, findings, con"
+description: |
+  Query and manage your third-party risk, security, and procurement program: vendors, assessments, findings, con. See the [official MCP documentation](https://docs.coverbase.com/mcp/overview) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://mcp.coverbase.app/logo.png
+repoURL: https://docs.coverbase.com/mcp/overview
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.coverbase.app/mcp

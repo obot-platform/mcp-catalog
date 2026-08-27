@@ -1,0 +1,16 @@
+name: "PGA – Play Golf"
+entryKey: obot-pga-play-golf
+serverUserType: singleUser
+shortDescription: "Find PGA golf coaches, programs, lessons, and player-development resources"
+description: |
+  Find PGA golf coaches, programs, lessons, and player-development resources by location. See the [official MCP documentation](https://mcp.pga.com/) for portable client setup, the exact endpoint, and supported tools.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://www.pga.com/images/logos/pga-of-america-logo-blue-on-transparent-cropped.png
+repoURL: https://mcp.pga.com/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.pga.com/mcp

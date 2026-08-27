@@ -1,0 +1,16 @@
+name: "Macaly"
+entryKey: obot-macaly
+serverUserType: singleUser
+shortDescription: "Turn a prompt into a live web app. Create, iterate on, and deploy Macaly apps directly from Claude."
+description: |
+  Turn a prompt into a live web app. Create, iterate on, and deploy Macaly apps directly from Claude. See the [official MCP documentation](https://www.macaly.com/docs/en/integrations/mcp) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://www.macaly.com/favicon.svg
+repoURL: https://www.macaly.com/docs/en/integrations/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://www.macaly.com/api/mcp/mcp

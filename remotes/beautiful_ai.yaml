@@ -1,0 +1,16 @@
+name: "Beautiful.ai"
+entryKey: obot-beautiful-ai
+serverUserType: singleUser
+shortDescription: "Turn ideas into beautiful presentations."
+description: |
+  Turn ideas into beautiful presentations. See the [official MCP documentation](https://support.beautiful.ai/hc/en-us/articles/44246954338829-Beautiful-ai-MCP-Quick-Setup-FAQ) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://cdn.prod.website-files.com/59deb588800ae30001ec19c9/691b4ac8c1ffe0a062a23de7_BAI%20Favicon.png
+repoURL: https://support.beautiful.ai/hc/en-us/articles/44246954338829-Beautiful-ai-MCP-Quick-Setup-FAQ
+runtime: remote
+remoteConfig:
+  fixedURL: https://openai-mcp-696419881849.us-central1.run.app/mcp

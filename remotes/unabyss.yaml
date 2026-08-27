@@ -1,0 +1,16 @@
+name: "Unabyss"
+entryKey: obot-unabyss
+serverUserType: singleUser
+shortDescription: "Shared memory for every AI tool you use."
+description: |
+  Shared memory for every AI tool you use. See the [official MCP documentation](https://unabyss.com/mcp-docs) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://unabyss.com/logo.svg
+repoURL: https://unabyss.com/mcp-docs
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.unabyss.com

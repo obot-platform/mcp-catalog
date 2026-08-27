@@ -1,0 +1,16 @@
+name: "WalkMyPlan — AI Home Design & 3D Floor Plans"
+entryKey: obot-walkmyplan-ai-home-design-3d-floor-plans
+serverUserType: singleUser
+shortDescription: "Turn floor plans into editable 3D models and walkthroughs from chat"
+description: |
+  Turn DWG, DXF, PDF, DWFX, and IFC floor plans into editable 3D models and walkthroughs from chat. See the [official MCP documentation](https://www.walkmyplan.com/docs.html) for the exact endpoint, OAuth sign-in, and portable client setup.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://mcp.walkmyplan.com/favicon.ico
+repoURL: https://www.walkmyplan.com/docs.html
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.walkmyplan.com/mcp

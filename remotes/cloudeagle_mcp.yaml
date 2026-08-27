@@ -1,0 +1,16 @@
+name: "CloudEagle MCP"
+entryKey: obot-cloudeagle-mcp
+serverUserType: singleUser
+shortDescription: "One Command Center for SaaS, AI, and Identity Governance"
+description: |
+  One Command Center for SaaS, AI, and Identity Governance. See the [official MCP documentation](https://mcp.cloudeagle.ai/guide) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://cdn.prod.website-files.com/6328b08024588b7562330103/660957e9b0969e1098e75aea_updated-logo-blue.svg
+repoURL: https://mcp.cloudeagle.ai/guide
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.cloudeagle.ai/mcp

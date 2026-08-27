@@ -1,0 +1,16 @@
+name: "Zylo"
+entryKey: obot-zylo
+serverUserType: singleUser
+shortDescription: "View, update, and manage your SaaS portfolio"
+description: |
+  View, update, and manage your SaaS portfolio. See the [official MCP documentation](https://developer.zylo.com/reference/getting-started-mcp) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://s3.us-east-1.amazonaws.com/logos-production.zylo.com/zylo_z_transparent_132height.png
+repoURL: https://developer.zylo.com/reference/getting-started-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.zylo.com/mcp

@@ -1,0 +1,16 @@
+name: "Zite"
+entryKey: obot-zite
+serverUserType: singleUser
+shortDescription: "Manage and query your Zite data"
+description: |
+  Manage and query your Zite data. See the [official MCP documentation](https://www.zite.com/help/database/mcp/mcp-overview) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://cdn.prod.website-files.com/693ad62eeb48e420b2465a58/6984d179969335ec6c3c7b99_zite-icon.svg
+repoURL: https://www.zite.com/help/database/mcp/mcp-overview
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.fillout.com/mcp

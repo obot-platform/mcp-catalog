@@ -1,0 +1,16 @@
+name: "Realize MCP"
+entryKey: obot-realize-mcp
+serverUserType: singleUser
+shortDescription: "Create, manage, and analyze Realize advertising campaigns through natural language."
+description: |
+  Create, manage, and analyze Realize advertising campaigns through natural language. See the [official MCP documentation](https://developers.taboola.com/backstage-api/reference/realize-mcp) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://realize.com/wp-content/themes/hello-elementor-child/images/favicon.png
+repoURL: https://developers.taboola.com/backstage-api/reference/realize-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.realize.com/mcp

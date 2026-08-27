@@ -1,0 +1,16 @@
+name: "Planning Center"
+entryKey: obot-planning-center
+serverUserType: singleUser
+shortDescription: "Query people, events, attendance, giving, schedules, and other church data"
+description: |
+  Query people, events, attendance, giving, schedules, registrations, groups, and other church data in Planning Center. See the [official MCP documentation](https://help.planningcenter.com/en/151880-connect-ai-tools-to-planning-center.html) for portable client setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://a-us.storyblok.com/f/1002845/512x512/bb81c2f8da/favicon-claude-mcp.png
+repoURL: https://help.planningcenter.com/en/151880-connect-ai-tools-to-planning-center.html
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.planningcenteronline.com/mcp

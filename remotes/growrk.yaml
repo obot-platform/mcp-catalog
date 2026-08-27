@@ -1,0 +1,16 @@
+name: "Growrk"
+entryKey: obot-growrk
+serverUserType: singleUser
+shortDescription: "IT asset and device lifecycle management for distributed teams, right inside Claude."
+description: |
+  IT asset and device lifecycle management for distributed teams, right inside Claude. See the [official MCP documentation](https://guides.growrk.com/other-features/mcp) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://app.growrk.com/mcp/growrk.png
+repoURL: https://guides.growrk.com/other-features/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://ai.growrk.com/mcp

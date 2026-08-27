@@ -1,0 +1,16 @@
+name: "Vuetify MCP"
+entryKey: obot-vuetify-mcp
+serverUserType: singleUser
+shortDescription: "Official Vuetify docs, APIs, and bins for AI agents"
+description: |
+  Official Vuetify docs, APIs, and bins for AI agents. See the [official MCP documentation](https://0.vuetifyjs.com/guide/tooling/vuetify-mcp) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://cdn.vuetifyjs.com/docs/images/brand-kit/v-logo.svg
+repoURL: https://0.vuetifyjs.com/guide/tooling/vuetify-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.vuetifyjs.com/mcp

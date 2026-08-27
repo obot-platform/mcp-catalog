@@ -1,0 +1,16 @@
+name: "Ryanair"
+entryKey: obot-ryanair
+serverUserType: singleUser
+shortDescription: "Explore Ryanair routes and find cheap flights"
+description: |
+  Explore Ryanair routes and find cheap flights. See the [official MCP documentation](https://services-api.ryanair.com/mcp-server/docs) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://assets.ryanair.com/resources/ui/icons/ryanair-logomark.svg
+repoURL: https://services-api.ryanair.com/mcp-server/docs
+runtime: remote
+remoteConfig:
+  fixedURL: https://services-api.ryanair.com/mcp-server/mcp

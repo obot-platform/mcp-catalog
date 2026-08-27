@@ -1,0 +1,16 @@
+name: "Stocklake"
+entryKey: obot-stocklake
+serverUserType: singleUser
+shortDescription: "Real-time stock data, AI signals & market intelligence"
+description: |
+  Real-time stock data, AI signals & market intelligence. See the [official MCP documentation](https://www.stocklake.dev/docs) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Stocklake account**: Sign in with a magic link through the OAuth flow; an API-key fallback is documented for clients without OAuth
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://api.stocklake.dev/favicon.svg
+repoURL: https://www.stocklake.dev/docs
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.stocklake.dev/mcp

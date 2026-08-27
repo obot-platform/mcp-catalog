@@ -1,0 +1,16 @@
+name: "AfterShip Channels for TikTok Shop"
+entryKey: obot-aftership-channels-for-tiktok-shop
+serverUserType: singleUser
+shortDescription: "List, sync & grow your TikTok Shop business"
+description: |
+  List, sync & grow your TikTok Shop business. See the [official MCP documentation](https://www.aftership.com/docs/channels-mcp/what-is-mcp) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://websites.am-static.com/assets/brands/glyph/aftership_feed.svg
+repoURL: https://www.aftership.com/docs/channels-mcp/what-is-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.aftership.com/channels

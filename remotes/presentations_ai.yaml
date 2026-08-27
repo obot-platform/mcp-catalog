@@ -1,0 +1,16 @@
+name: "Presentations.AI"
+entryKey: obot-presentations-ai
+serverUserType: singleUser
+shortDescription: "Create slides and decks from topics, text, or files"
+description: |
+  Create slides and decks from topics, text, or files. See the [official MCP documentation](https://console.presentations.ai/apiref/docs/) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://cdn.presentations.ai/images/applogo_icon_full.png
+repoURL: https://console.presentations.ai/apiref/docs/
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.presentations.ai/mcp

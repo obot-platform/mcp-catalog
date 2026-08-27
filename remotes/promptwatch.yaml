@@ -1,0 +1,22 @@
+name: "Promptwatch"
+entryKey: obot-promptwatch
+serverUserType: singleUser
+shortDescription: "Track your visibility in AI search and improve it"
+description: |
+  Analyze brand visibility in AI search, cited sources, competitor coverage, content gaps, and AI-referred traffic. See the [official MCP setup guide](https://promptwatch.com/docs/mcp/setup) for endpoint and API-key instructions.
+
+  ## What you'll need to connect
+  - **Promptwatch API Key**: Create one under Settings → API Keys in the Promptwatch dashboard
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://promptwatch.com/favicon.svg
+repoURL: https://promptwatch.com/docs/mcp/setup
+runtime: remote
+remoteConfig:
+  fixedURL: https://server.promptwatch.com/mcp
+  headers:
+    - name: Promptwatch Authorization
+      description: Enter Bearer followed by a space and your Promptwatch API key.
+      key: Authorization
+      required: true
+      sensitive: true

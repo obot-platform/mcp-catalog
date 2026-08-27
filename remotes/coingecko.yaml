@@ -1,0 +1,16 @@
+name: "CoinGecko"
+entryKey: obot-coingecko
+serverUserType: singleUser
+shortDescription: "Live cryptocurrency prices, comparisons, charts, and market context."
+description: |
+  Live cryptocurrency prices, comparisons, charts, and market context. See the [official MCP documentation](https://docs.coingecko.com/) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://www.coingecko.com/favicon-96x96.png
+repoURL: https://docs.coingecko.com/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.coingecko.com/mcp

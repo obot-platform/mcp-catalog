@@ -1,0 +1,16 @@
+name: "RingCentral Chat"
+entryKey: obot-ringcentral-chat
+serverUserType: singleUser
+shortDescription: "Stay on top of team communications and collaborate in RingCentral Team Chat directly within Claude."
+description: |
+  Stay on top of team communications and collaborate in RingCentral Team Chat directly within Claude. See the [official MCP documentation](https://mcp.labs.ringcentral.com/docs/servers/ringex-chat/) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://assets-developers.ringcentral.com/app/logo/88DWlp6XQ7eS48OwbMYsVw~f5vX_dY7SpK-_EUsEkJdqA/e6666b88-1310-49df-9dbf-afefb24a99ce.png
+repoURL: https://mcp.labs.ringcentral.com/docs/servers/ringex-chat/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.labs.ringcentral.com/ringex/v1.1.0/team-chat

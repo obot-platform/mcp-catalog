@@ -1,0 +1,16 @@
+name: "PocketSmith Complete Access"
+entryKey: obot-pocketsmith-complete-access
+serverUserType: singleUser
+shortDescription: "Manage transactions, budgets, forecasts, accounts, and spending insights in PocketSmith"
+description: |
+  Manage transactions, budgets, forecasts, accounts, and spending insights with PocketSmith's complete-access tool set. See the [official MCP documentation](https://developers.pocketsmith.com/docs/pocketsmith-mcp-server) for the exact endpoint, OAuth setup, and supported clients.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://pocketsmith-assets.s3.us-east-1.amazonaws.com/pocketsmith-device-square.png
+repoURL: https://developers.pocketsmith.com/docs/pocketsmith-mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.pocketsmith.com/mcp

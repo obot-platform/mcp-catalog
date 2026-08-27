@@ -1,0 +1,16 @@
+name: "Jasper"
+entryKey: obot-jasper
+serverUserType: singleUser
+shortDescription: "Keep every Claude session on-brand"
+description: |
+  Keep every Claude session on-brand. See the [official MCP documentation](https://developers.jasper.ai/docs/jasper-mcp-server) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://cdn.prod.website-files.com/6807ee8d73c233fb82842313/6a1ddb6c015444b36eb1c428_Jasper%20Logo%20Square%202026.svg
+repoURL: https://developers.jasper.ai/docs/jasper-mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.jasper.ai/

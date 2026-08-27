@@ -1,0 +1,16 @@
+name: "Remote Desktop Commander"
+entryKey: obot-remote-desktop-commander
+serverUserType: singleUser
+shortDescription: "Build, explore, automate on your computer from anywhere"
+description: |
+  Build, explore, automate on your computer from anywhere. See the [official MCP documentation](https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/main/README.md) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://raw.githubusercontent.com/wonderwhy-er/DesktopCommanderMCP/main/logo.png
+repoURL: https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/main/README.md
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.desktopcommander.app/mcp

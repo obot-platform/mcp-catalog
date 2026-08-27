@@ -1,0 +1,16 @@
+name: "Document360"
+entryKey: obot-document360
+serverUserType: singleUser
+shortDescription: "Read, create, update, and publish Document360 knowledge base articles and categories"
+description: |
+  Read, create, update, and publish Document360 knowledge base articles and categories. See the [official MCP documentation](https://docs.document360.com/docs/document360-mcp) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://document360.com/document360-logo.svg
+repoURL: https://docs.document360.com/docs/document360-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.document360.io/mcp

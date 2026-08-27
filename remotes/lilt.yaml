@@ -1,0 +1,16 @@
+name: "LILT"
+entryKey: obot-lilt
+serverUserType: singleUser
+shortDescription: "High-quality translation with human verification"
+description: |
+  High-quality translation with human verification. See the [official MCP documentation](https://support.lilt.com/kb/LILT-mcp) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://lilt.com/favicon.ico
+repoURL: https://support.lilt.com/kb/LILT-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp-enterprise.lilt.com/mcp

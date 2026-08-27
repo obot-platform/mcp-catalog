@@ -1,0 +1,16 @@
+name: "GLG"
+entryKey: obot-glg
+serverUserType: singleUser
+shortDescription: "Expert intelligence, instantly in your workflow"
+description: |
+  Expert intelligence, instantly in your workflow. See the [official MCP documentation](https://glg.com/how-we-help/myglg/mcp-docs) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://access.glgresearch.com/mcp-myglg-gateway/icon.png
+repoURL: https://glg.com/how-we-help/myglg/mcp-docs
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.glgresearch.com/myglg/mcp

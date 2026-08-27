@@ -1,0 +1,17 @@
+name: "Crunchbase MCP"
+entryKey: obot-crunchbase-mcp
+serverUserType: singleUser
+shortDescription: "Access reliable company data, market signals, and forward-looking predictions to research organizations, compa"
+description: |
+  Access reliable company data, market signals, and forward-looking predictions to research organizations, compa. See the [official MCP documentation](https://data.crunchbase.com/docs/mcp-overview) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://www.crunchbase.com/favicon.ico?v=2.0
+repoURL: https://data.crunchbase.com/docs/connecting-ai-tools
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.crunchbase.com/
+  staticOAuthRequired: true

@@ -1,0 +1,16 @@
+name: "Meridian Connector for QuickBooks"
+entryKey: obot-meridian-connector-for-quickbooks
+serverUserType: singleUser
+shortDescription: "Make changes to QuickBooks Online from within Claude."
+description: |
+  Make changes to QuickBooks Online from within Claude. See the [official MCP documentation](https://qbo-connector.meridian.pilot.com/faq) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://qbo-connector.meridian.pilot.com/assets/favicon.png
+repoURL: https://qbo-connector.meridian.pilot.com/faq
+runtime: remote
+remoteConfig:
+  fixedURL: https://qbo-connector.meridian.pilot.com/mcp

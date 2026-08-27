@@ -1,0 +1,16 @@
+name: "viaNexus vAST"
+entryKey: obot-vianexus-vast
+serverUserType: singleUser
+shortDescription: "Search subscribed financial datasets, prices, filings, news, and market intelligence"
+description: |
+  Search subscribed financial datasets, prices, filings, news, and market intelligence through viaNexus vAST. See the [official MCP documentation](https://www.vianexus.com/vast/) for the exact endpoint, OAuth flow, and portable client setup.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://vianexus.com/assets/images/favicon/favicon.ico
+repoURL: https://www.vianexus.com/vast/
+runtime: remote
+remoteConfig:
+  fixedURL: https://vast.blueskyapi.com/vianexus/mcp

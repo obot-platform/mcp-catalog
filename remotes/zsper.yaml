@@ -1,0 +1,22 @@
+name: "Zsper"
+entryKey: obot-zsper
+serverUserType: singleUser
+shortDescription: "AI writing tool with memory that remembers how you think"
+description: |
+  AI writing tool with memory that remembers how you think. See the [official MCP documentation](https://zsper.com/blog/bring-your-own-key-and-mcp) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Zsper connector token**: Mint a workspace-scoped token in Settings, then enter `Bearer ` followed by the token below
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://zsper.com/icon.svg
+repoURL: https://zsper.com/blog/bring-your-own-key-and-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://zsper.com/api/mcp
+  headers:
+    - name: Zsper Authorization
+      description: Enter Bearer followed by a space and your Zsper connector token.
+      key: Authorization
+      required: true
+      sensitive: true

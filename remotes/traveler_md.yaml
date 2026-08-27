@@ -1,0 +1,16 @@
+name: "Traveler.md"
+entryKey: obot-traveler-md
+serverUserType: singleUser
+shortDescription: "Give Claude access to your travel preferences and trips. Powered by your portable travel memory."
+description: |
+  Give Claude access to your travel preferences and trips. Powered by your portable travel memory. See the [official MCP documentation](https://docs.traveler.md/) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://d304ixaypefnw0.cloudfront.net/assets/travelermd-logo-black.png
+repoURL: https://docs.traveler.md/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.traveler.md/mcp

@@ -1,0 +1,16 @@
+name: "Mailopoly Inbox"
+entryKey: obot-mailopoly-inbox
+serverUserType: singleUser
+shortDescription: "Search, send, and triage email and messages across your connected accounts"
+description: |
+  Search, send, and triage email across Gmail, Outlook, iCloud, Yahoo, and IMAP, plus supported business messaging channels. See the [official MCP documentation](https://www.mailopoly.com/mcp/) for the exact endpoint, OAuth setup, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://www.mailopoly.com/apple-touch-icon.png
+repoURL: https://www.mailopoly.com/mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://fastapi.prod.aws.mailopoly.com/mcp-server

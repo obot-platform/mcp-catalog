@@ -1,0 +1,16 @@
+name: "Capacities"
+entryKey: obot-capacities
+serverUserType: singleUser
+shortDescription: "Access personal knowledge"
+description: |
+  Access personal knowledge. See the [official MCP documentation](https://docs.capacities.io/developer/model-context-protocol) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://capacities.io/favicon.ico
+repoURL: https://docs.capacities.io/developer/model-context-protocol
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.capacities.io/mcp

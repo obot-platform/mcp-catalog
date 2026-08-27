@@ -1,0 +1,16 @@
+name: "Expo"
+entryKey: obot-expo
+serverUserType: singleUser
+shortDescription: "Build, ship, and monitor apps with Expo"
+description: |
+  Build, ship, and monitor apps with Expo. See the [official MCP documentation](https://docs.expo.dev/mcp/) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://static.expo.dev/static/brand/app-icon-512x512.png
+repoURL: https://docs.expo.dev/mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.expo.dev/mcp

@@ -1,0 +1,22 @@
+name: "Vaisala Xweather"
+entryKey: obot-vaisala-xweather
+serverUserType: singleUser
+shortDescription: "Access real-time, forecast, and historical weather."
+description: |
+  Access current conditions, forecasts, historical weather, air quality, lightning, tropical, mapping, and road-weather data. See the [official MCP authentication guide](https://www.xweather.com/docs/mcp-server/authentication) for endpoint and credential setup.
+
+  ## What you'll need to connect
+  - **Xweather API Credential**: Combine the application client ID and secret as documented by Xweather
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://www.xweather.com/favicon.ico
+repoURL: https://www.xweather.com/docs/mcp-server/authentication
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.api.xweather.com/mcp
+  headers:
+    - name: Xweather Authorization
+      description: Enter Bearer followed by a space and your combined Xweather client ID and secret.
+      key: Authorization
+      required: true
+      sensitive: true

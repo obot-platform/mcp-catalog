@@ -1,0 +1,16 @@
+name: "Balsamiq"
+entryKey: obot-balsamiq
+serverUserType: singleUser
+shortDescription: "Build better products with Balsamiq"
+description: |
+  Build better products with Balsamiq. See the [official MCP documentation](https://balsamiq.com/support/docs/integrations/mcp/) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://com-balsamiq-static.s3.us-east-1.amazonaws.com/static/cloud/favicon/favicon.svg
+repoURL: https://balsamiq.com/support/docs/integrations/mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://bais.balsamiq.com/mcp

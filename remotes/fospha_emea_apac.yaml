@@ -1,0 +1,16 @@
+name: "Fospha  (EMEA & APAC)"
+entryKey: obot-fospha-emea-apac
+serverUserType: singleUser
+shortDescription: "Access your Fospha marketing analytics — ad spend, ROAS, channel performance, campaigns, revenue attribution, "
+description: |
+  Access your Fospha marketing analytics — ad spend, ROAS, channel performance, campaigns, revenue attribution, . See the [official MCP documentation](https://help-center.fospha.com/help-center/fospha-mcp-setup-onboarding-guide) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://cdn.prod.website-files.com/68385b31d7418dca829caf03/6849421f5fb37a3ebce80b24_Favicon.png
+repoURL: https://help-center.fospha.com/help-center/fospha-mcp-setup-onboarding-guide
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.uk.fospha.com/mcp

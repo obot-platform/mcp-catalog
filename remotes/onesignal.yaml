@@ -1,0 +1,16 @@
+name: "OneSignal"
+entryKey: obot-onesignal
+serverUserType: singleUser
+shortDescription: "Manage OneSignal messaging, users, segments, templates, and analytics"
+description: |
+  Manage OneSignal messaging, users, segments, templates, exports, and analytics. See the [official MCP documentation](https://documentation.onesignal.com/docs/en/model-context-protocol) for client setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://onesignal.com/favicon.svg
+repoURL: https://documentation.onesignal.com/docs/en/model-context-protocol
+runtime: remote
+remoteConfig:
+  fixedURL: https://server.smithery.ai/onesignal/onesignal

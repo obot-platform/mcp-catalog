@@ -1,0 +1,16 @@
+name: "Re:port Flow"
+entryKey: obot-re-port-flow
+serverUserType: singleUser
+shortDescription: "Generate invoices, contracts, statements, and other PDFs from Re:port Flow templates"
+description: |
+  Generate invoices, contracts, statements, and other PDFs from Re:port Flow templates. See the [official MCP documentation](https://doc.re-port-flow.com/en/docs/integrations/mcp) for the hosted endpoint, OAuth setup, and supported clients.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://lp.re-port-flow.com/logo-mark.png
+repoURL: https://doc.re-port-flow.com/en/docs/integrations/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.re-port-flow.com/mcp

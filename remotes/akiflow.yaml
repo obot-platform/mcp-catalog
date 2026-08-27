@@ -1,0 +1,16 @@
+name: "Akiflow"
+entryKey: obot-akiflow
+serverUserType: singleUser
+shortDescription: "Plan tasks and multiple calendars from any AI assistant"
+description: |
+  Plan tasks and multiple calendars from any AI assistant. See the [official MCP documentation](https://product.akiflow.com/articles/4302815-akiflow-mcp) for setup, authentication, and supported capabilities.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://mcp.akiflow.com/favicon.ico
+repoURL: https://product.akiflow.com/articles/4302815-akiflow-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.akiflow.com/mcp

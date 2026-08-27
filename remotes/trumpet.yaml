@@ -1,0 +1,16 @@
+name: "trumpet"
+entryKey: obot-trumpet
+serverUserType: singleUser
+shortDescription: "Search, create and analyse Pods"
+description: |
+  Search, create, and analyze trumpet Pods. See the [official MCP documentation](https://www.sendtrumpet.app/docs/mcp-server) for the Streamable HTTP endpoint, OAuth with Dynamic Client Registration, and portable client setup.
+
+  ## What you'll need to connect
+  - **Provider Access**: Available data and actions follow your account, plan, and permissions when authentication is required
+metadata:
+  categories: SaaS & API Integrations, Productivity
+icon: https://trumpet.app/favicon.ico
+repoURL: https://www.sendtrumpet.app/docs/mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://trumpet.app/api/mcp
