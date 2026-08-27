@@ -1,0 +1,23 @@
+name: "Oxford Economics"
+entryKey: obot-oxford-economics
+serverUserType: singleUser
+shortDescription: "Query economic forecasts, indicators, reports, and market analysis"
+description: |
+  Retrieve numerical economic data and forecasts, compare indicators across regions, and generate report-grounded analysis of economies, markets, sectors, assumptions, and risks. See the [official Oxford Economics MCP guide](https://support.oxfordeconomics.com/support/solutions/articles/52000155517) for the exact endpoint, client setup, entitlements, and authentication options.
+
+  ## What you'll need to connect
+  - **MCP entitlement**: Your Oxford Economics subscription must include MCP access
+  - **API key**: Obtain a key from your Oxford Economics account manager and enter it below
+metadata:
+  categories: Data & Analytics, Finance
+icon: https://www.oxfordeconomics.com/wp-content/uploads/2022/08/cropped-logo-Copy-1-192x192.png
+repoURL: https://support.oxfordeconomics.com/support/solutions/articles/52000155517
+runtime: remote
+remoteConfig:
+  fixedURL: https://services.oxfordeconomics.com/mcp
+  headers:
+  - key: Api-Key
+    name: Oxford Economics API Key
+    required: true
+    sensitive: true
+    description: API key for an Oxford Economics subscription with MCP access.

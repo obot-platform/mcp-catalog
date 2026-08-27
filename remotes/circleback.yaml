@@ -1,0 +1,18 @@
+name: Circleback
+entryKey: obot-circleback
+serverUserType: singleUser
+shortDescription: "Search meeting notes, transcripts, emails, calendar events, people, and companies"
+description: |
+  Search and retrieve Circleback meeting notes, transcripts, action items, calendar events, connected emails, people, and company context. See the [official Circleback MCP documentation](https://support.circleback.ai/en/articles/13249081-circleback-mcp) for supported clients, authentication, setup, and the current tools.
+
+  ## What you'll need to connect
+  - **Circleback account**: Each user signs in through OAuth
+  - **Connected data**: Results can include meeting transcripts, calendar details, email threads, and participant information available to the user's Circleback account
+  - **Workspace access**: Returned data follows the authenticated user's Circleback permissions and sharing settings
+metadata:
+  categories: Communication, Productivity, Knowledge & Memory
+icon: https://circleback.ai/logos/circleback.png
+repoURL: https://support.circleback.ai/en/articles/13249081-circleback-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://circleback.ai/api/mcp

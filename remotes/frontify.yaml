@@ -1,0 +1,19 @@
+name: Frontify
+entryKey: obot-frontify
+serverUserType: singleUser
+shortDescription: "Search brand guidelines and assets, generate creative, and manage Frontify content"
+description: |
+  Search Frontify brand guidelines, libraries, projects, assets, fonts, colors, and templates, with optional tool packs for creative generation, asset management, metadata, and review workflows. See the [official Frontify MCP documentation](https://help.frontify.com/en/articles/14787214-frontify-mcp) for activation, supported clients, tool packs, privacy considerations, and setup.
+
+  ## What you'll need to connect
+  - **Frontify account**: Ask your Frontify customer success manager to enable MCP, then sign in through OAuth
+  - **Tool pack**: The main endpoint starts with the read-only discovery pack, but an administrator can switch the active pack for all account users
+  - **Write-capable packs**: Optional packs can upload, create, modify, or move assets, metadata, and workflow tasks; review actions and generated creative before use
+  - **External processing**: Data sent through MCP is processed by the connected AI vendor, so review that vendor's data handling for sensitive brand content
+metadata:
+  categories: Design, Marketing, Productivity
+icon: https://cdn.prod.website-files.com/66e0711541e49a7979011342/67cac2d33dabe44b10910510_web-app-manifest-256x256.png
+repoURL: https://help.frontify.com/en/articles/14787214-frontify-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.frontify-integrations.com/mcp

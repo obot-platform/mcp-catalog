@@ -1,0 +1,19 @@
+name: "Nooks"
+entryKey: obot-nooks
+serverUserType: singleUser
+shortDescription: "Search and manage outbound prospects, sequences, tasks, emails, and calls"
+description: |
+  Search prospects and accounts, inspect sequences and activity, review calls and transcripts, manage sequencing tasks and enrollments, and analyze outbound sales performance. See the [official Nooks connector guide](https://nooks.help.usepylon.com/articles/1983758998-how-to-integrate-nooks-with-claude) for the exact endpoint, supported clients, available data and actions, OAuth setup, and permission behavior.
+
+  ## What you'll need to connect
+  - **Nooks seat**: A Sequencing seat, Coaching seat, or both is required
+  - **Nooks OAuth app**: A workspace admin must [create an OAuth app](https://nooks.help.usepylon.com/articles/9129590393-how-to-set-up-a-nooks-oauth-app) and provide its client ID and client secret
+  - **Workspace authorization**: An admin must approve the OAuth app for the workspace; each user's access follows their existing Nooks permissions
+metadata:
+  categories: Sales, Productivity
+icon: https://cdn.prod.website-files.com/6822db388c44137c00f8c124/688a087067eff61c89509360_256%D1%85256.png
+repoURL: https://nooks.help.usepylon.com/articles/1983758998-how-to-integrate-nooks-with-claude
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.nooks.in/mcp
+  staticOAuthRequired: true

@@ -1,0 +1,17 @@
+name: "Tally"
+entryKey: obot-tally
+serverUserType: singleUser
+shortDescription: "Create, edit, style, and analyze forms and submissions"
+description: |
+  Build forms from natural-language requirements, edit fields and conditional logic, apply styling, browse workspaces, and retrieve submission data for analysis. See Tally's [official connector guide](https://tally.so/help/claude-connector) and [MCP server documentation](https://developers.tally.so/mcp) for the exact endpoint, OAuth flow, supported clients, and available operations.
+
+  ## What you'll need to connect
+  - **Tally account**: Sign in and authorize your workspace through OAuth
+  - **Workspace permissions**: Form and submission access follows your existing Tally permissions
+metadata:
+  categories: Productivity, Forms & Surveys
+icon: https://tally.so/favicon.png
+repoURL: https://developers.tally.so/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.tally.so/mcp

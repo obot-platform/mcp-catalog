@@ -1,0 +1,17 @@
+name: "Otto Travel"
+entryKey: obot-otto-travel
+serverUserType: singleUser
+shortDescription: "Search, book, and manage business flights, hotels, and rental cars"
+description: |
+  Compare and book business travel, apply saved preferences and loyalty programs, retrieve trip details, and change or cancel reservations. See Otto's [official MCP connection guide](https://www.ottotheagent.com/mcpconnections) for the exact endpoint, OAuth sign-in, and setup in any compatible client.
+
+  ## What you'll need to connect
+  - **Otto account**: Sign in or create an account through the OAuth flow
+  - **Traveler details**: Add preferences, loyalty programs, and payment information in Otto as needed for bookings
+metadata:
+  categories: Travel & Transportation, SaaS & API Integrations
+icon: https://cdn.prod.website-files.com/66a3f21f29ff63a621916d75/66bcf4671ec10457842ccf90_favicon-256.png
+repoURL: https://www.ottotheagent.com/mcpconnections
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.ottotheagent.com/mcp

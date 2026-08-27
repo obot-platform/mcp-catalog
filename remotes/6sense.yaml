@@ -1,0 +1,18 @@
+name: "6sense"
+entryKey: obot-6sense
+serverUserType: singleUser
+shortDescription: "Retrieve account insights, buying signals, intent, and campaign performance"
+description: |
+  Ask read-only questions about 6sense accounts and retrieve Revvy-powered insights such as buying stages, 6QA trends, keyword intent activity, and campaign performance. See the [official 6sense MCP overview](https://support.6sense.com/docs/6sense-model-context-protocol-mcp-1) and [ChatGPT setup guide](https://support.6sense.com/docs/set-up-the-6sense-mcp-in-chatgpt) for platform support, current limitations, the exact endpoint, OAuth setup, and multi-instance behavior.
+
+  ## What you'll need to connect
+  - **6sense account**: Each user signs in and authorizes access individually through OAuth
+  - **Revenue Marketing Platform access**: Your organization must have the required 6sense platform access
+  - **Existing permissions**: Returned data is limited to the 6sense instance and records available to the authorized user
+metadata:
+  categories: Sales, Marketing
+icon: https://cdn.us.document360.io/0e2cd0a2-b3b3-495b-80df-96f8381febea/Images/Documentation/logo_color.png
+repoURL: https://support.6sense.com/docs/6sense-model-context-protocol-mcp-1
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.6sense.com/mcp

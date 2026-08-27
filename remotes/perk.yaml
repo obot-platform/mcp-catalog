@@ -1,0 +1,18 @@
+name: "Perk"
+entryKey: obot-perk
+serverUserType: singleUser
+shortDescription: "Query and manage company travel, expenses, reports, invoices, and events"
+description: |
+  Review trips, expenses, invoices, policies, events, cards, and users; generate travel and team-insights reports; and use authorized actions for bookings, expenses, trip approvals, and events. See the [official Perk MCP overview](https://developers.perk.com/docs/perk-mcp) and [client connection guide](https://developers.perk.com/docs/connect-a-client-to-the-perk-mcp-server) for capabilities, prerequisites, the exact endpoint, supported clients, OAuth setup, and access controls.
+
+  ## What you'll need to connect
+  - **Perk account**: Sign in with your existing Perk credentials through OAuth
+  - **Company role and plan access**: Available data and actions follow Perk role-based access control and your company's active plan
+  - **Action review**: Write tools can book travel, create or approve expenses, create events, and generate approval links
+metadata:
+  categories: Travel, Finance
+icon: https://files.readme.io/7baa6fbed80f874bd8c2506c6395a7acde1b1aaf48c9a6c05afcd1caac49b225-small-Production.png
+repoURL: https://developers.perk.com/docs/perk-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.perk.com/api/mcp/mcp

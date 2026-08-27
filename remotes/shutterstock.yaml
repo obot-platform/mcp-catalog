@@ -1,0 +1,17 @@
+name: "Shutterstock"
+entryKey: obot-shutterstock
+serverUserType: singleUser
+shortDescription: "Search licensable images, videos, music, and sound effects"
+description: |
+  Search Shutterstock's creative library with natural-language prompts, refine results conversationally, discover related media, and open asset pages for licensing or download. See the [official AI-assistant connection guide](https://www.shutterstock.com/help/en/articles/16108810-connect-ai-assistants-to-shutterstock) for supported clients, availability, account requirements, setup, and licensing behavior.
+
+  ## What you'll need to connect
+  - **No account for search**: Browsing and discovering Shutterstock assets through the connector is free
+  - **Shutterstock account and license for use**: Sign in on Shutterstock and purchase or use an eligible plan before downloading or commercially using an asset
+metadata:
+  categories: Media, Search
+icon: https://www.shutterstock.com/favicon.ico
+repoURL: https://www.shutterstock.com/help/en/articles/16108810-connect-ai-assistants-to-shutterstock
+runtime: remote
+remoteConfig:
+  fixedURL: https://www.shutterstock.com/cciq/mcp

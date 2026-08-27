@@ -1,0 +1,18 @@
+name: PineGap
+entryKey: obot-pinegap
+serverUserType: singleUser
+shortDescription: "Research public companies using filings, earnings, market data, and equity analysis"
+description: |
+  Research public companies with PineGap's curated financial data, including SEC filings, earnings analysis, company KPIs, market quotes, sentiment, risk factors, and value-chain relationships. See the [official PineGap MCP documentation](https://www.pinegap.ai/docs/mcp) for the complete tool reference, connection instructions, rate limits, and privacy details.
+
+  ## What you'll need to connect
+  - **PineGap account**: An active account is required, and each user signs in through OAuth
+  - **Data processing**: Synthesis tools send tool-call data to third-party LLM providers as described in PineGap's MCP privacy policy
+  - **Investment decisions**: The returned research and generated analysis are informational and should not be treated as investment advice
+metadata:
+  categories: Finance, Research
+icon: https://www.pinegap.ai/icon?76bb68cd628a2b93
+repoURL: https://www.pinegap.ai/docs/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.pinegap.ai

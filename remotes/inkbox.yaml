@@ -1,0 +1,17 @@
+name: "Inkbox"
+entryKey: obot-inkbox
+serverUserType: singleUser
+shortDescription: "Give AI agents email, messaging, calls, contacts, notes, and delegated tasks"
+description: |
+  Search and manage an agent identity's email, SMS, MMS, iMessage, calls, transcripts, contacts, notes, communication rules, and agent-to-agent tasks, including sending messages and placing calls. See the [official Inkbox MCP documentation](https://inkbox.ai/docs/mcp) for the general-purpose endpoint, OAuth and API-key options, available capabilities, data access, and client-specific behavior.
+
+  ## What you'll need to connect
+  - **Inkbox account and identity**: Authorize the identity whose communication channels and records the client may use
+  - **Careful action review**: Tools can send communications, place or end calls, modify records, and delete records
+metadata:
+  categories: Communication, Productivity
+icon: https://inkbox.ai/static/logos/inkbox-logo-no-bg.png
+repoURL: https://inkbox.ai/docs/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://inkbox.ai/mcp

@@ -1,0 +1,18 @@
+name: "Alma"
+entryKey: obot-alma
+serverUserType: singleUser
+shortDescription: "Review personal meals, nutrient data, goals, scores, and weight history"
+description: |
+  Retrieve a member's logged meals, nutrient details, Alma Score history, nutrition goals, weight history, and profile preferences for personalized food tracking and reflection. See the [official Alma MCP page](https://www.alma.food/claude) for the exact endpoint, compatible-client setup, Premium requirement, authorization flow, and exposed data.
+
+  ## What you'll need to connect
+  - **Alma Premium membership**: MCP access requires an active Premium account
+  - **Member authorization**: Verify your email and authorize access through OAuth
+  - **Sensitive health-related data**: The connector can expose meals, nutrition goals, profile preferences, and weight history to the connected client
+metadata:
+  categories: Health & Wellness
+icon: https://www.alma.food/favicon.ico
+repoURL: https://www.alma.food/claude
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.alma.food

@@ -1,0 +1,18 @@
+name: "Helium 10"
+entryKey: obot-helium-10
+serverUserType: singleUser
+shortDescription: "Research and manage Amazon and TikTok Shop seller operations"
+description: |
+  Research products and keywords, analyze listings and profitability, inspect advertising performance, track rankings, and selectively manage campaigns, costs, and tracked keywords for Amazon and TikTok Shop seller accounts. See the [official Helium 10 MCP guide](https://kb.helium10.com/hc/en-us/articles/51580564409883-Getting-Started-with-Helium-10-MCP) for supported clients, available tools, plan requirements, OAuth setup, permissions, and usage limits.
+
+  ## What you'll need to connect
+  - **Helium 10 Diamond plan or higher**: MCP access and 1,000 monthly API calls are included
+  - **Seller account permissions**: Available data and actions follow your Helium 10 account and sub-user permissions
+  - **Additional approval for Listing Builder**: Tools that write directly to live Amazon listings require whitelist approval
+metadata:
+  categories: E-commerce, Sales
+icon: https://www.helium10.com/app/uploads/2024/10/H10-Logo-1.png
+repoURL: https://kb.helium10.com/hc/en-us/articles/51580564409883-Getting-Started-with-Helium-10-MCP
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.helium10.com/mcp

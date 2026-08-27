@@ -1,0 +1,18 @@
+name: "freee"
+entryKey: obot-freee
+serverUserType: singleUser
+shortDescription: "Create, update, and analyze accounting and back-office data"
+description: |
+  Work with freee Accounting, HR, Invoicing, Project Management, Sales, and IT Management data from an AI assistant, including drafting records and generating analyses. See freee's [official remote MCP setup guide](https://support.freee.co.jp/hc/ja/articles/56390747520537) for the exact endpoint, authorization flow, and custom-client instructions.
+
+  ## What you'll need to connect
+  - **freee account**: Sign in and approve access through OAuth
+  - **Product permissions**: Available operations are limited to the companies, products, and records your freee user can access
+  - **Agent Skill**: freee recommends installing its matching Agent Skill for reliable use of the broad API surface
+metadata:
+  categories: Finance, Productivity
+icon: https://corp.freee.co.jp/img/favicon.ico
+repoURL: https://support.freee.co.jp/hc/ja/articles/56390747520537
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.freee.co.jp/mcp

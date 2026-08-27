@@ -1,0 +1,18 @@
+name: Within
+entryKey: obot-within
+serverUserType: singleUser
+shortDescription: "Search organizational processes, operational knowledge, observations, and artifacts"
+description: |
+  Explore your organization's process hierarchy, operational changes, dependencies, observations, and supporting documents through a read-only Within workspace connection. See the [official Within MCP documentation](https://developers.within.ai/) and [quickstart](https://developers.within.ai/quickstart) for supported clients, authentication, and available tools.
+
+  ## What you'll need to connect
+  - **Within Enterprise workspace**: Your organization needs an active workspace and user account
+  - **Workspace setup**: An administrator must enable MCP for the workspace in Within's MCP settings
+  - **User permissions**: Access follows the authenticated user's Within permissions and is scoped to the selected workspace
+metadata:
+  categories: Business, Knowledge & Memory, Productivity
+icon: https://developers.within.ai/mintlify-assets/_mintlify/favicons/within-mcp/Pyp5zg-khgTtgqQe/_generated/favicon-dark/favicon.ico
+repoURL: https://developers.within.ai/
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.within.ai/mcp

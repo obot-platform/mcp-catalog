@@ -1,0 +1,18 @@
+name: Vitally
+entryKey: obot-vitally
+serverUserType: singleUser
+shortDescription: "Search customer-success data and create Vitally tasks, notes, and custom records"
+description: |
+  Search accounts, users, conversations, meetings, notes, projects, goals, surveys, NPS responses, and custom customer-success data, and create tasks, notes, or custom-object records in Vitally. See the [official Vitally MCP documentation](https://docs.vitally.io/en/articles/15862100-vitally-mcp-server) for client setup, permissions, tools, and the optional read-only endpoint.
+
+  ## What you'll need to connect
+  - **Vitally account**: Each user signs in through OAuth, and access follows their Vitally permissions and Access Groups
+  - **Write access**: The default endpoint can create customer-facing records without a built-in confirmation step; review proposed actions before approval
+  - **Read-only alternative**: Organizations that do not need write actions can use Vitally's dedicated `https://mcp.vitally.io/mcp/readonly/v0` endpoint instead
+metadata:
+  categories: Customer Support, Sales, Data & Analytics
+icon: https://downloads.intercomcdn.com/i/o/hi18r2fa/594197/55c24a37efccbe6e735a31fdf912/1bb87d41d15fe27b500a4bfcde01bb0e.png
+repoURL: https://docs.vitally.io/en/articles/15862100-vitally-mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.vitally.io/mcp/v0

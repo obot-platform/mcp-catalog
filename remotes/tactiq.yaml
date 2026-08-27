@@ -1,0 +1,17 @@
+name: "Tactiq"
+entryKey: obot-tactiq
+serverUserType: singleUser
+shortDescription: "Search meeting history and retrieve summaries, action items, and transcripts"
+description: |
+  Find meetings from Google Meet, Zoom, and Microsoft Teams, retrieve summaries and generated artifacts, locate exact transcript moments, and read full transcripts when your plan permits. See the [official Tactiq MCP connection guide](https://help.tactiq.io/en/articles/14883619-connecting-tactiq-mcp-server) for the exact endpoint, browser-based OAuth, client setup, scopes, and plan limits.
+
+  ## What you'll need to connect
+  - **Tactiq account**: Sign in through the browser authorization flow
+  - **Appropriate plan and scopes**: Full meeting details and transcripts require the applicable Tactiq plan and permissions
+metadata:
+  categories: Productivity, Communication
+icon: https://cdn.prod.website-files.com/61120cb2509e011efcf0b1e4/675659f30393924f83fb1f3b_Tactiq%20Webclip%20(1).png
+repoURL: https://help.tactiq.io/en/articles/14883619-connecting-tactiq-mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.tactiq.io

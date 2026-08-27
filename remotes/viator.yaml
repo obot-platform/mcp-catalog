@@ -1,0 +1,17 @@
+name: "Viator"
+entryKey: obot-viator
+serverUserType: singleUser
+shortDescription: "Find and compare tours, attractions, and travel experiences worldwide"
+description: |
+  Search Viator experiences by destination, dates, interests, duration, and price, then retrieve descriptions, ratings, cancellation terms, pricing, and booking links. See the [official Viator MCP tool contract](https://docs.viator.com/partner-api/mcp/) for the exact endpoint, setup, request fields, and usage rules.
+
+  ## What you'll need to connect
+  - **Trip context**: Searches require a destination, start date, and a generated session identifier
+  - **No credentials required**: The public server accepts compatible MCP clients without authentication
+metadata:
+  categories: Travel & Transportation, Search
+icon: https://www.viator.com/orion/images/favicon.ico
+repoURL: https://docs.viator.com/partner-api/mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://exp-app-mcp.prod.ep.viator.com/mcp

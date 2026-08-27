@@ -1,0 +1,17 @@
+name: "CB Insights"
+entryKey: obot-cb-insights
+serverUserType: singleUser
+shortDescription: "Research private companies, markets, funding, investors, and competitors"
+description: |
+  Find and analyze private companies, map markets, inspect funding and investor activity, monitor competitors, and draft research using CB Insights data. See the [official MCP server documentation](https://api-docs.cbinsights.com/portal/docs/Integrations/cbi-mcp-server/) for supported clients, setup, and programmatic integration.
+
+  ## What you'll need to connect
+  - **CB Insights access**: An active account with MCP access is required
+  - **OAuth sign-in**: Your compatible client can register dynamically and will prompt you to authorize access
+metadata:
+  categories: Finance, Data & Analytics
+icon: https://api-docs.cbinsights.com/portal/img/favicon.ico
+repoURL: https://api-docs.cbinsights.com/portal/docs/Integrations/cbi-mcp-server/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.cbinsights.com

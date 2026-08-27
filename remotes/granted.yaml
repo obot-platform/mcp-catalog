@@ -1,0 +1,18 @@
+name: Granted
+entryKey: obot-granted
+serverUserType: singleUser
+shortDescription: "Search grants, research funders, and inspect past federal award recipients"
+description: |
+  Search federal, state, and private-foundation grants, retrieve opportunity details, research U.S. foundation profiles and IRS 990 financials, and inspect past federal award recipients. See the [official Granted MCP documentation](https://grantedai.com/mcp) for setup, coverage, tools, and usage limits.
+
+  ## What you'll need to connect
+  - **No account required**: Anonymous access is free and does not require authentication
+  - **Usage limits**: Anonymous clients share a daily allowance of 200 tool calls and 25 live AI-discovery searches
+  - **Application decisions**: Confirm eligibility, deadlines, terms, and award details with the original funder before applying
+metadata:
+  categories: Nonprofit, Research, Data & Analytics
+icon: https://grantedai.com/logo.png
+repoURL: https://grantedai.com/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://grantedai.com/api/mcp/mcp

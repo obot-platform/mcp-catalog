@@ -4,6 +4,14 @@ records:
     name: PayPal
     status: existing
     catalog_entry: remotes/paypal.yaml
+  - id: 01744591-790c-471b-9452-f338eff230af
+    name: Chronograph
+    status: skipped
+    reason: Chronograph's cited MCP documentation is access-controlled behind its customer SSO and no public official page documents manual setup of https://ai.chronograph.pe/mcp for general MCP clients, so endpoint-specific portability cannot be verified.
+  - id: 01953ddd-4139-40c5-bbf9-47c1e2499623
+    name: Yardi Virtuoso
+    status: skipped
+    reason: Yardi's cited technical guide is no longer publicly accessible and the public materials do not expose manual setup for https://mcp.virtuoso.ai/mcp or general MCP clients, so endpoint-specific portability cannot be verified.
   - id: 01a9fda6-bd91-4f02-af05-d8e4c3f4f556
     name: Brevo
     status: imported
@@ -44,10 +52,26 @@ records:
     name: Coursera
     status: skipped
     reason: Live OAuth explicitly does not support dynamic client registration, and the provider-referenced setup article has been removed, leaving no documented portable OAuth client setup.
+  - id: 03eb6f77-dac4-473f-a1fa-3adebb4b6ca0
+    name: Intuit Credit Karma
+    status: skipped
+    reason: Credit Karma's endpoint is explicitly Anthropic-specific, and its cited Claude/ChatGPT support page does not provide publicly retrievable manual endpoint setup for general MCP clients; portable use cannot be verified.
+  - id: 0454875f-bc80-40cd-b933-d1712714e292
+    name: Super.com
+    status: skipped
+    reason: Super.com documents this hotel connector only for use inside Claude; no first-party setup or support evidence exists for general or non-Claude MCP clients.
   - id: 045e9791-ed0d-4dfb-8271-a2f1ff62f9f0
     name: Render
     status: existing
     catalog_entry: remotes/render.yaml
+  - id: 048d1a8e-abd1-4e3a-b8fc-77d7afb419b1
+    name: Tactiq
+    status: imported
+    catalog_entry: remotes/tactiq.yaml
+  - id: 0543a3d3-3312-440f-ae60-789953179770
+    name: Krisp
+    status: imported
+    catalog_entry: remotes/krisp.yaml
   - id: 05526761-6c29-4d99-8eab-6b4fbd71a67b
     name: lemlist
     status: imported
@@ -92,6 +116,10 @@ records:
     name: Lucid
     status: imported
     catalog_entry: remotes/lucid.yaml
+  - id: 0db9a2ae-1b64-4673-9af6-059f29810a34
+    name: Viator
+    status: imported
+    catalog_entry: remotes/viator.yaml
   - id: 0f1d77a7-9e03-438a-824d-d66c6dd0f0d5
     name: Alpha Vantage MCP Server
     status: imported
@@ -136,6 +164,14 @@ records:
     name: Base44
     status: imported
     catalog_entry: remotes/base44.yaml
+  - id: 1a6a40cd-43c9-4752-9052-fed9c5e8c45c
+    name: Midpage Legal Research
+    status: imported
+    catalog_entry: remotes/midpage.yaml
+  - id: 1bc4c26c-2611-4cb0-8aeb-cd0f93622c2c
+    name: Oxford Economics
+    status: imported
+    catalog_entry: remotes/oxford_economics.yaml
   - id: 1bdc2099-1cf5-4b5e-bf03-76ca9c6c6248
     name: Readwise
     status: imported
@@ -184,6 +220,10 @@ records:
     name: incident.io
     status: imported
     catalog_entry: remotes/incident_io.yaml
+  - id: 2011b8ca-e6e5-4eed-b954-2249e521a3a9
+    name: Medidata
+    status: skipped
+    reason: Medidata's official materials describe an Anthropic partnership and access specifically through Claude; they do not document portable setup of https://mcp.imedidata.com/mcp for general MCP clients.
   - id: 208548e2-6412-4813-8364-9f21982ad62a
     name: LogRocket
     status: imported
@@ -232,6 +272,10 @@ records:
     name: Vaisala Xweather
     status: imported
     catalog_entry: remotes/vaisala_xweather.yaml
+  - id: 295eaac1-7469-4c28-8fda-dbd2a0f76219
+    name: Courtroom5
+    status: skipped
+    reason: Courtroom5 documents and supports this free legal-guidance connector only as Courtroom5 in Claude; no first-party support or setup evidence exists for a non-Claude MCP client.
   - id: 29d60a67-6f16-489b-8a1e-efdcece8d1f6
     name: Mixpanel
     status: imported
@@ -244,6 +288,10 @@ records:
     name: AllTrails
     status: imported
     catalog_entry: remotes/alltrails.yaml
+  - id: 2b245db2-8a73-491a-9849-8f44b9ce9488
+    name: Yardi Matrix
+    status: skipped
+    reason: The listed first-party technical documentation requires a Virtuoso sign-in, and the public connector record documents only Claude clients; portable non-Claude support cannot be verified.
   - id: 2c75d0d3-afb1-452d-96ff-cccd189c17ac
     name: Sellerise
     status: skipped
@@ -304,6 +352,10 @@ records:
     name: PlayMCP
     status: imported
     catalog_entry: remotes/playmcp.yaml
+  - id: 34311f73-4895-487e-bf62-b1bef9b1f9b8
+    name: Pappers France
+    status: skipped
+    reason: Official Pappers MCP setup requires embedding the API key in the endpoint URL (https://mcp.pappers.fr/{key}); catalog policy forbids credentials in fixedURL or urlTemplate.
   - id: 3455d00e-518f-425f-9e0d-6a9eac2f54ef
     name: LetsBot
     status: imported
@@ -324,6 +376,14 @@ records:
     name: Hugging Face
     status: imported
     catalog_entry: remotes/hugging_face.yaml
+  - id: 385882c7-2b55-4c12-b331-57babd22e643
+    name: Contentsquare
+    status: skipped
+    reason: Contentsquare documents broad MCP-client compatibility and in-product setup, but the public guide does not publish the https://api.contentsquare.com/mcp endpoint; the exact directory endpoint therefore cannot be verified from authoritative setup documentation.
+  - id: 39b95a4e-4c4a-4291-9755-dc8fd38ad7be
+    name: Inkbox
+    status: imported
+    catalog_entry: remotes/inkbox.yaml
   - id: 39d085c5-0b24-4a3f-aca1-5ec9d1726714
     name: Adobe Marketing Agent
     status: imported
@@ -360,6 +420,10 @@ records:
     name: CoinDesk
     status: imported
     catalog_entry: remotes/coindesk.yaml
+  - id: 3bc29d58-8b73-49f3-bb74-39fcf5867a5f
+    name: Pinegap
+    status: imported
+    catalog_entry: remotes/pinegap.yaml
   - id: 3e12bb5c-11e5-409c-8e73-64d4b625b498
     name: Close
     status: imported
@@ -432,6 +496,14 @@ records:
     name: Blockscout
     status: imported
     catalog_entry: remotes/blockscout.yaml
+  - id: 48437749-3dd3-4811-b0d5-80984473903d
+    name: Rillet
+    status: imported
+    catalog_entry: remotes/rillet.yaml
+  - id: 48527e54-fe84-4dc6-b97f-c8e0763bca97
+    name: Function Health
+    status: skipped
+    reason: Function Health publishes the exact endpoint and OAuth details only as a Claude Connector, requires a Claude subscription, and provides no official support statement or setup for general MCP clients, so portability cannot be verified.
   - id: 487a895f-84d3-4c21-925f-c6c3552b94cc
     name: Booking.com
     status: skipped
@@ -480,6 +552,10 @@ records:
     name: Adobe Journey Optimizer
     status: imported
     catalog_entry: remotes/adobe_journey_optimizer.yaml
+  - id: 4ef6cb78-9212-4b0e-b067-bb30e4d27a6f
+    name: Aiera
+    status: skipped
+    reason: Aiera's official SDK setup requires embedding api_key in the MCP URL query string. Catalog policy forbids credentials in fixedURL or urlTemplate, and the provider does not document an equivalent header-based portable setup.
   - id: 500d1b36-3247-4e78-aaa5-0945520d3e09
     name: Connect The Dots
     status: imported
@@ -512,10 +588,18 @@ records:
     name: Qonto
     status: imported
     catalog_entry: remotes/qonto.yaml
+  - id: 576048a9-f4be-43c6-8cdb-787897c49b03
+    name: ThoughtSpot Spotter
+    status: imported
+    catalog_entry: remotes/thoughtspot_spotter.yaml
   - id: 5775e1f2-124a-4f56-be6c-105a5cb33acc
     name: TomTom Maps
     status: imported
     catalog_entry: remotes/tomtom_maps.yaml
+  - id: 57d3169d-032d-4bcc-b03c-ef0a91043e6a
+    name: Nooks
+    status: imported
+    catalog_entry: remotes/nooks.yaml
   - id: 57dd8e8a-f030-4bb7-a9ed-4098933bd70b
     name: CMS Coverage
     status: skipped
@@ -532,6 +616,10 @@ records:
     name: SurveyMonkey
     status: imported
     catalog_entry: remotes/surveymonkey.yaml
+  - id: 59156499-2b9f-42b9-8438-8994d7ce5dad
+    name: Granted
+    status: imported
+    catalog_entry: remotes/granted.yaml
   - id: 597f662f-36de-437e-836e-5a81013cbfbe
     name: Slack
     status: existing
@@ -548,6 +636,10 @@ records:
     name: Quo
     status: imported
     catalog_entry: remotes/quo.yaml
+  - id: 5b4799b6-3c67-40b9-90e0-539888c1c13a
+    name: Meltwater
+    status: imported
+    catalog_entry: remotes/meltwater.yaml
   - id: 5b938bac-8286-4844-bc51-d303f7c6cbde
     name: Egnyte
     status: imported
@@ -632,10 +724,18 @@ records:
     name: Notion
     status: existing
     catalog_entry: remotes/notion.yaml
+  - id: 69feb637-7aa9-48f1-9443-71b881c0167c
+    name: Fyxer
+    status: skipped
+    reason: Fyxer documents DCR as supported only for ChatGPT and Claude and says cloud-hosted MCP clients with their own OAuth callback cannot connect; no Obot-compatible static OAuth or token alternative is documented.
   - id: 6d13e7f5-f465-498c-b7c9-b99c4bc74719
     name: Guru
     status: imported
     catalog_entry: remotes/guru.yaml
+  - id: 6d886b6e-cc36-4ba2-a6c4-4d2d3b7a352b
+    name: Listen Labs
+    status: imported
+    catalog_entry: remotes/listen_labs.yaml
   - id: 6e94f5fc-5dc8-4f0a-9fcf-741bcab4e034
     name: Learning Commons
     status: imported
@@ -684,6 +784,10 @@ records:
     name: Indeed
     status: skipped
     reason: Indeed's official MCP documentation states that this beta server is available only for the Claude Connector, so it is not currently portable to Obot.
+  - id: 78db989f-19e7-4ff3-8b66-5b5abf5208b2
+    name: DevRev
+    status: imported
+    catalog_entry: remotes/devrev.yaml
   - id: 79c545e3-8878-4557-bcbb-3add11c86890
     name: PitchBook Premium
     status: skipped
@@ -704,6 +808,10 @@ records:
     name: Gainsight (Staircase AI)
     status: imported
     catalog_entry: remotes/gainsight_staircase_ai.yaml
+  - id: 7b6f8f3a-c561-4743-888e-55c35c01546b
+    name: 6sense
+    status: imported
+    catalog_entry: remotes/6sense.yaml
   - id: 7bc869f4-0f64-4dd6-9c19-bee47499508c
     name: Trello
     status: imported
@@ -840,10 +948,18 @@ records:
     name: Veltra Activities
     status: skipped
     reason: The cited VELTRA page could not be retrieved and no authoritative provider documentation was found that gives portable client setup for the exact directory endpoint.
+  - id: 91c3f3e4-8c61-4f73-b912-96d035f69f24
+    name: Circleback
+    status: imported
+    catalog_entry: remotes/circleback.yaml
   - id: 923fb14b-ed65-4e41-8dd5-4c2c38c00457
     name: Jam
     status: imported
     catalog_entry: remotes/jam.yaml
+  - id: 92d00407-7fa7-49bc-8d90-55a59434099c
+    name: Unwrap
+    status: imported
+    catalog_entry: remotes/unwrap.yaml
   - id: 934bf25a-e0d1-43ff-a488-b2c5567ec956
     name: Excalidraw
     status: imported
@@ -872,6 +988,10 @@ records:
     name: Play Sheet Music
     status: skipped
     reason: The documented deployment is an MCP Apps example server, not a provider-supported production connector.
+  - id: 97369a45-f230-4124-9b9b-2944a26bca46
+    name: DirectBooker
+    status: skipped
+    reason: DirectBooker documents managed Claude and ChatGPT directory installations but does not publish endpoint-specific manual setup for https://www.directbooker.ai/claude or general MCP clients, so the directory endpoint cannot be verified as portable.
   - id: 9830ad9d-3a53-469b-a45c-aef16b059aa5
     name: Lattice
     status: skipped
@@ -880,6 +1000,10 @@ records:
     name: Whimsical
     status: imported
     catalog_entry: remotes/whimsical.yaml
+  - id: 9bae1b8d-ec61-46ef-8aaf-b21aee5970e0
+    name: Brisk Teaching
+    status: skipped
+    reason: Brisk documents managed Claude and ChatGPT connector installation but does not publish manual setup or the exact https://mcp.briskteaching.com/mcp endpoint for general MCP clients, so endpoint-specific portability cannot be verified.
   - id: 9c04294a-d69c-47e9-9fa6-6a0e780caf3a
     name: Mercury
     status: imported
@@ -924,10 +1048,22 @@ records:
     name: Adobe Customer Journey Analytics
     status: imported
     catalog_entry: remotes/adobe_customer_journey_analytics.yaml
+  - id: a1c213e1-70d1-4bed-8505-878f4792dd5f
+    name: Frontify
+    status: imported
+    catalog_entry: remotes/frontify.yaml
   - id: a1d0551d-c567-4975-91fc-7ced9e819421
     name: GoDaddy
     status: imported
     catalog_entry: remotes/godaddy.yaml
+  - id: a31f2757-9039-41b6-96fa-a9c0b0945efb
+    name: Malwarebytes
+    status: skipped
+    reason: Malwarebytes' official documentation describes a connector exclusively for Claude and only documents installation through Claude's directory; portable setup of the /claude/mcp endpoint is not supported.
+  - id: a352dbf6-c732-43d4-84c1-0bbb389d3921
+    name: Salesforce - Beta
+    status: existing
+    catalog_entry: remotes/salesforce.yaml
   - id: a38cc6ae-c7fb-4136-b50e-cf49a4ded4b3
     name: Legal Data Hunter
     status: imported
@@ -952,6 +1088,10 @@ records:
     name: PDF Viewer
     status: skipped
     reason: MCP example server, not a provider catalog connector
+  - id: a758ddcc-4510-4774-b316-9ea13af188bc
+    name: Otto Travel
+    status: imported
+    catalog_entry: remotes/otto_travel.yaml
   - id: a8159026-14b4-403a-933b-bd897a5b36ca
     name: Clay
     status: imported
@@ -972,6 +1112,10 @@ records:
     name: Intuit QuickBooks
     status: skipped
     reason: Exact MCP endpoint returned Akamai 403 Access Denied for both GET and MCP initialize, so portability could not be verified
+  - id: a93abec3-44cb-47e2-a35f-ab87ba8e4a86
+    name: EDEN by Basecamp Research
+    status: skipped
+    reason: Basecamp Research's EDEN documentation describes adding the connector only from Claude's connector menu and never publishes manual setup or the exact https://mcp-public.basecamp-research.com/mcp endpoint for general MCP clients.
   - id: a99a3b09-26fc-4251-a412-fa2593123267
     name: AgentMail
     status: imported
@@ -1008,6 +1152,10 @@ records:
     name: Balsamiq
     status: imported
     catalog_entry: remotes/balsamiq.yaml
+  - id: afce8e96-04a4-4d3c-9e63-0e47c64468ea
+    name: Lawve AI
+    status: skipped
+    reason: Lawve AI's directory-linked MCP setup page now returns 404, and its current official site does not publish manual setup for the https://mcp.lawve.ai/mcp catalog connector, so endpoint-specific portability cannot be verified.
   - id: afd79b39-e774-4934-be5b-098784579838
     name: Instacart
     status: skipped
@@ -1020,10 +1168,18 @@ records:
     name: NeoSapien
     status: skipped
     reason: The cited NeoSapien documentation is not publicly reachable and no authoritative provider documentation was found for portable setup of the exact endpoint; third-party directory metadata is insufficient.
+  - id: b1a4e6d1-7b0c-4bc7-8849-07837de42605
+    name: Perk
+    status: imported
+    catalog_entry: remotes/perk.yaml
   - id: b1a89151-dc5f-4d75-baa7-9da291b81a0c
     name: Klaviyo
     status: imported
     catalog_entry: remotes/klaviyo.yaml
+  - id: b1c26807-986e-4cf5-99ca-362e5abb7feb
+    name: Tally
+    status: imported
+    catalog_entry: remotes/tally.yaml
   - id: b2742b5d-157b-4b61-9978-1c92f6e85300
     name: Jobs and Careers
     status: imported
@@ -1100,6 +1256,10 @@ records:
     name: Intuit TurboTax
     status: skipped
     reason: TurboTax's official setup documentation requires an Anthropic Claude subscription and only documents installation through Claude's app directory; portable MCP client support is not established.
+  - id: bd022b03-2829-47df-b07f-b50c3541c932
+    name: Owkin
+    status: skipped
+    reason: Owkin's official materials describe Pathology Explorer as a Claude for Healthcare integration and do not publish manual setup or the exact https://mcp.k.owkin.com/mcp endpoint for general MCP clients, so endpoint-specific portability cannot be verified.
   - id: bd8c051d-df35-44c0-a8b8-084b700e1f21
     name: ICD-10 Codes
     status: skipped
@@ -1148,6 +1308,10 @@ records:
     name: Figma
     status: skipped
     reason: currently not compatible with Obot
+  - id: c8e8f367-5a12-4320-b715-eee2fbdd8088
+    name: Third Bridge
+    status: skipped
+    reason: Third Bridge confirms MCP support for ChatGPT and Claude, but its official page publishes no manual setup or exact endpoint; the https://ai.thirdbridge.com/mcp/sse URL appears only in the Claude directory, so endpoint-specific portability cannot be verified.
   - id: c9be8097-5a98-4c0f-a652-d41b0ed141e5
     name: Fullstory
     status: imported
@@ -1172,10 +1336,18 @@ records:
     name: Supermetrics Marketing Analytics
     status: imported
     catalog_entry: remotes/supermetrics.yaml
+  - id: cc609c18-f6f5-44a0-ac77-6150b9d7b439
+    name: Helix GenoSphere
+    status: skipped
+    reason: Helix documents GenoSphere as a provisioned Claude-only connector installed through Claude's directory and does not publish manual setup or the exact https://mcp.hrn-production.helix.com/mcp endpoint for general clients.
   - id: cd33c38a-66e7-41a4-8777-bec24d4bba3a
     name: Adspirer Ads & Performance Marketing Agent
     status: imported
     catalog_entry: remotes/adspirer.yaml
+  - id: cdd97349-b858-4912-a1c1-f26504362b3f
+    name: Vitally MCP
+    status: imported
+    catalog_entry: remotes/vitally.yaml
   - id: cdecef4b-4a15-404c-b912-005ca366a898
     name: Uber
     status: skipped
@@ -1224,18 +1396,34 @@ records:
     name: Interactive Brokers (IBKR)
     status: imported
     catalog_entry: remotes/interactive-brokers.yaml
+  - id: d4b6d94e-8fd7-4936-a525-a1852acd3bb4
+    name: Send
+    status: skipped
+    reason: Send's official MCP page documents tools and Claude-specific onboarding but does not publish portable client setup or identify https://www.send.co/mcp as the server URL, so the exact directory endpoint cannot be verified for general clients.
   - id: d4ba36c1-89dd-49ee-aea3-2317efccc424
     name: Udemy Business
     status: imported
     catalog_entry: remotes/udemy_business.yaml
+  - id: d5d64175-5675-4b7f-a583-549d88b84b64
+    name: Zomato
+    status: skipped
+    reason: Zomato official documentation says the MCP is only for testing, third-party apps are not allowed, and OAuth redirects are allowlisted without Obot; it is not a supported production connector.
   - id: d778b2f9-25f4-42a2-87ab-dbaa896deb1b
     name: Calendly
     status: imported
     catalog_entry: remotes/calendly.yaml
+  - id: d7df1c09-82a2-4ce9-9442-a9f0e58f9a36
+    name: Alma
+    status: imported
+    catalog_entry: remotes/alma.yaml
   - id: d875e9bd-a012-44cb-aa0c-84eb53ecdfc8
     name: AfterShip Channels for TikTok Shop
     status: imported
     catalog_entry: remotes/aftership_channels_for_tiktok_shop.yaml
+  - id: d87c0d44-2615-4af6-b3ac-ba22264496b2
+    name: LegalZoom
+    status: skipped
+    reason: LegalZoom documents directory-based supported connector experiences with deliberately client-specific, versioned tool surfaces, but does not publish manual setup or the exact https://www.legalzoom.com/mcp/claude/v1 endpoint for general MCP clients.
   - id: d8a25d2a-e5ea-4860-b990-277244df5417
     name: Tavily
     status: existing
@@ -1252,6 +1440,10 @@ records:
     name: DealRoom
     status: skipped
     reason: The cited DealRoom support URL does not provide an MCP setup page, and no authoritative DealRoom documentation was found for configuring https://mcp.dealroom.io/mcp in general MCP clients.
+  - id: dba65f24-3bd2-4d72-a86c-62b7c5290a5f
+    name: Coupler.io
+    status: imported
+    catalog_entry: remotes/coupler_io.yaml
   - id: dbbc26cf-80b0-4a85-9877-f85874282794
     name: Roboflow
     status: skipped
@@ -1296,6 +1488,10 @@ records:
     name: Goodnotes
     status: imported
     catalog_entry: remotes/goodnotes.yaml
+  - id: e336ede2-5687-4590-a60b-12c3ab56fc63
+    name: Helium 10
+    status: imported
+    catalog_entry: remotes/helium_10.yaml
   - id: e373833b-8af7-4f28-9200-603203cc834d
     name: Front
     status: imported
@@ -1308,10 +1504,18 @@ records:
     name: Bigdata.com
     status: imported
     catalog_entry: remotes/bigdata_com.yaml
+  - id: e49f08f7-f144-484b-86bb-3b1eab7a5602
+    name: Within
+    status: imported
+    catalog_entry: remotes/within.yaml
   - id: e4bed2f4-9f30-4e0f-a157-32fd49838b0c
     name: Deel
     status: imported
     catalog_entry: remotes/deel.yaml
+  - id: e56221b4-925f-48bb-9176-6cd6e8fae3c1
+    name: Common Room
+    status: imported
+    catalog_entry: remotes/common_room.yaml
   - id: e6b925d6-dee4-4f11-baa8-0248a7830f94
     name: GLG
     status: imported
@@ -1320,6 +1524,14 @@ records:
     name: WordPress.com
     status: existing
     catalog_entry: obot-images/wordpress.yaml
+  - id: e7952077-b4e6-49f7-8670-ca53f8d50c40
+    name: CB Insights
+    status: imported
+    catalog_entry: remotes/cb_insights.yaml
+  - id: e7da5cf7-cfea-4ee4-a61b-8da6ae48594f
+    name: Shutterstock
+    status: imported
+    catalog_entry: remotes/shutterstock.yaml
   - id: e9f93fb8-37d6-4727-a129-956e5263ac3e
     name: Adobe Experience Manager
     status: imported
@@ -1336,10 +1548,18 @@ records:
     name: Peec AI
     status: imported
     catalog_entry: remotes/peec-ai.yaml
+  - id: edc0b710-daf6-4600-aecd-fc2c00f6b338
+    name: freee
+    status: imported
+    catalog_entry: remotes/freee.yaml
   - id: edfb7283-0e7b-4366-9e55-899a53ef0036
     name: Planning Center
     status: imported
     catalog_entry: remotes/planning_center.yaml
+  - id: ee04ec30-7005-4dd3-803d-2d0cc7a88289
+    name: StubHub
+    status: skipped
+    reason: StubHub's official support page covers managed use in ChatGPT and Claude but does not publish manual setup or the exact https://open-ai-app.stubhub.net/mcp endpoint for general MCP clients, so endpoint-specific portability cannot be verified.
   - id: ee49809c-50e1-4b24-bc17-17ce8887bfdf
     name: Snowflake
     status: existing
@@ -1376,6 +1596,10 @@ records:
     name: OneSignal
     status: imported
     catalog_entry: remotes/onesignal.yaml
+  - id: f4435e97-3469-40d3-9aea-f8f3c5f79752
+    name: Canary Data
+    status: skipped
+    reason: Official connection instructions document only Claude.ai, Claude Desktop, and Claude Code; no first-party support for general or non-Claude MCP clients is documented.
   - id: f5166f9b-4dcf-47ae-8c47-701125433868
     name: Mercado Libre Inmuebles
     status: skipped
@@ -1400,6 +1624,10 @@ records:
     name: Linear
     status: existing
     catalog_entry: remotes/linear.yaml
+  - id: fa7af7d8-e1b2-4c8f-83f9-d2936bdc0aa7
+    name: IBISWorld
+    status: skipped
+    reason: IBISWorld's official documentation states that https://mcp.ibisworld.com is currently compatible with Claude only, so the endpoint is not verified as portable to general MCP clients.
   - id: fab5214d-eb35-4038-8271-2a0be421a086
     name: Mem
     status: imported

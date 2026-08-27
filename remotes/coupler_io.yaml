@@ -1,0 +1,17 @@
+name: "Coupler.io"
+entryKey: obot-coupler-io
+serverUserType: singleUser
+shortDescription: "Query and analyze refreshed business data from connected apps"
+description: |
+  Connect business data flows to AI assistants so they can inspect prepared datasets, answer analytical questions, and work with automatically refreshed results. See Coupler.io's [official Gemini MCP setup guide](https://blog.coupler.io/how-to-connect-data-to-gemini/) for the remote endpoint and client configuration.
+
+  ## What you'll need to connect
+  - **Coupler.io account**: Sign in through OAuth when your client opens the authorization flow
+  - **Prepared data flow**: Configure and run the datasets you want the assistant to access before connecting
+metadata:
+  categories: Data & Analytics, SaaS & API Integrations
+icon: https://www.coupler.io/favicon.ico
+repoURL: https://blog.coupler.io/how-to-connect-data-to-gemini/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.coupler.io/mcp

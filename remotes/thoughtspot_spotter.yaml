@@ -1,0 +1,18 @@
+name: ThoughtSpot Spotter
+entryKey: obot-thoughtspot-spotter
+serverUserType: singleUser
+shortDescription: "Query governed business data and create ThoughtSpot visualizations and Liveboards"
+description: |
+  Ask natural-language questions of governed ThoughtSpot data, search existing analytics content, generate visualizations, and create Liveboards. See the [official Spotter MCP documentation](https://developers.thoughtspot.com/docs/mcp-integration) for supported clients, endpoint versions, architecture, and tool capabilities.
+
+  ## What you'll need to connect
+  - **ThoughtSpot instance**: Your organization needs ThoughtSpot Enterprise Edition or ThoughtSpot Embedded with the Spotter MCP add-on
+  - **User access**: Each user signs in through OAuth, and ThoughtSpot enforces existing row-level, column-level, and object permissions
+  - **Creation privileges**: Creating charts or Liveboards requires data-download and content-creation privileges
+metadata:
+  categories: Data Analytics, Business Intelligence, Visualization
+icon: https://developers.thoughtspot.com/docs/icons/icon-192x192.png?v=9881abbc204e7b36414a7621edcb1d6a
+repoURL: https://developers.thoughtspot.com/docs/mcp-integration
+runtime: remote
+remoteConfig:
+  fixedURL: https://agent.thoughtspot.app/mcp?api-version=latest

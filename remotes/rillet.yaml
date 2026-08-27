@@ -1,0 +1,18 @@
+name: Rillet
+entryKey: obot-rillet
+serverUserType: singleUser
+shortDescription: "Query financials and manage accounting records in Rillet"
+description: |
+  Query live general-ledger data, financial statements, customers, vendors, invoices, bills, contracts, and revenue metrics, and manage supported accounting records in Rillet. See the [official Rillet MCP documentation](https://docs.api.rillet.com/docs/mcp) for client setup, authentication, and the current tool surface.
+
+  ## What you'll need to connect
+  - **Rillet account**: Each user signs in through OAuth and chooses an organization
+  - **User permissions**: Available tools and records follow the authenticated user's Rillet access
+  - **Write access**: This connector can create, update, and delete financial and accounting records; review proposed actions before approval
+metadata:
+  categories: Financial Services, Accounting, Business
+icon: https://files.readme.io/9fed98a5aba286547bbc8d767a6dd5916873bb39be70eecab3d8535421854c06-rillet-logo.png
+repoURL: https://docs.api.rillet.com/docs/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.rillet.com/mcp

@@ -1,0 +1,17 @@
+name: "Common Room"
+entryKey: obot-common-room
+serverUserType: singleUser
+shortDescription: "Research buyers, surface account signals, and update go-to-market records"
+description: |
+  Research accounts and contacts, inspect buyer and product signals, build prospect lists, and create or update Common Room records. See the [official MCP server documentation](https://www.commonroom.io/docs/using-common-room/mcp-server/) for the exact endpoint, OAuth setup, supported clients, and available tools.
+
+  ## What you'll need to connect
+  - **Common Room access**: Sign in through OAuth with an account that can access your Common Room instance
+  - **Workspace permissions**: Reads and writes are limited by your existing Common Room role and segment access
+metadata:
+  categories: CRM, SaaS & API Integrations
+icon: https://cdn.sanity.io/images/vt347z5x/production/2f055c6bde8b839019563ff1fe3feea0d8db9a5c-160x160.png?h=200
+repoURL: https://www.commonroom.io/docs/using-common-room/mcp-server/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.commonroom.io/mcp

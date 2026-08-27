@@ -1,0 +1,24 @@
+name: "DevRev"
+entryKey: obot-devrev
+serverUserType: singleUser
+shortDescription: "Search company knowledge and manage issues, tickets, enhancements, and customers"
+description: |
+  Search your DevRev knowledge graph, retrieve object context, and create or update customer-support and product-development records. See the [official remote MCP documentation](https://support.devrev.ai/en-US/devrev/article/ART-21859-remote-mcp-server) for the exact endpoint, supported clients, OAuth limitations, and personal-access-token setup.
+
+  ## What you'll need to connect
+  - **DevRev account**: Your token's workspace permissions determine which records and actions are available
+  - **Personal access token**: Generate a PAT in DevRev and enter it below; the value is sent as a bearer token
+metadata:
+  categories: Customer Support, Project Management
+icon: https://app.devrev.ai/favicon.ico
+repoURL: https://support.devrev.ai/en-US/devrev/article/ART-21859-remote-mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.devrev.ai/mcp/v1
+  headers:
+  - key: Authorization
+    name: DevRev Personal Access Token
+    required: true
+    sensitive: true
+    prefix: "Bearer "
+    description: A DevRev personal access token with the permissions needed for the requested operations.

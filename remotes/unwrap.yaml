@@ -1,0 +1,17 @@
+name: "Unwrap"
+entryKey: obot-unwrap
+serverUserType: singleUser
+shortDescription: "Search, segment, chart, and analyze customer feedback"
+description: |
+  Explore customer-feedback views, search themes and issues, filter by metadata, chart trends, sample and classify feedback, analyze comments, and retrieve supporting anecdotes for product research and planning. See the [official Unwrap MCP guide](https://docs.unwrap.ai/articles/6412771011-unwrap-mcp) for the exact endpoint, setup in supported clients, authentication, recommended workflows, and tool reference.
+
+  ## What you'll need to connect
+  - **Unwrap account**: Sign in through OAuth
+  - **View permissions**: Available feedback and views follow your existing Unwrap team access
+metadata:
+  categories: Customer Support, Data & Analytics
+icon: https://cdn.prod.website-files.com/67c5e65b5323e6f7f216d5e7/67d7436af20915107b7dbb33_unwrap_symbol_lt_blood_orange_sorbet_256.jpeg
+repoURL: https://docs.unwrap.ai/articles/6412771011-unwrap-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://nlp.api.production.unwrap.ai/mcp

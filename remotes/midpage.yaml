@@ -1,0 +1,17 @@
+name: "Midpage Legal Research"
+entryKey: obot-midpage
+serverUserType: singleUser
+shortDescription: "Research US case law, dockets, statutes, and regulations with cited sources"
+description: |
+  Search federal and state case law, find quotable opinion passages, analyze decisions and federal docket filings, and research current statutes and regulations with links to underlying sources. See the [official Midpage MCP documentation](https://midpage-docs.apidocumentation.com/documentation/integration/mcp-tools) for endpoint versions, OAuth and API-key authentication, client setup, and tool contracts.
+
+  ## What you'll need to connect
+  - **Midpage account**: Sign in through OAuth when prompted; compatible clients can register dynamically
+  - **Appropriate access**: Some docket and legislation tools are previews and available features may depend on your account
+metadata:
+  categories: Legal, Search
+icon: https://www.midpage.ai/favicon.png
+repoURL: https://midpage-docs.apidocumentation.com/documentation/integration/mcp-tools
+runtime: remote
+remoteConfig:
+  fixedURL: https://app.midpage.ai/mcp/v3

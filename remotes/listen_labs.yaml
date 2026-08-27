@@ -1,0 +1,19 @@
+name: Listen Labs
+entryKey: obot-listen-labs
+serverUserType: singleUser
+shortDescription: "Create and analyze research studies, responses, transcripts, and insights"
+description: |
+  Create, edit, organize, and launch Listen Labs research studies, and search study results, respondent transcripts, and AI-generated analysis. See the [official Listen Labs MCP documentation](https://docs.listenlabs.com/mcp-docs) for supported clients, permissions, the exact endpoint, and available capabilities.
+
+  ## What you'll need to connect
+  - **Listen Labs account**: Each user signs in through OAuth and needs access to at least one organization
+  - **User permissions**: The connector acts as the authenticated user and follows their study and organization permissions
+  - **Sensitive research data**: Responses and interview transcripts may contain personal or confidential information; share and summarize them according to your research policies
+  - **Study changes**: The connector can edit studies, manage folders, launch studies, and start recruitment; review scope, audience, incentives, and questions before approval
+metadata:
+  categories: Research, Data & Analytics, Productivity
+icon: https://docs.listenlabs.com/mintlify-assets/_mintlify/favicons/listenlabs-b8522a99/FBimOHBIIPlfwXu9/_generated/favicon/android-chrome-192x192.png
+repoURL: https://docs.listenlabs.com/mcp-docs
+runtime: remote
+remoteConfig:
+  fixedURL: https://listenlabs.ai/mcp
