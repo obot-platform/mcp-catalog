@@ -1,0 +1,21 @@
+name: Wolfram MCP Server
+description: |
+  Connect Obot to Wolfram's computational intelligence, Wolfram Language evaluation,
+  and Wolfram|Alpha-powered answers through an MCP server.
+
+  ## Features
+  - Evaluate Wolfram Language expressions
+  - Query Wolfram|Alpha for factual, mathematical, scientific, and computational results
+  - Generate reliable calculations, structured results, and visualizations
+  - Support agent workflows that need deterministic calculation
+
+metadata:
+  categories: developer-tools, ai, data, math, science, calculation, visualization
+
+icon: https://www.wolfram.com/artificial-intelligence/mcp-service/img/header-logo.png
+repoURL: https://github.com/WolframResearch/AgentTools
+
+runtime: remote
+
+remoteConfig:
+  fixedURL: https://agenttools.wolfram.com/mcp
