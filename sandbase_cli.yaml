@@ -1,0 +1,37 @@
+name: SandBase CLI
+entryKey: obot-sandbase-cli
+serverUserType: singleUser
+shortDescription: Discover, inspect, and run 2,000+ AI models and APIs through a secure local MCP bridge
+description: |
+  SandBase CLI provides a secure local MCP bridge for AI clients. It lets users discover available models and APIs, inspect capabilities and pricing, and run requests through one stdio connection.
+
+  ## Features
+  - **Catalog discovery**: Search a catalog of 2,000+ AI models and APIs.
+  - **Model inspection**: Review provider metadata, capabilities, input schema, and pricing before execution.
+  - **Controlled execution**: Run synchronous or asynchronous requests through the `sandbase_run` tool.
+  - **Client coverage**: Supports 25 documented AI client targets, including Claude Desktop, Cursor, Codex, VS Code, Windsurf, and Gemini CLI.
+
+  ## Official documentation
+  - [SandBase CLI README](https://github.com/sandbaseai/cli#readme)
+  - [25-client setup guide](https://blog.sandbase.ai/sandbase-cli-mcp-bridge-25-ai-clients/)
+  - [Official MCP Registry entry](https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.sandbaseai%2Fcli)
+metadata:
+  categories: Developer Tools,AI & LLM Integration
+icon: https://github.com/sandbaseai/cli/raw/main/docs/assets/logo.png
+repoURL: https://github.com/sandbaseai/cli
+runtime: npx
+npxConfig:
+  package: '@sandbaseai/cli@0.1.14'
+toolPreview:
+  - name: sandbase_discover
+    description: Discover available models and APIs from the SandBase catalog.
+  - name: sandbase_inspect
+    description: Inspect model metadata, capabilities, input schema, and pricing.
+  - name: sandbase_run
+    description: Run a synchronous or asynchronous request through a selected model.
+  - name: sandbase_status
+    description: Check local bridge and account status.
+  - name: sandbase_config
+    description: Inspect or manage owned client configuration.
+  - name: sandbase_help
+    description: Show SandBase CLI and MCP bridge help.
