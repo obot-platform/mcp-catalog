@@ -1,0 +1,47 @@
+name: Hive Intelligence
+serverUserType: singleUser
+shortDescription: Access live crypto market data, wallet intelligence, DeFi analytics, token risk, and prediction markets
+description: |
+  A managed Model Context Protocol (MCP) server for crypto market infrastructure. Hive Intelligence gives AI agents one hosted endpoint for live prices, wallet positions, DeFi activity, DEX flows, NFT analytics, token and contract risk, Solana data, network status, and prediction markets.
+
+  ## Features
+  - **Runtime tool discovery**: Start with compact discovery tools, inspect schemas at runtime, and route requests to the exact provider-backed endpoint.
+  - **Market and token research**: Query live prices, market charts, OHLC, exchange data, token metadata, holders, liquidity, and DEX pairs.
+  - **Wallet and portfolio intelligence**: Inspect balances, token holdings, transfers, approvals, PnL context, NFTs, and DeFi positions across supported chains.
+  - **Security and risk checks**: Analyze token security, approvals, phishing, malicious addresses, dApp risk, rug-pull signals, and transaction simulation context.
+  - **DeFi, NFT, and prediction-market analytics**: Research protocol TVL and fees, NFT collections and sales, Solana assets, and Polymarket-style prediction-market data.
+  - **Stateful monitoring**: Create durable crypto intelligence monitors for wallets, tokens, protocols, markets, watchlists, and risk workflows.
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Hive API Key**: Create a key from the Hive dashboard at [hiveintelligence.xyz](https://www.hiveintelligence.xyz/login?next=/dashboard/keys). The demo tier includes 10,000 monthly credits.
+
+metadata:
+  categories: Finance & Business, Data & Analytics, Security & Compliance
+icon: https://www.hiveintelligence.xyz/favicon.ico
+repoURL: https://github.com/hive-intel/hive-sdk
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.hiveintelligence.xyz/mcp
+  headers:
+  - name: Hive API Key
+    description: Hive Intelligence API key
+    key: Authorization
+    required: true
+    sensitive: true
+    prefix: "Bearer "
+toolPreview:
+  - name: search_tools
+    description: Search Hive's crypto intelligence catalog to find the right task toolset, provider endpoint, schema, or entity identifier for a natural-language request.
+    params:
+      query: Natural-language description of the market, wallet, token, DeFi, NFT, risk, network, Solana, or prediction-market task.
+  - name: get_api_endpoint_schema
+    description: Retrieve the current argument schema and provider details for a specific Hive endpoint before invoking it.
+    params:
+      tool_name: Name of the Hive endpoint or tool returned by discovery.
+  - name: invoke_api_endpoint
+    description: Execute a selected Hive provider endpoint with validated arguments and return the live crypto intelligence result.
+    params:
+      tool: Name of the Hive endpoint to execute.
+      args: JSON object containing the endpoint arguments.
