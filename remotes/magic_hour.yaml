@@ -1,0 +1,27 @@
+name: Magic Hour
+entryKey: obot-magic-hour
+serverUserType: singleUser
+shortDescription: Generate and transform video, image, and audio assets with Magic Hour
+description: |
+  Generate and transform video, image, and audio assets through the [Magic Hour MCP setup guide](https://magichour.ai/mcp), including the required authentication and client instructions.
+
+  ## Features
+  - Generate video from text or still images and animate portraits
+  - Edit video with face swap, lip sync, and other media workflows
+  - Generate and edit images, remove backgrounds, and colorize photos
+  - Generate speech and use audio in tools that accept audio inputs
+  - Upload source media, poll asynchronous render jobs, and return exact download URLs
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Magic Hour API key**: The OAuth authorization page asks you to enter an active Magic Hour API key
+  - **Magic Hour credits**: Generation and editing tools consume credits according to current pricing
+
+metadata:
+  categories: Video & Audio, Content Creation, Design
+icon: https://magichour.ai/logo.svg
+repoURL: https://magichour.ai/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.magichour.ai/
