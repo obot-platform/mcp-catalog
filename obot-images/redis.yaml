@@ -320,7 +320,7 @@ env:
 
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/redis:0.5.1
+  image: ghcr.io/obot-platform/mcp-images/redis:0.5.1-obot2
   port: 8099
   path: /
   args:
