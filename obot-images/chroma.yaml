@@ -62,7 +62,7 @@ env:
   description: API key for Chroma Cloud
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/chroma:0.2.6
+  image: ghcr.io/obot-platform/mcp-images/chroma:0.2.6-obot2
   port: 8099
   path: /
   args:
