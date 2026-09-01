@@ -40,7 +40,7 @@ toolPreview:
     uri: The URI of the content to convert (supports http://, https://, file://, data:)
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/markitdown-mcp:0.0.1a4
+  image: ghcr.io/obot-platform/mcp-images/markitdown-mcp:0.0.1a4-obot2
   port: 8099
   path: /
   args:
