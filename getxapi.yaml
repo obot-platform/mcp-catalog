@@ -1,0 +1,39 @@
+name: GetXAPI
+shortDescription: Search and read X/Twitter data through a remote MCP server
+description: |
+  A remote Model Context Protocol (MCP) server for GetXAPI, an X/Twitter data backend with REST endpoints for tweet search, user lookup, profile tweets, replies, and media reads.
+
+  ## Features
+  - **Tweet Search**: Advanced search over X/Twitter with bounded queries
+  - **User Lookup**: Resolve users and fetch profile metadata
+  - **Profile Tweets**: Fetch recent tweets for a user
+  - **Replies**: Fetch replies to a given tweet
+  - **Media Reads**: Read tweet media references
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **GetXAPI Key**: Create an API key at getxapi.com and send it with each MCP request
+
+metadata:
+  categories: Developer Tools, SaaS & API Integrations, Data & Analytics
+icon: https://getxapi.com/icon.svg
+repoURL: https://github.com/getxapi/getxapi-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.getxapi.com/mcp
+  headers:
+  - name: GetXAPI Key
+    description: GetXAPI key
+    key: Authorization
+    required: true
+    sensitive: true
+toolPreview:
+- name: advanced_search
+  description: Search tweets by query through GetXAPI advanced_search.
+  params:
+    code: Async arrow function that calls getxapi.request with q and limit query parameters
+- name: user_lookup
+  description: Resolve users and fetch profile metadata.
+  params:
+    code: Async arrow function that calls getxapi.request with username or user id
