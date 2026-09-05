@@ -1,0 +1,48 @@
+name: ParlayAPI
+entryKey: obot-parlayapi
+serverUserType: singleUser
+shortDescription: Query sports odds, player props, public discovery and your account usage
+description: |
+  Query available sports odds and player props, inspect public sport discovery,
+  and check your own account's tier and usage from a private workflow.
+  See the [setup instructions](https://github.com/JacobiusMakes/parlay-api-mcp#readme)
+  and [API documentation](https://parlay-api.com/docs).
+
+  ## Features
+  - Public discovery and pricing tools can run without an API key.
+  - Account tools query available events, markets and sources using your own key.
+  - Calculation tools operate on returned prices and assumptions. Quotes and
+    availability can change, and calculated values do not guarantee outcomes.
+
+  ## Connect your account
+  Each user gets a separate server instance. Enter your own ParlayAPI key in the
+  sensitive account-key field to use account tools, or leave it blank for public
+  discovery. Account allowances apply; check [current pricing](https://parlay-api.com/pricing).
+  This entry runs the published Python package through uvx over stdio.
+
+  ## Actions and data use
+  The server also exposes account signup, login-email delivery, checkout-link
+  creation and saved-book preferences. Approve those actions explicitly before
+  invoking their tools. They are not needed to start or list the server's tools.
+  Keep your key and account data in your private workflow. Sharing the MIT
+  software does not grant data distribution rights; the applicable API
+  [Terms](https://parlay-api.com/terms) and any written agreement govern data use.
+metadata:
+  categories: Data & Analytics
+icon: https://raw.githubusercontent.com/JacobiusMakes/parlay-api-mcp/cdfd4e41453d5f3878bf9b1ece6bb8dce0413809/mcpb/icon.png
+repoURL: https://github.com/JacobiusMakes/parlay-api-mcp#readme
+env:
+  - key: PARLAYAPI_KEY
+    name: Your ParlayAPI account key
+    required: false
+    sensitive: true
+    description: Your own account key. Leave blank for public discovery; account tools require a key and consume your account allowance.
+  - key: PARLAYAPI_BASE_URL
+    name: ParlayAPI base URL
+    value: https://parlay-api.com
+    required: false
+    sensitive: false
+runtime: uvx
+uvxConfig:
+  package: parlayapi-mcp==0.3.5
+  command: parlayapi-mcp
