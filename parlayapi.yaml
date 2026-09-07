@@ -44,5 +44,5 @@ env:
     sensitive: false
 runtime: uvx
 uvxConfig:
-  package: parlayapi-mcp==0.3.5
+  package: parlayapi-mcp==0.3.6
   command: parlayapi-mcp
