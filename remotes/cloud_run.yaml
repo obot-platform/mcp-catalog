@@ -1,6 +1,5 @@
 name: Google Cloud Run
 entryKey: obot-google-cloud-run
-serverUserType: singleUser
 shortDescription: Inspect and deploy Cloud Run services through Google's managed MCP server
 upgradeNote: |
   This replaces the Obot-hosted Cloud Run server with Google's managed Cloud Run MCP server.

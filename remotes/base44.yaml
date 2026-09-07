@@ -1,6 +1,5 @@
 name: Base44
 entryKey: obot-base44
-serverUserType: singleUser
 shortDescription: Create, inspect, edit, and operate Base44 backend projects and app sandboxes
 description: |
   Create and manage Base44 backend projects, query app data, and inspect or modify project sandboxes from an AI development workflow. See the official [Base44 MCP server documentation](https://docs.base44.com/developers/backend/overview/mcp-server) for setup, plan requirements, workspace access, tools, and permissions.

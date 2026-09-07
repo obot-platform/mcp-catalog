@@ -1,6 +1,5 @@
 name: PostHog
 entryKey: obot-posthog
-serverUserType: singleUser
 shortDescription: Query product analytics and manage PostHog insights and experiments
 description: |
   Query product analytics and manage dashboards, flags, experiments, surveys, errors, and logs through [PostHog's official MCP server](https://posthog.com/docs/model-context-protocol).

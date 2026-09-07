@@ -1,6 +1,5 @@
 name: Supermetrics Marketing Analytics
 entryKey: obot-supermetrics-marketing-analytics
-serverUserType: singleUser
 shortDescription: Analyze marketing data and manage campaigns across many platforms
 description: |
   Analyze marketing data and manage campaigns across advertising, analytics, CRM, e-commerce, email, and social platforms with [Supermetrics' official MCP server](https://mcp.supermetrics.com/docs).

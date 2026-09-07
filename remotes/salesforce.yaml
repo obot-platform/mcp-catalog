@@ -1,6 +1,5 @@
 name: Salesforce
 entryKey: obot-salesforce
-serverUserType: singleUser
 shortDescription: Access Salesforce records through Salesforce's hosted MCP servers
 upgradeNote: |
   This replaces the Obot-hosted Salesforce server with Salesforce's official hosted MCP servers.
@@ -55,10 +54,11 @@ metadata:
   allow-multiple: "true"
 icon: https://img.icons8.com/?size=100&id=38804&format=png&color=000000
 repoURL: https://developer.salesforce.com/docs/platform/hosted-mcp-servers/guide/hosted-mcp-servers-overview.html
-env:
+config:
   - key: SALESFORCE_SOBJECT_SERVER
     name: Salesforce SObject Server
-    description: Enter one of the `platform/sobject-*` server values listed in the entry description.
+    description: Enter one of the `platform/sobject-*` server values listed in the
+      entry description.
     required: true
     sensitive: false
     options:
@@ -74,6 +74,7 @@ env:
       - name: SObject Deletes
         value: platform/sobject-deletes
         description: Find and delete records for data-hygiene workflows.
+    usage: env
 runtime: remote
 remoteConfig:
   urlTemplate: https://api.salesforce.com/platform/mcp/v1/${SALESFORCE_SOBJECT_SERVER}

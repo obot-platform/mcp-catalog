@@ -1,6 +1,5 @@
 name: Goodnotes
 entryKey: obot-goodnotes
-serverUserType: singleUser
 shortDescription: Generate editable notes, whiteboards, illustrations, and structured diagrams
 description: |
   Generate editable Goodnotes text documents, whiteboards, vector illustrations, and structured diagrams from conversational prompts. See the official [Goodnotes integration guide](https://support.goodnotes.com/hc/en-us/articles/15790373823887-Use-Goodnotes-in-ChatGPT-and-Claude) for supported content, importing instructions, availability, and limitations.

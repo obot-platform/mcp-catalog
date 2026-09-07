@@ -1,6 +1,5 @@
 name: Interactive Brokers (IBKR)
 entryKey: obot-interactive-brokers
-serverUserType: singleUser
 shortDescription: Analyze IBKR portfolio data, market data, and trade instructions
 description: |
   Review your Interactive Brokers portfolio, balances, positions, orders, and market data, and draft trade instructions for account review. See the official [IBKR MCP connector FAQ](https://www.interactivebrokers.com/lib/cstools/faq/#/content/1442566213) for setup and current capabilities.

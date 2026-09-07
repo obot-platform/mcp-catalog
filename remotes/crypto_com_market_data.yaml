@@ -1,6 +1,5 @@
 name: Crypto.com Market Data
 entryKey: obot-crypto-com-market-data
-serverUserType: singleUser
 shortDescription: Retrieve real-time cryptocurrency order books, trades, and candles
 description: |
   Retrieve real-time Crypto.com Exchange market data, including order-book snapshots, recent trades, and OHLCV candles, with optional interactive widgets. See the official [Crypto.com Market Data MCP documentation](https://mcp.crypto.com/docs) for setup guides, examples, and current capabilities.

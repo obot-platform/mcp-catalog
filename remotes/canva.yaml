@@ -1,6 +1,5 @@
 name: Canva
 entryKey: obot-canva
-serverUserType: singleUser
 shortDescription: Search, create, edit, and export Canva designs
 description: |
   Search, create, and update Canva designs and content through [Canva's official MCP server](https://www.canva.dev/docs/mcp/).

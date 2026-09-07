@@ -1,6 +1,5 @@
 name: Read AI
 entryKey: obot-read-ai
-serverUserType: singleUser
 shortDescription: Retrieve meeting transcripts and summaries, dispatch agents, and share reports
 description: |
   Retrieve Read AI meeting transcripts, summaries, action items, questions, topics, and engagement metrics, or dispatch an agent to an upcoming call. See the official [Read AI MCP guide](https://support.read.ai/hc/en-us/articles/49381158409491-MCP-Server) for beta setup, prerequisites, authentication, and current tools.

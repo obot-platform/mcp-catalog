@@ -1,6 +1,5 @@
 name: Miro
 entryKey: obot-miro
-serverUserType: singleUser
 shortDescription: Search, summarize, and create content on Miro boards
 description: |
   Search, summarize, and create content on Miro boards through [Miro's official MCP server](https://developers.miro.com/docs/miro-mcp).

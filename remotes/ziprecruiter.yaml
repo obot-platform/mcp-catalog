@@ -1,6 +1,5 @@
 name: ZipRecruiter
 entryKey: obot-ziprecruiter
-serverUserType: singleUser
 shortDescription: Search live US and Canadian jobs by role, location, salary, work style, and experience
 description: |
   Search live ZipRecruiter listings and filter jobs by title, company, location, distance, salary, recency, work style, employment type, and seniority. See the [ZipRecruiter MCP documentation](https://api.ziprecruiter.com/mcp/docs) for supported filters, setup, authentication behavior, examples, and support details.

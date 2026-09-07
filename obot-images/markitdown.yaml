@@ -1,6 +1,5 @@
 name: MarkItDown
 entryKey: obot-markitdown
-serverUserType: singleUser
 shortDescription: Convert documents, images, audio, and web content to LLM-optimized Markdown
 description: '**DEPRECATED**: this server is no longer supported by the Obot MCP Catalog. No direct replacement is currently available.
 

@@ -1,6 +1,5 @@
 name: Webflow
 entryKey: obot-webflow
-serverUserType: singleUser
 shortDescription: Manage Webflow sites, CMS content, pages, assets, and styles
 description: |
   Manage Webflow sites, CMS content, pages, assets, and styles through [Webflow's official MCP server](https://developers.webflow.com/mcp/v1.0.0/reference/overview).

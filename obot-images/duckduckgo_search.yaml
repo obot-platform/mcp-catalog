@@ -1,6 +1,5 @@
 name: DuckDuckGo Search
 entryKey: obot-duckduckgo-search
-serverUserType: singleUser
 shortDescription: Search the web with DuckDuckGo and retrieve webpage content with parsing
 description: 'Search the web through DuckDuckGo and retrieve parsed webpage content with LLM-friendly formatting.
 
@@ -28,7 +27,7 @@ metadata:
   categories: Search
 icon: https://img.icons8.com/?size=100&id=63778&format=png&color=000000
 repoURL: https://github.com/nickclyde/duckduckgo-mcp-server
-env: []
+config: []
 toolPreview:
 - name: search
   description: Search DuckDuckGo and return web results.

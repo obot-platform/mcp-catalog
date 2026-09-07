@@ -1,6 +1,5 @@
 name: Monte Carlo
 entryKey: obot-monte-carlo
-serverUserType: singleUser
 shortDescription: Investigate data incidents, lineage, monitors, and observability assets
 description: |
   Investigate data-quality alerts, trace asset lineage, inspect queries and monitors, and create observability checks in Monte Carlo. See the official [Monte Carlo MCP server guide](https://docs.getmontecarlo.com/docs/mcp-server) for authentication, tool behavior, and current availability.

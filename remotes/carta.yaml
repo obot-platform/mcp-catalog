@@ -1,6 +1,5 @@
 name: Carta CRM
 entryKey: obot-carta
-serverUserType: singleUser
 shortDescription: Search and manage private-market relationships, deals, notes, tasks, reports, and campaigns
 description: |
   Search and manage Carta CRM contacts, companies, deals, investor relationships, notes, tasks, reports, and campaigns from an MCP-compatible AI workflow. See the official [Carta CRM MCP documentation](https://docs.carta.com/crm/docs/carta-crm-mcp) for the endpoint, available tools, authentication, and setup.

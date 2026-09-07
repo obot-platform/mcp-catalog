@@ -1,6 +1,5 @@
 name: Synapse.org
 entryKey: obot-synapse-org
-serverUserType: singleUser
 shortDescription: Search scientific datasets and inspect Synapse metadata and provenance
 description: |
   Discover collaborative scientific datasets, search research projects, and inspect entity metadata, annotations, hierarchies, and provenance in Synapse. See Sage Bionetworks' official [Synapse MCP guide](https://python-docs.synapse.org/en/v4.13.1-develop.1/guides/synapse_mcp/) for connection instructions, tool behavior, and data-use considerations.

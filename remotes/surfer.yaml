@@ -1,6 +1,5 @@
 name: Surfer
 entryKey: obot-surfer
-serverUserType: singleUser
 shortDescription: Create, optimize, and score SEO content with live Surfer data
 description: |
   Create, optimize, and score content using live SEO and AI Search data, guidelines, and brand context from Surfer. See the [Surfer MCP documentation](https://docs.surferseo.com/en/articles/12944186-surfer-mcp) for setup, supported workflows, plan requirements, and usage limits.

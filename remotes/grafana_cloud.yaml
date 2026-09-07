@@ -1,6 +1,5 @@
 name: Grafana Cloud
 entryKey: obot-grafana-cloud
-serverUserType: singleUser
 shortDescription: Query Grafana Cloud metrics, logs, dashboards, alerts, incidents, and on-call schedules with OAuth
 description: |
   Investigate and manage a Grafana Cloud stack through [Grafana Cloud's hosted MCP server](https://grafana.com/docs/grafana-cloud/ai-tools/mcp-servers/cloud-mcp/). OAuth 2.1 gives each user access through their own Grafana identity and RBAC permissions instead of a service account token.
@@ -31,12 +30,6 @@ repoURL: https://grafana.com/docs/grafana-cloud/ai-tools/mcp-servers/cloud-mcp/
 runtime: remote
 remoteConfig:
   fixedURL: https://mcp.grafana.com/mcp
-  headers:
-  - name: Grafana Cloud Stack URL
-    description: Optional Grafana Cloud stack URL used to skip stack selection during OAuth authorization (for example, https://my-stack.grafana.net)
-    key: X-Grafana-URL
-    required: false
-    sensitive: false
 toolPreview:
 - name: add_activity_to_incident
   description: Add activity to an incident.
@@ -344,3 +337,12 @@ toolPreview:
 - name: update_datasource
   description: Update a datasource.
   params: {access: Input value., basicAuth: Input value., database: Input value., fields: Input value., isDefault: Input value., jsonData: Input value., name: Input value., schemaReviewed: Input value., uid: Input value., url: Input value.}
+
+config:
+  - name: Grafana Cloud Stack URL
+    description: Optional Grafana Cloud stack URL used to skip stack selection
+      during OAuth authorization (for example, https://my-stack.grafana.net)
+    key: X-Grafana-URL
+    required: false
+    sensitive: false
+    usage: header

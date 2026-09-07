@@ -1,6 +1,5 @@
 name: Dynatrace
 entryKey: obot-dynatrace
-serverUserType: singleUser
 shortDescription: Access Dynatrace observability data and intelligence through the official hosted MCP server
 upgradeNote: |
   This replaces the Obot-hosted Dynatrace server with Dynatrace's official SaaS MCP gateway.
@@ -44,22 +43,24 @@ metadata:
   allow-multiple: "true"
 icon: https://avatars.githubusercontent.com/u/58178984?s=48&v=4
 repoURL: https://docs.dynatrace.com/docs/dynatrace-intelligence/dynatrace-mcp
-env:
-- key: DYNATRACE_ENVIRONMENT
-  name: Dynatrace Environment
-  required: true
-  sensitive: false
-  description: Your Dynatrace SaaS environment identifier, for example abc12345 from https://abc12345.apps.dynatrace.com.
-runtime: remote
-remoteConfig:
-  urlTemplate: https://${DYNATRACE_ENVIRONMENT}.apps.dynatrace.com/platform-reserved/mcp-gateway/v0.1/servers/dynatrace-mcp/mcp
-  headers:
+config:
+  - key: DYNATRACE_ENVIRONMENT
+    name: Dynatrace Environment
+    required: true
+    sensitive: false
+    description: Your Dynatrace SaaS environment identifier, for example abc12345
+      from https://abc12345.apps.dynatrace.com.
+    usage: env
   - key: Authorization
     name: Dynatrace Platform Token
     required: true
     sensitive: true
     prefix: "Bearer "
     description: A Dynatrace Platform Token with MCP gateway and tool-specific permissions.
+    usage: header
+runtime: remote
+remoteConfig:
+  urlTemplate: https://${DYNATRACE_ENVIRONMENT}.apps.dynatrace.com/platform-reserved/mcp-gateway/v0.1/servers/dynatrace-mcp/mcp
 toolPreview:
 - name: adaptive-anomaly-detector
   description: Detect anomalies in time-series data using an adaptive threshold.

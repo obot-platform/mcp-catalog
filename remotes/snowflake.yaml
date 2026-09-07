@@ -1,6 +1,5 @@
 name: Snowflake
 entryKey: obot-snowflake
-serverUserType: singleUser
 shortDescription: Connect to a Snowflake-managed MCP server with OAuth and native RBAC
 upgradeNote: |
   This replaces the Obot-hosted Snowflake Labs server with Snowflake's managed MCP server.
@@ -41,28 +40,32 @@ metadata:
 icon: https://avatars.githubusercontent.com/u/6453780?s=48&v=4
 repoURL: https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp
 
-env:
+config:
   - name: Snowflake Account URL
     key: SNOWFLAKE_ACCOUNT_URL
-    description: Your Snowflake account URL without a trailing slash (for example, https://myorg-myaccount.snowflakecomputing.com)
+    description: Your Snowflake account URL without a trailing slash (for example,
+      https://myorg-myaccount.snowflakecomputing.com)
     required: true
     sensitive: false
+    usage: env
   - name: Snowflake Database
     key: SNOWFLAKE_DATABASE
     description: Database containing the Snowflake-managed MCP server
     required: true
     sensitive: false
+    usage: env
   - name: Snowflake Schema
     key: SNOWFLAKE_SCHEMA
     description: Schema containing the Snowflake-managed MCP server
     required: true
     sensitive: false
+    usage: env
   - name: Snowflake MCP Server
     key: SNOWFLAKE_MCP_SERVER
     description: Name of the Snowflake-managed MCP server
     required: true
     sensitive: false
-
+    usage: env
 runtime: remote
 remoteConfig:
   urlTemplate: ${SNOWFLAKE_ACCOUNT_URL}/api/v2/databases/${SNOWFLAKE_DATABASE}/schemas/${SNOWFLAKE_SCHEMA}/mcp-servers/${SNOWFLAKE_MCP_SERVER}

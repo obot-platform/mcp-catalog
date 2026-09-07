@@ -1,6 +1,5 @@
 name: Redis
 entryKey: obot-redis
-serverUserType: singleUser
 shortDescription: Manage Redis data types, vector search, streams, and pub/sub messaging
 description: |
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -311,13 +310,14 @@ metadata:
   categories: Databases
 icon: https://avatars.githubusercontent.com/u/1529926?s=48&v=4
 repoURL: https://redis.io/docs/latest/integrate/redis-mcp/
-env:
-- key: REDIS_URI
-  name: Redis URI
-  required: true
-  sensitive: true
-  description: URL for connecting to the Redis instance (e.g. redis://user:pass@localhost:6379/0).
-
+config:
+  - key: REDIS_URI
+    name: Redis URI
+    required: true
+    sensitive: true
+    description: URL for connecting to the Redis instance (e.g.
+      redis://user:pass@localhost:6379/0).
+    usage: env
 runtime: containerized
 containerizedConfig:
   image: ghcr.io/obot-platform/mcp-images/redis:0.5.1-obot2

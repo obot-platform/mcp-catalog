@@ -1,6 +1,5 @@
 name: Linear
 entryKey: obot-linear
-serverUserType: singleUser
 shortDescription: Manage Linear issues, projects, comments, and team workflows with AI agents
 description: |
   Access and manage issues, projects, comments, and team workflows through [Linear's MCP server](https://linear.app/changelog/2025-05-01-mcp).

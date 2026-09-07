@@ -1,6 +1,5 @@
 name: Granola
 entryKey: obot-granola
-serverUserType: singleUser
 shortDescription: Search meeting notes, transcripts, decisions, and action items
 description: |
   Search meeting notes, transcripts, decisions, and action items with [Granola's official MCP server](https://help.granola.ai/article/granola-mcp).

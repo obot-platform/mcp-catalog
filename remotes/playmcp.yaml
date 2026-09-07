@@ -1,6 +1,5 @@
 name: PlayMCP
 entryKey: obot-playmcp
-serverUserType: singleUser
 shortDescription: Use selected Kakao and third-party tools through one shared toolbox
 description: |
   Use Kakao services and third-party tools selected in your PlayMCP toolbox through one connection. See Kakao's official [PlayMCP Toolbox announcement](https://www.kakaocorp.com/page/detail/11865?lang=ENG) for setup and examples of supported service workflows.

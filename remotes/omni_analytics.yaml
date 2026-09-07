@@ -1,6 +1,5 @@
 name: Omni Analytics
 entryKey: obot-omni-analytics
-serverUserType: singleUser
 shortDescription: Query governed business data through Omni's semantic model
 description: |
   Ask business questions against Omni's governed semantic layer, select the appropriate model and topic, and retrieve consistent results using your organization's existing metrics and permissions. See Omni's official [MCP documentation](https://docs.omni.co/ai/mcp) for setup details and supported query behavior.

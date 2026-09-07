@@ -1,6 +1,5 @@
 name: AWS Marketplace
 entryKey: obot-aws-marketplace
-serverUserType: singleUser
 shortDescription: Discover and compare software and services in AWS Marketplace
 description: |
   Search AWS Marketplace solutions, retrieve product details, research vendors, and build recommendation, comparison, or evaluation reports. See the official [AWS Marketplace MCP server guide](https://docs.aws.amazon.com/marketplace/latest/developerguide/marketplace-mcp-server.html) for the endpoint, integration examples, canonical tool schemas, and workflows.

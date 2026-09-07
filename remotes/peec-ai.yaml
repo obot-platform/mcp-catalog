@@ -1,6 +1,5 @@
 name: Peec AI
 entryKey: obot-peec-ai
-serverUserType: singleUser
 shortDescription: Analyze brand visibility, sentiment, and share of voice across AI search
 description: |
   Analyze your brand's visibility across AI search engines, compare it with competitors, and retrieve the underlying Peec AI reports in natural language. See [Peec AI's MCP documentation](https://docs.peec.ai/mcp/introduction) for supported clients, OAuth and personal-access-token setup, and available tools.

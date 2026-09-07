@@ -1,6 +1,5 @@
 name: Box
 entryKey: obot-box
-serverUserType: singleUser
 shortDescription: Search, analyze, create, and update content stored in Box
 description: |
   Search, analyze, create, and update Box content through [Box's official MCP server](https://developer.box.com/guides/box-mcp/), while preserving existing permissions and security controls.

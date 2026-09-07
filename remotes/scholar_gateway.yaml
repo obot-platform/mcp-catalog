@@ -1,6 +1,5 @@
 name: Scholar Gateway
 entryKey: obot-scholar-gateway
-serverUserType: singleUser
 shortDescription: Search peer-reviewed Wiley research with verifiable citations and DOI links
 description: |
   Search peer-reviewed research from Wiley journals and return evidence-backed passages with complete citation metadata and DOI links. See the [Scholar Gateway connection guide](https://docs.scholargateway.ai/) for endpoint setup, OAuth authentication, access requirements, content coverage, and troubleshooting.

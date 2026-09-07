@@ -1,6 +1,5 @@
 name: SlidesGPT
 entryKey: obot-slidesgpt
-serverUserType: singleUser
 shortDescription: Generate presentation decks, apply themes, create images, and export PowerPoint files
 description: |
   Generate complete presentation decks, apply visual themes, create slide imagery, and download PowerPoint files from an AI workflow. See the official [SlidesGPT MCP product guide](https://slidesgpt.com/products/mcp) for the generic endpoint, setup, available tools, supported clients, and data handling.

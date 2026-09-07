@@ -1,6 +1,5 @@
 name: Fathom
 entryKey: obot-fathom
-serverUserType: singleUser
 shortDescription: Search meetings and retrieve summaries, transcripts, and action items
 description: |
   Search meetings and retrieve summaries, transcripts, and action items through [Fathom's official MCP server](https://help.fathom.video/en/articles/11497793).

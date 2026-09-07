@@ -1,6 +1,5 @@
 name: Adobe Workfront
 entryKey: obot-adobe-workfront
-serverUserType: singleUser
 shortDescription: Find, create, update, and manage Workfront projects, tasks, planning records, and approvals
 description: |
   Find, create, update, and manage Adobe Workfront projects, tasks, planning records, and approvals through natural-language requests. See Adobe's [Workfront MCP setup guide](https://experienceleague.adobe.com/en/docs/workfront/using/basics/workfront-mcp-server/configure-workfront-mcp-server) for connection steps, prerequisites, permissions, and supported clients.

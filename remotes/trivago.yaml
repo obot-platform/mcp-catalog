@@ -1,6 +1,5 @@
 name: trivago
 entryKey: obot-trivago
-serverUserType: singleUser
 shortDescription: Search accommodations and compare live hotel prices across booking providers
 description: |
   Search accommodations and compare live hotel prices from multiple booking providers by destination, dates, guest count, or nearby coordinates. See the official [trivago MCP documentation](https://mcp.trivago.com/docs) for setup, supported clients, available tools, and example searches.

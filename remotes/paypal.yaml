@@ -1,6 +1,5 @@
 name: PayPal
 entryKey: obot-paypal
-serverUserType: singleUser
 shortDescription: Create invoices, process payments, manage subscriptions, and handle disputes with PayPal
 description: |
   Create invoices and manage PayPal business transactions through [PayPal's MCP server](https://www.paypal.ai/docs/tools/mcp-quickstart).

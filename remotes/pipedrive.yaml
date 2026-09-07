@@ -1,6 +1,5 @@
 name: Pipedrive
 entryKey: obot-pipedrive
-serverUserType: singleUser
 shortDescription: Search and update deals, contacts, leads, activities, and notes
 description: |
   Work with live Pipedrive CRM data by finding sales records, updating pipeline details, adding notes, and scheduling follow-up activities. See Pipedrive's official [MCP server page](https://www.pipedrive.com/en/features/mcp-server) for availability, security, and supported workflows.

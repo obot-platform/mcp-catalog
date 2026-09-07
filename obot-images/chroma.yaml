@@ -1,6 +1,5 @@
 name: Chroma Cloud
 entryKey: obot-chroma-cloud
-serverUserType: singleUser
 shortDescription: Manage collections, documents, and vector search in Chroma embedding database
 description: '**DEPRECATED**: this server is no longer supported by the Obot MCP Catalog. No direct replacement is currently available.
 
@@ -44,22 +43,25 @@ metadata:
   deprecated: "true"
 icon: https://avatars.githubusercontent.com/u/105881770?s=48&v=4
 repoURL: https://github.com/chroma-core/chroma-mcp
-env:
-- key: CHROMA_TENANT
-  name: Chroma Cloud Tenant ID
-  required: true
-  sensitive: false
-  description: Chroma Cloud tenant identifier
-- key: CHROMA_DATABASE
-  name: Chroma Cloud Database Name
-  required: true
-  sensitive: false
-  description: Database name
-- key: CHROMA_API_KEY
-  name: Chroma Cloud API Key
-  required: true
-  sensitive: true
-  description: API key for Chroma Cloud
+config:
+  - key: CHROMA_TENANT
+    name: Chroma Cloud Tenant ID
+    required: true
+    sensitive: false
+    description: Chroma Cloud tenant identifier
+    usage: env
+  - key: CHROMA_DATABASE
+    name: Chroma Cloud Database Name
+    required: true
+    sensitive: false
+    description: Database name
+    usage: env
+  - key: CHROMA_API_KEY
+    name: Chroma Cloud API Key
+    required: true
+    sensitive: true
+    description: API key for Chroma Cloud
+    usage: env
 runtime: containerized
 containerizedConfig:
   image: ghcr.io/obot-platform/mcp-images/chroma:0.2.6-obot2

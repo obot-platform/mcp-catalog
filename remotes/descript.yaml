@@ -1,6 +1,5 @@
 name: Descript
 entryKey: obot-descript
-serverUserType: singleUser
 shortDescription: Import, edit, organize, and publish video and audio projects with Descript
 description: |
   Import media, transcribe recordings, edit projects with Underlord, organize projects and compositions, publish Descript web links, and monitor long-running jobs. See the [Descript custom MCP setup guide](https://help.descript.com/api-and-mcp/mcp-custom) for connection requirements, authentication, setup steps, and limitations.

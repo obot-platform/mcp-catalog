@@ -1,6 +1,5 @@
 name: Daloopa
 entryKey: obot-daloopa
-serverUserType: singleUser
 shortDescription: Retrieve sourced company fundamentals, KPIs, filings, and stock-price data
 description: |
   Retrieve company fundamentals, operating KPIs, filing text, and stock-price data with links back to source documents. See the official [Daloopa MCP documentation](https://docs.daloopa.com/docs/daloopa-mcp) for setup, authentication options, supported clients, and tool details.

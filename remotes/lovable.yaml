@@ -1,6 +1,5 @@
 name: Lovable
 entryKey: obot-lovable
-serverUserType: singleUser
 shortDescription: Create, inspect, iterate on, and deploy Lovable applications
 description: |
   Create, inspect, iterate on, and deploy Lovable applications through [Lovable's official MCP server](https://docs.lovable.dev/integrations/lovable-mcp-server).

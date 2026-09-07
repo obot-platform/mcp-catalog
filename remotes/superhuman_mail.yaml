@@ -1,6 +1,5 @@
 name: Superhuman Mail
 entryKey: obot-superhuman-mail
-serverUserType: singleUser
 shortDescription: Search email, draft and send replies, and manage calendars across Gmail and Outlook
 description: |
   Search email and calendars, draft replies in your voice, schedule meetings, and send or organize messages across connected Gmail and Outlook accounts. See the [Superhuman Mail MCP Server guide](https://help.superhuman.com/hc/en-us/articles/46005696690317-Superhuman-Mail-MCP-Server) for setup, tools, security considerations, and account requirements.

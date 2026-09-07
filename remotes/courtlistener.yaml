@@ -1,6 +1,5 @@
 name: CourtListener
 entryKey: obot-courtlistener
-serverUserType: singleUser
 shortDescription: Search U.S. case law, court records, judges, oral arguments, citations, and docket alerts
 description: |
   Search U.S. case law, PACER dockets, judges, oral arguments, and citation data, then create search or docket alerts in CourtListener. See Free Law Project's [CourtListener MCP documentation](https://github.com/freelawproject/courtlistener-api-client/blob/main/MCP_README.md) for setup, authentication, tools, and usage limits.

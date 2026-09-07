@@ -1,6 +1,5 @@
 name: Adobe Journey Optimizer
 entryKey: obot-adobe-journey-optimizer
-serverUserType: singleUser
 shortDescription: Inspect and troubleshoot journeys, campaigns, offers, and channel configurations
 description: |
   Inspect and troubleshoot Adobe Journey Optimizer journeys, campaigns, offers, and channel configurations using plain-language requests. See Adobe's official [Journey Optimizer MCP guide](https://experienceleague.adobe.com/en/docs/journey-optimizer/using/content-management/combine/ajo-mcp) for beta availability, setup, prerequisites, and supported tools.

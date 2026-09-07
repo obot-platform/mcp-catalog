@@ -1,6 +1,5 @@
 name: GoDaddy
 entryKey: obot-godaddy
-serverUserType: singleUser
 shortDescription: Search domain ideas and check current registration availability with GoDaddy
 description: |
   Search for domain names from keywords, product ideas, or business concepts and check whether a specific domain is currently available to register. See the [GoDaddy MCP server documentation](https://developer.godaddy.com/en/docs/api-users/mcp) for custom-client setup, capabilities, limitations, privacy, rate limits, and support.

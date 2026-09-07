@@ -1,6 +1,5 @@
 name: Attio
 entryKey: obot-attio
-serverUserType: singleUser
 shortDescription: Search and manage CRM records, pipelines, notes, tasks, meetings, emails, and reports
 description: |
   Search and manage Attio CRM records, pipelines, notes, tasks, meetings, emails, comments, and reports from an AI workflow. See the official [Attio MCP documentation](https://docs.attio.com/mcp/overview) for setup, supported tools, permissions, rate limits, and security guidance.

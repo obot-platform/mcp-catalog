@@ -1,6 +1,5 @@
 name: Scite
 entryKey: obot-scite
-serverUserType: singleUser
 shortDescription: Search scientific literature and verify claims with Smart Citation evidence
 description: |
   Search scientific literature and verify claims with full-text evidence and Smart Citations that show whether later studies support, dispute, or contextualize cited work. See the official [Scite MCP page](https://scite.ai/mcp) for setup, authentication, supported clients, and data coverage.

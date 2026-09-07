@@ -1,6 +1,5 @@
 name: Klaviyo
 entryKey: obot-klaviyo
-serverUserType: singleUser
 shortDescription: Analyze campaigns and flows, manage profiles and audiences, and create marketing content
 description: |
   Analyze campaign and flow performance, manage profiles and audiences, and create marketing campaigns and templates using live Klaviyo data. See the [Klaviyo MCP server documentation](https://developers.klaviyo.com/en/docs/klaviyo_mcp_server) for setup, tools, permissions, and security guidance.
@@ -26,7 +25,7 @@ metadata:
   categories: Marketing, Data & Analytics, Communication
 icon: https://developers.klaviyo.com/favicon.ico
 repoURL: https://developers.klaviyo.com/en/docs/klaviyo_mcp_server
-env:
+config:
   - name: Access Mode
     key: READ_ONLY
     description: Choose read-only access or enable tools that can modify Klaviyo data.
@@ -38,7 +37,9 @@ env:
         description: Disable all tools that can perform write actions.
       - name: Read and write
         value: "false"
-        description: Enable campaign, profile, catalog, subscription, and other write actions.
+        description: Enable campaign, profile, catalog, subscription, and other write
+          actions.
+    usage: env
   - name: User-Generated Content
     key: DISABLE_USER_CONTENT
     description: Choose whether tools that return user-generated content are available.
@@ -47,10 +48,12 @@ env:
     options:
       - name: Disable these tools
         value: "true"
-        description: Reduce prompt-injection exposure by excluding tools that return user-generated content.
+        description: Reduce prompt-injection exposure by excluding tools that return
+          user-generated content.
       - name: Enable these tools
         value: "false"
         description: Include tools that may return untrusted user-generated content.
+    usage: env
 runtime: remote
 remoteConfig:
   urlTemplate: https://mcp.klaviyo.com/mcp?read-only=${READ_ONLY}&disable-tools-with-user-generated-content=${DISABLE_USER_CONTENT}

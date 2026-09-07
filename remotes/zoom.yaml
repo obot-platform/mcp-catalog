@@ -1,6 +1,5 @@
 name: Zoom
 entryKey: obot-zoom
-serverUserType: singleUser
 shortDescription: Search meetings and retrieve Zoom recordings, transcripts, and notes
 description: |
   Search meetings and retrieve recordings, transcripts, notes, and Zoom Hub resources through [Zoom's official MCP server](https://developers.zoom.us/docs/mcp/zoom/).

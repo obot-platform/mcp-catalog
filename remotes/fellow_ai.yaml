@@ -1,6 +1,5 @@
 name: Fellow.ai
 entryKey: obot-fellow-ai
-serverUserType: singleUser
 shortDescription: Search meetings and retrieve transcripts, summaries, and action items
 description: |
   Search your meeting history and retrieve transcripts, summaries, participants, and assigned action items from Fellow. See Fellow's official [MCP server guide](https://help.fellow.ai/en/articles/12622641-fellow-s-mcp-server) for setup instructions and supported meeting workflows.

@@ -1,6 +1,5 @@
 name: Mixpanel
 entryKey: obot-mixpanel
-serverUserType: singleUser
 shortDescription: Analyze events, funnels, retention, experiments, replays, dashboards, and data quality
 description: |
   Analyze events, funnels, flows, retention, experiments, feature flags, and session replays, then manage dashboards, cohorts, Lexicon metadata, and data-quality issues. See the [Mixpanel MCP server documentation](https://docs.mixpanel.com/docs/mcp) for regional endpoints, tools, authentication, permissions, and security guidance.
@@ -26,7 +25,7 @@ metadata:
   categories: Data & Analytics, Product Analytics, SaaS & API Integrations
 icon: https://mixpanel.com/favicon.ico
 repoURL: https://docs.mixpanel.com/docs/mcp
-env:
+config:
   - name: Data Region
     key: MIXPANEL_HOST
     description: Select the Mixpanel region that stores your organization data.
@@ -42,6 +41,7 @@ env:
       - name: India
         value: mcp-in.mixpanel.com
         description: Connect to the India Mixpanel endpoint.
+    usage: env
 runtime: remote
 remoteConfig:
   urlTemplate: https://${MIXPANEL_HOST}/mcp

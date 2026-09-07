@@ -1,6 +1,5 @@
 name: Trello
 entryKey: obot-trello
-serverUserType: singleUser
 shortDescription: Search and manage Trello workspaces, boards, lists, cards, checklists, Inbox, and Planner
 description: |
   Search Trello and create, organize, update, move, complete, or archive work across boards, lists, cards, checklists, Inbox, and Planner. See the [Trello MCP documentation](https://support.atlassian.com/trello/docs/connect-trello-to-ai-assistants-with-trello-mcp/) for setup, supported clients, permissions, capabilities, admin controls, and security details.

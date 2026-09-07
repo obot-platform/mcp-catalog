@@ -1,6 +1,5 @@
 name: Kiwi.com
 entryKey: obot-kiwi-com
-serverUserType: singleUser
 shortDescription: Search flights with flexible routes, dates, passengers, and cabins
 description: |
   Search Kiwi.com flights for one-way and round trips, flexible dates, passenger counts, and cabin preferences. See the official [Kiwi.com MCP page](https://www.kiwi.com/en/pages/mcp/) for connection details and current capabilities.

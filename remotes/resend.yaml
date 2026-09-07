@@ -1,6 +1,5 @@
 name: Resend
 entryKey: obot-resend
-serverUserType: singleUser
 shortDescription: Manage email delivery, audiences, domains, and automations in Resend
 description: |
   Send and manage email, maintain templates and audiences, configure domains and webhooks, and inspect delivery activity across the Resend platform. See Resend's official [MCP server documentation](https://resend.com/docs/mcp-server) for connection instructions and the current tool catalog.

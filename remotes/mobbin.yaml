@@ -1,6 +1,5 @@
 name: Mobbin
 entryKey: obot-mobbin
-serverUserType: singleUser
 shortDescription: Search real product screens, user flows, and website sections for UI and UX reference
 description: |
   Search Mobbin's library of shipped product screens, user flows, and website sections to ground UI and UX research in real design patterns. See the official [Mobbin MCP page](https://mobbin.com/mcp) for setup, plan requirements, supported clients, and example design workflows.

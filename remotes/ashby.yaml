@@ -1,6 +1,5 @@
 name: Ashby
 entryKey: obot-ashby
-serverUserType: singleUser
 shortDescription: Search recruiting data, prepare interviews, and update candidate pipelines
 description: |
   Search live Ashby recruiting data, prepare for interviews, review hiring pipelines, and update candidate records from your AI client. See the official [Ashby MCP Server guide](https://docs.ashbyhq.com/ashby-mcp-server-beta) for beta setup, permissions, supported clients, tools, and rate limits.

@@ -1,6 +1,5 @@
 name: Jam
 entryKey: obot-jam
-serverUserType: singleUser
 shortDescription: Bring Jam bug recordings, logs, and network context into coding tools
 description: |
   Bring Jam recording context—including video, console logs, network requests, and user events—into an AI coding workflow to investigate and fix bugs. See [Jam's MCP guide](https://jam.dev/docs/jam-mcp) for Cursor, VS Code, Windsurf, and Claude Code setup plus OAuth connection details.

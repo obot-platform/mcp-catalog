@@ -1,6 +1,5 @@
 name: Ahrefs
 entryKey: obot-ahrefs
-serverUserType: singleUser
 shortDescription: Research keywords, backlinks, rankings, competitors, and AI visibility
 description: |
   Research keywords, backlinks, rankings, competitors, and AI visibility with [Ahrefs' official MCP server](https://docs.ahrefs.com/docs/mcp/reference/introduction).

@@ -1,6 +1,5 @@
 name: Contact
 entryKey: obot-contact
-serverUserType: singleUser
 shortDescription: Manage Microsoft 365 contacts with CRUD operations and advanced search
 description: |
   ![Contact MCP Server](https://img.shields.io/badge/Contact-MCP%20Server-blue?style=for-the-badge&logo=microsoft-outlook)

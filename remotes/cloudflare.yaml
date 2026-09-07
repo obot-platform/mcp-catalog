@@ -1,6 +1,5 @@
 name: Cloudflare
 entryKey: obot-cloudflare
-serverUserType: singleUser
 shortDescription: Search and manage the full Cloudflare API through Cloudflare's Code Mode MCP server
 upgradeNote: |
   This entry now connects to Cloudflare's consolidated API MCP server instead of letting you choose a product-specific `*.mcp.cloudflare.com` server.
@@ -44,13 +43,6 @@ repoURL: https://github.com/cloudflare/mcp
 runtime: remote
 remoteConfig:
   fixedURL: https://mcp.cloudflare.com/mcp
-  headers:
-  - name: Cloudflare API Token
-    description: Optional scoped Cloudflare user or account API token for non-OAuth connections
-    key: Authorization
-    required: false
-    sensitive: true
-    prefix: "Bearer "
 toolPreview:
 - name: docs
   description: Search Cloudflare developer documentation for products and features.
@@ -65,3 +57,13 @@ toolPreview:
   params:
     code: JavaScript async arrow function that executes Cloudflare API requests
     account_id: Optional account ID for user tokens or OAuth connections with access to multiple accounts
+
+config:
+  - name: Cloudflare API Token
+    description: Optional scoped Cloudflare user or account API token for non-OAuth
+      connections
+    key: Authorization
+    required: false
+    sensitive: true
+    prefix: "Bearer "
+    usage: header

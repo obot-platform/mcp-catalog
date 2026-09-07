@@ -1,6 +1,5 @@
 name: Adobe Customer Journey Analytics
 entryKey: obot-adobe-customer-journey-analytics
-serverUserType: singleUser
 shortDescription: Run journey analytics reports and manage CJA analysis components
 description: |
   Query Adobe Customer Journey Analytics metrics and dimensions, run reports, and manage analysis components such as segments, calculated metrics, audiences, projects, and date ranges. See Adobe's official [Analytics MCP documentation](https://developer.adobe.com/analytics-mcp/docs/) for setup, supported tools, and current behavior.

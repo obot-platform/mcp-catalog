@@ -1,6 +1,5 @@
 name: Browserbase
 entryKey: obot-browserbase
-serverUserType: singleUser
 shortDescription: Cloud browser automation with web scraping, screenshots, and AI interactions
 description: '**DEPRECATED**: this server is no longer supported by the Obot MCP Catalog. No approved replacement is currently available. Browserbase''s hosted MCP is not approved because it requires API keys in URL query parameters.
 
@@ -41,22 +40,25 @@ metadata:
   deprecated: "true"
 icon: https://avatars.githubusercontent.com/u/158221360?v=4
 repoURL: https://github.com/browserbase/mcp-server-browserbase
-env:
-- key: BROWSERBASE_API_KEY
-  name: Browserbase API Key
-  required: true
-  sensitive: true
-  description: Your Browserbase API key.
-- key: BROWSERBASE_PROJECT_ID
-  name: Browserbase Project ID
-  required: true
-  sensitive: false
-  description: Your Browserbase project ID.
-- key: GEMINI_API_KEY
-  name: Gemini API Key
-  required: true
-  sensitive: true
-  description: Your Gemini API key.
+config:
+  - key: BROWSERBASE_API_KEY
+    name: Browserbase API Key
+    required: true
+    sensitive: true
+    description: Your Browserbase API key.
+    usage: env
+  - key: BROWSERBASE_PROJECT_ID
+    name: Browserbase Project ID
+    required: true
+    sensitive: false
+    description: Your Browserbase project ID.
+    usage: env
+  - key: GEMINI_API_KEY
+    name: Gemini API Key
+    required: true
+    sensitive: true
+    description: Your Gemini API key.
+    usage: env
 runtime: containerized
 containerizedConfig:
   image: ghcr.io/obot-platform/mcp-images/browserbase:2.4.3

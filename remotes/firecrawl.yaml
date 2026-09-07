@@ -1,6 +1,5 @@
 name: Firecrawl
 entryKey: obot-firecrawl
-serverUserType: singleUser
 shortDescription: Search, scrape, crawl, interact with, and monitor the web using Firecrawl's official hosted MCP
 upgradeNote: |
   This replaces the Obot-hosted Firecrawl server with Firecrawl's official hosted MCP server.
@@ -43,29 +42,32 @@ metadata:
   source: vendor
 icon: https://avatars.githubusercontent.com/u/135057108?v=4
 repoURL: https://docs.firecrawl.dev/mcp-server
-env:
-- name: Authentication method
-  key: FIRECRAWL_ENDPOINT
-  description: Enter `v2/mcp-oauth` for OAuth or `v2/mcp` for API-key or keyless access. See the entry description for details.
-  required: true
-  sensitive: false
-  options:
-  - name: OAuth
-    value: v2/mcp-oauth
-    description: Sign in to Firecrawl using OAuth
-  - name: API Key / Keyless
-    value: v2/mcp
-    description: Use an optional Firecrawl API key or limited keyless access
-runtime: remote
-remoteConfig:
-  urlTemplate: https://mcp.firecrawl.dev/${FIRECRAWL_ENDPOINT}
-  headers:
+config:
+  - name: Authentication method
+    key: FIRECRAWL_ENDPOINT
+    description: Enter `v2/mcp-oauth` for OAuth or `v2/mcp` for API-key or keyless
+      access. See the entry description for details.
+    required: true
+    sensitive: false
+    options:
+      - name: OAuth
+        value: v2/mcp-oauth
+        description: Sign in to Firecrawl using OAuth
+      - name: API Key / Keyless
+        value: v2/mcp
+        description: Use an optional Firecrawl API key or limited keyless access
+    usage: env
   - name: Firecrawl API Key
-    description: Optional API key for the full API-key tool surface; leave blank for OAuth or limited keyless access
+    description: Optional API key for the full API-key tool surface; leave blank for
+      OAuth or limited keyless access
     key: Authorization
     required: false
     sensitive: true
     prefix: "Bearer "
+    usage: header
+runtime: remote
+remoteConfig:
+  urlTemplate: https://mcp.firecrawl.dev/${FIRECRAWL_ENDPOINT}
 toolPreview:
 - name: firecrawl_scrape
   description: Retrieve and extract content from one supplied URL as markdown, HTML, links, screenshots, branding data, targeted answers, or structured JSON.

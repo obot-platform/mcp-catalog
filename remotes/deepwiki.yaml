@@ -1,6 +1,5 @@
 name: DeepWiki
 entryKey: obot-deepwiki
-serverUserType: singleUser
 shortDescription: Access AI-generated documentation for any public GitHub repository
 description: |
 
@@ -25,7 +24,7 @@ metadata:
   categories: Documentation
 icon: https://mintcdn.com/cognitionai/k89q9Lsp7DOurdC0/logo/devin.png?fit=max&auto=format&n=k89q9Lsp7DOurdC0&q=85&s=e83fbc727ea2cae8f1b80442fa772c50
 repoURL: https://github.com/CognitionAI/deepwiki
-env: []
+config: []
 toolPreview:
 - name: read_wiki_structure
   description: Get the hierarchical structure of documentation topics for a GitHub repository.

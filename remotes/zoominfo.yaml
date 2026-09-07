@@ -1,6 +1,5 @@
 name: ZoomInfo
 entryKey: obot-zoominfo
-serverUserType: singleUser
 shortDescription: Search and enrich companies, contacts, buying signals, and go-to-market research
 description: |
   Search and enrich companies and contacts, identify buying signals, and build targeted account lists with ZoomInfo's go-to-market intelligence. See the [official ZoomInfo MCP plugin documentation](https://github.com/Zoominfo/zoominfo-mcp-plugin) for capabilities, requirements, and connection details.

@@ -1,6 +1,5 @@
 name: Google Compute Engine
 entryKey: obot-google-compute-engine
-serverUserType: singleUser
 shortDescription: Create, inspect, and operate Google Compute Engine resources
 description: |
   Create and operate Compute Engine virtual machines, inspect disks and templates, and manage instance lifecycle actions through Google's managed MCP server. See Google's official [Compute Engine MCP reference](https://docs.cloud.google.com/compute/docs/reference/mcp) for the current endpoint and tool specifications, and the [MCP application setup guide](https://docs.cloud.google.com/mcp/configure-mcp-ai-application) for OAuth configuration.

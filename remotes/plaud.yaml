@@ -1,6 +1,5 @@
 name: Plaud
 entryKey: obot-plaud
-serverUserType: singleUser
 shortDescription: Search Plaud recordings and retrieve transcripts, summaries, notes, and action items
 description: |
   Browse and search your Plaud recording library, retrieve timestamped transcripts and speaker labels, and use AI-generated summaries, key topics, and action items in follow-up workflows. See the [Plaud MCP documentation](https://docs.plaud.ai/plaud-mcp-cli/mcp) for supported clients, connection steps, OAuth authorization, tools, data fields, and troubleshooting.

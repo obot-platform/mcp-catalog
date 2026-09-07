@@ -1,6 +1,5 @@
 name: HyperFrames by HeyGen
 entryKey: obot-hyperframes
-serverUserType: singleUser
 shortDescription: Build animated slides, explainer videos, and motion graphics with HTML
 description: |
   Build animated slides, explainer videos, and motion graphics with HTML through [HeyGen's official HyperFrames MCP server](https://hyperframes.heygen.com/guides/mcp).

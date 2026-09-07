@@ -1,6 +1,5 @@
 name: Tavily Search
 entryKey: obot-tavily-search
-serverUserType: singleUser
 shortDescription: Real-time web research, data extraction, and domain crawling with AI ranking
 description: '![Tavily Crawl Beta](https://raw.githubusercontent.com/tavily-ai/tavily-mcp/main/assets/Banner_NEW.png)
 
@@ -46,13 +45,6 @@ repoURL: https://github.com/tavily-ai/tavily-mcp
 runtime: remote
 remoteConfig:
   fixedURL: https://mcp.tavily.com/mcp/
-  headers:
-  - name: Tavily API Key
-    description: Tavily API Key
-    key: Authorization
-    required: true
-    sensitive: true
-    prefix: "Bearer "
 toolPreview:
 - name: tavily_search
   description: Search the web for real-time information about any topic. Use this tool when you need up-to-date information that might not be available in your training data, or when you need to verify current facts. The search results will include relevant snippets and URLs from web pages. This is particularly useful for questions about current events, technology updates, or any topic that requires recent information.
@@ -110,3 +102,12 @@ toolPreview:
     max_depth: Maximum depth for mapping (optional)
     select_domains: Specific domains to map (optional)
     select_paths: Specific URL paths to map (optional)
+
+config:
+  - name: Tavily API Key
+    description: Tavily API Key
+    key: Authorization
+    required: true
+    sensitive: true
+    prefix: "Bearer "
+    usage: header

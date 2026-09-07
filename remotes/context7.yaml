@@ -1,6 +1,5 @@
 name: Context7
 entryKey: obot-context7
-serverUserType: singleUser
 shortDescription: Get up-to-date, version-specific code documentation and examples for any library
 upgradeNote: |
   This replaces the Obot-hosted Context7 server with Context7's official hosted MCP server.
@@ -37,29 +36,32 @@ metadata:
   categories: Developer Tools, Documentation
 icon: https://avatars.githubusercontent.com/u/74989412?v=4
 repoURL: https://context7.com/docs
-env:
-- name: Authentication method
-  key: CONTEXT7_ENDPOINT
-  description: Enter `mcp/oauth` for OAuth or `mcp` for anonymous or API-key access. See the entry description for details.
-  required: true
-  sensitive: false
-  options:
-  - name: OAuth
-    value: mcp/oauth
-    description: Sign in to Context7 using OAuth
-  - name: Anonymous / API Key
-    value: mcp
-    description: Connect anonymously or authenticate using a Context7 API key
-runtime: remote
-remoteConfig:
-  urlTemplate: https://mcp.context7.com/${CONTEXT7_ENDPOINT}
-  headers:
+config:
+  - name: Authentication method
+    key: CONTEXT7_ENDPOINT
+    description: Enter `mcp/oauth` for OAuth or `mcp` for anonymous or API-key
+      access. See the entry description for details.
+    required: true
+    sensitive: false
+    options:
+      - name: OAuth
+        value: mcp/oauth
+        description: Sign in to Context7 using OAuth
+      - name: Anonymous / API Key
+        value: mcp
+        description: Connect anonymously or authenticate using a Context7 API key
+    usage: env
   - name: Context7 API Key
-    description: Optional API key for higher limits and private sources; leave blank for anonymous access or OAuth
+    description: Optional API key for higher limits and private sources; leave blank
+      for anonymous access or OAuth
     key: Authorization
     required: false
     sensitive: true
     prefix: "Bearer "
+    usage: header
+runtime: remote
+remoteConfig:
+  urlTemplate: https://mcp.context7.com/${CONTEXT7_ENDPOINT}
 toolPreview:
 - name: resolve-library-id
   description: |-

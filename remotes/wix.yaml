@@ -1,6 +1,5 @@
 name: Wix
 entryKey: obot-wix
-serverUserType: singleUser
 shortDescription: Access Wix APIs to manage sites, bookings, pricing plans, and CMS
 description: |
   Access Wix APIs and documentation through [Wix's MCP server](https://www.wix.com/studio/developers/mcp-server).

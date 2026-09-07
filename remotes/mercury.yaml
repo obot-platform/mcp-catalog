@@ -1,6 +1,5 @@
 name: Mercury
 entryKey: obot-mercury
-serverUserType: singleUser
 shortDescription: Search, analyze, and understand Mercury account and transaction data
 description: |
   Search, analyze, and understand Mercury balances, transactions, statements, cards, and recipients from an AI client. See [Mercury's MCP connection guide](https://docs.mercury.com/docs/connecting-mercury-mcp) for ChatGPT and Codex CLI setup, OAuth authentication, and troubleshooting.

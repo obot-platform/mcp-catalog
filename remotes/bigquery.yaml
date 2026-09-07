@@ -1,6 +1,5 @@
 name: BigQuery Toolbox
 entryKey: obot-bigquery-toolbox
-serverUserType: singleUser
 shortDescription: Explore BigQuery data and run SQL through Google's managed MCP server
 upgradeNote: |
   This replaces the Obot-hosted **BigQuery Toolbox** server with Google's managed BigQuery MCP server.

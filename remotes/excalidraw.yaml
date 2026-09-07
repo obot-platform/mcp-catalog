@@ -1,6 +1,5 @@
 name: Excalidraw
 entryKey: obot-excalidraw
-serverUserType: singleUser
 shortDescription: Create and edit interactive hand-drawn diagrams with Excalidraw
 description: |
   Create and edit interactive hand-drawn diagrams with [Excalidraw's official MCP server](https://github.com/excalidraw/excalidraw-mcp).

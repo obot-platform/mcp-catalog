@@ -1,6 +1,5 @@
 name: Kensho by S&P Global
 entryKey: obot-sp-global-deterministic-retrieval
-serverUserType: singleUser
 shortDescription: Retrieve structured S&P Global company and financial data
 description: |
   Retrieve structured S&P Global company information, financial statements, market data, earnings transcripts, securities, and transaction data through deterministic queries. See the official [Kensho MCP documentation](https://docs.kensho.com/llmreadyapi/mcp) for deployment, platform, and authentication guidance.

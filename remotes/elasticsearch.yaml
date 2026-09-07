@@ -1,6 +1,5 @@
 name: Elasticsearch
 entryKey: obot-elasticsearch
-serverUserType: singleUser
 shortDescription: Search and analyze Elasticsearch data with Elastic's Agent Builder tools
 upgradeNote: |
   This replaces the direct, Obot-hosted Elasticsearch MCP server with Elastic Agent Builder's MCP server.
@@ -47,24 +46,25 @@ metadata:
 icon: https://avatars.githubusercontent.com/u/6764390?v=4
 repoURL: https://www.elastic.co/docs/explore-analyze/ai-features/agent-builder/mcp-server
 
-env:
+config:
   - key: KIBANA_URL
     name: Kibana URL
     required: true
     sensitive: false
-    description: Kibana URL without a trailing slash. Include /s/<space-name> when using a custom Kibana space.
-
+    description: Kibana URL without a trailing slash. Include /s/<space-name> when
+      using a custom Kibana space.
+    usage: env
+  - name: Elastic API Key
+    description: Elasticsearch or Serverless project API key with Agent Builder and
+      scoped index privileges
+    key: Authorization
+    required: true
+    sensitive: true
+    prefix: "ApiKey "
+    usage: header
 runtime: remote
 remoteConfig:
   urlTemplate: ${KIBANA_URL}/api/agent_builder/mcp
-  headers:
-    - name: Elastic API Key
-      description: Elasticsearch or Serverless project API key with Agent Builder and scoped index privileges
-      key: Authorization
-      required: true
-      sensitive: true
-      prefix: "ApiKey "
-
 toolPreview:
   - name: custom_content_update_panel
     description: Updates the project's custom content panel template and ES|QL data source.

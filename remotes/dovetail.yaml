@@ -1,6 +1,5 @@
 name: Dovetail
 entryKey: obot-dovetail
-serverUserType: singleUser
 shortDescription: Search customer research and retrieve evidence from Dovetail
 description: |
   Search customer intelligence across your Dovetail workspace and retrieve projects, research data, highlights, and insights for evidence-grounded analysis. See the official [Dovetail MCP server guide](https://developers.dovetail.com/docs/mcp) for setup details and current capabilities.

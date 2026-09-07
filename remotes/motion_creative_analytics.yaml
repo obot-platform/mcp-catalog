@@ -1,6 +1,5 @@
 name: Motion Creative Analytics
 entryKey: obot-motion-creative-analytics
-serverUserType: singleUser
 shortDescription: Analyze ad creative performance, competitor campaigns, and brand patterns
 description: |
   Analyze your ad creative performance, research competitor campaigns, and turn current market patterns into briefs and testing ideas. See the official [Motion MCP guide](https://help.motionapp.com/en/articles/14315735-motion-mcp) for setup, access requirements, supported clients, and example workflows.

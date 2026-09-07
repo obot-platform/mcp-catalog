@@ -1,6 +1,5 @@
 name: AWS EKS
 entryKey: obot-aws-eks
-serverUserType: singleUser
 shortDescription: Manage Amazon EKS clusters, Kubernetes resources, and containerized applications
 description: 'Manage Amazon EKS resources and inspect real-time cluster state, with guidance from initial setup through production optimization and troubleshooting.
 
@@ -51,27 +50,33 @@ metadata:
   categories: Cloud & Infrastructure
 icon: https://avatars.githubusercontent.com/u/3299148?s=48&v=4
 repoURL: https://github.com/awslabs/mcp/tree/main/src/eks-mcp-server
-env:
-- key: AWS_ACCESS_KEY_ID
-  name: AWS Access Key ID
-  required: true
-  sensitive: false
-  description: Your AWS Access Key ID
-- key: AWS_SECRET_ACCESS_KEY
-  name: AWS Secret Access Key
-  required: true
-  sensitive: true
-  description: AWS Secret Access Key
-- key: AWS_SESSION_TOKEN
-  name: AWS Session Token
-  required: false
-  sensitive: true
-  description: AWS Session Token, only required if using temporary credentials such as temporary AWS credentials, such as those obtained through aws sso login or other temporary access methods (for example, STS AssumeRole)
-- key: AWS_REGION
-  name: AWS Region
-  required: true
-  sensitive: false
-  description: AWS Region
+config:
+  - key: AWS_ACCESS_KEY_ID
+    name: AWS Access Key ID
+    required: true
+    sensitive: false
+    description: Your AWS Access Key ID
+    usage: env
+  - key: AWS_SECRET_ACCESS_KEY
+    name: AWS Secret Access Key
+    required: true
+    sensitive: true
+    description: AWS Secret Access Key
+    usage: env
+  - key: AWS_SESSION_TOKEN
+    name: AWS Session Token
+    required: false
+    sensitive: true
+    description: AWS Session Token, only required if using temporary credentials
+      such as temporary AWS credentials, such as those obtained through aws sso
+      login or other temporary access methods (for example, STS AssumeRole)
+    usage: env
+  - key: AWS_REGION
+    name: AWS Region
+    required: true
+    sensitive: false
+    description: AWS Region
+    usage: env
 runtime: containerized
 containerizedConfig:
   image: ghcr.io/obot-platform/mcp-images/aws-eks:0.1.27

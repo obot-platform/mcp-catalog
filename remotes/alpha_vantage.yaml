@@ -1,6 +1,5 @@
 name: Alpha Vantage
 entryKey: obot-alpha-vantage
-serverUserType: singleUser
 shortDescription: Query market prices, fundamentals, options, indicators, and economic data
 description: |
   Query real-time and historical market prices, company fundamentals, options, technical indicators, commodities, currencies, and economic data. See the official [Alpha Vantage MCP guide](https://mcp.alphavantage.co/) for setup, API-key creation, supported clients, and connection examples.

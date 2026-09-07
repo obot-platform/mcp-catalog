@@ -1,6 +1,5 @@
 name: incident.io
 entryKey: obot-incident-io
-serverUserType: singleUser
 shortDescription: Manage incidents, pages, follow-ups, on-call schedules, and operational analysis
 description: |
   Manage incidents, pages, follow-ups, on-call schedules, and operational analysis across your incident.io workspace. See the official [incident.io remote MCP guide](https://docs.incident.io/ai/remote-mcp) for setup, authentication, permissions, and the complete tool list.

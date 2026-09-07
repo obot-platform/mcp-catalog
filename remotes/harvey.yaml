@@ -1,6 +1,5 @@
 name: Harvey
 entryKey: obot-harvey
-serverUserType: singleUser
 shortDescription: Answer legal questions, analyze Vault documents, and research enabled knowledge sources
 description: |
   Ask legal research questions, analyze documents in Harvey Vault projects with citations, and query specialized knowledge sources enabled for your account. See the [Harvey MCP documentation](https://developers.harvey.ai/guides/harvey_mcp) for client requirements, OAuth setup, available tools, permissions, and troubleshooting.

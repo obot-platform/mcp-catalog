@@ -1,6 +1,5 @@
 name: Twilio Docs
 entryKey: obot-twilio-docs
-serverUserType: singleUser
 shortDescription: Search Twilio API documentation and retrieve implementation guidance
 description: |
   Search Twilio's API catalog and retrieve relevant specifications, endpoint details, and implementation examples for communications and customer-engagement projects. See Twilio's official [MCP documentation](https://www.twilio.com/docs/ai/mcp) for connection instructions and current capabilities.

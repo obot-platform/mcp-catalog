@@ -1,6 +1,5 @@
 name: Wrike
 entryKey: obot-wrike
-serverUserType: singleUser
 shortDescription: Search and manage Wrike tasks, projects, folders, and comments
 description: |
   Search your Wrike workspace, report on project status, and create or update tasks, projects, folders, assignments, due dates, and comments. See the official [Wrike MCP server overview](https://developers.wrike.com/docs/wrike-mcp-server-overview) for current capabilities, setup options, authentication, and usage guidance.
@@ -26,10 +25,12 @@ repoURL: https://developers.wrike.com/docs/wrike-mcp-server-overview
 runtime: remote
 remoteConfig:
   fixedURL: https://mcp.wrike.com/v2
-  headers:
-    - name: Wrike Permanent Access Token
-      description: Permanent Access Token generated from a Wrike app
-      key: Authorization
-      required: true
-      sensitive: true
-      prefix: "Bearer "
+
+config:
+  - name: Wrike Permanent Access Token
+    description: Permanent Access Token generated from a Wrike app
+    key: Authorization
+    required: true
+    sensitive: true
+    prefix: "Bearer "
+    usage: header

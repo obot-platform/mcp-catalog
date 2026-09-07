@@ -1,6 +1,5 @@
 name: Semrush
 entryKey: obot-semrush
-serverUserType: singleUser
 shortDescription: Research SEO, keywords, competitors, traffic, backlinks, paid search, and site health
 description: |
   Research keywords, domains, competitors, traffic, backlinks, paid search, and site health with live Semrush data. See the [Semrush MCP documentation](https://developer.semrush.com/api/v4/introduction/semrush-mcp/) for setup, supported data, plans, and API-unit usage.

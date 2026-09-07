@@ -1,6 +1,5 @@
 name: Azure
 entryKey: obot-azure
-serverUserType: singleUser
 shortDescription: Manage Azure services including AI, databases, compute, storage, and monitoring
 description: 'Manage Azure compute, storage, databases, AI services, and other cloud resources.
 
@@ -80,27 +79,31 @@ metadata:
   categories: Cloud & Infrastructure
 icon: https://avatars.githubusercontent.com/u/6844498?s=200&v=4
 repoURL: https://github.com/Azure/azure-mcp
-env:
-- key: AZURE_TENANT_ID
-  name: Azure Tenant ID
-  required: true
-  sensitive: false
-  description: The tenant ID of the Azure subscription you are authenticating to.
-- key: AZURE_CLIENT_ID
-  name: Azure Client ID
-  required: true
-  sensitive: true
-  description: The Azure client ID of a service principal.
-- key: AZURE_CLIENT_SECRET
-  name: Azure Client Secret
-  required: true
-  sensitive: true
-  description: The Azure client secret of a service principal.
-- key: AZURE_MCP_COLLECT_TELEMETRY
-  name: Azure MCP Collect Telemetry
-  required: false
-  sensitive: false
-  description: Telemetry collection is on by default, to opt out, set this to false.
+config:
+  - key: AZURE_TENANT_ID
+    name: Azure Tenant ID
+    required: true
+    sensitive: false
+    description: The tenant ID of the Azure subscription you are authenticating to.
+    usage: env
+  - key: AZURE_CLIENT_ID
+    name: Azure Client ID
+    required: true
+    sensitive: true
+    description: The Azure client ID of a service principal.
+    usage: env
+  - key: AZURE_CLIENT_SECRET
+    name: Azure Client Secret
+    required: true
+    sensitive: true
+    description: The Azure client secret of a service principal.
+    usage: env
+  - key: AZURE_MCP_COLLECT_TELEMETRY
+    name: Azure MCP Collect Telemetry
+    required: false
+    sensitive: false
+    description: Telemetry collection is on by default, to opt out, set this to false.
+    usage: env
 runtime: containerized
 containerizedConfig:
   image: ghcr.io/obot-platform/mcp-images/azure:1.0.3

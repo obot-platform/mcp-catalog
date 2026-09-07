@@ -1,6 +1,5 @@
 name: Netlify
 entryKey: obot-netlify
-serverUserType: singleUser
 shortDescription: Create, deploy, manage, and secure websites on Netlify
 description: |
   Create, deploy, manage, and secure websites through [Netlify's official MCP server](https://docs.netlify.com/build/build-with-ai/netlify-mcp-server/).

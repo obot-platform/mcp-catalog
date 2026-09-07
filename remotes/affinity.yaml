@@ -1,6 +1,5 @@
 name: Affinity
 entryKey: obot-affinity
-serverUserType: singleUser
 shortDescription: Search and update Affinity relationships, pipelines, meetings, and notes
 description: |
   Search Affinity companies, people, opportunities, meetings, notes, and relationship history, and update pipeline records directly from your AI workflow. See the official [Affinity MCP introduction](https://developer.affinity.co/pages/mcp/introduction) and [generic-client setup guide](https://developer.affinity.co/pages/mcp/other-clients) for capabilities, plan requirements, API-key authentication, and configuration.
@@ -28,10 +27,12 @@ repoURL: https://developer.affinity.co/pages/mcp/introduction
 runtime: remote
 remoteConfig:
   fixedURL: https://mcp.affinity.co/mcp
-  headers:
-    - name: Affinity API Key
-      description: API key generated for an Affinity user
-      key: Authorization
-      required: true
-      sensitive: true
-      prefix: "Bearer "
+
+config:
+  - name: Affinity API Key
+    description: API key generated for an Affinity user
+    key: Authorization
+    required: true
+    sensitive: true
+    prefix: "Bearer "
+    usage: header

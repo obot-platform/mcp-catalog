@@ -1,6 +1,5 @@
 name: Google Maps Grounding Lite
 entryKey: obot-google-maps-grounding-lite
-serverUserType: singleUser
 shortDescription: The server provides tools for developers to build LLM applications on top of Google Maps Platform.
 description: |
   The Google Maps Grounding Lite API offers a suite of tools that enable developers to create applications leveraging the capabilities of Google Maps Platform. This API provides functionalities such as route computation, weather lookup, and place search, allowing for the integration of rich geographical data and services into applications. With these tools, developers can enhance user experiences by providing accurate and contextually relevant information based on location data.
@@ -12,12 +11,6 @@ repoURL: https://developers.google.com/maps/ai/grounding-lite/reference/mcp
 runtime: remote
 remoteConfig:
   fixedURL: https://mapstools.googleapis.com/mcp
-  headers:
-    - name: API Key
-      description: A Google Cloud API Key with access to the Maps Grounding Lite service in Google Cloud
-      key: X-Goog-Api-Key
-      sensitive: true
-      required: true
 toolPreview:
   - id: compute_routes
     name: compute_routes
@@ -116,3 +109,12 @@ toolPreview:
       locationBias: An optional region to bias the search results to. If an explicit location is in `text_query`, it will be used to bias the search results instead of this field.
       regionCode: Optional. The Unicode country/region code (CLDR) of the location where the request is coming from. This parameter is used to display the place details, like region-specific place name, if available. The parameter can affect results based on applicable law. For example, "US" for United States. For more information, see https://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html. Note that 3-digit region codes are not currently supported.
       textQuery: Required. The text query.
+
+config:
+  - name: API Key
+    description: A Google Cloud API Key with access to the Maps Grounding Lite
+      service in Google Cloud
+    key: X-Goog-Api-Key
+    sensitive: true
+    required: true
+    usage: header

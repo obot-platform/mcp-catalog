@@ -1,6 +1,5 @@
 name: Outreach
 entryKey: obot-outreach
-serverUserType: singleUser
 shortDescription: Research revenue records, meetings, emails, sequences, prospects, accounts, and opportunities
 description: |
   Research and act on Outreach revenue data, including prospects, accounts, opportunities, sequences, emails, meetings, and conversation intelligence. See the official [Outreach MCP Server overview](https://support.outreach.io/hc/en-us/articles/46370115253403-Outreach-MCP-Server) for setup, licensing, authentication, tools, and security guidance.

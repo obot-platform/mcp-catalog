@@ -1,6 +1,5 @@
 name: PagerDuty
 entryKey: obot-pagerduty
-serverUserType: singleUser
 shortDescription: Manage PagerDuty incidents, on-call schedules, services, and incident response workflows
 upgradeNote: |
   This replaces the Obot-hosted PagerDuty server with PagerDuty's official hosted MCP server.
@@ -40,29 +39,31 @@ metadata:
   categories: Monitoring & Observability, SaaS & API Integrations
 icon: https://avatars.githubusercontent.com/u/766800?s=48&v=4
 repoURL: https://support.pagerduty.com/main/docs/pagerduty-mcp-server
-env:
-- name: PagerDuty region
-  key: PAGERDUTY_MCP_HOST
-  description: Enter `mcp.pagerduty.com` for US or `mcp.eu.pagerduty.com` for EU. See the entry description for details.
-  required: true
-  sensitive: false
-  options:
-  - name: US
-    value: mcp.pagerduty.com
-    description: PagerDuty US region
-  - name: EU
-    value: mcp.eu.pagerduty.com
-    description: PagerDuty EU region
-runtime: remote
-remoteConfig:
-  urlTemplate: https://${PAGERDUTY_MCP_HOST}/mcp
-  headers:
+config:
+  - name: PagerDuty region
+    key: PAGERDUTY_MCP_HOST
+    description: Enter `mcp.pagerduty.com` for US or `mcp.eu.pagerduty.com` for EU.
+      See the entry description for details.
+    required: true
+    sensitive: false
+    options:
+      - name: US
+        value: mcp.pagerduty.com
+        description: PagerDuty US region
+      - name: EU
+        value: mcp.eu.pagerduty.com
+        description: PagerDuty EU region
+    usage: env
   - name: PagerDuty API Key
     description: PagerDuty User API token from My Profile > User Settings > API Access
     key: Authorization
     required: true
     sensitive: true
-    prefix: "Token token="
+    prefix: Token token=
+    usage: header
+runtime: remote
+remoteConfig:
+  urlTemplate: https://${PAGERDUTY_MCP_HOST}/mcp
 toolPreview:
 - name: add_note_to_incident
   description: Adds a note to an incident.

@@ -1,6 +1,5 @@
 name: Udemy Business
 entryKey: obot-udemy-business
-serverUserType: singleUser
 shortDescription: Discover enterprise learning content and create structured learning experiences
 description: |
   Discover courses, lectures, labs, assessments, and learning paths from your organization's Udemy Business catalog, or create structured learning experiences. See the official [Udemy Business AI Connectors guide](https://business-support.udemy.com/hc/en-us/articles/34213384429335-How-to-integrate-the-Udemy-Business-AI-Connectors-with-your-AI-tool) for prerequisites, setup, authentication, tools, and subscription requirements.

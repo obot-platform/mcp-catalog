@@ -1,6 +1,5 @@
 name: Era Context
 entryKey: obot-era-context
-serverUserType: singleUser
 shortDescription: Analyze spending and manage connected personal-finance context
 description: |
   Review connected financial accounts and transactions, analyze spending and cash flow, maintain personal finance context, and manage transaction automations in Era. See Era's official [MCP server guide](https://era.app/help/mcp-server-era-context/) for setup, security, and current capabilities.

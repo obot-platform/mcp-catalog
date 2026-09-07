@@ -1,6 +1,5 @@
 name: Hugging Face
 entryKey: obot-hugging-face
-serverUserType: singleUser
 shortDescription: Search Hugging Face models, datasets, papers, docs, and Spaces
 description: |
   Search Hugging Face models, datasets, papers, documentation, and Gradio applications through [Hugging Face's official MCP server](https://huggingface.co/settings/mcp).

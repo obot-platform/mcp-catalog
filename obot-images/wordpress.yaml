@@ -1,6 +1,5 @@
 name: WordPress
 entryKey: obot-wordpress
-serverUserType: singleUser
 shortDescription: Manage WordPress posts, categories, tags, and media on self-hosted sites
 description: |
   Manage posts, categories, tags, and media on a self-hosted WordPress site (wordpress.com is not supported).
@@ -225,20 +224,24 @@ toolPreview:
     Validate WordPress credentials by attempting to get current user profile.
     This is useful for testing authentication before performing other operations.
 
-env:
-- name: WordPress Site URL
-  description: 'The full URL to your WordPress site (wordpress.com not supported). Must start with http:// or https://.'
-  key: WORDPRESS_SITE
-  required: true
-- name: WordPress Username
-  description: The username of your account on this WordPress site.
-  key: WORDPRESS_USERNAME
-  required: true
-- name: WordPress App Password
-  description: The app password that you generated in your WordPress settings.
-  key: WORDPRESS_PASSWORD
-  required: true
-  sensitive: true
+config:
+  - name: WordPress Site URL
+    description: The full URL to your WordPress site (wordpress.com not supported).
+      Must start with http:// or https://.
+    key: WORDPRESS_SITE
+    required: true
+    usage: env
+  - name: WordPress Username
+    description: The username of your account on this WordPress site.
+    key: WORDPRESS_USERNAME
+    required: true
+    usage: env
+  - name: WordPress App Password
+    description: The app password that you generated in your WordPress settings.
+    key: WORDPRESS_PASSWORD
+    required: true
+    sensitive: true
+    usage: env
 runtime: containerized
 containerizedConfig:
   image: ghcr.io/obot-platform/wordpress-mcp-server:latest

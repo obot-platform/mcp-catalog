@@ -1,6 +1,5 @@
 name: Bigdata.com
 entryKey: obot-bigdata-com
-serverUserType: singleUser
 shortDescription: Research cited financial documents, markets, companies, and portfolios
 description: |
   Search cited financial news, filings, earnings transcripts, research, and private documents, and retrieve structured company, country, market, ETF, sentiment, and portfolio tear sheets. See the official [Bigdata.com MCP documentation](https://docs.bigdata.com/mcp-reference/introduction) and [API-key integration guide](https://docs.bigdata.com/mcp-reference/api-integrations/mcp-api-integration) for capabilities, credential creation, and generic-client setup.
@@ -26,9 +25,11 @@ repoURL: https://docs.bigdata.com/mcp-reference/introduction
 runtime: remote
 remoteConfig:
   fixedURL: https://mcp.bigdata.com/
-  headers:
-    - name: Bigdata.com API Key
-      description: API key created in the Bigdata.com Developer Platform
-      key: x-api-key
-      required: true
-      sensitive: true
+
+config:
+  - name: Bigdata.com API Key
+    description: API key created in the Bigdata.com Developer Platform
+    key: x-api-key
+    required: true
+    sensitive: true
+    usage: header

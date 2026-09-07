@@ -1,6 +1,5 @@
 name: GitHub Enterprise Cloud
 entryKey: obot-github-enterprise-cloud
-serverUserType: singleUser
 shortDescription: Connect to a GitHub Enterprise Cloud data-residency tenant with GitHub-hosted MCP and OAuth
 description: |
   Manage repositories and workflows in a GitHub Enterprise Cloud data-residency tenant (`*.ghe.com`) through [GitHub's hosted MCP server](https://docs.github.com/en/enterprise-cloud@latest/copilot/how-tos/provide-context/use-mcp-in-your-ide/enterprise-configuration). GitHub operates the server, including updates and remote-only capabilities.
@@ -30,12 +29,22 @@ description: |
   - **Toolset control**: Optionally select the hosted GitHub toolsets appropriate for the tenant
 
   The default GitHub toolsets are `context`, `repos`, `issues`, `pull_requests`, and `users`. Set GitHub Toolsets to `all` only when the broader tool surface is needed.
-env:
+config:
   - key: GITHUB_ENTERPRISE_SUBDOMAIN
     name: GitHub Enterprise Cloud Subdomain
     required: true
     sensitive: false
-    description: The GHE.com tenant subdomain only, for example octocorp for https://octocorp.ghe.com.
+    description: The GHE.com tenant subdomain only, for example octocorp for
+      https://octocorp.ghe.com.
+    usage: env
+  - name: GitHub Toolsets
+    description: Optional comma-separated GitHub toolsets, such as
+      repos,issues,pull_requests or all. Defaults to
+      context,repos,issues,pull_requests,users.
+    key: X-MCP-Toolsets
+    required: false
+    sensitive: false
+    usage: header
 metadata:
   categories: Developer Tools
 icon: https://avatars.githubusercontent.com/u/9919?v=4
@@ -44,12 +53,6 @@ runtime: remote
 remoteConfig:
   urlTemplate: https://copilot-api.${GITHUB_ENTERPRISE_SUBDOMAIN}.ghe.com/mcp
   staticOAuthRequired: true
-  headers:
-    - name: GitHub Toolsets
-      description: Optional comma-separated GitHub toolsets, such as repos,issues,pull_requests or all. Defaults to context,repos,issues,pull_requests,users.
-      key: X-MCP-Toolsets
-      required: false
-      sensitive: false
 toolPreview:
   - name: get_me
     description: Get the authenticated GitHub user's profile.

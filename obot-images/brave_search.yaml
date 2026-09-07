@@ -1,6 +1,5 @@
 name: Brave Search
 entryKey: obot-brave-search
-serverUserType: singleUser
 shortDescription: Search the web, news, images, videos, and local businesses with Brave Search API
 description: '**DEPRECATED**: this server is no longer supported by the Obot MCP Catalog. No direct replacement is currently available.
 
@@ -35,12 +34,13 @@ metadata:
   deprecated: "true"
 icon: https://brave.com/static-assets/images/brave-logo-sans-text.svg
 repoURL: https://github.com/brave/brave-search-mcp-server
-env:
-- key: BRAVE_API_KEY
-  name: Brave API Key
-  required: true
-  sensitive: true
-  description: Your Brave Search API key. Get one at https://brave.com/search/api
+config:
+  - key: BRAVE_API_KEY
+    name: Brave API Key
+    required: true
+    sensitive: true
+    description: Your Brave Search API key. Get one at https://brave.com/search/api
+    usage: env
 runtime: containerized
 containerizedConfig:
   image: ghcr.io/obot-platform/mcp-images/brave-search:2.0.75

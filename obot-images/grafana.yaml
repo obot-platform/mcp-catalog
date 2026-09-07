@@ -1,6 +1,5 @@
 name: Grafana
 entryKey: obot-grafana
-serverUserType: singleUser
 shortDescription: Query metrics, logs, traces, manage dashboards, alerts, and on-call schedules
 description: |
   Query metrics, logs, traces, and profiles in Grafana Cloud or self-hosted Grafana, manage dashboards and alerts, and coordinate on-call schedules.
@@ -354,33 +353,41 @@ toolPreview:
     startTime: "Start time in RFC3339 format"
     endTime: "End time in RFC3339 format"
 
-env:
-- name: Grafana URL
-  key: GRAFANA_URL
-  description: The URL of your Grafana instance (e.g., https://your-org.grafana.net for Grafana Cloud, or your self-hosted instance URL)
-  required: true
-  sensitive: false
-- name: Grafana Service Account Token
-  key: GRAFANA_SERVICE_ACCOUNT_TOKEN
-  description: (Recommended) Your Grafana service account token for API authentication. Generate from Administration > Service Accounts in Grafana. Requires appropriate permissions for intended operations.
-  required: false
-  sensitive: true
-- key: GRAFANA_USERNAME
-  name: Grafana Username
-  required: false
-  sensitive: false
-  description: (Optional) Your Grafana username for basic authentication.
-- key: GRAFANA_PASSWORD
-  name: Grafana Password
-  required: false
-  sensitive: true
-  description: (Optional) Your Grafana password for basic authentication.
-- key: GRAFANA_ORG_ID
-  name: Grafana Organization ID
-  required: false
-  sensitive: false
-  description: (Optional) Your Grafana organization ID for multi-org support.
-
+config:
+  - name: Grafana URL
+    key: GRAFANA_URL
+    description: The URL of your Grafana instance (e.g.,
+      https://your-org.grafana.net for Grafana Cloud, or your self-hosted
+      instance URL)
+    required: true
+    sensitive: false
+    usage: env
+  - name: Grafana Service Account Token
+    key: GRAFANA_SERVICE_ACCOUNT_TOKEN
+    description: (Recommended) Your Grafana service account token for API
+      authentication. Generate from Administration > Service Accounts in
+      Grafana. Requires appropriate permissions for intended operations.
+    required: false
+    sensitive: true
+    usage: env
+  - key: GRAFANA_USERNAME
+    name: Grafana Username
+    required: false
+    sensitive: false
+    description: (Optional) Your Grafana username for basic authentication.
+    usage: env
+  - key: GRAFANA_PASSWORD
+    name: Grafana Password
+    required: false
+    sensitive: true
+    description: (Optional) Your Grafana password for basic authentication.
+    usage: env
+  - key: GRAFANA_ORG_ID
+    name: Grafana Organization ID
+    required: false
+    sensitive: false
+    description: (Optional) Your Grafana organization ID for multi-org support.
+    usage: env
 
 runtime: containerized
 containerizedConfig:

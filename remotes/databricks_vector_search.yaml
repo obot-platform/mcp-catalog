@@ -1,6 +1,5 @@
 name: Databricks Vector Search
 entryKey: obot-databricks-vector-search
-serverUserType: singleUser
 shortDescription: Semantic search and similarity queries with Databricks Vector Search indexes
 description: |
   Run semantic search and similarity queries against Databricks Vector Search indexes through [Databricks managed MCP servers](https://docs.databricks.com/aws/en/generative-ai/mcp/), with built-in Unity Catalog security.
@@ -29,31 +28,34 @@ metadata:
 icon: https://avatars.githubusercontent.com/u/4998052?s=200&v=4
 repoURL: https://docs.databricks.com/aws/en/generative-ai/mcp/
 
-env:
+config:
   - name: Databricks workspace hostname
     key: DATABRICKS_WORKSPACE_URL
-    description: Databricks workspace hostname, (e.g., https://your-workspace.cloud.databricks.com)
+    description: Databricks workspace hostname, (e.g.,
+      https://your-workspace.cloud.databricks.com)
     required: true
     sensitive: false
+    usage: env
   - name: Vector search catalog
     key: DATABRICKS_VECTOR_SEARCH_CATALOG
     description: Vector search catalog,
     required: true
     sensitive: false
+    usage: env
   - name: Vector search schema
     key: DATABRICKS_VECTOR_SEARCH_SCHEMA
     description: Vector search schema, you can find it under the catalog
     required: true
     sensitive: false
-
-
-runtime: remote
-remoteConfig:
-  urlTemplate: ${DATABRICKS_WORKSPACE_URL}/api/2.0/mcp/vector-search/${DATABRICKS_VECTOR_SEARCH_CATALOG}/${DATABRICKS_VECTOR_SEARCH_SCHEMA}
-  headers:
+    usage: env
   - name: Personal Access Token
     description: Databricks PAT
     key: Authorization
     required: true
     sensitive: true
     prefix: "Bearer "
+    usage: header
+
+runtime: remote
+remoteConfig:
+  urlTemplate: ${DATABRICKS_WORKSPACE_URL}/api/2.0/mcp/vector-search/${DATABRICKS_VECTOR_SEARCH_CATALOG}/${DATABRICKS_VECTOR_SEARCH_SCHEMA}

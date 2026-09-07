@@ -1,6 +1,5 @@
 name: LunarCrush
 entryKey: obot-lunarcrush
-serverUserType: singleUser
 shortDescription: Analyze social sentiment, market intelligence, and real-time trends
 description: |
   Analyze real-time social metrics, sentiment, trending topics, and market data for companies, brands, stocks, and cryptocurrencies. See [LunarCrush's MCP documentation](https://lunarcrush.com/en/developers/mcp) for client setup, tools, API limits, and API-key authentication.
@@ -21,10 +20,12 @@ repoURL: https://lunarcrush.com/en/developers/mcp
 runtime: remote
 remoteConfig:
   fixedURL: https://lunarcrush.ai/mcp
-  headers:
+
+config:
   - name: LunarCrush API Key
     description: API key for LunarCrush social intelligence and market data
     key: Authorization
     required: true
     sensitive: true
     prefix: "Bearer "
+    usage: header

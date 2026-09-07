@@ -1,6 +1,5 @@
 name: Elicit
 entryKey: obot-elicit
-serverUserType: singleUser
 shortDescription: Search papers and build structured literature-review reports
 description: |
   Search academic papers and clinical trials, then create structured Elicit reports that extract and synthesize evidence across studies. See the official [Elicit MCP integration guide](https://github.com/elicit/api-examples/blob/main/integrations/mcp/README.md) for setup, authentication, tools, and example client configurations.

@@ -1,6 +1,5 @@
 name: AdisInsight
 entryKey: obot-adisinsight
-serverUserType: singleUser
 shortDescription: Search pharmaceutical drug pipelines and clinical trials
 description: |
   Search AdisInsight pharmaceutical intelligence for drug pipelines, clinical trials, development histories, adverse events, and regulatory milestones. See the official [AdisInsight MCP page](https://adisinsight-mcp.springer.com/) for setup, authentication, available tools, and usage guidance.

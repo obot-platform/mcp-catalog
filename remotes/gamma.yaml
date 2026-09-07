@@ -1,6 +1,5 @@
 name: Gamma
 entryKey: obot-gamma
-serverUserType: singleUser
 shortDescription: Create presentations, documents, webpages, and social posts with AI
 description: |
   Generate polished presentations, documents, webpages, and social posts with [Gamma's official MCP server](https://developers.gamma.app/mcp).

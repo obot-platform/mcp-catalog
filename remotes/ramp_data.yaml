@@ -1,6 +1,5 @@
 name: Ramp Data
 entryKey: obot-ramp-data
-serverUserType: singleUser
 shortDescription: Analyze vendor trends and business AI adoption from Ramp Data
 description: |
   Explore aggregated corporate-spend trends through Ramp Rate and analyze business AI adoption through the Ramp AI Index. See the official [Ramp Data developer guide](https://docs.ramp.com/developer-api/v1/ramp-data) for dataset definitions, available operations, and usage guidance.

@@ -1,6 +1,5 @@
 name: MongoDB Atlas
 entryKey: obot-mongodb-atlas
-serverUserType: singleUser
 shortDescription: Manage MongoDB Atlas infrastructure and databases through MongoDB's hosted MCP server
 description: |
   Connect to MongoDB's hosted Atlas MCP server through MongoDB's local NPX proxy to manage Atlas resources and work with data in Atlas databases without self-hosting the Atlas MCP service.
@@ -29,17 +28,19 @@ metadata:
   categories: Databases,Data & Analytics
 icon: https://avatars.githubusercontent.com/u/45120?s=48&v=4
 repoURL: https://github.com/mongodb-js/mongodb-mcp-server/blob/main/packages/mongodb-atlas-mcp-remote/README.md
-env:
-- key: MDB_MCP_API_CLIENT_ID
-  name: MongoDB Atlas MCP Client ID
-  required: true
-  sensitive: false
-  description: The Client ID from your MongoDB Atlas MCP configuration.
-- key: MDB_MCP_API_CLIENT_SECRET
-  name: MongoDB Atlas MCP Client Secret
-  required: true
-  sensitive: true
-  description: The Client Secret from your MongoDB Atlas MCP configuration.
+config:
+  - key: MDB_MCP_API_CLIENT_ID
+    name: MongoDB Atlas MCP Client ID
+    required: true
+    sensitive: false
+    description: The Client ID from your MongoDB Atlas MCP configuration.
+    usage: env
+  - key: MDB_MCP_API_CLIENT_SECRET
+    name: MongoDB Atlas MCP Client Secret
+    required: true
+    sensitive: true
+    description: The Client Secret from your MongoDB Atlas MCP configuration.
+    usage: env
 runtime: npx
 npxConfig:
   package: mongodb-atlas-mcp-remote@0.2.0

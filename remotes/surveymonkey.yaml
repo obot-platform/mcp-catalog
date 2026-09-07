@@ -1,6 +1,5 @@
 name: SurveyMonkey
 entryKey: obot-surveymonkey
-serverUserType: singleUser
 shortDescription: Build and edit surveys, publish collection links, and analyze responses
 description: |
   Build and edit surveys, publish web-link collectors, and analyze response data with conversational requests. See the official [SurveyMonkey MCP Server listing](https://www.surveymonkey.com/apps/BKcduxPnkCN4NFCRokUYCw_3D_3D/details/) for setup, availability, permissions, and limitations.

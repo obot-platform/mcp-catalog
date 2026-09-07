@@ -1,6 +1,5 @@
 name: Quartr
 entryKey: obot-quartr
-serverUserType: singleUser
 shortDescription: Research public companies with first-party investor-relations data
 description: |
   Research public companies with live and recorded earnings calls, transcripts, presentations, filings, reports, and event summaries from Quartr. See [Quartr's MCP documentation](https://mcp.quartr.com/docs) for Codex, ChatGPT, and other compatible-client setup plus OAuth requirements.

@@ -1,6 +1,5 @@
 name: Adobe Experience Manager
 entryKey: obot-adobe-experience-manager
-serverUserType: singleUser
 shortDescription: Manage Adobe Experience Manager content and assets from MCP clients
 description: |
   Search, create, edit, publish, and manage Adobe Experience Manager pages, content fragments, and assets using AEM's unified MCP server. Adobe documents setup for ChatGPT, Codex, Cursor, Copilot, Windsurf, and other supported MCP clients in its official [AEM MCP guide](https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/ai-in-aem/mcp-support/using-mcp-with-aem-as-a-cloud-service).

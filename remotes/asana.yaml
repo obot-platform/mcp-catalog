@@ -1,6 +1,5 @@
 name: Asana
 entryKey: obot-asana
-serverUserType: singleUser
 shortDescription: Manage Asana tasks, projects, and portfolios through Asana's official MCP server
 upgradeNote: |
   This replaces Asana's deprecated V1 beta server with the generally available Asana V2 MCP server.

@@ -1,6 +1,5 @@
 name: Open Targets
 entryKey: obot-open-targets
-serverUserType: singleUser
 shortDescription: Research drug targets, diseases, drugs, variants, studies, and target-disease associations
 description: |
   Research therapeutic targets, diseases, drugs, variants, studies, and target-disease associations using the Open Targets Platform GraphQL API. See the official [Open Targets Platform MCP repository](https://github.com/opentargets/platform-mcp) for the hosted endpoint, tools, query strategy, deployment options, and current experimental status.

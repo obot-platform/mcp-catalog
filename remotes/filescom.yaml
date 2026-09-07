@@ -1,6 +1,5 @@
 name: Files.com
 entryKey: obot-files-dot-com
-serverUserType: singleUser
 shortDescription: Manage files, users, groups, permissions, and secure file sharing through Files.com's hosted MCP server
 upgradeNote: |
   This replaces the Obot-hosted Files.com server with Files.com's official hosted MCP server.
@@ -47,21 +46,23 @@ metadata:
   unsupportedTools: Download_File_to_Local,Upload_File_from_Local
 icon: https://avatars.githubusercontent.com/u/59619169?s=48&v=4
 repoURL: https://www.files.com/docs/integrations/model-context-protocol-mcp-server
-env:
-- key: FILES_COM_SITE
-  name: Files.com Site
-  required: true
-  sensitive: false
-  description: Your Files.com site subdomain, for example `acme` for `https://acme.files.com`
-runtime: remote
-remoteConfig:
-  urlTemplate: https://${FILES_COM_SITE}.files.com/api/ai/mcp/v1
-  headers:
+config:
+  - key: FILES_COM_SITE
+    name: Files.com Site
+    required: true
+    sensitive: false
+    description: Your Files.com site subdomain, for example `acme` for
+      `https://acme.files.com`
+    usage: env
   - name: Files.com API Key
     description: Optional Files.com API key for automated or headless authentication
     key: X-FilesAPI-Key
     required: false
     sensitive: true
+    usage: header
+runtime: remote
+remoteConfig:
+  urlTemplate: https://${FILES_COM_SITE}.files.com/api/ai/mcp/v1
 toolPreview:
 - name: List_Bundle
   description: List Share Links

@@ -1,6 +1,5 @@
 name: Databricks Unity Catalog Functions
 entryKey: obot-databricks-unity-catalog-functions
-serverUserType: singleUser
 shortDescription: Execute and manage Databricks Unity Catalog serverless functions
 description: |
   Execute and manage registered Databricks Unity Catalog Functions through [Databricks managed MCP servers](https://docs.databricks.com/aws/en/generative-ai/mcp/), with built-in security and governance.
@@ -29,30 +28,33 @@ metadata:
 icon: https://avatars.githubusercontent.com/u/4998052?s=200&v=4
 repoURL: https://docs.databricks.com/aws/en/generative-ai/mcp/
 
-env:
+config:
   - name: Databricks workspace hostname
     key: DATABRICKS_WORKSPACE_URL
-    description: Databricks workspace hostname, (e.g., https://your-workspace.cloud.databricks.com)
+    description: Databricks workspace hostname, (e.g.,
+      https://your-workspace.cloud.databricks.com)
     required: true
     sensitive: false
+    usage: env
   - name: Functions catalog
     key: DATABRICKS_FUNCTIONS_CATALOG
     description: Functions catalog. You can find it in the Catalog tab.
     required: true
     sensitive: false
+    usage: env
   - name: Functions schema
     key: DATABRICKS_FUNCTIONS_SCHEMA
     description: Functions schema, you can find it under the catalog
     required: true
     sensitive: false
-
-runtime: remote
-remoteConfig:
-  urlTemplate: ${DATABRICKS_WORKSPACE_URL}/api/2.0/mcp/functions/${DATABRICKS_FUNCTIONS_CATALOG}/${DATABRICKS_FUNCTIONS_SCHEMA}
-  headers:
+    usage: env
   - name: Personal Access Token
     description: Databricks PAT
     key: Authorization
     required: true
     sensitive: true
     prefix: "Bearer "
+    usage: header
+runtime: remote
+remoteConfig:
+  urlTemplate: ${DATABRICKS_WORKSPACE_URL}/api/2.0/mcp/functions/${DATABRICKS_FUNCTIONS_CATALOG}/${DATABRICKS_FUNCTIONS_SCHEMA}

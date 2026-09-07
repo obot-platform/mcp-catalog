@@ -1,6 +1,5 @@
 name: Adobe Marketing Agent
 entryKey: obot-adobe-marketing-agent
-serverUserType: singleUser
 shortDescription: Explore Adobe marketing audiences, journeys, campaigns, and customer insights conversationally
 description: |
   Ask questions about Adobe marketing data, explore campaign and audience insights, and work with enabled Real-Time CDP, Journey Optimizer, and Customer Journey Analytics capabilities. Review Adobe's [Marketing Agent setup guide](https://acrobat.adobe.com/id/urn:aaid:sc:AP:5799e952-be87-4829-b0c4-6f82ca8e8b8b) and [AI Registry](https://developer.adobe.com/internals/mcp-registry-web-app) for availability and connection information.

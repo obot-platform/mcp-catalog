@@ -1,6 +1,5 @@
 name: Calendly
 entryKey: obot-calendly
-serverUserType: singleUser
 shortDescription: Manage Calendly event types, availability, links, and bookings
 description: |
   Manage event types, availability, scheduling links, and bookings through [Calendly's official MCP server](https://developer.calendly.com/calendly-mcp-server).

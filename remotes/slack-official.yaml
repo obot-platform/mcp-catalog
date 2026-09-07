@@ -1,6 +1,5 @@
 name: Slack Workspace
 entryKey: slack
-serverUserType: singleUser
 shortDescription: Connect to Slack and work with messages, files, channels, and more
 description: |
 

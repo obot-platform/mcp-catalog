@@ -1,6 +1,5 @@
 name: Slack
 entryKey: obot-slack
-serverUserType: singleUser
 shortDescription: Send messages, manage channels, search history, and handle threads in Slack workspaces
 description: |
   **DEPRECATED**: this server is no longer supported, and will be removed from the Obot MCP Catalog in August 2026.
@@ -85,13 +84,13 @@ containerizedConfig:
   image: ghcr.io/obot-platform/slack-mcp:latest
   port: 3000
   path: "/mcp"
-env:
+config:
   - key: SLACK_BOT_TOKEN
     name: Slack Bot Token
     required: true
     sensitive: true
     description: Your Slack Bot Token for your slack APP that is installed in the workspace
-
+    usage: env
 toolPreview:
   - name: add_user_to_channel
     description: Add a user to a channel in the Slack workspace.

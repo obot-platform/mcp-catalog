@@ -1,6 +1,5 @@
 name: Docusign
 entryKey: obot-docusign
-serverUserType: singleUser
 shortDescription: Search agreements and manage Docusign envelopes and workflows
 description: |
   Search agreements and manage envelopes, templates, users, and Maestro workflows through [Docusign's official MCP server](https://developers.docusign.com/platform/mcp-server/).

@@ -1,6 +1,5 @@
 name: Wispr Flow
 entryKey: obot-wispr-flow
-serverUserType: singleUser
 shortDescription: Search meetings, transcripts, notes, calendars, and tasks
 description: |
   Search meetings, transcripts, notes, calendar events, and action items through [Wispr Flow's official MCP integration](https://docs.wisprflow.ai/articles/4759919286-how-to-connect-wispr-flow-to-claude-chatgpt-and-other-ai-tools-mcp).

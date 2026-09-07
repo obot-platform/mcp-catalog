@@ -1,6 +1,5 @@
 name: Make
 entryKey: obot-make
-serverUserType: singleUser
 shortDescription: Run and manage Make scenarios, connections, teams, and data stores
 description: |
   Run and manage scenarios, connections, teams, and data stores through [Make's official MCP server](https://developers.make.com/mcp-server/).

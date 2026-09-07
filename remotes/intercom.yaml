@@ -1,6 +1,5 @@
 name: Intercom
 entryKey: obot-intercom
-serverUserType: singleUser
 shortDescription: Search Intercom conversations, contacts, tickets, and customer data
 description: |
   Search customer conversations, contacts, companies, tickets, and Help Center content through [Intercom's official MCP server](https://developers.intercom.com/docs/guides/mcp).
@@ -23,10 +22,12 @@ repoURL: https://developers.intercom.com/docs/guides/mcp
 runtime: remote
 remoteConfig:
   fixedURL: https://mcp.intercom.com/mcp
-  headers:
+
+config:
   - name: Intercom Access Token
     description: Intercom access token with permissions for the requested customer data
     key: Authorization
     required: true
     sensitive: true
     prefix: "Bearer "
+    usage: header

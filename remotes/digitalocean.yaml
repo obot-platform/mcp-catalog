@@ -1,6 +1,5 @@
 name: DigitalOcean
 entryKey: obot-digitalocean
-serverUserType: singleUser
 shortDescription: Manage an official DigitalOcean service with a personal access token
 upgradeNote: |
   This replaces the Obot-hosted DigitalOcean server with DigitalOcean's official hosted MCP servers.
@@ -62,73 +61,75 @@ metadata:
 icon: https://cdn.brandfetch.io/idvF37rNoN/theme/dark/symbol.svg?c=1dxbfHSJFAPEGdCLU4o5B
 repoURL: https://docs.digitalocean.com/products/app-platform/reference/mcp/
 runtime: remote
-env:
-- name: DigitalOcean Service
-  key: DIGITALOCEAN_SERVICE
-  description: Enter one of the DigitalOcean service values listed in the entry description, such as `apps`, `droplets`, or `docs`.
-  required: true
-  sensitive: false
-  options:
-  - name: App Platform
-    value: apps
-    description: Deploy, manage, and monitor App Platform applications.
-  - name: Account
-    value: accounts
-    description: Access account details, billing, invoices, and SSH keys.
-  - name: Databases
-    value: databases
-    description: Manage DigitalOcean managed database clusters.
-  - name: Kubernetes
-    value: doks
-    description: Manage DigitalOcean Kubernetes clusters and node pools.
-  - name: Droplets
-    value: droplets
-    description: Create and manage DigitalOcean virtual machines.
-  - name: Container Registry
-    value: docr
-    description: Manage container registries, repositories, and garbage collection.
-  - name: Functions
-    value: functions
-    description: Manage serverless function namespaces, actions, and triggers.
-  - name: Insights
-    value: insights
-    description: Manage uptime checks, alert policies, and resource metrics.
-  - name: Marketplace
-    value: marketplace
-    description: Discover and deploy DigitalOcean Marketplace applications.
-  - name: Networking
-    value: networking
-    description: Manage DNS, firewalls, load balancers, IPs, and VPCs.
-  - name: Spaces
-    value: spaces
-    description: Manage Spaces access keys and CDN settings.
-  - name: Volumes
-    value: volumes
-    description: Manage block storage volumes and snapshots.
-  - name: Network File Storage
-    value: nfs
-    description: Manage network file shares, snapshots, and access rules.
-  - name: Documentation
-    value: docs
-    description: Search and retrieve DigitalOcean documentation.
-  - name: Dedicated Inference
-    value: gradient-ai
-    description: Manage GPU-accelerated dedicated inference endpoints.
-  - name: Model Catalog
-    value: inference-modelcatalog
-    description: Browse and retrieve DigitalOcean AI model details.
-  - name: Batch Inference
-    value: batchinference
-    description: Create and monitor asynchronous AI batch inference jobs.
-  - name: AI Evaluations
-    value: genai-evaluation
-    description: Manage datasets and evaluation workflows for AI deployments.
-remoteConfig:
-  urlTemplate: https://${DIGITALOCEAN_SERVICE}.mcp.digitalocean.com/mcp
-  headers:
+config:
+  - name: DigitalOcean Service
+    key: DIGITALOCEAN_SERVICE
+    description: Enter one of the DigitalOcean service values listed in the entry
+      description, such as `apps`, `droplets`, or `docs`.
+    required: true
+    sensitive: false
+    options:
+      - name: App Platform
+        value: apps
+        description: Deploy, manage, and monitor App Platform applications.
+      - name: Account
+        value: accounts
+        description: Access account details, billing, invoices, and SSH keys.
+      - name: Databases
+        value: databases
+        description: Manage DigitalOcean managed database clusters.
+      - name: Kubernetes
+        value: doks
+        description: Manage DigitalOcean Kubernetes clusters and node pools.
+      - name: Droplets
+        value: droplets
+        description: Create and manage DigitalOcean virtual machines.
+      - name: Container Registry
+        value: docr
+        description: Manage container registries, repositories, and garbage collection.
+      - name: Functions
+        value: functions
+        description: Manage serverless function namespaces, actions, and triggers.
+      - name: Insights
+        value: insights
+        description: Manage uptime checks, alert policies, and resource metrics.
+      - name: Marketplace
+        value: marketplace
+        description: Discover and deploy DigitalOcean Marketplace applications.
+      - name: Networking
+        value: networking
+        description: Manage DNS, firewalls, load balancers, IPs, and VPCs.
+      - name: Spaces
+        value: spaces
+        description: Manage Spaces access keys and CDN settings.
+      - name: Volumes
+        value: volumes
+        description: Manage block storage volumes and snapshots.
+      - name: Network File Storage
+        value: nfs
+        description: Manage network file shares, snapshots, and access rules.
+      - name: Documentation
+        value: docs
+        description: Search and retrieve DigitalOcean documentation.
+      - name: Dedicated Inference
+        value: gradient-ai
+        description: Manage GPU-accelerated dedicated inference endpoints.
+      - name: Model Catalog
+        value: inference-modelcatalog
+        description: Browse and retrieve DigitalOcean AI model details.
+      - name: Batch Inference
+        value: batchinference
+        description: Create and monitor asynchronous AI batch inference jobs.
+      - name: AI Evaluations
+        value: genai-evaluation
+        description: Manage datasets and evaluation workflows for AI deployments.
+    usage: env
   - name: DigitalOcean API Token
     description: Personal access token with permissions for the selected service
     key: Authorization
     required: true
     sensitive: true
     prefix: "Bearer "
+    usage: header
+remoteConfig:
+  urlTemplate: https://${DIGITALOCEAN_SERVICE}.mcp.digitalocean.com/mcp

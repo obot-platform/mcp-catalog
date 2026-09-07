@@ -1,6 +1,5 @@
 name: GitLab
 entryKey: obot-gitlab
-serverUserType: singleUser
 shortDescription: Manage GitLab projects, repositories, issues, merge requests, and CI/CD pipelines
 description: 'Manage GitLab projects, repositories, issues, merge requests, CI/CD pipelines, and other development workflows.
 
@@ -51,37 +50,44 @@ metadata:
   categories: Version Control & DevOps
 icon: https://img.icons8.com/?size=100&id=34886&format=png&color=000000
 repoURL: https://github.com/zereight/gitlab-mcp
-env:
-- key: GITLAB_PERSONAL_ACCESS_TOKEN
-  name: GitLab Personal Access Token
-  required: true
-  sensitive: true
-  description: Your GitLab personal access token with api, read_repository, and write_repository scopes.
-- key: GITLAB_API_URL
-  name: GitLab API URL
-  required: false
-  sensitive: false
-  description: Your GitLab instance URL (optional, for self-hosted GitLab instances)
-- key: GITLAB_READ_ONLY_MODE
-  name: GitLab Read-Only Mode
-  required: false
-  sensitive: false
-  description: Set to "true" to enable read-only mode (default is "false").
-- key: USE_GITLAB_WIKI
-  name: Enable Wiki Features
-  required: false
-  sensitive: false
-  description: Set to "true" to enable GitLab wiki features (default is "false").
-- key: USE_MILESTONE
-  name: Enable Milestone Features
-  required: false
-  sensitive: false
-  description: Set to "true" to enable milestone management (default is "false").
-- key: USE_PIPELINE
-  name: Enable Pipeline Features
-  required: false
-  sensitive: false
-  description: Set to "true" to enable CI/CD pipeline features (default is "false").
+config:
+  - key: GITLAB_PERSONAL_ACCESS_TOKEN
+    name: GitLab Personal Access Token
+    required: true
+    sensitive: true
+    description: Your GitLab personal access token with api, read_repository, and
+      write_repository scopes.
+    usage: env
+  - key: GITLAB_API_URL
+    name: GitLab API URL
+    required: false
+    sensitive: false
+    description: Your GitLab instance URL (optional, for self-hosted GitLab instances)
+    usage: env
+  - key: GITLAB_READ_ONLY_MODE
+    name: GitLab Read-Only Mode
+    required: false
+    sensitive: false
+    description: Set to "true" to enable read-only mode (default is "false").
+    usage: env
+  - key: USE_GITLAB_WIKI
+    name: Enable Wiki Features
+    required: false
+    sensitive: false
+    description: Set to "true" to enable GitLab wiki features (default is "false").
+    usage: env
+  - key: USE_MILESTONE
+    name: Enable Milestone Features
+    required: false
+    sensitive: false
+    description: Set to "true" to enable milestone management (default is "false").
+    usage: env
+  - key: USE_PIPELINE
+    name: Enable Pipeline Features
+    required: false
+    sensitive: false
+    description: Set to "true" to enable CI/CD pipeline features (default is "false").
+    usage: env
 runtime: containerized
 containerizedConfig:
   image: ghcr.io/obot-platform/mcp-images/gitlab:2.0.36

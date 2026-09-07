@@ -1,6 +1,5 @@
 name: Tableau
 entryKey: obot-tableau
-serverUserType: singleUser
 shortDescription: Query Tableau data sources, access Pulse metrics, and explore workbooks
 description: |
   Query published Tableau data sources with VizQL, explore Pulse metrics, and access workbooks and views with full metadata in Tableau Cloud or Tableau Server.
@@ -95,31 +94,37 @@ toolPreview:
       bundleRequest: "The request object to generate a bundle for, containing bundle_request with version, options, and input"
       bundleType: "The type of bundle to generate (ban, springboard, basic, detail) - default: ban"
 
-env:
+config:
   - key: DANGEROUSLY_DISABLE_OAUTH
     value: "true"
     description: Disable OAuth because Obot authenticates clients at its gateway.
+    usage: env
   - name: Tableau Server URL
     key: SERVER
-    description: Your Tableau Cloud or Server URL (e.g., https://your-site.online.tableau.com)
+    description: Your Tableau Cloud or Server URL (e.g.,
+      https://your-site.online.tableau.com)
     required: true
     sensitive: false
+    usage: env
   - name: Tableau Site Name
     key: SITE_NAME
-    description: The name of the Tableau site to use. If not provided, the default site will be used.
+    description: The name of the Tableau site to use. If not provided, the default
+      site will be used.
     required: false
     sensitive: false
+    usage: env
   - name: Personal Access Token Name
     key: PAT_NAME
     description: The name of your Personal Access Token
     required: true
     sensitive: false
+    usage: env
   - name: Personal Access Token Value
     key: PAT_VALUE
     description: The secret value of your Personal Access Token
     required: true
     sensitive: true
-
+    usage: env
 runtime: containerized
 containerizedConfig:
   image: ghcr.io/obot-platform/mcp-images/tableau:latest

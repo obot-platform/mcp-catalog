@@ -1,6 +1,5 @@
 name: Brevo
 entryKey: obot-brevo
-serverUserType: singleUser
 shortDescription: Analyze Brevo campaigns, contacts, and audience segments
 description: |
   Analyze email and SMS campaign performance, look up contacts and segments, and create drafts for campaigns and templates in Brevo. See the official [Brevo MCP Server documentation](https://developers.brevo.com/docs/mcp-protocol) for supported clients, token creation, available servers, and setup.
@@ -24,10 +23,12 @@ repoURL: https://developers.brevo.com/docs/mcp-protocol
 runtime: remote
 remoteConfig:
   fixedURL: https://mcp.brevo.com/v1/brevo/mcp
-  headers:
-    - name: Brevo MCP Token
-      description: MCP token created in Brevo under Account > SMTP & API > API Keys
-      key: Authorization
-      required: true
-      sensitive: true
-      prefix: "Bearer "
+
+config:
+  - name: Brevo MCP Token
+    description: MCP token created in Brevo under Account > SMTP & API > API Keys
+    key: Authorization
+    required: true
+    sensitive: true
+    prefix: "Bearer "
+    usage: header

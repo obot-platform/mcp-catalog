@@ -1,6 +1,5 @@
 name: Playwright
 entryKey: obot-playwright
-serverUserType: singleUser
 shortDescription: Browser automation with accessibility-based interactions using Playwright
 description: '**DEPRECATED**: this server is no longer supported by the Obot MCP Catalog. No direct replacement is currently available.
 
@@ -36,7 +35,7 @@ metadata:
   unsupportedTools: browser_snapshot,browser_take_screenshot,browser_screen_capture,browser_pdf_save,browser_install
 icon: https://avatars.githubusercontent.com/u/6154722?v=4
 repoURL: https://github.com/microsoft/playwright-mcp
-env: []
+config: []
 toolPreview:
 - name: browser_navigate
   description: Navigate to a URL (Read-only - false)

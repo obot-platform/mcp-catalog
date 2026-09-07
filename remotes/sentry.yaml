@@ -1,6 +1,5 @@
 name: Sentry
 entryKey: obot-sentry
-serverUserType: singleUser
 shortDescription: Search, investigate, and manage Sentry errors, issues, and projects
 description: |
   Search, investigate, and manage Sentry errors, issues, projects, releases, and performance data through [Sentry's official MCP server](https://docs.sentry.io/product/sentry-mcp/).

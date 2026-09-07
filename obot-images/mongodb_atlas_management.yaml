@@ -1,6 +1,5 @@
 name: MongoDB Atlas Management
 entryKey: obot-mongodb-atlas-management
-serverUserType: singleUser
 shortDescription: Create and manage MongoDB Atlas projects, clusters, and database users
 description: |
   **DEPRECATED**: Use the **MongoDB Atlas** connector instead. It connects to MongoDB's hosted Atlas MCP service and supports Atlas management, database operations, and stream processing through one connector.
@@ -50,17 +49,19 @@ metadata:
   deprecated: "true"
 icon: https://avatars.githubusercontent.com/u/45120?s=48&v=4
 repoURL: https://github.com/mongodb-js/mongodb-mcp-server
-env:
-- key: MDB_MCP_API_CLIENT_ID
-  name: MongoDB API Client ID
-  required: true
-  sensitive: false
-  description: The client ID for your MongoDB Service Accounts Atlas API credentials.
-- key: MDB_MCP_API_CLIENT_SECRET
-  name: MongoDB API Client Secret
-  required: true
-  sensitive: true
-  description: The client secret for your MongoDB Service Accounts Atlas API credentials.
+config:
+  - key: MDB_MCP_API_CLIENT_ID
+    name: MongoDB API Client ID
+    required: true
+    sensitive: false
+    description: The client ID for your MongoDB Service Accounts Atlas API credentials.
+    usage: env
+  - key: MDB_MCP_API_CLIENT_SECRET
+    name: MongoDB API Client Secret
+    required: true
+    sensitive: true
+    description: The client secret for your MongoDB Service Accounts Atlas API credentials.
+    usage: env
 toolPreview:
 - name: atlas-list-clusters
   description: "List MongoDB Atlas clusters"

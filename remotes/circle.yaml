@@ -1,6 +1,5 @@
 name: Circle
 entryKey: obot-circle
-serverUserType: singleUser
 shortDescription: Manage and analyze your Circle community through its official MCP server
 description: |
   Manage a Circle community through the Admin API v2 with [Circle's official MCP server](https://api.circle.so/mcp).

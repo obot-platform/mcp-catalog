@@ -1,6 +1,5 @@
 name: FactSet AI-Ready Data
 entryKey: obot-factset-ai-ready-data
-serverUserType: singleUser
 shortDescription: Analyze FactSet market, company, and investment research data
 description: |
   Access FactSet financial data and analytics for global prices, company fundamentals, estimates, ownership, funds, and research workflows. See the official [FactSet AI-Ready Data MCP documentation](https://developer.factset.com/mcp/factset-ai-ready-data-mcp) for setup and available datasets.

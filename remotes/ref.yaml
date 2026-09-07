@@ -1,6 +1,5 @@
 name: Ref
 entryKey: obot-ref
-serverUserType: singleUser
 shortDescription: Token-efficient search over documentation to prevent AI hallucinations
 description: '![Ref MCP](https://github.com/ref-tools/ref-tools-mcp/raw/main/header.png)
 
@@ -39,13 +38,6 @@ repoURL: https://github.com/ref-tools/ref-tools-mcp
 runtime: remote
 remoteConfig:
   fixedURL: https://api.ref.tools/mcp
-  headers:
-  - name: Ref API Key
-    description: Ref API Key
-    key: x-ref-api-key
-    required: true
-    sensitive: true
-
 toolPreview:
 - name: ref_search_documentation
   description: Search technical documentation from public and private sources. Use this tool when you need to find facts, code snippets, or API documentation. Can search web documentation, GitHub repositories, and private resources. Returns relevant documentation snippets with URLs. The search is optimized to avoid returning duplicate results in the same session and provides exactly what you need with minimal token usage.
@@ -55,3 +47,11 @@ toolPreview:
   description: Fetch and read content from a URL, converting it to clean markdown format. Use this tool to read the full content from URLs returned by ref_search_documentation. Ref intelligently extracts the most relevant 5k tokens from the page based on your search history, filtering out irrelevant sections. This is more efficient than standard web scraping which can pull in 20k+ tokens of mostly irrelevant content.
   params:
     url: The complete URL of the webpage to read (typically from ref_search_documentation results)
+
+config:
+  - name: Ref API Key
+    description: Ref API Key
+    key: x-ref-api-key
+    required: true
+    sensitive: true
+    usage: header

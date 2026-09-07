@@ -1,6 +1,5 @@
 name: Terraform
 entryKey: obot-terraform
-serverUserType: singleUser
 shortDescription: Manage Terraform Cloud workspaces, runs, variables, and explore the registry
 description: |
   Manage Terraform Cloud or Terraform Enterprise workspaces, runs, and variables, and explore the Terraform Registry for Infrastructure as Code development.
@@ -338,18 +337,21 @@ toolPreview:
     terraform_org_name: Terraform organization name
     workspace_id: Workspace ID
 
-env:
-- name: Terraform Cloud/Enterprise Token
-  key: TFE_TOKEN
-  description: Your Terraform Cloud or Enterprise API token for authentication. Generate from User Settings > Tokens in Terraform Cloud.
-  required: true
-  sensitive: true
-- name: Terraform Address
-  key: TFE_ADDRESS
-  description: HCP Terraform or Terraform Enterprise address. Defaults to https://app.terraform.io
-  required: false
-  sensitive: false
-
+config:
+  - name: Terraform Cloud/Enterprise Token
+    key: TFE_TOKEN
+    description: Your Terraform Cloud or Enterprise API token for authentication.
+      Generate from User Settings > Tokens in Terraform Cloud.
+    required: true
+    sensitive: true
+    usage: env
+  - name: Terraform Address
+    key: TFE_ADDRESS
+    description: HCP Terraform or Terraform Enterprise address. Defaults to
+      https://app.terraform.io
+    required: false
+    sensitive: false
+    usage: env
 runtime: containerized
 containerizedConfig:
   image: ghcr.io/obot-platform/mcp-images/terraform:1.2.0

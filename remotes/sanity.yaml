@@ -1,6 +1,5 @@
 name: Sanity
 entryKey: obot-sanity
-serverUserType: singleUser
 shortDescription: Create, query, publish, and manage structured content in Sanity
 description: |
   Build and maintain Sanity projects, datasets, schemas, and structured content, while also searching Sanity documentation and workspace data. See Sanity's official [MCP server guide](https://www.sanity.io/docs/ai/mcp-server) for setup, permissions, and the current tool catalog.

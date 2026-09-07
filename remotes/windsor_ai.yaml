@@ -1,6 +1,5 @@
 name: Windsor.ai
 entryKey: obot-windsor-ai
-serverUserType: singleUser
 shortDescription: Analyze marketing, sales, analytics, and e-commerce data
 description: |
   Analyze marketing, advertising, analytics, CRM, e-commerce, and warehouse data through [Windsor.ai's official MCP server](https://windsor.ai/documentation/windsor-mcp/).

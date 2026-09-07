@@ -1,6 +1,5 @@
 name: Dropbox
 entryKey: obot-dropbox
-serverUserType: singleUser
 shortDescription: Search, organize, create, and share Dropbox files and folders
 description: |
   Search, organize, create, and share Dropbox files and folders through [Dropbox's official MCP connector](https://help.dropbox.com/integrations/connect-dropbox-to-claude), which respects existing permissions.

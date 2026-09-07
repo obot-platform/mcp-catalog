@@ -1,6 +1,5 @@
 name: tldraw
 entryKey: obot-tldraw
-serverUserType: singleUser
 shortDescription: Draw and iteratively edit diagrams, wireframes, mind maps, and illustrations
 description: |
   Draw and iteratively edit diagrams, wireframes, mind maps, and illustrations on an interactive tldraw canvas. See the official [tldraw MCP App announcement](https://tldraw.dev/blog/tldraw-mcp-app) for setup, supported workflows, and how the embedded canvas works.

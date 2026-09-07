@@ -1,6 +1,5 @@
 name: BrightHire
 entryKey: obot-brighthire
-serverUserType: singleUser
 shortDescription: Search and analyze interview context, notes, scorecards, and hiring data
 description: |
   Search and analyze BrightHire hiring data including interview context, summaries, notes, transcripts, scorecards, guides, and job descriptions. See [BrightHire's MCP guide](https://help.brighthire.ai/en/articles/14808753-brighthire-mcp) for ChatGPT, Codex, Cursor, and OAuth setup.

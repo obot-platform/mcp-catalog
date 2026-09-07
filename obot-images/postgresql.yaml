@@ -1,6 +1,5 @@
 name: PostgreSQL
 entryKey: obot-postgresql
-serverUserType: singleUser
 shortDescription: Analyze performance, optimize queries, and tune PostgreSQL databases with health checks
 description: '[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
@@ -61,12 +60,14 @@ metadata:
   categories: Databases
 icon: https://avatars.githubusercontent.com/u/177543?s=48&v=4
 repoURL: https://github.com/crystaldba/postgres-mcp
-env:
-- key: DATABASE_URI
-  name: Database URI
-  required: true
-  sensitive: false
-  description: The connection string for your Postgres database; e.g. "postgresql://username:password@localhost:5432/dbname"
+config:
+  - key: DATABASE_URI
+    name: Database URI
+    required: true
+    sensitive: false
+    description: The connection string for your Postgres database; e.g.
+      "postgresql://username:password@localhost:5432/dbname"
+    usage: env
 toolPreview:
 - name: list_schemas
   description: Lists all database schemas available in the PostgreSQL instance

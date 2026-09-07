@@ -1,6 +1,5 @@
 name: Airtable
 entryKey: obot-airtable
-serverUserType: singleUser
 shortDescription: Search, analyze, create, and update structured Airtable data
 description: |
   Search, analyze, create, and update structured data with [Airtable's official MCP server](https://support.airtable.com/using-the-airtable-mcp-server), which respects each user's existing base permissions.

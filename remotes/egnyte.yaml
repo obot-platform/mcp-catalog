@@ -1,6 +1,5 @@
 name: Egnyte
 entryKey: obot-egnyte
-serverUserType: singleUser
 shortDescription: Search, retrieve, and analyze permissioned Egnyte content
 description: |
   Search and retrieve files and content in your Egnyte domain, ask questions about documents, inspect projects and workflows, and access shared-link and folder details. See the official [Egnyte Remote MCP Server guide](https://developers.egnyte.com/docs/Remote_MCP_Server) for connection setup and current capabilities.
