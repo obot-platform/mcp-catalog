@@ -199,7 +199,7 @@ toolPreview:
     dataSources: "A list of one or more data sources to limit the search to. You can specify a specific version of a data source by providing the version label. If not provided, the latest version of all data sources will be searched. Available data sources and their versions can be listed by calling the list-knowledge-sources tool."
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/mongodb-atlas:1.9.0
+  image: ghcr.io/obot-platform/mcp-images/mongodb-atlas:2.1.0-obot1
   port: 8099
   path: /
   args:
