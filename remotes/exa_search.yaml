@@ -1,7 +1,7 @@
 name: Exa Search
 entryKey: obot-exa-search
 serverUserType: singleUser
-shortDescription: Exa web search, advanced retrieval, and API-key research
+shortDescription: Search the web, retrieve clean page content, and run in-depth research with Exa
 upgradeNote: |
   This replaces the Obot-hosted Exa Search server with Exa's official hosted MCP server.
 

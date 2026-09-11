@@ -1,7 +1,7 @@
 name: AllTrails
 entryKey: obot-alltrails
 serverUserType: singleUser
-shortDescription: Find trails and inspect routes, conditions, and weather
+shortDescription: Discover outdoor trails by location or name and inspect routes, conditions, and weather
 description: |
   Discover hiking and outdoor trails by location, map bounds, or name, then retrieve trail details and weather overviews from AllTrails. See the official [AllTrails AI integrations guide](https://support.alltrails.com/hc/en-us/articles/47343827423764-AllTrails-integrations-with-AI-services) for current availability and usage information.
 

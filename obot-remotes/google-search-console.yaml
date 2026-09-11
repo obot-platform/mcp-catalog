@@ -1,7 +1,7 @@
 name: Google Search Console
 entryKey: obot-google-search-console
 serverUserType: singleUser
-shortDescription: Use Google Search Console API to get sitemaps, analytics, and more
+shortDescription: Inspect Google Search Console sitemaps, search analytics, and site performance data
 description: |
   ![Google Search Console MCP Server](https://img.shields.io/badge/Google%20Search%20Console-MCP%20Server-blue?style=for-the-badge&logo=google-search-console)
   ![Python](https://img.shields.io/badge/Python-3.13+-green?style=for-the-badge&logo=python)

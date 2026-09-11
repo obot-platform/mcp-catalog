@@ -1,7 +1,7 @@
 name: Apollo.io
 entryKey: obot-apollo
 serverUserType: singleUser
-shortDescription: Find, enrich, and manage sales prospects and sequences
+shortDescription: Find and enrich people and companies, manage contacts, and operate sales sequences in Apollo
 description: |
   Find and enrich people and companies, manage contacts, and work with sales sequences through [Apollo's official MCP integration](https://knowledge.apollo.io/hc/en-us/articles/43827318678541-Integrate-Apollo-with-Claude).
 

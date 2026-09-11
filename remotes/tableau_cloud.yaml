@@ -1,7 +1,7 @@
 name: Tableau Cloud
 entryKey: obot-tableau-cloud
 serverUserType: singleUser
-shortDescription: Query Tableau Cloud data, explore content, and manage Pulse metrics with OAuth
+shortDescription: Query Tableau Cloud data, explore content, and manage Pulse metrics
 description: |
   Explore and manage Tableau Cloud content through [Tableau's hosted MCP server](https://tableau.github.io/tableau-mcp/docs/hosted-tableau-mcp). It uses your Tableau Cloud identity, so each tool call respects your existing site role and content permissions.
 

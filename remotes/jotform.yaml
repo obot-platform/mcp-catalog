@@ -1,7 +1,7 @@
 name: Jotform
 entryKey: obot-jotform
 serverUserType: singleUser
-shortDescription: Create and edit forms and analyze Jotform submissions
+shortDescription: Create and edit Jotform forms, manage questions, and analyze submission data
 description: |
   Create and edit forms and analyze submissions through [Jotform's official MCP server](https://www.jotform.com/developers/mcp/).
 

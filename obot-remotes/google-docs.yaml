@@ -1,7 +1,7 @@
 name: Google Docs
 entryKey: obot-google-docs
 serverUserType: singleUser
-shortDescription: Create and manage documents in Google Docs
+shortDescription: Create, read, modify, and delete Google Docs documents throughout their lifecycle
 description: |
   ![Google Docs MCP Server](https://img.shields.io/badge/Google%20Docs-MCP%20Server-blue?style=for-the-badge&logo=google-docs)
   ![Python](https://img.shields.io/badge/Python-3.13+-green?style=for-the-badge&logo=python)

@@ -1,7 +1,7 @@
 name: Google Drive
 entryKey: obot-google-drive
 serverUserType: singleUser
-shortDescription: Manage Google Drive files, folders, permissions, and sharing with OAuth2
+shortDescription: Manage Google Drive files, folders, permissions, and sharing
 description: |
   ![Google Drive MCP Server](https://img.shields.io/badge/Google%20Drive-MCP%20Server-blue?style=for-the-badge&logo=google-drive)
   ![Python](https://img.shields.io/badge/Python-3.13+-green?style=for-the-badge&logo=python)

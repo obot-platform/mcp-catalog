@@ -1,7 +1,7 @@
 name: PandaDoc
 entryKey: obot-pandadoc
 serverUserType: singleUser
-shortDescription: Create, send, track, and manage PandaDoc documents
+shortDescription: Create, update, send, search, and track PandaDoc documents and signature workflows
 description: |
   Create, update, send, search, and track PandaDoc documents and signatures through MCP. See PandaDoc's official [MCP Server guide](https://developers.pandadoc.com/docs/how-to-use-the-pandadoc-mcp-server) for connection details and available document workflows.
 
