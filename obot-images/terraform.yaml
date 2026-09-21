@@ -352,7 +352,7 @@ env:
 
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/terraform:1.2.0
+  image: ghcr.io/obot-platform/mcp-images/terraform:1.3.0-obot1
   port: 8080
   path: "/mcp"
   args:
