@@ -1,0 +1,26 @@
+name: QuillHub
+entryKey: obot-quillhub
+serverUserType: singleUser
+shortDescription: Search meeting transcripts, read who said what, and track decisions, people and deals across calls
+description: |
+  Search and read meeting transcripts recorded or uploaded to QuillHub, then work with the people, deals and projects mentioned in them. See the [QuillHub MCP setup guide](https://quillhub.ai/en/help/mcp-claude-cursor) and [MCP documentation](https://quillhub.ai/en/docs/mcp) for supported clients and tools.
+
+  ## Features
+  - Full-text search across meetings, with morphological matching in English and Russian
+  - Read a transcript as a summary, dialog by speaker, segments, chapters or subtitles, with time windows for long calls
+  - Pull timestamped quotes from one person across every meeting
+  - Read AI-maintained notes on people, deals and projects, their change history and unresolved contradictions
+  - Create transcriptions from a URL or file and wait for the result
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **QuillHub Account**: Each user signs in through OAuth and sees their own recordings and the workspaces they belong to
+
+metadata:
+  categories: Communication, Productivity
+icon: https://quillhub.ai/apple-icon.png
+repoURL: https://quillhub.ai/en/help/mcp-claude-cursor
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.quillhub.ai/mcp
