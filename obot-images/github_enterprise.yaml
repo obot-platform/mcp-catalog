@@ -240,6 +240,6 @@ config:
     usage: env
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/github:latest
+  image: ghcr.io/obot-platform/mcp-images/github:1.11.0-obot6
   path: "/"
   port: 8099
