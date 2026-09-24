@@ -89,7 +89,7 @@ toolPreview:
   description: Performs comprehensive health checks including cache hit rates, connections, indexes, and vacuum status
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/postgresql:0.3.0-obot2
+  image: ghcr.io/obot-platform/mcp-images/postgresql:0.3.0-obot5
   port: 8099
   path: /
   args:

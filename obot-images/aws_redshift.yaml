@@ -110,7 +110,7 @@ config:
     usage: env
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/aws-redshift:0.0.20
+  image: ghcr.io/obot-platform/mcp-images/aws-redshift:0.0.34-obot5
   port: 8099
   path: /
   args:

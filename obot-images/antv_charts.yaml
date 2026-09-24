@@ -80,7 +80,7 @@ config:
     usage: env
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/antv-charts:0.9.10-obot1
+  image: ghcr.io/obot-platform/mcp-images/antv-charts:0.9.10-obot3
   port: 8099
   path: /
   args:

@@ -64,7 +64,7 @@ config:
     usage: env
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/chroma:0.2.6-obot2
+  image: ghcr.io/obot-platform/mcp-images/chroma:0.2.6-obot5
   port: 8099
   path: /
   args:

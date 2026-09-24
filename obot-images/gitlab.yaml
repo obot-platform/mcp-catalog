@@ -90,7 +90,7 @@ config:
     usage: env
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/gitlab:2.0.36
+  image: ghcr.io/obot-platform/mcp-images/gitlab:2.1.52-obot4
   port: 8099
   path: /
   args:

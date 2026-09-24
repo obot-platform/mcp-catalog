@@ -61,7 +61,7 @@ config:
     usage: env
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/browserbase:2.4.3
+  image: ghcr.io/obot-platform/mcp-images/browserbase:3.0.0-obot3
   port: 8099
   path: /
   args:
