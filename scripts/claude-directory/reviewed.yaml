@@ -606,8 +606,8 @@ records:
     reason: Only available connector guidance is an Anthropic Claude-specific tutorial; no provider documentation establishes support for non-Claude MCP clients.
   - id: c758d038-d8eb-4421-b426-9dd68dc7f84a
     name: Figma
-    status: skipped
-    reason: currently not compatible with Obot
+    status: imported
+    catalog_entry: remotes/figma.yaml
   - id: ca8bc23f-101c-4ff2-9f03-26a43302e2d0
     name: Audible
     status: skipped
