@@ -1,6 +1,5 @@
 name: Figma
 entryKey: obot-figma
-serverUserType: singleUser
 shortDescription: Generate diagrams and build code from Figma design context
 description: |
   Turn Figma Design, FigJam, and Figma Make context into diagrams and implementation code with [Figma's official MCP server](https://developers.figma.com/docs/figma-mcp-server/).
