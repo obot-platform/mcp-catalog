@@ -1,0 +1,29 @@
+name: Chessigma
+entryKey: obot-chessigma
+serverUserType: singleUser
+shortDescription: Read chess openings and positions, get daily puzzles, review links and Elo estimates
+description: |
+  Look up chess openings, inspect legal moves and game facts, retrieve daily puzzles, and calculate Elo changes with [Chessigma](https://www.chessigma.com).
+
+  See the [official setup documentation](https://www.chessigma.com/developers/mcp) for client configuration, tool details, privacy and limits.
+
+  ## Features
+
+  - Opening guides and move-sequence identification
+  - FEN position facts, legal moves and material counts
+  - PGN game summaries and Chess.com or Lichess review links
+  - Daily chess puzzles with positions and solutions
+  - Elo rating-change estimates
+
+  ## What you'll need to connect
+
+  No account, API key or sign-in is required. Connect using Streamable HTTP.
+
+  The tools return chess-rule facts and catalogue data; they do not run a chess engine. For engine analysis, open the returned Chessigma links and run Stockfish in the browser.
+metadata:
+  categories: Education, Games
+icon: https://www.chessigma.com/apple-touch-icon.png
+repoURL: https://www.chessigma.com/developers/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://www.chessigma.com/api/mcp
