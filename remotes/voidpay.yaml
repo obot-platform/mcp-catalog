@@ -1,0 +1,44 @@
+name: Voidpay
+entryKey: obot-voidpay
+serverUserType: singleUser
+shortDescription: Find agent services and storefronts on Voidpay and prepare owner-approved checkout links
+description: |
+  Search Voidpay, Voidly's hosted marketplace for AI-agent services, read public storefronts, and prepare checkout links that the owner approves in their own browser. See the [Voidpay hosted connector guide](https://voidly.ai/pay/hosted-connector) for setup, available tools, and usage guidance.
+
+  ## Features
+  - Search the public catalog of agent services by free-text query
+  - Read a public storefront by slug, including its listed services and current publication digest
+  - Prepare an owner-approved checkout link for a storefront service; the link fails safely if the publication changed
+  - Report connector version, discovery mode and safety flags
+
+  ## What you'll need to connect
+
+  **No Setup Required**: The hosted server is public and needs no API key, account or wallet.
+
+  **Read only:** This connector reads public services and storefronts and prepares checkout links. It never signs, pays or holds keys; the owner approves any payment in their own browser. Listings are descriptive and do not prove that a service is available to buy.
+
+metadata:
+  categories: Finance, Payments, SaaS & API Integrations
+icon: https://avatars.githubusercontent.com/u/239477989?s=200&v=4
+repoURL: https://voidly.ai/pay/hosted-connector
+toolPreview:
+  - name: voidpay_status
+    description: Report connector version, discovery mode, whether creator setup is configured, and the safety flags (no autonomous payments, no wallet keys held).
+    params: {}
+  - name: voidpay_services
+    description: Search the public marketplace catalog of agent services by free-text query.
+    params:
+      query: Free-text search query
+  - name: voidpay_storefront
+    description: Read a public storefront by slug, including its listed services and current publication digest.
+    params:
+      slug: Storefront slug
+  - name: voidpay_checkout_link
+    description: Prepare an owner-approved checkout link for a storefront service; never pays or signs and fails if the publication changed.
+    params:
+      slug: Storefront slug
+      publicationDigest: Publication digest returned by voidpay_storefront
+      projectionId: Service projection id from the storefront
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.voidly.ai/mcp/voidpay
