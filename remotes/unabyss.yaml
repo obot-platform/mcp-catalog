@@ -1,6 +1,5 @@
 name: "Unabyss"
 entryKey: obot-unabyss
-serverUserType: singleUser
 shortDescription: "Shared memory for every AI tool you use."
 description: |
   Shared memory for every AI tool you use. See the [official MCP documentation](https://unabyss.com/mcp-docs) for setup, authentication, and supported capabilities.

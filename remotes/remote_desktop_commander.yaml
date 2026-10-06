@@ -1,6 +1,5 @@
 name: "Remote Desktop Commander"
 entryKey: obot-remote-desktop-commander
-serverUserType: singleUser
 shortDescription: "Build, explore, automate on your computer from anywhere"
 description: |
   Build, explore, automate on your computer from anywhere. See the [official MCP documentation](https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/main/README.md) for setup, authentication, and supported capabilities.

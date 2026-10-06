@@ -1,6 +1,5 @@
 name: "Inkbox"
 entryKey: obot-inkbox
-serverUserType: singleUser
 shortDescription: "Give AI agents email, messaging, calls, contacts, notes, and delegated tasks"
 description: |
   Search and manage an agent identity's email, SMS, MMS, iMessage, calls, transcripts, contacts, notes, communication rules, and agent-to-agent tasks, including sending messages and placing calls. See the [official Inkbox MCP documentation](https://inkbox.ai/docs/mcp) for the general-purpose endpoint, OAuth and API-key options, available capabilities, data access, and client-specific behavior.

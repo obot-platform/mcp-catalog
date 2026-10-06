@@ -1,6 +1,5 @@
 name: "Midpage Legal Research"
 entryKey: obot-midpage
-serverUserType: singleUser
 shortDescription: "Research US case law, dockets, statutes, and regulations with cited sources"
 description: |
   Search federal and state case law, find quotable opinion passages, analyze decisions and federal docket filings, and research current statutes and regulations with links to underlying sources. See the [official Midpage MCP documentation](https://midpage-docs.apidocumentation.com/documentation/integration/mcp-tools) for endpoint versions, OAuth and API-key authentication, client setup, and tool contracts.

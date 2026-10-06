@@ -1,6 +1,5 @@
 name: Fullstory
 entryKey: obot-fullstory
-serverUserType: singleUser
 shortDescription: Analyze product behavior, friction signals, metrics, and sessions
 description: |
   Query Fullstory product analytics to investigate user behavior, friction, errors, funnels, and session activity. See the [Fullstory MCP guide](https://developer.fullstory.com/mcp/introduction/) for setup, authentication, supported clients, and prerequisites.

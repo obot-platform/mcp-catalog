@@ -1,6 +1,5 @@
 name: "Connect The Dots"
 entryKey: obot-connect-the-dots
-serverUserType: singleUser
 shortDescription: "Get a warm intro to anyone, right where you work."
 description: |
   Get a warm intro to anyone, right where you work. See the [official MCP documentation](https://ctd.ai/guide/category/mcp-and-ai) for setup, authentication, and supported capabilities.

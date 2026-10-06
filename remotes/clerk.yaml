@@ -1,6 +1,5 @@
 name: Clerk
 entryKey: obot-clerk
-serverUserType: singleUser
 shortDescription: Search Clerk documentation and inspect authentication resources
 description: |
   Give coding agents current Clerk documentation and project context for implementing and troubleshooting authentication and user management. See the [official MCP documentation](https://clerk.com/docs/guides/ai/mcp/clerk-mcp-server) for setup, authentication, and available capabilities.

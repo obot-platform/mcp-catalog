@@ -1,6 +1,5 @@
 name: "Growrk"
 entryKey: obot-growrk
-serverUserType: singleUser
 shortDescription: "IT asset and device lifecycle management for distributed teams, right inside Claude."
 description: |
   IT asset and device lifecycle management for distributed teams, right inside Claude. See the [official MCP documentation](https://guides.growrk.com/other-features/mcp) for setup, authentication, and supported capabilities.

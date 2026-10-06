@@ -1,6 +1,5 @@
 name: "Expo"
 entryKey: obot-expo
-serverUserType: singleUser
 shortDescription: "Build, ship, and monitor apps with Expo"
 description: |
   Build, ship, and monitor apps with Expo. See the [official MCP documentation](https://docs.expo.dev/mcp/) for setup, authentication, and supported capabilities.

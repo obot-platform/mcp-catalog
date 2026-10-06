@@ -1,6 +1,5 @@
 name: MotherDuck
 entryKey: obot-motherduck
-serverUserType: singleUser
 shortDescription: Query and analyze MotherDuck databases with SQL
 description: |
   Explore MotherDuck databases and schemas and run analytical SQL queries against cloud-hosted DuckDB data. See the [official MCP documentation](https://motherduck.com/docs/sql-reference/mcp/) for setup, authentication, and available capabilities.

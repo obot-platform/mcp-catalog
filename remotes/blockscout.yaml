@@ -1,6 +1,5 @@
 name: Blockscout
 entryKey: obot-blockscout
-serverUserType: singleUser
 shortDescription: Explore blockchain addresses, transactions, tokens, and contracts
 description: |
   Query Blockscout blockchain explorer data for addresses, transactions, tokens, smart contracts, and supported networks. See the [official MCP documentation](https://github.com/blockscout/mcp-server) for setup, authentication, and supported capabilities.

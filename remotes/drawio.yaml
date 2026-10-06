@@ -1,6 +1,5 @@
 name: draw.io
 entryKey: obot-drawio
-serverUserType: singleUser
 shortDescription: Create interactive draw.io diagrams from XML or Mermaid definitions
 description: |
   Create draw.io diagrams from draw.io XML or Mermaid definitions and open them for further editing. See the [official draw.io MCP App server documentation](https://github.com/jgraph/drawio-mcp/tree/main/mcp-app-server) for the hosted endpoint, supported clients, capabilities, and self-hosting.

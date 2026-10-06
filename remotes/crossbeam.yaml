@@ -1,6 +1,5 @@
 name: Crossbeam
 entryKey: obot-crossbeam
-serverUserType: singleUser
 shortDescription: Analyze partner overlaps, ecosystem activity, account context, and recommendations
 description: |
   Analyze partner overlaps, account context, ecosystem activity, partner performance, and co-sell recommendations using live Crossbeam data. See the [Crossbeam MCP Server guide](https://help.crossbeam.com/en/articles/12601327-crossbeam-mcp-server-limited-availability) for availability, authentication, supported clients, and tools.

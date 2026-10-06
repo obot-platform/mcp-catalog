@@ -1,6 +1,5 @@
 name: "AfterShip Channels for TikTok Shop"
 entryKey: obot-aftership-channels-for-tiktok-shop
-serverUserType: singleUser
 shortDescription: "List, sync & grow your TikTok Shop business"
 description: |
   List, sync & grow your TikTok Shop business. See the [official MCP documentation](https://www.aftership.com/docs/channels-mcp/what-is-mcp) for setup, authentication, and supported capabilities.

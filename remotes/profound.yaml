@@ -1,6 +1,5 @@
 name: Profound
 entryKey: obot-profound
-serverUserType: singleUser
 shortDescription: Analyze AI visibility, citations, prompts, and bot traffic
 description: |
   Analyze answer-engine visibility, citations, prompt performance, and AI bot traffic using live Profound data. See the [Profound Remote MCP Server guide](https://mcp.tryprofound.com/) for the endpoint, OAuth setup, supported clients, and troubleshooting.

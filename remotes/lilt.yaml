@@ -1,6 +1,5 @@
 name: "LILT"
 entryKey: obot-lilt
-serverUserType: singleUser
 shortDescription: "High-quality translation with human verification"
 description: |
   High-quality translation with human verification. See the [official MCP documentation](https://support.lilt.com/kb/LILT-mcp) for setup, authentication, and supported capabilities.

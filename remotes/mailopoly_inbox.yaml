@@ -1,6 +1,5 @@
 name: "Mailopoly Inbox"
 entryKey: obot-mailopoly-inbox
-serverUserType: singleUser
 shortDescription: "Search, send, and triage email and messages across your connected accounts"
 description: |
   Search, send, and triage email across Gmail, Outlook, iCloud, Yahoo, and IMAP, plus supported business messaging channels. See the [official MCP documentation](https://www.mailopoly.com/mcp/) for the exact endpoint, OAuth setup, and supported capabilities.

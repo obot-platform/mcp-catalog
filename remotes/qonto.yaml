@@ -1,6 +1,5 @@
 name: Qonto
 entryKey: obot-qonto
-serverUserType: singleUser
 shortDescription: Access business banking balances, transactions, and finance data
 description: |
   Query Qonto business-finance information, including accounts, balances, transactions, and related operational records. See the [official MCP documentation](https://mcp.qonto.com/explorer) for setup, authentication, and supported capabilities.

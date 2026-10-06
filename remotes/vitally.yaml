@@ -1,6 +1,5 @@
 name: Vitally
 entryKey: obot-vitally
-serverUserType: singleUser
 shortDescription: "Search customer-success data and create Vitally tasks, notes, and custom records"
 description: |
   Search accounts, users, conversations, meetings, notes, projects, goals, surveys, NPS responses, and custom customer-success data, and create tasks, notes, or custom-object records in Vitally. See the [official Vitally MCP documentation](https://docs.vitally.io/en/articles/15862100-vitally-mcp-server) for client setup, permissions, tools, and the optional read-only endpoint.

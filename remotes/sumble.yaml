@@ -1,6 +1,5 @@
 name: Sumble
 entryKey: obot-sumble
-serverUserType: singleUser
 shortDescription: Research companies, technologies, competitors, and buying signals
 description: |
   Deep-research accounts with Sumble company, technology, competitive, and market-signal data for sales and strategy workflows. See the [official MCP documentation](https://sumble.com/mcp) for setup, authentication, and supported capabilities.

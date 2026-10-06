@@ -1,6 +1,5 @@
 name: "LawVu"
 entryKey: obot-lawvu
-serverUserType: singleUser
 shortDescription: "Operating system for in-house legal teams"
 description: |
   Operating system for in-house legal teams. See the [official MCP documentation](https://help.lawvu.com/en/articles/15266786-lawvu-mcp-server) for setup, authentication, and supported capabilities.

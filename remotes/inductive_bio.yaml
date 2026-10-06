@@ -1,6 +1,5 @@
 name: Inductive Bio
 entryKey: obot-inductive-bio
-serverUserType: singleUser
 shortDescription: Run and analyze machine-learning workflows for drug discovery
 description: |
   Access Inductive Bio drug-discovery models and scientific workflows for molecular property prediction and research analysis. See the [official MCP documentation](https://www.inductive.bio/mcp-connector) for setup, authentication, and supported capabilities.

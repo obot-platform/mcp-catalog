@@ -1,6 +1,5 @@
 name: "PocketSmith Complete Access"
 entryKey: obot-pocketsmith-complete-access
-serverUserType: singleUser
 shortDescription: "Manage transactions, budgets, forecasts, accounts, and spending insights in PocketSmith"
 description: |
   Manage transactions, budgets, forecasts, accounts, and spending insights with PocketSmith's complete-access tool set. See the [official MCP documentation](https://developers.pocketsmith.com/docs/pocketsmith-mcp-server) for the exact endpoint, OAuth setup, and supported clients.

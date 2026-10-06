@@ -1,6 +1,5 @@
 name: "RingCentral Chat"
 entryKey: obot-ringcentral-chat
-serverUserType: singleUser
 shortDescription: "Stay on top of team communications and collaborate in RingCentral Team Chat directly within Claude."
 description: |
   Stay on top of team communications and collaborate in RingCentral Team Chat directly within Claude. See the [official MCP documentation](https://mcp.labs.ringcentral.com/docs/servers/ringex-chat/) for setup, authentication, and supported capabilities.

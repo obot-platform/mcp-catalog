@@ -1,6 +1,5 @@
 name: LetsBot
 entryKey: obot-letsbot
-serverUserType: singleUser
 shortDescription: Send and manage WhatsApp conversations from agents
 description: |
   Connect agent workflows to WhatsApp messaging through LetsBot to send messages and manage business conversations. See the [official MCP documentation](https://letsbot.net/en/whatsapp-mcp.html) for setup, authentication, and available capabilities.

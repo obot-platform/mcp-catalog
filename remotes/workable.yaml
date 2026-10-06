@@ -1,6 +1,5 @@
 name: Workable
 entryKey: obot-workable
-serverUserType: singleUser
 shortDescription: Manage recruiting, candidates, offers, and HR operations
 description: |
   Manage jobs, candidates, offers, requisitions, employees, time off, and performance reviews in Workable. See the [Workable MCP Server reference](https://workable.readme.io/reference/workable-mcp-server) for setup, OAuth discovery, and available tools.

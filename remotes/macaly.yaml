@@ -1,6 +1,5 @@
 name: "Macaly"
 entryKey: obot-macaly
-serverUserType: singleUser
 shortDescription: "Turn a prompt into a live web app. Create, iterate on, and deploy Macaly apps directly from Claude."
 description: |
   Turn a prompt into a live web app. Create, iterate on, and deploy Macaly apps directly from Claude. See the [official MCP documentation](https://www.macaly.com/docs/en/integrations/mcp) for setup, authentication, and supported capabilities.

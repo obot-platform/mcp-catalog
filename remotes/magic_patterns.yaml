@@ -1,6 +1,5 @@
 name: Magic Patterns
 entryKey: obot-magic-patterns
-serverUserType: singleUser
 shortDescription: Move product designs between AI agents and production code
 description: |
   Access Magic Patterns designs, artifacts, and design systems from AI coding tools, and send code or prompts back into collaborative design workflows. See the [official MCP documentation](https://www.magicpatterns.com/docs/documentation/features/mcp-server/overview) for setup, authentication, and available capabilities.

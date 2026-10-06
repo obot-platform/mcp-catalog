@@ -1,6 +1,5 @@
 name: WorkOS
 entryKey: obot-workos
-serverUserType: singleUser
 shortDescription: Inspect and manage enterprise identity resources
 description: |
   Work with WorkOS organizations, users, directories, authentication, and enterprise identity configuration from development agents. See the [official MCP documentation](https://workos.com/docs/mcp) for setup, authentication, and available capabilities.

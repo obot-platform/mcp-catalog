@@ -1,6 +1,5 @@
 name: Listen Labs
 entryKey: obot-listen-labs
-serverUserType: singleUser
 shortDescription: "Create and analyze research studies, responses, transcripts, and insights"
 description: |
   Create, edit, organize, and launch Listen Labs research studies, and search study results, respondent transcripts, and AI-generated analysis. See the [official Listen Labs MCP documentation](https://docs.listenlabs.com/mcp-docs) for supported clients, permissions, the exact endpoint, and available capabilities.

@@ -1,6 +1,5 @@
 name: "GraphOS MCP Tools"
 entryKey: obot-graphos-mcp-tools
-serverUserType: singleUser
 shortDescription: "Search Apollo docs, specs, and best practices"
 description: |
   Search Apollo docs, specs, and best practices. See the [official MCP documentation](https://www.apollographql.com/docs/graphos/platform/graphos-mcp-tools) for setup, authentication, and supported capabilities.

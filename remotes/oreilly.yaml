@@ -1,6 +1,5 @@
 name: O'Reilly
 entryKey: obot-oreilly
-serverUserType: singleUser
 shortDescription: Search O'Reilly books, videos, courses, and live learning content
 description: |
   Search the O'Reilly learning platform by keyword, author, publisher, language, content type, publication date, and other metadata. See the [O'Reilly MCP server documentation](https://learning.oreilly.com/apidocs/mcp/content/) for OAuth and token setup, supported clients, filters, and response details.

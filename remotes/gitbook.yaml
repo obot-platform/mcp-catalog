@@ -1,6 +1,5 @@
 name: GitBook
 entryKey: obot-gitbook
-serverUserType: singleUser
 shortDescription: Search and retrieve GitBook documentation content
 description: |
   Search published GitBook spaces and retrieve documentation pages as grounded context for development and support workflows. See the [official MCP documentation](https://gitbook.com/docs/getting-started/ai-documentation/gitbook-mcp) for setup, authentication, and available capabilities.

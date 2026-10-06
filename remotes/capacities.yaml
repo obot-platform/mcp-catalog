@@ -1,6 +1,5 @@
 name: "Capacities"
 entryKey: obot-capacities
-serverUserType: singleUser
 shortDescription: "Access personal knowledge"
 description: |
   Access personal knowledge. See the [official MCP documentation](https://docs.capacities.io/developer/model-context-protocol) for setup, authentication, and supported capabilities.

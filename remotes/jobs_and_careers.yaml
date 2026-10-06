@@ -1,6 +1,5 @@
 name: Jobs and Careers
 entryKey: obot-jobs-and-careers
-serverUserType: singleUser
 shortDescription: Search current job listings and career opportunities
 description: |
   Search and filter current job and career listings by role, location, employer, and other criteria using SonicJobs data. See the [official MCP documentation](https://www.sonicjobs.com/us/jobs-and-careers-mcpapp-help-article) for setup, authentication, and available capabilities.

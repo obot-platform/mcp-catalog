@@ -1,6 +1,5 @@
 name: "Planning Center"
 entryKey: obot-planning-center
-serverUserType: singleUser
 shortDescription: "Query people, events, attendance, giving, schedules, and other church data"
 description: |
   Query people, events, attendance, giving, schedules, registrations, groups, and other church data in Planning Center. See the [official MCP documentation](https://help.planningcenter.com/en/151880-connect-ai-tools-to-planning-center.html) for portable client setup, authentication, and supported capabilities.

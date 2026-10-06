@@ -1,6 +1,5 @@
 name: Solve Intelligence
 entryKey: obot-solve-intelligence
-serverUserType: singleUser
 shortDescription: Research patents and support intellectual-property analysis
 description: |
   Use Solve Intelligence patent research and analysis capabilities to investigate prior art, claims, and intellectual-property questions. See the [official MCP documentation](https://api.solveintelligence.com/guide/mcp/intro/) for setup, authentication, and supported capabilities.

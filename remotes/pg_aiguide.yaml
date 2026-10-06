@@ -1,6 +1,5 @@
 name: "pg-aiguide"
 entryKey: obot-pg-aiguide
-serverUserType: singleUser
 shortDescription: "Search pg and Tiger docs, learn database skills"
 description: |
   Search pg and Tiger docs, learn database skills. See the [official MCP documentation](https://github.com/timescale/pg-aiguide) for setup, authentication, and supported capabilities.

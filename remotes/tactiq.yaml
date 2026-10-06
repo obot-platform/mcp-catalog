@@ -1,6 +1,5 @@
 name: "Tactiq"
 entryKey: obot-tactiq
-serverUserType: singleUser
 shortDescription: "Search meeting history and retrieve summaries, action items, and transcripts"
 description: |
   Find meetings from Google Meet, Zoom, and Microsoft Teams, retrieve summaries and generated artifacts, locate exact transcript moments, and read full transcripts when your plan permits. See the [official Tactiq MCP connection guide](https://help.tactiq.io/en/articles/14883619-connecting-tactiq-mcp-server) for the exact endpoint, browser-based OAuth, client setup, scopes, and plan limits.

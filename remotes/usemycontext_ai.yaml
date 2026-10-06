@@ -1,6 +1,5 @@
 name: "UseMyContext.ai"
 entryKey: obot-usemycontext-ai
-serverUserType: singleUser
 shortDescription: "Share your approved profile and files across AI clients"
 description: |
   Share your approved profile, projects, and files across AI clients. See the [official MCP documentation](https://usemycontext.ai/docs/) for the exact Streamable HTTP endpoint, OAuth setup, and supported clients.

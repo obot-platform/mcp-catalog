@@ -1,6 +1,5 @@
 name: Rillet
 entryKey: obot-rillet
-serverUserType: singleUser
 shortDescription: "Query financials and manage accounting records in Rillet"
 description: |
   Query live general-ledger data, financial statements, customers, vendors, invoices, bills, contracts, and revenue metrics, and manage supported accounting records in Rillet. See the [official Rillet MCP documentation](https://docs.api.rillet.com/docs/mcp) for client setup, authentication, and the current tool surface.

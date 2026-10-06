@@ -1,6 +1,5 @@
 name: Wolfram Cloud
 entryKey: obot-wolfram-cloud
-serverUserType: singleUser
 shortDescription: Compute precise results with Wolfram Language and curated Wolfram knowledge
 description: |
   Compute mathematical, scientific, technical, and factual results using Wolfram Language and the curated Wolfram knowledgebase. See the [Wolfram Cloud MCP documentation](https://www.wolfram.com/artificial-intelligence/mcp/cloud/wolfram-mcp-cloud/) for the endpoint, supported clients, setup, and usage guidance.

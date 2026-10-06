@@ -1,6 +1,5 @@
 name: "Document360"
 entryKey: obot-document360
-serverUserType: singleUser
 shortDescription: "Read, create, update, and publish Document360 knowledge base articles and categories"
 description: |
   Read, create, update, and publish Document360 knowledge base articles and categories. See the [official MCP documentation](https://docs.document360.com/docs/document360-mcp) for setup, authentication, and supported capabilities.

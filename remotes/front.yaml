@@ -1,6 +1,5 @@
 name: Front
 entryKey: obot-front
-serverUserType: singleUser
 shortDescription: Triage conversations, draft replies, manage contacts, and coordinate inbox work
 description: |
   Search and triage omnichannel conversations, draft or send replies, post internal comments, and manage contacts, tags, assignments, and status in Front. See the [Front MCP server guide](https://help.front.com/en/articles/4883136) for beta availability, supported clients, permissions, and setup.

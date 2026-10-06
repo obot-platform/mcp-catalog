@@ -1,6 +1,5 @@
 name: SignNow
 entryKey: obot-signnow
-serverUserType: singleUser
 shortDescription: Create, send, and manage documents and e-signature workflows
 description: |
   Manage SignNow documents, templates, invites, signatures, and e-signature workflow status from compatible AI clients. See the [official MCP documentation](https://docs.signnow.com/docs/signnow/mcp-server) for setup, authentication, and available capabilities.

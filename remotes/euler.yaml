@@ -1,6 +1,5 @@
 name: EULER
 entryKey: obot-euler
-serverUserType: singleUser
 shortDescription: Manage partner programs, deals, commissions, and performance
 description: |
   Manage partner relationships and query EULER Partner Data Lake records for deals, referrals, commissions, onboarding, and performance. See the [EULER MCP documentation](https://mcp.eulerapp.com/public/docs) for setup, authentication, and tools.

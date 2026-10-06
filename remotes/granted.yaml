@@ -1,6 +1,5 @@
 name: Granted
 entryKey: obot-granted
-serverUserType: singleUser
 shortDescription: "Search grants, research funders, and inspect past federal award recipients"
 description: |
   Search federal, state, and private-foundation grants, retrieve opportunity details, research U.S. foundation profiles and IRS 990 financials, and inspect past federal award recipients. See the [official Granted MCP documentation](https://grantedai.com/mcp) for setup, coverage, tools, and usage limits.

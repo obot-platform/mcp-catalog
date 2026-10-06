@@ -1,6 +1,5 @@
 name: Numeric
 entryKey: obot-numeric
-serverUserType: singleUser
 shortDescription: Investigate accounting data and automate close workflows
 description: |
   Access Numeric accounting context, reconciliations, close tasks, and financial reporting data from compatible AI assistants. See the [official MCP documentation](https://help.numeric.io/articles/7292808089-numeric-mcp-server) for setup, authentication, and supported capabilities.

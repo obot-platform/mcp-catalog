@@ -1,6 +1,5 @@
 name: "Sent"
 entryKey: obot-sent
-serverUserType: singleUser
 shortDescription: "Send and manage customer messaging across SMS, WhatsApp, and RCS"
 description: |
   Send and manage customer messaging across SMS, WhatsApp, and RCS, including contacts and analytics. See the [official MCP documentation](https://docs.sent.dm/start/llm-docs) for supported AI agents and MCP capabilities.

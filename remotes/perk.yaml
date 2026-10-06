@@ -1,6 +1,5 @@
 name: "Perk"
 entryKey: obot-perk
-serverUserType: singleUser
 shortDescription: "Query and manage company travel, expenses, reports, invoices, and events"
 description: |
   Review trips, expenses, invoices, policies, events, cards, and users; generate travel and team-insights reports; and use authorized actions for bookings, expenses, trip approvals, and events. See the [official Perk MCP overview](https://developers.perk.com/docs/perk-mcp) and [client connection guide](https://developers.perk.com/docs/connect-a-client-to-the-perk-mcp-server) for capabilities, prerequisites, the exact endpoint, supported clients, OAuth setup, and access controls.

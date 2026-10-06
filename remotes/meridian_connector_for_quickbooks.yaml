@@ -1,6 +1,5 @@
 name: "Meridian Connector for QuickBooks"
 entryKey: obot-meridian-connector-for-quickbooks
-serverUserType: singleUser
 shortDescription: "Make changes to QuickBooks Online from within Claude."
 description: |
   Make changes to QuickBooks Online from within Claude. See the [official MCP documentation](https://qbo-connector.meridian.pilot.com/faq) for setup, authentication, and supported capabilities.

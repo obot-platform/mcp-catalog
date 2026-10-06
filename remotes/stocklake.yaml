@@ -1,6 +1,5 @@
 name: "Stocklake"
 entryKey: obot-stocklake
-serverUserType: singleUser
 shortDescription: "Real-time stock data, AI signals & market intelligence"
 description: |
   Real-time stock data, AI signals & market intelligence. See the [official MCP documentation](https://www.stocklake.dev/docs) for setup, authentication, and supported capabilities.

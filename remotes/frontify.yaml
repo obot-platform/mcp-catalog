@@ -1,6 +1,5 @@
 name: Frontify
 entryKey: obot-frontify
-serverUserType: singleUser
 shortDescription: "Search brand guidelines and assets, generate creative, and manage Frontify content"
 description: |
   Search Frontify brand guidelines, libraries, projects, assets, fonts, colors, and templates, with optional tool packs for creative generation, asset management, metadata, and review workflows. See the [official Frontify MCP documentation](https://help.frontify.com/en/articles/14787214-frontify-mcp) for activation, supported clients, tool packs, privacy considerations, and setup.

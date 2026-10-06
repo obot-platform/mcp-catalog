@@ -1,6 +1,5 @@
 name: Craft
 entryKey: obot-craft
-serverUserType: singleUser
 shortDescription: Read, search, create, and update documents in your Craft workspace
 description: |
   Read and search Craft documents, then create or update workspace content from your connected AI tools. See the [Craft MCP guide](https://www.craft.do/imagine/guide/mcp) for generic-client setup, OAuth authorization, and example workflows.

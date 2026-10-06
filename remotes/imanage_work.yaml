@@ -1,6 +1,5 @@
 name: iManage Work
 entryKey: obot-imanage-work
-serverUserType: singleUser
 shortDescription: Search, retrieve, organize, and update governed legal work product
 description: |
   Search, retrieve, organize, and update governed documents, folders, and workspaces in iManage Work. See the [iManage Work MCP client guide](https://docs.imanage.com/ai/mcpserver-user-help/en-US/Adding_MCP_connectors_for_ChatGPT.html) for endpoint setup, OAuth, custom subdomains, and permissions.

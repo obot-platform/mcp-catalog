@@ -1,6 +1,5 @@
 name: SE Ranking
 entryKey: obot-se-ranking
-serverUserType: singleUser
 shortDescription: Analyze rankings, keywords, competitors, and SEO performance
 description: |
   Query SE Ranking keyword, ranking, competitor, backlink, and site-performance data for search-optimization workflows. See the [official MCP documentation](https://seranking.com/api/integrations/mcp/) for setup, authentication, and supported capabilities.

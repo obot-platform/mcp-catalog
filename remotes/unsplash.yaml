@@ -1,6 +1,5 @@
 name: Unsplash
 entryKey: obot-unsplash
-serverUserType: singleUser
 shortDescription: Search and retrieve freely usable photography
 description: |
   Search Unsplash photography, inspect image and creator metadata, and retrieve suitable visual assets for creative workflows. See the [official MCP documentation](https://unsplash.com/developers) for setup, authentication, and available capabilities.

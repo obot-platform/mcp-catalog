@@ -1,6 +1,5 @@
 name: "Coverbase"
 entryKey: obot-coverbase
-serverUserType: singleUser
 shortDescription: "Query and manage your third-party risk, security, and procurement program: vendors, assessments, findings, con"
 description: |
   Query and manage your third-party risk, security, and procurement program: vendors, assessments, findings, con. See the [official MCP documentation](https://docs.coverbase.com/mcp/overview) for setup, authentication, and supported capabilities.

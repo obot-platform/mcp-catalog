@@ -1,6 +1,5 @@
 name: "CoinGecko"
 entryKey: obot-coingecko
-serverUserType: singleUser
 shortDescription: "Live cryptocurrency prices, comparisons, charts, and market context."
 description: |
   Live cryptocurrency prices, comparisons, charts, and market context. See the [official MCP documentation](https://docs.coingecko.com/) for setup, authentication, and supported capabilities.

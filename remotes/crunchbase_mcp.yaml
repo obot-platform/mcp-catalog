@@ -1,6 +1,5 @@
 name: "Crunchbase MCP"
 entryKey: obot-crunchbase-mcp
-serverUserType: singleUser
 shortDescription: "Access reliable company data, market signals, and forward-looking predictions to research organizations, compa"
 description: |
   Access reliable company data, market signals, and forward-looking predictions to research organizations, compa. See the [official MCP documentation](https://data.crunchbase.com/docs/mcp-overview) for setup, authentication, and supported capabilities.

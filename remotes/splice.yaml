@@ -1,6 +1,5 @@
 name: Splice
 entryKey: obot-splice
-serverUserType: singleUser
 shortDescription: Search sounds and explore music-production resources
 description: |
   Search the Splice sound catalog and retrieve music-production context and assets for creative agent workflows. See the [official MCP documentation](https://support.splice.com/en/articles/14442749-getting-started-with-the-splice-mcp-server-beta) for setup, authentication, and supported capabilities.

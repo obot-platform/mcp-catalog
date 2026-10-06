@@ -1,6 +1,5 @@
 name: "Modjo"
 entryKey: obot-modjo
-serverUserType: singleUser
 shortDescription: "Give your team instant answers from every sales conversation and win more deals"
 description: |
   Give your team instant answers from every sales conversation and win more deals. See the [official MCP documentation](https://help.modjo.ai/en/articles/15459539-set-up-and-use-the-modjo-mcp) for setup, authentication, and supported capabilities.

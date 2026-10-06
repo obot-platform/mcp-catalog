@@ -1,6 +1,5 @@
 name: ThoughtSpot Spotter
 entryKey: obot-thoughtspot-spotter
-serverUserType: singleUser
 shortDescription: "Query governed business data and create ThoughtSpot visualizations and Liveboards"
 description: |
   Ask natural-language questions of governed ThoughtSpot data, search existing analytics content, generate visualizations, and create Liveboards. See the [official Spotter MCP documentation](https://developers.thoughtspot.com/docs/mcp-integration) for supported clients, endpoint versions, architecture, and tool capabilities.

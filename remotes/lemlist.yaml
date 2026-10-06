@@ -1,6 +1,5 @@
 name: lemlist
 entryKey: obot-lemlist
-serverUserType: singleUser
 shortDescription: Manage outreach campaigns, leads, enrichment, and performance
 description: |
   Create and manage lemlist campaigns, leads, sequences, enrichment, and outreach analytics. See the [lemlist MCP setup guide](https://developer.lemlist.com/mcp/setup) for OAuth, API-key authentication, supported clients, and tools.

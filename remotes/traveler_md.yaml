@@ -1,6 +1,5 @@
 name: "Traveler.md"
 entryKey: obot-traveler-md
-serverUserType: singleUser
 shortDescription: "Give Claude access to your travel preferences and trips. Powered by your portable travel memory."
 description: |
   Give Claude access to your travel preferences and trips. Powered by your portable travel memory. See the [official MCP documentation](https://docs.traveler.md/) for setup, authentication, and supported capabilities.

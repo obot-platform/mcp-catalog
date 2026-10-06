@@ -1,6 +1,5 @@
 name: PineGap
 entryKey: obot-pinegap
-serverUserType: singleUser
 shortDescription: "Research public companies using filings, earnings, market data, and equity analysis"
 description: |
   Research public companies with PineGap's curated financial data, including SEC filings, earnings analysis, company KPIs, market quotes, sentiment, risk factors, and value-chain relationships. See the [official PineGap MCP documentation](https://www.pinegap.ai/docs/mcp) for the complete tool reference, connection instructions, rate limits, and privacy details.

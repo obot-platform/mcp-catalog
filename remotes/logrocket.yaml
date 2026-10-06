@@ -1,6 +1,5 @@
 name: LogRocket
 entryKey: obot-logrocket
-serverUserType: singleUser
 shortDescription: Investigate sessions, errors, and product behavior in LogRocket
 description: |
   Search LogRocket sessions and issues, inspect user behavior and errors, and bring product debugging evidence into engineering workflows. See the [official MCP documentation](https://docs.logrocket.com/mcp) for setup, authentication, and available capabilities.

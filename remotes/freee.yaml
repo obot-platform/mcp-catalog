@@ -1,6 +1,5 @@
 name: "freee"
 entryKey: obot-freee
-serverUserType: singleUser
 shortDescription: "Create, update, and analyze accounting and back-office data"
 description: |
   Work with freee Accounting, HR, Invoicing, Project Management, Sales, and IT Management data from an AI assistant, including drafting records and generating analyses. See freee's [official remote MCP setup guide](https://support.freee.co.jp/hc/ja/articles/56390747520537) for the exact endpoint, authorization flow, and custom-client instructions.

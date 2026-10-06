@@ -1,6 +1,5 @@
 name: "Claap"
 entryKey: obot-claap
-serverUserType: singleUser
 shortDescription: "Your sales context, inside Claude. Ask about any deal, call or objection and get a sourced answer in seconds."
 description: |
   Search sales calls, transcripts, emails, contacts, companies, and deals, and publish generated slides. See the [official MCP documentation](https://help.claap.io/en/articles/11786373-use-claap-mcp-server-for-advanced-workflows) for endpoint and API-key setup.
@@ -14,9 +13,11 @@ repoURL: https://help.claap.io/en/articles/11786373-use-claap-mcp-server-for-adv
 runtime: remote
 remoteConfig:
   fixedURL: https://api.claap.io/mcp
-  headers:
-    - name: Claap Authorization
-      description: Enter Bearer followed by a space and your Claap API key.
-      key: Authorization
-      required: true
-      sensitive: true
+
+config:
+  - name: Claap Authorization
+    description: Enter Bearer followed by a space and your Claap API key.
+    key: Authorization
+    required: true
+    sensitive: true
+    usage: header

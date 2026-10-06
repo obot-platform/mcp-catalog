@@ -1,6 +1,5 @@
 name: Honeycomb
 entryKey: obot-honeycomb
-serverUserType: singleUser
 shortDescription: Investigate observability data, traces, SLOs, and triggers
 description: |
   Query Honeycomb observability data to troubleshoot performance, inspect traces, analyze SLOs, and explore datasets. See the [Honeycomb MCP documentation](https://docs.honeycomb.io/troubleshoot/product-lifecycle/beta/mcp/) for setup, authentication, and current beta capabilities.

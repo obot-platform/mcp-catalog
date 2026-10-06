@@ -1,6 +1,5 @@
 name: CData Connect AI
 entryKey: obot-cdata-connect-ai
-serverUserType: singleUser
 shortDescription: Query and act on data from hundreds of SaaS, database, and API sources
 description: |
   Query, analyze, and act on live data from hundreds of SaaS applications, databases, and APIs through one governed connection layer. See the [CData Connect AI documentation](https://docs.cloud.cdata.com/en) for data-source setup, security, supported clients, and MCP integrations.

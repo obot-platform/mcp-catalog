@@ -1,6 +1,5 @@
 name: Within
 entryKey: obot-within
-serverUserType: singleUser
 shortDescription: "Search organizational processes, operational knowledge, observations, and artifacts"
 description: |
   Explore your organization's process hierarchy, operational changes, dependencies, observations, and supporting documents through a read-only Within workspace connection. See the [official Within MCP documentation](https://developers.within.ai/) and [quickstart](https://developers.within.ai/quickstart) for supported clients, authentication, and available tools.

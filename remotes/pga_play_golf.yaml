@@ -1,6 +1,5 @@
 name: "PGA – Play Golf"
 entryKey: obot-pga-play-golf
-serverUserType: singleUser
 shortDescription: "Find PGA golf coaches, programs, lessons, and player-development resources"
 description: |
   Find PGA golf coaches, programs, lessons, and player-development resources by location. See the [official MCP documentation](https://mcp.pga.com/) for portable client setup, the exact endpoint, and supported tools.

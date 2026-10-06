@@ -1,6 +1,5 @@
 name: tl;dv
 entryKey: obot-tldv
-serverUserType: singleUser
 shortDescription: Search meetings and retrieve transcripts, notes, metadata, and profile details
 description: |
   Search your tl;dv meeting library and retrieve speaker-labeled transcripts, AI-generated notes, meeting metadata, and account details. See the [tl;dv MCP setup guide](https://tldv.io/blog/how-to-connect-meeting-notes-to-claude-with-mcp/) for hosted-server access, permissions, supported clients, and available tools.

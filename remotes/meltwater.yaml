@@ -1,6 +1,5 @@
 name: "Meltwater"
 entryKey: obot-meltwater
-serverUserType: singleUser
 shortDescription: "Search and analyze news, social posts, trends, sentiment, and saved searches"
 description: |
   Search media and social coverage, retrieve mentions and analytics, inspect trends and sentiment, generate queries, and work with saved Meltwater assets. See the [official Meltwater MCP overview](https://developer.meltwater.com/guides/meltwater-mcp/overview/) and [connection guide](https://developer.meltwater.com/guides/meltwater-mcp/connecting/) for the exact endpoint, account requirements, custom-agent setup, and authentication.

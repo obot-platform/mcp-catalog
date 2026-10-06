@@ -1,6 +1,5 @@
 name: v0
 entryKey: obot-v0
-serverUserType: singleUser
 shortDescription: Create and manage v0 chats, projects, and generated applications
 description: |
   Start and continue v0 development chats, inspect projects, and turn natural-language product ideas into generated web applications. See the [official MCP documentation](https://v0.app/docs/api/v2/guides/mcp-server) for setup, authentication, and available capabilities.

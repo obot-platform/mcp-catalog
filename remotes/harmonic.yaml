@@ -1,6 +1,5 @@
 name: Harmonic
 entryKey: obot-harmonic
-serverUserType: singleUser
 shortDescription: Research companies, people, funding, and startup-market signals
 description: |
   Search Harmonic company and people data, inspect funding and growth signals, and build startup and market research workflows. See the [official MCP documentation](https://support.harmonic.ai/en/articles/12785899-harmonic-mcp-server-getting-started-guide) for setup, authentication, and supported capabilities.

@@ -1,6 +1,5 @@
 name: "Presentations.AI"
 entryKey: obot-presentations-ai
-serverUserType: singleUser
 shortDescription: "Create slides and decks from topics, text, or files"
 description: |
   Create slides and decks from topics, text, or files. See the [official MCP documentation](https://console.presentations.ai/apiref/docs/) for setup, authentication, and supported capabilities.

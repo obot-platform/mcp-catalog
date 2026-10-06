@@ -1,6 +1,5 @@
 name: Canny
 entryKey: obot-canny
-serverUserType: singleUser
 shortDescription: Analyze feedback and manage product requests and roadmaps
 description: |
   Search customer feedback, inspect posts and comments, and manage product request and roadmap workflows in Canny. See the [official MCP documentation](https://help.canny.io/) for setup, authentication, and available capabilities.

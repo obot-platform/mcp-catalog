@@ -1,6 +1,5 @@
 name: "GLG"
 entryKey: obot-glg
-serverUserType: singleUser
 shortDescription: "Expert intelligence, instantly in your workflow"
 description: |
   Expert intelligence, instantly in your workflow. See the [official MCP documentation](https://glg.com/how-we-help/myglg/mcp-docs) for setup, authentication, and supported capabilities.

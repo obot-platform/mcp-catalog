@@ -1,6 +1,5 @@
 name: "viaNexus vAST"
 entryKey: obot-vianexus-vast
-serverUserType: singleUser
 shortDescription: "Search subscribed financial datasets, prices, filings, news, and market intelligence"
 description: |
   Search subscribed financial datasets, prices, filings, news, and market intelligence through viaNexus vAST. See the [official MCP documentation](https://www.vianexus.com/vast/) for the exact endpoint, OAuth flow, and portable client setup.

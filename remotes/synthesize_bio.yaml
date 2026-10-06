@@ -1,6 +1,5 @@
 name: Synthesize Bio
 entryKey: obot-synthesize-bio
-serverUserType: singleUser
 shortDescription: Generate and analyze virtual gene-expression experiments
 description: |
   Generate realistic human gene-expression profiles from natural-language experiment designs and analyze the resulting data. See the [Synthesize Bio MCP documentation](https://app.synthesize.bio/mcp/docs) for setup, authentication, and analysis workflows.

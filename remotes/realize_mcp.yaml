@@ -1,6 +1,5 @@
 name: "Realize MCP"
 entryKey: obot-realize-mcp
-serverUserType: singleUser
 shortDescription: "Create, manage, and analyze Realize advertising campaigns through natural language."
 description: |
   Create, manage, and analyze Realize advertising campaigns through natural language. See the [official MCP documentation](https://developers.taboola.com/backstage-api/reference/realize-mcp) for setup, authentication, and supported capabilities.

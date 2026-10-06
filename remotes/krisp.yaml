@@ -1,6 +1,5 @@
 name: "Krisp"
 entryKey: obot-krisp
-serverUserType: singleUser
 shortDescription: "Search meeting transcripts, summaries, action items, and upcoming events"
 description: |
   Find past meetings by topic or attendee, read transcripts and summaries, list follow-up tasks, and inspect upcoming calendar meetings from your Krisp workspace. See the [official Krisp MCP guide](https://help.krisp.ai/hc/en-us/articles/25396920405148-Krisp-MCP) for the exact endpoint, OAuth setup, supported clients, and security guidance.

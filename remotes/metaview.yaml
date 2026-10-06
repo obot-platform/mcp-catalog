@@ -1,6 +1,5 @@
 name: Metaview
 entryKey: obot-metaview
-serverUserType: singleUser
 shortDescription: Search interview transcripts, notes, reports, and recruiting activity
 description: |
   Search conversations, retrieve interview transcripts and notes, review reports, and analyze sourcing activity from your Metaview workspace. See the [Metaview MCP integration guide](https://support.metaview.ai/integrations/mcp-integration/mcp-overview) for OAuth setup, supported clients, permissions, and example workflows.

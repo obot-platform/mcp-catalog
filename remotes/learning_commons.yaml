@@ -1,6 +1,5 @@
 name: Learning Commons Knowledge Graph
 entryKey: obot-learning-commons-knowledge-graph
-serverUserType: singleUser
 shortDescription: Resolve K-12 standards, learning components, and skill progressions
 description: |
   Resolve authoritative K-12 academic standards, break standards into teachable learning components, and trace prerequisite or follow-on skills. See the [Learning Commons MCP server documentation](https://docs.learningcommons.org/knowledge-graph/using-knowledge-graph/mcp-server) for setup, authentication, tools, and examples.
@@ -23,9 +22,11 @@ repoURL: https://docs.learningcommons.org/knowledge-graph/using-knowledge-graph/
 runtime: remote
 remoteConfig:
   fixedURL: https://kg.mcp.learningcommons.org/mcp
-  headers:
+
+config:
   - name: Learning Commons API Key
     description: API key created in the Learning Commons Platform
     key: x-api-key
     required: true
     sensitive: true
+    usage: header

@@ -1,6 +1,5 @@
 name: "Jotform Apps"
 entryKey: obot-jotform-apps
-serverUserType: singleUser
 shortDescription: "Build and manage no-code apps"
 description: |
   Build and manage no-code apps. See the [official MCP documentation](https://www.jotform.com/developers/mcp/?tab=mcp-app) for setup, authentication, and supported capabilities.

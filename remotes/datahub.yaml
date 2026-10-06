@@ -1,6 +1,5 @@
 name: DataHub
 entryKey: obot-datahub
-serverUserType: singleUser
 shortDescription: Discover and understand governed enterprise data assets
 description: |
   Search DataHub metadata, inspect datasets and lineage, and retrieve governed context about enterprise data assets. See the [official MCP documentation](https://docs.datahub.com/docs/features/feature-guides/mcp) for setup, authentication, and available capabilities.

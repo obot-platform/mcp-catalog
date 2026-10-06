@@ -1,6 +1,5 @@
 name: Teamtailor
 entryKey: obot-teamtailor
-serverUserType: singleUser
 shortDescription: Manage recruiting candidates, jobs, interviews, and hiring workflows
 description: |
   Query and manage Teamtailor recruiting information across candidates, jobs, interviews, and hiring-team workflows. See the [official MCP documentation](https://support.teamtailor.com/en/articles/15842409-connect-an-ai-assistant-to-teamtailor-using-mcp) for setup, authentication, and supported capabilities.

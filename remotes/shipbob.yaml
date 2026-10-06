@@ -1,6 +1,5 @@
 name: "ShipBob"
 entryKey: obot-shipbob
-serverUserType: singleUser
 shortDescription: "Your orders, inventory, and shipments from any prompt"
 description: |
   Your orders, inventory, and shipments from any prompt. See the [official MCP documentation](https://developer.shipbob.com/mcp-server/overview) for setup, authentication, and supported capabilities.

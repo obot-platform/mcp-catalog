@@ -1,6 +1,5 @@
 name: "Beautiful.ai"
 entryKey: obot-beautiful-ai
-serverUserType: singleUser
 shortDescription: "Turn ideas into beautiful presentations."
 description: |
   Turn ideas into beautiful presentations. See the [official MCP documentation](https://support.beautiful.ai/hc/en-us/articles/44246954338829-Beautiful-ai-MCP-Quick-Setup-FAQ) for setup, authentication, and supported capabilities.

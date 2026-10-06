@@ -1,6 +1,5 @@
 name: Eraser
 entryKey: obot-eraser
-serverUserType: singleUser
 shortDescription: Generate and manage architecture diagrams and technical documents
 description: |
   Create, edit, search, and organize Eraser diagrams, files, folders, and presets from coding-agent workflows. See the [official MCP documentation](https://docs.eraser.io/mcp) for setup, authentication, and available capabilities.

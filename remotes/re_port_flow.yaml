@@ -1,6 +1,5 @@
 name: "Re:port Flow"
 entryKey: obot-re-port-flow
-serverUserType: singleUser
 shortDescription: "Generate invoices, contracts, statements, and other PDFs from Re:port Flow templates"
 description: |
   Generate invoices, contracts, statements, and other PDFs from Re:port Flow templates. See the [official MCP documentation](https://doc.re-port-flow.com/en/docs/integrations/mcp) for the hosted endpoint, OAuth setup, and supported clients.

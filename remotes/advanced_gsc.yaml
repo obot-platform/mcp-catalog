@@ -1,6 +1,5 @@
 name: "Advanced GSC"
 entryKey: obot-advanced-gsc
-serverUserType: singleUser
 shortDescription: "Search Console & GA4 data for SEO — audits, reporting, backlinks, and SERP analysis"
 description: |
   Search Console & GA4 data for SEO — audits, reporting, backlinks, and SERP analysis. See the [official MCP documentation](https://www.advancedgsc.com/mcp/docs) for setup, authentication, and supported capabilities.

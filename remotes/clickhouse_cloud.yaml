@@ -1,6 +1,5 @@
 name: ClickHouse Cloud
 entryKey: obot-clickhouse-cloud
-serverUserType: singleUser
 shortDescription: Query ClickHouse Cloud data and inspect services and costs
 description: |
   Browse ClickHouse Cloud organizations, services, databases, schemas, backups, and ClickPipes, and run read-only SQL queries. See the [ClickHouse remote MCP guide](https://clickhouse.com/docs/cloud/features/ai-ml/remote-mcp) for setup and authentication.

@@ -1,6 +1,5 @@
 name: "Zylo"
 entryKey: obot-zylo
-serverUserType: singleUser
 shortDescription: "View, update, and manage your SaaS portfolio"
 description: |
   View, update, and manage your SaaS portfolio. See the [official MCP documentation](https://developer.zylo.com/reference/getting-started-mcp) for setup, authentication, and supported capabilities.

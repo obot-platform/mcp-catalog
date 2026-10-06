@@ -1,6 +1,5 @@
 name: "Peerbound"
 entryKey: obot-peerbound
-serverUserType: singleUser
 shortDescription: "Turn customer proof into revenue. Search Peerbound's customer stories, moments, and reviews, then match the ri"
 description: |
   Turn customer proof into revenue. Search Peerbound's customer stories, moments, and reviews, then match the ri. See the [official MCP documentation](https://help.peerbound.com/articles/2744944512-peerbound-mcp-quick-start-guide) for setup, authentication, and supported capabilities.

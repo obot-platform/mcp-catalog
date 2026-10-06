@@ -1,6 +1,5 @@
 name: Idiolect
 entryKey: obot-idiolect
-serverUserType: singleUser
 shortDescription: Draft, rewrite, and score text against your personal writing voice
 description: |
   Build and load a personal Voice Profile, draft or rewrite text in that voice, and score how closely writing matches it. See the [Idiolect MCP connector guide](https://idiolect.app/developers/mcp) for OAuth setup, supported clients, available tools, and troubleshooting.

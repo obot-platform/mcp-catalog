@@ -1,6 +1,5 @@
 name: Gorgias
 entryKey: obot-gorgias
-serverUserType: singleUser
 shortDescription: Work with customer tickets, messages, customers, and support data
 description: |
   Search and manage Gorgias customer-support tickets, messages, customers, and related ecommerce service context. See the [official MCP documentation](https://docs.gorgias.com/en-US/connect-your-ai-assistant-to-the-gorgias-mcp-6310546) for setup, authentication, and supported capabilities.

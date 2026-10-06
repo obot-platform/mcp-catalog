@@ -1,6 +1,5 @@
 name: "Ryanair"
 entryKey: obot-ryanair
-serverUserType: singleUser
 shortDescription: "Explore Ryanair routes and find cheap flights"
 description: |
   Explore Ryanair routes and find cheap flights. See the [official MCP documentation](https://services-api.ryanair.com/mcp-server/docs) for setup, authentication, and supported capabilities.

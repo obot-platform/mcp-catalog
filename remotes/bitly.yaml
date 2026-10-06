@@ -1,6 +1,5 @@
 name: Bitly
 entryKey: obot-bitly
-serverUserType: singleUser
 shortDescription: Create and manage short links and QR codes, then analyze engagement
 description: |
   Create branded short links and QR codes, manage Bitly account resources, and analyze link and scan engagement. See the [Bitly MCP Server guide](https://dev.bitly.com/bitly-mcp/overview/quickstart/) for setup, authentication options, supported clients, and tools.

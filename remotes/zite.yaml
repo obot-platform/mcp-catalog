@@ -1,6 +1,5 @@
 name: "Zite"
 entryKey: obot-zite
-serverUserType: singleUser
 shortDescription: "Manage and query your Zite data"
 description: |
   Manage and query your Zite data. See the [official MCP documentation](https://www.zite.com/help/database/mcp/mcp-overview) for setup, authentication, and supported capabilities.

@@ -1,6 +1,5 @@
 name: TomTom Maps
 entryKey: obot-tomtom-maps
-serverUserType: singleUser
 shortDescription: Add routing, traffic, search, and map intelligence to agents
 description: |
   Search places, geocode locations, calculate routes, inspect live traffic, and generate interactive maps using TomTom location data. See the [official MCP documentation](https://docs.tomtom.com/tomtom-maps-mcp/documentation/overview) for setup, authentication, and available capabilities.

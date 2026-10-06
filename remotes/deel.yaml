@@ -1,6 +1,5 @@
 name: Deel
 entryKey: obot-deel
-serverUserType: singleUser
 shortDescription: Access workforce, contract, payroll, and HR information
 description: |
   Query Deel workforce records, contracts, payroll, time off, and organization information for global people operations. See the [official MCP documentation](https://developer.deel.com/mcp/introduction) for setup, authentication, and available capabilities.

@@ -1,6 +1,5 @@
 name: "OneSignal"
 entryKey: obot-onesignal
-serverUserType: singleUser
 shortDescription: "Manage OneSignal messaging, users, segments, templates, and analytics"
 description: |
   Manage OneSignal messaging, users, segments, templates, exports, and analytics. See the [official MCP documentation](https://documentation.onesignal.com/docs/en/model-context-protocol) for client setup, authentication, and supported capabilities.

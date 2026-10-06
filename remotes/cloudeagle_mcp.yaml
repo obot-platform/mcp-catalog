@@ -1,6 +1,5 @@
 name: "CloudEagle MCP"
 entryKey: obot-cloudeagle-mcp
-serverUserType: singleUser
 shortDescription: "One Command Center for SaaS, AI, and Identity Governance"
 description: |
   One Command Center for SaaS, AI, and Identity Governance. See the [official MCP documentation](https://mcp.cloudeagle.ai/guide) for setup, authentication, and supported capabilities.

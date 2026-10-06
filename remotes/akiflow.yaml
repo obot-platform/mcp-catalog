@@ -1,6 +1,5 @@
 name: "Akiflow"
 entryKey: obot-akiflow
-serverUserType: singleUser
 shortDescription: "Plan tasks and multiple calendars from any AI assistant"
 description: |
   Plan tasks and multiple calendars from any AI assistant. See the [official MCP documentation](https://product.akiflow.com/articles/4302815-akiflow-mcp) for setup, authentication, and supported capabilities.

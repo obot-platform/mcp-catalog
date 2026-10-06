@@ -1,6 +1,5 @@
 name: "Fospha  (EMEA & APAC)"
 entryKey: obot-fospha-emea-apac
-serverUserType: singleUser
 shortDescription: "Access your Fospha marketing analytics — ad spend, ROAS, channel performance, campaigns, revenue attribution, "
 description: |
   Access your Fospha marketing analytics — ad spend, ROAS, channel performance, campaigns, revenue attribution, . See the [official MCP documentation](https://help-center.fospha.com/help-center/fospha-mcp-setup-onboarding-guide) for setup, authentication, and supported capabilities.

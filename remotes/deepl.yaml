@@ -1,6 +1,5 @@
 name: DeepL
 entryKey: obot-deepl
-serverUserType: singleUser
 shortDescription: Translate and improve multilingual text with DeepL
 description: |
   Translate text and documents and apply DeepL language and writing capabilities from compatible AI tools. See the [official MCP documentation](https://developers.deepl.com/docs/mcp) for setup, authentication, and available capabilities.

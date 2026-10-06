@@ -1,6 +1,5 @@
 name: Enterpret
 entryKey: obot-enterpret
-serverUserType: singleUser
 shortDescription: Analyze customer feedback, themes, and product insights
 description: |
   Query Enterpret customer feedback, themes, trends, and supporting records to investigate product experience and customer needs. See the [official MCP documentation](https://helpcenter.enterpret.com/en/articles/12665166-enterpret-mcp-server) for setup, authentication, and supported capabilities.

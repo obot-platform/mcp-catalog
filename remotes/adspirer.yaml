@@ -1,6 +1,5 @@
 name: Adspirer
 entryKey: obot-adspirer
-serverUserType: singleUser
 shortDescription: Manage advertising campaigns and analyze paid performance
 description: |
   Inspect advertising accounts and campaign performance and create or update paid-media campaigns through Adspirer. See the [official MCP documentation](https://www.adspirer.com/docs/introduction) for setup, authentication, and available capabilities.

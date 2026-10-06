@@ -1,6 +1,5 @@
 name: "Jasper"
 entryKey: obot-jasper
-serverUserType: singleUser
 shortDescription: "Keep every Claude session on-brand"
 description: |
   Keep every Claude session on-brand. See the [official MCP documentation](https://developers.jasper.ai/docs/jasper-mcp-server) for setup, authentication, and supported capabilities.

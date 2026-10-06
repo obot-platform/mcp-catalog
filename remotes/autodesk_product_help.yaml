@@ -1,6 +1,5 @@
 name: Autodesk Product Help
 entryKey: obot-autodesk-product-help
-serverUserType: singleUser
 shortDescription: Search trusted help content for more than 110 Autodesk products
 description: |
   Discover Autodesk products and releases, then search and retrieve current Autodesk Help and Support content in multiple languages. See the [Autodesk Product Help MCP Server guide](https://help.autodesk.com/view/ADSKMCP/ENU/?guid=ADSKMCP_KnowledgeMcp_autodesk_product_help_mcp_server_html) for the production endpoint, supported clients, tools, and examples.

@@ -1,6 +1,5 @@
 name: Gainsight Staircase AI
 entryKey: obot-gainsight-staircase-ai
-serverUserType: singleUser
 shortDescription: Query customer health, feedback, activity, risks, and relationship context
 description: |
   Query customer health, feedback, activity, relationship context, risks, and opportunities from Staircase AI. See the [Gainsight Staircase AI MCP guide](https://support.gainsight.com/Staircase_AI/Staircase_AI_Features/Connect_Staircase_AI_to_LLMs_Using_MCP) for enablement, authentication, supported clients, and setup.

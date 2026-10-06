@@ -1,6 +1,5 @@
 name: "WeWeb"
 entryKey: obot-weweb
-serverUserType: singleUser
 shortDescription: "Build your WeWeb projects using Claude"
 description: |
   Build your WeWeb projects using Claude. See the [official MCP documentation](https://docs.weweb.io/weweb-mcp/intro-to-weweb-mcp.html) for setup, authentication, and supported capabilities.

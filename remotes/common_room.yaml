@@ -1,6 +1,5 @@
 name: "Common Room"
 entryKey: obot-common-room
-serverUserType: singleUser
 shortDescription: "Research buyers, surface account signals, and update go-to-market records"
 description: |
   Research accounts and contacts, inspect buyer and product signals, build prospect lists, and create or update Common Room records. See the [official MCP server documentation](https://www.commonroom.io/docs/using-common-room/mcp-server/) for the exact endpoint, OAuth setup, supported clients, and available tools.

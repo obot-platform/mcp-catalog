@@ -1,6 +1,5 @@
 name: "Viator"
 entryKey: obot-viator
-serverUserType: singleUser
 shortDescription: "Find and compare tours, attractions, and travel experiences worldwide"
 description: |
   Search Viator experiences by destination, dates, interests, duration, and price, then retrieve descriptions, ratings, cancellation terms, pricing, and booking links. See the [official Viator MCP tool contract](https://docs.viator.com/partner-api/mcp/) for the exact endpoint, setup, request fields, and usage rules.

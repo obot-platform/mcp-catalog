@@ -1,6 +1,5 @@
 name: "Avoma"
 entryKey: obot-avoma
-serverUserType: singleUser
 shortDescription: "Get meeting insights from your Avoma workspace and power workflows."
 description: |
   Get meeting insights from your Avoma workspace and power workflows. See the [official MCP documentation](https://help.avoma.com/getting-started-with-avoma-mcp-connector) for setup, authentication, and supported capabilities.

@@ -1,6 +1,5 @@
 name: "Otto Travel"
 entryKey: obot-otto-travel
-serverUserType: singleUser
 shortDescription: "Search, book, and manage business flights, hotels, and rental cars"
 description: |
   Compare and book business travel, apply saved preferences and loyalty programs, retrieve trip details, and change or cancel reservations. See Otto's [official MCP connection guide](https://www.ottotheagent.com/mcpconnections) for the exact endpoint, OAuth sign-in, and setup in any compatible client.

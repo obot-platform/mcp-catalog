@@ -1,6 +1,5 @@
 name: "Unwrap"
 entryKey: obot-unwrap
-serverUserType: singleUser
 shortDescription: "Search, segment, chart, and analyze customer feedback"
 description: |
   Explore customer-feedback views, search themes and issues, filter by metadata, chart trends, sample and classify feedback, analyze comments, and retrieve supporting anecdotes for product research and planning. See the [official Unwrap MCP guide](https://docs.unwrap.ai/articles/6412771011-unwrap-mcp) for the exact endpoint, setup in supported clients, authentication, recommended workflows, and tool reference.

@@ -1,6 +1,5 @@
 name: "Coupler.io"
 entryKey: obot-coupler-io
-serverUserType: singleUser
 shortDescription: "Query and analyze refreshed business data from connected apps"
 description: |
   Connect business data flows to AI assistants so they can inspect prepared datasets, answer analytical questions, and work with automatically refreshed results. See Coupler.io's [official Gemini MCP setup guide](https://blog.coupler.io/how-to-connect-data-to-gemini/) for the remote endpoint and client configuration.

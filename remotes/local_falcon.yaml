@@ -1,6 +1,5 @@
 name: Local Falcon
 entryKey: obot-local-falcon
-serverUserType: singleUser
 shortDescription: Analyze local search rankings and AI visibility
 description: |
   Run geo-grid rank tracking, inspect campaigns and locations, and compare local SEO and AI visibility performance. See the [official MCP documentation](https://github.com/local-falcon/mcp) for setup, authentication, and available capabilities.

@@ -1,6 +1,5 @@
 name: "Light"
 entryKey: obot-light
-serverUserType: singleUser
 shortDescription: "Manage bills, vendors, financial reports, and accounting workflows in Light"
 description: |
   Manage bills, vendors, financial reports, and accounting workflows in Light. See the [official MCP documentation](https://light.inc/help/ai-features/how-to-use-light-mcp) for setup, token creation, and supported capabilities.
@@ -14,9 +13,11 @@ repoURL: https://light.inc/help/ai-features/how-to-use-light-mcp
 runtime: remote
 remoteConfig:
   fixedURL: https://api.light.inc/rest/ext/mcp
-  headers:
-    - name: Light Authorization
-      description: Enter Bearer followed by a space and your Light MCP token.
-      key: Authorization
-      required: true
-      sensitive: true
+
+config:
+  - name: Light Authorization
+    description: Enter Bearer followed by a space and your Light MCP token.
+    key: Authorization
+    required: true
+    sensitive: true
+    usage: header

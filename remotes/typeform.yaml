@@ -1,6 +1,5 @@
 name: Typeform
 entryKey: obot-typeform
-serverUserType: singleUser
 shortDescription: Create forms and manage responses, contacts, and workflows
 description: |
   Build and update Typeform forms, inspect responses and insights, and manage contacts, webhooks, workspaces, and automations. See the [official MCP documentation](https://www.typeform.com/developers/mcp/) for setup, authentication, and available capabilities.

@@ -1,6 +1,5 @@
 name: Grain
 entryKey: obot-grain
-serverUserType: singleUser
 shortDescription: Search meeting transcripts, notes, accounts, and deal intelligence
 description: |
   Search Grain meetings, transcripts, notes, participants, accounts, coaching feedback, and connected deal information. See the [official MCP documentation](https://developers.grain.com/mcp) for setup, authentication, and supported capabilities.

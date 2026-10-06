@@ -1,6 +1,5 @@
 name: Mintlify
 entryKey: obot-mintlify
-serverUserType: singleUser
 shortDescription: Search, edit, organize, and publish Mintlify documentation
 description: |
   Search and read Mintlify documentation, edit pages, reorganize navigation, and publish documentation changes. See the [Mintlify MCP guide](https://www.mintlify.com/docs/ai/mintlify-mcp) for setup, authentication, and supported workflows.

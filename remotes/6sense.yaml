@@ -1,6 +1,5 @@
 name: "6sense"
 entryKey: obot-6sense
-serverUserType: singleUser
 shortDescription: "Retrieve account insights, buying signals, intent, and campaign performance"
 description: |
   Ask read-only questions about 6sense accounts and retrieve Revvy-powered insights such as buying stages, 6QA trends, keyword intent activity, and campaign performance. See the [official 6sense MCP overview](https://support.6sense.com/docs/6sense-model-context-protocol-mcp-1) and [ChatGPT setup guide](https://support.6sense.com/docs/set-up-the-6sense-mcp-in-chatgpt) for platform support, current limitations, the exact endpoint, OAuth setup, and multi-instance behavior.

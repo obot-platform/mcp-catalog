@@ -1,6 +1,5 @@
 name: "Tracxn"
 entryKey: obot-tracxn
-serverUserType: singleUser
 shortDescription: "Tracxn data intelligence, directly in your Claude."
 description: |
   Tracxn data intelligence, directly in your Claude. See the [official MCP documentation](https://help.tracxn.com/en/collections/19636029-tracxn-mcp) for setup, authentication, and supported capabilities.

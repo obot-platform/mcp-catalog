@@ -1,6 +1,5 @@
 name: Mem
 entryKey: obot-mem
-serverUserType: singleUser
 shortDescription: Capture, search, organize, and update Mem knowledge
 description: |
   Search, create, edit, and organize notes, attachments, recordings, and collections in Mem. See the [Mem MCP setup guide](https://docs.mem.ai/mcp/setup) for OAuth instructions for Codex, ChatGPT, Gemini, and other supported clients.
