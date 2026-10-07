@@ -106,7 +106,7 @@ config:
     usage: env
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/azure:2.0.5-obot7
+  image: ghcr.io/obot-platform/mcp-images/azure:2.0.5-obot6
   port: 8099
   path: /
   args:

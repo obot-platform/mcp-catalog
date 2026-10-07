@@ -109,7 +109,7 @@ config:
     usage: env
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/aws-api:1.5.1-obot8
+  image: ghcr.io/obot-platform/mcp-images/aws-api:1.5.1-obot7
   port: 8099
   path: /
   args:
