@@ -79,7 +79,7 @@ config:
     usage: env
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/aws-eks:0.1.37-obot8
+  image: ghcr.io/obot-platform/mcp-images/aws-eks:0.1.37-obot7
   port: 8099
   path: /
   args:
