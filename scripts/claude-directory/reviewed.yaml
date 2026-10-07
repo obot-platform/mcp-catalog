@@ -394,8 +394,8 @@ records:
     catalog_entry: remotes/netlify.yaml
   - id: 8194f7ea-e733-4e80-bd77-e504fd4ed5e5
     name: Semrush
-    status: imported
-    catalog_entry: remotes/semrush.yaml
+    status: skipped
+    reason: Removed from the catalog at maintainer request.
   - id: 81cc5080-a204-4aa1-a694-fa868a3c8718
     name: Trivago
     status: imported
@@ -698,8 +698,8 @@ records:
     catalog_entry: remotes/adobe-experience-manager.yaml
   - id: eb9240f2-e1c1-43c1-828f-0fda40c22e4c
     name: Canva
-    status: imported
-    catalog_entry: remotes/canva.yaml
+    status: skipped
+    reason: Removed from the catalog at maintainer request.
   - id: ed56abc7-38aa-4ac9-a1a5-fbbb03a95855
     name: Peec AI
     status: imported
