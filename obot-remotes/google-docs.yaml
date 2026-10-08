@@ -2,16 +2,11 @@ name: Google Docs
 entryKey: obot-google-docs
 shortDescription: Create and manage documents in Google Docs
 description: |
-  ![Google Docs MCP Server](https://img.shields.io/badge/Google%20Docs-MCP%20Server-blue?style=for-the-badge&logo=google-docs)
-  ![Python](https://img.shields.io/badge/Python-3.13+-green?style=for-the-badge&logo=python)
-  ![FastMCP](https://img.shields.io/badge/FastMCP-2.11.2+-orange?style=for-the-badge)
-  ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+  Create and manage documents in Google Docs.
 
-  This remote server is a [custom Obot implementation](https://github.com/obot-platform/google-mcp/tree/main/docs), hosted and managed by Obot so you can connect through a streamlined authentication flow without navigating the usual Google Cloud project and OAuth configuration.
+  This MCP server is hosted and managed by Obot. Connect with Google OAuth without configuring your own Google Cloud project or OAuth client.
 
   Obot plans to move this catalog entry to Google's official MCP server for Google Docs once it leaves Developer Preview. To try Google's Developer Preview now, see [Configure the Docs MCP server](https://developers.google.com/workspace/docs/api/guides/configure-mcp-server).
-
-  Create and manage documents in Google Docs.
 
   ## Features
   - **OAuth2 Authentication**: Secure Google OAuth integration with automatic token refresh
@@ -25,7 +20,6 @@ metadata:
   categories: Business
   allow-multiple: "true"
 icon: https://img.icons8.com/color/96/google-docs--v1.png
-repoURL: https://github.com/obot-platform/google-mcp/tree/main/docs
 runtime: remote
 remoteConfig:
   fixedURL: https://google-docs-mcp.obot.ai/mcp

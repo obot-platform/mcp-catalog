@@ -2,16 +2,11 @@ name: Google Calendar
 entryKey: obot-google-calendar
 shortDescription: Manage Google Calendar events, recurring events, and attendees with OAuth2
 description: |
-  ![Google Calendar MCP Server](https://img.shields.io/badge/Google%20Calendar-MCP%20Server-blue?style=for-the-badge&logo=google-calendar)
-  ![Python](https://img.shields.io/badge/Python-3.13+-green?style=for-the-badge&logo=python)
-  ![FastMCP](https://img.shields.io/badge/FastMCP-2.11.1+-orange?style=for-the-badge)
-  ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+  Manage Google Calendar events, recurring schedules, and attendees.
 
-  This remote server is a [custom Obot implementation](https://github.com/obot-platform/google-mcp/tree/main/calendar), hosted and managed by Obot so you can connect through a streamlined authentication flow without navigating the usual Google Cloud project and OAuth configuration.
+  This MCP server is hosted and managed by Obot. Connect with Google OAuth without configuring your own Google Cloud project or OAuth client.
 
   Obot plans to move this catalog entry to Google's official MCP server for Google Calendar once it leaves Developer Preview. To try Google's Developer Preview now, see [Configure the Calendar MCP server](https://developers.google.com/workspace/calendar/api/guides/configure-mcp-server).
-
-  Manage Google Calendar events, recurring schedules, and attendees.
 
   ## Features
   - **OAuth2 Authentication**: Secure Google OAuth integration with automatic token refresh
@@ -33,7 +28,6 @@ metadata:
   categories: Business
   allow-multiple: "true"
 icon: https://img.icons8.com/?size=100&id=WKF3bm1munsk&format=png&color=000000
-repoURL: https://github.com/obot-platform/google-mcp/tree/main/calendar
 runtime: remote
 remoteConfig:
   fixedURL: https://google-calendar-mcp.obot.ai/mcp
