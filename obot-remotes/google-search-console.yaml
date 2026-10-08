@@ -3,14 +3,9 @@ entryKey: obot-google-search-console
 serverUserType: singleUser
 shortDescription: Use Google Search Console API to get sitemaps, analytics, and more
 description: |
-  ![Google Search Console MCP Server](https://img.shields.io/badge/Google%20Search%20Console-MCP%20Server-blue?style=for-the-badge&logo=google-search-console)
-  ![Python](https://img.shields.io/badge/Python-3.13+-green?style=for-the-badge&logo=python)
-  ![FastMCP](https://img.shields.io/badge/FastMCP-2.11.2+-orange?style=for-the-badge)
-  ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
-
-  This remote server is a [custom Obot implementation](https://github.com/obot-platform/google-mcp/tree/main/search-console), hosted and managed by Obot so you can connect through a streamlined authentication flow without navigating the usual Google Cloud project and OAuth configuration.
-
   Inspect sitemaps, search analytics, and other Google Search Console data.
+
+  This MCP server is hosted and managed by Obot. Connect with Google OAuth without configuring your own Google Cloud project or OAuth client.
 
   ## Features
   - **OAuth2 Authentication**: Secure Google OAuth integration with automatic token refresh
@@ -26,7 +21,6 @@ metadata:
   categories: Business
   allow-multiple: "true"
 icon: https://img.icons8.com/?size=100&id=V5cGWnc9R4xj&format=png&color=000000
-repoURL: https://github.com/obot-platform/google-mcp/tree/main/search-console
 runtime: remote
 remoteConfig:
   fixedURL: https://google-search-console-mcp.obot.ai/mcp

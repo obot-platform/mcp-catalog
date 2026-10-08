@@ -3,10 +3,6 @@ entryKey: obot-calendar
 serverUserType: singleUser
 shortDescription: Manage Microsoft 365 calendars, events, meetings, and attendees
 description: |
-  ![Calendar MCP Server](https://img.shields.io/badge/Calendar-MCP%20Server-blue?style=for-the-badge&logo=microsoft-outlook)
-  ![Go](https://img.shields.io/badge/Go-1.25+-green?style=for-the-badge&logo=go)
-  ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
-
   Manage Microsoft 365 calendars, events, meetings, and attendees through the Microsoft Graph API.
 
   ## Features
@@ -27,7 +23,6 @@ metadata:
   categories: Business
   allow-multiple: "true"
 icon: https://img.icons8.com/?size=100&id=WpQIVxfhhzqt&format=png&color=000000
-repoURL: https://github.com/obot-platform/microsoft-office-365-mcp/tree/main/calendar
 runtime: remote
 remoteConfig:
   fixedURL: https://m365-calendar-mcp.obot.ai/mcp

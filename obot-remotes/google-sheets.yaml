@@ -3,16 +3,11 @@ entryKey: obot-google-sheets
 serverUserType: singleUser
 shortDescription: Create and manage Google Sheets spreadsheets, worksheets, cells, and formulas
 description: |
-  ![Google Sheets MCP Server](https://img.shields.io/badge/Google%20Sheets-MCP%20Server-blue?style=for-the-badge&logo=google-sheets)
-  ![Python](https://img.shields.io/badge/Python-3.13+-green?style=for-the-badge&logo=python)
-  ![FastMCP](https://img.shields.io/badge/FastMCP-2.11.1+-orange?style=for-the-badge)
-  ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+  Create and manage Google Sheets spreadsheets, worksheets, cells, and formulas.
 
-  This remote server is a [custom Obot implementation](https://github.com/obot-platform/google-mcp/tree/main/sheets), hosted and managed by Obot so you can connect through a streamlined authentication flow without navigating the usual Google Cloud project and OAuth configuration.
+  This MCP server is hosted and managed by Obot. Connect with Google OAuth without configuring your own Google Cloud project or OAuth client.
 
   Obot plans to move this catalog entry to Google's official MCP server for Google Sheets once it leaves Developer Preview. To try Google's Developer Preview now, see [Configure the Sheets MCP server](https://developers.google.com/workspace/sheets/api/guides/configure-mcp-server).
-
-  Create and manage Google Sheets spreadsheets, worksheets, cells, and formulas.
 
   ## Features
   - **OAuth2 Authentication**: Secure Google OAuth integration with automatic token refresh
@@ -31,7 +26,6 @@ metadata:
   categories: Business
   allow-multiple: "true"
 icon: https://img.icons8.com/?size=100&id=qrAVeBIrsjod&format=png&color=000000
-repoURL: https://github.com/obot-platform/google-mcp/tree/main/sheets
 runtime: remote
 remoteConfig:
   fixedURL: https://google-sheets-mcp.obot.ai/mcp
