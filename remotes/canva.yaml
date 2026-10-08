@@ -1,0 +1,34 @@
+name: Canva
+entryKey: obot-canva
+shortDescription: Search, create, edit, and export Canva designs
+description: |
+  Search, create, edit, and export Canva designs, upload assets, and manage comments through Canva's MCP tools.
+
+  See Canva's [access guide](https://www.canva.dev/docs/apps/mcp/access/) and the **Canva for AI assistants** path in the [Quickstart](https://www.canva.dev/docs/apps/quickstart/) for setup instructions.
+
+  ## Features
+  - Generate, edit, search, and export designs
+  - Upload assets and manage comments
+  - Resize designs and use brand kits and brand templates with a supported paid Canva plan
+
+  ## What you'll need to connect
+
+  An Obot administrator must create an app in the [Canva Developer Portal](https://www.canva.com/developers/apps) and:
+
+  1. Open **Outside Canva** and click **Start integrating**.
+  2. Under **Outside Canva > Configuration > Integration methods**, turn on **Canva MCP**.
+  3. Under **Credentials**, copy the client ID and generate a client secret. Configure both for this catalog entry in Obot.
+  4. Under **Outside Canva > Redirect URLs**, add the OAuth callback URL exactly as shown by Obot.
+
+  This Developer Portal setup does not require joining Canva's MCP waitlist. Obot discovers the authorization and token endpoints automatically.
+
+  Each user needs a Canva account and authenticates individually. Tools respect that user's existing permissions. Core features work on all plans; resizing, autofill, brand kits, and brand templates require Canva Pro or above.
+
+metadata:
+  categories: Design, Productivity
+icon: https://static.canva.com/static/images/favicon.ico
+repoURL: https://www.canva.dev/docs/apps/mcp/access/
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.canva.com/connect/v1/mcp
+  staticOAuthRequired: true
