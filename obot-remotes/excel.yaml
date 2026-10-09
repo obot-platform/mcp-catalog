@@ -3,10 +3,6 @@ entryKey: obot-excel
 serverUserType: singleUser
 shortDescription: Manage Excel workbooks, worksheets, tables, and data with Microsoft Graph API
 description: |
-  ![Excel MCP Server](https://img.shields.io/badge/Excel-MCP%20Server-blue?style=for-the-badge&logo=microsoft-excel)
-  ![Go](https://img.shields.io/badge/Go-1.23+-green?style=for-the-badge&logo=go)
-  ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
-
   Manage Microsoft Excel workbooks, worksheets, tables, and data through the Microsoft Graph API.
 
   ## Features
@@ -27,7 +23,6 @@ metadata:
   categories: Business
   allow-multiple: "true"
 icon: https://img.icons8.com/?size=100&id=13654&format=png&color=000000
-repoURL: https://github.com/obot-platform/microsoft-office-365-mcp/tree/main/excel
 runtime: remote
 remoteConfig:
   fixedURL: https://m365-excel-mcp.obot.ai/mcp
