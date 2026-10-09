@@ -23,7 +23,7 @@ description: |
 
   ## Connect or migrate
 
-  Select a tool exposure mode, then sign in with Atlassian OAuth. Your Atlassian app permissions and your organization's MCP controls still apply. If your organization restricts OAuth redirects, ask an admin to allow the Obot callback URL shown during setup.
+  Select a tool exposure mode, then sign in with Atlassian OAuth. Your Atlassian app permissions and your organization's MCP controls still apply. If your organization restricts allowed domains, ask an admin to add `https://<your obot host>/**` in the [Atlassian MCP server settings](https://support.atlassian.com/security-and-access-policies/docs/control-atlassian-mcp-server-settings/).
 
   To move an existing V1 vMCP connection to V2, apply the available component update, select a mode for the new required configuration field, and complete the new OAuth flow. Existing V1 credentials and the V1 URL do not supply a mode value. Review and update saved tool selections and vMCP profiles; grants for tools absent from V2 may be removed, and newly exposed tools need a deliberate access review. See Atlassian's [V1 to V2 migration guide](https://support.atlassian.com/atlassian-ai-gateway/docs/how-to-upgrade-from-atlassian-mcp-v1-to-atlassian-mcp-v2/).
 metadata:
