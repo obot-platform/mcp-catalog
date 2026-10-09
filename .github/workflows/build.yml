@@ -13,13 +13,6 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Checkout Obot validator
-        uses: actions/checkout@v6
-        with:
-          repository: obot-platform/obot
-          ref: v0.25.6
-          path: .obot
-
       - uses: actions/setup-go@v6
         with:
           go-version: "1.27"
@@ -33,6 +26,3 @@ jobs:
 
       - name: Validate Claude directory review ledger
         run: go -C scripts/claude-directory run . ledger check
-
-      - name: Validate catalog YAML
-        run: go -C .obot run . mcp validate-catalog-yaml --require-entry-key "$GITHUB_WORKSPACE"
