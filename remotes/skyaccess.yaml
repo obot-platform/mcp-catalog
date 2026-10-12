@@ -1,0 +1,26 @@
+name: SkyAccess
+entryKey: obot-skyaccess
+serverUserType: singleUser
+shortDescription: Search 5,000+ live empty leg flights, get charter price estimates and booking links
+description: |
+  Search 5,000+ live empty leg flights, get charter price estimates and booking links. See the official [SkyAccess MCP documentation](https://github.com/sky-access/skyaccess-mcp) for the endpoint, supported clients, tools, and rate limits.
+
+  ## Features
+  - Search empty leg flights by origin, destination, date range, passenger count, and maximum price
+  - Look up a flight's route, departure time, aircraft, seats, amenities, and whole-aircraft price
+  - Get the booking page link a traveler opens to review and book a flight
+  - Get indicative charter price ranges by aircraft category for a route
+  - Submit a charter enquiry so a SkyAccess specialist follows up by email
+
+  ## What you'll need to connect
+
+  No account, API key, or other credentials are required.
+
+  **Write tool:** `request_booking` sends the traveler's name, email, and trip details to SkyAccess. It takes no payment and creates no booking. All other tools are read-only.
+metadata:
+  categories: Travel,Flight Search
+icon: https://raw.githubusercontent.com/sky-access/skyaccess-mcp/main/assets/icon.png
+repoURL: https://github.com/sky-access/skyaccess-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.skyaccess.com/mcp
