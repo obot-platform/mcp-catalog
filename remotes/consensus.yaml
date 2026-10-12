@@ -1,7 +1,7 @@
 name: Consensus
 entryKey: obot-consensus
 serverUserType: singleUser
-shortDescription: Search and synthesize evidence from scientific research
+shortDescription: Search peer-reviewed scientific literature and synthesize evidence-backed answers
 description: |
   Search and synthesize evidence from a large corpus of peer-reviewed scientific literature with [Consensus' official MCP server](https://docs.consensus.app/docs/mcp).
 

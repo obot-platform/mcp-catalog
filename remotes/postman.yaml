@@ -1,7 +1,7 @@
 name: Postman
 entryKey: obot-postman
 serverUserType: singleUser
-shortDescription: Connect to Postman collections, workspaces, environments, mocks, and API specs
+shortDescription: Manage Postman workspaces, collections, environments, mocks, and API specifications
 upgradeNote: |
   This updates the Postman-hosted connection with OAuth support and selectable region and tool configurations.
 

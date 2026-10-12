@@ -1,7 +1,7 @@
 name: Pylon
 entryKey: obot-pylon
 serverUserType: singleUser
-shortDescription: Search, manage, and resolve customer support issues
+shortDescription: Search and manage Pylon support issues, customer accounts, contacts, and conversations
 description: |
   Search and manage Pylon customer-support issues, accounts, contacts, and conversations from an AI client. See [Pylon's MCP connection guide](https://support.usepylon.com/articles/2407390554-connecting-to-the-pylon-mcp-server) for supported-client setup, OAuth authentication, and access behavior.
 
