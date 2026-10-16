@@ -1,0 +1,28 @@
+name: Screenpipe Cloud
+entryKey: obot-screenpipe-cloud
+serverUserType: singleUser
+shortDescription: Search synced screen content, audio transcripts, and memories across your devices
+description: |
+  Search screen content, audio transcriptions, app data, and memories already synced from your Screenpipe devices.
+
+  See the [Screenpipe Cloud setup guide](https://github.com/screenpipe/screenpipe/blob/main/packages/screenpipe-mcp/plugins/screenpipe-cloud/README.md) for connection instructions and data boundaries.
+
+  ## Features
+  - List devices with synced history using `synced-devices`.
+  - Retrieve synced work context using `search-synced-content`.
+  - Use read-only access with the `data-sync:read` OAuth scope.
+
+  ## What you'll need to connect
+  - A Screenpipe account with Data Sync available and enabled. See [current pricing](https://screenpipe.com/pricing).
+  - Complete Screenpipe's OAuth sign-in in your MCP client.
+
+  Only records already synced to your account are searchable. Connecting does not enable Data Sync or start uploading recordings. The connector does not expose local-only recordings, desktop control, or enterprise team records. Requested results are sent to your connected AI provider.
+
+  Screenpipe's source is available under the [Screenpipe Commercial License](https://github.com/screenpipe/screenpipe/blob/main/LICENSE.md), not an OSI open-source license.
+metadata:
+  categories: Productivity,Search
+icon: https://raw.githubusercontent.com/screenpipe/screenpipe/main/apps/screenpipe-app-tauri/src-tauri/icons/512x512.png
+repoURL: https://github.com/screenpipe/screenpipe/blob/main/packages/screenpipe-mcp/plugins/screenpipe-cloud/README.md
+runtime: remote
+remoteConfig:
+  fixedURL: https://screenpipe.com/api/user/data-sync/mcp
