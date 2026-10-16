@@ -1,0 +1,44 @@
+name: Microsoft Teams
+entryKey: obot-microsoft-teams
+serverUserType: singleUser
+shortDescription: Manage Microsoft Teams chats, channels, and messages via Microsoft Graph
+description: |
+  A Model Context Protocol (MCP) server built and hosted by Microsoft as part of its Agent365
+  platform. Manages Teams chats, channels, users, and messages through the Graph API, with
+  server-side filtering, pagination, and token optimization.
+
+  ## Features
+  - List and search Teams channels and chats
+  - Read and post channel/chat messages
+  - Look up team membership and users
+
+  ## What you'll need to connect
+  - Your **Microsoft Entra tenant ID** (a GUID) — this is used to build the connection URL.
+  - Sign-in happens through Microsoft's OAuth flow when you connect.
+
+  ---
+  _Draft catalog entry — before merging:_
+  - _This mirrors the `urlTemplate` pattern already used by the Salesforce entry in this catalog —
+    confirm Obot's connector supports building the URL from a user-supplied tenant ID env var
+    the same way._
+  - _Capture a real `toolPreview` from the running server._
+  - _Same pattern can be reused for SharePoint Lists, Admin Center, Copilot Chat, Mail, Calendar,
+    User, and Word if useful — see https://github.com/microsoft/mcp for the full list of
+    Agent365-hosted endpoints (note some of these already exist in this catalog under different,
+    Obot-hosted implementations: outlook.yaml, onedrive.yaml, word.yaml, excel.yaml, calendar.yaml)._
+
+metadata:
+  categories: Business
+  icon: https://logo.clearbit.com/microsoft.com
+  repoURL: https://github.com/microsoft/mcp
+
+env:
+  - key: TENANT_ID
+    name: Entra Tenant ID
+    required: true
+    sensitive: false
+    description: Your Microsoft Entra tenant ID (GUID).
+
+runtime: remote
+remoteConfig:
+  urlTemplate: https://agent365.svc.cloud.microsoft/agents/tenants/${TENANT_ID}/servers/mcp_TeamsServer
