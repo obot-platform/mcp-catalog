@@ -1,0 +1,25 @@
+name: WordPress.com
+entryKey: obot-wordpress-com
+shortDescription: Manage posts, pages, media, comments, and site settings across your WordPress.com sites
+description: |
+  Create and manage posts, pages, media, comments, categories, tags, and site settings across sites connected to your WordPress.com account. See the official [WordPress.com MCP setup guide](https://developer.wordpress.com/docs/mcp/) for connection steps, supported sites, and plan requirements.
+
+  ## Features
+  - Create, find, edit, and organize posts and pages
+  - Manage comments, media, categories, and tags
+  - Inspect site settings and statistics
+  - Access eligible Jetpack-connected self-hosted sites through the same connection
+
+  ## What you'll need to connect
+
+  - Enable MCP access in your WordPress.com account settings, then sign in through OAuth.
+  - Use a WordPress.com paid plan, or a free site within its first 30 days.
+  - For a self-hosted site, connect it through Jetpack with a Jetpack AI or Jetpack Complete plan. Other self-hosted sites are not supported by this endpoint.
+
+metadata:
+  categories: Blogging, SaaS & API Integrations
+icon: https://s1.wp.com/wp-content/themes/h4/assets/press/brand-kits/PNG%402x/WPCOM-Blueberry-Pill-Logo%402x.png
+repoURL: https://developer.wordpress.com/docs/mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://public-api.wordpress.com/wpcom/v2/mcp/v1

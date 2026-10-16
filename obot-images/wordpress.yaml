@@ -2,7 +2,7 @@ name: WordPress
 entryKey: obot-wordpress
 shortDescription: Manage WordPress posts, categories, tags, and media on self-hosted sites
 description: |
-  Manage posts, categories, tags, and media on a self-hosted WordPress site (wordpress.com is not supported).
+  Manage posts, categories, tags, and media on a self-hosted WordPress site using the [Obot WordPress MCP server](https://github.com/obot-platform/wordpress-mcp-server). This connection uses your site URL, username, and application password; WordPress.com sites use the separate WordPress.com entry.
   
   ## Features
   - **Posts**: Manage blog posts
@@ -18,7 +18,7 @@ description: |
 
 metadata:
   categories: Blogging, SaaS & API Integrations
-icon: https://img.icons8.com/?size=100&id=13664&format=png&color=000000
+icon: https://s.w.org/style/images/about/WordPress-logotype-wmark.png?0=
 repoURL: https://github.com/obot-platform/wordpress-mcp-server
 
 toolPreview:
