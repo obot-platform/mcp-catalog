@@ -1,0 +1,28 @@
+name: Aident Loadout
+entryKey: obot-aident-loadout
+serverUserType: singleUser
+shortDescription: Connect AI agents to 1,000+ apps and 400+ Skills through one reusable MCP setup
+description: |
+  Give Codex, Claude Code, Cursor, ChatGPT, and other MCP clients access to 1,000+ apps and 400+ expert-built Skills through one [Aident Loadout](https://docs.aident.ai/loadout/overview) connection. Connect accounts once in the browser, keep credentials in Aident Vault, and reuse the same setup across agents with cost preflight and a full audit trail.
+
+  ## Features
+  - Search 1,000+ apps by intent, read live action schemas, and execute tools from one MCP server
+  - Start from 400+ expert-built Skills for research, outreach, content, and operations
+  - Reuse the same connected apps and Skills across Codex, Claude Code, Cursor, ChatGPT, Claude Desktop, and other MCP clients
+  - Keep OAuth tokens and API keys in Aident Vault so agents receive results, not raw credentials
+  - Check action cost and risk before runs, then review what ran, from which agent, and what it cost in Audit
+  - Use 50+ built-in services (search, scraping, media generation, and more) from one Aident balance
+
+  ## What you'll need to connect
+
+  **No Setup Required**: Authentication is handled automatically through an OAuth workflow. Sign in to Aident when prompted, then connect upstream apps from the Loadout dashboard as needed.
+
+  Start free on pay-as-you-go. See the [Loadout overview](https://docs.aident.ai/loadout/overview) and [MCP setup docs](https://docs.aident.ai/loadout/mcp-server-setup) for client-specific install steps.
+
+metadata:
+  categories: SaaS & API Integrations, Productivity, Developer Tools
+icon: https://avatars.githubusercontent.com/u/217636588?v=4
+repoURL: https://docs.aident.ai/loadout/overview
+runtime: remote
+remoteConfig:
+  fixedURL: https://loadout.aident.ai/mcp
