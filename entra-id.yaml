@@ -1,0 +1,50 @@
+name: Microsoft Entra ID (Enterprise)
+entryKey: obot-entra-enterprise
+serverUserType: singleUser
+shortDescription: Query Microsoft Entra security posture, access, and audit data with natural language
+description: |
+  A Model Context Protocol (MCP) server built and hosted by Microsoft: the "Microsoft MCP Server
+  for Enterprise". It converts natural-language questions into Microsoft Graph API calls scoped to
+  read-only, enterprise IT / security scenarios in Microsoft Entra ID.
+
+  ## Features
+  - **Security posture**: review Entra security recommendations and posture signals
+  - **Privileged access**: inspect privileged role assignments and PIM state
+  - **Application risk**: review app registrations, enterprise apps, and their risk signals
+  - **Access governance**: inspect access reviews, entitlements, and governance state
+  - **Device readiness**: review device compliance/readiness signals feeding conditional access
+  - **Audit telemetry**: query Entra/Graph audit log activity
+
+  This server is **read-only** by design — it is meant for investigation and reporting, not for
+  making changes to users, groups, devices, or policies. (For read/write device and identity
+  management, see the separate Intune / Entra device management catalog entry.)
+
+  ## What you'll need to connect
+  - A Microsoft Entra ID tenant.
+  - Sign-in happens through Microsoft's own OAuth flow when you connect; no client ID/secret needs
+    to be created for the Enterprise MCP server itself.
+
+  ## Examples
+  - "Which enterprise apps have credentials expiring in the next 30 days?"
+  - "Show me users with standing privileged role assignments who haven't used PIM in 90 days"
+  - "What conditional access policies apply to our finance group?"
+  - "Summarize risky sign-ins from the last 7 days"
+
+  ---
+  _Draft catalog entry — not yet verified against a live Obot connection. Before merging:_
+  - _Confirm the exact OAuth/consent flow Obot needs to complete against
+    `https://mcp.svc.cloud.microsoft/enterprise` (app registration, redirect URI, scopes) — see
+    Microsoft's docs at https://learn.microsoft.com/graph/mcp-server/overview._
+  - _Capture a real `toolPreview` by connecting once and calling `tools/list`._
+  - _Double check whether this endpoint needs a `${TENANT_ID}` in the URL like Microsoft's other
+    Agent365 endpoints, or is tenant-agnostic and resolves the tenant from the signed-in user
+    (current docs suggest the latter, but this needs to be confirmed live)._
+
+metadata:
+  categories: Security
+  icon: https://logo.clearbit.com/microsoft.com
+  repoURL: https://github.com/microsoft/EnterpriseMCP
+
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.svc.cloud.microsoft/enterprise
