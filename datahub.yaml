@@ -1,0 +1,192 @@
+name: DataHub
+entryKey: obot-datahub
+serverUserType: singleUser
+shortDescription: Search data assets, trace lineage, and curate metadata in DataHub
+description: |
+  A Model Context Protocol (MCP) server for DataHub, the metadata platform for the modern data stack. Search your data catalog, trace table- and column-level lineage, inspect schemas, review the SQL that actually runs against your tables, and curate metadata such as tags, glossary terms, owners, and domains.
+
+  ## Features
+  - **Metadata Search**: Structured keyword search across datasets, dashboards, charts, pipelines, and glossary terms, with boolean filters, sorting, and pagination
+  - **Lineage Exploration**: Traverse upstream and downstream lineage at table and column level, and resolve the exact transformation paths between two assets
+  - **Schema Inspection**: List and filter the schema fields of a dataset, and fetch full entity metadata by URN in batches
+  - **Query Intelligence**: Retrieve the real SQL queries that reference a dataset or column to understand joins, filters, and usage patterns
+  - **Knowledge Base**: Search DataHub documents by keyword or by regular expression across their content
+  - **Metadata Curation**: Add or remove tags, glossary terms, owners, domains, and structured properties, and update entity or column descriptions
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **DataHub URL**: The base URL of your DataHub deployment (e.g. `https://your-tenant.acryl.io` for DataHub Cloud, or your own FQDN for a self-hosted deployment)
+  - **Personal Access Token**: A DataHub personal access token used as a bearer token
+
+  ### Setup Steps
+  1. Sign in to DataHub and open **Settings** → **Access Tokens**
+  2. Generate a personal access token and copy it (it is shown only once)
+  3. Configure the DataHub URL and the token below
+
+  ### Requirements
+  - The managed MCP endpoint requires **DataHub Cloud v0.3.12** or later. Self-hosted DataHub deployments expose the same path on their own domain.
+  - Metadata curation tools require **DataHub Cloud v0.3.17** or later and must be enabled on the server; on a self-hosted deployment they are gated behind `TOOLS_IS_MUTATION_ENABLED`. The `get_me` tool is similarly gated behind `TOOLS_IS_USER_ENABLED`. Tools that are disabled server-side will not appear.
+
+metadata:
+  categories: Data & Analytics, Databases, Developer Tools
+icon: https://avatars.githubusercontent.com/u/78121374?s=200&v=4
+repoURL: https://github.com/acryldata/mcp-server-datahub
+
+env:
+  - name: DataHub URL
+    key: DATAHUB_URL
+    description: Base URL of your DataHub deployment, without a trailing slash (e.g. https://your-tenant.acryl.io)
+    required: true
+    sensitive: false
+
+runtime: remote
+remoteConfig:
+  URLTemplate: ${DATAHUB_URL}/integrations/ai/mcp
+  headers:
+  - name: Personal Access Token
+    description: DataHub personal access token
+    key: Authorization
+    required: true
+    sensitive: true
+    prefix: "Bearer "
+
+toolPreview:
+  - name: search
+    description: Search across DataHub entities using structured full-text search with boolean logic, filters, sorting, and pagination.
+    params:
+      query: "Search query string, supports wildcards and boolean logic - default: *"
+      filter: "Structured filter expression, e.g. entity_type = dataset - default: None"
+      num_results: "Maximum number of results to return - default: 10"
+      sort_by: "Field to sort results by, e.g. rowCountFeature - default: None"
+      sort_order: "Sort direction, asc or desc - default: desc"
+      offset: "Result offset for pagination - default: 0"
+  - name: get_lineage
+    description: Get upstream or downstream lineage for any entity, including datasets, schema fields, dashboards, and charts.
+    params:
+      urn: "URN of the entity to explore lineage for"
+      column: "Schema field name for column-level lineage - default: None"
+      query: "Search query to filter within the lineage results - default: None"
+      filter: "Structured filter expression applied to the lineage results - default: None"
+      upstream: "Traverse upstream lineage instead of downstream - default: true"
+      max_hops: "Maximum number of lineage hops to traverse - default: 1"
+      max_results: "Maximum number of lineage results to return - default: 30"
+      offset: "Result offset for pagination - default: 0"
+  - name: get_dataset_queries
+    description: Get SQL queries associated with a dataset or column to understand usage patterns.
+    params:
+      urn: "URN of the dataset to fetch queries for"
+      column: "Restrict the queries to a specific column - default: None"
+      source: "Query source, MANUAL or SYSTEM - default: None"
+      start: "Result offset for pagination - default: 0"
+      count: "Maximum number of queries to return - default: 10"
+  - name: get_entities
+    description: Get detailed information about one or more entities by their DataHub URNs.
+    params:
+      urns: "One or more DataHub URNs to fetch metadata for"
+  - name: list_schema_fields
+    description: List schema fields for a dataset, with optional keyword filtering and pagination.
+    params:
+      urn: "URN of the dataset whose schema fields to list"
+      keywords: "Keywords to filter the schema fields by - default: None"
+      limit: "Maximum number of fields to return - default: 100"
+      offset: "Result offset for pagination - default: 0"
+  - name: get_lineage_paths_between
+    description: Get detailed lineage path(s) between two specific entities or columns.
+    params:
+      source_urn: "URN of the source entity"
+      target_urn: "URN of the target entity"
+      source_column: "Schema field name on the source entity - default: None"
+      target_column: "Schema field name on the target entity - default: None"
+      direction: "Direction to search, upstream or downstream - default: None"
+  - name: search_documents
+    description: Search for documents stored in your DataHub deployment.
+    params:
+      query: "Keyword query for the document search - default: *"
+      semantic_query: "Natural language query for semantic document search - default: None"
+      filter: "Structured filter expression, e.g. by platform, domain, tag, or owner - default: None"
+      num_results: "Maximum number of documents to return - default: 10"
+      offset: "Result offset for pagination - default: 0"
+  - name: grep_documents
+    description: Search within document content using regex patterns.
+    params:
+      urns: "URNs of the documents to search within"
+      pattern: "Regular expression to match against the document content"
+      context_chars: "Number of characters of context to return around each match - default: 200"
+      max_matches_per_doc: "Maximum number of matches to return per document - default: 5"
+      start_offset: "Character offset to start searching from - default: 0"
+  - name: get_me
+    description: Get information about the currently authenticated user, including group memberships.
+    params: {}
+  - name: add_tags
+    description: Add one or more tags to multiple DataHub entities or their columns.
+    params:
+      tag_urns: "URNs of the tags to add"
+      entity_urns: "URNs of the entities to tag"
+      column_paths: "Column paths to tag instead of the entities themselves - default: None"
+  - name: remove_tags
+    description: Remove one or more tags from multiple DataHub entities or their columns.
+    params:
+      tag_urns: "URNs of the tags to remove"
+      entity_urns: "URNs of the entities to remove the tags from"
+      column_paths: "Column paths to untag instead of the entities themselves - default: None"
+  - name: add_terms
+    description: Add one or more glossary terms to multiple DataHub entities or their columns.
+    params:
+      term_urns: "URNs of the glossary terms to add"
+      entity_urns: "URNs of the entities to apply the terms to"
+      column_paths: "Column paths to apply the terms to instead of the entities themselves - default: None"
+  - name: remove_terms
+    description: Remove one or more glossary terms from multiple DataHub entities or their columns.
+    params:
+      term_urns: "URNs of the glossary terms to remove"
+      entity_urns: "URNs of the entities to remove the terms from"
+      column_paths: "Column paths to remove the terms from instead of the entities themselves - default: None"
+  - name: add_owners
+    description: Add one or more owners to multiple DataHub entities.
+    params:
+      owner_urns: "URNs of the users or groups to add as owners"
+      entity_urns: "URNs of the entities to assign the owners to"
+      ownership_type: "Ownership type to assign, e.g. TECHNICAL_OWNER or BUSINESS_OWNER"
+  - name: remove_owners
+    description: Remove one or more owners from multiple DataHub entities.
+    params:
+      owner_urns: "URNs of the users or groups to remove as owners"
+      entity_urns: "URNs of the entities to remove the owners from"
+      ownership_type: "Ownership type to remove - default: None"
+  - name: set_domains
+    description: Set the domain for multiple DataHub entities.
+    params:
+      domain_urn: "URN of the domain to assign"
+      entity_urns: "URNs of the entities to assign the domain to"
+  - name: remove_domains
+    description: Remove the domain assignment from multiple DataHub entities.
+    params:
+      entity_urns: "URNs of the entities to remove the domain from"
+  - name: update_description
+    description: Update the description of a DataHub entity or one of its columns.
+    params:
+      entity_urn: "URN of the entity to update"
+      operation: "How to apply the change, replace, append, or remove - default: replace"
+      description: "Description text to write, supports markdown - default: None"
+      column_path: "Column path to update instead of the entity itself - default: None"
+  - name: add_structured_properties
+    description: Add structured properties with values to multiple DataHub entities.
+    params:
+      property_values: "Mapping of structured property URN to the list of values to set"
+      entity_urns: "URNs of the entities to apply the properties to"
+  - name: remove_structured_properties
+    description: Remove structured properties from multiple DataHub entities.
+    params:
+      property_urns: "URNs of the structured properties to remove"
+      entity_urns: "URNs of the entities to remove the properties from"
+  - name: save_document
+    description: Save or update a standalone document such as an insight, decision, FAQ, or note in DataHub's knowledge base.
+    params:
+      document_type: "Type of the document to save"
+      title: "Title of the document"
+      content: "Body of the document"
+      urn: "URN of an existing document to update - default: None"
+      topics: "Topics to associate with the document - default: None"
+      related_documents: "URNs of related documents - default: None"
+      related_assets: "URNs of related data assets - default: None"
