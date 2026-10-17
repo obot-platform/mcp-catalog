@@ -13,7 +13,7 @@ description: |
 
   **Required:**
   - **Dot Workspace**: A free plan is available
-  - **Dot MCP Token**: In Dot, go to **Settings > Integrations**, open the **API Token** tab, and click **Generate MCP Token**
+  - **Dot MCP Token**: In Dot, open your **Profile**, go to **Use Dot elsewhere > MCP**, open **Client can't do OAuth? Use an API token** and click **Generate token**
 
 metadata:
   categories: Data & Analytics, Databases, Business Intelligence
@@ -34,7 +34,7 @@ config:
         description: Connect to the EU Dot endpoint.
     usage: env
   - name: Dot MCP Token
-    description: MCP token from Settings > Integrations > API Token > Generate MCP Token in Dot
+    description: MCP token from Dot (Profile > Use Dot elsewhere > MCP > Generate token)
     key: X-API-KEY
     required: true
     sensitive: true
