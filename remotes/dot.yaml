@@ -1,0 +1,44 @@
+name: Dot
+entryKey: obot-dot
+shortDescription: Ask your data warehouse in plain English; get SQL, answers and charts
+description: |
+  Ask questions about your data warehouse in plain English and get answers, data, and SQL from Dot, an AI data analyst by getdot.ai. See the [Dot MCP documentation](https://docs.getdot.ai/developers/mcp) for regional endpoints, MCP token setup, and supported clients.
+
+  ## Features
+  - Ask a data question with `ask_dot`: Dot finds the tables, writes and runs SQL on your warehouse, and returns the answer, data, and SQL
+  - Answers apply your Dot permissions
+  - Tools: `get_catalog`, `ask_dot`, `get_result`, `answer_progress`, `export_table`, `wait`, `show_app`, `build_app`, `view_app`, `publish_app`
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Dot Workspace**: A free plan is available
+  - **Dot MCP Token**: In Dot, go to **Settings > Integrations**, open the **API Token** tab, and click **Generate MCP Token**
+
+metadata:
+  categories: Data & Analytics, Databases, Business Intelligence
+icon: https://www.getdot.ai/brand/fox-icon-128.png
+repoURL: https://docs.getdot.ai/developers/mcp
+config:
+  - name: Dot Region
+    key: DOT_MCP_HOST
+    description: Select the region that hosts your Dot workspace.
+    required: true
+    sensitive: false
+    options:
+      - name: United States
+        value: app.getdot.ai
+        description: Connect to the US Dot endpoint.
+      - name: European Union
+        value: eu.getdot.ai
+        description: Connect to the EU Dot endpoint.
+    usage: env
+  - name: Dot MCP Token
+    description: MCP token from Settings > Integrations > API Token > Generate MCP Token in Dot
+    key: X-API-KEY
+    required: true
+    sensitive: true
+    usage: header
+runtime: remote
+remoteConfig:
+  urlTemplate: https://${DOT_MCP_HOST}/ai/mcp
