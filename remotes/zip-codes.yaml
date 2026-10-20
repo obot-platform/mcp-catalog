@@ -1,0 +1,30 @@
+name: Zip-Codes.com
+entryKey: obot-zip-codes
+serverUserType: singleUser
+shortDescription: From a messy US address to ZIP+4 and neighborhood data.
+description: |
+  Validate and standardize US street addresses to ZIP+4, look up US ZIP Codes and Canadian postal codes, and request the census tract demographics, districts and counties behind them. See the [Zip-Codes.com MCP documentation](https://www.zip-codes.com/api/mcp) for setup, demo values and pricing.
+
+  ### Features
+  - **Address validation**: standardize a messy one-line US address and return its ZIP+4, with optional census tract estimates, mapped districts and school district
+  - **ZIP and postal lookup**: US ZIP Codes, ZIP+4s, Canadian FSAs and postal codes, or the code containing a latitude/longitude pair
+  - **Boundary overlaps**: how much of a ZIP's area lies in each county or district, beside the USPS assignment
+  - **Radius search and distance**: postal areas within a radius and straight-line distance between places
+  - **Survey history**: American Community Survey profiles with the same field names across 2011–2024 for ZIP Code areas
+  - **Free reference tools**: counties, metro areas, USPS city-name rules, ZIP statistics and data sources
+
+  ### What you'll need to connect
+  Nothing for demo mode: real values, with deeper fields withheld except on demo codes and addresses. For full answers, add a free API key (2,500 credits a day, https://www.zip-codes.com/api/signup) in the optional API key header.
+metadata:
+  categories: Maps, Data & Analytics
+icon: https://www.zip-codes.com/api/favicon.svg
+repoURL: https://www.zip-codes.com/api/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.zip-codes.com/mcp
+  headers:
+  - name: Zip-Codes.com API Key
+    description: Optional. Leave blank for demo mode (deeper fields withheld); a free key from https://www.zip-codes.com/api/signup returns full answers
+    key: X-Api-Key
+    required: false
+    sensitive: true
