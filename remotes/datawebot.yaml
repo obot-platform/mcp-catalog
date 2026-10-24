@@ -1,0 +1,25 @@
+name: datawebot
+entryKey: obot-datawebot
+serverUserType: singleUser
+shortDescription: Search products across online shops and compare every seller's price
+description: |
+  Search products across online shops worldwide, compare every seller's price for a product with direct shop links, and run extraction jobs on Amazon, Walmart US and other stores through [datawebot's MCP server](https://www.datawebot.com/docs/agents).
+
+  ## Features
+  - Search products across online shops by keyword and country, with price, shop, rating, review count and image
+  - List every seller's offer for one product: price, total with shipping, stock notes and a direct link to the shop
+  - Discover per-store extraction contracts with their input schema, record schema and credit price
+  - Submit extraction jobs on Amazon search and product pages (10 countries), Walmart US and other stores, then read the results
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **datawebot Account**: Each user signs in through OAuth by approving an email sign-in. Every account gets a free daily search allowance and 200 trial credits for extraction jobs
+
+metadata:
+  categories: Data & Analytics, Search
+icon: https://raw.githubusercontent.com/datawebot/datawebot-mcp/main/assets/logo.png
+repoURL: https://www.datawebot.com/docs/agents
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.datawebot.com/mcp
