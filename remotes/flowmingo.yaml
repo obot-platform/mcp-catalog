@@ -1,0 +1,28 @@
+name: Flowmingo
+entryKey: obot-flowmingo
+serverUserType: singleUser
+shortDescription: Read jobs, candidates and scored AI interviews; invite and move candidates
+description: |
+  Read your Flowmingo jobs, interview sets, candidate pipeline and scored AI interview results, and take guarded hiring actions from your AI client. Flowmingo is a free AI Interviewer and screening platform for recruiters. See the official [Flowmingo MCP guide](https://flowmingo.ai/integration/mcp) for setup steps for Claude, Claude Code, Cursor, VS Code, ChatGPT and other clients.
+
+  ## Features
+  - List job posts, interview sets, hiring projects and the candidate pipeline by stage
+  - Read interview results: per-criterion scores, the AI summary and the hiring overview for a project
+  - Look up, search and compare candidates, and list the top candidates by interview score
+  - Invite a candidate, move a candidate to another stage, reject an application, add a note, rate, shortlist or tag a candidate
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Flowmingo Account**: A free plan is available
+  - **Sign in with Flowmingo**: Connect through OAuth; on the consent page you paste a Flowmingo API key (Settings → Integrations → API Keys) with the scopes you want to grant
+
+  **Read and write:** Write actions preview the change and ask you to confirm before anything happens. Data is scoped to your organisation.
+
+metadata:
+  categories: Human Resources, Recruiting, Productivity
+icon: https://flowmingo.ai/icon1.png
+repoURL: https://flowmingo.ai/integration/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.flowmingo.ai/mcp
