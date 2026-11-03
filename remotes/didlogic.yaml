@@ -1,0 +1,29 @@
+name: didlogic MCP Server
+entryKey: obot-didlogic
+shortDescription: Manage didlogic phone numbers, SIP accounts, call routing, SMS, calls and billing via AI assistants.
+description: |
+  Manage didlogic phone numbers, SIP accounts, call routing, SMS, calls and billing via AI assistants. See the [official didlogic MCP documentation](https://docs.didlogic.com/docs/guides/apps-developer-tools/mcp-server) for connection details and supported operations.
+
+  ## Features
+  - Search the didlogic API and discover available operations
+  - Retrieve schemas for didlogic API v1 and v2 operations
+  - Manage phone numbers, SIP accounts, and call routing
+  - Work with SMS, calls, and call history
+  - Review usage statistics and billing information
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **didlogic Account**: A didlogic account with access to the phone numbers, SIP accounts, calls, SMS, and billing data you want to manage
+  - **OAuth Authentication**: Sign in with your didlogic account when prompted by Obot
+
+  The server exposes the `search`, `get_schema`, and `execute` tools. Actions use the permissions associated with the connected didlogic account.
+
+metadata:
+  categories: Communication, SaaS & API Integrations
+icon: https://raw.githubusercontent.com/didlogic-cy/didlogic-mcp/main/icon.png
+repoURL: https://docs.didlogic.com/docs/guides/apps-developer-tools/mcp-server
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.didlogic.com/mcp
+  staticOAuthRequired: true
