@@ -1,8 +1,10 @@
 name: MongoDB Atlas
 entryKey: obot-mongodb-atlas
-shortDescription: Manage MongoDB Atlas infrastructure and databases through MongoDB's hosted MCP server
+shortDescription: Manage MongoDB Atlas resources and query databases with per-user OAuth access
 description: |
-  Connect to MongoDB's hosted Atlas MCP server through MongoDB's local NPX proxy to manage Atlas resources and work with data in Atlas databases without self-hosting the Atlas MCP service.
+  Manage Atlas organizations, projects, and clusters, query MongoDB collections, and work with Atlas Stream Processing using your Atlas identity and permissions.
+
+  See the [MongoDB Atlas MCP documentation](https://www.mongodb.com/docs/mcp-server/overview/) and [access models](https://www.mongodb.com/docs/mcp-server/remote-mcp/access-models/) for setup and authentication requirements.
 
   ## Features
   - **Atlas Management**: Inspect and manage organizations, projects, clusters, access lists, and database users
@@ -11,39 +13,26 @@ description: |
 
   ## What you'll need to connect
 
-  Create an **MCP configuration** in MongoDB Atlas, then use its Client ID and Client Secret when Obot prompts you to authenticate.
+  MongoDB requires AI clients to be registered in advance for user-delegated access. An administrator must arrange MongoDB registration for Obot before users can connect.
 
-  - Creating an MCP configuration requires the **Project Owner** or **Organization Owner** role.
-  - MCP configuration credentials are specifically issued for the hosted Atlas MCP server. They are different from the Atlas API service-account credentials used by the legacy MongoDB Atlas Management connector.
-  - The permissions assigned to the MCP configuration determine which Atlas resources and operations are available.
+  1. Register the Obot redirect URI, `https://<your-obot-host>/oauth/mcp/callback`, with the MongoDB OAuth client approved for MCP access.
+  2. Configure that client's Client ID and Client Secret in Obot's static OAuth settings for this catalog entry.
+  3. Have an Atlas Organization Owner [enable AI client access](https://www.mongodb.com/docs/mcp-server/remote-mcp/manage-ai-client-access/) under **Organization Settings > App Connections** and choose the permitted access mode.
+  4. Each user connects through the MongoDB OAuth prompt with their own Atlas account.
 
-  This hosted connector is intended for MongoDB Atlas. For Community Edition, Enterprise Advanced, self-hosted deployments, or databases reachable only on a private network, use the **MongoDB Database** connector instead.
+  Available tools and operations depend on the user's Atlas roles and the organization's read or read-and-write access mode.
 
-  ## Official documentation
+  When switching from the previous NPX connector, reconnect through OAuth. Its MCP-configuration service-account credentials use a different OAuth grant and cannot be reused for this user sign-in flow.
 
-  - [MongoDB MCP Server documentation](https://www.mongodb.com/docs/mcp-server/)
-  - [MongoDB Atlas Remote MCP configurations](https://www.mongodb.com/docs/api/doc/atlas-admin-api-v2/2025-03-12/group/endpoint-remote-mcp-configurations)
-  - [MongoDB Atlas remote MCP proxy setup](https://github.com/mongodb-js/mongodb-mcp-server/blob/main/packages/mongodb-atlas-mcp-remote/README.md)
+  This connector supports Atlas-hosted clusters only. For Community Edition, Enterprise Advanced, self-hosted deployments, or databases reachable only on a private network, use the **MongoDB Database** connector instead.
 metadata:
   categories: Databases,Data & Analytics
 icon: https://avatars.githubusercontent.com/u/45120?s=48&v=4
-repoURL: https://github.com/mongodb-js/mongodb-mcp-server/blob/main/packages/mongodb-atlas-mcp-remote/README.md
-config:
-  - key: MDB_MCP_API_CLIENT_ID
-    name: MongoDB Atlas MCP Client ID
-    required: true
-    sensitive: false
-    description: The Client ID from your MongoDB Atlas MCP configuration.
-    usage: env
-  - key: MDB_MCP_API_CLIENT_SECRET
-    name: MongoDB Atlas MCP Client Secret
-    required: true
-    sensitive: true
-    description: The Client Secret from your MongoDB Atlas MCP configuration.
-    usage: env
-runtime: npx
-npxConfig:
-  package: mongodb-atlas-mcp-remote@0.2.0
+repoURL: https://www.mongodb.com/docs/mcp-server/overview/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.mongodb.com
+  staticOAuthRequired: true
 toolPreview:
 - name: aggregate
   description: Run an aggregation pipeline against a MongoDB collection.
