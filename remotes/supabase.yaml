@@ -1,7 +1,7 @@
 name: Supabase
 entryKey: obot-supabase
 serverUserType: singleUser
-shortDescription: Connect to Supabase with selectable read-only access and OAuth or a personal access token
+shortDescription: Manage Supabase projects, branches, migrations, and functions with optional read-only access
 upgradeNote: |
   This replaces the Obot-hosted Supabase server with Supabase's official hosted MCP server.
 

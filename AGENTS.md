@@ -2,6 +2,7 @@
 
 Catalog entries must:
 
+- Include a concise `shortDescription` summarizing the entry's primary functionality.
 - Use `repoURL` to link to official documentation.
 - Include a link to official documentation or setup instructions in the description before the first feature or setup section.
 - Lead the description with concrete, product-specific functionality or outcomes.

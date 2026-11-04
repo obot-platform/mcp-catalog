@@ -1,7 +1,7 @@
 name: Cortellis Regulatory Intelligence
 entryKey: obot-cortellis-regulatory-intelligence
 serverUserType: singleUser
-shortDescription: Research global life-sciences regulatory requirements
+shortDescription: Research referenced life-sciences regulatory requirements across countries and organizations
 description: |
   Search Clarivate's curated Cortellis Regulatory Intelligence content and receive referenced summaries of regulatory requirements across countries and organizations. See the official [Cortellis Regulatory Intelligence MCP documentation](https://api.clarivate.com/lifesciences/mcp-regulatory/documentation) for setup, subscription requirements, and supported capabilities.
 

@@ -1,7 +1,7 @@
 name: Grafana Cloud
 entryKey: obot-grafana-cloud
 serverUserType: singleUser
-shortDescription: Query Grafana Cloud metrics, logs, dashboards, alerts, incidents, and on-call schedules with OAuth
+shortDescription: Query Grafana Cloud metrics, logs, dashboards, alerts, incidents, and on-call schedules
 description: |
   Investigate and manage a Grafana Cloud stack through [Grafana Cloud's hosted MCP server](https://grafana.com/docs/grafana-cloud/ai-tools/mcp-servers/cloud-mcp/). OAuth 2.1 gives each user access through their own Grafana identity and RBAC permissions instead of a service account token.
 

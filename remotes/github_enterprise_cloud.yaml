@@ -1,7 +1,7 @@
 name: GitHub Enterprise Cloud
 entryKey: obot-github-enterprise-cloud
 serverUserType: singleUser
-shortDescription: Connect to a GitHub Enterprise Cloud data-residency tenant with GitHub-hosted MCP and OAuth
+shortDescription: Manage repositories, issues, pull requests, and users in a GitHub Enterprise Cloud data-residency tenant
 description: |
   Manage repositories and workflows in a GitHub Enterprise Cloud data-residency tenant (`*.ghe.com`) through [GitHub's hosted MCP server](https://docs.github.com/en/enterprise-cloud@latest/copilot/how-tos/provide-context/use-mcp-in-your-ide/enterprise-configuration). GitHub operates the server, including updates and remote-only capabilities.
 

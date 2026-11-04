@@ -1,7 +1,7 @@
 name: DigitalOcean
 entryKey: obot-digitalocean
 serverUserType: singleUser
-shortDescription: Manage an official DigitalOcean service with a personal access token
+shortDescription: Manage DigitalOcean infrastructure and perform API actions through selectable hosted services
 upgradeNote: |
   This replaces the Obot-hosted DigitalOcean server with DigitalOcean's official hosted MCP servers.
 

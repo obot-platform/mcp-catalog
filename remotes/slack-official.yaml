@@ -1,7 +1,7 @@
 name: Slack Workspace
 entryKey: slack
 serverUserType: singleUser
-shortDescription: Connect to Slack and work with messages, files, channels, and more
+shortDescription: Search Slack conversations and work with messages, files, channels, and workspace content
 description: |
 
   Search conversations and work with messages and channels through [Slack's official MCP server](https://docs.slack.dev/ai/slack-mcp-server).

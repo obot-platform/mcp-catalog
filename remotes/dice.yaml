@@ -1,7 +1,7 @@
 name: Dice
 entryKey: obot-dice
 serverUserType: singleUser
-shortDescription: Search active technology jobs with detailed filters
+shortDescription: Search active technology jobs by role, location, work arrangement, sponsorship, and posting age
 description: |
   Search Dice's active technology job listings by keyword, location, workplace arrangement, employment type, posting age, sponsorship, and application options. See the official [Dice MCP documentation](https://www.dice.com/about/mcp) for setup, search parameters, response fields, examples, and troubleshooting.
 

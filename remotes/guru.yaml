@@ -1,7 +1,7 @@
 name: Guru
 entryKey: obot-guru
 serverUserType: singleUser
-shortDescription: Search and maintain verified company knowledge in Guru
+shortDescription: Search permission-aware company knowledge, retrieve Guru cards, and draft grounded content
 description: |
   Search permission-aware company knowledge, retrieve Guru cards, generate grounded answers, and draft or update content in your workspace. See Guru's official [MCP server guide](https://help.getguru.com/docs/connecting-gurus-mcp-server) for setup, authentication, and supported workflows.
 

@@ -1,7 +1,7 @@
 name: GitHub Enterprise
 entryKey: obot-github-enterprise
 serverUserType: singleUser
-shortDescription: Connect AI tools to GitHub Enterprise Server
+shortDescription: Manage repositories, code, issues, pull requests, and workflows on GitHub Enterprise Server
 description: |
   Connect AI tools to GitHub Enterprise Server with a containerized MCP server. GitHub does not provide a hosted remote MCP endpoint for GitHub Enterprise Server.
 

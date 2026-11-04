@@ -1,7 +1,7 @@
 name: Railway
 entryKey: obot-railway
 serverUserType: singleUser
-shortDescription: Deploy, manage, and debug Railway projects and services
+shortDescription: Deploy and debug Railway projects, services, deployments, feature flags, and logs
 description: |
   Deploy, manage, and debug Railway projects, services, deployments, feature flags, logs, and public artifacts from an AI coding workflow. See [Railway's MCP server documentation](https://docs.railway.com/ai/mcp-server) for remote MCP configuration and editor integrations.
 

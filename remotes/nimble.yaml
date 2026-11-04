@@ -1,7 +1,7 @@
 name: Nimble
 entryKey: obot-nimble
 serverUserType: singleUser
-shortDescription: Search, extract, map, and crawl live web data
+shortDescription: Search the live web, extract structured page data, map sites, and run managed crawls
 description: |
   Search the live web, extract structured data from pages, map websites, and run managed crawls with Nimble. See the official [Nimble MCP Server documentation](https://docs.nimbleway.com/integrations/mcp-server/mcp-server) for connection setup and current capabilities.
 

@@ -1,7 +1,7 @@
 name: HubSpot
 entryKey: obot-hubspot
 serverUserType: singleUser
-shortDescription: Connect to HubSpot CRM data with secure, per-user OAuth access
+shortDescription: Search and manage permission-scoped HubSpot CRM records and marketing content
 description: |
   The official HubSpot MCP server connects AI agents to your HubSpot CRM data through HubSpot-hosted OAuth.
 
