@@ -17,7 +17,7 @@ description: |
 
 metadata:
   categories: Automation, Productivity, SaaS & API Integrations
-icon: https://www.make.com/favicon.ico
+icon: https://cdn.prod.website-files.com/6a294495bc84130c6dd0c4fd/6a7b9441756d01907cfc9bc0_favicon-32x32.png
 repoURL: https://developers.make.com/mcp-server/
 runtime: remote
 remoteConfig:

@@ -18,7 +18,7 @@ description: |
 
   **Required:**
   - **Vercel Account**: Each user signs in with OAuth and grants access to the Vercel teams they want to use. Tools act with that user's existing Vercel permissions, so enable human confirmation for changes to projects and deployments.
-  - **Obot CLI**: Vercel requires a localhost OAuth callback. When connecting, select **Authenticate** in Obot and run the displayed `obot mcp login` command on a computer with a web browser. See [MCP localhost OAuth sign-in](https://docs.obot.ai/reference/cli-api/#mcp-localhost-oauth-sign-in).
+  - **Obot CLI**: Vercel requires a localhost OAuth callback. When connecting, select **Authenticate** in Obot and run the displayed `obot mcp login` command on a computer with a web browser. Follow the [Vercel MCP Server guide](https://docs.obot.ai/configuration/tutorials/vercel-mcp-server/) for setup steps, and see [MCP localhost OAuth sign-in](https://docs.obot.ai/reference/cli-api/#mcp-localhost-oauth-sign-in) if the command expires or the CLI cannot open a local port.
 
 metadata:
   categories: Developer Tools, Cloud Infrastructure, DevOps

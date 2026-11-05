@@ -2,7 +2,7 @@ name: Airtable
 entryKey: obot-airtable
 shortDescription: Search, analyze, create, and update structured Airtable data
 description: |
-  Search, analyze, create, and update structured data with [Airtable's official MCP server](https://support.airtable.com/using-the-airtable-mcp-server), which respects each user's existing base permissions.
+  Search, analyze, create, and update structured data with [Airtable's official MCP server](https://support.airtable.com/articles/9897799762-using-the-airtable-mcp-server), which respects each user's existing base permissions.
 
   ## Features
   - Search bases and inspect tables, fields, and records
@@ -19,7 +19,7 @@ description: |
 metadata:
   categories: Databases, Productivity, SaaS & API Integrations
 icon: https://airtable.com/favicon.ico
-repoURL: https://support.airtable.com/using-the-airtable-mcp-server
+repoURL: https://support.airtable.com/articles/9897799762-using-the-airtable-mcp-server
 runtime: remote
 remoteConfig:
   fixedURL: https://mcp.airtable.com/mcp

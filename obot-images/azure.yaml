@@ -34,7 +34,7 @@ description: 'Manage Azure compute, storage, databases, AI services, and other c
 
   - AZURE_CLIENT_SECRET
 
-  These must correspond to a service principal. You can create one using the (Azure web console)[https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal], or with the Azure CLI:
+  These must correspond to a service principal. You can create one using the [Azure web console](https://learn.microsoft.com/en-us/entra/identity-platform/howto-create-service-principal-portal), or with the Azure CLI:
 
 
   ```bash

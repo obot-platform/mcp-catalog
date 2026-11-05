@@ -15,7 +15,7 @@ description: |
   ## What you'll need to connect
   
   This server requires you to set up a Slack App for OAuth, with the proper scopes and access to the Slack MCP Server.
-  For instructions, go to https://docs.obot.ai and go to `Configuration and Operations` -> `Tutorials` -> `Slack MCP Server`.
+  Follow the [Slack MCP Server setup guide](https://docs.obot.ai/configuration/tutorials/slack-mcp-server/) to create the Slack App and configure it in Obot.
 runtime: remote
 remoteConfig:
   fixedURL: https://mcp.slack.com/mcp
