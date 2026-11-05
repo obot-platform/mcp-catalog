@@ -42,7 +42,7 @@ description: |
   > - **Tool changes:** Tool names, parameters, and available project, database, function, branch, storage, and documentation operations change.
 metadata:
   categories: Databases
-icon: https://supabase.com/favicon/favicon-96x96.png
+icon: https://supabase.com/favicon/apple-icon-180x180.png
 repoURL: https://supabase.com/docs/guides/ai-tools/mcp
 config:
   - name: Read Only

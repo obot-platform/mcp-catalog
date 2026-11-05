@@ -2,7 +2,7 @@ name: Carta CRM
 entryKey: obot-carta
 shortDescription: Search and manage private-market relationships, deals, notes, tasks, reports, and campaigns
 description: |
-  Search and manage Carta CRM contacts, companies, deals, investor relationships, notes, tasks, reports, and campaigns from an MCP-compatible AI workflow. See the official [Carta CRM MCP documentation](https://docs.carta.com/crm/docs/carta-crm-mcp) for the endpoint, available tools, authentication, and setup.
+  Search and manage Carta CRM contacts, companies, deals, investor relationships, notes, tasks, reports, and campaigns from an MCP-compatible AI workflow. See the official [Carta CRM MCP documentation](https://docs.carta.com/crm/guides/overview/carta-crm-mcp/) for the endpoint, available tools, authentication, and setup.
 
   ## Features
   - Search, create, update, and organize CRM contacts, companies, investors, deals, fundraisings, notes, and tasks
@@ -24,7 +24,7 @@ description: |
 metadata:
   categories: Financial Services, CRM
 icon: https://d2kxkmjle793l.cloudfront.net/static/lib/eshares/img/favicon.ico
-repoURL: https://docs.carta.com/crm/docs/carta-crm-mcp
+repoURL: https://docs.carta.com/crm/guides/overview/carta-crm-mcp/
 runtime: remote
 remoteConfig:
   fixedURL: https://mcp.app.carta.com/mcp
