@@ -1,0 +1,25 @@
+name: Truthifi
+entryKey: obot-truthifi
+serverUserType: singleUser
+shortDescription: "One verified household record for your AI: accounts, holdings, fees and Score. Can't move money."
+description: |
+  One verified household record in your AI assistant: accounts, activity, holdings, fees, performance, cash flow, the advisors on your accounts, financial diagnostics, and your Truthifi Score with the findings behind it, from 18,000+ supported institutions. See [Truthifi's MCP guide](https://truthifi.com/mcp-tools) for setup, tools and plan limits.
+
+  ## Features
+  - Fees per account by type (advisory, fund, margin, commission, maintenance)
+  - Holdings on any date; allocation by asset class, sector, country and market cap
+  - Performance against a similar benchmark; the Truthifi Score and its findings
+  - Spending and income by category; advisors linked to your accounts
+  - It can't move money, place trades or change anything at your bank or brokerage. Three tools change data inside Truthifi only: adding or deleting an asset you track by hand, and refreshing your data.
+
+  ## What you'll need to connect
+  A Truthifi account (free plan available, limits apply). Truthifi uses OAuth with dynamic client registration.
+
+metadata:
+  categories: Financial Services, Data & Analytics
+icon: https://framerusercontent.com/images/u37AxMviOa9x9r67PQkR35LJQ.png
+repoURL: https://truthifi.com/mcp-tools
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.truthifi.com/mcp
+
