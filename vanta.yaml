@@ -1,0 +1,62 @@
+name: Vanta
+entryKey: obot-vanta
+serverUserType: singleUser
+shortDescription: Query and remediate SOC 2, ISO 27001, and other compliance controls in Vanta
+description: |
+  A Model Context Protocol (MCP) server backed by Vanta's own vendor-hosted MCP service. It gives
+  AI agents governed access to your Vanta compliance workspace using each connected user's Vanta
+  Admin permissions.
+
+  ## Features
+  - **Tests & remediation**: inspect failing compliance tests and help remediate them
+  - **Controls & frameworks**: review controls and how they map to frameworks like SOC 2, ISO 27001, and HIPAA
+  - **Vendor risk**: review and assess third-party vendor risk assessments
+  - **Vulnerability tracking**: track vulnerabilities across monitored assets
+  - **Policy governance**: manage and review compliance policy documents
+
+  ## What you'll need to connect
+  - A **Vanta Admin** account in the workspace you want to connect (non-admin users cannot
+    authorize the Vanta MCP server today).
+  - Your Vanta account's **region**, so the connection points at the right regional endpoint
+    (United States, European Union, or Australia).
+
+  Authentication is handled entirely through Vanta's own OAuth sign-in flow — there is no API
+  token to create or paste in. When you connect, a browser window opens and you sign in to Vanta
+  as an Admin to authorize access.
+
+  ## Examples
+  - "What compliance tests are currently failing for SOC 2?"
+  - "Show me all vendors flagged as high risk"
+  - "List open vulnerabilities on our production assets"
+  - "Summarize our ISO 27001 control coverage gaps"
+
+  ---
+  _Draft catalog entry — not yet verified against a live Obot connection. Before merging:_
+  - _Confirm whether Obot's OAuth connector needs Vanta-issued static client credentials (like the
+    Salesforce entry) or can use dynamic client registration against Vanta's authorization server._
+  - _Capture a real `toolPreview` list by connecting to the server once and inspecting
+    `tools/list` — Vanta's docs describe capabilities in prose but don't publish exact tool names/params._
+  - _Verify the icon URL and `categories` value against Obot's actual category taxonomy._
+
+metadata:
+  categories: Security
+  icon: https://logo.clearbit.com/vanta.com
+  repoURL: https://developer.vanta.com/docs/vanta-mcp
+
+env:
+  - key: VANTA_MCP_HOST
+    name: Vanta Region
+    required: true
+    sensitive: false
+    description: The Vanta MCP hostname for your account's data region.
+    options:
+      - name: United States (default)
+        value: mcp.vanta.com
+      - name: European Union
+        value: mcp.eu.vanta.com
+      - name: Australia
+        value: mcp.aus.vanta.com
+
+runtime: remote
+remoteConfig:
+  urlTemplate: https://${VANTA_MCP_HOST}/mcp
