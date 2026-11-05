@@ -374,8 +374,8 @@ records:
     catalog_entry: remotes/bigquery.yaml
   - id: 7eb42afe-0087-4493-a105-da2b021d5c03
     name: Vercel
-    status: skipped
-    reason: Vercel documents that its MCP OAuth server only accepts reviewed and approved clients, and Obot is not currently listed as a supported client.
+    status: imported
+    catalog_entry: remotes/vercel.yaml
   - id: 7f750eb6-c3cb-47d7-9269-d35c43fe9925
     name: bioRxiv
     status: skipped
