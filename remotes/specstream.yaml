@@ -1,0 +1,75 @@
+name: SpecStream
+entryKey: obot-specstream
+serverUserType: singleUser
+shortDescription: Live web data on demand. Ask in plain words, get every match with the page it came from
+description: |
+  Ask in plain words for companies, local businesses, people at companies, job posts, filings, tenders or grants, and get every match from the live web, each value with the page it came from. You see the price before anything runs and pay only for matches, so a search that finds nothing costs nothing. Setup and tools are in the [SpecStream MCP documentation](https://specstream.ai/docs/mcp).
+
+  ## Features
+
+  - **Plain-words requests**: Describe what you want ("roofers in Columbus with a 4.5 rating and a phone number") and review how SpecStream read it before anything runs.
+  - **Every value with its source**: Each fact comes back with the page it was read from, so your agent can cite it.
+  - **Price first**: Get a quote with a maximum, approve it, and SpecStream never charges past it.
+  - **Many kinds of data**: Companies, local businesses, people at companies, job posts, filings, tenders, grants, clinical trials, research papers, repositories, apps and more.
+  - **Ready to use**: Read results in the conversation or export them as CSV, Excel, JSON, KML or GeoJSON.
+
+  ## What you'll need to connect
+
+  A SpecStream account. Sign in with OAuth when prompted. New accounts start with free work and need no card; see [pricing](https://specstream.ai/pricing).
+metadata:
+  categories: Data & Analytics,Retrieval & Search,Sales
+icon: https://specstream.ai/icons/icon-512.png
+repoURL: https://specstream.ai/docs/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.specstream.ai/mcp
+toolPreview:
+- name: list_request_templates
+  description: List example requests that already work for each kind of record. Edit one, then understand and quote it before anything runs.
+  params:
+    record_type: Kind of record to list templates for.
+- name: compile
+  description: Read a request written in everyday words and return how SpecStream understood it, with the conditions every result must meet and the facts to bring back. Nothing runs and nothing is charged.
+  params:
+    q: The request in plain words.
+    locale: Locale of the request, for example en-US.
+    retained: Name an existing find and an operation (extend, add-facts, refresh) to build on it.
+- name: edit_spec
+  description: Change a condition or a fact to bring back without rewording the request, and get back a checked reading with a new ast_hash for the next quote.
+  params:
+    ast: The revised reading.
+    operations: The edit operations to apply.
+- name: quote_capacity_work
+  description: Price a reading before anything runs. The quote shows the most the work can cost. Nothing is spent.
+  params:
+    ast_hash: Hash of the reading to price.
+    operation: find, extend, add_facts, refresh or retained.
+    requested_units: Number of results to price.
+    parent_find_id: Existing find to extend, add facts to or refresh.
+    project_id: Project the work belongs to.
+- name: authorize_capacity_work
+  description: Start the work on an approved quote. SpecStream reads the live web and charges only for delivered results, never more than the approved ceiling.
+  params:
+    quote_id: The quote to start.
+    quote_hash: Hash of the quote.
+    confirm_max_cents: The maximum, in cents, the user approved.
+    idempotency_key: A stable key so a retry never starts the work twice.
+- name: get_find
+  description: Read a run's request, progress and what it has cost so far.
+  params:
+    find_id: The run to read.
+- name: list_find_rows
+  description: Read the results that met every condition, with the source behind each value, a page at a time.
+  params:
+    find_id: The run to read.
+    cursor: Cursor from the previous page.
+    limit: Results per page, up to 100.
+- name: export_find
+  description: Create a download link for a run's results as CSV, Excel, JSON or HTML, or KML and GeoJSON for records with places. The link works for 24 hours.
+  params:
+    find_id: The run to export.
+    format: xlsx, csv, json, html, kml or geojson.
+- name: get_capacity_balance
+  description: Read the balance available for work. A balance is not permission to spend; paid work still needs approval of a quote.
+  params:
+    project_id: Project to read the balance for.
