@@ -1,0 +1,29 @@
+name: Process Street
+entryKey: obot-process-street
+serverUserType: singleUser
+shortDescription: Manage Process Street workflows, runs, tasks, users, data sets, and operational records
+description: |
+  Find and manage Process Street workflows, workflow runs, assigned tasks, users, data sets, and operational records through [Process Street's hosted MCP server](https://www.process.st/help/docs/mcp-server/).
+
+  ## Features
+  - Find workflows, workflow runs, tasks, users, and data sets
+  - Create and manage workflow runs and assigned tasks
+  - Produce reports and summaries from Process Street data
+  - Analyze operational records available to the connected user
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Process Street Account**: Complete the interactive authorization flow in your browser
+
+  Access follows the connected user's Process Street permissions. Compatible clients may also use a Process Street API key as a bearer token. Organizations that require SAML SSO are not currently supported by the documented connection flow.
+
+  This connector can create and modify workflow runs and tasks. Review write operations before approving them.
+metadata:
+  categories: Business, Project Management, Productivity
+  allow-multiple: "true"
+icon: https://avatars.githubusercontent.com/u/4595519?s=400&v=4
+repoURL: https://www.process.st/help/docs/mcp-server/
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.process.st/
