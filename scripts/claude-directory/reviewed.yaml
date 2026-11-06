@@ -691,7 +691,7 @@ records:
   - id: e6fc4c18-ea48-4752-9912-7a13bf9999ed
     name: WordPress.com
     status: existing
-    catalog_entry: obot-images/wordpress.yaml
+    catalog_entry: remotes/wordpress.yaml
   - id: e9f93fb8-37d6-4727-a129-956e5263ac3e
     name: Adobe Experience Manager
     status: imported
