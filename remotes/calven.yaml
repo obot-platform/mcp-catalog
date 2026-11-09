@@ -1,0 +1,29 @@
+name: Calven
+entryKey: obot-calven
+serverUserType: singleUser
+shortDescription: Read approved positioning, messaging, ICP, personas, competitive intel, and win/loss insights
+description: |
+  Give AI tools your company's approved go-to-market context from Calven: positioning, messaging, ICP, personas, competitive intelligence, and win/loss insights, with sources. See the [Calven MCP documentation](https://calven.ai/mcp) for setup, tools, and authentication details.
+
+  ## Features
+  - **Strategy Documents**: Read positioning, messaging, ICP, and product briefs, company-wide or per product
+  - **Competitive Intelligence**: Read competitor battlecards, recent signals, and deep-dive dossiers
+  - **Personas**: Read buyer, stakeholder, and user personas
+  - **Insights Dashboards**: Read win/loss, competitive, voice-of-customer, ICP, persona, and market KPIs with sample sizes and windows, and drill into the rows behind a number
+  - **Records and Documents**: Search market signals, customer conversations, quotes, deal drivers, survey responses, product changes, permitted CRM data, and published documents
+  - **Persona Review**: Review draft copy against selected personas as an asynchronous task
+
+  All tools are read-only except persona review, which starts a review task. Results respect each user's Calven workspace permissions.
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Calven Account**: Each user signs in through browser OAuth and can access the workspace data their Calven role permits
+
+metadata:
+  categories: Marketing, Sales, Business Intelligence
+icon: https://calven.ai/apple-touch-icon.png
+repoURL: https://github.com/calven-ai/calven-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.calven.ai/mcp
