@@ -1,95 +1,104 @@
 name: PostgreSQL
 entryKey: obot-postgresql
-shortDescription: Analyze performance, optimize queries, and tune PostgreSQL databases with health checks
-description: '[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+shortDescription: Run SQL, optimize queries, check database health, and diagnose PostgreSQL lock waits
+description: |
+  Inspect PostgreSQL schemas, run SQL, find slow queries, recommend indexes, and diagnose database health and lock waits with postgres-dba-mcp.
 
-  [![PyPI - Version](https://img.shields.io/pypi/v/postgres-mcp)](https://pypi.org/project/postgres-mcp/)
-
-  [![Contributors](https://img.shields.io/github/contributors/crystaldba/postgres-mcp)](https://github.com/crystaldba/postgres-mcp/graphs/contributors)
-
-
-  Analyze and optimize PostgreSQL performance with index tuning, workload-aware query insights, safe execution controls, schema-aware SQL generation, health diagnostics, and EXPLAIN plan simulation.
-
+  [Documentation and setup](https://github.com/a-lafon/postgres-dba-mcp#readme)
 
   ## Features
 
-  - **Database Health Analysis**: Comprehensive health checks including index health, connection utilization, buffer cache analysis, vacuum health, and replication lag monitoring
+  - **Schema inspection**: List schemas, tables, views, sequences, and extensions, and inspect columns, keys, indexes, constraints, and triggers.
+  - **SQL execution**: Run one SQL statement per call with compact CSV results. This connector enables writes when the database role permits them.
+  - **Query plans**: View EXPLAIN plans, collect execution statistics for SELECT queries, and simulate hypothetical indexes without creating real indexes.
+  - **Index recommendations**: Analyze up to 10 supplied queries or the recorded database workload using the DTA method.
+  - **Database health**: Check indexes, connections, vacuum, sequences, replication, cache hit rates, and constraints.
+  - **Lock diagnostics**: Identify blocked sessions, blockers, and blocking chains without cancelling or terminating sessions.
 
-  - **Advanced Index Tuning**: Industrial-strength algorithms that explore thousands of possible indexes using proven optimization techniques
+  ## What you'll need to connect
 
-  - **Query Performance Optimization**: EXPLAIN plan analysis and hypothetical index simulation for performance validation
+  - **Database URI**: A PostgreSQL connection string for a database reachable from Obot, such as `postgresql://username:password@db.example.com:5432/dbname`.
+  - **Database permissions**: The connected role determines which objects can be read or changed. Use a read-only database role when writes should be prevented.
+  - **Query statistics**: `get_top_queries` and `analyze_workload_indexes` require `pg_stat_statements`, installed in the database and enabled in `shared_preload_libraries`.
+  - **Hypothetical indexes**: Both index recommendation tools and hypothetical indexes in `explain_query` require the `hypopg` extension.
+  - **Session visibility**: `pg_read_all_stats` allows query statistics and lock diagnostics to include other roles' query text and session details.
 
-  - **Schema Intelligence**: Context-aware SQL generation based on detailed database schema understanding
+  ## SQL and output limits
 
-  - **Safe SQL Execution**: Configurable access control with read-only mode and SQL parsing for both development and production environments
+  `execute_sql` accepts one statement per call. Results default to 100 rows and 200 characters per cell, with a 32,768-byte cap. Use `max_rows` (up to 1,000) and `max_cell` (up to 10,000) to request more detail; the byte cap still applies. Truncated results are marked in the output.
 
-  - **Workload Analysis**: Identify resource-intensive queries and get targeted optimization recommendations
+  Index recommendations support `method="dta"`; `method="llm"` is not supported.
 
+  ## Example usage
 
-  ## What you''ll need to connect
-
-
-  **Required:**
-
-  - **Database URI**: PostgreSQL connection string (e.g., `postgresql://username:password@localhost:5432/dbname`)
-
-
-  ## Example Usage
-
-
-  - "Check the health of my database and identify any issues"
-
-  - "What are the slowest queries in my database? And how can I speed them up?"
-
-  - "Analyze my database workload and suggest indexes to improve performance"
-
-  - "Help me optimize this query: SELECT * FROM orders JOIN customers ON orders.customer_id = customers.id WHERE orders.created_at > ''2023-01-01''"
-
-
-  ## Known Issues
-
-
-  Some tools require extensions to be installed in the target postgres instance:
-
-  - `get_top_queries` requires the `pg_stat_statements` extension
-
-  - `analyze_workload_indexes` and `analyze_query_indexes` require the `hypopg` extension
-
-  '
+  - "Check my database health and identify sequences that are nearly exhausted."
+  - "Show the slowest queries in this database and explain their execution plans."
+  - "Recommend indexes for my workload without creating them."
+  - "Which sessions are blocked, and what is blocking them?"
 metadata:
   categories: Databases
 icon: https://avatars.githubusercontent.com/u/177543?s=48&v=4
-repoURL: https://github.com/crystaldba/postgres-mcp
+repoURL: https://github.com/a-lafon/postgres-dba-mcp
 config:
   - key: DATABASE_URI
     name: Database URI
     required: true
     sensitive: false
-    description: The connection string for your Postgres database; e.g.
-      "postgresql://username:password@localhost:5432/dbname"
+    description: The PostgreSQL connection string for a database reachable from Obot, e.g.
+      "postgresql://username:password@db.example.com:5432/dbname". The database role determines read and write permissions.
     usage: env
 toolPreview:
-- name: list_schemas
-  description: Lists all database schemas available in the PostgreSQL instance
-- name: list_objects
-  description: Lists database objects (tables, views, sequences, extensions) within a specified schema
-- name: get_object_details
-  description: Provides detailed information about a specific database object including columns, constraints, and indexes
-- name: execute_sql
-  description: Executes SQL statements with read-only limitations in restricted mode
-- name: explain_query
-  description: Shows execution plan for SQL queries and can simulate hypothetical indexes
-- name: get_top_queries
-  description: Reports slowest SQL queries based on execution statistics from pg_stat_statements
-- name: analyze_workload_indexes
-  description: Analyzes database workload to identify resource-intensive queries and recommends optimal indexes
-- name: analyze_query_indexes
-  description: Analyzes specific SQL queries (up to 10) and recommends optimal indexes for them
-- name: analyze_db_health
-  description: Performs comprehensive health checks including cache hit rates, connections, indexes, and vacuum status
+  - name: list_schemas
+    description: Lists database schemas with their owners, types, and table counts.
+  - name: list_objects
+    description: Lists tables, views, sequences, or extensions in a schema. Table row counts are estimates.
+    params:
+      schema_name: Schema to inspect.
+      object_type: Object type to list (table, view, sequence, or extension); defaults to table.
+  - name: get_object_details
+    description: Shows details for a table, view, sequence, or extension, including columns, keys, indexes, constraints, and triggers where applicable.
+    params:
+      schema_name: Schema containing the object.
+      object_name: Name of the object to inspect.
+      object_type: Object type (table, view, sequence, or extension); defaults to table.
+  - name: execute_sql
+    description: Runs one SQL statement with the database role's permissions, including writes when permitted. Returns bounded CSV or command results and marks truncated output.
+    params:
+      sql: One SQL statement to execute.
+      max_rows: Maximum rows to return; defaults to 100, up to 1,000. The 32,768-byte result cap still applies.
+      max_cell: Maximum characters per cell; defaults to 200, up to 10,000.
+  - name: explain_query
+    description: Shows a query's execution plan and cost estimates, with optional execution statistics for SELECT queries or hypothetical index simulation using hypopg.
+    params:
+      sql: SQL query to explain. Queries with positional parameters receive a generic plan.
+      analyze: Whether to execute a SELECT query to collect actual statistics; defaults to false.
+      hypothetical_indexes: Indexes to simulate without creating real indexes. Each specifies table, columns, and an optional using index method. Requires hypopg.
+      verbose: Whether to return the full PostgreSQL text plan instead of a summary; defaults to false.
+  - name: get_top_queries
+    description: Ranks slow or resource-intensive statements in the current database using pg_stat_statements.
+    params:
+      limit: Number of queries to return; defaults to 10, from 1 to 100.
+      sort_by: Rank by resources, total_time, or mean_time; defaults to resources.
+  - name: analyze_workload_indexes
+    description: Recommends indexes for frequently executed queries using pg_stat_statements and hypopg, without creating real indexes.
+    params:
+      max_index_size_mb: Maximum index size in MB; defaults to 10,000.
+      method: Index analysis method; use dta (the default). The llm method is not supported.
+  - name: analyze_query_indexes
+    description: Recommends indexes for up to 10 supplied SQL queries using hypopg, without creating real indexes.
+    params:
+      queries: List of up to 10 SQL queries to analyze.
+      max_index_size_mb: Maximum index size in MB; defaults to 10,000.
+      method: Index analysis method; use dta (the default). The llm method is not supported.
+  - name: analyze_db_health
+    description: Reports problems with indexes, connections, vacuum, sequences, replication, cache hit rates, and constraints.
+    params:
+      health_type: Select all (the default), a single check, or comma-separated checks from index, connection, vacuum, sequence, replication, buffer, and constraint.
+  - name: analyze_locks
+    description: Reports current lock waits, blocked sessions, direct blockers, blocking chains, and durations. Only reads a snapshot; never cancels or terminates sessions.
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/postgresql:0.3.0-obot8
+  image: ghcr.io/obot-platform/mcp-images/postgresql:0.3.3-obot1
   port: 8099
   path: /
   args:
