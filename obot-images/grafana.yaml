@@ -391,7 +391,7 @@ config:
 
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/grafana:2.2.0-alpine-obot1
+  image: ghcr.io/obot-platform/mcp-images/grafana:2.3.0-alpine-obot1
   port: 8080
   path: "/mcp"
   args:

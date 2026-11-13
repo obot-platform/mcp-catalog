@@ -98,7 +98,7 @@ toolPreview:
     description: Reports current lock waits, blocked sessions, direct blockers, blocking chains, and durations. Only reads a snapshot; never cancels or terminates sessions.
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/mcp-images/postgresql:0.3.3-obot1
+  image: ghcr.io/obot-platform/mcp-images/postgresql:0.3.3-obot2
   port: 8099
   path: /
   args:

@@ -244,6 +244,6 @@ config:
     usage: env
 runtime: containerized
 containerizedConfig:
-  image: ghcr.io/obot-platform/wordpress-mcp-server:v0.3.0
+  image: ghcr.io/obot-platform/wordpress-mcp-server:v0.3.1
   port: 8099
   path: "/"
