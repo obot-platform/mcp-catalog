@@ -1,12 +1,13 @@
 name: SpecStream
 entryKey: obot-specstream
 serverUserType: singleUser
-shortDescription: Live web data on demand. Ask in plain words, get every match with the page it came from
+shortDescription: Live web data on demand. Search the web, read pages, or get every match as rows with the page behind each value
 description: |
-  Ask in plain words for companies, local businesses, people at companies, job posts, filings, tenders or grants, and get every match from the live web, each value with the page it came from. You see the price before anything runs and pay only for matches, so a search that finds nothing costs nothing. Setup and tools are in the [SpecStream MCP documentation](https://specstream.ai/docs/mcp).
+  Search the live web, read pages and documents as clean text, or ask in plain words for companies, local businesses, people at companies, job posts, filings, tenders or grants, and get every match from the live web, each value with the page it came from. You see the price before anything runs and pay only for matches, so a search that finds nothing costs nothing. Setup and tools are in the [SpecStream MCP documentation](https://specstream.ai/docs/mcp).
 
   ## Features
 
+  - **Search and read**: `search_web` answers a question from the live web in a few seconds, at $5 per 1,000 searches. `read_pages` returns the text of up to 20 pages or documents (PDF, Word, Excel) a call, at $0.80 per 1,000 pages.
   - **Plain-words requests**: Describe what you want ("roofers in Columbus with a 4.5 rating and a phone number") and review how SpecStream read it before anything runs.
   - **Every value with its source**: Each fact comes back with the page it was read from, so your agent can cite it.
   - **Price first**: Get a quote with a maximum, approve it, and SpecStream never charges past it.
@@ -15,7 +16,7 @@ description: |
 
   ## What you'll need to connect
 
-  A SpecStream account. Sign in with OAuth when prompted. New accounts start with free work and need no card; see [pricing](https://specstream.ai/pricing).
+  A SpecStream account. Sign in with OAuth when prompted. New accounts start with $10 of credit and need no card; see [pricing](https://specstream.ai/pricing).
 metadata:
   categories: Data & Analytics,Retrieval & Search,Sales
 icon: https://specstream.ai/icons/icon-512.png
@@ -24,6 +25,14 @@ runtime: remote
 remoteConfig:
   fixedURL: https://api.specstream.ai/mcp
 toolPreview:
+- name: search_web
+  description: Answer a question from the live web in a few seconds, with the pages behind the answer. Charged per call, with no quote and no approval.
+  params:
+    q: The question in everyday words.
+- name: read_pages
+  description: Return the main text of up to 20 web pages or documents (PDF, Word, Excel), read live. A page that gives no text is not charged.
+  params:
+    urls: The pages or documents to read, 1 to 20 URLs.
 - name: list_request_templates
   description: List example requests that already work for each kind of record. Edit one, then understand and quote it before anything runs.
   params:
