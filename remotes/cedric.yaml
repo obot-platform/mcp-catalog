@@ -1,0 +1,26 @@
+name: Cedric
+entryKey: obot-cedric
+serverUserType: singleUser
+shortDescription: Search and act in your team's connected email, calendar, CRM and chat tools, with approval before anything is sent
+description: |
+  Search and act in the tools your team has connected to Cedric, such as Gmail, Google Calendar, HubSpot, Slack, Notion and GitHub, or hand Cedric a whole task. See Cedric's [API and MCP documentation](https://app.meet-cedric.com/api-docs) for setup and the [README](https://github.com/meet-cedric/cedric-mcp) for the tool reference.
+
+  ## Features
+  - Every tool the team has connected in Cedric becomes an MCP tool
+  - Search email, calendar events, CRM records, Slack channels and Notion pages
+  - Draft emails, messages and record updates that wait for a person's approval before they go out
+  - Hand Cedric a whole task with the `ask_cedric` tool
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Cedric Account**: Each user authenticates through browser OAuth and acts with their own access in their workspace
+  - **Connected Tools**: The tools you want to use must be connected in Cedric first
+
+metadata:
+  categories: Productivity, Communication, SaaS & API Integrations
+icon: "https://meet-cedric.com/icon-512.png"
+repoURL: https://app.meet-cedric.com/api-docs
+runtime: remote
+remoteConfig:
+  fixedURL: https://app.meet-cedric.com/api/v1/mcp
