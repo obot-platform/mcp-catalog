@@ -1,0 +1,27 @@
+name: while.sh
+entryKey: obot-while
+serverUserType: singleUser
+shortDescription: Deploy apps with their databases, caches, storage and jobs on while.sh
+description: |
+  Deploy apps with their PostgreSQL databases, caches, S3 storage and scheduled jobs on while.sh, a French PaaS built for AI agents, then read their logs, metrics and errors. See the official [while.sh guide to connecting an agent](https://while.sh/en/docs/get-started/connect-your-agent/) for setup and the list of tools.
+
+  ## Features
+  - Deploy web services and workers from code, a Git repository or an image, and roll back to a previous version
+  - Add PostgreSQL databases, caches, S3 buckets, scheduled jobs, preview environments and private access
+  - Read logs, metrics, traces and errors, and query a database in read-only SQL
+  - Back up and restore databases, run scheduled jobs on demand, and manage members, roles and API tokens
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **while.sh Account**: Each user authenticates through OAuth and acts with the permissions they consent to
+
+  Sensitive actions, such as making an app public, restoring a production database or granting a permission, wait for a person's approval in while.sh, and the agent never sees the API keys of external services.
+
+metadata:
+  categories: Developer Tools, Cloud Infrastructure, DevOps
+icon: https://while.sh/icon-light.png
+repoURL: https://while.sh/en/docs/get-started/connect-your-agent/
+runtime: remote
+remoteConfig:
+  fixedURL: https://app.while.sh/mcp
