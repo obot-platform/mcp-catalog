@@ -1,12 +1,12 @@
 name: while.sh
 entryKey: obot-while
 serverUserType: singleUser
-shortDescription: Deploy the apps you build on while.sh, for your team only or for everyone
+shortDescription: Tools built with your AI, online for your team, a client or everyone
 description: |
-  Deploy the apps your agent builds on while.sh, for your team only or for everyone, with their PostgreSQL databases, scheduled jobs and storage, hosted in France, then read their logs, metrics and errors. See the official [while.sh guide to connecting an agent](https://while.sh/en/docs/get-started/connect-your-agent/) for setup and the list of tools.
+  Put the tools you build with your AI online with while.sh, and choose who uses them: your colleagues, a client or a supplier with a link and a password, or everyone. Each tool has its PostgreSQL database backed up every day, file storage and scheduled jobs, hosted in France, and your AI reads its logs, metrics and errors. See the official [while.sh guide to connecting your AI](https://while.sh/en/docs/get-started/connect-your-agent/) for setup and the list of MCP tools.
 
   ## Features
-  - Deploy web services and workers from code, a Git repository or an image, and roll back to a previous version
+  - Put web services and workers online from code, a Git repository or an image, and go back to a previous version
   - Add PostgreSQL databases, caches, S3 buckets, scheduled jobs, preview environments and private access
   - Read logs, metrics, traces and errors, and query a database in read-only SQL
   - Back up and restore databases, run scheduled jobs on demand, and manage members, roles and API tokens
@@ -14,10 +14,10 @@ description: |
   ## What you'll need to connect
 
   **Required:**
-  - **Nothing to start**: the free trial needs no account
-  - **while.sh Account**, for the tools that need one: each user signs in through OAuth and acts with the permissions they consent to
+  - **Nothing to start**: without an account, your AI can put a tool online to try it
+  - **while.sh Account**, for the MCP tools that need one: each user signs in through OAuth and acts with the permissions they consent to
 
-  Sensitive actions, such as making an app public, restoring a production database or granting a permission, wait for a person's approval in while.sh, and the agent never sees the API keys of external services.
+  A person approves in while.sh before a tool goes public, data is restored or rights are granted, and your AI never sees the credentials for your other software.
 
 metadata:
   categories: Developer Tools, Cloud Infrastructure, DevOps
