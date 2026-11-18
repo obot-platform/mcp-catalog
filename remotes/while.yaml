@@ -1,0 +1,28 @@
+name: while.sh
+entryKey: obot-while
+serverUserType: singleUser
+shortDescription: Deploy and share AI-built tools, for your team, a client or everyone
+description: |
+  Deploy the tools you build with your AI agent on while.sh, and choose who to share them with: your team, a client or a supplier with a link and a password, or everyone. Each tool has its PostgreSQL database backed up every day, storage and scheduled jobs, hosted in France, and the agent reads its logs, metrics and errors. See the official [while.sh guide to connecting an agent](https://while.sh/en/docs/get-started/connect-your-agent/) for setup and the list of MCP tools.
+
+  ## Features
+  - Deploy web services and workers from code, a Git repository or an image, and roll back to a previous version
+  - Add PostgreSQL databases, caches, S3 buckets, scheduled jobs, preview environments and private access
+  - Read logs, metrics, traces and errors, and query a database in read-only SQL
+  - Back up and restore databases, run scheduled jobs on demand, and manage members, roles and API tokens
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Nothing to start**: without an account, the agent can deploy a tool to try it
+  - **while.sh Account**, for the MCP tools that need one: each user signs in through OAuth and acts with the permissions they consent to
+
+  A person approves in while.sh before a tool goes public, data is restored or rights are granted, and the agent never sees the credentials for your other software.
+
+metadata:
+  categories: Developer Tools, Cloud Infrastructure, DevOps
+icon: https://while.sh/icon-light.png
+repoURL: https://while.sh/en/docs/get-started/connect-your-agent/
+runtime: remote
+remoteConfig:
+  fixedURL: https://app.while.sh/mcp
