@@ -1,0 +1,28 @@
+name: DocStar
+entryKey: obot-docstar
+serverUserType: singleUser
+shortDescription: Turn your product's API into published docs that your users' AI assistants can read and call
+description: |
+  DocStar turns your product's API into published docs that your users' AI assistants can read and call. See the official [DocStar MCP server documentation](https://github.com/swayammaheshwari/docstar-mcp#readme) for setup, authentication, available tools, and usage guidance.
+
+  ## Features
+  - Document each endpoint from your code and publish the docs
+  - Get one link to share the published docs
+  - Let your users' assistants look up any endpoint and call your API with the exact URLs, fields and auth from your docs, so they don't guess
+  - Search DocStar's own documentation and browse the DocStar API reference
+  - Create collections, pages and endpoint docs, update them and publish them
+
+  ## What you'll need to connect
+
+  **Optional:**
+  - **DocStar Account**: Reading docs needs no account. Changes need DocStar sign-in through the OAuth flow.
+
+  **Write access:** With sign-in, this connector can create, change and publish collections, pages and endpoint docs in your DocStar workspace.
+
+metadata:
+  categories: Developer Tools, Documentation
+icon: https://stuff.thingsofbrand.com/docstar.io/images/imgd_docstar.png
+repoURL: https://github.com/swayammaheshwari/docstar-mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.docstar.io/mcp
