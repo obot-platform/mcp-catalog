@@ -1,0 +1,27 @@
+name: Embarko
+entryKey: obot-embarko
+serverUserType: singleUser
+shortDescription: Deploy and host AI-built apps and websites with a live URL
+description: |
+  Deploy and host AI-built apps and websites and get a live URL without any DevOps setup. See the official [Embarko quickstart](https://embarko.ai/docs/quickstart) for setup, authentication, available tools, and usage guidance.
+
+  ## Features
+  - Deploy or update an app from its files and get a live URL
+  - Read app status, logs, deployments, environment variables, domains, and analytics
+  - Set environment variables, add and verify custom domains, and roll back deployments
+  - Rename or delete apps, environment variables, and domains
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Embarko Account**: Sign in through the OAuth flow with your Embarko account (the same account as embarko.ai)
+
+  **Write access:** This connector can deploy, change, and delete apps, environment variables, and domains in your Embarko account.
+
+metadata:
+  categories: Developer Tools, Cloud Infrastructure, DevOps
+icon: https://embarko.ai/assets/embarko-icon.svg
+repoURL: https://embarko.ai/docs/quickstart
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.embarko.ai/mcp
