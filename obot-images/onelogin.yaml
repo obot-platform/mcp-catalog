@@ -1,0 +1,1458 @@
+name: OneLogin
+entryKey: obot-onelogin
+shortDescription: Manage OneLogin users, apps, roles, groups, MFA, and security settings
+description: |
+  Manage OneLogin users, applications, roles, groups, MFA factors, and security policies through the OneLogin API.
+
+  See the [OneLogin MCP server documentation](https://github.com/onelogin/onelogin-mcp) for setup details, and [Working with API Credentials](https://developers.onelogin.com/api-docs/2/getting-started/working-with-api-credentials) for creating OneLogin API credentials.
+
+  ## Features
+
+  - **Identity Management**: Users, roles, groups, privileges, and custom attributes
+  - **Applications**: Apps, app rules, connectors, and SAML assertions
+  - **Authentication**: MFA factors, sessions, invite links, and risk rules
+  - **Security**: API authorizations, scopes, claims, and policies
+  - **Configuration**: Brands, user mappings, and Smart Hooks
+  - **Operations**: Events, reports, and rate limits
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **OneLogin URL**: Your OneLogin instance URL (for example, `https://mycompany.onelogin.com`)
+  - **Client ID and Client Secret**: OneLogin API (v2) credentials. Create them under Developers > API Credentials in the OneLogin admin portal, and grant the scope your use case needs (for example, "Manage All" for full read/write access)
+
+  ## IMPORTANT: Write access
+
+  Many tools create, update, or delete users, apps, roles, and security settings. Use credentials scoped to the access you intend to grant.
+
+metadata:
+  categories: Security & Compliance, SaaS & API Integrations
+icon: https://avatars.githubusercontent.com/u/263373?v=4
+repoURL: https://github.com/onelogin/onelogin-mcp
+config:
+- key: ONELOGIN_URL
+  name: OneLogin URL
+  usage: env
+  required: true
+  sensitive: false
+  description: Your OneLogin instance URL, for example https://mycompany.onelogin.com.
+- key: ONELOGIN_CLIENT_ID
+  name: Client ID
+  usage: env
+  required: true
+  sensitive: true
+  description: The client ID of your OneLogin API (v2) credential.
+- key: ONELOGIN_CLIENT_SECRET
+  name: Client Secret
+  usage: env
+  required: true
+  sensitive: true
+  description: The client secret of your OneLogin API (v2) credential.
+runtime: containerized
+containerizedConfig:
+  image: ghcr.io/obot-platform/mcp-images/onelogin:1.2.1-obot1
+  port: 8099
+  path: /
+  args:
+  - onelogin-mcp
+toolPreview:
+- id: list_users
+  name: list_users
+  description: Get a paginated list of users in a OneLogin account (50 users per page). Can filter by user properties including custom attributes. For efficient syncing between OneLogin and another system, use the updated_since parameter to return only users that changed since last check. The response includes a `pagination` object whose `total_count` is the total number of users matching the filters across ALL pages. To answer "how many users" questions, make a single call (e.g. limit=1) and read `pagination.total_count` — do NOT page through every user and count them yourself. Paginate with limit/page, or pass a previous response's pagination.after_cursor / before_cursor as cursor. Returns user data and x-request-id for log tracing.
+  params:
+    email: Filter by email address
+    firstname: Filter by first name
+    lastname: Filter by last name
+    status: Filter by status (0=Unactivated, 1=Active, 2=Suspended, 3=Locked, 4=Password expired, 5=Awaiting password reset, 7=Password Pending, 8=Security questions required)
+    limit: Number of results to return (default 50)
+    page: Page number for pagination
+    cursor: 'Fetch another page: pass the after_cursor (next page) or before_cursor (previous page) value from a previous response''s pagination block. One cursor parameter serves both directions. Send it on its own - it already encodes limit/page, and the API rejects a cursor combined with limit/page/sort.'
+  enabled: true
+- id: get_user
+  name: get_user
+  description: Get a single user from a OneLogin account by user ID. If you don't know the user's ID, use list_users to find it. Returns complete user data including custom attributes, roles, status, and x-request-id for log tracing.
+  params:
+    user_id: The OneLogin user ID
+  enabled: true
+- id: create_user
+  name: create_user
+  description: 'Create a new user in OneLogin. Users without a password get status 7 (Password Pending) and cannot log in until password is set. PKI certificates require this initial status. IMPORTANT: No invite email is sent when users are created via this API. Mappings run async by default (use mappings=sync query parameter to get mapped values in response). Returns created user data and x-request-id.'
+  params:
+    email: User email address
+    firstname: User first name
+    lastname: User last name
+    username: Username (optional, defaults to email)
+  enabled: true
+- id: update_user
+  name: update_user
+  description: 'Update user attributes including passwords, group membership, trusted IDP, and custom attributes. CUSTOM ATTRIBUTES: Set values using the custom_attributes object, e.g., {"custom_attributes": {"employee_id": "12345"}}. This is the correct way to update custom attribute values for a user. OTHER OPTIONS: Mappings run async by default (use mappings=sync for immediate response). Passwords validate against User Policy by default (use validate_policy=false to skip). Returns updated user data and x-request-id.'
+  params:
+    user_id: The OneLogin user ID to update
+    email: Email address
+    firstname: First name
+    lastname: Last name
+    username: Username
+    status: Status (0=Unactivated, 1=Active, 2=Suspended, 3=Locked, 4=Password expired, 5=Awaiting password reset, 7=Password Pending, 8=Security questions required)
+    state: State (0=Unapproved, 1=Approved, 2=Rejected, 3=Unlicensed)
+    group_id: Group ID to assign the user to
+    role_ids: Array of role IDs to assign to the user
+    directory_id: Directory ID
+    trusted_idp_id: Trusted IDP ID
+    manager_user_id: Manager user ID (OneLogin user ID of the manager)
+    manager_ad_id: Manager AD ID
+    external_id: External ID for mapping to external systems
+    company: Company name
+    department: Department name
+    title: Job title
+    phone: Phone number
+    comment: Comment/notes about the user
+    samaccountname: SAM account name (AD)
+    userprincipalname: User principal name (AD)
+    distinguished_name: Distinguished name (AD/LDAP)
+    member_of: Member of (AD group membership)
+    preferred_locale_code: Preferred locale code (e.g., "en-US")
+    custom_attributes: Custom attributes object with attribute names as keys
+  enabled: true
+- id: delete_user
+  name: delete_user
+  description: 'Permanently delete a user from OneLogin. WARNING: This operation cannot be undone. The user will be deleted and will no longer be able to log in. If you don''t know the user''s ID, use list_users to find it. Returns 204 No Content on success and x-request-id.'
+  params:
+    user_id: The OneLogin user ID to delete
+  enabled: true
+- id: unlock_user
+  name: unlock_user
+  description: Unlock a locked user in OneLogin. The API checks if the user is locked, calls for an unlock, and returns a JSON response with successful or unsuccessful completion. Returns "User unlocked" message on success or error if user cannot be unlocked. Returns status and x-request-id.
+  params:
+    user_id: The OneLogin user ID to unlock
+  enabled: true
+- id: get_user_apps
+  name: get_user_apps
+  description: Get a list of apps assigned to a given user. Use ignore_visibility parameter (defaults to false) to return all apps regardless of portal visibility setting. Returns app list with provisioning status, icons, and login IDs, plus x-request-id for log tracing.
+  params:
+    user_id: The OneLogin user ID
+  enabled: true
+- id: list_user_custom_attributes
+  name: list_user_custom_attributes
+  description: 'Get a list of all custom attribute field definitions (schema) available in your OneLogin account. Returns the shortnames of custom fields that can be used when setting custom_attributes in create_user or update_user. IMPORTANT: This returns the field SCHEMA (which fields exist), NOT user-specific values. To set values for a user, use update_user with the custom_attributes object. Example: If this returns ["employee_id", "department"], you can then set these via update_user: {"custom_attributes": {"employee_id": "12345"}}. Returns custom attribute shortnames and x-request-id.'
+  enabled: true
+- id: get_user_custom_attribute
+  name: get_user_custom_attribute
+  description: Get details of a specific custom attribute field definition by ID. Returns the custom attribute schema including name, shortname, user-editable flag, and x-request-id. Use list_user_custom_attributes to get a list of all custom attribute IDs.
+  params:
+    custom_attribute_id: The custom attribute ID
+  enabled: true
+- id: create_user_custom_attribute
+  name: create_user_custom_attribute
+  description: Create a new custom attribute field definition in OneLogin. This creates the field schema (definition), not a value for a specific user. After creating the field, you can set values for individual users using update_user with custom_attributes. Returns the created custom attribute definition and x-request-id.
+  params:
+    name: The display name of the custom attribute
+    shortname: The shortname used to reference this attribute in API calls (e.g., 'employee_id')
+    user_editable: 'Whether users can edit this field themselves (default: false)'
+  enabled: true
+- id: update_user_custom_attribute
+  name: update_user_custom_attribute
+  description: Update an existing custom attribute field definition. This updates the field schema (definition), not values for specific users. To update values for a user, use update_user with custom_attributes instead. Returns the updated custom attribute definition and x-request-id.
+  params:
+    custom_attribute_id: The custom attribute ID to update
+    name: The display name of the custom attribute
+    shortname: The shortname used to reference this attribute
+    user_editable: Whether users can edit this field themselves
+  enabled: true
+- id: delete_user_custom_attribute
+  name: delete_user_custom_attribute
+  description: 'Delete a custom attribute field definition from OneLogin. WARNING: This operation cannot be undone. Deleting a custom attribute field will remove the field definition and all values stored in this field for all users. Returns 204 No Content on success and x-request-id.'
+  params:
+    custom_attribute_id: The custom attribute ID to delete
+  enabled: true
+- id: get_user_privileges
+  name: get_user_privileges
+  description: 'Get all privileges directly assigned to a user (does not include privileges inherited through roles). IMPORTANT: Requires Delegated Administration subscription. Returns privilege list with IDs, names, descriptions, and policy statements. Use to audit user permissions. Returns x-request-id.'
+  params:
+    user_id: The OneLogin user ID
+  enabled: true
+- id: get_user_delegated_privileges
+  name: get_user_delegated_privileges
+  description: 'Get effective privileges for a user including both directly assigned privileges and privileges inherited through role membership. IMPORTANT: Requires Delegated Administration subscription. Returns comprehensive privilege list showing complete user permissions. Use to understand actual user access. Returns x-request-id.'
+  params:
+    user_id: The OneLogin user ID
+  enabled: true
+- id: list_apps
+  name: list_apps
+  description: Get a list of all apps in a OneLogin account with pagination support (max 1000 per page). Can filter by connector_id or auth_method (0=Password, 1=OpenId, 2=SAML, 3=API, 4=Google, 6=Forms, 7=WSFED, 8=OpenId Connect). Use name parameter with wildcard (*) for partial name search (e.g., name=workday*). Paginate with limit/page, or pass a previous response's pagination.after_cursor / before_cursor as cursor. Returns app data, a pagination block (total_count, current_page, cursors) and x-request-id for log tracing.
+  params:
+    name: Filter by app name
+    connector_id: Filter by connector ID
+    auth_method: Filter by authentication method
+    limit: Number of results to return (default 50)
+    page: Page number for pagination
+    cursor: 'Fetch another page: pass the after_cursor (next page) or before_cursor (previous page) value from a previous response''s pagination block. One cursor parameter serves both directions. Send it on its own - it already encodes limit/page, and the API rejects a cursor combined with limit/page/sort.'
+  enabled: true
+- id: get_app
+  name: get_app
+  description: Get configuration settings of an app. Useful for backing up app configuration or cloning apps - take the response and POST it to create_app to clone. Response payload is broken into sections (parameters, sso settings, configuration) that vary based on app type (SAML, OpenId Connect, etc.). Returns complete app configuration and x-request-id for log tracing.
+  params:
+    app_id: The OneLogin app ID
+  enabled: true
+- id: update_app
+  name: update_app
+  description: Update an existing OneLogin app. Supports partial updates - only provide the fields you want to change. For OIDC apps, use the configuration object to set login_url, redirect_uri, etc. For a complete list of configuration fields for a given app type, use get_app on an existing app with the same connector. Returns updated app data and x-request-id.
+  params:
+    app_id: The OneLogin app ID to update
+    name: App name
+    description: App description
+    notes: App notes
+    visible: Whether app is visible in user portal
+    policy_id: Security policy ID to assign
+    allow_assumed_signin: Allow assumed sign-in
+    tab_id: Tab ID for portal organization
+    configuration: 'App-specific configuration (varies by connector type). OIDC apps: login_url, redirect_uri, access_token_expiration_minutes, refresh_token_expiration_minutes, token_endpoint_auth_method, oidc_application_type. SAML apps: signature_algorithm, certificate_id. Use get_app on a same-connector app to see all available fields.'
+    sso: SSO settings (varies by connector type). May include certificate, issuer, metadata_url, etc.
+    provisioning: Provisioning settings (varies by connector type)
+  enabled: true
+- id: create_app
+  name: create_app
+  description: 'Create a new app based on a OneLogin connector. Minimum required: connector_id and name. For OIDC apps, use configuration to set login_url, redirect_uri, etc. For complete configuration options, use get_app on an existing app with the same connector. For OpenId Connect apps: response includes client_id and client_secret. Returns created app data and x-request-id.'
+  params:
+    connector_id: Connector ID for the app type (required)
+    name: App name (required)
+    description: App description
+    notes: App notes
+    visible: Whether app is visible in user portal
+    policy_id: Security policy ID to assign
+    allow_assumed_signin: Allow assumed sign-in
+    tab_id: Tab ID for portal organization
+    configuration: 'App-specific configuration (varies by connector type). OIDC apps: login_url, redirect_uri, access_token_expiration_minutes, refresh_token_expiration_minutes, token_endpoint_auth_method, oidc_application_type. SAML apps: signature_algorithm, certificate_id. Use get_app on a same-connector app to see all available fields.'
+    sso: SSO settings (varies by connector type)
+    provisioning: Provisioning settings (varies by connector type)
+  enabled: true
+- id: delete_app
+  name: delete_app
+  description: 'Delete an app from OneLogin. WARNING: This operation is final and cannot be undone. If you don''t know the app ID, use list_apps to find it. Returns 204 No Content on success and x-request-id.'
+  params:
+    app_id: The OneLogin app ID to delete
+  enabled: true
+- id: delete_app_parameter
+  name: delete_app_parameter
+  description: 'Delete a custom parameter from an app. WARNING: This operation is final and cannot be undone. You cannot delete connector-level parameters (defined on underlying connector) - only custom app-specific parameters can be deleted. If you don''t know the parameter ID, use get_app to retrieve app configuration with parameter IDs. Returns 204 No Content on success or 403 Forbidden if attempting to delete connector parameter. Returns x-request-id.'
+  params:
+    app_id: The OneLogin app ID
+    param_id: The parameter ID to delete
+  enabled: true
+- id: get_app_users
+  name: get_app_users
+  description: Get a list of users assigned to an app (max 1000 users per page). Supports standard pagination. Returns user list with ID, firstname, lastname, username, and email for each user. Use to audit app access or find users to remove. Returns x-request-id for log tracing.
+  params:
+    app_id: The OneLogin app ID
+  enabled: true
+- id: list_app_rules
+  name: list_app_rules
+  description: 'Get all mapping rules for an app. App rules act like "if this then that" logic to automate user attribute management, parameters, and entitlements. Each rule has conditions (the "if") and actions (the "then"). IMPORTANT: Rules are not applied automatically when added/modified via API - a user event (create/update) or "Reapply Entitlement Mappings" in UI is required to trigger rule execution. Returns array of rules with ID, name, match type (all/any), enabled status, position, conditions, and actions. Returns x-request-id (API v2).'
+  params:
+    app_id: The OneLogin app ID
+  enabled: true
+- id: get_app_rule
+  name: get_app_rule
+  description: Get detailed configuration of a specific app rule by ID. Returns complete rule definition including name, match type (all=AND conditions, any=OR conditions), enabled status, position in execution order, conditions array (each with source field, operator, and value), and actions array (each with action type and value). Use to review mapping logic or clone rules to other apps. Returns x-request-id (API v2).
+  params:
+    app_id: The OneLogin app ID
+    rule_id: The app rule ID
+  enabled: true
+- id: create_app_rule
+  name: create_app_rule
+  description: 'Create a new mapping rule for an app to automate user attribute management. Required: name (rule name), match ("all"=AND conditions, "any"=OR conditions), conditions array (each with source, operator, value - e.g., {"source":"has_role","operator":"~","value":"765432"}), actions array (each with action and value - e.g., {"action":"add_role","value":"272444"}). Optional: enabled (default true), position (null=append to end). IMPORTANT: Rules execute in position order. Use list_app_rule_conditions and list_app_rule_actions to discover available condition sources and action types for your app. Rules do NOT auto-apply after creation - trigger via user event or UI. Returns created rule with ID and x-request-id (API v2).'
+  params:
+    app_id: The OneLogin app ID
+    name: Rule name
+    match: 'Condition matching logic: "all" (AND) or "any" (OR)'
+    enabled: Whether rule is enabled (default true)
+    position: Execution order position (null=append to end)
+    conditions: Array of condition objects with source, operator, value
+    actions: Array of action objects with action and value
+  enabled: true
+- id: update_app_rule
+  name: update_app_rule
+  description: 'Update an existing app rule. Can modify name, match type, enabled status, position, conditions, or actions. Partial updates supported - only provide fields to change. IMPORTANT: Rules do NOT auto-apply after modification - changes take effect on next user event or when "Reapply Entitlement Mappings" is triggered in UI. Changing position affects execution order which may alter mapping results. Returns updated rule data and x-request-id (API v2).'
+  params:
+    app_id: The OneLogin app ID
+    rule_id: The app rule ID to update
+    name: New rule name
+    match: New condition matching logic
+    enabled: New enabled status
+    position: New execution order position
+    conditions: New conditions array
+    actions: New actions array
+  enabled: true
+- id: delete_app_rule
+  name: delete_app_rule
+  description: 'Delete an app rule permanently. WARNING: This operation cannot be undone. Users who were previously affected by this rule will NOT have their existing mappings reverted - deletion only prevents the rule from executing in future. To reverse existing mappings, create a new rule with opposite actions before deletion, then trigger "Reapply Entitlement Mappings" in UI. If you don''t know the rule ID, use list_app_rules to find it. Returns 204 No Content on success and x-request-id (API v2).'
+  params:
+    app_id: The OneLogin app ID
+    rule_id: The app rule ID to delete
+  enabled: true
+- id: reorder_app_rules
+  name: reorder_app_rules
+  description: 'Change the execution order of app rules by providing a new sorted array of rule IDs. Rules execute in the order specified by their position, which affects mapping outcomes when multiple rules modify the same attribute. The rule_ids array must include ALL rule IDs for the app in the desired execution order (first ID = position 1, second ID = position 2, etc.). IMPORTANT: Reordering does NOT auto-apply - changes take effect on next user event or when "Reapply Entitlement Mappings" is triggered in UI. Returns success status and x-request-id (API v2).'
+  params:
+    app_id: The OneLogin app ID
+    rule_ids: Array of rule IDs in desired execution order
+  enabled: true
+- id: list_app_rule_conditions
+  name: list_app_rule_conditions
+  description: Get available condition sources for creating app rules. Returns array of condition objects showing what user/group attributes can be used in rule conditions (e.g., has_role, department, group_id, last_login). Each condition includes source name, display label, data type, and supported operators (~, =, !=, >, <, in, not_in, etc.). Use this before creating rules to discover valid condition sources for the app type. Returns x-request-id (API v2).
+  params:
+    app_id: The OneLogin app ID
+  enabled: true
+- id: list_app_rule_actions
+  name: list_app_rule_actions
+  description: Get available actions for creating app rules. Returns array of action objects showing what operations can be performed in rule actions (e.g., add_role, remove_role, set_attribute, set_parameter_value). Each action includes action type, display label, required value format, and description of effect. Actions vary by app type - SAML apps support different actions than OpenID Connect apps. Use this before creating rules to discover valid action types for the app. Returns x-request-id (API v2).
+  params:
+    app_id: The OneLogin app ID
+  enabled: true
+- id: list_roles
+  name: list_roles
+  description: Get a list of roles with pagination and sorting support (max 650 per page). Can filter by name, app_id, or app_name. Use fields parameter to include related data (apps, users, admins) in response. Paginate with limit/page, or pass a previous response's pagination.after_cursor / before_cursor as cursor (sent alone; the cursor already encodes limit and sort). Returns role data, a pagination block, and x-request-id for log tracing.
+  params:
+    name: Filter by role name
+    limit: Number of results to return (default 50)
+    page: Page number for pagination
+    cursor: 'Fetch another page: pass the after_cursor (next page) or before_cursor (previous page) value from a previous response''s pagination block. One cursor parameter serves both directions. Send it on its own - it already encodes limit/page, and the API rejects a cursor combined with limit/page/sort.'
+  enabled: true
+- id: get_role
+  name: get_role
+  description: Get the base role object by ID. Role users, apps, and administrators are returned using sub-endpoints (get_role_users, get_role_apps, get_role_admins). Returns role data with ID and name, plus x-request-id for log tracing.
+  params:
+    role_id: The OneLogin role ID
+  enabled: true
+- id: assign_role_to_user
+  name: assign_role_to_user
+  description: Assign one or more roles to a OneLogin user by providing an array of role IDs. This is the recommended way to manage user roles (rather than using update_user). Returns updated user data and x-request-id.
+  params:
+    user_id: The OneLogin user ID
+    role_ids: Array of role IDs to assign to the user
+  enabled: true
+- id: remove_role_from_user
+  name: remove_role_from_user
+  description: Remove one or more roles from a OneLogin user. Returns updated user data and x-request-id.
+  params:
+    user_id: The OneLogin user ID
+    role_ids: Array of role IDs to remove from the user
+  enabled: true
+- id: create_role
+  name: create_role
+  description: Create a new role with optional apps, users, and admins assigned during creation. Can assign multiple apps (array of app IDs) and users (array of user IDs) in a single call for efficient setup. Returns created role data with new role ID and x-request-id.
+  params:
+    name: Role name
+    apps: Array of app IDs to assign to the role
+    users: Array of user IDs to assign to the role
+  enabled: true
+- id: update_role
+  name: update_role
+  description: Update an existing role. Partial role updates are supported - you only need to provide the fields you want to change. Returns updated role ID and x-request-id.
+  params:
+    role_id: The OneLogin role ID to update
+    name: New role name
+    apps: Array of app IDs to assign to the role
+    users: Array of user IDs to assign to the role
+  enabled: true
+- id: delete_role
+  name: delete_role
+  description: 'Delete a role from OneLogin. WARNING: This operation is final and cannot be undone. Returns 204 No Content on success and x-request-id.'
+  params:
+    role_id: The OneLogin role ID to delete
+  enabled: true
+- id: get_role_apps
+  name: get_role_apps
+  description: Get applications assigned to a role. Supports pagination. Use assigned=false parameter to return apps not yet assigned to the role. Returns app list with ID, name, and icon_url, plus x-request-id for log tracing.
+  params:
+    role_id: The OneLogin role ID
+  enabled: true
+- id: set_role_apps
+  name: set_role_apps
+  description: 'Assign applications to a role. IMPORTANT: Provide the complete list of app IDs to assign - this replaces all existing apps. To add or remove apps, you must submit the full desired app list, not a partial list. For example, if role has apps [123, 456] and you want to add 789, submit [123, 456, 789]. Returns array of assigned app IDs and x-request-id.'
+  params:
+    role_id: The OneLogin role ID
+    app_ids: Array of app IDs to assign to the role
+  enabled: true
+- id: get_role_users
+  name: get_role_users
+  description: Get users assigned to a role. Supports pagination. Can include users not currently assigned using include_unassigned parameter. Supports filtering on first name, last name, username, and email address via name parameter. Returns user list with ID, name, username, added_by info, added_at timestamp, and assigned status. Returns x-request-id for log tracing.
+  params:
+    role_id: The OneLogin role ID
+  enabled: true
+- id: get_role_admins
+  name: get_role_admins
+  description: Get role administrators (users who can manage this role). Supports pagination. Can include admins not currently assigned using include_unassigned parameter. Supports filtering on first name, last name, username, and email address via name parameter. Returns admin list with ID, name, username, added_by info, added_at timestamp, and assigned status. Returns x-request-id for log tracing.
+  params:
+    role_id: The OneLogin role ID
+  enabled: true
+- id: add_role_admins
+  name: add_role_admins
+  description: Assign users as administrators of a role. Role admins can manage the role and its assignments. Returns success status and x-request-id.
+  params:
+    role_id: The OneLogin role ID
+    admin_ids: Array of admin user IDs to add to the role
+  enabled: true
+- id: remove_role_admin
+  name: remove_role_admin
+  description: Remove a user from role administrators. The user will no longer be able to manage this role. Returns success status and x-request-id.
+  params:
+    role_id: The OneLogin role ID
+    admin_id: The admin user ID to remove from the role
+  enabled: true
+- id: list_events
+  name: list_events
+  description: 'Get a paginated list of events in a OneLogin account (50 events per page). Can filter by event_type_id, user_id, client_id, directory_id, resolution, and date range (since/until with millisecond precision). Pagination is cursor-based: set limit, then pass the response''s pagination.after_cursor (next page) or pagination.before_cursor (previous page) back in; there is no page parameter. Returns event data with user_name/actor_user_name (first+last name or email fallback), risk scores, IP addresses, and full event details. Returns x-request-id (API v1 - Rate Limited).'
+  params:
+    since: Start date filter (ISO 8601)
+    until: End date filter (ISO 8601)
+    event_type_id: Filter by event type ID
+    user_id: Filter by user ID
+    client_id: Filter by client ID
+    directory_id: Filter by directory ID
+    resolution: Filter by resolution
+    user_name: Filter by username
+    limit: Results per page (default 50)
+    page: 'DEPRECATED: ignored; the v1 events API rejects page. Paginate with after_cursor / before_cursor instead'
+    after_cursor: 'Next page: the after_cursor value from a previous response''s pagination object'
+    before_cursor: 'Previous page: the before_cursor value from a previous response''s pagination object'
+  enabled: true
+- id: get_event
+  name: get_event
+  description: Get a single event by ID with complete event details including user names, timestamps, IP addresses, risk scores, and resolution data. Returns event data and x-request-id (API v1 - Rate Limited).
+  params:
+    event_id: The OneLogin event ID
+  enabled: true
+- id: list_groups
+  name: list_groups
+  description: Get a list of groups in a OneLogin account with pagination and filtering support. Can filter by name (supports wildcards) or reference. To find which group a user belongs to, use get_user. To add/remove users from groups, use update_user. Paginate with limit/page, or pass a previous response's pagination.after_cursor / before_cursor as cursor. Returns group data with ID, name, and reference, a pagination block, and x-request-id for log tracing.
+  params:
+    name: Filter by group name (supports wildcards)
+    reference: Filter by reference
+    limit: Results per page
+    page: Page number
+    cursor: 'Fetch another page: pass the after_cursor (next page) or before_cursor (previous page) value from a previous response''s pagination block. One cursor parameter serves both directions. Send it on its own - it already encodes limit/page, and the API rejects a cursor combined with limit/page/sort.'
+    after_cursor: 'Alias for cursor, kept for backwards compatibility: the after_cursor value from a previous response''s pagination block. Prefer cursor.'
+    before_cursor: 'Alias for cursor, kept for backwards compatibility: the before_cursor value from a previous response''s pagination block. Prefer cursor.'
+  enabled: true
+- id: get_group
+  name: get_group
+  description: Get a single group by ID. Returns group data with ID, name, and reference. Returns x-request-id for log tracing.
+  params:
+    group_id: The OneLogin group ID
+  enabled: true
+- id: create_group
+  name: create_group
+  description: Create a new group with optional policy assignment. Groups are used to organize users and can have policies assigned for access control. Returns created group data with new group ID and x-request-id for log tracing.
+  params:
+    name: Group name (required, must be unique within account)
+    reference: External reference ID (optional, must be unique if provided)
+    policy_id: Policy ID to assign to the group (optional)
+  enabled: true
+- id: update_group
+  name: update_group
+  description: Update an existing group. Partial updates are supported - only provide the fields you want to change (name, reference, policy_id). Name and reference must remain unique within the account. Returns updated group data and x-request-id for log tracing.
+  params:
+    group_id: The OneLogin group ID to update
+    name: New group name (must be unique)
+    reference: New external reference ID (must be unique if provided)
+    policy_id: Policy ID to assign to the group
+  enabled: true
+- id: delete_group
+  name: delete_group
+  description: 'Delete a group from OneLogin. WARNING: This operation is final and cannot be undone. Users in the group will not be deleted, only the group membership is removed. The group itself is permanently deleted. Returns 204 No Content on success and x-request-id for log tracing.'
+  params:
+    group_id: The OneLogin group ID to delete
+  enabled: true
+- id: get_group_users
+  name: get_group_users
+  description: Get users assigned to a group. Returns a list of users who are members of the specified group with details including ID, email, firstname, lastname. Use this to see group membership. Returns x-request-id for log tracing.
+  params:
+    group_id: The OneLogin group ID
+  enabled: true
+- id: list_privileges
+  name: list_privileges
+  description: 'List privileges created in a OneLogin account. IMPORTANT: Requires Delegated Administration subscription. Privileges define actions that can be performed on resources but don''t grant access until assigned to a user or role. Returns the full list in one response (the API does not paginate this endpoint). Returns privilege data with ID, name, description, and policy statement (API v1 - Rate Limited). Returns x-request-id.'
+  params:
+    limit: 'DEPRECATED: ignored; the API returns all privileges in one response and does not paginate'
+    page: 'DEPRECATED: ignored; the API returns all privileges in one response and does not paginate'
+    after_cursor: 'DEPRECATED: ignored; the API returns all privileges in one response and does not paginate'
+    before_cursor: 'DEPRECATED: ignored; the API returns all privileges in one response and does not paginate'
+  enabled: true
+- id: get_privilege
+  name: get_privilege
+  description: 'Return a single privilege by ID. IMPORTANT: Requires Delegated Administration subscription. Returns privilege data with ID, name, description, and policy statement (Version, Statement with Effect/Action/Scope). If privilege not found, returns 404. Returns x-request-id (API v1 - Rate Limited).'
+  params:
+    privilege_id: The OneLogin privilege ID
+  enabled: true
+- id: create_privilege
+  name: create_privilege
+  description: 'Create a new privilege that defines actions on OneLogin resources. Privileges don''t grant access until assigned to a user or role. Use wildcard "*" for super user privileges. Don''t mix resource classes in the Action array (e.g., don''t combine users: and apps: actions in one statement). Requires Delegated Administration subscription. Returns created privilege ID and x-request-id (API v1 - Rate Limited).'
+  params:
+    name: Privilege name (e.g., "User Helpdesk")
+    description: Human-readable description of the privilege
+    privilege: The authorization policy definition
+  enabled: true
+- id: update_privilege
+  name: update_privilege
+  description: Update an existing privilege definition. Can update name, description, and/or the policy statement. Requires Delegated Administration subscription. Returns updated privilege data and x-request-id (API v1 - Rate Limited).
+  params:
+    privilege_id: The OneLogin privilege ID to update
+    name: New privilege name
+    description: New description
+    privilege: Updated authorization policy definition
+  enabled: true
+- id: delete_privilege
+  name: delete_privilege
+  description: 'Delete a privilege. IMPORTANT: Requires Delegated Administration subscription. This removes the privilege definition and unassigns it from all users/roles. Returns success status and x-request-id (API v1 - Rate Limited).'
+  params:
+    privilege_id: The OneLogin privilege ID to delete
+  enabled: true
+- id: get_privilege_roles
+  name: get_privilege_roles
+  description: 'Get list of roles that have been assigned to a specific privilege. IMPORTANT: Requires Delegated Administration subscription. Returns role list with IDs and names and x-request-id (API v1 - Rate Limited).'
+  params:
+    privilege_id: The OneLogin privilege ID
+  enabled: true
+- id: assign_role_to_privilege
+  name: assign_role_to_privilege
+  description: 'Assign one or more roles to a privilege, granting the roles'' users the privilege''s defined actions. IMPORTANT: Requires Delegated Administration subscription. Accepts array of role IDs to assign multiple roles at once. Returns success status and x-request-id (API v1 - Rate Limited).'
+  params:
+    privilege_id: The OneLogin privilege ID
+    role_ids: Array of role IDs to assign to the privilege
+  enabled: true
+- id: remove_role_from_privilege
+  name: remove_role_from_privilege
+  description: 'Remove a role assignment from a privilege, revoking the privilege''s actions from the role''s users. IMPORTANT: Requires Delegated Administration subscription. Returns success status and x-request-id (API v1 - Rate Limited).'
+  params:
+    privilege_id: The OneLogin privilege ID
+    role_id: The role ID to remove
+  enabled: true
+- id: get_privilege_users
+  name: get_privilege_users
+  description: 'Get list of users that have been directly assigned to a specific privilege. IMPORTANT: Requires Delegated Administration subscription. Returns user list with IDs and names and x-request-id (API v1 - Rate Limited).'
+  params:
+    privilege_id: The OneLogin privilege ID
+  enabled: true
+- id: assign_users_to_privilege
+  name: assign_users_to_privilege
+  description: 'Assign one or more users directly to a privilege, granting them the privilege''s defined actions. IMPORTANT: Requires Delegated Administration subscription. Accepts array of user IDs to assign multiple users at once. Returns success status and x-request-id (API v1 - Rate Limited).'
+  params:
+    privilege_id: The OneLogin privilege ID
+    user_ids: Array of user IDs to assign to the privilege
+  enabled: true
+- id: remove_user_from_privilege
+  name: remove_user_from_privilege
+  description: 'Remove a user assignment from a privilege, revoking the privilege''s actions from the user. IMPORTANT: Requires Delegated Administration subscription. Returns success status and x-request-id (API v1 - Rate Limited).'
+  params:
+    privilege_id: The OneLogin privilege ID
+    user_id: The user ID to remove
+  enabled: true
+- id: get_available_factors
+  name: get_available_factors
+  description: Get available MFA factors for user enrollment. Returns factors configured in user's policy that are not yet enrolled. Each factor includes factor_id needed for enrollment. Supports OneLogin SMS, Voice, Email, Protect, and authenticator apps. Returns factor list with IDs and x-request-id.
+  params:
+    user_id: The OneLogin user ID
+  enabled: true
+- id: get_enrolled_factors
+  name: get_enrolled_factors
+  description: Get enrolled MFA factors (devices) for a user. Returns all factors the user has registered. Each device includes device_id needed for activation and removal. Use before activate_factor or remove_factor to get device IDs. Returns device list with IDs, types, and status.
+  params:
+    user_id: The OneLogin user ID
+  enabled: true
+- id: enroll_factor
+  name: enroll_factor
+  description: Initiate MFA enrollment for a user. Requires factor_id from get_available_factors. Status will be "pending" if OTP confirmation required (Google Authenticator, OneLogin Protect) or "accepted" if verified=true (SMS, Voice, Email with pre-verified values). For OTP factors, response includes registration_id for verification. Supports custom_message for SMS (max 160 chars), redirect_to for Email MagicLink, and expires_in (120-900 seconds). Returns registration data with registration_id and status.
+  params:
+    user_id: The OneLogin user ID
+    factor_id: Factor ID from get_available_factors response
+    display_name: Display name for the factor (e.g., phone number for SMS)
+    verified: Set true to skip verification if value is pre-verified (e.g., known phone number)
+    custom_message: Custom SMS message (max 160 chars, SMS only)
+    redirect_to: Redirect URL for Email MagicLink
+    expires_in: OTP expiration in seconds (120-900, default 120)
+  enabled: true
+- id: verify_factor_enrollment_otp
+  name: verify_factor_enrollment_otp
+  description: Verify enrollment using OTP code. Use after enroll_factor returns "pending" status. Provide the registration_id from enrollment response and the OTP the user received/generated. On success, factor becomes active. Works for Google Authenticator, SMS, Email, and Voice factors.
+  params:
+    user_id: The OneLogin user ID
+    registration_id: Registration ID (UUID) from enroll_factor response
+    otp: One-time password from authenticator app, SMS, email, or voice call
+  enabled: true
+- id: verify_factor_enrollment_poll
+  name: verify_factor_enrollment_poll
+  description: 'Poll enrollment status for OneLogin Voice and Protect factors. Use after enroll_factor for these factor types. Poll periodically until status changes from "pending" to "accepted". For Voice: user types OTP into phone. For Protect: user approves on device. Returns registration status.'
+  params:
+    user_id: The OneLogin user ID
+    registration_id: Registration ID (UUID) from enroll_factor response
+  enabled: true
+- id: activate_factor
+  name: activate_factor
+  description: Trigger MFA challenge by sending SMS, Voice call, Email, or Push notification. Requires device_id from get_enrolled_factors. Returns verification_id needed for verify_factor. Supports custom_message for SMS, redirect_to for Email MagicLink, and expires_in (120-900 seconds, default 120). Returns verification_id, expires_at, and device info.
+  params:
+    user_id: The OneLogin user ID
+    device_id: Device ID from get_enrolled_factors response
+    custom_message: Custom SMS message (max 160 chars, SMS only)
+    redirect_to: Redirect URL for Email MagicLink
+    expires_in: OTP expiration in seconds (120-900, default 120)
+  enabled: true
+- id: verify_factor
+  name: verify_factor
+  description: Authenticate OTP code for SMS, Email, or Authenticator factors. Requires verification_id from activate_factor. Provide the OTP the user entered. Returns success/error status. For Push/Voice/MagicLink factors, use verify_factor_poll instead.
+  params:
+    user_id: The OneLogin user ID
+    verification_id: Verification ID from activate_factor response
+    otp: One-time password entered by user
+  enabled: true
+- id: verify_factor_poll
+  name: verify_factor_poll
+  description: Poll verification status for Push, Voice, and MagicLink factors. Use after activate_factor for these factor types. Poll periodically until status changes to approved/denied. Returns verification status indicating whether user approved the push or completed voice/magiclink.
+  params:
+    user_id: The OneLogin user ID
+    verification_id: Verification ID from activate_factor response
+  enabled: true
+- id: remove_factor
+  name: remove_factor
+  description: 'Remove an enrolled MFA factor (device) from a user. Requires device_id from get_enrolled_factors. Returns 204 No Content on success. WARNING: This cannot be undone - user will need to re-enroll the factor.'
+  params:
+    user_id: The OneLogin user ID
+    device_id: Device ID from get_enrolled_factors response
+  enabled: true
+- id: generate_mfa_token
+  name: generate_mfa_token
+  description: Generate temporary MFA bypass token for account recovery when MFA device is lost. Token can be used in place of MFA for set time period. expires_in defaults to 259200 seconds (72 hours max). reusable defaults to false (single use). Returns mfa_token string, expires_at timestamp, reusable flag, and device_id.
+  params:
+    user_id: The OneLogin user ID
+    reusable: 'Whether token can be used multiple times (default: false)'
+    expires_in: 'Token lifetime in seconds (default/max: 259200 = 72 hours)'
+  enabled: true
+- id: generate_saml_assertion
+  name: generate_saml_assertion
+  description: 'Generate a SAML assertion for user authentication to an app. If MFA is not required: returns SAML assertion data immediately. If MFA is required: returns state_token, devices (with device_id for each factor), callback_url, and user info - must then call verify_saml_assertion_factor. Works with ip_address parameter to honor MFA IP allow-listing. Returns assertion data or MFA challenge and x-request-id (API v2).'
+  params:
+    username_or_email: Username or email address
+    password: User password
+    app_id: App ID to generate assertion for
+    subdomain: Account subdomain
+    ip_address: IP address (optional)
+  enabled: true
+- id: verify_saml_assertion_factor
+  name: verify_saml_assertion_factor
+  description: 'Verify OTP for second factor when MFA is required for SAML authentication. Use in conjunction with generate_saml_assertion. For some factors (SMS): OTP not immediately required, returns pending status. For others (Google Authenticator): OTP required immediately. For OneLogin Protect: first call triggers push notification, subsequent calls poll with do_not_notify=true to check status. Returns SAML assertion on success or error and x-request-id (API v2).'
+  params:
+    app_id: App ID
+    device_id: Device ID for MFA
+    state_token: State token from initial assertion
+    otp_token: One-time password token (optional)
+    do_not_notify: Whether to skip notification (optional)
+  enabled: true
+- id: generate_invite_link
+  name: generate_invite_link
+  description: Generate a password reset invite link for an existing user in OneLogin. Returns the link URL but does NOT send any email - use send_invite_link to email it. Provide link to user to enable them to set password and access OneLogin portal. Email parameter is case-sensitive. Returns invite link and x-request-id (API v1 - Rate Limited).
+  params:
+    email: User email address
+    firstname: User first name (optional)
+    lastname: User last name (optional)
+    role_ids: Array of role IDs to assign (optional)
+  enabled: true
+- id: send_invite_link
+  name: send_invite_link
+  description: Send a password reset invite link email to an existing user in OneLogin. User clicks link to set password and access OneLogin portal. Email parameter is case-sensitive. Use personal_email to send to different address than user's OneLogin email. Returns success message with recipient email and x-request-id (API v1 - Rate Limited).
+  params:
+    email: User email address
+    firstname: User first name (optional)
+    lastname: User last name (optional)
+    role_ids: Array of role IDs to assign (optional)
+    personal_email: Personal email to send invite to (optional)
+  enabled: true
+- id: revoke_oauth_token
+  name: revoke_oauth_token
+  description: Revoke an OAuth 2.0 access token immediately. Use this to invalidate a token before its natural expiration (tokens normally expire after 10 hours). Once revoked, the token cannot be used for API requests. Requires the actual access_token value (not the client credentials). Returns success status and x-request-id.
+  params:
+    access_token: The OAuth 2.0 access token to revoke
+  enabled: true
+- id: get_rate_limit
+  name: get_rate_limit
+  description: Get current rate limit information for the authenticated client. Shows remaining API calls and reset time for rate limiting. Useful for monitoring API usage and avoiding rate limit errors. Returns rate limit data including limit, remaining count, reset timestamp, and x-request-id.
+  enabled: true
+- id: list_mappings
+  name: list_mappings
+  description: Get a list of all user attribute mappings configured in OneLogin. Mappings control how user data flows between OneLogin and connected apps during provisioning. Filter by enabled status, by condition/action type (builtin, custom, none), or by a specific condition/action in <name>:<value> form. Returns the full list in one response (the API does not support pagination). Returns mapping list with IDs, names, match criteria, enabled status, and x-request-id.
+  params:
+    enabled: Filter by enabled status
+    has_condition: Filter to mappings that have a specific condition, in <name>:<value> form (e.g. "has_role:12345")
+    has_condition_type: 'Filter by the type of conditions the mapping has: builtin, custom, or none'
+    has_action: Filter to mappings that have a specific action, in <name>:<value> form (e.g. "set_status:1")
+    has_action_type: 'Filter by the type of actions the mapping has: builtin, custom, or none'
+    has_conditions: 'DEPRECATED: ignored; the API rejects this param. Use has_condition_type instead'
+    limit: 'DEPRECATED: ignored; the API returns all mappings in one response'
+    page: 'DEPRECATED: ignored; the API returns all mappings in one response'
+    after_cursor: 'DEPRECATED: ignored; the API does not support cursor pagination for mappings'
+    before_cursor: 'DEPRECATED: ignored; the API does not support cursor pagination for mappings'
+  enabled: true
+- id: list_mapping_actions
+  name: list_mapping_actions
+  description: Get the complete list of available mapping action types that can be used when creating or updating mappings. Returns all supported actions with their display names and values (e.g., "Set Role"/"add_role", "Set Group"/"set_group", "Set Department"/"set_department"). Use this to discover what action types are available for your OneLogin environment before creating mapping actions. Returns actions list and x-request-id (API v2).
+  enabled: true
+- id: get_mapping
+  name: get_mapping
+  description: Get detailed configuration of a specific user mapping by ID. Returns complete mapping definition including match criteria (all/any), conditions array, actions array, enabled status, position in execution order, and x-request-id. Use to understand how a specific mapping transforms user data.
+  params:
+    mapping_id: The OneLogin mapping ID
+  enabled: true
+- id: create_mapping
+  name: create_mapping
+  description: 'Create a new user attribute mapping to control data flow during provisioning. Mappings execute in position order and can conditionally transform user attributes. Required fields: name (descriptive label), match (all/any - how conditions are evaluated), actions (array of action objects with "action" and "value" fields - see list_mapping_actions for available action types like add_role, set_role, set_group, set_department, etc.). Optional: enabled (default true), conditions (when to apply), position (execution order). Returns created mapping with ID and x-request-id (API v2).'
+  params:
+    name: Mapping name
+    match: 'Condition match type: "all" or "any"'
+    actions: Array of action objects to perform. Each action object should have "action" (type like add_role, set_group, set_department) and "value" (configuration array) fields. Use list_mapping_actions to see available action types.
+    enabled: Whether mapping is enabled
+    position: Position in execution order (optional). Position 0 appends to end of list. Position 1 places at top. Higher values are clamped to valid range.
+  enabled: true
+- id: update_mapping
+  name: update_mapping
+  description: 'Update an existing user mapping configuration. IMPORTANT: The OneLogin API requires ALL fields when updating - you must provide name, match, enabled, position, conditions (array), and actions (array) even if you only want to change one field. This is a full-replacement API pattern, not a partial update. Best practice: use get_mapping first to retrieve current values, then modify only what you need to change. Returns updated mapping data and x-request-id.'
+  params:
+    mapping_id: The OneLogin mapping ID to update
+    name: Mapping name (REQUIRED for all updates)
+    match: 'Condition match type: "all" or "any" (REQUIRED for all updates)'
+    enabled: Enabled status (REQUIRED for all updates)
+    position: Position in execution order (REQUIRED for all updates). Position 0 appends to end of list. Position 1 places at top (shifting others down). Higher values are clamped to valid range.
+  enabled: true
+- id: delete_mapping
+  name: delete_mapping
+  description: 'Permanently delete a user mapping. WARNING: This operation cannot be undone. Users will no longer have this mapping applied during provisioning. If you don''t know the mapping ID, use list_mappings to find it. Returns 204 No Content on success and x-request-id.'
+  params:
+    mapping_id: The OneLogin mapping ID to delete
+  enabled: true
+- id: get_mapping_conditions
+  name: get_mapping_conditions
+  description: Get all conditions for a mapping. Conditions determine when a mapping applies - they compare user attributes against values using operators (equals, contains, in, etc). Returns conditions array with source field, operator, value, and x-request-id. Use to understand mapping triggering logic.
+  params:
+    mapping_id: The OneLogin mapping ID
+  enabled: true
+- id: create_mapping_condition
+  name: create_mapping_condition
+  description: 'Add a condition to a mapping that controls when it executes. Conditions check user attributes (source) against values using operators: "==" (equals), "!=" (not equals), ">" (greater), "<" (less), ">=" (gte), "<=" (lte), "in" (contains), "not_in" (not contains), "~" (regex match). Example: source="department", operator="==", value="Engineering" applies mapping only to Engineering users. Returns created condition with ID and x-request-id.'
+  params:
+    mapping_id: The OneLogin mapping ID
+    source: Source attribute to check
+    operator: Comparison operator (==, !=, >, <, >=, <=, in, not_in, ~)
+    value: Value to compare against
+  enabled: true
+- id: update_mapping_condition
+  name: update_mapping_condition
+  description: Update an existing mapping condition. Can change source attribute, operator, or comparison value. Use to adjust when a mapping applies without recreating the entire condition. Returns updated condition data and x-request-id.
+  params:
+    mapping_id: The OneLogin mapping ID
+    condition_id: The condition ID to update
+    source: New source attribute
+    operator: New operator
+    value: New comparison value
+  enabled: true
+- id: delete_mapping_condition
+  name: delete_mapping_condition
+  description: Remove a condition from a mapping. Mapping will execute less selectively after condition removal. If all conditions removed, mapping applies to all users (subject to match criteria). Returns 204 No Content on success and x-request-id.
+  params:
+    mapping_id: The OneLogin mapping ID
+    condition_id: The condition ID to delete
+  enabled: true
+- id: get_mapping_actions
+  name: get_mapping_actions
+  description: 'Get all actions configured for a mapping. Actions define the transformations applied to user attributes when mapping conditions match. Common actions: set field value, copy field, transform with macros, map to app parameter. Returns actions array with action type, target fields, values, and x-request-id.'
+  params:
+    mapping_id: The OneLogin mapping ID
+  enabled: true
+- id: create_mapping_action
+  name: create_mapping_action
+  description: 'Add an action to a mapping that transforms user attributes. Actions execute when conditions match. Common action types: "add_role" or "set_role" (assign user to role), "set_group" (assign user to group), "set_department" (set department attribute), "set_status" (set user status), "set_value" (assign static value), "copy_value" (copy from another field), "set_macro" (use OneLogin macro like {firstname}.{lastname}), "set_default_if_null" (fallback value), "set_custom_attribute_*" (set custom fields). Use list_mapping_actions to get complete list of available action types for your environment. Value array structure varies by action type. Returns created action with ID and x-request-id (API v2).'
+  params:
+    mapping_id: The OneLogin mapping ID
+    action: Action type (e.g., add_role, set_role, set_group, set_department, set_value, copy_value, set_macro, etc.)
+    value: Action configuration array
+  enabled: true
+- id: update_mapping_action
+  name: update_mapping_action
+  description: Update an existing mapping action configuration. Can change action type (add_role, set_role, set_group, set_department, set_value, etc.), target fields, or transformation values. Use list_mapping_actions to see available action types. Use to modify how user attributes are transformed without recreating the action. Returns updated action data and x-request-id (API v2).
+  params:
+    mapping_id: The OneLogin mapping ID
+    action_id: The action ID to update
+    action: New action type (e.g., add_role, set_role, set_group, set_department, set_value, copy_value, set_macro, etc.)
+    value: New action configuration
+  enabled: true
+- id: delete_mapping_action
+  name: delete_mapping_action
+  description: Remove an action from a mapping. The attribute transformation defined by this action will no longer execute. Mapping continues to run other configured actions. Returns 204 No Content on success and x-request-id.
+  params:
+    mapping_id: The OneLogin mapping ID
+    action_id: The action ID to delete
+  enabled: true
+- id: sort_mappings
+  name: sort_mappings
+  description: 'Reorder mapping execution priority by providing array of mapping IDs in desired order. IMPORTANT: Mappings execute sequentially in position order during provisioning - earlier mappings can affect values that later mappings see. Provide complete ordered list of all mapping IDs. Missing mappings may be disabled or repositioned unpredictably. Returns success status and x-request-id.'
+  params:
+    mapping_ids: Array of mapping IDs in desired execution order
+  enabled: true
+- id: list_smart_hooks
+  name: list_smart_hooks
+  description: Get a list of all Smart Hooks configured in your OneLogin account. Smart Hooks are serverless functions that execute custom logic in response to OneLogin events. Can filter by hook type - there is NO disabled filter, so to find disabled hooks list them and read each hook's disabled field. Returns hook list with IDs, types, status, runtime, created/updated timestamps, and x-request-id. Report the runtime from the response rather than assuming a value - new hooks default to nodejs24.x, but hooks predating the runtime upgrade still report older values. Defaults to 100 per page.
+  params:
+    type: Filter by hook type. This is the only filter the API supports; to find disabled hooks, list them and check each hook's disabled field.
+    limit: Results per page. Both the default and the MAXIMUM are 100 - a larger value is rejected with a 422.
+    page: Page number for pagination
+    cursor: 'Fetch another page: pass the after_cursor (next page) or before_cursor (previous page) value from a previous response''s pagination block. One cursor parameter serves both directions. Send it on its own - it already encodes limit/page, and the API rejects a cursor combined with limit/page/sort.'
+  enabled: true
+- id: get_smart_hook
+  name: get_smart_hook
+  description: Get detailed configuration of a specific Smart Hook by ID. Returns complete hook definition including type (determines when it triggers), disabled (whether it runs), status (READ-ONLY deploy state such as ready or update-queued - NOT whether the hook is enabled), runtime environment, function code (base64), packages (npm dependencies), env var names (values are never returned), options, conditions, retries, timeout settings, and x-request-id. Use to review or backup hook logic, and to see which options flags a hook has enabled.
+  params:
+    hook_id: The OneLogin Smart Hook ID
+  enabled: true
+- id: create_smart_hook
+  name: create_smart_hook
+  description: 'Create a new Smart Hook to execute custom logic on OneLogin events. Required: type and function. There are ONLY two hook types: "pre-authentication" (modify auth flow) and "user-migration" (sync users) - no other value is accepted. Each type is synchronous, so an account can only have ONE hook of each type; creating a second returns 409. function must be base64-encoded JavaScript (max 20000 chars). The API also requires disabled, runtime, timeout, retries, env_vars and packages - this tool defaults them (runtime nodejs24.x, timeout 1, retries 0, env_vars [], packages {}, disabled false) so you need not pass them, but you may override any. runtime accepts ONLY nodejs22.x or nodejs24.x. IMPORTANT: each options flag defaults to false, and the context data it controls is absent unless the flag is on. If a hook needs context.location, context.risk, or context.mfa_devices, pass the matching options flag here - or set it later via update_smart_hook, or in the admin console under Settings > Smart Hooks. Returns created hook with ID and x-request-id.'
+  params:
+    type: Hook type. Only these two values exist, and an account may have only one hook of each.
+    function: Base64-encoded JavaScript function code (max 20000 chars)
+    runtime: Lambda runtime. Defaults to nodejs24.x. Older values such as nodejs18.x are rejected by the API.
+    options: 'Opt in to extra data on the hook context. Each flag defaults to false, which means the data it controls is undefined inside the function. pre-authentication ONLY: user-migration defines no options, so passing any flag to one is REJECTED with a 422 (it reports options as {} when read back). These are also editable in the admin console under Settings > Smart Hooks (super users only) as the Options checkboxes on a hook - except failed_login_attempts_enabled, which is API-only.'
+    packages: 'npm packages as {"package-name": "version"}. The version must be an EXACT semver, e.g. "4.17.21" - ranges are rejected with a 422, so "^4.17.21", "~1.2", "1.x" and "latest" all fail.'
+    env_vars: Names of existing account env vars this hook may read, e.g. ["API_KEY"]. Names only - values are NOT set here, but via create_smart_hook_env_var. The variable must already exist. Defaults to [].
+    retries: Number of retries on failure (0-4, default 0)
+    timeout: 'Timeout in seconds, default 1. The max DEPENDS ON TYPE: pre-authentication allows only 1 (it blocks the login), user-migration allows 1-10. Passing 5 to a pre-authentication hook is a 422.'
+    disabled: Whether hook is disabled (default false)
+    conditions: Optional conditional execution rules - the hook only runs when they match. Max 10. Only pre-authentication supports conditions, and its only source is "roles" (user-migration supports none). Values are role IDs.
+    context_version: Version of the context object passed to the function. pre-authentication supports 1.0.0 and 1.1.0; defaults to 1.0.0 if omitted, which pins the hook to the older context shape. Set explicitly if the function needs newer context fields.
+  enabled: true
+- id: update_smart_hook
+  name: update_smart_hook
+  description: 'Update an existing Smart Hook configuration. Can modify function code, packages, env var names, retries, timeout, disabled, conditions and options. type CANNOT be changed after creation (attempting it is a 422), and status is read-only - it reports deploy state, so use disabled to enable/disable a hook. Partial updates supported - pass only the fields to change, and this tool reads the current hook and merges them, because the underlying API replaces the whole hook and rejects a partial body. Note this means an update costs a GET plus a PUT, and concurrent updates can overwrite each other. IMPORTANT: Updating function code while hook is enabled may cause errors during deployment - consider disabling first. Use this to turn on options flags (location_enabled, risk_enabled, mfa_device_info_enabled, failed_login_attempts_enabled) on a pre-authentication hook created without them - that is how you fix a hook whose context is missing data. The first three can equally be ticked in the admin console under Settings > Smart Hooks; failed_login_attempts_enabled is API-only. Returns updated hook data and x-request-id.'
+  params:
+    hook_id: The OneLogin Smart Hook ID to update
+    function: New base64-encoded JavaScript function code (max 20000 chars)
+    options: 'Opt in to extra data on the hook context. Each flag defaults to false, which means the data it controls is undefined inside the function. pre-authentication ONLY: user-migration defines no options, so passing any flag to one is REJECTED with a 422 (it reports options as {} when read back). These are also editable in the admin console under Settings > Smart Hooks (super users only) as the Options checkboxes on a hook - except failed_login_attempts_enabled, which is API-only.'
+    packages: 'New npm packages as {"package-name": "version"}. Version must be an EXACT semver ("4.17.21"); ranges such as "^4.17.21" or "latest" are rejected with a 422.'
+    env_vars: Names of existing account env vars this hook may read, e.g. ["API_KEY"]. Names only - values live on the env var itself. Replaces the hook's current list.
+    retries: New retry count (0-4)
+    timeout: 'New timeout in seconds. The max DEPENDS ON TYPE: pre-authentication allows only 1, user-migration allows 1-10.'
+    disabled: New disabled status. This - not the read-only status field - is what enables or disables a hook.
+    conditions: Replacement conditional execution rules (max 10). pre-authentication only; its sole source is "roles". Every update rewrites conditions, so pass the full list you want, not just additions.
+  enabled: true
+- id: delete_smart_hook
+  name: delete_smart_hook
+  description: 'Permanently delete a Smart Hook. WARNING: This operation cannot be undone. Events will no longer trigger this hook logic. Any automation depending on this hook will stop working. If you don''t know the hook ID, use list_smart_hooks to find it. Returns 202 Accepted, NOT 204: deletion is asynchronous and only queued, so the hook can still appear in list_smart_hooks and get_smart_hook briefly afterwards. Do not treat its continued presence as a failed delete, and do not retry on that basis. Returns x-request-id.'
+  params:
+    hook_id: The OneLogin Smart Hook ID to delete
+  enabled: true
+- id: list_smart_hook_env_vars
+  name: list_smart_hook_env_vars
+  description: 'List the Smart Hook environment variables defined for the account. IMPORTANT: env vars are account-scoped, NOT owned by a single hook - there is no per-hook env var endpoint. A hook opts in to one by listing its NAME in the hook''s env_vars array (see create_smart_hook / update_smart_hook); to see which a given hook uses, call get_smart_hook and read env_vars. Returns each variable''s id, name and timestamps - values are never returned. Use the id with get/update/delete_smart_hook_env_var. Returns x-request-id.'
+  params:
+    limit: Number of results to return
+    page: Page number for pagination
+  enabled: true
+- id: get_smart_hook_env_var
+  name: get_smart_hook_env_var
+  description: Get a single account Smart Hook environment variable by its ID. Returns id, name and timestamps - the value is never returned, as values are write-only for security. Use list_smart_hook_env_vars to find the ID from a name. Returns x-request-id.
+  params:
+    env_var_id: The environment variable UUID (from list_smart_hook_env_vars) - NOT the variable name, and NOT a hook ID
+  enabled: true
+- id: create_smart_hook_env_var
+  name: create_smart_hook_env_var
+  description: 'Create an account-scoped Smart Hook environment variable. Creates ONE variable per call - to add several, call this repeatedly. Variables are encrypted at rest and readable in hook code via process.env.NAME. Creating a variable does NOT attach it to any hook: you must also list its name in that hook''s env_vars array via create_smart_hook or update_smart_hook, or the hook cannot see it. name must match ^[a-zA-Z_][a-zA-Z0-9_]*$ (2-100 chars) and is immutable afterwards; value is 1-5000 chars. Returns the new variable''s id and x-request-id.'
+  params:
+    name: Variable name, e.g. API_KEY. Must match ^[a-zA-Z_][a-zA-Z0-9_]*$, 2-100 chars. Cannot be changed later.
+    value: Variable value, 1-5000 chars
+  enabled: true
+- id: update_smart_hook_env_var
+  name: update_smart_hook_env_var
+  description: Update the value of an existing account Smart Hook environment variable. Only the value can change - the name is immutable, so to rename you must delete and recreate (and update any hook env_vars arrays referencing the old name). The new value takes effect for every hook referencing this variable. Returns x-request-id.
+  params:
+    env_var_id: The environment variable UUID (from list_smart_hook_env_vars) - NOT the variable name, and NOT a hook ID
+    value: New value, 1-5000 chars
+  enabled: true
+- id: delete_smart_hook_env_var
+  name: delete_smart_hook_env_var
+  description: 'Delete an account Smart Hook environment variable by ID. WARNING: env vars are account-scoped and shared, so this removes it from EVERY hook referencing it, not just one. Any hook code reading process.env for this name will break. To detach a variable from a single hook instead, remove its name from that hook''s env_vars array via update_smart_hook and leave the variable itself alone. Returns 204 No Content on success and x-request-id.'
+  params:
+    env_var_id: The environment variable UUID (from list_smart_hook_env_vars) - NOT the variable name, and NOT a hook ID
+  enabled: true
+- id: get_smart_hook_logs
+  name: get_smart_hook_logs
+  description: Get execution logs for a Smart Hook including console.log output from hook code. Logs include request_id (unique per execution), correlation_id (links related executions), created_at timestamp, and events array with logged messages. Use for debugging hook logic, troubleshooting errors, or monitoring execution. Can filter by request_id or correlation_id. Defaults to 100 per page. Returns array of log objects with execution details and x-request-id (API v2).
+  params:
+    hook_id: The OneLogin Smart Hook ID
+    request_id: Filter logs by specific request_id
+    correlation_id: Filter logs by specific correlation_id
+    limit: Results per page. Both the default and the MAXIMUM are 100 - a larger value is rejected with a 422.
+    page: Page number for pagination
+    cursor: 'Fetch another page: pass the after_cursor (next page) or before_cursor (previous page) value from a previous response''s pagination block. One cursor parameter serves both directions. Send it on its own - it already encodes limit/page, and the API rejects a cursor combined with limit/page/sort.'
+  enabled: true
+- id: list_risk_rules
+  name: list_risk_rules
+  description: Get a list of all risk-based authentication rules configured in OneLogin. Risk rules enforce conditional access by requiring MFA, blocking access, or challenging users based on context like IP address, geolocation, device trust, impossible travel, or user behavior anomalies. Filter by name or enabled status. Returns the full list in one response (the API does not paginate this endpoint). Returns rule list with IDs, names, types, targets, enabled status, priority order, and x-request-id.
+  params:
+    name: Filter by rule name
+    enabled: Filter by enabled status
+    limit: 'DEPRECATED: ignored; the API returns all risk rules in one response and does not paginate'
+    page: 'DEPRECATED: ignored; the API returns all risk rules in one response and does not paginate'
+    after_cursor: 'DEPRECATED: ignored; the API returns all risk rules in one response and does not paginate'
+    before_cursor: 'DEPRECATED: ignored; the API returns all risk rules in one response and does not paginate'
+  enabled: true
+- id: get_risk_rule
+  name: get_risk_rule
+  description: 'Get detailed configuration of a specific risk rule by ID. Returns complete rule definition including name, type (IP-based, location-based, device-based, impossible-travel, user-behavior), target (who it applies to: all users, specific apps, specific roles), filters (IP ranges, country codes, risk scores), action (block, challenge, require-mfa, allow), priority, enabled status, and x-request-id. Use to review security policy logic.'
+  params:
+    rule_id: The OneLogin risk rule ID
+  enabled: true
+- id: create_risk_rule
+  name: create_risk_rule
+  description: 'Create a new risk-based authentication rule to enforce conditional access. Required: name, type (ip_range, geo_location, device_trust, impossible_travel, user_behavior), target (scope: all/app_id/role_id). Configure filters based on type: IP ranges (CIDR notation), country codes (ISO), device trust level, travel velocity, behavior anomaly score. Set action: "block" (deny access), "challenge" (step-up auth), "require_mfa" (force MFA), "allow" (bypass MFA). Rules execute in priority order. Returns created rule with ID and x-request-id.'
+  params:
+    name: Risk rule name
+    type: Rule type (ip_range, geo_location, device_trust, impossible_travel, user_behavior)
+    target: Target scope (all, or specific app/role ID)
+    filters: Risk filters based on rule type
+    action: Action to take (block, challenge, require_mfa, allow)
+    priority: Execution priority (lower executes first)
+    enabled: Whether rule is enabled (default true)
+  enabled: true
+- id: update_risk_rule
+  name: update_risk_rule
+  description: 'Update an existing risk rule configuration. Can modify name, type, target scope, filters (IP ranges, countries, etc.), action (block/challenge/require-mfa/allow), priority, or enabled status. Partial updates supported - only provide fields to change. Use to adjust security policies as threat landscape evolves. IMPORTANT: Changing action from "allow" to "block" may immediately lock out users. Returns updated rule data and x-request-id.'
+  params:
+    rule_id: The OneLogin risk rule ID to update
+    name: New rule name
+    type: New rule type
+    target: New target scope
+    filters: New risk filters
+    action: New action
+    priority: New priority
+    enabled: New enabled status
+  enabled: true
+- id: delete_risk_rule
+  name: delete_risk_rule
+  description: 'Permanently delete a risk rule. WARNING: This operation cannot be undone. Security controls enforced by this rule will no longer apply. Users previously blocked or challenged by this rule will authenticate normally (subject to other rules). If you don''t know the rule ID, use list_risk_rules to find it. Returns 204 No Content on success and x-request-id.'
+  params:
+    rule_id: The OneLogin risk rule ID to delete
+  enabled: true
+- id: verify_risk
+  name: verify_risk
+  description: 'Calculate risk score for a specific authentication context without performing actual authentication. Provide context: ip_address (requester IP), user_id (authenticating user), app_id (target app), device_id (trusted device ID). Returns risk assessment with overall risk_score (0-100, higher = riskier), risk_level (low/medium/high/critical), matched_rules (which risk rules triggered), risk_factors (contributing elements: new_device, impossible_travel, suspicious_ip, behavior_anomaly), recommended_action (allow/challenge/block), and x-request-id. Use for testing risk policies or building custom authentication flows.'
+  params:
+    ip_address: IP address to evaluate
+    user_id: User ID attempting authentication
+    app_id: App ID being accessed
+    device_id: Device ID (if known)
+  enabled: true
+- id: list_api_authorizations
+  name: list_api_authorizations
+  description: Get a list of all API authorizations (resource servers) configured in OneLogin. API authorizations define protected resources that client apps can request access to via OAuth 2.0 scopes. Each authorization has a unique audience identifier and set of allowed scopes. Paginate with limit/page, or pass a previous response's pagination.after_cursor / before_cursor as cursor. Returns authorization list with IDs, names, descriptions, audiences, a pagination block, and x-request-id.
+  params:
+    limit: Number of results to return
+    page: Page number for pagination
+    cursor: 'Fetch another page: pass the after_cursor (next page) or before_cursor (previous page) value from a previous response''s pagination block. One cursor parameter serves both directions. Send it on its own - it already encodes limit/page, and the API rejects a cursor combined with limit/page/sort.'
+    after_cursor: 'Alias for cursor, kept for backwards compatibility: the after_cursor value from a previous response''s pagination block. Prefer cursor.'
+    before_cursor: 'Alias for cursor, kept for backwards compatibility: the before_cursor value from a previous response''s pagination block. Prefer cursor.'
+  enabled: true
+- id: get_api_authorization
+  name: get_api_authorization
+  description: Get detailed configuration of a specific API authorization by ID. Returns complete authorization definition including name, description, audience (unique identifier in JWT tokens), configuration (token lifetime, refresh settings), associated scopes, and authorized client apps. Use to review OAuth resource server configuration. Returns authorization data and x-request-id.
+  params:
+    auth_id: The API authorization ID
+  enabled: true
+- id: create_api_authorization
+  name: create_api_authorization
+  description: 'Create a new API authorization (OAuth 2.0 resource server) to protect your APIs with OneLogin. Required: name. Optional: description, connector_id (omit to use the account default API authorization connector), and a nested configuration object ({audiences, resource_identifier, access_token_expiration_minutes, refresh_token_expiration_minutes}). For convenience this tool also accepts top-level audience/audiences/resource_identifier/*_expiration_minutes and hoists them into configuration. Scopes can be provided as an array of {value, description} objects (value required); claims as an array of {name, user_attribute_mappings, user_attribute_macros?, attributes_transformations?} objects (name and user_attribute_mappings required) — both created alongside the authorization. Returns created authorization with ID and x-request-id.'
+  params:
+    name: Authorization name
+    description: Authorization description
+    connector_id: Connector ID; omit to use the account default API authorization connector
+    audience: Convenience alias for configuration.audiences
+    audiences: Convenience alias for configuration.audiences
+    resource_identifier: Convenience alias for configuration.resource_identifier
+    access_token_expiration_minutes: Convenience alias for configuration.access_token_expiration_minutes
+    refresh_token_expiration_minutes: Convenience alias for configuration.refresh_token_expiration_minutes
+    configuration: Nested configuration (takes precedence over convenience aliases above)
+    scopes: Optional scopes to create alongside the authorization
+    claims: Optional claims to create alongside the authorization
+  enabled: true
+- id: update_api_authorization
+  name: update_api_authorization
+  description: 'Update an existing API authorization configuration. The OneLogin API requires BOTH auth_id and name on update (it is not a true partial update). Can modify description and nested configuration (audiences, resource_identifier, token expirations). Top-level audience/audiences/resource_identifier/*_expiration_minutes are hoisted into configuration. NOTE: connector_id, scopes, and claims cannot be changed here — connector_id is read-only on the model, and scopes/claims are only accepted on create; use add_authorization_scopes / add_authorization_claim etc. to manage them afterwards. IMPORTANT: Changing audiences will break existing access tokens. Returns updated authorization data and x-request-id.'
+  params:
+    auth_id: The API authorization ID to update
+    name: Name (required by the API even on update)
+    description: New description
+    audience: Convenience alias for configuration.audiences
+    audiences: Convenience alias for configuration.audiences
+    resource_identifier: Convenience alias for configuration.resource_identifier
+    access_token_expiration_minutes: Convenience alias for configuration.access_token_expiration_minutes
+    refresh_token_expiration_minutes: Convenience alias for configuration.refresh_token_expiration_minutes
+    configuration: Nested configuration (takes precedence over convenience aliases above)
+  enabled: true
+- id: delete_api_authorization
+  name: delete_api_authorization
+  description: 'Permanently delete an API authorization. WARNING: This removes OAuth scope definitions and revokes all associated client access. Existing access tokens for this authorization become invalid. Client apps will receive authorization errors. Returns 204 No Content on success and x-request-id.'
+  params:
+    auth_id: The API authorization ID to delete
+  enabled: true
+- id: list_authorization_scopes
+  name: list_authorization_scopes
+  description: Get all OAuth 2.0 scopes defined for an API authorization. Scopes control granular permissions (read:users, write:data, etc.). Returns scope list with values, descriptions, and x-request-id. Use to audit what permissions can be requested from this authorization.
+  params:
+    auth_id: The API authorization ID
+  enabled: true
+- id: add_authorization_scopes
+  name: add_authorization_scopes
+  description: 'Add OAuth 2.0 scopes to an existing API authorization. The underlying API creates one scope per call; pass multiple {value, description?} objects to add several in one shot. `value` is the scope identifier (e.g., "contact:read") — no whitespace allowed. `description` is a human-readable label. Naming convention: <action>:<resource>. Returns a results array with per-scope ok/error status; on partial success some scopes will have been created and others not.'
+  params:
+    auth_id: The API authorization ID
+    scopes: Array of scopes to add
+  enabled: true
+- id: remove_authorization_scopes
+  name: remove_authorization_scopes
+  description: Remove OAuth 2.0 scopes from an API authorization. Provide scope_ids — the numeric `id` values from list_authorization_scopes (NOT the string scope values). The underlying API deletes one scope per call; we iterate and report per-scope status. Client apps can no longer request removed scopes; existing access tokens remain valid until expiration. Returns a results array with per-scope ok/error status.
+  params:
+    auth_id: The API authorization ID
+    scope_ids: Numeric scope IDs to remove (the `id` values from list_authorization_scopes)
+  enabled: true
+- id: list_authorized_clients
+  name: list_authorized_clients
+  description: Get list of client apps (API credentials) authorized to request tokens for this API authorization. Returns client list with IDs, names, client_id values, and granted scopes. Use to audit which apps can access this protected resource. Returns client data and x-request-id.
+  params:
+    auth_id: The API authorization ID
+  enabled: true
+- id: add_authorized_clients
+  name: add_authorized_clients
+  description: Grant OIDC client apps permission to request access tokens for this API authorization. Each client needs an app_id (the OIDC app ID from list_apps or as returned by list_authorized_clients) and a scopes array of numeric API scope IDs (get these from list_authorization_scopes — scope value strings will NOT work here). The underlying API creates one client association per call; pass multiple {app_id, scopes} objects to register several in one shot. Returns a results array with per-client ok/error status.
+  params:
+    auth_id: The API authorization ID
+    clients: Array of client associations to create
+  enabled: true
+- id: remove_authorized_clients
+  name: remove_authorized_clients
+  description: Revoke OIDC client apps from this API authorization. Provide app_ids — the OIDC app IDs (`app_id` field) as returned by list_authorized_clients, NOT a separate client_id. Clients can no longer request new tokens; existing tokens remain valid until expiration. Returns a results array with per-app ok/error status.
+  params:
+    auth_id: The API authorization ID
+    app_ids: OIDC app IDs to revoke (the `app_id` values from list_authorized_clients)
+  enabled: true
+- id: list_available_scopes
+  name: list_available_scopes
+  description: Get catalog of all available OAuth 2.0 scopes across all API authorizations in your OneLogin account. Returns comprehensive scope list with values, descriptions, and which authorizations they belong to. Use to discover existing scopes before creating new ones or to standardize scope naming. Returns scope catalog and x-request-id.
+  enabled: true
+- id: list_authorization_claims
+  name: list_authorization_claims
+  description: Get all custom claims defined for an API authorization. Claims are user attributes (email, roles, custom fields) included in access tokens as JWT claims. Returns claim list with IDs, names, user attribute mappings, transformations, and x-request-id. Use to audit what user data is exposed in tokens (API v2).
+  params:
+    auth_id: The API authorization ID
+  enabled: true
+- id: add_authorization_claim
+  name: add_authorization_claim
+  description: 'Add a custom claim to access tokens for an API authorization. Claims enrich tokens with user attributes (email, roles, custom attributes). Required: name (claim key in JWT), user_attribute_mappings (OneLogin user field to map). For custom attributes, prefix with "custom_attribute_" (e.g., "custom_attribute_employee_id"). Optional: user_attribute_macros (when mappings="_macro_"), attributes_transformations (e.g., "semicolon_separated_list" for role arrays). Returns created claim with ID and x-request-id (API v2).'
+  params:
+    auth_id: The API authorization ID
+    name: Claim name as it appears in the JWT token
+    user_attribute_mappings: OneLogin user attribute to map (e.g., "email", "roles", "custom_attribute_employee_id")
+    user_attribute_macros: Macro logic if user_attribute_mappings is "_macro_"
+    attributes_transformations: Transformation to apply (e.g., "semicolon_separated_list")
+  enabled: true
+- id: update_authorization_claim
+  name: update_authorization_claim
+  description: 'Update an existing claim configuration for an API authorization. Can modify name, user attribute mappings, macros, and transformations. Partial updates supported - only provide fields to change. IMPORTANT: Changing claim mapping will affect all future access tokens. Existing tokens retain old claim values until expiration. Returns updated claim data and x-request-id (API v2).'
+  params:
+    auth_id: The API authorization ID
+    claim_id: The claim ID to update
+    name: New claim name
+    user_attribute_mappings: New user attribute mapping
+    user_attribute_macros: New macro logic
+    attributes_transformations: New transformation
+  enabled: true
+- id: delete_authorization_claim
+  name: delete_authorization_claim
+  description: Remove a claim from an API authorization. Claim will no longer appear in newly issued access tokens. Existing tokens with this claim remain valid until expiration. Use to remove unnecessary user data exposure from tokens. Returns success status and x-request-id (API v2).
+  params:
+    auth_id: The API authorization ID
+    claim_id: The claim ID to delete
+  enabled: true
+- id: create_session_login_token
+  name: create_session_login_token
+  description: 'Authenticate a user and create a session token for custom login flows. Provide username/email and password. If MFA not required: returns session_token immediately for SSO access. If MFA required: returns state_token, devices (available MFA factors with device_id), and user info - must then call verify_session_factor. Use subdomain parameter to specify OneLogin account. Returns authentication result with session data or MFA challenge and x-request-id.'
+  params:
+    username_or_email: Username or email address
+    password: User password
+    subdomain: OneLogin account subdomain
+    ip_address: User IP address (optional, for risk assessment)
+  enabled: true
+- id: verify_session_factor
+  name: verify_session_factor
+  description: 'Complete MFA verification during session login to obtain session token. Use in conjunction with create_session_login_token after MFA challenge. Provide device_id (from MFA challenge) and state_token. For OTP factors (SMS, Email, Authenticator): include otp_token. For OneLogin Protect: first call triggers push, subsequent calls poll with do_not_notify=true. Returns session_token on success or pending status for push factors. Returns session data and x-request-id.'
+  params:
+    device_id: MFA device ID from login challenge
+    state_token: State token from initial login
+    otp_token: One-time password (optional, for OTP factors)
+    do_not_notify: Skip push notification (optional, for polling)
+  enabled: true
+- id: get_session_token
+  name: get_session_token
+  description: Get detailed information about a session token including user data, expiration, and session metadata. Returns user object with ID, email, username, firstname, lastname, session status (active/expired), created_at timestamp, expires_at timestamp, and x-request-id. Use to validate sessions or check session status. Returns 401 if token invalid or expired.
+  params:
+    session_token: The session token to query
+  enabled: true
+- id: destroy_session_token
+  name: destroy_session_token
+  description: Invalidate a session token (logout user). The token immediately becomes invalid and cannot be used for authentication. User must re-authenticate to get a new session. Use for explicit logout or to revoke compromised sessions. Returns success status and x-request-id.
+  params:
+    session_token: The session token to destroy
+  enabled: true
+- id: get_logout_url
+  name: get_logout_url
+  description: Generate a logout URL for OneLogin session termination. Returns logout_url that when visited will end the user's OneLogin session across all apps. Optionally provide redirect_uri parameter to send user to specific page after logout. Use in custom portals to provide logout functionality. Returns logout URL and x-request-id.
+  params:
+    redirect_uri: URL to redirect to after logout (optional)
+  enabled: true
+- id: list_brands
+  name: list_brands
+  description: Get a list of all branding configurations in your OneLogin account. Brands control the visual appearance of login pages, portals, and emails. Each brand can be assigned to specific apps or used account-wide. Returns the full list in one response (the API does not paginate this endpoint). Returns brand list with IDs, names, enabled status, custom settings (logo URLs, colors, background images), and x-request-id.
+  params:
+    limit: 'DEPRECATED: ignored; the API returns all brands in one response and does not paginate'
+    page: 'DEPRECATED: ignored; the API returns all brands in one response and does not paginate'
+    after_cursor: 'DEPRECATED: ignored; the API returns all brands in one response and does not paginate'
+    before_cursor: 'DEPRECATED: ignored; the API returns all brands in one response and does not paginate'
+  enabled: true
+- id: get_brand
+  name: get_brand
+  description: 'Get detailed configuration of a specific brand by ID. Returns complete brand settings including name, enabled status, customization options: logo (header, login page, favicon), colors (primary, secondary, navigation), background images, custom CSS, login page copy (title, tagline), email templates, and apps using this brand. Use to review or backup branding configuration. Returns brand data and x-request-id.'
+  params:
+    brand_id: The brand ID
+  enabled: true
+- id: create_brand
+  name: create_brand
+  description: 'Create a new brand to customize OneLogin portal appearance. Required: name. Configure visual elements: logo_url (header logo), login_logo_url (login page logo), favicon_url, primary_color (hex color for buttons/links), secondary_color, navigation_color, background_image_url (login page background), custom_css (advanced styling), custom_login_page_title, custom_login_page_tagline. Assign to apps or set as account default. Returns created brand with ID and x-request-id.'
+  params:
+    name: Brand name
+    enabled: Whether brand is enabled (default true)
+    logo_url: Header logo URL
+    login_logo_url: Login page logo URL
+    favicon_url: Favicon URL
+    primary_color: Primary color (hex)
+    secondary_color: Secondary color (hex)
+    background_image_url: Login background image URL
+  enabled: true
+- id: update_brand
+  name: update_brand
+  description: Update an existing brand configuration. Can modify name, enabled status, and any customization settings (logos, colors, backgrounds, custom copy). Partial updates supported - only provide fields to change. Changes apply immediately to login pages and portals using this brand. Returns updated brand data and x-request-id.
+  params:
+    brand_id: The brand ID to update
+    name: New brand name
+    enabled: New enabled status
+    logo_url: New header logo URL
+    login_logo_url: New login logo URL
+    primary_color: New primary color
+    background_image_url: New background image
+  enabled: true
+- id: delete_brand
+  name: delete_brand
+  description: 'Permanently delete a brand. WARNING: Apps using this brand will revert to the account default brand. Custom branding settings are lost and cannot be recovered. If you don''t know the brand ID, use list_brands to find it. Returns 204 No Content on success and x-request-id.'
+  params:
+    brand_id: The brand ID to delete
+  enabled: true
+- id: get_brand_apps
+  name: get_brand_apps
+  description: Get a list of apps currently using a specific brand. Returns app list with IDs, names, and connector info. Use to understand brand impact before making changes or to audit which apps share branding. Returns app data and x-request-id.
+  params:
+    brand_id: The brand ID
+  enabled: true
+- id: list_connectors
+  name: list_connectors
+  description: Get a list of all available app connectors in the OneLogin catalog. Connectors are pre-built integration templates for SaaS apps (Salesforce, Slack, AWS, Office 365, etc.). Each connector defines SSO configuration, provisioning rules, and attribute mappings. Filter by name to find specific apps (use *wildcards* for partial matches - this is the only search the API offers). Paginate with limit/page, or pass a previous response's pagination.after_cursor / before_cursor as cursor. Returns connector list with IDs, names, descriptions, logos, auth methods (SAML, OIDC, etc.), a pagination block, and x-request-id. Use to discover available integrations before creating apps.
+  params:
+    name: Filter by connector name. Exact match by default; wrap in * for a partial match (e.g. "*slack*" finds every Slack connector). This is the catalog search - there is no separate search endpoint.
+    limit: Number of results to return (default 50)
+    page: Page number for pagination
+    cursor: 'Fetch another page: pass the after_cursor (next page) or before_cursor (previous page) value from a previous response''s pagination block. One cursor parameter serves both directions. Send it on its own - it already encodes limit/page, and the API rejects a cursor combined with limit/page/sort.'
+    after_cursor: 'Alias for cursor, kept for backwards compatibility: the after_cursor value from a previous response''s pagination block. Prefer cursor.'
+    before_cursor: 'Alias for cursor, kept for backwards compatibility: the before_cursor value from a previous response''s pagination block. Prefer cursor.'
+  enabled: true
+- id: get_connector
+  name: get_connector
+  description: Get detailed configuration for a specific connector by ID. Returns complete connector definition including name, description, logo_url, auth_method (0=Password, 2=SAML, 8=OIDC, etc.), icon_url, allows_new_parameters (can add custom SAML attributes), default parameters (required config fields), provisioning capabilities (create/update/delete users), and supported features. Use to understand connector requirements before creating an app. Returns connector data and x-request-id.
+  params:
+    connector_id: The connector ID
+  enabled: true
+- id: list_reports
+  name: list_reports
+  description: 'List the saved reports available in the OneLogin account (built-in reports plus any custom reports created in the admin console). Each entry has id, name, and report_type (e.g. events, app_details, user_details). Returns the full list in one response (no pagination). Use this to find the report_id for run_report / run_report_background. IMPORTANT: the Reports API cannot define new reports or apply ad-hoc filters; reports are configured in the admin console under Reports. Requires the API credential to have been created by a super user. Returns reports array and x-request-id (API v2).'
+  params:
+    limit: 'DEPRECATED: ignored; the API returns all reports in one response'
+    page: 'DEPRECATED: ignored; the API returns all reports in one response'
+  enabled: true
+- id: get_report
+  name: get_report
+  description: Get a single saved report by ID (id, name, report_type). The API has no per-report endpoint, so this fetches the report list and filters it client-side; it returns status 404 if the ID is not in the list. Requires the API credential to have been created by a super user. Returns report data and x-request-id (API v2).
+  params:
+    report_id: The report ID (from list_reports)
+  enabled: true
+- id: run_report
+  name: run_report
+  description: 'Run a saved report synchronously and return its rows as JSON. Get report_id from list_reports. Returns { report: [ {column: value, ...}, ... ] } with column names derived from the report''s configured columns. IMPORTANT: the server enforces a 20-second limit; large reports return status 422 with a timeout message, in which case use run_report_background instead. No filters or pagination can be passed; the report runs exactly as configured in the admin console. Requires the API credential to have been created by a super user (otherwise 401). Returns report rows and x-request-id (API v2).'
+  params:
+    report_id: The report ID (from list_reports)
+  enabled: true
+- id: run_report_background
+  name: run_report_background
+  description: 'Run a saved report asynchronously and email the result as a CSV attachment. Use this for large reports that time out in run_report. Required: report_id (from list_reports) and email (the recipient; must be a valid address or the API returns 422). Returns immediately with a confirmation message; there is no job ID or status endpoint to poll, the CSV simply arrives by email. Requires the API credential to have been created by a super user (otherwise 401). Returns message and x-request-id (API v2).'
+  params:
+    report_id: The report ID (from list_reports)
+    email: Email address to send the CSV to
+  enabled: true
+- id: generate_report
+  name: generate_report
+  description: 'DEPRECATED: use run_report (synchronous JSON rows) or run_report_background (CSV by email) instead; this name is kept only so existing clients do not break and will be removed in a future release. The previous report_type/date filter contract never worked because the API has no report-generation endpoint. Now runs an existing saved report: with report_id only it behaves like run_report; with report_id and email it behaves like run_report_background (any supplied email, even empty, selects the background path and is validated there). Requires the API credential to have been created by a super user (otherwise 401). Returns the same data as the delegated tool and x-request-id (API v2).'
+  params:
+    report_id: The report ID (from list_reports)
+    email: If set, run in the background and email the CSV here
+  enabled: true
+- id: get_rate_limit_status
+  name: get_rate_limit_status
+  description: Get current rate limit status for your API client. OneLogin enforces rate limits to prevent API abuse (typically 5000 requests per hour per client_id). Returns current status including limit (max requests per window), remaining (requests left in current window), reset_at (when limit resets, Unix timestamp), window_size (typically 3600 seconds), and throttled (whether you are currently being rate limited). Use before making batch API calls to avoid 429 errors. Returns status data and x-request-id.
+  enabled: true
+- id: get_rate_limits
+  name: get_rate_limits
+  description: Get rate limit configuration for all OneLogin API endpoints. Different endpoint categories have different limits (e.g., authentication endpoints may have stricter limits than read-only endpoints). Returns comprehensive rate limit rules including endpoint_patterns (URL patterns), methods (GET, POST, PUT, DELETE), limits (requests per hour), burst_limits (requests per minute), and exemptions (privileged API clients with higher limits). Use to understand API quotas and plan integration architecture. Returns limits configuration and x-request-id.
+  enabled: true
+- id: list_accounts
+  name: list_accounts
+  description: List child accounts under your reseller account. Requires reseller privileges. Returns account data including id, name, address, city, state, country, zip, phone, homepage, notes, created_at, and updated_at. Returns the full list in one response (the API does not paginate this endpoint). Returns x-request-id for log tracing.
+  params:
+    limit: 'DEPRECATED: ignored; the API returns all accounts in one response and does not paginate'
+    page: 'DEPRECATED: ignored; the API returns all accounts in one response and does not paginate'
+    after_cursor: 'DEPRECATED: ignored; the API returns all accounts in one response and does not paginate'
+    before_cursor: 'DEPRECATED: ignored; the API returns all accounts in one response and does not paginate'
+  enabled: true
+- id: get_account
+  name: get_account
+  description: Get a specific child account by ID. Requires reseller privileges. Returns account data including id, name, address (address1, address2, city, state, zip, country), phone, homepage, notes, created_at, updated_at, and assigned roles. Returns x-request-id for log tracing.
+  params:
+    account_id: The child account ID
+  enabled: true
+- id: create_account
+  name: create_account
+  description: 'Create a new child account under your reseller account. Requires reseller privileges. The account object should contain name and optionally address1, address2, city, state, zip, country, phone, homepage, notes. Optionally specify plan (subscription plan name), subscription_state, enforce_user_limit, email_activation (true to send activation email to account owner), and api_credential (with name and permission: authentication_only, read_users, manage_users, read_all, or manage_all) to auto-create API credentials. Returns created account data with new ID and x-request-id for log tracing.'
+  params:
+    account: Account details (name, address1, address2, city, state, zip, country, phone, homepage, notes)
+    plan: Subscription plan name
+    subscription_state: Subscription state
+    enforce_user_limit: Whether to enforce user limits for this plan
+    email_activation: Set to "true" to send activation email to account owner
+    api_credential: Auto-create API credential for the new account
+  enabled: true
+- id: update_account
+  name: update_account
+  description: Update a child account. Requires reseller privileges. Partial updates supported - only provide fields to change within the account object (name, address1, address2, city, state, zip, country, phone, homepage, notes). Optionally include api_credential to create new API credentials for the account (requires allow_assuming_users on the account). Returns updated account data and x-request-id for log tracing.
+  params:
+    account_id: The child account ID to update
+    account: Account fields to update
+    api_credential: Create API credential for the account (requires allow_assuming_users)
+  enabled: true
+- id: list_policies
+  name: list_policies
+  description: 'Get a list of security policies in a OneLogin account. Filter by kind ("user" for policies assigned to users and groups, "app" for policies assigned to apps) or by name (partial match). IMPORTANT: list responses are brief - only id, name, kind and is_default. Call get_policy for a policy''s actual settings. Returns 50 policies per page (max 1000); read total_count from the pagination block to count without paging. Returns x-request-id for log tracing (API v2).'
+  params:
+    kind: Filter by policy kind
+    name: Filter by name (case-insensitive partial match)
+    limit: Results per page (default 50, max 1000)
+    page: Page number
+    cursor: 'Fetch another page: pass the after_cursor (next page) or before_cursor (previous page) value from a previous response''s pagination block. One `cursor` parameter serves both directions'
+  enabled: true
+- id: get_policy
+  name: get_policy
+  description: 'Get a single security policy with its full settings. IMPORTANT: the response only contains fields that apply to that policy''s kind - an app policy will not include password, session or account-recovery fields at all, and their absence does not mean they are unset. Returns id, name, kind, is_default, every applicable setting, authentication_factor_ids, and x-request-id (API v2).'
+  params:
+    policy_id: The OneLogin policy ID
+  enabled: true
+- id: create_policy
+  name: create_policy
+  description: 'Create a security policy. IMPORTANT: requires the Custom Security Policies plan feature - without it the API returns 406. `kind` is required and cannot be changed afterwards: "user" for a policy assigned to users and groups (passwords, lockout, sessions, MFA, portal), "app" for a policy assigned to apps via update_app''s policy_id (force_authn, per-app MFA, IP restriction, device trust). Fields belonging to the other kind are rejected - each field below is marked USER POLICIES ONLY, APP POLICIES ONLY, or "Both kinds". Creating a policy does not assign it to anyone: use update_user, update_group or update_app to apply it, or set_default_policy to make it the account default. Returns the created policy with its new ID and x-request-id (API v2).'
+  params:
+    kind: Policy kind. Required, and immutable once created
+    name: Policy name
+    ip_addr_restriction: Whitespace-separated allowlist of IPv4 addresses and ranges (e.g. "10.0.0.1 10.0.1.1-10.0.1.99"). Empty means no restriction. Both kinds
+    ignore_xff: Ignore X-Forwarded-For headers when evaluating IP restrictions. Both kinds
+    browser_cert_required: Require a device trust certificate. Both kinds
+    third_party_device_trust: Accept a third-party device trust signal. Both kinds
+    enable_smart_access: Enable Smart Access risk evaluation. Both kinds
+    smart_access_risk_threshold: Risk score (0-100) at or above which Smart Access acts. Both kinds
+    otp_auth_enabled: Require MFA. Both kinds
+    authentication_factor_ids: Account-level authentication factor IDs allowed for MFA - get them from list_authentication_factors, NOT from a user's enrolled devices. Replaces the whole set on update. Both kinds
+    force_authn: Force re-authentication when the user launches the app. APP POLICIES ONLY
+    app_force_authn_offset: Seconds of grace before force_authn re-prompts (3, 15, 30 or 60). APP POLICIES ONLY
+    app_otp_offset_enabled: Skip the MFA prompt if the user completed MFA recently. APP POLICIES ONLY
+    app_otp_offset: Minutes of MFA grace when app_otp_offset_enabled is true (max 7200). APP POLICIES ONLY
+    gdt_required: Require OneLogin Desktop (global device trust). APP POLICIES ONLY
+    preferred_auth_state_machine: 'Login flow: 1=password then MFA (standard), 2=MFA then password, 3=MFA only (passwordless), 4=password then MFA then PKI. USER POLICIES ONLY'
+    minimum_password_length: Minimum password length, 5-32. USER POLICIES ONLY
+    password_expiration_days: Days before a password expires, 0-99. 0 means never. USER POLICIES ONLY
+    passwords_remembered: How many previous passwords cannot be reused, 0-99. USER POLICIES ONLY
+    password_complexity_requirements: 'Complexity: 0=none, 1=letters and digits, 2=mixed case and digits, 3=mixed case, digits and special chars, 4=at least three of those four classes. USER POLICIES ONLY'
+    dynamic_blacklist_attributes: User attribute names whose values may not appear in a password (e.g. ["firstname","lastname"]). USER POLICIES ONLY
+    enforce_account_password_blacklist: Reject passwords on the account blacklist. USER POLICIES ONLY
+    enforce_compromised_credentials_check: Check passwords against known-breached credentials. USER POLICIES ONLY
+    password_redirect_enabled: Send password changes to an external URL instead of OneLogin. USER POLICIES ONLY
+    password_redirect_url: Where to send users to change their password. USER POLICIES ONLY
+    password_redirect_message: Message shown alongside the password redirect link. USER POLICIES ONLY
+    enable_password_change: Let users change their own password. USER POLICIES ONLY
+    enable_unlock_via_password_reset: A successful password reset also unlocks a locked account. USER POLICIES ONLY
+    enable_email_password_reset: Allow self-service reset by email. USER POLICIES ONLY
+    enable_sms_password_reset: Allow self-service reset by SMS. Requires the Password Reset - SMS feature. USER POLICIES ONLY
+    enable_question_password_reset: Allow self-service reset via security questions. Requires the Password Reset - Questions feature. USER POLICIES ONLY
+    require_security_questions: Make users set security questions. USER POLICIES ONLY
+    reset_password_authentication_factor_ids: Authentication factor IDs usable to verify a password reset, from list_authentication_factors. Replaces the whole set on update. USER POLICIES ONLY
+    invite_expiration_time_value: How long an invite/reset link stays valid (must be > 0). Pair with invite_expiration_time_unit. USER POLICIES ONLY
+    invite_expiration_time_unit: 'Unit for invite_expiration_time_value: 0=minutes, 1=hours. USER POLICIES ONLY'
+    maximum_invalid_login_attempts: Failed logins before lockout, 3-10. 0 means no limit. USER POLICIES ONLY
+    lock_effective_minutes: Lockout duration in minutes (15, 30, 60). 0 means locked until an admin unlocks. USER POLICIES ONLY
+    session_timeout_by_inactivity_value: Idle timeout. 0 means never. Pair with session_timeout_by_inactivity_unit. USER POLICIES ONLY
+    session_timeout_by_inactivity_unit: 'Unit for the idle timeout: 0=minutes, 1=hours. USER POLICIES ONLY'
+    session_timeout_by_fixed_time_value: Absolute session lifetime regardless of activity. 0 means never. USER POLICIES ONLY
+    session_timeout_by_fixed_time_unit: 'Unit for the fixed timeout: 0=minutes, 1=hours. USER POLICIES ONLY'
+    session_timeout_minutes: Legacy single session timeout. The server recomputes this from the session_timeout_by_* fields whenever those are set - prefer them. USER POLICIES ONLY
+    session_timeout_type: 'Legacy companion to session_timeout_minutes: 0=by inactivity, 1=by fixed time. Server-derived when the session_timeout_by_* fields are set. USER POLICIES ONLY'
+    persistent_session_enabled: Allow "keep me signed in" across browser restarts. USER POLICIES ONLY
+    otp_config: 'Who MFA applies to: 0=administrators only, 1=configured users only, 2=all users. USER POLICIES ONLY'
+    otp_trigger_condition: 'When to prompt for MFA: 0=every login, 1=unknown browser only. USER POLICIES ONLY'
+    otp_security_token_expiration_days: Days a remembered-device MFA token stays valid (1-99999). USER POLICIES ONLY
+    mfa_registration_enabled: Prompt users to register MFA factors. USER POLICIES ONLY
+    voluntary_mfa_registration_enabled: With mfa_registration_enabled true, makes registration optional rather than required. USER POLICIES ONLY
+    user_phone_update_allowed: Let users change the phone number on an MFA factor. USER POLICIES ONLY
+    disable_protect_push_notifications: Turn off OneLogin Protect push, forcing manual OTP entry. USER POLICIES ONLY
+    disable_protect_push_recovery: Turn off OneLogin Protect push for account recovery. USER POLICIES ONLY
+    enable_number_match: Require number matching on OneLogin Protect push (anti push-fatigue). USER POLICIES ONLY
+    self_install_cert: Let users install their own device trust certificate. USER POLICIES ONLY
+    browser_pki_expiration: 'Device trust certificate lifetime in days: 365, 730 or 1826. USER POLICIES ONLY'
+    trusted_device_login_enabled: Allow login from trusted devices. USER POLICIES ONLY
+    trusted_device_login_mfa_allowed: Allow MFA to be satisfied by the trusted device. USER POLICIES ONLY
+    new_portal_setting: Access to the new portal experience. USER POLICIES ONLY
+    allow_add_company_app: Let users add company apps to their portal. USER POLICIES ONLY
+    allow_add_personal_app: Let users add personal apps to their portal. USER POLICIES ONLY
+    enable_browser_extensions: Allow the OneLogin browser extension. USER POLICIES ONLY
+    disable_browser_password_manager: Stop the browser offering to save OneLogin passwords. USER POLICIES ONLY
+    enable_email_hint: Show an email hint on the login page. USER POLICIES ONLY
+    social_sign_in: Master switch for social sign-in. The per-provider flags below do nothing without it. USER POLICIES ONLY
+    google: Allow Google sign-in. USER POLICIES ONLY
+    facebook: Allow Facebook sign-in. USER POLICIES ONLY
+    linkedin: Allow LinkedIn sign-in. USER POLICIES ONLY
+    twitter: Allow X/Twitter sign-in. USER POLICIES ONLY
+    secure_admin: Require step-up authentication to reach the admin console. USER POLICIES ONLY
+    admin_policy_id: ID of the APP policy that governs the admin console step-up. USER POLICIES ONLY
+    secure_profile: Require step-up authentication to reach the user profile page. USER POLICIES ONLY
+    profile_policy_id: ID of the APP policy that governs the profile page step-up. USER POLICIES ONLY
+    secure_area_otp_timeout_minutes: 'How long a step-up stays valid: 5, 10, 15, 20, 30, 45 or 60 minutes. USER POLICIES ONLY'
+    euba_enabled: Enable end-user behaviour analytics. USER POLICIES ONLY
+    euba_risk_threshold: Risk score (0-100) at or above which EUBA acts. USER POLICIES ONLY
+    track_inactive_users: Track and report inactive users. USER POLICIES ONLY
+    enable_system_use_notification: Show a system use notification before login. USER POLICIES ONLY
+    system_use_notification: Text of the system use notification. USER POLICIES ONLY
+    terms_and_conditions: Terms users must accept at login. USER POLICIES ONLY
+  enabled: true
+- id: update_policy
+  name: update_policy
+  description: 'Update a security policy. Partial updates are supported - only supply the fields you want to change. IMPORTANT: `kind` cannot be changed, and a field belonging to the other kind is rejected with 422 naming the field, so check the policy''s kind with get_policy first. authentication_factor_ids and reset_password_authentication_factor_ids REPLACE the whole set rather than adding to it - send the full list you want, and read the current one from get_policy first. Changes take effect on the next authentication for every user, group or app the policy is assigned to. Returns the updated policy and x-request-id (API v2).'
+  params:
+    policy_id: The OneLogin policy ID to update
+    name: Policy name
+    ip_addr_restriction: Whitespace-separated allowlist of IPv4 addresses and ranges (e.g. "10.0.0.1 10.0.1.1-10.0.1.99"). Empty means no restriction. Both kinds
+    ignore_xff: Ignore X-Forwarded-For headers when evaluating IP restrictions. Both kinds
+    browser_cert_required: Require a device trust certificate. Both kinds
+    third_party_device_trust: Accept a third-party device trust signal. Both kinds
+    enable_smart_access: Enable Smart Access risk evaluation. Both kinds
+    smart_access_risk_threshold: Risk score (0-100) at or above which Smart Access acts. Both kinds
+    otp_auth_enabled: Require MFA. Both kinds
+    authentication_factor_ids: Account-level authentication factor IDs allowed for MFA - get them from list_authentication_factors, NOT from a user's enrolled devices. Replaces the whole set on update. Both kinds
+    force_authn: Force re-authentication when the user launches the app. APP POLICIES ONLY
+    app_force_authn_offset: Seconds of grace before force_authn re-prompts (3, 15, 30 or 60). APP POLICIES ONLY
+    app_otp_offset_enabled: Skip the MFA prompt if the user completed MFA recently. APP POLICIES ONLY
+    app_otp_offset: Minutes of MFA grace when app_otp_offset_enabled is true (max 7200). APP POLICIES ONLY
+    gdt_required: Require OneLogin Desktop (global device trust). APP POLICIES ONLY
+    preferred_auth_state_machine: 'Login flow: 1=password then MFA (standard), 2=MFA then password, 3=MFA only (passwordless), 4=password then MFA then PKI. USER POLICIES ONLY'
+    minimum_password_length: Minimum password length, 5-32. USER POLICIES ONLY
+    password_expiration_days: Days before a password expires, 0-99. 0 means never. USER POLICIES ONLY
+    passwords_remembered: How many previous passwords cannot be reused, 0-99. USER POLICIES ONLY
+    password_complexity_requirements: 'Complexity: 0=none, 1=letters and digits, 2=mixed case and digits, 3=mixed case, digits and special chars, 4=at least three of those four classes. USER POLICIES ONLY'
+    dynamic_blacklist_attributes: User attribute names whose values may not appear in a password (e.g. ["firstname","lastname"]). USER POLICIES ONLY
+    enforce_account_password_blacklist: Reject passwords on the account blacklist. USER POLICIES ONLY
+    enforce_compromised_credentials_check: Check passwords against known-breached credentials. USER POLICIES ONLY
+    password_redirect_enabled: Send password changes to an external URL instead of OneLogin. USER POLICIES ONLY
+    password_redirect_url: Where to send users to change their password. USER POLICIES ONLY
+    password_redirect_message: Message shown alongside the password redirect link. USER POLICIES ONLY
+    enable_password_change: Let users change their own password. USER POLICIES ONLY
+    enable_unlock_via_password_reset: A successful password reset also unlocks a locked account. USER POLICIES ONLY
+    enable_email_password_reset: Allow self-service reset by email. USER POLICIES ONLY
+    enable_sms_password_reset: Allow self-service reset by SMS. Requires the Password Reset - SMS feature. USER POLICIES ONLY
+    enable_question_password_reset: Allow self-service reset via security questions. Requires the Password Reset - Questions feature. USER POLICIES ONLY
+    require_security_questions: Make users set security questions. USER POLICIES ONLY
+    reset_password_authentication_factor_ids: Authentication factor IDs usable to verify a password reset, from list_authentication_factors. Replaces the whole set on update. USER POLICIES ONLY
+    invite_expiration_time_value: How long an invite/reset link stays valid (must be > 0). Pair with invite_expiration_time_unit. USER POLICIES ONLY
+    invite_expiration_time_unit: 'Unit for invite_expiration_time_value: 0=minutes, 1=hours. USER POLICIES ONLY'
+    maximum_invalid_login_attempts: Failed logins before lockout, 3-10. 0 means no limit. USER POLICIES ONLY
+    lock_effective_minutes: Lockout duration in minutes (15, 30, 60). 0 means locked until an admin unlocks. USER POLICIES ONLY
+    session_timeout_by_inactivity_value: Idle timeout. 0 means never. Pair with session_timeout_by_inactivity_unit. USER POLICIES ONLY
+    session_timeout_by_inactivity_unit: 'Unit for the idle timeout: 0=minutes, 1=hours. USER POLICIES ONLY'
+    session_timeout_by_fixed_time_value: Absolute session lifetime regardless of activity. 0 means never. USER POLICIES ONLY
+    session_timeout_by_fixed_time_unit: 'Unit for the fixed timeout: 0=minutes, 1=hours. USER POLICIES ONLY'
+    session_timeout_minutes: Legacy single session timeout. The server recomputes this from the session_timeout_by_* fields whenever those are set - prefer them. USER POLICIES ONLY
+    session_timeout_type: 'Legacy companion to session_timeout_minutes: 0=by inactivity, 1=by fixed time. Server-derived when the session_timeout_by_* fields are set. USER POLICIES ONLY'
+    persistent_session_enabled: Allow "keep me signed in" across browser restarts. USER POLICIES ONLY
+    otp_config: 'Who MFA applies to: 0=administrators only, 1=configured users only, 2=all users. USER POLICIES ONLY'
+    otp_trigger_condition: 'When to prompt for MFA: 0=every login, 1=unknown browser only. USER POLICIES ONLY'
+    otp_security_token_expiration_days: Days a remembered-device MFA token stays valid (1-99999). USER POLICIES ONLY
+    mfa_registration_enabled: Prompt users to register MFA factors. USER POLICIES ONLY
+    voluntary_mfa_registration_enabled: With mfa_registration_enabled true, makes registration optional rather than required. USER POLICIES ONLY
+    user_phone_update_allowed: Let users change the phone number on an MFA factor. USER POLICIES ONLY
+    disable_protect_push_notifications: Turn off OneLogin Protect push, forcing manual OTP entry. USER POLICIES ONLY
+    disable_protect_push_recovery: Turn off OneLogin Protect push for account recovery. USER POLICIES ONLY
+    enable_number_match: Require number matching on OneLogin Protect push (anti push-fatigue). USER POLICIES ONLY
+    self_install_cert: Let users install their own device trust certificate. USER POLICIES ONLY
+    browser_pki_expiration: 'Device trust certificate lifetime in days: 365, 730 or 1826. USER POLICIES ONLY'
+    trusted_device_login_enabled: Allow login from trusted devices. USER POLICIES ONLY
+    trusted_device_login_mfa_allowed: Allow MFA to be satisfied by the trusted device. USER POLICIES ONLY
+    new_portal_setting: Access to the new portal experience. USER POLICIES ONLY
+    allow_add_company_app: Let users add company apps to their portal. USER POLICIES ONLY
+    allow_add_personal_app: Let users add personal apps to their portal. USER POLICIES ONLY
+    enable_browser_extensions: Allow the OneLogin browser extension. USER POLICIES ONLY
+    disable_browser_password_manager: Stop the browser offering to save OneLogin passwords. USER POLICIES ONLY
+    enable_email_hint: Show an email hint on the login page. USER POLICIES ONLY
+    social_sign_in: Master switch for social sign-in. The per-provider flags below do nothing without it. USER POLICIES ONLY
+    google: Allow Google sign-in. USER POLICIES ONLY
+    facebook: Allow Facebook sign-in. USER POLICIES ONLY
+    linkedin: Allow LinkedIn sign-in. USER POLICIES ONLY
+    twitter: Allow X/Twitter sign-in. USER POLICIES ONLY
+    secure_admin: Require step-up authentication to reach the admin console. USER POLICIES ONLY
+    admin_policy_id: ID of the APP policy that governs the admin console step-up. USER POLICIES ONLY
+    secure_profile: Require step-up authentication to reach the user profile page. USER POLICIES ONLY
+    profile_policy_id: ID of the APP policy that governs the profile page step-up. USER POLICIES ONLY
+    secure_area_otp_timeout_minutes: 'How long a step-up stays valid: 5, 10, 15, 20, 30, 45 or 60 minutes. USER POLICIES ONLY'
+    euba_enabled: Enable end-user behaviour analytics. USER POLICIES ONLY
+    euba_risk_threshold: Risk score (0-100) at or above which EUBA acts. USER POLICIES ONLY
+    track_inactive_users: Track and report inactive users. USER POLICIES ONLY
+    enable_system_use_notification: Show a system use notification before login. USER POLICIES ONLY
+    system_use_notification: Text of the system use notification. USER POLICIES ONLY
+    terms_and_conditions: Terms users must accept at login. USER POLICIES ONLY
+  enabled: true
+- id: delete_policy
+  name: delete_policy
+  description: 'Delete a security policy. WARNING: this cannot be undone. Users, groups and apps assigned to the policy are not deleted - their policy assignment is cleared, so they fall back to the account default policy. The account default policy itself cannot be deleted (422) - use set_default_policy to hand that role to another policy first. Returns 204 No Content on success and x-request-id (API v2).'
+  params:
+    policy_id: The OneLogin policy ID to delete
+  enabled: true
+- id: set_default_policy
+  name: set_default_policy
+  description: 'Make a user policy the account default, applied to every user without a policy of their own or one inherited from a group. IMPORTANT: only works on kind=user policies - an app policy returns 422. This changes authentication behaviour account-wide immediately, so confirm the target policy with get_policy first. The previous default keeps existing and simply stops being the default. Returns the policy with is_default true and x-request-id (API v2).'
+  params:
+    policy_id: The user policy ID to make the account default
+  enabled: true
+- id: list_authentication_factors
+  name: list_authentication_factors
+  description: 'List the authentication factors configured on the account, each with id, name and type (OneLogin Protect, SMS, Voice, Email, Yubikey, authenticator apps, etc). Use this to get the IDs for a policy''s authentication_factor_ids or reset_password_authentication_factor_ids. IMPORTANT: these are account-level factor definitions, NOT a user''s enrolled devices - for those use get_enrolled_factors, and for what a specific user may still enrol use get_available_factors. Returns the factor list and x-request-id (API v2).'
+  enabled: true
