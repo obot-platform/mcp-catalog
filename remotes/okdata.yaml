@@ -1,9 +1,9 @@
 name: okdata
 entryKey: obot-okdata
 serverUserType: singleUser
-shortDescription: Search posts, read comments and look up creators on TikTok, YouTube, Instagram, X, Reddit, RedNote and Douyin
+shortDescription: Read RedNote, Douyin and WeChat in English, plus TikTok, YouTube, X and Reddit: posts, comments, creators, trends
 description: |
-  Search public posts, read comments, look up creators and follow trending lists on 30 social and content platforms: TikTok, YouTube, Instagram, X, Reddit and Amazon, plus Chinese platforms such as RedNote (Xiaohongshu), Douyin, WeChat Official Accounts, Weibo and Bilibili. See the official [okdata MCP setup guide](https://okdata.online/mcp/?src=obot-catalog) for connection steps and the list of data it can fetch.
+  Read what Chinese consumers post on RedNote (Xiaohongshu), Douyin, WeChat Official Accounts, Weibo and Bilibili from anywhere, with no Chinese phone number or platform account: search posts, read comments, look up creators and their official rates, and follow the hot lists. The same server covers TikTok, YouTube, Instagram, X, Reddit and Amazon, 30 platforms in all. See the official [okdata MCP setup guide](https://okdata.online/mcp/?src=obot-catalog) for connection steps and the list of data it can fetch.
 
   ## Features
   - Search posts and videos by keyword, and read their comments and replies
