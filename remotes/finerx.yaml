@@ -1,0 +1,30 @@
+name: FineRx
+entryKey: obot-finerx
+serverUserType: singleUser
+shortDescription: Dated US prescription prices by pharmacy chain, plus the free discount card to show at the counter
+description: |
+  Look up observed US prescription prices by pharmacy chain, each with the date it was seen, near a ZIP code or nationally, and get the free FineRx discount card to show at the counter. See the [FineRx connect page](https://www.finerxfinder.com/en/connect) for setup, supported clients, and documentation.
+
+  ## Features
+  - Card price of a medicine at each pharmacy chain, with the observation date, near a ZIP or nationally
+  - Nearby pharmacies by chain; compare a basket of 2-6 medicines; steps to transfer a prescription
+  - The free discount card: codes, what to say at the counter, send by email
+  - US equivalents of foreign-brand medicines (reviewed entries) and the reverse lookup
+  - What to do with no prescription yet (HRSA health centres, telehealth, assistance programs)
+  - 12 languages; renders as an MCP App card in hosts that support it
+
+  ## What you'll need to connect
+
+  No account or API key is required.
+
+  **Read only:** All tools are read-only except `email_savings_card`, which emails the card to an address the person gives, after they say yes.
+
+  Prices are dated observations, not quotes or guarantees. FineRx is an independent comparison service: not insurance, not medical advice, and it may earn a commission when the card is used. United States only.
+
+metadata:
+  categories: Healthcare, Data & Analytics
+icon: https://www.finerxfinder.com/icon.svg
+repoURL: https://www.finerxfinder.com/en/connect
+runtime: remote
+remoteConfig:
+  fixedURL: https://www.finerxfinder.com/mcp
