@@ -1,0 +1,27 @@
+name: Kite
+entryKey: obot-kite
+serverUserType: singleUser
+shortDescription: Create and edit design files with real, editable layers your team edits live
+description: |
+  Draw and edit designs in Kite files: frames, text, components, and auto layout that your team can open, edit, and comment on in the same file. See the official [Kite documentation](https://kite.new/docs) for setup and connection steps.
+
+  ## Features
+  - Create design files and frames for screens, banners, social posts, ads, and logos
+  - Add and edit real layers: text, shapes, images, components, and auto layout
+  - Read existing files and frames to iterate on your team's designs
+  - Work in the same file teammates edit live in the browser, Mac, or Windows apps
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Kite Account**: Sign in with OAuth (free plan includes 200 agent actions a day)
+
+  **Permissions:** The connector acts only on files in the Kite account you sign in with. You can disconnect it at any time in Kite's settings.
+
+metadata:
+  categories: Design, Productivity
+icon: https://kite.new/favicon.ico
+repoURL: https://kite.new/docs
+runtime: remote
+remoteConfig:
+  fixedURL: https://kite.new/api/mcp
