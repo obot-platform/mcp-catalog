@@ -1,0 +1,32 @@
+name: Winly
+entryKey: obot-winly
+serverUserType: singleUser
+shortDescription: Run your Instagram and Facebook DMs from Claude, ChatGPT or any AI agent.
+description: |
+  Connect your Instagram and Facebook DM inbox to any MCP-compatible AI agent to read chats, manage leads, and pull reports. See the [Winly MCP page](https://getwinly.ai/mcp/) for setup.
+
+  ## Features
+  - Read chats and search contacts
+  - Tag leads, set a stage and owner, and add notes
+  - Reply to comments on your posts
+  - Pull reports like speed to lead and response rate
+  - Send the replies you ask it to
+  - Built on Meta's official API
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Winly Account**: Sign in through OAuth 2.1 (PKCE, dynamic client registration), or provide a Winly API key in the `X-API-Key` header
+
+metadata:
+  categories: CRM, Sales, Communication
+repoURL: https://getwinly.ai/mcp/
+runtime: remote
+remoteConfig:
+  fixedURL: https://app.sbccrm.com/bld/api/mcp
+  headers:
+  - name: Winly API Key
+    description: Optional API key sent in the X-API-Key header; leave blank to sign in with OAuth
+    key: X-API-Key
+    required: false
+    sensitive: true
