@@ -1,0 +1,27 @@
+name: Liliphant
+entryKey: obot-liliphant
+serverUserType: singleUser
+shortDescription: Ask questions across all your meetings and get answers with the exact quote, speaker and meeting
+description: |
+  Liliphant joins your meetings and remembers the work across all of them. Ask what was decided, who promised what, what changed since the first meeting, or what's still blocked; every answer comes with the exact quote, the speaker and the meeting it came from. See the official [Liliphant MCP server documentation](https://github.com/walkover-mcp/liliphant#readme) for setup, authentication, available tools, and usage guidance.
+
+  ## Features
+  - Search the Liliphant documentation and browse its API reference
+  - List your meetings and ask a question across them
+  - Call Liliphant read APIs and Liliphant APIs supported by the integration
+  - See your own profile through get_me
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Liliphant Account**: Sign in through the OAuth flow when using meeting tools. Initialize and tools/list work without sign-in.
+
+  **Write access:** With sign-in, this connector can call Liliphant APIs on your account, depending on the permissions of the connected account.
+
+metadata:
+  categories: Video & Audio, Productivity, Meetings
+icon: https://storage.googleapis.com/stuff.thingsofbrand.com/liliphant.walkover.in/images/img1_liliphant.walkover.svg
+repoURL: https://github.com/walkover-mcp/liliphant
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.liliphant.com/mcp
