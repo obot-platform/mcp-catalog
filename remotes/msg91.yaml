@@ -1,0 +1,26 @@
+name: MSG91
+entryKey: obot-msg91
+serverUserType: singleUser
+shortDescription: Search MSG91's docs and API reference and call MSG91 APIs for SMS, WhatsApp, email, voice and OTP
+description: |
+  MSG91 is a cloud communication platform with APIs and tools for SMS, WhatsApp, email, voice calls, and OTP verification. This MCP connector lets compatible AI assistants access the MSG91 API operations supported by the integration. See the official [MSG91 MCP server documentation](https://github.com/walkover-mcp/msg91#readme) for setup, authentication, available tools, and usage guidance.
+
+  ## Features
+  - Search the MSG91 documentation and browse its API reference
+  - Call MSG91 read APIs and MSG91 APIs supported by the integration
+  - Quick start guide for MSG91 through the quickstart-msg91 tool
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **MSG91 Account**: Sign in through the OAuth flow when calling account APIs. Initialize and tools/list work without sign-in.
+
+  **Write access:** With sign-in, this connector can call MSG91 APIs that send messages or change account data, depending on the permissions of the connected account.
+
+metadata:
+  categories: Communication, SaaS & API Integrations
+icon: https://stuff.thingsofbrand.com/msg91.com/images/imge_msg91.svg
+repoURL: https://github.com/walkover-mcp/msg91
+runtime: remote
+remoteConfig:
+  fixedURL: https://mcp.msg91.com/mcp
