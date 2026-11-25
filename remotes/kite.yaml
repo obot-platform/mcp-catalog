@@ -14,7 +14,7 @@ description: |
   ## What you'll need to connect
 
   **Required:**
-  - **Kite Account**: Sign in with OAuth (free plan includes 200 agent actions a day)
+  - **Kite Account**: Sign in with OAuth (free plan includes 100 agent actions a day)
 
   **Permissions:** The connector acts only on files in the Kite account you sign in with. You can disconnect it at any time in Kite's settings.
 
