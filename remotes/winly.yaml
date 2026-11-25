@@ -16,17 +16,12 @@ description: |
   ## What you'll need to connect
 
   **Required:**
-  - **Winly Account**: Sign in through OAuth 2.1 (PKCE, dynamic client registration), or provide a Winly API key in the `X-API-Key` header
+  - **Winly Account**: Sign in through OAuth 2.1 (PKCE, dynamic client registration)
 
 metadata:
   categories: CRM, Sales, Communication
+icon: https://getwinly.ai/assets/favicon.png
 repoURL: https://getwinly.ai/mcp/
 runtime: remote
 remoteConfig:
   fixedURL: https://app.sbccrm.com/bld/api/mcp
-  headers:
-  - name: Winly API Key
-    description: Optional API key sent in the X-API-Key header; leave blank to sign in with OAuth
-    key: X-API-Key
-    required: false
-    sensitive: true
