@@ -1,0 +1,28 @@
+name: Aggregate
+entryKey: obot-aggregate
+serverUserType: singleUser
+shortDescription: Ask about cash, runway, revenue, invoices, payroll and cap table from one reconciled ledger
+description: |
+  Query one double-entry ledger built from your banks, cards, payment apps, books, invoices, payroll and cap table, for one or more companies plus a private Personal space. See the [Aggregate MCP documentation](https://docs.aggregate.finance) for the endpoint, tools, scopes, and setup.
+
+  ## Features
+  - Get balances, cash, burn, runway, revenue and other metrics computed with fixed definitions
+  - Search and filter transactions and invoices, and list upcoming bills and payments
+  - Pull reports (P&L, balance sheet, cash flow), accounts, cap table, and items waiting for review
+  - Optionally record entries, invoices and payments, update or void records, and resolve review items; every write supports a dry-run preview and can be undone for 30 days
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Aggregate Account**: Sign in through Aggregate's OAuth flow (OAuth 2.1 with PKCE)
+  - **Connection Scope**: At sign-in, choose which companies and data types the connection can see, and whether it is read-only or can also write
+
+  **Read and write:** Write tools change records in Aggregate only. Aggregate never moves money, pays bills, or contacts anyone. You can revoke the connection at any time.
+
+metadata:
+  categories: Financial Services, Data Analytics
+icon: https://app.aggregate.finance/icon-512.png
+repoURL: https://docs.aggregate.finance
+runtime: remote
+remoteConfig:
+  fixedURL: https://app.aggregate.finance/mcp
