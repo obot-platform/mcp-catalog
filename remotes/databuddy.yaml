@@ -1,0 +1,26 @@
+name: Databuddy
+entryKey: obot-databuddy
+serverUserType: singleUser
+shortDescription: Find out why traffic, signups, or errors moved, and manage goals, funnels, and flags
+description: |
+  Query web and product analytics, compare periods to see what changed, and investigate errors, Web Vitals, session replays, and backend logs in Databuddy. See the [Databuddy MCP documentation](https://www.databuddy.cc/docs/api/mcp) for setup, tools, and permissions.
+
+  ## Features
+  - Query traffic, pages, referrers, campaigns, devices, custom events, retention, and revenue, or run read-only SQL
+  - Compare periods and rank which pages, sources, or events moved the most
+  - Find errors, slow pages, and the session replays behind them
+  - Read detected metric changes, published insights, and investigations, and ask follow-up questions
+  - Create and update goals, funnels, annotations, short links, and feature flags after previewing each change
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **Databuddy Account**: Each user signs in through OAuth, and access follows their organization role and the permissions they approve
+
+metadata:
+  categories: Data & Analytics, Product Analytics, Monitoring & Observability
+icon: https://www.databuddy.cc/apple-icon.png
+repoURL: https://www.databuddy.cc/docs/api/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://api.databuddy.cc/v1/mcp
