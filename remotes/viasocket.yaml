@@ -1,0 +1,28 @@
+name: viaSocket
+entryKey: obot-viasocket
+serverUserType: singleUser
+shortDescription: Infrastructure for building apps and AI agents, with integrations, automation and AI capabilities
+description: |
+  Infrastructure for building apps and AI agents, with integrations, automation and AI capabilities. See the official [viaSocket MCP server documentation](https://github.com/walkover-mcp/viasocket#readme) for setup, authentication, available tools, and usage guidance.
+
+  ## Features
+  - Search viaSocket's documentation and browse its API reference
+  - List plugins, auth versions, actions and triggers in the viaSocket Developer Hub
+  - Create connection links so users can connect their own apps through OAuth
+  - Search apps and their actions, and run actions in connected accounts across 2,300+ apps, including Slack, Gmail, Google Sheets, HubSpot, GitHub and Notion
+  - List connections and embed projects, and check request status
+
+  ## What you'll need to connect
+
+  **Required:**
+  - **viaSocket Account**: Sign in to viaSocket through the OAuth flow (the same account as viasocket.com). The docs tools work without signing in.
+
+  **Write access:** With sign-in, this connector can create connection links and run actions in your users' connected apps.
+
+metadata:
+  categories: Developer Tools, SaaS & API Integrations
+icon: https://stuff.thingsofbrand.com/viasocket.com/images/imgf_logo-2.png
+repoURL: https://github.com/walkover-mcp/viasocket
+runtime: remote
+remoteConfig:
+  fixedURL: https://connect.viasocket.com/mcp
