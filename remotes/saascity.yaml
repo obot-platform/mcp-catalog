@@ -1,0 +1,22 @@
+name: SaaSCity
+entryKey: obot-saascity
+serverUserType: singleUser
+shortDescription: Audit launch readiness, query 1,600+ startup directories by DR, and check live backlinks
+description: |
+  Audit SaaS and AI product homepages for launch readiness, filter 1,600+ startup directories by live Ahrefs Domain Rating and link type, check live backlinks, and run SaaS metric calculators with [SaaSCity MCP](https://saascity.io/mcp).
+
+  ## Features
+  - Run a 16-point pre-launch homepage readiness audit (HTTPS, meta tags, OG image, canonical, robots.txt, sitemap, JSON-LD)
+  - Filter and recommend startup, SaaS, and AI directories by Ahrefs DR, dofollow vs nofollow, pricing, and reciprocal badge requirements
+  - Verify whether a live directory listing renders a followed backlink in static HTML
+  - Search live SaaSCity launches, leaderboards, and product alternatives
+  - Calculate SaaS metrics (ARR, ARR bridge, churn, NRR, Rule of 40, NPS, A/B test significance, uptime)
+
+  This remote connector is keyless and does not require a SaaSCity account or API key for read-only tools.
+metadata:
+  categories: Marketing, Data & Analytics, Developer Tools
+icon: https://saascity.io/apple-touch-icon.png
+repoURL: https://saascity.io/mcp
+runtime: remote
+remoteConfig:
+  fixedURL: https://saascity.io/api/mcp
