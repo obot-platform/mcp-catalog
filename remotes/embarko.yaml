@@ -1,7 +1,7 @@
 name: Embarko
 entryKey: obot-embarko
 serverUserType: singleUser
-shortDescription: Deploy and host AI-built apps and websites with a live URL
+shortDescription: A shared workspace to publish, use and improve anything built with AI
 description: |
   Deploy and host AI-built apps and websites and get a live URL without any DevOps setup. See the official [Embarko quickstart](https://embarko.ai/docs/quickstart) for setup, authentication, available tools, and usage guidance.
 
