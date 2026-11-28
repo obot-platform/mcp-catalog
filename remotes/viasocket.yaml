@@ -1,7 +1,7 @@
 name: viaSocket
 entryKey: obot-viasocket
 serverUserType: singleUser
-shortDescription: Explore viaSocket's docs and APIs and run actions across 2,300+ connected apps
+shortDescription: Infrastructure for building apps and AI agents, with integrations, automation and AI capabilities
 description: |
   viaSocket is integration and AI infrastructure for developers. Through this MCP server, an AI agent can explore viaSocket's documentation and APIs, then build and verify working integrations directly into your product. See the official [viaSocket MCP server documentation](https://github.com/walkover-mcp/viasocket#readme) for setup, authentication, available tools, and usage guidance.
 
